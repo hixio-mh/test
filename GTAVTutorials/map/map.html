@@ -34,7 +34,7 @@
 		.f4-map-icon {
 			width: 32px;
 			height: 37px;
-			background-image: url(icons.png);
+			background-image: url(markers.png);
 		}
 		#markers,
 		#map {
@@ -80,7 +80,7 @@
 		.markItem {
 			line-height: 50px;
 			border: 1px solid black;
-			text-align: center;
+			/*text-align: center;*/
 			color: #fff;
 			overflow: auto;
 		}
@@ -97,12 +97,23 @@
 			font-weight: bold;
 			background: rgb(73, 207, 82);
 		}
+		.menuIcon {
+				background-image: url(markers.png);
+				width: 32px;
+			    background-position: 0 -0px;
+				display: inline-block;
+				height: 37px;
+				position: relative;
+				top: 13px;
+				left: 2px;
+				margin-right: 5px;
+		}
     </style>
 </head>
 <body>
 	<div id="markers">
 	<div id="markersScroll">
-	<div class="markItem" id="0">Show All</div>
+	<div class="markItem" id="0" style="padding-left: 36px;">Show All</div>
 	</div>
 	</div>
 	<input id="toggle" type="checkbox">
@@ -172,27 +183,31 @@
 		
 		
 		function showAll() {
-		var iconPositions = new Array(0, 370, 1591, 148, 0, 111, 1147, 407, 666, 740, 1332, 1258, 1628, 1665, 1776, 851, 1480, 333, 1184, 814, 296, 1221, 962, 1073, 1406, 555, 1110, 1739, 74, 999, 1517, 925, 1369, 1443, 222, 1036, 1702, 629, 777, 888, 185, 481, 592, 1554, 444, 1295, 259, 37, 703, 1813, 1850, 1887, 1924, 1961, 1998);
-		//var iconPositions = new Array(0);
 			var count = GtaMap.data.Locations.length;
 			for (var i = 0; i < count; i++) {
-				var locID = GtaMap.data.Locations[i].LocationID;
-				var name = GtaMap.data.Locations[i].Name;
-				var lat = GtaMap.data.Locations[i].Latitude;
-				var lng = GtaMap.data.Locations[i].Longitude;
 				var cat = GtaMap.data.Locations[i].Category;
+				if (getCategory(cat).active == 1) {
+					var locID = GtaMap.data.Locations[i].LocationID;
+					var name = GtaMap.data.Locations[i].Name;
+					var lat = GtaMap.data.Locations[i].Latitude;
+					var lng = GtaMap.data.Locations[i].Longitude;
+					
+					try {
+						var iconPos = getCategory(cat).iconPosition * 37;
+					} catch (err) {
+						console.log(err);
+					}
+					var descr = GtaMap.data.Locations[i].Details;
 				
-				var descr = GtaMap.data.Locations[i].Details;
-				
-				var iconPos = (typeof iconPositions[cat] !== 'undefined' ? iconPositions[cat] : iconPositions[0]);
-				var icon = L.divIcon({
-					className: 'f4-map-marker',
-					html: '<div class="f4-map-icon" style="background-position: 0 -' + iconPos + 'px;"></div>',
-					iconSize: [32, 37],
-					iconAcnhor: [15, 37]
-				});
-				marker.push(L.marker([lat, lng], {icon: icon}).addTo(map)
-					  .bindPopup("<h1>" + name + "</h1><p>" + descr + "</p>"));
+					var icon = L.divIcon({
+						className: 'f4-map-marker',
+						html: '<div class="f4-map-icon" style="background-position: 0 -' + iconPos + 'px;"></div>',
+						iconSize: [32, 37],
+						iconAcnhor: [15, 37]
+					});
+					marker.push(L.marker([lat, lng], {icon: icon}).addTo(map)
+						.bindPopup("<h1>" + name + "</h1><i>"+getCategory(cat).title+"</i>"));//<p>" + descr + "</p>"));
+				}
 			}
 		};
 	
@@ -200,21 +215,30 @@
 	$(".selectedItem").each(function(){
 		var id = this.id;
 		if (id != 0 ) {
-		
 			marker = [];
-			var locations = GtaMap.data.categories[id].locations;
-			var iconPos = (typeof cats[id] !== 'undefined' ? cats[id] : cats[0]);
+			var cat = getCategory(id);
+			var catName = cat.title;
+			id = cat.id;
+			var iconPos = cat.iconPosition*37;
 			var icon = L.divIcon({
 				className: 'f4-map-marker',
 				html: '<div class="f4-map-icon" style="background-position: 0 -' + iconPos + 'px;"></div>',
-				iconSize: [32, 42],
-				iconAnchor: [15, 42]
+				iconSize: [32, 37],
+				iconAnchor: [15, 37]
 			});
-			for (var i = 0; i < locations.length; i++) {
-				locat = locations[i];
-				descr = locat.description;
-				marker.push(L.marker([locat.latitude, locat.longitude], {icon: icon}).addTo(map)
-					.bindPopup("<h1>"+locat.title+"</h1><i>"+GtaMap.data.categories[id].title+"</i><p>"+descr+"</p>"));
+			
+			var arr = GtaMap.data.Locations;
+			var item = getItem(arr, id);
+			
+			while(typeof item != "undefined") {
+				var locat = arr[item];
+				var name = locat.Name;
+				var lat = locat.Latitude;
+				var lon = locat.Longitude;
+				var descr = locat.Details;
+				marker.push(L.marker([lat, lon], {icon: icon}).addTo(map)
+					.bindPopup("<h1>"+name+"</h1><i>"+catName+"</i>"));//<p>"+descr+"</p>"));
+				var item = getItem(arr, id, item+1);
 			}
 		}
 	});
@@ -234,6 +258,21 @@
 		descr = loc.description;
 		marker.push(L.marker([loc.latitude, loc.longitude], {icon: icon}).addTo(map)
 			.bindPopup("<h1>"+loc.title+"</h1><i>"+GtaMap.data.categories[id].title+"</i><p>"+descr+"</p>"));
+	}
+	
+	function getCategory(id) {
+		var arr = GtaMap.data.allCategories;
+		var len = arr.length;
+		for (var i = 0; i < len; i++) {
+			if (arr[i].id == id) return arr[i];
+		}
+	}
+	
+	function getItem(arr, category, offset) {
+		offset = offset || 0;
+		for(var i = offset; i < arr.length; i++) {
+			if (arr[i].Category == category) return i;
+		}
 	}
 	
 	function getAllLayers() {
@@ -271,7 +310,9 @@
 		});
 		
 		for (var i=0; i<len; i++) {
-			$("#markersScroll").append("<div class='markItem' id='"+cat[i].id+"'>"+cat[i].title+"</div>");
+			if(cat[i].active == 1) {
+				$("#markersScroll").append("<div class='markItem' id='"+cat[i].id+"'> <div class='menuIcon' style = 'background-position: 0 -" + cat[i].iconPosition*37 + "px; '></div>"+cat[i].title+"</div>");
+			}
 		}
 		
 		$(".markItem").on("click",function() {
@@ -294,7 +335,7 @@
 			} else {
 				$(this).toggleClass("selectedItem")
 				if ($(this).hasClass("selectedItem")) {
-					showAllCat();
+					showAll();
 					$(".markItem").each(function() {
 						$(this).addClass("selectedItem");
 					});
