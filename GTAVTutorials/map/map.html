@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Map</title>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />  
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="leaflet.css" />
+    <style>
+        body
+        {
+            padding: 0;
+            margin: 0;
+			border: 0;
+        }
+        html, body, #map
+        {
+            height: 100%;
+            width: 100%;
+			overflow:hidden;
+        }
+		
+		#map {
+			top: 0px;
+			left: 0px;
+			right: 0;
+			bottom: 0px;
+		}
+		h1 {
+			font-size: 1.666em;
+			color: #0078A8;
+			font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+		}
+		.f4-map-icon {
+			width: 32px;
+			height: 37px;
+			background-image: url(icons.png);
+		}
+		#markers,
+		#map {
+			position: absolute;
+			transition: all 500ms;
+		}
+		#markers{
+			z-index:0;
+			top: 0px;
+			width: 180px;
+			bottom: 0px;
+			background: #1F1E1E;
+			overflow: hidden;
+		}
+		#toggle {
+			display: none;
+		}
+		label {
+			position: relative;
+			left: 0px;
+			top: 80px;
+			margin: 5px;
+			z-index: 1000;
+			transition: all 500ms;
+			padding: 4px 6px;
+			background: #fff;
+		}
+		#toggle ~ #markers {
+			left: 180px;
+		}
+		#toggle:checked ~ #markers {
+			left: -200px;
+			-webkit-transform:translate(-200px,0);
+		}
+		#toggle:checked ~ #map {
+			left: 180px;
+			width: calc(100% - 180px)
+		}
+		#toggle:checked,
+		#toggle:checked ~ label {
+			left: 180px;
+		}
+		.markItem {
+			line-height: 50px;
+			border: 1px solid black;
+			text-align: center;
+			color: #fff;
+			overflow: auto;
+		}
+		#markersScroll {
+			overflow: auto;
+			width: 180px;
+			height: 100%;
+			/*padding-right: 300px;
+			margin: 0 -300px 0 0;*/
+		}
+		#markersScroll::-webkit-scrollbar { width: 0 !important }
+		
+		.selectedItem{
+			font-weight: bold;
+			background: rgb(73, 207, 82);
+		}
+    </style>
+</head>
+<body>
+	<div id="markers">
+	<div id="markersScroll">
+	<div class="markItem" id="0">Show All</div>
+	</div>
+	</div>
+	<input id="toggle" type="checkbox">
+	<label for="toggle" style="box-shadow: 0 1px 5px rgba(0,0,0,0.65); border-radius: 4px;">Markers</label>
+	<div id="map" style="background-color: #0FA8D2;"/>
+	
+    <script src="../scripts/leaflet.js"></script>
+    <!-- <script src="data_ENG.js"></script> -->
+    <script src="locations.js"></script>
+    <script src="jquery-2.1.4.min.js"></script>
+	    <script>
+      var image = 'titles';
+      var width = 2048;
+      var height = 2048;
+      var maxLevel = 7;
+      var minLevel = 3;
+      var orgLevel = 4.5;
+
+      // Some weird calculations to fit the image to the initial position
+      // Leaflet has some bugs there. The fitBounds method is not correct for large scale bounds
+      var tileWidth = 256 * Math.pow(2, orgLevel);
+      var radius = tileWidth / 2 / Math.PI;
+      var rx = width - tileWidth / 2;
+      var ry = -height + tileWidth / 2;
+
+      var west = -180;
+      var east = (180 / Math.PI) * (rx / radius);
+      var north = 85.05;
+      var south = (360 / Math.PI) * (Math.atan(Math.exp(ry / radius)) - (Math.PI / 4));
+      var rc = (tileWidth / 2 + ry) / 2;
+      var centerLat = (360 / Math.PI) * (Math.atan(Math.exp(rc / radius)) - (Math.PI / 4));
+      var centerLon = (west + east) / 2;
+      var bounds = [[south, west], [north, east]];
+
+      var map = new L.Map('map', {maxBounds: bounds});
+
+      L.tileLayer(image + '/{z}/{x}-{y}.png', {
+        maxZoom: maxLevel, minZoom: minLevel, opacity: 1.0, zIndex: 1, noWrap: true,
+        bounds: bounds,
+        attribution: 'GTA V Map'
+		  }).addTo(map);
+		  
+      var zoom = 4; //map.getBoundsZoom(bounds);
+      var center = new L.latLng(centerLat, centerLon);
+	  
+	  var loc = null;
+	  if (location.hash !== '') {
+		var hash = location.hash.replace('#', '');
+		var regex = /location:(\d+)/;
+		var res = regex.exec(hash);
+		if (res){
+			loc = getLocation(parseInt(res[1]));
+			if (loc) {
+				center = [loc.latitude, loc.longitude];
+				zoom = 5;
+				showItem(loc);
+			}
+		}
+	  } 
+  
+  		map.setView(center, zoom);
+		
+		var marker = new Array();
+		map.on('click', function(e) {
+			console.log('"latitude": "' + e.latlng.lat + '",\n\t\t\t\t"longitude": "' + e.latlng.lng + '",')
+		});
+		
+		
+		function showAll() {
+		var iconPositions = new Array(0, 370, 1591, 148, 0, 111, 1147, 407, 666, 740, 1332, 1258, 1628, 1665, 1776, 851, 1480, 333, 1184, 814, 296, 1221, 962, 1073, 1406, 555, 1110, 1739, 74, 999, 1517, 925, 1369, 1443, 222, 1036, 1702, 629, 777, 888, 185, 481, 592, 1554, 444, 1295, 259, 37, 703, 1813, 1850, 1887, 1924, 1961, 1998);
+		//var iconPositions = new Array(0);
+			var count = GtaMap.data.Locations.length;
+			for (var i = 0; i < count; i++) {
+				var locID = GtaMap.data.Locations[i].LocationID;
+				var name = GtaMap.data.Locations[i].Name;
+				var lat = GtaMap.data.Locations[i].Latitude;
+				var lng = GtaMap.data.Locations[i].Longitude;
+				var cat = GtaMap.data.Locations[i].Category;
+				
+				var descr = GtaMap.data.Locations[i].Details;
+				
+				var iconPos = (typeof iconPositions[cat] !== 'undefined' ? iconPositions[cat] : iconPositions[0]);
+				var icon = L.divIcon({
+					className: 'f4-map-marker',
+					html: '<div class="f4-map-icon" style="background-position: 0 -' + iconPos + 'px;"></div>',
+					iconSize: [32, 37],
+					iconAcnhor: [15, 37]
+				});
+				marker.push(L.marker([lat, lng], {icon: icon}).addTo(map)
+					  .bindPopup("<h1>" + name + "</h1><p>" + descr + "</p>"));
+			}
+		};
+	
+	function showCategory() {
+	$(".selectedItem").each(function(){
+		var id = this.id;
+		if (id != 0 ) {
+		
+			marker = [];
+			var locations = GtaMap.data.categories[id].locations;
+			var iconPos = (typeof cats[id] !== 'undefined' ? cats[id] : cats[0]);
+			var icon = L.divIcon({
+				className: 'f4-map-marker',
+				html: '<div class="f4-map-icon" style="background-position: 0 -' + iconPos + 'px;"></div>',
+				iconSize: [32, 42],
+				iconAnchor: [15, 42]
+			});
+			for (var i = 0; i < locations.length; i++) {
+				locat = locations[i];
+				descr = locat.description;
+				marker.push(L.marker([locat.latitude, locat.longitude], {icon: icon}).addTo(map)
+					.bindPopup("<h1>"+locat.title+"</h1><i>"+GtaMap.data.categories[id].title+"</i><p>"+descr+"</p>"));
+			}
+		}
+	});
+	};
+	
+	function showItem(loc) {
+		var id = loc.category_id;
+		
+		marker = [];
+		var iconPos = (typeof cats[id] !== 'undefined' ? cats[id] : cats[0]);
+		var icon = L.divIcon({
+            className: 'f4-map-marker',
+            html: '<div class="f4-map-icon" style="background-position: 0 -' + iconPos + 'px;"></div>',
+            iconSize: [32, 42],
+            iconAnchor: [15, 42]
+        });
+		descr = loc.description;
+		marker.push(L.marker([loc.latitude, loc.longitude], {icon: icon}).addTo(map)
+			.bindPopup("<h1>"+loc.title+"</h1><i>"+GtaMap.data.categories[id].title+"</i><p>"+descr+"</p>"));
+	}
+	
+	function getAllLayers() {
+    var items = [];
+    var categories = GtaMap.data.categories;
+    for (var key in categories) {
+      if (categories.hasOwnProperty(key)) {
+        categories[key].locations.forEach(function(v) {
+          items.push(v);
+        });
+      }
+    }
+    return items;
+  }
+
+  function getLocation(id) {
+    var loc = null;
+    getAllLayers().forEach(function(v) {
+      if (v.id === id) {
+        loc = v;
+        return false;
+      }
+    });
+    return loc;
+  }
+	
+	$(function() {
+		var len = GtaMap.data.allCategories.length;
+		var cat = GtaMap.data.allCategories;
+		
+		cat.sort(function(a,b) {
+			var first = a.title.toLowerCase(),
+				second = b.title.toLowerCase();
+			return ((first < second) ? -1 : ((first > second) ? 1 : 0));
+		});
+		
+		for (var i=0; i<len; i++) {
+			$("#markersScroll").append("<div class='markItem' id='"+cat[i].id+"'>"+cat[i].title+"</div>");
+		}
+		
+		$(".markItem").on("click",function() {
+			var id = this.id
+			
+			$.each(map._layers, function(ml){
+				if (typeof map._layers[ml]._popup != "undefined"){
+					map.removeLayer(map._layers[ml]);
+				}
+			})
+			
+			if (id != 0) {
+				if ($(this).hasClass("selectedItem")) {
+					$(this).removeClass("selectedItem");
+					showCategory();
+				}else{
+					$(this).addClass("selectedItem");
+					showCategory();
+				}
+			} else {
+				$(this).toggleClass("selectedItem")
+				if ($(this).hasClass("selectedItem")) {
+					showAllCat();
+					$(".markItem").each(function() {
+						$(this).addClass("selectedItem");
+					});
+				} else {
+					$(".markItem").each(function() {
+						$(this).removeClass("selectedItem");
+					});
+				}
+			}
+		});
+		
+	});
+	</script>
+</body>
+</html>
