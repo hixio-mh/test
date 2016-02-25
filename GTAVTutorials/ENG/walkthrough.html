@@ -1,0 +1,51 @@
+<html>
+<head>  	
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<title>GTA V Walkthrough</title>
+<script src='../scripts/jquery.min.js'></script>
+<script src='../scripts/missionList.js'></script>
+</head>
+<body>
+<style>
+body {
+margin: 2px;
+}
+.backtoMenu {
+    background: linear-gradient(to top, #000000, #5A5A5A);
+    height: 40px;
+    color: #fff;
+    line-height: 40px;
+    font-size: 15px;
+    padding-left: 40px;
+    margin: -2px;
+    /* background: url("../images/back.png"); */
+}
+.backtoMenu a {
+	text-decoration:none;
+	color: #fff;
+}
+.backIcon {
+    background: url("../images/back.png");
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 2px;
+}
+</style>
+<div class="backtoMenu"><a href="main.html"><div class="backIcon"></div>Back to Menu</a></div>
+<h1>Walkthrough</h1>
+<ol class="linkList">
+</ol>
+
+<script>
+$(function() {
+	for(var i = 1; i < Missions.data.allMissions.length; i++) {
+		var mission = Missions.data.allMissions[i];
+		var div = "<li><a href=\"walkthrough/" + mission.file + "\">" + mission.title + "</a></li>"
+		$(".linkList").append(div);
+	}
+});
+</script>
+</body>
+</html>

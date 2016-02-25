@@ -20,7 +20,7 @@ ul {
 list-style: none outside url('../images/li.png');
 line-height: 20px;
 }
-h3 {
+h3, .subSectionTitle {
 font-size: 1.1rem;
 text-align: center;
 overflow: hidden;
@@ -88,4 +88,48 @@ display: none;
 .img-shadow {
 	box-shadow: 0 8px 6px -6px black;
     padding: 5px 0 0 0;
+}
+
+
+ol.linkList {
+    counter-reset: li;
+    list-style: none;
+    font: 16px 'trebuchet MS', 'lucida sans';
+    padding-left: 1.5em;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+.linkList a:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -1.3em;
+	top: 50%;
+	margin-top: -1.3em;
+	background: #87ceeb;
+	height: 2em;
+	width: 2em;
+	line-height: 2em;
+	border: .3em solid #fff;
+	text-align: center;
+	font-weight: bold;
+	border-radius: 2em;
+	transition: all .3s easy-out;
+}
+.linkList a:hover:before {
+    transform: rotate(360deg);
+}
+.linkList a:hover {
+    background: #eee;
+}
+.linkList a {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 1.5em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
 }

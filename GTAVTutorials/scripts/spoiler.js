@@ -1,15 +1,19 @@
 $(document).ready(function()
 {
   $('.spoiler').hide();
-  $('.spoiler_head').click(function()
+  $('li:has(span.spoiler_head)').on("click", function()
   {
-	if($(this).next('.spoiler_body').css('display')=='none') {
-		var YouTube = $(this).next('.spoiler_body').html();
-		$(this).next('.spoiler_body').html('<iframe width="100%" height="315px" src="'+YouTube+'" frameborder="0" allowfullscreen></iframe><div class="youtubelink">'+YouTube+'</div>');
-	} else {
-		var YouTube = $(this).next('.spoiler_body').text();
-		$(this).next('.spoiler_body').html(YouTube);
+	var elemen = this;
+	if($(this)[0].tagName == "LI") {
+		elemen = $(this).children("span");
 	}
-    $(this).next('.spoiler_body').slideToggle(100);
+	if($(elemen).next('.spoiler_body').css('display')=='none') {
+		var YouTube = $(elemen).next('.spoiler_body').html();
+		$(elemen).next('.spoiler_body').html('<iframe width="100%" height="315px" src="'+YouTube+'" frameborder="0" allowfullscreen></iframe><div class="youtubelink">'+YouTube+'</div>');
+	} else {
+		var YouTube = $(elemen).next('.spoiler_body').text();
+		$(elemen).next('.spoiler_body').html(YouTube);
+	}
+    $(elemen).next('.spoiler_body').slideToggle(100);
   });
 });
