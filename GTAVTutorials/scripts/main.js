@@ -1,5 +1,7 @@
 $('a').on('click',function(e) { e.preventDefault(); window.location = $(this).attr('href'); });
 
+var Device = {};
+
 Device.isiPhone = function() {
    return navigator.userAgent.indexOf('iPhone') != -1;
 }
