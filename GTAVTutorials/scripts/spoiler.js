@@ -17,3 +17,4 @@ $(document).ready(function()
     $(elemen).next('.spoiler_body').slideToggle(100);
   });
 });
+$('a').live('click',function(e) { e.preventDefault(); window.location = $(this).attr('href'); });

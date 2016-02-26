@@ -60,3 +60,4 @@ function loadScript(url, callback)
     // Fire the loading
     head.appendChild(script);
 }
+$('a').live('click',function(e) { e.preventDefault(); window.location = $(this).attr('href'); });
