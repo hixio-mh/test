@@ -1,0 +1,99 @@
+﻿<html>
+<head>
+<title>Item info</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/mortyInfo.css">
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/Items.js"></script>
+</head>
+<body>
+<!--
+<div class="back">
+<a href="Items.html"><img src="../images/back.png">Back to Items List</a>
+</div>-->
+<div class="shortInfo">
+<span class="num"></span>
+<h1>Item</h1>
+</div>
+<div class="craftImg"></div>
+<span id="cost">Cost</span>
+<h3><span>Craft</span></h3>
+<div class="craft">
+	<table id="craft">
+	</table>
+</div>
+<script>
+	var hash = location.hash.replace('#', '');
+	var regex = /item:(\d+)/;
+	var res = regex.exec(hash);
+	if (res) {
+		var ItemId = parseInt(res[1]);
+		ShowItem(ItemId);
+	}
+	function ShowItem(ItemId) {
+		$("h1").text(Mortys.Items[ItemId].name);
+		$(".num").text("#"+(ItemId+1));
+		$(".shortInfo").append("<img src='../images/items/small/"+Mortys.Items[ItemId].img+"'>")
+
+		
+		$(".craftImg").html("<img src='../images/items/large/"+Mortys.Items[ItemId].img+"'>");
+		$("#cost").text("Cost: " + Mortys.Items[ItemId].cost);
+		/*
+		var attacks = Mortys.Morty[ItemId].attacks;
+		
+		for (var i = 0; i < attacks.length; i++) {
+			var tr = "<tr>"
+			if (attacks[i].buff == "buff") {
+				tr = "<tr class='buff'>";
+			} else if (attacks[i].buff == "debuff") {
+				tr = "<tr class='debuff'>";
+			} else if (attacks[i].buff == "paper") {
+				tr = "<tr class='paper'>";
+			} else if (attacks[i].buff == "rock") {
+				tr = "<tr class='rock'>";
+			} else if (attacks[i].buff == "scissors") {
+				tr = "<tr class='scissors'>";
+			}
+			var attack = tr + "<td>" + attacks[i].name + "</td><td>" + attacks[i].type + "</td><td>" + attacks[i].power + "</td><td>" + attacks[i].accuracy + "</td><td>" + attacks[i].AP + "</td><td>" + attacks[i].level;
+			$("#attacks").append(attack);
+		}
+		*/
+		$("#craft").html("");
+		if (Mortys.Items[ItemId].craft.length != 0) {
+			var picPath = "small"
+			if ($(window).width() > 650){picPath = "large"}
+			
+			var evol = "<tr>";
+			for (var i = 0; i < Mortys.Items[ItemId].craft.length; i++) {
+				var Item = Mortys.Items[parseInt(Mortys.Items[ItemId].craft[i])-1];
+				if (i != 0) {evol += "<td><img src='../images/plus.png'></td>"}
+				evol += "<td><a href='javascript:changeItem("+(Item.id-1)+");'><img class='evolpic' src='../images/items/"+picPath+"/"+Item.img+"'></a></td>";
+			}
+			evol += "</tr><tr>"
+			for (var i = 0; i < Mortys.Items[ItemId].craft.length; i++) {
+				var Item = Mortys.Items[parseInt(Mortys.Items[ItemId].craft[i])-1];
+				evol += "<td>"+Item.name+"</td>" +
+					   "<td></td>";
+			}
+			evol +="</tr>";
+			$("#craft").html(evol);
+		} else {
+			$("h3").hide();
+		}
+	}
+	
+$(window).resize(function() {
+	if($(window).width() > 650) {
+		$("#craft").html($("#craft").html().replace(new RegExp('/small/', 'g'), '/large/'));
+	} else {
+		$("#craft").html($("#craft").html().replace(new RegExp('/large/', 'g'), '/small/'));
+	}
+});
+	
+function changeItem(ItemId) {
+	ShowItem(ItemId);
+	window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

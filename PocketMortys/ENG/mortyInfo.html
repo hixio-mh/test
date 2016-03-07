@@ -1,0 +1,110 @@
+﻿<html>
+<head>
+<title>Morty info</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/mortyInfo.css">
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/Mortys4.js"></script>
+</head>
+<body>
+<!--
+<div class="back">
+<a href="mortyDeck.html"><img src="../images/back.png">Back to Morty Deck</a>
+</div>-->
+<div class="shortInfo">
+<span class="num"></span>
+<h1>Morty</h1>
+</div>
+<div class="mortyImg"></div>
+<div class="baseStats">
+<table>
+<tr><th colspan="4">Base Stats</th></tr>
+<tr style="background: rgb(236, 236, 236) none repeat scroll 0% 0%;"><th>HP</th><th>Attack</th><th>Defense</th><th>Speed</th></tr>
+<tr><td id="hp"></td><td id="atk"></td><td id="def"></td><td id="spd"></td></tr>
+</table>
+
+<table id="attacks">
+</table>
+</div>
+
+<div class="evolution">
+	<table id="evolution">
+	</table>
+</div>
+<script>
+	var hash = location.hash.replace('#', '');
+	var regex = /morty:(\d+)/;
+	var res = regex.exec(hash);
+	if (res) {
+		var MortyId = parseInt(res[1]);
+		ShowMorty(MortyId);
+	}
+	function ShowMorty(MortyId) {
+		$("h1").text(Mortys.Morty[MortyId].name);
+		$(".num").text("#"+(MortyId+1));
+		$(".shortInfo").append("<img src='../images/heads/"+(MortyId+1)+".png'>")
+		$(".shortInfo h1").attr('class', 'type_' + Mortys.Morty[MortyId].type);
+		
+		$("#hp").text(Mortys.Morty[MortyId].baseStats.HP);
+		$("#atk").text(Mortys.Morty[MortyId].baseStats.ATK);
+		$("#def").text(Mortys.Morty[MortyId].baseStats.DEF);
+		$("#spd").text(Mortys.Morty[MortyId].baseStats.SPD);
+		
+		$(".mortyImg").html("<img src='../images/mortys/"+(MortyId+1)+".png'>");
+		
+		var attacks = Mortys.Morty[MortyId].attacks;
+		$("#attacks").html("");
+		$("#attacks").html("<tr><th colspan=6>Attacks</th></tr>");
+		$("#attacks").append("<tr><th>Name</th><th>Type</th><th>Power</th><th>Accuracy</th><th>AP</th><th>Lvl</th></tr>");
+		for (var i = 0; i < attacks.length; i++) {
+			var tr = "<tr>"
+			if (attacks[i].buff == "buff") {
+				tr = "<tr class='buff'>";
+			} else if (attacks[i].buff == "debuff") {
+				tr = "<tr class='debuff'>";
+			} else if (attacks[i].buff == "paper") {
+				tr = "<tr class='paper'>";
+			} else if (attacks[i].buff == "rock") {
+				tr = "<tr class='rock'>";
+			} else if (attacks[i].buff == "scissors") {
+				tr = "<tr class='scissors'>";
+			}
+			var attack = tr + "<td>" + attacks[i].name + "</td><td>" + attacks[i].type + "</td><td>" + attacks[i].power + "</td><td>" + attacks[i].accuracy + "</td><td>" + attacks[i].AP + "</td><td>" + attacks[i].level;
+			$("#attacks").append(attack);
+		}
+		
+		if (Mortys.Morty[MortyId].evolution[0] != "none") {
+			var picPath = "heads"
+			if ($(window).width() > 650){picPath = "mortys"}
+			var evol = "<tr>";
+			for (var i = 0; i < Mortys.Morty[MortyId].evolution.length; i++) {
+				var Morty = Mortys.Morty[parseInt(Mortys.Morty[MortyId].evolution[i])-1];
+				if (i != 0) {evol += "<td><img src='../images/arrow.png'></td>"}
+				evol += "<td><a href='javascript:changeMorty("+(Morty.id-1)+");'><img class='evolpic' src='../images/"+picPath+"/"+Morty.id+".png'></a></td>";
+			}
+			evol += "</tr><tr>"
+			for (var i = 0; i < Mortys.Morty[MortyId].evolution.length; i++) {
+				var Morty = Mortys.Morty[parseInt(Mortys.Morty[MortyId].evolution[i])-1];
+				evol += "<td>"+Morty.name+"</td>" +
+					   "<td></td>";
+			}
+			evol +="</tr>";
+			$("#evolution").html(evol);
+		}
+	}
+	
+$(window).resize(function() {
+	if($(window).width() > 650) {
+		$("#evolution").html($("#evolution").html().replace(new RegExp('/heads/', 'g'), '/mortys/'));
+	} else {
+		$("#evolution").html($("#evolution").html().replace(new RegExp('/mortys/', 'g'), '/heads/'));
+	}
+});
+	
+function changeMorty(mortyID) {
+	ShowMorty(mortyID);
+	window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

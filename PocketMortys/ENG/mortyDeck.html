@@ -1,0 +1,16 @@
+﻿<html><head>
+<title>Morty Deck</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/Mortys4.js"></script>
+</head><body>
+<h1 style="font-family: monospace;">Morty Deck</h1>
+<ol class="linkList"></ul>
+<script>
+$(function() {
+	var allMortys = Mortys.Morty.length;
+	for(var i = 0; i < allMortys; i++) {
+		$(".linkList").append("<li id='"+i+"'><a href='mortyInfo.html#morty:"+ i + "'><img src='../images/heads/"+(i+1)+".png'><img class='type_icon' src='../images/type/"+Mortys.Morty[i].type + "_small.png'>" + Mortys.Morty[i].name + "</a></li>");
+	}});
+</script>
+</body></html>

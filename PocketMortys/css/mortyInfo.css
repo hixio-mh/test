@@ -1,0 +1,139 @@
+.mortyImg, .craftImg {
+	text-align:center;
+}
+.mortyImg img, .craftImg img {
+	height: 300px;
+}
+h1 {
+	font-family: monospace;
+	font-size: 1.8em;
+	line-height: 2em;
+}
+
+/*Если разрешение экрана меньше 450px*/
+@media (max-width:450px) {
+	h1 {
+		text-align:left;
+	}
+}
+
+/*Если разрешение экрана больше 650px*/
+@media (min-width: 650px) {
+	.mortyImg {
+		text-align: center;
+		display: inline-block;
+		float: left;
+		padding: 0 20px;
+	}
+	/*
+	.baseStats {
+		display: inline-block;
+	}*/
+}
+
+.num {
+    background-color: #56BEFF;
+    line-height: 1.5em;
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    font-size: 24px;
+    left: 25px;
+    display: block;
+    padding-left: 60px;
+    padding-right: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 0 5px #FFF, 0 0 0 9px #1C81C0;
+    top: -35px;
+}
+.shortInfo {
+    background-color: #3F87C9;
+    top: 40px;
+    position: relative;
+    margin-bottom: 50px;
+}
+.shortInfo img {
+    height: 65px;
+    position: absolute;
+    top: -50px;
+    left: 10px;
+}
+.type_Paper {
+	background: url(../images/type/paper_large.png) no-repeat right;
+	background-size: 40px;
+}
+.type_Rock {
+	background: url(../images/type/rock_large.png) no-repeat right;
+	background-size: 40px;
+}
+.type_Scissors {
+	background: url(../images/type/scissors_large.png) no-repeat right;
+	background-size: 40px;
+}
+tr, td, th {
+	border: none;
+	text-align:center;
+}
+table {
+	margin: auto;
+}
+td {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #DDD;
+}
+#attacks {
+	width: 100%;
+	text-align: left;
+}
+#attacks td, #attacks th, #attacks tr {
+	text-align: left;
+}
+.buff td{
+	background-color: rgb(158, 231, 153);
+}
+.debuff td{
+	background-color: rgb(231, 153, 153);
+}
+.paper td:nth-child(2) {
+    background: url("../images/type/paper_small.png") no-repeat left, #f0f0f0;
+    padding-left: 14px;
+}
+.rock td:nth-child(2) {
+    background: url("../images/type/rock_small.png") no-repeat left, #f0f0f0;
+    padding-left: 17px;
+}
+.scissors td:nth-child(2) {
+    background: url("../images/type/scissors_small.png") no-repeat left, #f0f0f0;
+    padding-left: 17px;
+}
+.evolpic {
+    max-width: 150px;
+	display:block;
+}
+#evolution td, #craft td {
+	background: #fff;
+	border-bottom: none;
+}
+.evolution, .craft {
+	width:100%;
+	overflow: auto;
+}
+#evolution img, #craft img {
+    margin: auto;
+}
+.back a {
+    text-decoration: none;
+    color: #fff;
+}
+.back {
+    background: #474747;
+    height: 35px;
+    color: #fff;
+	line-height: 2em;
+	font-weight: bold;
+}
+.back img {
+    width: 30px;
+    display: inline-block;
+    float: left;
+}

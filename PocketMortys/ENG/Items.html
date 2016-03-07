@@ -1,0 +1,16 @@
+﻿<html><head>
+<title>Items</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/Items.js"></script>
+</head><body>
+<h1 style="font-family: monospace;">Items</h1>
+<ol class="linkList"></ul>
+<script>
+$(function() {
+	var allItems = Mortys.Items.length;
+	for(var i = 0; i < allItems; i++) {
+		$(".linkList").append("<li id='"+i+"'><a href='itemInfo.html#item:"+ i + "'><img src='../images/items/small/"+Mortys.Items[i].img+"'>" + Mortys.Items[i].name + "</a></li>");
+	}});
+</script>
+</body></html>
