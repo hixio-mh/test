@@ -1,0 +1,63 @@
+﻿<html><head>
+<title>Quests</title>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/Quests.js"></script>
+<script src="../scripts/Items.js"></script>
+<script src="../scripts/Mortys4.js"></script>
+</head><body>
+<h1 style="font-family: monospace;">Quests</h1>
+<ul class="questList"></ul>
+<script>
+$(function() {
+	var allQuests = Mortys.Quests.length;
+	for(var i = 0; i < allQuests; i++) {
+		var reward = "";
+		var items = "";
+		var newLi = "<li id='"+i+"'><img src='../images/quests/person/"+Mortys.Quests[i].personImg+"'><span class='questName'>" + Mortys.Quests[i].name + "</span><span class='descr'>"+Mortys.Quests[i].text+"</span><span class='accepted'><b>Items accepted:</b><br>_ACCEPTED_</span>"+
+		"<span class='reward'><b>Reward:</b><br>_REWARD_</span></li>";
+		
+		/*Reward*/
+		for(var z = 0; z < Mortys.Quests[i].reward.length; z++) {
+			var search = Mortys.Quests[i].reward[z];
+			if (search.indexOf("Schmeckles") != -1) {
+				reward += "<img src='../images/shm.png'>"+parseInt(search, 10)+", ";
+			}
+			var item = jQuery.grep(Mortys.Items, function(obj){return obj.name === search});
+			if (item[0]) {
+				reward += "<img src='../images/items/small/"+item[0].img+"'>"+item[0].name+", ";
+			}
+			if (!item[0]){
+				item = jQuery.grep(Mortys.Morty, function(obj){return obj.name === search});
+				if (item[0]) {
+					reward += "<img src='../images/heads/"+item[0].id+".png'>"+item[0].name+", ";
+				}
+			}
+		}
+		
+		/*Accepted Items*/
+		for(var z = 0; z < Mortys.Quests[i].items.length; z++) {
+			var search = Mortys.Quests[i].items[z];
+			var item = jQuery.grep(Mortys.Items, function(obj){return obj.name === search});
+			if (item[0]){
+				items += "<img src='../images/items/small/"+item[0].img+"'>"+item[0].name+" or ";
+			}
+		}
+		
+		newLi = newLi.replace('_ACCEPTED_', items.substring(0, items.length-4));
+		newLi = newLi.replace('_REWARD_', reward.substring(0, reward.length-2));
+		
+		$(".questList").append(newLi);
+	}
+	
+	$("li").on("click", function() {
+		var h = $(this).height();
+		$("li").height("135px");
+		if (h != 250) {
+			$(this).height("250px");
+		}
+	});
+	
+	});
+</script>
+</body></html>

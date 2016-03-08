@@ -137,3 +137,8 @@ td {
     display: inline-block;
     float: left;
 }
+#cost {
+    background: url("../images/shm.png") no-repeat center right;
+    background-size: 26px;
+    padding: 10px 27px 10px 5px;
+}

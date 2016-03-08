@@ -40,6 +40,7 @@
 		ShowMorty(MortyId);
 	}
 	function ShowMorty(MortyId) {
+		document.title = Mortys.Morty[MortyId].name + " - Morty Deck";
 		$("h1").text(Mortys.Morty[MortyId].name);
 		$(".num").text("#"+(MortyId+1));
 		$(".shortInfo").append("<img src='../images/heads/"+(MortyId+1)+".png'>")

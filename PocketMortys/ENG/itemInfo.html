@@ -31,13 +31,14 @@
 		ShowItem(ItemId);
 	}
 	function ShowItem(ItemId) {
+		document.title = Mortys.Items[ItemId].name + " - Items List";
 		$("h1").text(Mortys.Items[ItemId].name);
 		$(".num").text("#"+(ItemId+1));
 		$(".shortInfo").append("<img src='../images/items/small/"+Mortys.Items[ItemId].img+"'>")
 
 		
 		$(".craftImg").html("<img src='../images/items/large/"+Mortys.Items[ItemId].img+"'>");
-		$("#cost").text("Cost: " + Mortys.Items[ItemId].cost);
+		$("#cost").html("Cost: " + Mortys.Items[ItemId].cost);
 		/*
 		var attacks = Mortys.Morty[ItemId].attacks;
 		

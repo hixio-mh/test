@@ -151,8 +151,71 @@ ol img {
     border-radius: .3em;
     transition: all .3s ease-out;
 }
+.questList {
+    margin: 0 8px 0 5px;
+    padding: 0;
+}
+.questList img {
+    max-width: 100%;
+    float: left;
+    display: inline-block;
+    padding-top: 25px;
+    margin-right: 10px;
+}
+.questList li {
+    display: block;
+    width: 100%;
+    height: 135px;
+    background: #FFDF7C;
+    margin: 0 0 25px 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px #fff inset;
+    border: 2px solid #A58A45;
+	transition-timing-function: ease-in-out;
+	transition-duration: 1s;
+}
+.questName {
+    display: block;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 18px;
+    color: #4F3502;
+    padding-top: 15px;
+    text-shadow: 1px 1px 1px #ce9f5a;
+}
+.descr {
+    display: block;
+    padding-top: 10px;
+    text-shadow: 0 0 1px #B49E5B;
+    height: 4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+	padding-right: 10px;
+}
 .type_icon {
     width: 15px;
     right: 24px;
     top: 10px;
+}
+.accepted, .reward {
+    display: block;
+	margin: 25px 0 0 10px;
+	padding: 2px 0;
+	/*min-width: calc(100% - 20px);
+	position: relative;
+	background: linear-gradient(#e44d4d, #ac0908);
+	color: #fff;
+	border-radius: 8px;
+	text-align: center;
+	box-shadow: 0 0 0 1px #fff inset, 0 0 0 1px #fff inset;*/
+}
+.reward {
+	margin-top: 0;
+}
+.reward img, .accepted img {
+    max-width: 25px;
+    display: inline-block;
+    float: none;
+    padding-top: 0;
+    margin-right: 5px;
 }
