@@ -159,10 +159,6 @@ td.WI {
 	<div class="EquipmentList wpList"></div>
 </div>
 
-<div class="log" style="color:#fff;">
-<h1>Log:</h1>
-</div>
-
 <div class="noPress"></div>
 
 <div class="WeaponInfo" style="display:none;">
@@ -214,7 +210,6 @@ td.WI {
 </div>
 
 <script>
-$(".log").append("Start<br>");
 addWeaponList(Weapon.Melee, ".MeleeList", "EN");
 addWeaponList(Weapon.Pistols, ".PistolsList", "EN");
 addWeaponList(Weapon.Shotguns, ".ShotgunsList", "EN");
@@ -234,7 +229,6 @@ function addWeaponList(arr, div, lang) {
 		weap += "</div>";
 		$(div).append(weap);
 	}
-	$(".log").append(div+" - done.<br>");
 }
 
 $(function(){
@@ -312,11 +306,13 @@ $(function(){
 		$(".WeaponInfo").css("display", "block");
 		$(".noPress").css("display", "block");
 		$(".blur").css("-webkit-filter", "blur(10px)");
+		$(".blur").css("filter", "blur(10px)");
 	});
 	$(".closeWI, .noPress").on("click", function() {
 		$(".WeaponInfo").css("display", "none");
 		$(".noPress").css("display", "none");
 		$(".blur").css("-webkit-filter", "blur(0px)");
+		$(".blur").css("filter", "blur(0px)");
 	})
 });
 </script>
