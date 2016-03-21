@@ -215,17 +215,17 @@ td.WI {
 
 <script>
 $(".log").append("Start<br>");
-addWeaponList(Weapon.Melee, ".MeleeList");
-addWeaponList(Weapon.Pistols, ".PistolsList");
-addWeaponList(Weapon.Shotguns, ".ShotgunsList");
-addWeaponList(Weapon.SubmachineGuns, ".SubmachineGunsList");
-addWeaponList(Weapon.Rifles, ".RiflesList");
-addWeaponList(Weapon.SniperRifles, ".SniperRiflesList");
-addWeaponList(Weapon.MachineGuns, ".MachineGunsList");
-addWeaponList(Weapon.Grenades, ".GrenadesList");
-addWeaponList(Weapon.Equipment, ".EquipmentList");
+addWeaponList(Weapon.Melee, ".MeleeList", "EN");
+addWeaponList(Weapon.Pistols, ".PistolsList", "EN");
+addWeaponList(Weapon.Shotguns, ".ShotgunsList", "EN");
+addWeaponList(Weapon.SubmachineGuns, ".SubmachineGunsList", "EN");
+addWeaponList(Weapon.Rifles, ".RiflesList", "EN");
+addWeaponList(Weapon.SniperRifles, ".SniperRiflesList", "EN");
+addWeaponList(Weapon.MachineGuns, ".MachineGunsList", "EN");
+addWeaponList(Weapon.Grenades, ".GrenadesList", "EN");
+addWeaponList(Weapon.Equipment, ".EquipmentList", "EN");
 
-function addWeaponList(arr, div, lang="EN") {
+function addWeaponList(arr, div, lang) {
 	for (var i = 0; i < arr.length; i++) {
 		var weap = "<div class='weapon' data-class='"+arr[i].class.EN+"' data-item='"+i+"' data-lang='"+lang+"'>";
 		weap += "<span class='weapon_name'>"+arr[i].name[lang]+"</span>";
