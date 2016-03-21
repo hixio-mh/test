@@ -1,0 +1,324 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>Weapon</title>
+<script src="weapon.js"></script>
+<script src="../scripts/jquery.min.js"></script>
+<style>
+body {
+    overflow-x: hidden;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGklEQVQYlWNgGFTAGIqJUkRQMdEKibaajgAA6CcCZTBhZuUAAAAASUVORK5CYII=)#454545;
+	width: auto;
+}
+.wpList {
+    display: inline-block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    width: 100%;
+    height: 220px;
+	margin-bottom: 20px;
+}
+.weapon {
+    display: inline-table;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(to bottom, #262626, #474747);
+    margin-left: 5px;
+    color: #fff;
+    border: 1px solid #000;
+}
+.weapon_name, #wi_name {
+    display: block;
+    position: relative;
+    height: 1.5em;
+    font-size: 15px;
+    padding-left: 5px;
+    background: #000;
+    /*font-weight: bold;*/
+    font-family: fantasy;
+    padding-top: 3px;
+}
+#wi_name {
+	text-align: center;
+}
+.weapon_img img {
+    display: block;
+    /*max-width: 180px;*/
+    max-height: 135px;
+    margin: auto;
+    vertical-align: middle;
+}
+.weapon_class {
+    position: relative;
+    top: 24px;
+    padding-left: 5px;
+    display: block;
+    font-family: monospace;
+    background: rgba(0,0,0,0.4);
+}
+.wpList::-webkit-scrollbar { 
+    display: none; 
+}
+.WeaponInfo {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: linear-gradient(to top, #1d1d1d, #414141);
+    border: 2px solid #fff;
+    color: #fff;
+    max-width: 100%;
+    max-height: 100%;
+	padding-right: 2px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	z-index: 10;
+}
+
+.WI {
+    display: block;
+}
+table {
+	width: 100%;
+	color: #fff;
+}
+td:nth-child(2n) {
+	text-align: right;
+}
+td.WI {
+	text-align: right;
+}
+.wi_percent {
+    width: 100%;
+    height: 8px;
+    display: block;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAAE0lEQVQYlWNgYGDYDMUEwchTCAAMJQnLXeKxvAAAAABJRU5ErkJggg==);
+    max-width: 100%;
+    border: 1px solid #000;
+	top: -9px;
+	position: relative;
+}
+.wi_percent_gradient {
+    background: linear-gradient(to left, #CCDC3D, #8ABBA5) !important;
+    max-width: calc(100% - 2px);
+    display: block;
+    height: 8px;
+    position: relative;
+	left: 3px;
+}
+#wi_award_comp {
+    color: #7efb71;
+}
+#wi_award_casual {
+    coloR: #ffb4b4;
+}
+.blur {
+	/*filter: blur(5px);*/
+}
+.noPress {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: fixed;
+	z-index: 1;
+}
+.closeWI {
+    position: absolute;
+    right: 1px;
+    z-index: 3;
+    top: 1px;
+    display: block;
+    width: 26px;
+    text-align: center;
+    height: 22px;
+    background: #fff;
+    color: red;
+    border-radius: 50%;
+    padding-top: 3px;
+    vertical-align: middle;
+    font-weight: bold;
+    font-family: fantasy;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div class="blur">
+	<div class="MeleeList wpList"></div>
+	<div class="PistolsList wpList"></div>
+	<div class="ShotgunsList wpList"></div>
+	<div class="SubmachineGunsList wpList"></div>
+	<div class="RiflesList wpList"></div>
+	<div class="SniperRiflesList wpList"></div>
+	<div class="MachineGunsList wpList"></div>
+	<div class="GrenadesList wpList"></div>
+	<div class="EquipmentList wpList"></div>
+</div>
+
+<div class="log" style="color:#fff;">
+<h1>Log:</h1>
+</div>
+
+<div class="noPress"></div>
+
+<div class="WeaponInfo" style="display:none;">
+<span class="closeWI">X</span>
+<span class="WI" id="wi_name">Name</span>
+<img class="WI" id="wi_img" src="../images/Weapon/bizon.png"></img>
+<span class="WI" id="wi_class">Class</span>
+<table>
+<tr><td>Coast:</td><td class="WI" id="wi_price"></td></tr>
+<tr><td>Ammo:</td><td class="WI" id="wi_ammo"></td></tr>
+<tr><td rowspan="2">Kill Award:</td><td class="WI"><span id="wi_award_comp"></span> / <span id="wi_award_casual"></span></td></tr>
+<tr><td class="WI" ></td></tr>
+<tr><td colspan="2"><hr></td></tr>
+<tr><td>Damage</td><td class="WI" id="wi_damage"></td></tr>
+<tr><td colspan="2">
+<span class='wi_percent_gradient' id="wi_damage_percent"></span>
+<span class="wi_percent"></span>
+</td></tr>
+<tr><td>Firerate</td><td class="WI" id="wi_firerate"></td></tr>
+<tr><td colspan="2">
+<span class='wi_percent_gradient' id="wi_firerate_percent"></span>
+<span class="wi_percent"></span>
+</td></tr>
+<tr><td>Recoil Control</td><td class="WI" id="wi_recoil"></td></tr>
+<tr><td colspan="2">
+<span class='wi_percent_gradient' id="wi_recoil_percent"></span>
+<span class="wi_percent"></span>
+</td></tr>
+<tr><td>Accurate Range</td><td class="WI" id="wi_accRange"></td></tr>
+<tr><td colspan="2">
+<span class='wi_percent_gradient' id="wi_accRange_percent"></span>
+<span class="wi_percent"></span>
+</td></tr>
+<tr><td>Mobility</td><td class="WI" id="wi_mobility"></td></tr>
+<tr><td colspan="2">
+<span class='wi_percent_gradient' id="wi_mobility_percent"></span>
+<span class="wi_percent"></span>
+</td></tr>
+<tr><td>Armor Penetration</td><td class="WI" id="wi_armorPenetration"></td></tr>
+<tr><td colspan="2">
+<span class='wi_percent_gradient' id="wi_armorPenetration_percent"></span>
+<span class="wi_percent"></span>
+</td></tr>
+<tr><td colspan="2"><hr></td></tr>
+<tr><td>Penetration Power:</td><td class="WI" id="wi_penetrPower"></td></tr>
+<tr><td>Special:</td><td class="WI" id="wi_special"></td></tr>
+<tr><td>Country:</td><td class="WI" id="wi_country"></td></tr>
+</table>
+</div>
+
+<script>
+$(".log").append("Start<br>");
+addWeaponList(Weapon.Melee, ".MeleeList");
+addWeaponList(Weapon.Pistols, ".PistolsList");
+addWeaponList(Weapon.Shotguns, ".ShotgunsList");
+addWeaponList(Weapon.SubmachineGuns, ".SubmachineGunsList");
+addWeaponList(Weapon.Rifles, ".RiflesList");
+addWeaponList(Weapon.SniperRifles, ".SniperRiflesList");
+addWeaponList(Weapon.MachineGuns, ".MachineGunsList");
+addWeaponList(Weapon.Grenades, ".GrenadesList");
+addWeaponList(Weapon.Equipment, ".EquipmentList");
+
+function addWeaponList(arr, div, lang="EN") {
+	for (var i = 0; i < arr.length; i++) {
+		var weap = "<div class='weapon' data-class='"+arr[i].class.EN+"' data-item='"+i+"' data-lang='"+lang+"'>";
+		weap += "<span class='weapon_name'>"+arr[i].name[lang]+"</span>";
+		weap += "<span class='weapon_img'><img src='"+arr[i].image+"'></span>";
+		weap += "<span class='weapon_class'>"+arr[i].class[lang]+"</span>";
+		weap += "</div>";
+		$(div).append(weap);
+	}
+	$(".log").append(div+" - done.<br>");
+}
+
+$(function(){
+	$(".weapon").on("click", function() {
+		var arr = [];
+		switch ($(this).data("class")) {
+			case "Melee":
+				arr = Weapon.Melee
+				break
+			case "Pistols":
+				arr = Weapon.Pistols
+				break
+			case "Shotguns":
+				arr = Weapon.Shotguns
+				break
+			case "Submachine guns":
+				arr = Weapon.SubmachineGuns
+				break
+			case "Rifles":
+				arr = Weapon.Rifles
+				break
+			case "Sniper rifles":
+				arr = Weapon.SniperRifles
+				break
+			case "Machine guns":
+				arr = Weapon.MachineGuns
+				break
+			case "Grenades":
+				arr = Weapon.Grenades
+				break
+			case "Equipment":
+				arr = Weapon.Equipment
+				break
+			default:
+				arr = Weapon.Pistols
+		}
+		var i = $(this).data("item");
+		var lang = $(this).data("lang");
+		
+		$("#wi_name").text(arr[i].name[lang]);
+		$("#wi_img").attr("src", arr[i].image);
+		$("#wi_class").text(arr[i].class[lang]);
+		if(arr[i].price) {$("#wi_price").text(arr[i].price+"$")}
+		if(arr[i].magazineCapacity) {$("#wi_ammo").text(arr[i].magazineCapacity)}
+		if(arr[i].killAward) {
+			$("#wi_award_comp").text(arr[i].killAward.Competitive+"$");
+			$("#wi_award_casual").text(arr[i].killAward.Casual+"$");
+		}
+		if(arr[i].damage) {
+			$("#wi_damage").text(arr[i].damage);
+			$("#wi_damage_percent").css("width", arr[i].damage+"%");
+		}
+		if(arr[i].rateOfFire) {
+			$("#wi_firerate_percent").css("width", parseInt(arr[i].rateOfFire)/10+"%");
+		}
+		if(arr[i].recoilControl) {
+			$("#wi_recoil_percent").css("width", arr[i].recoilControl.match(/\d+%/));
+		}
+		if(arr[i].accurateRange) {
+			$("#wi_accRange").text(arr[i].accurateRange+" m");
+			$("#wi_accRange_percent").css("width", arr[i].accurateRange+"%");
+		}
+		if(arr[i].movementSpeed) {
+			$("#wi_mobility").text(arr[i].movementSpeed);
+			var speed = (arr[i].movementSpeed-190)*100/60;
+			$("#wi_mobility_percent").css("width", speed+"%");
+		}
+		if(arr[i].armorPenetration) {
+			$("#wi_armorPenetration").text(arr[i].armorPenetration);
+			$("#wi_armorPenetration_percent").css("width", arr[i].armorPenetration+"%");
+		}
+		if(arr[i].penetrationPower) {$("#wi_penetrPower").text(arr[i].penetrationPower)}
+		if(arr[i].features) {$("#wi_special").text(arr[i].features[lang])}
+		
+		$(".WeaponInfo").css("display", "block");
+		$(".noPress").css("display", "block");
+		$(".blur").css("-webkit-filter", "blur(10px)");
+	});
+	$(".closeWI, .noPress").on("click", function() {
+		$(".WeaponInfo").css("display", "none");
+		$(".noPress").css("display", "none");
+		$(".blur").css("-webkit-filter", "blur(0px)");
+	})
+});
+</script>
+</body>
+</html>
