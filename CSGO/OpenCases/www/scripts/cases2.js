@@ -794,7 +794,7 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "Chroma2 Case",
+			"name" : "Chroma 2 Case",
 			"img" : "chroma2_case.png",
 			"weapons" : [{
 					"type" : "AK-47",
@@ -889,7 +889,7 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "ShadowCase",
+			"name" : "Shadow Case",
 			"img" : "shadow.png",
 			"weapons" : [{
 					"type" : "FAMAS",
@@ -1459,8 +1459,9 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "KCASE",
+			"name" : "Knife Case",
 			"img" : "knife.png",
+			"specialClass" : "rare",
 			"weapons" : [{
 					"type" : "★ Bowie Knife",
 					"skinName" : "Вороненая сталь",
@@ -1704,8 +1705,9 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "TCASE",
+			"name" : "Covert Case",
 			"img" : "tainoe.png",
+			"specialClass" : "covert",
 			"weapons" : [{
 					"type" : "M4A1-S",
 					"skinName" : "Скоростной зверь",
@@ -1829,8 +1831,9 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "ZCASE",
+			"name" : "Classified Case",
 			"img" : "secret.png",
+			"specialClass" : "classified",
 			"weapons" : [{
 					"type" : "AK-47",
 					"skinName" : "Cartel|Картель",
@@ -2034,7 +2037,7 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "AWP",
+			"name" : "AWP Case",
 			"img" : "awp.png",
 			"weapons" : [{
 					"type" : "AWP",
@@ -2124,7 +2127,7 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "AK-47",
+			"name" : "AK-47 Case",
 			"img" : "ak47.png",
 			"weapons" : [{
 					"type" : "AK-47",
@@ -2229,7 +2232,7 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "M4A1-S",
+			"name" : "M4A1-S Case",
 			"img" : "m4a1-s.png",
 			"weapons" : [{
 					"type" : "M4A1-S",
@@ -2314,7 +2317,7 @@ var postfixBig = "/383fx383f";
 				}
 			]
 		}, {
-			"name" : "Wildfire",
+			"name" : "Operation Wildfire",
 			"img" : "wildfire.png",
 			"weapons" : [{
 					"type" : "PP-Bizon",

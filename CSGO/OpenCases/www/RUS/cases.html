@@ -6,8 +6,13 @@
 <script src="../scripts/jquery-ui.min.js"></script>
 </head>
 <style>
+body {
+    background: url(../images/background.png) fixed no-repeat;
+    background-size: cover;
+}
 .cases {
 	text-align: center;
+	background: url(../images/bg2.png);
 }
 .case {
     display: inline-block;
@@ -25,6 +30,7 @@
     height: 38px;
     padding: 0 10px;
     padding-top: 2px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
 }
 .case img {
     width: 190px;
@@ -195,6 +201,11 @@ span.winName {
     font-family: sans-serif;
     padding-top: 2px;
 }
+#youCanWin {
+    color: #fff;
+    font-size: 15px;
+    font-family: sans-serif;
+}
 </style>
 <body>
 <div class="cases"></div>
@@ -217,8 +228,9 @@ span.winName {
 <img src="" class="winImg">
 </div>
 
-<span class="openCase">Открыть кейс</span>
+<button class="openCase">Открыть кейс</button>
 
+<div id="youCanWin">Вы можете выиграть один из данных предметов </div>
 <ul class="weaponsList">
 </ul>
 </div>
@@ -226,6 +238,7 @@ span.winName {
 <script>
 	var caseId = 0;
 	var win;
+	var winNumber = 35;
 	var caseOpenAudio = new Audio();
 	caseOpenAudio.src = "../sound/open.wav";
 	caseOpenAudio.volume = 0.2;
@@ -245,7 +258,8 @@ span.winName {
 	caseScrollAudio.volume = 0.2;
 	
 for(var i = 0; i < cases.length ; i++) {
-	var curCase = "<div class='case' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name'>"+cases[i].name+"</span>";
+	var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
+	var curCase = "<div class='case' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name "+specialClass+"'>"+cases[i].name+"</span>";
 	$(".cases").append(curCase);
 }
 $(document).on("click", ".case", function(){
@@ -265,17 +279,33 @@ $(document).on("click", ".case", function(){
 	}
 	$(".weapons").css("display", "block");
 	fillCarusel(caseId);
+	$(".win").hide();
+	$(".openCase").text("Открыть кейс");
 });
 
 function fillCarusel(caseId) {
-	var a1 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'milspec' }).slice(0).mul(5).shuffle();
-	var a2 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'restricted' }).slice(0).mul(5).shuffle();
-	var a3 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'classified' }).slice(0).mul(4).shuffle();
-	var a4 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'covert' }).slice(0).mul(4).shuffle();
-	var a5 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'rare' }).slice(0).mul(2).shuffle();
+	var a0 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'industrial' }).mul(7).shuffle();
+	var a1 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'milspec' }).mul(5).shuffle();
+	var a2 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'restricted' }).mul(5).shuffle();
+	var a3 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'classified' }).mul(4).shuffle();
+	var a4 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'covert' }).mul(1).shuffle();
+	var a5 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'rare' }).mul(1).shuffle();
 	
-	var arr = a1.concat(a2, a3, a4, a5).shuffle().shuffle().shuffle();
+	if ((Math.rand(0, 10) > 7) && (a5.length + a4.length+a2.length+a1.length != 0)) {a3 = [];}
+	if ((Math.rand(0, 10) > 5) && (a5.length + a3.length+a2.length+a1.length != 0)) {a4 = [];}
+	if ((Math.rand(0, 10) > 3) && (a4.length + a3.length+a2.length+a1.length != 0)) {a5 = [];}
+	
+	if (a0 == undefined) {
+		var arr = a1.concat(a2, a3, a4, a5).shuffle().shuffle().shuffle();
+	} else {
+		var arr = a0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
+	}
 	var el = '';
+	if (arr.length <= winNumber) {
+		while (arr.length <= winNumber) {
+			arr = arr.concat(a1, a2, a3, a4).shuffle().shuffle();
+		}
+	}
 	arr.forEach(function(item, index) {
 		var img = prefix + item.img + postfix;
 		var type = item.type;
@@ -288,7 +318,8 @@ function fillCarusel(caseId) {
 				'<div class="weaponInfo '+item.rarity+'"><span class="type">'+type+'<br>'+name+'</span></div>'+
 				'</div>'
 		})
-	win = arr[30];
+	
+	win = arr[winNumber];
 	$(".casesCarusel").html(el);
 	$(".casesCarusel").css("margin-left", "0px");
 }
@@ -299,7 +330,7 @@ $(".openCase").on("click", function() {
 	$(".openCase").text("Открываем кейс...");
 	$(".openCase").attr("disabled", "disabled");
 	//var a = 1431 + 16*24;
-	var a = 127*30;
+	var a = 127*winNumber;
 	var l = 131;
 	var d = 0, s = 0;
 	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-60, a+60) }, {
@@ -327,6 +358,9 @@ $(".openCase").on("click", function() {
 			$(".openCase").attr("disabled", null);
 			$(".openCase").text("Попробовать еще раз");
 			$(".win").slideDown("slow");
+		},
+		always: function() {
+			$(".openCase").attr("disabled", null);
 		}
 	})
 })
@@ -341,6 +375,9 @@ function backToZero() {
 			fillCarusel(caseId);
 			//caseBackAudio.play();
 		},
+		always: function() {
+			$(".openCase").attr("disabled", null);
+		}
 	})
 }
 
@@ -348,6 +385,7 @@ $(".closeCase").on("click", function(){
 	$(".weapons").css("display", "none");
 	$(".openCase").text("Открыть кейс");
 	$(".win").hide();
+	$(".casesCarusel").stop(true, true);
 })
 
 Array.prototype.shuffle = function() {
