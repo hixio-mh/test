@@ -67,7 +67,7 @@
     margin: -8px 0 -10px 5px;
 }
 .weaponInfo {
-    margin: -9px 0;
+    margin: -5px 0;
 	text-align: left;
 }
 .type {
@@ -179,6 +179,22 @@ div.weapon > .weaponInfo {
     margin: 15px 0 25px;
 }
 /*WEAPONS_END*/
+.win {
+    background: #003440;
+    padding-top: 10px;
+}
+.win > span {
+    color: #FFCD48;
+    display: block;
+}
+span.winName {
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 1px 1px #000;
+    font-family: sans-serif;
+    padding-top: 2px;
+}
 </style>
 <body>
 <div class="cases"></div>
@@ -186,12 +202,19 @@ div.weapon > .weaponInfo {
 <div class="closeCase"></div>
 
 <div class="scrollerContainer">
-<div id="caruselLine"></div>
-<div id="caruselOver"></div>
-<div id="aCanvas">
-<div class="casesCarusel">
+	<div id="caruselLine"></div>
+	<div id="caruselOver"></div>
+	<div id="aCanvas">
+		<div class="casesCarusel">
+		</div>
+	</div>
 </div>
-</div>
+
+<div class="win" style="display: none;">
+<span>Вы выйграли</span>
+
+<span class="winName"></span>
+<img src="" class="winImg">
 </div>
 
 <span class="openCase">Открыть кейс</span>
@@ -211,10 +234,14 @@ div.weapon > .weaponInfo {
 	caseCloseAudio.src = "../sound/close.wav";
 	caseCloseAudio.volume = 0.2;
 
+	var caseBackAudio = new Audio();
+	caseBackAudio.src = "../sound/back.wav";
+	caseBackAudio.volume = 0.1;
+
 	var caseScrollAudio = new Audio();
 	caseScrollAudio.src = "../sound/scroll.wav";
-	caseScrollAudio.loop = true;
-	caseScrollAudio.playbackRate = 1.2;
+	//caseScrollAudio.loop = true;
+	caseScrollAudio.playbackRate = 1;
 	caseScrollAudio.volume = 0.2;
 	
 for(var i = 0; i < cases.length ; i++) {
@@ -222,7 +249,6 @@ for(var i = 0; i < cases.length ; i++) {
 	$(".cases").append(curCase);
 }
 $(document).on("click", ".case", function(){
-	caseOpenAudio.play();
 	$(".weaponsList").html("");
 	caseId = this.id;
 	for(var i = 0; i < cases[caseId].weapons.length; i++) {
@@ -268,41 +294,60 @@ function fillCarusel(caseId) {
 }
 
 $(".openCase").on("click", function() {
+	$(".win").slideUp("slow");
 	if($(".openCase").text() == "Попробовать еще раз") {backToZero()}
 	$(".openCase").text("Открываем кейс...");
 	$(".openCase").attr("disabled", "disabled");
 	//var a = 1431 + 16*24;
 	var a = 127*30;
+	var l = 131;
+	var d = 0, s = 0;
 	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-60, a+60) }, {
 		duration: 10000,
-		easing: 'easeInOutCubic',
+		easing: 'easeOutCubic',
 		start: function(){
 			caseOpenAudio.play();
-			/*caseScrollAudio.play();*/
+			var type = win.type;
+			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+		
+			var name = win.skinName;
+			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+			$(".winName").html(type + " | " + name);
+			$(".winImg").attr("src", prefix + win.img + postfixBig);
+		},
+		progress: function(e, t) {
+			progress_animate = Math.round(100 * t),
+            s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
+            s > d && (caseScrollAudio.currentTime = 0,
+            caseScrollAudio.play(),
+            d++)
 		},
 		complete: function(){
-			/*caseScrollAudio.pause();*/
 			caseCloseAudio.play();
 			$(".openCase").attr("disabled", null);
 			$(".openCase").text("Попробовать еще раз");
-			
+			$(".win").slideDown("slow");
 		}
 	})
 })
 
 function backToZero() {
+	var l = 131;
+	var s = 0, d = 0;
 	$(".casesCarusel").animate({marginLeft: 0}, {
 		duration: 3000,
 		easing: "easeOutElastic",
 		start: function() {
 			fillCarusel(caseId);
-		}
+			//caseBackAudio.play();
+		},
 	})
 }
 
 $(".closeCase").on("click", function(){
 	$(".weapons").css("display", "none");
 	$(".openCase").text("Открыть кейс");
+	$(".win").hide();
 })
 
 Array.prototype.shuffle = function() {

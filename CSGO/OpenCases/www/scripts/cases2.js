@@ -2,6 +2,7 @@
 //var prefix = "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz"
 var prefix = "http://steamcommunity-a.akamaihd.net/economy/image/"
 var postfix = "/125fx125f";
+var postfixBig = "/383fx383f";
 	var cases = [{
 			"name" : "Cobblestone",
 			"img" : "Cobblestone.png",
