@@ -1,0 +1,62 @@
+﻿<html>
+<head>
+<title>Открытие кейса</title>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+<body>
+
+<div class="weapons">
+<div class="closeCase"></div>
+
+<div class="scrollerContainer">
+	<div id="caruselOver"><div id="caruselLine"></div></div>
+	<div id="aCanvas">
+		<div class="casesCarusel">
+		</div>
+	</div>
+</div>
+
+<div class="zabor"></div>
+<div class="win" style="display: none;">
+<span>Вы выиграли</span>
+
+<span class="winName"></span>
+<img src="" class="winImg">
+</div>
+<div class="zabor-bot"></div>
+
+<button class="openCase">Открыть кейс</button>
+
+<div id="youCanWin">Вы можете выиграть один из данных предметов </div>
+<ul class="weaponsList">
+</ul>
+</div>
+<script src="../scripts/main.js"></script>
+<script>
+$(function(){
+	var param = parseURLParams(window.location.href);
+	if(typeof param != "undefined") {
+		caseId = param.caseId[0];
+		
+		for(var i = 0; i < cases[caseId].weapons.length; i++) {
+			var weapon = cases[caseId].weapons[i];
+			var img = prefix + weapon.img + postfix;
+		
+			var type = weapon.type;
+			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+		
+			var name = weapon.skinName;
+			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+			var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div>";
+			$(".weaponsList").append("<li class='weapon'>"+weaponInfo+"</li>");
+		}
+		$(".weapons").css("display", "block");
+		fillCarusel(caseId);
+	}
+})
+</script>
+</body>
+</html>
