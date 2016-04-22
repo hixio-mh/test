@@ -326,7 +326,8 @@ function fillCarusel(caseId) {
 }
 
 $(".openCase").on("click", function() {
-	if (caseOpening) {return false};
+	if (caseOpening || $(".openCase").text() == "Открываем кейс...") {return false};
+	//$(".openCase").attr("disabled", "disabled");
 	$(".win").slideUp("slow");
 	if($(".openCase").text() == "Попробовать еще раз") {backToZero()}
 	$(".openCase").text("Открываем кейс...");
@@ -343,11 +344,12 @@ $(".openCase").on("click", function() {
 			var type = win.type;
 			caseOpening = true;
 			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
-		
+			
 			var name = win.skinName;
 			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
 			$(".winName").html(type + " | " + name);
 			$(".winImg").attr("src", prefix + win.img + postfixBig);
+			$(".openCase").attr("disabled", "disabled");
 		},
 		progress: function(e, t) {
 			progress_animate = Math.round(100 * t),
@@ -358,13 +360,13 @@ $(".openCase").on("click", function() {
 		},
 		complete: function(){
 			caseCloseAudio.play();
-			$(".openCase").attr("disabled", null);
 			$(".openCase").text("Попробовать еще раз");
 			$(".win").slideDown("slow");
 			caseOpening = false;
+			$(".openCase").attr("disabled", null);
 		},
 		always: function() {
-			$(".openCase").attr("disabled", null);
+			//$(".openCase").attr("disabled", null);
 			caseOpening = false;
 		}
 	})
@@ -381,7 +383,7 @@ function backToZero() {
 			//caseBackAudio.play();
 		},
 		always: function() {
-			$(".openCase").attr("disabled", null);
+			//$(".openCase").attr("disabled", null);
 			caseOpening = false;
 		}
 	})
