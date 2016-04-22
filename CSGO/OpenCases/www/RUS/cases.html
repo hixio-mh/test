@@ -12,7 +12,7 @@ body {
 }
 .cases {
 	text-align: center;
-	background: url(../images/bg2.png);
+	background: url(../images/bg2.png) fixed;
 }
 .case {
     display: inline-block;
@@ -222,7 +222,7 @@ span.winName {
 </div>
 
 <div class="win" style="display: none;">
-<span>Вы выйграли</span>
+<span>Вы выиграли</span>
 
 <span class="winName"></span>
 <img src="" class="winImg">
@@ -239,6 +239,7 @@ span.winName {
 	var caseId = 0;
 	var win;
 	var winNumber = 35;
+	var caseOpening = false;
 	var caseOpenAudio = new Audio();
 	caseOpenAudio.src = "../sound/open.wav";
 	caseOpenAudio.volume = 0.2;
@@ -325,6 +326,7 @@ function fillCarusel(caseId) {
 }
 
 $(".openCase").on("click", function() {
+	if (caseOpening) {return false};
 	$(".win").slideUp("slow");
 	if($(".openCase").text() == "Попробовать еще раз") {backToZero()}
 	$(".openCase").text("Открываем кейс...");
@@ -333,12 +335,13 @@ $(".openCase").on("click", function() {
 	var a = 127*winNumber;
 	var l = 131;
 	var d = 0, s = 0;
-	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-60, a+60) }, {
+	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-50, a+60) }, {
 		duration: 10000,
 		easing: 'easeOutCubic',
 		start: function(){
 			caseOpenAudio.play();
 			var type = win.type;
+			caseOpening = true;
 			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 		
 			var name = win.skinName;
@@ -358,9 +361,11 @@ $(".openCase").on("click", function() {
 			$(".openCase").attr("disabled", null);
 			$(".openCase").text("Попробовать еще раз");
 			$(".win").slideDown("slow");
+			caseOpening = false;
 		},
 		always: function() {
 			$(".openCase").attr("disabled", null);
+			caseOpening = false;
 		}
 	})
 })
@@ -369,14 +374,15 @@ function backToZero() {
 	var l = 131;
 	var s = 0, d = 0;
 	$(".casesCarusel").animate({marginLeft: 0}, {
-		duration: 3000,
-		easing: "easeOutElastic",
+		duration: 1000,
+		easing: "easeOutQuad",
 		start: function() {
 			fillCarusel(caseId);
 			//caseBackAudio.play();
 		},
 		always: function() {
 			$(".openCase").attr("disabled", null);
+			caseOpening = false;
 		}
 	})
 }
@@ -386,6 +392,7 @@ $(".closeCase").on("click", function(){
 	$(".openCase").text("Открыть кейс");
 	$(".win").hide();
 	$(".casesCarusel").stop(true, true);
+	caseOpening = false;
 })
 
 Array.prototype.shuffle = function() {
