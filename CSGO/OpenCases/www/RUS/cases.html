@@ -50,6 +50,7 @@ body {
     left: 0;
 	overflow: auto;
 	background: #105868;
+	height: 100%;
 }
 .weaponsList {
     position: relative;
@@ -142,7 +143,7 @@ div.weapon > .weaponInfo {
     width: 2px;
     height: 137px;
     background: rgb(189, 110, 32);
-    top: 11px;
+    /*top: 11px;*/
     left: 50%;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 7px rgba(0, 0, 0, 1);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 7px rgba(0, 0, 0, 1);
@@ -172,6 +173,46 @@ div.weapon > .weaponInfo {
     width: 15000px;
     text-align: left;
 }
+
+/*Если разрешение экрана меньше 495px*/
+@media (max-width:495px) {
+	.case {
+		margin: 7px 5px;
+		width: 125px;
+		height: 138px;
+	}
+	.case img {
+		width: 115px;
+		height: auto;
+		padding: 5px;
+		padding-bottom: 10px;
+	}
+	.name {
+		height: 38px;
+		padding: 5px 10px;
+		position: absolute;
+		width: 105px;
+	}
+	/*Carusel*/
+	.scrollerContainer {
+		margin: 45px 0 10px;
+	}
+	#caruselOver {
+		max-width: calc(100% - 2px);
+	}
+	#aCanvas {
+		max-width: calc(100% - 1px);
+	}
+	
+}
+
+/*Если разрешение экрана меньше 401px*/
+@media (max-width:401px) {
+	#caruselOver {
+		left: 0px;
+	}
+}
+
 /*CARUSEL_END*/
 .openCase {
     background: linear-gradient(to bottom, #00953b, #006910);
@@ -182,16 +223,19 @@ div.weapon > .weaponInfo {
     border: 1px solid #02a543;
     font-family: monospace;
     padding: 0 20px;
-    margin: 15px 0 25px;
+    margin: 25px 0 25px;
 }
 /*WEAPONS_END*/
 .win {
     background: #003440;
-    padding-top: 10px;
+    padding-top: 25px;
 }
 .win > span {
     color: #FFCD48;
     display: block;
+}
+.win img {
+	max-width: 100%;
 }
 span.winName {
     color: #fff;
@@ -205,6 +249,22 @@ span.winName {
     color: #fff;
     font-size: 15px;
     font-family: sans-serif;
+}
+.zabor {
+    background: url(../images/zabor.png) repeat-x;
+    width: 100%;
+    height: 20px;
+    position: absolute;
+}
+.zabor-bot {
+    background: url(../images/zabor.png) repeat-x;
+    width: 100%;
+    height: 20px;
+    margin-top: -20px;
+    transform: rotate(180deg);
+    /*position: absolute;*/
+    background-position: 10px;
+    display: none;
 }
 </style>
 <body>
@@ -221,12 +281,14 @@ span.winName {
 	</div>
 </div>
 
+<div class="zabor"></div>
 <div class="win" style="display: none;">
 <span>Вы выиграли</span>
 
 <span class="winName"></span>
 <img src="" class="winImg">
 </div>
+<div class="zabor-bot"></div>
 
 <button class="openCase">Открыть кейс</button>
 
@@ -265,6 +327,8 @@ for(var i = 0; i < cases.length ; i++) {
 }
 $(document).on("click", ".case", function(){
 	$(".weaponsList").html("");
+	window.scrollTo(0, 0);
+	$("body").css("overflow", "hidden");
 	caseId = this.id;
 	for(var i = 0; i < cases[caseId].weapons.length; i++) {
 		var weapon = cases[caseId].weapons[i];
@@ -281,6 +345,7 @@ $(document).on("click", ".case", function(){
 	$(".weapons").css("display", "block");
 	fillCarusel(caseId);
 	$(".win").hide();
+	$(".zabor-bot").css("display", "none");
 	$(".openCase").text("Открыть кейс");
 });
 
@@ -326,9 +391,11 @@ function fillCarusel(caseId) {
 }
 
 $(".openCase").on("click", function() {
+	$(".weapons").scrollTop(0);
 	if (caseOpening || $(".openCase").text() == "Открываем кейс...") {return false};
 	//$(".openCase").attr("disabled", "disabled");
 	$(".win").slideUp("slow");
+	$(".zabor-bot").css("display", "none");
 	if($(".openCase").text() == "Попробовать еще раз") {backToZero()}
 	$(".openCase").text("Открываем кейс...");
 	$(".openCase").attr("disabled", "disabled");
@@ -362,8 +429,10 @@ $(".openCase").on("click", function() {
 			caseCloseAudio.play();
 			$(".openCase").text("Попробовать еще раз");
 			$(".win").slideDown("slow");
+			$(".zabor-bot").css("display", "block");
 			caseOpening = false;
 			$(".openCase").attr("disabled", null);
+			$(".weapons").scrollTop(150);
 		},
 		always: function() {
 			//$(".openCase").attr("disabled", null);
@@ -393,7 +462,9 @@ $(".closeCase").on("click", function(){
 	$(".weapons").css("display", "none");
 	$(".openCase").text("Открыть кейс");
 	$(".win").hide();
+	$(".zabor-bot").css("display", "none");
 	$(".casesCarusel").stop(true, true);
+	$("body").css("overflow", "visible");
 	caseOpening = false;
 })
 
