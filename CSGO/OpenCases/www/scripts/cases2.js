@@ -7,6 +7,7 @@ var postfixBig = "/383fx383f";
 			"name" : "Cobblestone",
 			"img" : "Cobblestone.png",
 			"weapons" : [{
+					"id" : 1,
 					"type" : "Сувенир MAG-7",
 					"skinName" : "Серебро",
 					"rarity" : "industrial",

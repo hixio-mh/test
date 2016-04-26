@@ -1,6 +1,7 @@
 ﻿	var caseId = 0;
 	var win;
 	var winNumber = 35;
+	var inventory = [];
 	var caseOpening = false;
 	var caseOpenAudio = new Audio();
 	caseOpenAudio.src = "../sound/open.wav";
@@ -19,6 +20,8 @@
 	//caseScrollAudio.loop = true;
 	caseScrollAudio.playbackRate = 1;
 	caseScrollAudio.volume = 0.2;
+	
+	getInventory();
 	
 for(var i = 0; i < cases.length ; i++) {
 	var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
@@ -91,14 +94,23 @@ $(".openCase").on("click", function() {
 		start: function(){
 			caseOpenAudio.play();
 			var type = win.type;
+			var statTrak = 0;
+			var quality = getItemQuality()[1];
 			caseOpening = true;
 			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 			
 			var name = win.skinName;
 			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+			if (ifStatTrak()) {statTrak = 1; type = "StatTrak™ " + type}
 			$(".winName").html(type + " | " + name);
+			$(".winQuality").html(quality);
 			$(".winImg").attr("src", prefix + win.img + postfixBig);
 			$(".openCase").attr("disabled", "disabled");
+			win.statTrak = statTrak;
+			win.quality = quality;
+			//getInventory();
+			inventory.push(win);
+			saveInventory();
 		},
 		progress: function(e, t) {
 			progress_animate = Math.round(100 * t),
@@ -151,6 +163,33 @@ $(".closeCase").on("click", function(){
 	caseOpening = false;
 })
 
+function saveInventory() {
+	localStorage.clear();
+	localStorage["inventory.count"] = inventory.length;
+	for(var i = 0; i < inventory.length; i++) {
+		localStorage["inventory.item."+i+".type"] = inventory[i].type;
+		localStorage["inventory.item."+i+".skinName"] = inventory[i].skinName;
+		localStorage["inventory.item."+i+".rarity"] = inventory[i].rarity;
+		localStorage["inventory.item."+i+".img"] = inventory[i].img;
+		localStorage["inventory.item."+i+".quality"] = inventory[i].quality;
+		localStorage["inventory.item."+i+".statTrak"] = inventory[i].statTrak;
+	}
+}
+
+function getInventory() {
+	var count = parseInt(localStorage["inventory.count"], 10);
+	for(var i = 0; i < count; i++) {
+		var item = {};
+		item.type = localStorage["inventory.item."+i+".type"];
+		item.skinName = localStorage["inventory.item."+i+".skinName"];
+		item.rarity = localStorage["inventory.item."+i+".rarity"];
+		item.img = localStorage["inventory.item."+i+".img"];
+		item.quality = localStorage["inventory.item."+i+".quality"];
+		item.statTrak = localStorage["inventory.item."+i+".statTrak"];
+		inventory.push(item);
+	}
+}
+
 function parseURLParams(url) {
     var queryStart = url.indexOf("?") + 1,
         queryEnd   = url.indexOf("#") + 1 || url.length + 1,
@@ -189,3 +228,8 @@ Array.prototype.mul = function(k) {
 Math.rand = function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+/*Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};*/

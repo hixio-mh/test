@@ -1,0 +1,412 @@
+﻿<html>
+<head>
+<title>Рулетка</title>
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/progressbar.min.js"></script>
+<script src="../scripts/jackpotBots.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<style>
+body {
+    margin: 0;
+    padding-top: 5px;
+}
+#circle {
+    width: 250px;
+    max-width: 100%;
+	margin: 0 auto;
+}
+#status {
+    text-align: center;
+    margin: 10px 0;
+}
+#addItems {
+    margin: 0 auto;
+    display: block;
+}
+
+.items {
+    border-collapse: collapse;
+    width: 500px;
+    max-width: 100%;
+	margin: 0 auto;
+}
+tr {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
+    border-bottom: 2px solid;
+}
+td:nth-child(2) {
+	width: 90px;
+    padding-right: 10px;
+}
+td {
+    padding-left: 6px;
+}
+td p {
+    text-align: center;
+    /*line-height: 7px;*/
+	margin: 5px 0;
+}
+.fromName, .quality {
+    font-size: 14px;
+}
+.weaponImg {
+    width: 90px;
+}
+#players img {
+    width: 55px;
+    margin: 2px 2px;
+}
+#players {
+    text-align: center;
+}
+.playerAva {
+    display: inline-block;
+}
+.playerAva p {
+    margin: 43px -57px 0;
+    display: inline-block;
+    position: absolute;
+    background: #2D96AE;
+    width: 55px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    font-family: sans-serif;
+}
+.casesCarusel img {
+    height: 138px;
+    margin-left: 2px;
+    padding-bottom: 10px;
+}
+.win {
+    background: #003440;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
+    padding: 10px 0;
+}
+.win b {
+    font-size: 15pt;
+    coloR: #fff;
+}
+.win img {
+    width: 100px;
+}
+.inventoryList {
+    position: fixed;
+    top: 5px;
+    left: 2px;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+	z-index: 50;
+	color: #fff;
+}
+.inventory a:visited, .inventory a {
+    coloR: #fffec4;
+	font-weight: bold;
+}
+.inventory {
+    padding: 0 10px;
+}
+.inventoryItemSelected {
+	background: url("../images/Cases/itembgSelected.png") #111;
+}
+</style>
+</head>
+<body>
+<div id="circle"></div>
+<div id="status"></div>
+<div class="scrollerContainer">
+	<div id="caruselOver"><div id="caruselLine"></div></div>
+	<div id="aCanvas">
+		<div class="casesCarusel">
+		</div>
+	</div>
+</div>
+<div class="win"></div>
+<div id="players"></div>
+<button id="addItems">Внести предметы</button>
+<table class="items"><tr></tr></table>
+<div class="inventoryList" style="display: none;">
+<div class="closeInventory"></div>
+<ul class="inventory"></ul>
+<button class="choseItems">Внести</button>
+</div>
+<script>
+var itemsAccepted = 0;
+var timerId;
+var botMinDec = 5000, botMaxDec = 10000;
+var maxItems = 6;
+var usedName = [];
+var usedImages = [];
+var PlayersInGame = [];
+var ItemsInGame = [];
+var ifCarusel = false;
+
+var bar = new ProgressBar.Circle(circle, {
+	strokeWidth: 6,
+	easing: 'easeInOut',
+	duration: 1000,
+	color: '#105868',
+	trailColor: '#2D96AE',
+	trailWidth: 6,
+	svgStyle: null,
+	text: {
+		value: '0/20',
+		alignToBottom: false
+	}
+});
+
+bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+bar.text.style.fontSize = '2rem';
+
+newGame();
+
+function newGame() {
+	clearTimeout(timerId);
+	ifCarusel = false;
+	$(".win").slideUp("slow");
+	bar.animate(0);
+	bar.setText("0/20");
+	$("#addItems").attr("disabled", null);
+	itemsAccepted = 0;
+	
+	$(".items tr").remove();
+	$(".items").append("<tr></tr>");
+	
+	$("#players").html("");
+	$(".casesCarusel").html("");
+	
+	PlayersInGame = [];
+	ItemsInGame = [];
+	
+	{marginLeft: 0}
+	
+	timerId = setTimeout(function(){botAddItems()}, Math.rand(botMinDec, botMaxDec));
+}
+
+$("#addItems").on("click", function(){
+	var playerWeapons = [];
+	fillInventory();
+	/*addItems(Player.nickname, Player.avatar, 4);
+	for (var i = 0; i < 4; i++) {
+		playerWeapons.push(getRandomWeapon());
+	}
+	
+	PlayersInGame.push({"nick" : Player.nickname, "avatar" : Player.avatar, "chance" : "30"});
+	
+	for (var i = 0; i < playerWeapons.length; i++) {
+		itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, playerWeapons[i].img, getItemQuality()[1], ifStatTrak(), playerWeapons[i].rarity)
+	}
+	$("#addItems").attr("disabled", "disabled");*/
+});
+
+function addItems(fromName, fromImg, itemCount) {
+	var okon = ["предмет", "предмета","предмета","предмета","предметов"];
+	var step = itemCount * 100 / 20 /100;
+	var value = itemCount-1;
+	step += bar.value();
+	if (step > 1) {step = 1}
+	itemsAccepted += itemCount;
+	bar.setText(itemsAccepted + '/20');
+	bar.animate(step);
+	
+	if (itemCount>5) value = 4;
+	
+	$("#status").html(fromName + " внес " + itemCount + " " + okon[value]);
+	
+	$("#players").append("<span class='playerAva'  data-nick='"+fromName+"' data-chance='30'><img src='../images/ava/"+fromImg+"'><p>30%</p></span>");
+	
+	clearTimeout(timerId);
+	if (itemsAccepted >= 20) {startGame()}
+	
+	if (ifCarusel == false) {
+		timerId = setTimeout(function(){botAddItems()}, Math.rand(botMinDec, botMaxDec));
+	}
+}
+
+function startGame() {
+	$("#addItems").attr("disabled", "disabled");
+	
+	winNumber = 70;
+	
+	ifCarusel = true;
+	
+	var arr = [];
+	while (arr.length < winNumber+3) {
+		arr = arr.concat(PlayersInGame).shuffle().shuffle().shuffle();
+	}
+	var el = '';
+	
+	arr.forEach(function(item, index) {
+		var img = '../images/ava/' + item.avatar;
+
+		el += '<span class="playerAva">'+
+				'<img src="'+img+'" />'+
+				'</span>'
+		})
+	win = arr[winNumber];
+	$(".casesCarusel").html(el);
+	$(".casesCarusel").css("margin-left", "0px");
+	
+	var a = 141*winNumber - 141;
+	var l = 141;
+	var d = 0, s = 0;
+	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-75, a+20) }, {
+		duration: 10000,
+		easing: 'easeInOutCubic',
+		start: function(){
+			//caseOpenAudio.play();
+			//caseOpening = true;
+			$(".closeInventory").click();
+
+			$(".win").html("Победил: <b>"+win.nick + "</b><br><img src='../images/ava/"+win.avatar+"'>");
+			if(win.nick == Player.nickname) {
+				for (var i = 0; i < ItemsInGame.length; i++) {
+					inventory.push(ItemsInGame[i]);
+				}
+				saveInventory();
+			}
+			/*$(".winQuality").html(getItemQuality()[1]);
+			$(".winImg").attr("src", prefix + win.img + postfixBig);
+			$(".openCase").attr("disabled", "disabled");*/
+		},
+		progress: function(e, t) {
+			/*progress_animate = Math.round(100 * t),
+            s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
+            s > d && (caseScrollAudio.currentTime = 0,
+            caseScrollAudio.play(),
+            d++)*/
+		},
+		complete: function(){
+			//caseCloseAudio.play();
+			//$(".openCase").text("Попробовать еще раз");
+			//$(".win").slideDown("slow");
+			//caseOpening = false;
+			//$(".openCase").attr("disabled", null);
+			//$(".weapons").scrollTop(185);
+			$(".win").slideDown("slow");
+			var timerId2 = 0;
+			timerId2 = setTimeout(function(){newGame();}, 7000);
+		},
+		always: function() {
+			//$(".openCase").attr("disabled", null);
+		}
+	})
+}
+
+function botAddItems() {
+	if (ifCarusel == false) {
+	var botName = Bot.names[Math.rand(0, Bot.names.length-1)];
+	
+	var botImg = Bot.images[Math.rand(0, Bot.images.length-1)];
+	var botWeapons = [];
+	
+	for (var i = 0; i < Math.rand(1, maxItems); i++) {
+		botWeapons.push(getRandomWeapon());
+	}
+	for (var i = 0; i < botWeapons.length; i++) {
+		itemsList(botName, botWeapons[i].type, botWeapons[i].skinName, botWeapons[i].img, getItemQuality()[1], ifStatTrak(), botWeapons[i].rarity)
+	}
+	PlayersInGame.push({"nick" : botName, "avatar" : botImg, "chance" : "30"});
+	addItems(botName, botImg, botWeapons.length);
+	}
+}
+
+function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, ifStatTrak, weaponRarity) {
+	var statTrak = (ifStatTrak == true) ? "StatTrak™ " : "";
+	if(weaponType.indexOf("|") != -1) {weaponType = weaponType.split("|")[1]}
+	if(weaponName.indexOf("|") != -1) {weaponName = weaponName.split("|")[1]}
+	
+	var newItems = "<tr class='itemInItemsList "+weaponRarity+"'>"+
+				   "<td><p class='fromName'>"+fromName+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
+				   "("+weaponQuality+")</p></p></td><td><img src='"+prefix+weaponImg+postfix+"' class='weaponImg'></td></tr>";
+	$(".items tr:first").before(newItems);
+	
+	var item = {
+		"type" : weaponType,
+		"skinName" : weaponName,
+		"rarity" : weaponRarity,
+		"img" : weaponImg,
+		"quality" : weaponQuality,
+		"statTrak" : ifStatTrak		
+	}
+	ItemsInGame.push(item);
+}
+
+function getRandomWeapon() {
+	var randomCaseId = Math.rand(0, cases.length-1);
+	var randomWeaponId = Math.rand(0, cases[randomCaseId].weapons.length-1);
+	
+	return cases[randomCaseId].weapons[randomWeaponId];
+}
+
+$(".closeInventory").on("click", function(){
+	$(".inventoryList").css("display", "none");
+})
+
+$(".choseItems").on("click", function(){
+	var itemsCount = $(".inventoryItemSelected").length;
+	var playerWeapons = [];
+	var ids = [];
+	if(itemsCount != 0) {
+		PlayersInGame.push({"nick" : Player.nickname, "avatar" : Player.avatar, "chance" : "30"});
+		addItems(Player.nickname, Player.avatar, itemsCount);
+		$(".inventoryItemSelected").each(function(){
+			playerWeapons.push(inventory[parseInt(this.id)]);
+			ids.push(parseInt(this.id));
+		})
+		for (var i = 0; i < ids.length; i++) {
+			var d = ids[ids.length-i-1];
+			inventory.splice(d, 1);
+		}
+		saveInventory();
+	
+	
+		for (var i = 0; i < playerWeapons.length; i++) {
+			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, playerWeapons[i].img, playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity)
+		}
+		$("#addItems").attr("disabled", "disabled");
+		$(".closeInventory").click();
+	}
+})
+
+$(document).on("click", ".weapon", function(){
+	if (($(".inventoryItemSelected").length < maxItems)) {
+		$(this).toggleClass("inventoryItemSelected");
+	} else if ($(this).hasClass("inventoryItemSelected")) {
+		$(this).toggleClass("inventoryItemSelected");
+	}
+})
+
+function fillInventory() {
+	$(".inventory li").remove();
+	for(var i = 0; i < inventory.length; i++) {
+		var weapon = inventory[i];
+		var img = prefix + weapon.img + postfix;
+	
+		var type = weapon.type;
+		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+	
+		var name = weapon.skinName;
+		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+		var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+		"</span></div>";
+		$(".inventory").append("<li class='weapon' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
+	}
+	if (inventory.length == 0) {
+		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html'>откройте пару кейсов.</a></li>");
+	}
+$(".inventoryList").css("display", "block");
+}
+</script>
+</body>
+</html>
