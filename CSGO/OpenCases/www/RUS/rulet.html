@@ -25,6 +25,7 @@ body {
 #status {
     text-align: center;
     margin: 10px 0;
+    color: #fff;
 }
 #addItems {
     margin: 0 auto;
@@ -107,8 +108,10 @@ td p {
     text-align: center;
     width: 100%;
     background: rgba(0,0,0,0.7);
-	z-index: 50;
-	color: #fff;
+    z-index: 50;
+    color: #fff;
+    overflow-y: auto;
+    height: 100%;
 }
 .inventory a:visited, .inventory a {
     coloR: #fffec4;
@@ -122,7 +125,7 @@ td p {
 }
 </style>
 </head>
-<body>
+<body style="padding-bottom: 45px;">
 <div id="circle"></div>
 <div id="status"></div>
 <div class="scrollerContainer">
@@ -140,6 +143,9 @@ td p {
 <div class="closeInventory"></div>
 <ul class="inventory"></ul>
 <button class="choseItems">Внести</button>
+</div>
+<div class="navigat">
+<div class="navigate" id="navigate-cases">Кейсы</div><div class="navigate" id="navigate-jackpot">Рулетка</div>
 </div>
 <script>
 var itemsAccepted = 0;
@@ -403,7 +409,7 @@ function fillInventory() {
 		$(".inventory").append("<li class='weapon' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
 	}
 	if (inventory.length == 0) {
-		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html'>откройте пару кейсов.</a></li>");
+		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html?from=jackpot'>откройте пару кейсов.</a></li>");
 	}
 $(".inventoryList").css("display", "block");
 }

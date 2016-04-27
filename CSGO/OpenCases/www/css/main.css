@@ -1,6 +1,7 @@
 body {
     background: url(../images/background.png) fixed no-repeat;
     background-size: cover;
+	margin: 0;
 }
 .cases {
 	text-align: center;
@@ -244,4 +245,23 @@ span.winName {
     /*position: absolute;*/
     background-position: 10px;
     display: none;
+}
+.navigate {
+    display: inline-block;
+    width: 50%;
+    height: 40px;
+    background: #1D1D1D;
+}
+.navigat {
+    box-shadow: 7px -4px 8px #000;
+    text-align: center;
+    color: #fff;
+    font-size: 13pt;
+    line-height: 30pt;
+    font-family: "Courier new";
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+	cursor: pointer;
 }

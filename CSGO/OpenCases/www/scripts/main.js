@@ -30,7 +30,11 @@ for(var i = 0; i < cases.length ; i++) {
 }
 $(document).on("click", ".case", function(){
 	caseId = this.id;
-	window.location = "open.html?caseId="+caseId;
+	if (getURLParameter('from') != null) {
+		window.location = "open.html?caseId="+caseId+"&from="+getURLParameter('from'); 
+	} else {
+		window.location = "open.html?caseId="+caseId;
+	}
 	//window.scrollTo(0, 0);
 });
 
@@ -163,6 +167,13 @@ $(".closeCase").on("click", function(){
 	caseOpening = false;
 })
 
+$(document).on("click", "#navigate-cases", function(){
+	window.location = "cases.html";
+});
+$(document).on("click", "#navigate-jackpot", function(){
+	window.location = "rulet.html";
+});
+
 function saveInventory() {
 	localStorage.clear();
 	localStorage["inventory.count"] = inventory.length;
@@ -213,6 +224,10 @@ function parseURLParams(url) {
         parms[n].push(nv.length === 2 ? v : null);
     }
     return parms;
+}
+
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 }
 
 Array.prototype.shuffle = function() {
