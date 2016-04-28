@@ -61,15 +61,25 @@ body {
     height: 124px;
     width: 123px;
     margin: 5px 4px;
+	text-align: right;
 }
 .weapon img {
-    padding: 0 1px;
+    padding-right: 5px;
     width: 112px;
     margin: -8px 0 -10px 5px;
 }
 .weaponInfo {
     margin: -5px 0;
 	text-align: left;
+	overflow: hidden;
+}
+.weapon i {
+    font-style: normal;
+    top: -127px;
+    position: relative;
+    right: 2px;
+    font-size: 9pt;
+    color: #f8ffb4;
 }
 .type {
     background-size: cover;
@@ -81,6 +91,7 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
     margin-top: 1px;
     padding: 3px 5px;
+	white-space: nowrap;
 }
 .closeCase, .closeInventory {
     position: absolute;

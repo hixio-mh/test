@@ -5,6 +5,8 @@
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/main.js"></script>
 <script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/skinNames.js"></script>
 <script src="../scripts/progressbar.min.js"></script>
 <script src="../scripts/jackpotBots.js"></script>
 <script src="../scripts/settings.js"></script>
@@ -123,6 +125,16 @@ td p {
 .inventoryItemSelected {
 	background: url("../images/Cases/itembgSelected.png") #111;
 }
+
+.progressbar-text {
+	text-align: center;
+}
+.progressbar-text s {
+    font-style: normal;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #00c03f;
+}
 </style>
 </head>
 <body style="padding-bottom: 45px;">
@@ -149,6 +161,7 @@ td p {
 </div>
 <script>
 var itemsAccepted = 0;
+var totalMoney = 0.00;
 var timerId;
 var botMinDec = 5000, botMaxDec = 10000;
 var maxItems = 6;
@@ -185,6 +198,7 @@ function newGame() {
 	bar.setText("0/20");
 	$("#addItems").attr("disabled", null);
 	itemsAccepted = 0;
+	totalMoney = 0;
 	
 	$(".items tr").remove();
 	$(".items").append("<tr></tr>");
@@ -216,21 +230,31 @@ $("#addItems").on("click", function(){
 	$("#addItems").attr("disabled", "disabled");*/
 });
 
-function addItems(fromName, fromImg, itemCount) {
+function addItems(fromName, fromImg, itemCount, itemsCost=0) {
 	var okon = ["предмет", "предмета","предмета","предмета","предметов"];
 	var step = itemCount * 100 / 20 /100;
 	var value = itemCount-1;
 	step += bar.value();
 	if (step > 1) {step = 1}
 	itemsAccepted += itemCount;
-	bar.setText(itemsAccepted + '/20');
+	totalMoney += +Math.round(parseFloat(itemsCost)*100)/100;
+	totalMoney = +Math.round(parseFloat(totalMoney)*100)/100;
+	bar.setText(itemsAccepted + '/20<br><s>'+totalMoney+'$</s>');
 	bar.animate(step);
 	
 	if (itemCount>5) value = 4;
 	
-	$("#status").html(fromName + " внес " + itemCount + " " + okon[value]);
 	
-	$("#players").append("<span class='playerAva'  data-nick='"+fromName+"' data-chance='30'><img src='../images/ava/"+fromImg+"'><p>30%</p></span>");
+	$("#status").html(fromName + " внес " + itemCount + " " + okon[value]+" (~"+parseFloat(itemsCost).toFixed(2)+"$)");
+	
+	var players = '';
+	for (var i = 0; i < PlayersInGame.length; i++) {
+		var chance = 0.0;
+		chance = parseFloat(Math.round((PlayersInGame[i].itemsCost * 100) / totalMoney * 100)/100);
+		players += "<span class='playerAva'  data-nick='"+PlayersInGame[i].nick+"'><img src='../images/ava/"+PlayersInGame[i].avatar+"'><p>"+chance+"%</p></span>";
+		PlayersInGame[i].chance = chance;
+	}
+	$("#players").html(players);
 	
 	clearTimeout(timerId);
 	if (itemsAccepted >= 20) {startGame()}
@@ -252,6 +276,8 @@ function startGame() {
 		arr = arr.concat(PlayersInGame).shuffle().shuffle().shuffle();
 	}
 	var el = '';
+	
+	arr[winNumber] = getJackpotWiner();
 	
 	arr.forEach(function(item, index) {
 		var img = '../images/ava/' + item.avatar;
@@ -275,7 +301,7 @@ function startGame() {
 			//caseOpening = true;
 			$(".closeInventory").click();
 
-			$(".win").html("Победил: <b>"+win.nick + "</b><br><img src='../images/ava/"+win.avatar+"'>");
+			$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
 			if(win.nick == Player.nickname) {
 				for (var i = 0; i < ItemsInGame.length; i++) {
 					inventory.push(ItemsInGame[i]);
@@ -310,21 +336,58 @@ function startGame() {
 	})
 }
 
+function getJackpotWiner() {
+	var sumChanses = 0;
+	var sumWeights = 0;
+	var random = Math.random();
+	
+	for(var i = 0; i < PlayersInGame.length; i++) {
+		sumChanses += PlayersInGame[i].chance;
+	}
+	for(var i = 0; i < PlayersInGame.length; i++) {
+		var weight = PlayersInGame[i].chance / sumChanses;
+		PlayersInGame[i].weight = weight;
+	}
+	for(var i = 0; i < PlayersInGame.length; i++) {
+		sumWeights += PlayersInGame[i].weight;
+	}
+	var cursor = 0;
+	for(var i = 0; i < PlayersInGame.length; i++) {
+		cursor += PlayersInGame[i].weight / sumWeights;
+		if (cursor >= random) {
+			return PlayersInGame[i];
+		}
+	}
+}
+
 function botAddItems() {
 	if (ifCarusel == false) {
 	var botName = Bot.names[Math.rand(0, Bot.names.length-1)];
 	
 	var botImg = Bot.images[Math.rand(0, Bot.images.length-1)];
 	var botWeapons = [];
+	var itemsCost = 0.00;
 	
 	for (var i = 0; i < Math.rand(1, maxItems); i++) {
 		botWeapons.push(getRandomWeapon());
 	}
 	for (var i = 0; i < botWeapons.length; i++) {
-		itemsList(botName, botWeapons[i].type, botWeapons[i].skinName, botWeapons[i].img, getItemQuality()[1], ifStatTrak(), botWeapons[i].rarity)
+		var qual = getItemQuality()[1];
+		var st = ifStatTrak();
+		var price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
+		var stopLoop = 0;
+		
+		while (price == 0) {
+			qual = getItemQuality()[1];
+			price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
+			if (stopLoop == 15) break;
+			stopLoop++;
+		}
+		itemsCost += +price;
+		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, "RU"), botWeapons[i].img, qual, st, botWeapons[i].rarity)
 	}
-	PlayersInGame.push({"nick" : botName, "avatar" : botImg, "chance" : "30"});
-	addItems(botName, botImg, botWeapons.length);
+	PlayersInGame.push({"nick" : botName, "avatar" : botImg, "chance" : "30", "itemsCost" : itemsCost});
+	addItems(botName, botImg, botWeapons.length, itemsCost);
 	}
 }
 
@@ -338,13 +401,15 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 				   "("+weaponQuality+")</p></p></td><td><img src='"+prefix+weaponImg+postfix+"' class='weaponImg'></td></tr>";
 	$(".items tr:first").before(newItems);
 	
+	var price = getPrice(weaponType, weaponName, weaponQuality, ifStatTrak);
 	var item = {
 		"type" : weaponType,
 		"skinName" : weaponName,
 		"rarity" : weaponRarity,
 		"img" : weaponImg,
 		"quality" : weaponQuality,
-		"statTrak" : ifStatTrak		
+		"statTrak" : ifStatTrak,
+		"price" : price
 	}
 	ItemsInGame.push(item);
 }
@@ -364,13 +429,16 @@ $(".choseItems").on("click", function(){
 	var itemsCount = $(".inventoryItemSelected").length;
 	var playerWeapons = [];
 	var ids = [];
+	var itemsCost = 0;
 	if(itemsCount != 0) {
-		PlayersInGame.push({"nick" : Player.nickname, "avatar" : Player.avatar, "chance" : "30"});
-		addItems(Player.nickname, Player.avatar, itemsCount);
+		
 		$(".inventoryItemSelected").each(function(){
 			playerWeapons.push(inventory[parseInt(this.id)]);
+			itemsCost += inventory[parseInt(this.id)].price;
 			ids.push(parseInt(this.id));
 		})
+		PlayersInGame.push({"nick" : Player.nickname, "avatar" : Player.avatar, "chance" : "30", "itemsCost" : itemsCost});
+		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
 		for (var i = 0; i < ids.length; i++) {
 			var d = ids[ids.length-i-1];
 			inventory.splice(d, 1);
@@ -405,7 +473,7 @@ function fillInventory() {
 	
 		var name = weapon.skinName;
 		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
-		var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+		"</span></div>";
+		var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+		"</span></div><i>"+weapon.price+"$</i>";
 		$(".inventory").append("<li class='weapon' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
 	}
 	if (inventory.length == 0) {

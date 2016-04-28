@@ -66,8 +66,7 @@ function fillCarusel(caseId) {
 		var type = item.type;
 		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 		
-		var name = item.skinName;
-		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+		var name = getSkinName(item.skinName, "RU");
 		el += '<div class="weapon">'+
 				'<img src="'+img+'" />'+
 				'<div class="weaponInfo '+item.rarity+'"><span class="type">'+type+'<br>'+name+'</span></div>'+
@@ -98,20 +97,31 @@ $(".openCase").on("click", function() {
 		start: function(){
 			caseOpenAudio.play();
 			var type = win.type;
-			var statTrak = 0;
+			var statTrak = ifStatTrak();
 			var quality = getItemQuality()[1];
 			caseOpening = true;
-			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 			
+			if (type.indexOf("|") != -1) {type = type.split("|")[1]}
 			var name = win.skinName;
-			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
-			if (ifStatTrak()) {statTrak = 1; type = "StatTrak™ " + type}
-			$(".winName").html(type + " | " + name);
+			var price = getPrice(type, getSkinName(name), quality, statTrak);
+			
+			var stopLoop = 0;
+			while (price == 0) {
+				quality = getItemQuality()[1];
+				price = getPrice(type, getSkinName(name), quality, statTrak);
+				if (stopLoop == 15) break;
+				stopLoop++;
+			}
+			
+			$(".winPrice").html(price+"$");
+			if (statTrak) {type = "StatTrak™ " + type}
+			$(".winName").html(type + " | " + getSkinName(name, "RU"));
 			$(".winQuality").html(quality);
 			$(".winImg").attr("src", prefix + win.img + postfixBig);
 			$(".openCase").attr("disabled", "disabled");
 			win.statTrak = statTrak;
 			win.quality = quality;
+			win.price = price;
 			//getInventory();
 			inventory.push(win);
 			saveInventory();
@@ -174,6 +184,43 @@ $(document).on("click", "#navigate-jackpot", function(){
 	window.location = "rulet.html";
 });
 
+function knifeTypes(type) {
+	switch (type) {
+		case "Охотничий нож":
+			return "Huntsman Knife"
+			break
+		case "Нож-бабочка":
+			return "Butterfly Knife"
+			break
+		case "Складной нож":
+			return "Flip Knife"
+			break
+		case "Керамбит":
+			return "Karambit"
+			break
+		case "Штык-нож M9":
+			return "M9 Bayonet"
+			break
+		case "Нож с лезвием-крюком":
+			return "Gut Knife"
+			break
+		case "Штык-нож":
+			return "Bayonet"
+			break
+		case "Фальшион":
+			return "Falchion Knife"
+			break
+		case "Тычковые ножи":
+			return "Shadow Daggers"
+			break
+		case "Нож Боуи":
+			return "Bowie Knife"
+			break
+		default:
+			return type
+	}
+}
+
 function saveInventory() {
 	localStorage.clear();
 	localStorage["inventory.count"] = inventory.length;
@@ -184,19 +231,27 @@ function saveInventory() {
 		localStorage["inventory.item."+i+".img"] = inventory[i].img;
 		localStorage["inventory.item."+i+".quality"] = inventory[i].quality;
 		localStorage["inventory.item."+i+".statTrak"] = inventory[i].statTrak;
+		localStorage["inventory.item."+i+".price"] = inventory[i].price;
 	}
 }
 
 function getInventory() {
 	var count = parseInt(localStorage["inventory.count"], 10);
 	for(var i = 0; i < count; i++) {
+		var st;
 		var item = {};
 		item.type = localStorage["inventory.item."+i+".type"];
 		item.skinName = localStorage["inventory.item."+i+".skinName"];
 		item.rarity = localStorage["inventory.item."+i+".rarity"];
 		item.img = localStorage["inventory.item."+i+".img"];
 		item.quality = localStorage["inventory.item."+i+".quality"];
-		item.statTrak = localStorage["inventory.item."+i+".statTrak"];
+		st = localStorage["inventory.item."+i+".statTrak"];
+		item.price = Number(localStorage["inventory.item."+i+".price"]);
+		if ((st == "true") || (st == "1")) {
+			item.statTrak = 1;
+		} else {
+			item.statTrak = 0;
+		}
 		inventory.push(item);
 	}
 }

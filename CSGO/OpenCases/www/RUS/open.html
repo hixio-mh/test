@@ -3,6 +3,8 @@
 <title>Открытие кейса</title>
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/quality.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/prices.js"></script>
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -27,6 +29,7 @@
 
 <span class="winName"></span>
 <span class="winQuality"></span>
+<span class="winPrice"></span>
 <img src="" class="winImg">
 </div>
 <div class="zabor-bot"></div>
@@ -53,6 +56,7 @@ $(function(){
 		
 			var name = weapon.skinName;
 			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+			name = getSkinName(name, "RU");
 			var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div>";
 			$(".weaponsList").append("<li class='weapon'>"+weaponInfo+"</li>");
 		}

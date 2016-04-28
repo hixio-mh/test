@@ -12,9 +12,21 @@
 	"name" : ["Minimal Wear", "Немного поношенное"],
 	"chance" : 20
 }, {
-	"name" : ["Factory new", "Прямо с завода"],
+	"name" : ["Factory New", "Прямо с завода"],
 	"chance" : 10
 }];
+
+function getQualityName(fil) {
+	var qua = Quality.filter(function(obj){
+		return obj.name.indexOf(fil) != -1;
+	})
+	if (qua.length != 0) {
+		return qua[0].name[0];
+	} else {
+		console.error("Wrong quality! '"+fil+"'");
+		return "Wrong quality name";
+	}
+}
 
 function getItemQuality() {
 	var sumChanses = 0;
