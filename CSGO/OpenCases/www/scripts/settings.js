@@ -1,4 +1,4 @@
 var Player = {
-	"nickname" : "VLADOS776", 
+	"nickname" : "Player", 
 	"avatar" : "24.jpg"
 }

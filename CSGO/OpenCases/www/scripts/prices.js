@@ -1696,6 +1696,36 @@ var Prices = [
 	"marketPrice" : 0,
 	"avgPrice" : 568.75
 }, {
+	"type" : "Souvenir AWP",
+	"name" : "Dragon Lore",
+	"quality" : "Factory New",
+	"marketPrice" : 0,
+	"avgPrice" : 13950.00
+}, {
+	"type" : "Souvenir AWP",
+	"name" : "Dragon Lore",
+	"quality" : "Minimal Wear",
+	"marketPrice" : 0,
+	"avgPrice" : 6550.00
+}, {
+	"type" : "Souvenir AWP",
+	"name" : "Dragon Lore",
+	"quality" : "Field-Tested",
+	"marketPrice" : 0,
+	"avgPrice" : 3399.00
+}, {
+	"type" : "Souvenir AWP",
+	"name" : "Dragon Lore",
+	"quality" : "Well-Worn",
+	"marketPrice" : 0,
+	"avgPrice" : 1850.00
+}, {
+	"type" : "Souvenir AWP",
+	"name" : "Dragon Lore",
+	"quality" : "Battle-Scarred",
+	"marketPrice" : 0,
+	"avgPrice" : 1100.00
+}, {
 	"type" : "AWP",
 	"name" : "Electric Hive",
 	"quality" : "Factory New",
@@ -33891,5 +33921,65 @@ var Prices = [
 	"quality" : "Minimal Wear",
 	"marketPrice" : 0.11,
 	"avgPrice" : 0.10
+}, {
+	"type" : "XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Factory New",
+	"marketPrice" : 4.04,
+	"avgPrice" : 4.0
+}, {
+	"type" : "XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Minimal Wear",
+	"marketPrice" : 2.72,
+	"avgPrice" : 2.50
+}, {
+	"type" : "XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Field-Tested",
+	"marketPrice" : 1.76,
+	"avgPrice" : 1.65
+}, {
+	"type" : "XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Well-Worn",
+	"marketPrice" : 1.91,
+	"avgPrice" : 1.82
+}, {
+	"type" : "XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Battle-Scarred",
+	"marketPrice" : 3.62,
+	"avgPrice" : 3.50
+}, {
+	"type" : "Souvenir XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Factory New",
+	"marketPrice" : 7.40,
+	"avgPrice" : 7.30
+}, {
+	"type" : "Souvenir XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Minimal Wear",
+	"marketPrice" : 5.17,
+	"avgPrice" : 5.01
+}, {
+	"type" : "Souvenir XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Field-Tested",
+	"marketPrice" : 2.11,
+	"avgPrice" : 2.01
+}, {
+	"type" : "Souvenir XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Well-Worn",
+	"marketPrice" : 3.98,
+	"avgPrice" : 3.81
+}, {
+	"type" : "Souvenir XM1014",
+	"name" : "VariCamo Blue",
+	"quality" : "Battle-Scarred",
+	"marketPrice" : 5.82,
+	"avgPrice" : 5.65
 }
 ];

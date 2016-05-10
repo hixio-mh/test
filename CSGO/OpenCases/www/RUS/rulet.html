@@ -51,6 +51,7 @@ td:nth-child(2) {
 }
 td {
     padding-left: 6px;
+	position: relative;
 }
 td p {
     text-align: center;
@@ -135,6 +136,10 @@ td p {
     font-size: 1.5rem;
     color: #00c03f;
 }
+td i {
+    font-style: normal;
+    font-size: 10pt;
+}
 </style>
 </head>
 <body style="padding-bottom: 45px;">
@@ -152,6 +157,7 @@ td p {
 <button id="addItems">Внести предметы</button>
 <table class="items"><tr></tr></table>
 <div class="inventoryList" style="display: none;">
+<span id="intentory-Player"></span>
 <div class="closeInventory"></div>
 <ul class="inventory"></ul>
 <button class="choseItems">Внести</button>
@@ -170,6 +176,7 @@ var usedImages = [];
 var PlayersInGame = [];
 var ItemsInGame = [];
 var ifCarusel = false;
+var lastTicket = 0;
 
 var bar = new ProgressBar.Circle(circle, {
 	strokeWidth: 6,
@@ -199,6 +206,7 @@ function newGame() {
 	$("#addItems").attr("disabled", null);
 	itemsAccepted = 0;
 	totalMoney = 0;
+	lastTicket = 0;
 	
 	$(".items tr").remove();
 	$(".items").append("<tr></tr>");
@@ -337,27 +345,30 @@ function startGame() {
 }
 
 function getJackpotWiner() {
-	var sumChanses = 0;
-	var sumWeights = 0;
-	var random = Math.random();
+	//var sumChanses = 100;
+	//var sumWeights = 1;
+	var random = Math.rand(1, lastTicket);
 	
-	for(var i = 0; i < PlayersInGame.length; i++) {
+	/*for(var i = 0; i < PlayersInGame.length; i++) {
 		sumChanses += PlayersInGame[i].chance;
-	}
+	}*/
 	for(var i = 0; i < PlayersInGame.length; i++) {
-		var weight = PlayersInGame[i].chance / sumChanses;
-		PlayersInGame[i].weight = weight;
+		if ((PlayersInGame[i].tickets.from < random) && (random < PlayersInGame[i].tickets.to)) {
+			var log = [["Победил", PlayersInGame[i].nick],["Билеты от", PlayersInGame[i].tickets.from], ["Билеты до", PlayersInGame[i].tickets.to],["Случайное число", random]];
+			console.table(log);
+			return PlayersInGame[i];
+			}
 	}
-	for(var i = 0; i < PlayersInGame.length; i++) {
+	/*for(var i = 0; i < PlayersInGame.length; i++) {
 		sumWeights += PlayersInGame[i].weight;
-	}
-	var cursor = 0;
+	}*/
+	/*var cursor = 0;
 	for(var i = 0; i < PlayersInGame.length; i++) {
 		cursor += PlayersInGame[i].weight / sumWeights;
 		if (cursor >= random) {
 			return PlayersInGame[i];
 		}
-	}
+	}*/
 }
 
 function botAddItems() {
@@ -375,33 +386,47 @@ function botAddItems() {
 		var qual = getItemQuality()[1];
 		var st = ifStatTrak();
 		var price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
-		var stopLoop = 0;
 		
+		var z = 0;
 		while (price == 0) {
-			qual = getItemQuality()[1];
+			qual = Quality[z].name[1];
 			price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
-			if (stopLoop == 15) break;
-			stopLoop++;
+			if (z == 4) break;
+			z++
 		}
 		itemsCost += +price;
-		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, "RU"), botWeapons[i].img, qual, st, botWeapons[i].rarity)
+		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, "RU"), botWeapons[i].img, qual, st, botWeapons[i].rarity, price)
 	}
-	PlayersInGame.push({"nick" : botName, "avatar" : botImg, "chance" : "30", "itemsCost" : itemsCost});
+	PlayersInGame.push({
+		"nick" : botName,
+		"avatar" : botImg,
+		"chance" : "0",
+		"itemsCost" : itemsCost,
+		"tickets" : {
+			"from" : lastTicket+1,
+			"to" : (itemsCost * 100) + lastTicket +1
+		}
+	});
+	lastTicket += (itemsCost * 100);
 	addItems(botName, botImg, botWeapons.length, itemsCost);
 	}
 }
 
-function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, ifStatTrak, weaponRarity) {
+function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, ifStatTrak, weaponRarity, price=0) {
 	var statTrak = (ifStatTrak == true) ? "StatTrak™ " : "";
 	if(weaponType.indexOf("|") != -1) {weaponType = weaponType.split("|")[1]}
 	if(weaponName.indexOf("|") != -1) {weaponName = weaponName.split("|")[1]}
 	
+	price = (price == 0) ? getPrice(weaponType, weaponName, weaponQuality, ifStatTrak) : price;
+	if (price == 0) {
+		console.error("Нет цены для предмета: "+weaponType+" | "+weaponName+" ("+weaponQuality+")");
+	}
 	var newItems = "<tr class='itemInItemsList "+weaponRarity+"'>"+
 				   "<td><p class='fromName'>"+fromName+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
 				   "("+weaponQuality+")</p></p></td><td><img src='"+prefix+weaponImg+postfix+"' class='weaponImg'></td></tr>";
+				   
 	$(".items tr:first").before(newItems);
 	
-	var price = getPrice(weaponType, weaponName, weaponQuality, ifStatTrak);
 	var item = {
 		"type" : weaponType,
 		"skinName" : weaponName,
@@ -437,7 +462,17 @@ $(".choseItems").on("click", function(){
 			itemsCost += inventory[parseInt(this.id)].price;
 			ids.push(parseInt(this.id));
 		})
-		PlayersInGame.push({"nick" : Player.nickname, "avatar" : Player.avatar, "chance" : "30", "itemsCost" : itemsCost});
+		PlayersInGame.push({
+			"nick" : Player.nickname,
+			"avatar" : Player.avatar, 
+			"chance" : "0", 
+			"itemsCost" : itemsCost,
+			"tickets" : {
+				"from" : lastTicket+1,
+				"to" : (itemsCost * 100) + lastTicket +1
+			}
+		});
+		lastTicket += (itemsCost * 100);
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
 		for (var i = 0; i < ids.length; i++) {
 			var d = ids[ids.length-i-1];
@@ -463,6 +498,7 @@ $(document).on("click", ".weapon", function(){
 })
 
 function fillInventory() {
+	$("#intentory-Player").html("Инвентарь пользователя <b>"+Player.nickname+"</b>");
 	$(".inventory li").remove();
 	for(var i = 0; i < inventory.length; i++) {
 		var weapon = inventory[i];
@@ -480,6 +516,25 @@ function fillInventory() {
 		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html?from=jackpot'>откройте пару кейсов.</a></li>");
 	}
 $(".inventoryList").css("display", "block");
+}
+
+function FillMyInventoryWithRandomWeapon(count){
+	while(count--) {
+		var weapon = getRandomWeapon()
+		weapon.quality = getItemQuality()[1];
+		weapon.statTrak = ifStatTrak();
+		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+		
+		var z = 0;
+		while (weapon.price == 0) {
+			weapon.quality = Quality[z].name[1];
+			weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+			if (z == 4) break;
+			z++
+		}
+		inventory.push(weapon);
+	}
+	saveInventory();
 }
 </script>
 </body>
