@@ -1,0 +1,131 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<script src="../../scripts/jquery.min.js"></script>
+<script src="../../scripts/spoilerText.js"></script>
+<title>Mods Tutorials</title>
+</head>
+<body>
+<style>
+body {
+margin: 4px;
+}
+img {
+	max-width:100%;
+	display: block;
+}
+</style>
+<h1>Tutorials</h1>
+<span class="spoiler_head">How To Install A Mod</span>
+<div class="spoiler_body">
+<p>WARNING: Only one mod can be installed at once, until the MOD API is out. Please restore your client to default state, before installing a second mod.</p>
+
+<p>After you have downloaded the ZIP of the mod you are trying to install, open it up, using WINRAR/7Zip (Windows Explorer can be used, but is known for his problems).<br> Now you need to find the Steam Scrap Mechanic folder. On Windows(32 bit) it is located at:<br><b>C:\Program Files\Steam\Steam\steamapps\[SteamAccount]\Scrap Mechanic</b><br> And in 64 bit:<br><b>C:\Program Files (x86)\Steam\Steam\steamapps\[SteamAccount]\Scrap Mechanic</b><br>For Linux/Mac use google.</p>
+
+<p>In the ZIP you opened up earlier, you should find a "Data" folder. Extract/Drag it into the scrap mechanic folder, and choose "Replace" for all files.</p>
+</div>
+<br>
+
+<span class="spoiler_head">How To Restore Game Defaults(Remove Mods)</span>
+<div class="spoiler_body">
+<p>In steam, choose the library tab and right click the scrap mechanic game.<br> Select “Properties” and choose the Local Files tab.<br>Then click on the “Verify Integrity Of Game Cache” button and it will restore your game to the default state.<br>
+<img src="https://embed.gyazo.com/2406f488507ee25d4b2e1b3c23c02dad.png">
+</p>
+</div>
+<br>
+
+<span class="spoiler_head">How To Make A Simple Mod</span>
+<div class="spoiler_body">
+<p>This will be a tutorial on how to make the most basic mod to the game.</p>
+
+<p>Knowledge needed:</p>
+<ul>
+<li>Knowing how to use notepad.</li>
+<li>A little, almost no understanding of coding.</li>
+</ul>
+<p>So, the part of the game that is currently opened to us (we can edit) is a little strict and is made out of .conf .xml and .json files, those are the files we will edit.</p>
+
+<p>To start open your scrap mechanic folder (See how to install a mod to find this folder) and go into the data folder.</p>
+
+<p>We will start with the most basic thing, the loading text. What is the loading text? It’s the little text under the loading bar that shows when loading or unloading a world (“Did you know that if you put two toilet paper rolls on top of each other it will become a paper towel roll”).</p>
+
+<p>So let’s change it to: Modified by YOUR_NAME_HERE.</p>
+
+<p>The file as I said above is a .json file so you can edit it with a regular notepad. So, open your GUI folder and double click the “LoadingScreenTexts.json” file. Now in notepad you’ll see the something like this:</p>
+
+{<br>
+"LoadingTexts":<br>
+[<br>
+{<br>
+"text": "Did you know that if you put two toilet paper rolls on top of each other it will become a paper towel roll"<br>
+}<br>
+]<br>
+}<br>
+
+<p>This says to scrap: those are the LoadingTexts and then you list under “text”: The text you want to show up so just replace: "text": "Did you know that if you put two toilet paper rolls on top of each other it will become a paper towel roll"</p>
+
+<p>to "text": "Modified By YOUR_NAME_HERE."</p>
+
+<p>Now save the file and open up scrap mechanic and load a world and you’ll see your text under the loading bar!</p>
+
+<p>Now will move to the second part, adding a block.</p>
+
+<p>Let’s go back to the Data folder and this time open up the Objects folder and then open up the database folder.</p>
+
+<p>Here again the files are a .json type so we can simply edit them in notepad so open up “basicmaterials.json” file and lets start editing.</p>
+
+<p>So here are all the basic blocks or “Objects” in the game you can find all of them so let’s add a block copy the wood section:</p>
+
+{<br>
+"dif": "blk_woodplanks01_dif.tga",<br>
+"asg": "blk_woodplanks01_asg.tga",<br>
+"nor": "blk_woodplanks01_nor.tga",<br>
+"color": "9b683a",<br>
+"material_gui": "Materials/Gui/BlockWoodPlanks",<br>
+"density": 250.0,<br>
+"physics_material": "Wood"<br>
+},<br>
+
+<p>And paste it again under the wood so you’ll have two. Now let’s make it a little different so we will change the color under the “color”.</p>
+
+<p>So currently the color is 9b683a and we want to change it so let’s open the website: http://www.colorpicker.com/ and choose a color in the color picker and then copy the code in the textbox above the picker and replace it with the current color I choose red (which is ff0000) so I will have red wood.</p>
+
+<p>So now we have the block itself we need to add a name and a description for it in the inventory so we will go back to the Data folder then into the GUI folder and we will open the “InventoryItemDescriptions.json” file and we will find the wood block again so we will copy the wood again:</p>
+
+"2":<br>
+{<br>
+"title_1": "Wood Block",<br>
+"title_2": "",<br>
+"colour" : { "r": 105, "g": 166, "b": 215 },<br>
+"weight" : "Light Weight",<br>
+"description_1": "",<br>
+"description_2": "",<br>
+"description_3": "",<br>
+"description_4": "",<br>
+"description_5": "",<br>
+"description_6": "",<br>
+"description_7": "",<br>
+"description_8": "",<br>
+"description_9": "",<br>
+"description_10": "",<br>
+"preview_scale": 0.95<br>
+},<br>
+
+<p>And will paste it again beneath it so we will have two.</p>
+
+<p>Now before we change it we need to change the “id” so it won’t overwrite the normal wood so change the “2”: to “3”: now we can edit it, so we can change the “title_1”: to red wood for example and change the description into a new wood added by YOUR_NAME_HERE.</p>
+
+<p>Now that’s basically a simple mod you can explore the files and find many different things that you can add or make.</p>
+</div>
+<br>
+
+<span class="spoiler_head">How To Make An Advanced Mod</span>
+<div class="spoiler_body">
+<p>Until the MOD API is released, we are currently using a “cheaty” way to create mods. </p>
+<p>That means, that we can’t really add functionality to blocks. Due to that, this section will be written only after the MOD API will be out or we will find a way to make the game less strict and to allow us to make better mods.</p>
+</div>
+<br>
+
+</body>
+</html>
