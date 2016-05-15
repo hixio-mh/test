@@ -322,5 +322,11 @@
 			"RUS" : "Динозавр"
 		},
 		"youtube" : "https://www.youtube.com/embed/HOug0te6G-k"
+	}, {
+		"name" : {
+			"ENG" : "Drum Machine",
+			"RUS" : "Бит"
+		},
+		"youtube" : "https://www.youtube.com/embed/-f4AkjHWS04"
 	}
 ]
