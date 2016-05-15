@@ -53,7 +53,8 @@ ul {
 <script>
 var i = mechanisms.length;
 while (i--) {
-	$("#mechanisms").append("<li><span class='spoiler_head'>"+mechanisms[i].name.ENG+"</span><div class='spoiler_body'>"+mechanisms[i].youtube+"</div></li>");
+	if (mechanisms[i].name.ENG != "")
+		$("#mechanisms").append("<li><span class='spoiler_head'>"+mechanisms[i].name.ENG+"</span><div class='spoiler_body'>"+mechanisms[i].youtube+"</div></li>");
 }
 </script>
 </body>
