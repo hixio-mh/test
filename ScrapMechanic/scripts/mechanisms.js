@@ -334,5 +334,11 @@
 			"RUS" : "Дом на горе"
 		},
 		"youtube" : "https://www.youtube.com/embed/a4E14poxAvc"
+	}, {
+		"name" : {
+			"ENG" : "Levitation bug (RUS)",
+			"RUS" : "Баг левитации"
+		},
+		"youtube" : "https://www.youtube.com/embed/_GI29OWDPR0"
 	}
 ]
