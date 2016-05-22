@@ -328,5 +328,11 @@
 			"RUS" : "Бит"
 		},
 		"youtube" : "https://www.youtube.com/embed/-f4AkjHWS04"
+	}, {
+		"name" : {
+			"ENG" : "Beautiful house (RUS)",
+			"RUS" : "Дом на горе"
+		},
+		"youtube" : "https://www.youtube.com/embed/a4E14poxAvc"
 	}
 ]
