@@ -340,5 +340,11 @@
 			"RUS" : "Баг левитации"
 		},
 		"youtube" : "https://www.youtube.com/embed/_GI29OWDPR0"
+	}, {
+		"name" : {
+			"ENG" : "V-22 Osprey",
+			"RUS" : "V-22 Osprey"
+		},
+		"youtube" : "https://www.youtube.com/embed/cMqhdx3Wzqc"
 	}
 ]
