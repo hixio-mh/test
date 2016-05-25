@@ -346,5 +346,11 @@
 			"RUS" : "V-22 Osprey"
 		},
 		"youtube" : "https://www.youtube.com/embed/cMqhdx3Wzqc"
+	}, {
+		"name" : {
+			"ENG" : "Transforming Skybase",
+			"RUS" : "Трансформирующаяся воздушная база"
+		},
+		"youtube" : "https://www.youtube.com/embed/AoTNMK_bHlE"
 	}
 ]
