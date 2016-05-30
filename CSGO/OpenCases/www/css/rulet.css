@@ -1,0 +1,154 @@
+﻿body {
+    margin: 0;
+    padding-top: 5px;
+	overflow-x:hidden;
+	padding-bottom: 45px;
+}
+#circle {
+    width: 250px;
+    max-width: 100%;
+	margin: 0 auto;
+}
+#status {
+    text-align: center;
+    margin: 10px 0;
+    color: #fff;
+}
+#addItems {
+    margin: 10px auto;
+    display: block;
+    background: linear-gradient(to bottom, #00953b, #006910);
+    line-height: 35px;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #02a543;
+    font-family: monospace;
+}
+
+.items {
+    border-collapse: collapse;
+    width: 500px;
+    max-width: 100%;
+	margin: 0 auto;
+}
+tr {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
+    border-bottom: 2px solid;
+}
+td:nth-child(2) {
+	width: 90px;
+    padding-right: 10px;
+}
+td {
+    padding-left: 6px;
+	position: relative;
+}
+td p {
+    text-align: center;
+    /*line-height: 7px;*/
+	margin: 5px 0;
+}
+.fromName, .quality {
+    font-size: 14px;
+}
+.weaponImg {
+    width: 90px;
+}
+#players img {
+    width: 55px;
+    margin: 2px 2px;
+}
+#players {
+    text-align: center;
+}
+.playerAva {
+    display: inline-block;
+}
+.playerAva p {
+    margin: 46px -57px 0;
+    display: inline-block;
+    position: absolute;
+    background: rgba(45, 150, 174, 0.8);
+    width: 55px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    font-family: sans-serif;
+}
+.casesCarusel img {
+    height: 138px;
+    margin-left: 2px;
+    padding-bottom: 10px;
+}
+.win {
+    background: #003440;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
+    padding: 10px 0;
+}
+.win b {
+    font-size: 15pt;
+    coloR: #fff;
+}
+.win img {
+    width: 100px;
+}
+.inventoryList {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 50;
+    color: #fff;
+    overflow-y: auto;
+    height: 100%;
+}
+.inventory a:visited, .inventory a {
+    coloR: #fffec4;
+	font-weight: bold;
+}
+.inventory {
+    padding: 0 10px;
+	margin-bottom: 45px;
+}
+/*.inventoryItemSelected {
+	background: url("../images/Cases/itembgSelected.png") #111;
+}*/
+
+.progressbar-text {
+	text-align: center;
+}
+.progressbar-text s {
+    font-style: normal;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #00c03f;
+}
+td i {
+    font-style: normal;
+    font-size: 10pt;
+}
+#inventorySum {
+    position: fixed;
+    top: 3px;
+    left: 3px;
+    background: #3C8698;
+    padding: 4px;
+    border-radius: 2px;
+}
+.choseItems {
+    background: linear-gradient(to bottom, #00953b, #006910);
+    display: block;
+    line-height: 35px;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #02a543;
+    font-family: monospace;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

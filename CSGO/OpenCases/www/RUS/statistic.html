@@ -1,0 +1,40 @@
+﻿<html>
+<head>
+<title>Статистика</title>
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/main.js"></script>
+</head>
+<body>
+<ul>
+<li><span id="caseOpened-text">Количество открытых кейсов: </span><span id="caseOpened"></span></li>
+<li><span id="stattrak-text">StatTrak: </span><span id="stattrak"></span></li>
+<li><span id="blue-text">Синие: </span><span id="blue"></span></li>
+<li><span id="knife-text">Ножи: </span><span id="knife"></span></li>
+<li><span id="contract-text">Контракты обмена: </span><span id="contract"></span></li>
+<ul>
+
+<script>
+$(function(){
+	var i = cases.length;
+	var opened = 0;
+	while (i--) {
+		if (typeof $.cookie('case'+i) != "undefined")
+			opened += parseInt($.cookie('case'+i))
+	}
+	$("#caseOpened").text(opened);
+	
+	$("#blue").text($.cookie('weapon-milspec'));
+	
+	var statTrak = 0;
+	for (var i = 0; i < inventory.length; i++) {
+		if (inventory[i].statTrak)
+			statTrak++
+	}
+	$("#stattrak").text(statTrak);
+})
+</script>
+</body>
+</html>

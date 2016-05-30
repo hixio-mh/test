@@ -22,12 +22,7 @@
 	caseScrollAudio.volume = 0.2;
 	
 	getInventory();
-	
-for(var i = 0; i < cases.length ; i++) {
-	var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
-	var curCase = "<div class='case' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name "+specialClass+"'>"+cases[i].name+"</span>";
-	$(".cases").append(curCase);
-}
+
 $(document).on("click", ".case", function(){
 	caseId = this.id;
 	if (getURLParameter('from') != null) {
@@ -62,7 +57,7 @@ function fillCarusel(caseId) {
 		}
 	}
 	arr.forEach(function(item, index) {
-		var img = prefix + item.img + postfix;
+		var img = getImgUrl(item.img);
 		var type = item.type;
 		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 		
@@ -97,7 +92,7 @@ $(".openCase").on("click", function() {
 		start: function(){
 			caseOpenAudio.play();
 			var type = win.type;
-			var statTrak = ifStatTrak();
+			var statTrak = ifStatTrak(type);
 			var quality = getItemQuality()[1];
 			caseOpening = true;
 			
@@ -114,17 +109,19 @@ $(".openCase").on("click", function() {
 			}
 			
 			$(".winPrice").html(price+"$");
+			
+			if (price == 0) getMarketPrice(type, getSkinName(name, "EN"), getQualityName(quality), statTrak, ".winPrice");
+			
 			if (statTrak) {type = "StatTrak™ " + type}
 			$(".winName").html(type + " | " + getSkinName(name, "RU"));
 			$(".winQuality").html(quality);
-			$(".winImg").attr("src", prefix + win.img + postfixBig);
+			$(".winImg").attr("src", getImgUrl(win.img));
 			$(".openCase").attr("disabled", "disabled");
 			win.statTrak = statTrak;
 			win.quality = quality;
 			win.price = price;
 			//getInventory();
-			inventory.push(win);
-			saveInventory();
+			
 		},
 		progress: function(e, t) {
 			progress_animate = Math.round(100 * t),
@@ -134,6 +131,10 @@ $(".openCase").on("click", function() {
             d++)
 		},
 		complete: function(){
+			var price = parseFloat($(".winPrice").html());
+			win.price = price;
+			inventory.push(win);
+			saveInventory();
 			caseCloseAudio.play();
 			$(".openCase").text("Попробовать еще раз");
 			$(".win").slideDown("slow");
@@ -141,6 +142,25 @@ $(".openCase").on("click", function() {
 			caseOpening = false;
 			$(".openCase").attr("disabled", null);
 			$(".weapons").scrollTop(185);
+			
+			//Statistic
+			var caseId = $("#caseID").text();
+			var openCount = $.cookie('case'+caseId);
+			if (typeof openCount == "undefined") 
+				openCount = 0;
+			else
+				openCount = parseInt(openCount);
+			openCount++
+			$.cookie('case'+caseId, openCount, {path: '/'});
+			
+			var weaponType = $.cookie('weapon-'+win.rarity);
+			if (typeof weaponType == "undefined")
+				weaponType = 0;
+			else
+				weaponType = parseInt(weaponType);
+			weaponType++;
+			$.cookie('weapon-'+win.rarity, weaponType, {path: '/'});
+			
 		},
 		always: function() {
 			//$(".openCase").attr("disabled", null);
@@ -182,6 +202,9 @@ $(document).on("click", "#navigate-cases", function(){
 });
 $(document).on("click", "#navigate-jackpot", function(){
 	window.location = "rulet.html";
+});
+$(document).on("click", "#navigate-main", function(){
+	window.location = "main.html";
 });
 
 function knifeTypes(type) {
@@ -254,6 +277,17 @@ function getInventory() {
 		}
 		inventory.push(item);
 	}
+}
+
+function getImgUrl(img) {
+	if (img.indexOf("images/") != -1)
+		return img;
+	else if (img.indexOf(".png") != -1) 
+		return "../images/Weapons/"+img;
+	else if (img.indexOf("steamcommunity") == -1)
+		return prefix + img + postfix;
+	else 
+		return img;
 }
 
 function parseURLParams(url) {

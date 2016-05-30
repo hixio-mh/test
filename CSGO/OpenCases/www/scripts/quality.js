@@ -52,6 +52,10 @@ function getItemQuality() {
 	}
 }
 
-function ifStatTrak() {
+function ifStatTrak(type) {
+	if (type != "") {
+		if (type.indexOf("Сувенир") != -1) return false;
+		if (type.indexOf("Souvenir") != -1) return false;
+	}
 	return (random = Math.random() > 0.8) ? true : false;
 }

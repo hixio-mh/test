@@ -7,8 +7,11 @@
 <script src="../scripts/prices.js"></script>
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head>
 <body>
 
@@ -36,20 +39,23 @@
 
 <button class="openCase">Открыть кейс</button>
 
-<div id="youCanWin">Вы можете выиграть один из данных предметов </div>
+<div id="youCanWin">Вы можете выиграть один из данных предметов из коллекции <span></span></div>
 <ul class="weaponsList">
 </ul>
 </div>
+<div id="caseID" style="display:none;"></div>
 <script src="../scripts/main.js"></script>
 <script>
 $(function(){
 	var param = parseURLParams(window.location.href);
 	if(typeof param != "undefined") {
 		caseId = param.caseId[0];
+		$("#caseID").text(caseId);
+		$("#youCanWin span").text(cases[caseId].name)
 		
 		for(var i = 0; i < cases[caseId].weapons.length; i++) {
 			var weapon = cases[caseId].weapons[i];
-			var img = prefix + weapon.img + postfix;
+			var img = getImgUrl(weapon.img);
 		
 			var type = weapon.type;
 			if(type.indexOf("|") != -1) {type = type.split("|")[1]}

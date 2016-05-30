@@ -3,12 +3,38 @@
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
+<script src="../scripts/main.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head><body style="padding-bottom: 45px;">
-<div class="cases"></div>
-<div class="navigat">
-<div class="navigate" id="navigate-cases">Кейсы</div><div class="navigate" id="navigate-jackpot">Рулетка</div>
+<div class="cases">
+<div id="Default"><h1>Cases</h1></div>
+<div id="Souvenir"><h1>Souvenir</h1></div>
+<div id="eSports"><h1>eSports</h1></div>
+<div id="Special"><h1>Special</h1></div>
 </div>
-<script src="../scripts/main.js"></script>
+<div class="navigat">
+<div class="navigate" id="navigate-main"><- Главная страница</div><div class="navigate" id="navigate-jackpot">Рулетка</div>
+</div>
+<script>
+for(var i = 0; i < cases.length ; i++) {
+	var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
+	var curCase = "<div class='case' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name "+specialClass+"'>"+cases[i].name+"</span>";
+	switch (cases[i].type) {
+		case "Default":
+			$("#Default").append(curCase);
+			break;
+		case "Souvenir":
+			$("#Souvenir").append(curCase);
+			break;
+		case "eSports":
+			$("#eSports").append(curCase);
+			break;
+		case "Special":
+			$("#Special").append(curCase);
+			break;
+	}
+}
+</script>
 </body></html>

@@ -1,6 +1,6 @@
-﻿function getPrice(type, name, quality, statTrak=0) {
+﻿function getPrice(type, name, quality, statTrak) {
 	quality = getQualityName(quality).toLowerCase();
-	name = getSkinName(name).toLowerCase();
+	name = getSkinName(name, "EN").toLowerCase();
 	if (type.substring(0,1) == "★") type = knifeTypes(type.substring(2, type.length));
 	if (type.indexOf("Сувенир") != -1) type = type.replace("Сувенир", "Souvenir");
 	var item = Prices.filter(function(obj) {
@@ -36,6 +36,30 @@
 			return item[0].avgPrice;
 		}
 	}
+}
+
+function getMarketPrice(type, name, quality, statTrak, selector) {
+	if (statTrak != 0) type = "StatTrak™ " + type;
+	var n = type+" | "+name+" ("+quality+")";
+	n = encodeURI(n);
+	
+	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
+		q: "select * from json where url=\"http://steamcommunity.com/market/priceoverview/?currency=3&appid=730&market_hash_name="+n+"\"",
+		format: "json"
+	},
+	function(data){
+			if (data.query.results.json.success == "true") {
+				var pr = data.query.results.json.lowest_price;
+				pr = pr.replace(/,/ig, ".");
+				pr = pr.substr(0, pr.length-1);
+				pr = parseFloat(pr);
+				console.log(pr);
+				if (typeof selector != "undefined")
+					$(selector).text(pr+"$");
+				return pr;
+			}
+		}
+	);
 }
 
 var Prices = [
@@ -1700,7 +1724,7 @@ var Prices = [
 	"name" : "Dragon Lore",
 	"quality" : "Factory New",
 	"marketPrice" : 0,
-	"avgPrice" : 13950.00
+	"avgPrice" : 15500.00
 }, {
 	"type" : "Souvenir AWP",
 	"name" : "Dragon Lore",
@@ -33981,5 +34005,129 @@ var Prices = [
 	"quality" : "Battle-Scarred",
 	"marketPrice" : 5.82,
 	"avgPrice" : 5.65
-}
+}, { //CHROMA 3
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Factory New",
+	"marketPrice" : 1642.83,
+	"avgPrice" : 1494.80
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Minimal Wear",
+	"marketPrice" : 1045.20,
+	"avgPrice" : 1126.70
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Field-Tested",
+	"marketPrice" : 709.03,
+	"avgPrice" : 706.32
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Well-Worn",
+	"marketPrice" : 670.34,
+	"avgPrice" : 649.19
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Battle-Scarred",
+	"marketPrice" : 709.03,
+	"avgPrice" : 533.36
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Factory New",
+	"statTrak" : 1,
+	"marketPrice" : 6042.40,
+	"avgPrice" : 5833.75
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Minimal Wear",
+	"statTrak" : 1,
+	"marketPrice" : 3667.86,
+	"avgPrice" : 3662.52
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"quality" : "Field-Tested",
+	"statTrak" : 1,
+	"marketPrice" : 2013.69,
+	"avgPrice" : 1818.50
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Judgement of Anubis",
+	"statTrak" : 1,
+	"quality" : "Well-Worn",
+	"marketPrice" : 1915.64,
+	"avgPrice" : 1747.69
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Factory New",
+	"marketPrice" : 32.68,
+	"avgPrice" : 29.91
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Minimal Wear",
+	"marketPrice" : 10.01,
+	"avgPrice" : 9.95
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Field-Tested",
+	"marketPrice" : 6.67,
+	"avgPrice" : 5.89
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Well-Worn",
+	"marketPrice" : 6.67,
+	"avgPrice" : 5.80
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Battle-Scarred",
+	"marketPrice" : 6.67,
+	"avgPrice" : 5.80
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Factory New",
+	"statTrak" : 1,
+	"marketPrice" : 171.42,
+	"avgPrice" : 165.16
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Minimal Wear",
+	"statTrak" : 1,
+	"marketPrice" : 49.36,
+	"avgPrice" : 50.50
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Field-Tested",
+	"statTrak" : 1,
+	"marketPrice" : 22.68,
+	"avgPrice" : 24.80
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Well-Worn",
+	"statTrak" : 1,
+	"marketPrice" : 20.01,
+	"avgPrice" : 20.85
+}, {
+	"type" : "PP-Bizon",
+	"name" : "Photic Zone",
+	"quality" : "Battle-Scarred",
+	"statTrak" : 1,
+	"marketPrice" : 20.01,
+	"avgPrice" : 20.10
+},
+
 ];

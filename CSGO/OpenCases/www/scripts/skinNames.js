@@ -1,10 +1,14 @@
-﻿function getSkinName(skin, loc="EN") {
+﻿function getSkinName(skin, loc) {
+	if (typeof loc == "undefined") loc = "EN";
 	var sk = skinNames.filter(function(obj){
 		if (obj.RU.toLowerCase() == skin.toLowerCase()) return obj.EN;
 		if (obj.EN.toLowerCase() == skin.toLowerCase()) return obj.EN;
 	})
 	if (sk.length != 0) {
-		return sk[0][loc];
+		if (sk[0][loc] != "") 
+			return sk[0][loc];
+		else
+			return sk[0]["EN"];
 	} else {
 		console.error("Wrong skin name! '"+skin+"'");
 		return "Wrong name";
@@ -1256,4 +1260,54 @@ var skinNames = [{
 }, {
 	"RU" : "Проводник",
 	"EN" : "Lead Conduit"
-}]
+}, { //CHROMA 3
+	"RU" : "",
+	"EN" : "Atlas",
+}, {
+	"RU" : "",
+	"EN" : "Fubar",
+}, {
+	"RU" : "",
+	"EN" : "Oceanic",
+}, {
+	"RU" : "",
+	"EN" : "Bioleak",
+}, {
+	"RU" : "",
+	"EN" : "Spectre",
+}, {
+	"RU" : "",
+	"EN" : "Orange Crash",
+}, {
+	"RU" : "",
+	"EN" : "Ventilators",
+}, {
+	"RU" : "",
+	"EN" : "Black Tie",
+}, {
+	"RU" : "",
+	"EN" : "Re-Entry",
+}, {
+	"RU" : "",
+	"EN" : "Ghost Crusader",
+}, {
+	"RU" : "",
+	"EN" : "Firefight",
+}, {
+	"RU" : "",
+	"EN" : "Red Astor",
+}, {
+	"RU" : "",
+	"EN" : "Primal Saber",
+}, {
+	"RU" : "",
+	"EN" : "Fleet Flock",
+}, {
+	"RU" : "",
+	"EN" : "Chantico's Fire",
+}, {
+	"RU" : "",
+	"EN" : "Judgement of Anubis",
+}
+
+]

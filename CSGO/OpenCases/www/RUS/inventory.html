@@ -1,0 +1,364 @@
+﻿<html>
+<head>
+<title>Инвентарь</title>
+
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/settings.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/inventory.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+</head>
+<body>
+<div class="sort">
+	<span class="sort-money" id="sort-type"></span>
+	<div class="dropdown">
+		<select class="dropdown-select" id="sort-special"></select>
+	</div>
+	<div class="dropdown">
+		<select class="dropdown-select" id="sort-weapon"></select>
+	</div>
+	<div class="dropdown">
+		<select class="dropdown-select" id="sort-quality"></select>
+	</div>
+</div>
+<div class="inventoryList">
+<span id="intentory-Player"></span>
+<div class="closeInventory"></div>
+<ul class="inventory"></ul>
+</div>
+
+<div id="weaponInfoContainer" style="display: none">
+	<div class="glassBlur" style='width: 100%; height: 100%'></div>
+	<div class="fullWeaponInfo" >
+		<span id="weaponName"></span>
+		<img src="../images/stattrak.png" id="statTrakImg"> 
+		<img src="" id="weaponImg">
+		<table id="weaponInfoTable">
+		<tr><td>Цена</td><td id="weaponPrice"></td></tr>
+		<tr><td>Качество</td><td id="weaponQuality"></td></tr>
+		</table>
+		<button class='button_startContract' style='margin-bottom: 7px;' id='startContract'>Контракт обмена</button>
+		<span id='weaponRarity' style='display:none;'></span>
+	</div>
+</div>
+
+<div class='contractButtons' style='display: none'>
+<button class='button_resetContract'>Закрыть контракт</button>
+<button class='button_contract'>Обмен...</button>
+</div>
+<div class="statistic">
+<span id="stat-sum-text" class="stat">Сумма: <span id="stat-sum">0$</span></span>
+<span id="stat-count-text" class="stat">Предметов: <span id="stat-count"></span></span>
+</div>
+
+<script>
+fillInventory(inventory);
+var sortSpecial = {
+"RU": ["Все типы", "StatTrak", "Не StatTrak", "Сувениры", "Не сувениры", "Обычное"],
+"EN": ["All types", "StatTrak", "Not StatTrak", "Souvenir"]
+}
+var sortWeapon = {
+"RU": ["Все оружия", "Пистолеты", "Винтовки", "Снайперские винтовки", "SMG", "Дробовики", "Пулеметы", "Ножи"],
+"EN": ["All weapons", "Pistols", "Rifles", "Sniper rifles", "SMGs", "Shotguns", "Machineguns", "Knives"]
+}
+var sortQuality = {
+"RU": ["Все качества", /*"Белое",*/ "Светло-синее", "Синее", "Фиолетовое", "Розовое", "Красное", "Золотое"],
+"EN": ["All qualities", "White", "Blue", "Purple", "Pink", "Red", "Gold"]
+}
+var qualitySort = [
+		" ",
+		"industrial",
+		"milspec",
+		"restricted",
+		"classified",
+		"covert",
+		"rare"
+	];
+	
+$('#sort-special').prop('disabled', false);
+$('#sort-quality').prop('disabled', false);
+	
+var contractMode = false;
+
+for (var i = 0; i < sortSpecial[Settings.language].length; i++) {
+	$("#sort-special").append("<option value='"+i+"'>"+sortSpecial[Settings.language][i]+"</option>");
+}
+for (var i = 0; i < sortWeapon[Settings.language].length; i++) {
+	$("#sort-weapon").append("<option value='"+i+"'>"+sortWeapon[Settings.language][i]+"</option>");
+}
+for (var i = 0; i < sortQuality[Settings.language].length; i++) {
+	$("#sort-quality").append("<option value='"+i+"'>"+sortQuality[Settings.language][i]+"</option>");
+}
+
+$(document).on("click", ".weapon", function() {
+	if (contractMode) {
+		if (($(this).data('type').indexOf('Сувенир') != -1) && ($(this).data('type').indexOf('Souvenir') != -1))
+			return false;
+		if ($('.inventoryItemSelected').size() < 10 || $(this).hasClass('inventoryItemSelected'))
+			$(this).toggleClass("inventoryItemSelected");
+		if ($('.inventoryItemSelected').size() == 10)
+			$('.button_contract').removeAttr('disabled');
+		else
+			$('.button_contract').prop('disabled', true);
+		return false;
+	}
+	var name = $(this).data("name");
+	var type = $(this).data("type");
+	var img = $(this).data("img");
+	var rarity = $(this).data("rarity");
+	var price = $(this).data("price");
+	var statTrak = $(this).data("stattrak");
+	var quality = $(this).data("quality");
+	
+	$("#weaponInfoContainer").css("display", "block");
+	$("#weaponImg").attr("src", getImgUrl(img));
+	$("#weaponName").html(type+" "+getSkinName(name, Settings.language));
+	$("#weaponPrice").html(price+"$");
+	$("#weaponQuality").html(quality);
+	$('#weaponRarity').text(rarity);
+	
+	$('#startContract').css('display', 'none');
+	if ((rarity != 'rare') && (rarity != 'covert'))
+		if ((type.indexOf('Сувенир') == -1) && (type.indexOf('Souvenir') == -1))
+			$('#startContract').css('display', 'inline-block');
+	
+	$("#statTrakImg").css("display", (parseInt(statTrak) ? "block" : "none"))
+})
+
+$(".glassBlur").on("click", function(){
+	$("#weaponInfoContainer").css("display", "none");
+})
+
+$(document).scroll(function() {
+    $(".sort").css({background: $(this).scrollTop()>10 ? "RGBA(0, 0, 0, 0.73)":"none"});
+});
+
+$('#startContract').on('click', function() {
+	var rarity = $('#weaponRarity').text();
+	var statTrak = ($('#statTrakImg').css('display') == 'block') ? true : false;
+
+	for (var i = 1; i < qualitySort.length; i++) {
+		if (rarity == qualitySort[i])
+			$('#sort-quality :nth-child('+(i+1)+')').prop('selected', 'true').change();
+	}
+	var spec = (statTrak ? 2 : 6);
+	$('#sort-special :nth-child('+spec+')').prop('selected', 'true').change();
+	
+	$("#weaponInfoContainer").css("display", "none");
+	
+	var price = parseFloat($('#weaponPrice').text());
+	$('.inventory li').each(function() {
+		if (($(this).data('price') == price) && ($(this).data('type')+" "+$(this).data('name') == $('#weaponName').text())) {
+			$(this).addClass("inventoryItemSelected");
+			return false;
+		}
+	})
+	
+	$('.contractButtons').css('display', 'block');
+	$('.button_contract').prop('disabled', true);
+	$('.inventoryList').css('padding', '25px 0 65px 0');
+	$('#sort-special').prop('disabled', true);
+	$('#sort-quality').prop('disabled', true);
+	contractMode = true;
+})
+
+$('.button_contract').on('click', function() {
+	var weapon = $('.inventoryItemSelected')[Math.rand(0, 9)];
+	var type = weapon.getAttribute('data-type');
+	var name = getSkinName(weapon.getAttribute('data-name'), "EN");
+	
+	var collection;
+	for (var i = 0; i < cases.length; i++) 
+		for (var z = 0; z < cases[i].weapons.length; z++)
+			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name))
+				collection = cases[i].weapons;
+	
+	if (typeof collection != "undefined") {
+		var nextQuality = qualitySort[qualitySort.indexOf(weapon.getAttribute('data-rarity'))+1];
+		var nextQualityWeapons = [];
+		for (var i = 0; i < collection.length; i++)
+			if (collection[i].rarity == nextQuality)
+				nextQualityWeapons.push(collection[i]);
+		var newWeapon = nextQualityWeapons[Math.rand(0, nextQualityWeapons.length-1)];
+	}
+	
+	newWeapon.quality = getItemQuality()[1];
+	newWeapon.statTrak = $('#sort-special :selected').val() == "2" ? 0 : 1;
+	newWeapon.skinName = getSkinName(newWeapon.skinName, Settings.language)
+	newWeapon.price = getPrice(newWeapon.type, newWeapon.skinName, newWeapon.quality, newWeapon.statTrak);
+	if (newWeapon.price == 0) getMarketPrice(newWeapon.type, newWeapon.skinName, newWeapon.quality, newWeapon.statTrak, "#weaponPrice");
+	$("#weaponInfoContainer").css("display", "block");
+	$("#weaponImg").attr("src", getImgUrl(newWeapon.img));
+	$("#weaponName").html(newWeapon.type+" "+newWeapon.skinName);
+	$("#weaponPrice").html(newWeapon.price+"$");
+	$("#weaponQuality").html(newWeapon.quality);
+	$('#weaponRarity').text(newWeapon.rarity);
+	$('#startContract').css('display', 'none');
+	
+	$(".inventoryItemSelected").each(function() {
+		var tmp = {};
+		tmp.type = $(this).data('type');
+		tmp.skinName = $(this).data('name');
+		tmp.price = $(this).data('price');
+		tmp.quality = $(this).data('quality');
+		tmp.statTrak = $(this).data('stattrak');
+		removeWeaponFromInventory(tmp);
+	})
+	
+	inventory.push(newWeapon);
+	saveInventory();
+	$('.button_resetContract').click();
+})
+
+$('.button_resetContract').on('click', function() {
+	$('.contractButtons').css('display', 'none');
+	$('#sort-special :nth-child(1)').prop('selected', 'true').change();
+	$('#sort-quality :nth-child(1)').prop('selected', 'true').change();
+	$('#sort-weapon :nth-child(1)').prop('selected', 'true').change();
+	$('.inventoryList').css('padding', '25px 0 15px 0');
+	
+	$('#sort-special').removeAttr('disabled');
+	$('#sort-quality').removeAttr('disabled');
+	
+	contractMode = false;
+})
+
+function removeWeaponFromInventory(a) {
+	if (typeof a == "number")
+		_removeWeaponFromInventoryID(a);
+	if (typeof a == "string")
+		_removeWeaponFromInventoryID(parseInt(a));
+	if (typeof a == "object")
+		_removeWeaponFromInventoryObject(a);
+}
+
+function _removeWeaponFromInventoryObject(weapon) {
+	for (var i = 0; i < inventory.length; i++) {
+		if ((inventory[i].type == weapon.type) && (getSkinName(inventory[i].skinName, "EN") == getSkinName(weapon.skinName, "EN")) && (getQualityName(inventory[i].quality)[0] == getQualityName(weapon.quality)[0]) && (inventory[i].price == weapon.price) && (inventory[i].statTrak == weapon.statTrak)) {
+			console.log("Removing weapon: "+inventory[i].type+" "+inventory[i].skinName);
+			inventory.splice(i, 1);
+		}
+	}
+}
+
+function _removeWeaponFromInventoryID(id) {
+	console.log("Removing weapon: "+inventory[id].type+" "+inventory[id].skinName);
+	inventory.splice(id, 1);
+}
+
+$("select").change(function(){
+	var special = $("#sort-special :selected").val();
+	var weapon = $("#sort-weapon :selected").val();
+	var quality = $("#sort-quality :selected").val();
+	
+	var weaponsSort = [
+		" ",
+		".*USP|P250|Tec|Five|Revolver|Desert|Glock|CZ75|Dual|P2000.*",
+		".*Galil|AK|SG 5|FAMAS|M4A4|M4A1|AUG.*",
+		".*AWP|SSG|G3SG1|SCAR.*",
+		".*MAC|MP7|UMP|PP|P90|MP9.*",
+		".*Nova|XM1|Sawed|MAG.*",
+		".*M249|Negev.*",
+		".*★|(н|Н)ож.*"
+	]
+	
+	var sortedInventory = {};
+	
+	switch (parseInt(special)) {
+	case 0:
+		sortedInventory = inventory;
+		break
+	case 1:
+		sortedInventory = sortInventory(inventory, "statTrak", 1)
+		break
+	case 2:
+		sortedInventory = sortInventory(inventory, "statTrak", 0)
+		break
+	case 3:
+		sortedInventory = sortInventory(inventory, "type", /Сувенир.*/)
+		break
+	case 4:
+		sortedInventory = sortInventory(inventory, "type", /^(?!Сувенир).*/)
+		break
+	case 5:
+		sortedInventory = sortInventory(inventory, "type", /^(?!Сувенир).*/)
+		sortedInventory = sortInventory(sortedInventory, "statTrak", 0)
+		break
+	default:
+		sortedInventory = inventory
+		break
+	}
+	
+	if (parseInt(weapon) != 0) {
+		sortedInventory = sortInventory(sortedInventory, "type", RegExp(weaponsSort[parseInt(weapon)]))
+	}
+	
+	if (parseInt(quality) != 0) {
+		sortedInventory = sortInventory(sortedInventory, "rarity", qualitySort[parseInt(quality)])
+	}
+	fillInventory(sortedInventory);
+	//alert("Special: "+special+"; Weapon: "+weapon+"; Quality: "+quality);
+})
+
+function sortInventory(currInventory, attr, value) {
+	var sorted = [];
+	for (var i = 0; i < currInventory.length; i++) {
+		if (value.constructor != RegExp) {
+			if (currInventory[i][attr] == value)
+				sorted.push(currInventory[i]);
+		} else {
+			if (value.test(currInventory[i][attr])) {
+				sorted.push(currInventory[i]);
+			}
+		}
+	}
+	return sorted;
+}
+
+function fillInventory(currInventory) {
+	$(".inventory li").remove();
+	var sumPr = 0.0;
+	
+	currInventory = currInventory.sort(function(a,b){
+		return b.price-a.price;
+	});
+
+	for(var i = 0; i < currInventory.length; i++) {
+		var weapon = currInventory[i];
+		var img = getImgUrl(weapon.img);
+		
+		sumPr += weapon.price;
+
+		var type = weapon.type;
+		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+
+		var name = weapon.skinName;
+		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+		var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div><i>"+weapon.price+"$</i>";
+		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +"' data-type='"+type+"' data-name='"+name+"' data-img='"+weapon.img+"' data-rarity='"+weapon.rarity+"' data-price='"+weapon.price+"' data-stattrak='"+weapon.statTrak+"' data-quality='"+weapon.quality+"' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
+	}
+	if (inventory.length == 0) {
+		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html?from=inventory'>откройте пару кейсов.</a></li>");
+	}
+
+	$("#stat-sum").html(sumPr.toFixed(2)+"$");
+	$("#stat-count").html(currInventory.length);
+
+//$(".inventoryList").css("display", "block");
+}
+
+$(".closeInventory").on("click", function(){
+	window.location = "main.html";
+})
+</script>
+</body>
+</html>
