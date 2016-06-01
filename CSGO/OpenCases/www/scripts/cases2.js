@@ -2806,7 +2806,7 @@ var cases = [{
 		]
 	}, {
 		"name" : "Dust II",
-		"img" : "Dust2.png",
+		"img" : "dust2.png",
 		"type" : "Souvenir",
 		"weapons" : [{
 				'type' : 'Сувенир G3SG1',
