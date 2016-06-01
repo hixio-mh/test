@@ -1078,11 +1078,11 @@ var skinNames = [{
 	"RU" : "Ночная буря",
 	"EN" : "Midnight Storm"
 }, {
-	"RU" : "Буря на закате",
-	"EN" : "Sunset Storm"
+	"RU" : "Буря на закате 壱",
+	"EN" : "Sunset Storm 壱"
 }, {
-	"RU" : "Буря на закате",
-	"EN" : "Sunset Storm"
+	"RU" : "Буря на закате 弐",
+	"EN" : "Sunset Storm 弐"
 }, {
 	"RU" : "Рассвет",
 	"EN" : "Daybreak"

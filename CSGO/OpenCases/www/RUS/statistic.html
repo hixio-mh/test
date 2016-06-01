@@ -14,6 +14,7 @@
 <li><span id="blue-text">Синие: </span><span id="blue"></span></li>
 <li><span id="knife-text">Ножи: </span><span id="knife"></span></li>
 <li><span id="contract-text">Контракты обмена: </span><span id="contract"></span></li>
+<li><span id="rulet-text">Рулетка выиграно/проиграно: </span><span id="rulet"></span></li>
 <ul>
 
 <script>
@@ -26,15 +27,18 @@ $(function(){
 	}
 	$("#caseOpened").text(opened);
 	
-	$("#blue").text($.cookie('weapon-milspec'));
-	
-	var statTrak = 0;
-	for (var i = 0; i < inventory.length; i++) {
-		if (inventory[i].statTrak)
-			statTrak++
-	}
-	$("#stattrak").text(statTrak);
+	stat("#blue", $.cookie('weapon-milspec'));
+	stat("#contract", $.cookie('contracts'));
+	stat('#rulet', $.cookie('rulet-wins')+"/"+$.cookie('rulet-loose'));
+	stat('#knife', $.cookie('knifes'));
+	stat("#stattrak", $.cookie('statTrak'));
 })
+
+function stat(selector, text) {
+	if (typeof text == "undefined") text = "undefined";
+	text = text.replace(/undefined/gi, '0');
+	$(selector).text(text);
+}
 </script>
 </body>
 </html>

@@ -166,6 +166,11 @@ function startGame() {
 				console.info("Items in game:");
 				console.info(ItemsInGame);
 				saveInventory();
+				
+				//Statistic
+				statisticPlusOne('rulet-wins');
+			} else {
+				statisticPlusOne('rulet-loose');
 			}
 		},
 		always: function() {

@@ -34,6 +34,7 @@ $(document).on("click", ".case", function(){
 });
 
 function fillCarusel(caseId) {
+	var c0 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'consumer' }).mul(7).shuffle();
 	var a0 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'industrial' }).mul(7).shuffle();
 	var a1 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'milspec' }).mul(5).shuffle();
 	var a2 = cases[caseId].weapons.filter(function(weapon) { return weapon.rarity == 'restricted' }).mul(5).shuffle();
@@ -45,10 +46,10 @@ function fillCarusel(caseId) {
 	if ((Math.rand(0, 10) > 5) && (a5.length + a3.length+a2.length+a1.length != 0)) {a4 = [];}
 	if ((Math.rand(0, 10) > 3) && (a4.length + a3.length+a2.length+a1.length != 0)) {a5 = [];}
 	
-	if (a0 == undefined) {
+	if (c0 == undefined) {
 		var arr = a1.concat(a2, a3, a4, a5).shuffle().shuffle().shuffle();
 	} else {
-		var arr = a0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
+		var arr = c0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
 	}
 	var el = '';
 	if (arr.length <= winNumber) {
@@ -112,15 +113,21 @@ $(".openCase").on("click", function() {
 			
 			if (price == 0) getMarketPrice(type, getSkinName(name, "EN"), getQualityName(quality), statTrak, ".winPrice");
 			
-			if (statTrak) {type = "StatTrak™ " + type}
+			if (statTrak) {
+				type = "StatTrak™ " + type;
+				statisticPlusOne('statTrak');
+			}
 			$(".winName").html(type + " | " + getSkinName(name, "RU"));
 			$(".winQuality").html(quality);
-			$(".winImg").attr("src", getImgUrl(win.img));
+			$(".winImg").attr("src", getImgUrl(win.img, 1));
 			$(".openCase").attr("disabled", "disabled");
 			win.statTrak = statTrak;
 			win.quality = quality;
 			win.price = price;
 			//getInventory();
+			
+			if (type.match(/.*(Н|н)ож.*/) != null)
+				statisticPlusOne('knifes');
 			
 		},
 		progress: function(e, t) {
@@ -145,25 +152,11 @@ $(".openCase").on("click", function() {
 			
 			//Statistic
 			var caseId = $("#caseID").text();
-			var openCount = $.cookie('case'+caseId);
-			if (typeof openCount == "undefined") 
-				openCount = 0;
-			else
-				openCount = parseInt(openCount);
-			openCount++
-			$.cookie('case'+caseId, openCount, {path: '/'});
-			
-			var weaponType = $.cookie('weapon-'+win.rarity);
-			if (typeof weaponType == "undefined")
-				weaponType = 0;
-			else
-				weaponType = parseInt(weaponType);
-			weaponType++;
-			$.cookie('weapon-'+win.rarity, weaponType, {path: '/'});
-			
+			statisticPlusOne('case'+caseId);
+			statisticPlusOne('weapon-'+win.rarity);
 		},
 		always: function() {
-			//$(".openCase").attr("disabled", null);
+			// $(".openCase").attr("disabled", null);
 			caseOpening = false;
 		}
 	})
@@ -244,6 +237,16 @@ function knifeTypes(type) {
 	}
 }
 
+function statisticPlusOne(cookieName) {
+	var a = $.cookie(cookieName);
+	if (typeof a == "undefined")
+		a = 0;
+	else
+		a = parseInt(a);
+	a++;
+	$.cookie(cookieName, a);		
+}
+
 function saveInventory() {
 	localStorage.clear();
 	localStorage["inventory.count"] = inventory.length;
@@ -279,13 +282,17 @@ function getInventory() {
 	}
 }
 
-function getImgUrl(img) {
+function getImgUrl(img, big) {
 	if (img.indexOf("images/") != -1)
 		return img;
 	else if (img.indexOf(".png") != -1) 
 		return "../images/Weapons/"+img;
-	else if (img.indexOf("steamcommunity") == -1)
-		return prefix + img + postfix;
+	else if (img.indexOf("steamcommunity") == -1) {
+		if (typeof big != "undefined")
+			return prefix + img + postfixBig;
+		else
+			return prefix + img + postfix;
+	}
 	else 
 		return img;
 }

@@ -9,10 +9,10 @@
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head><body style="padding-bottom: 45px;">
 <div class="cases">
-<div id="Default"><h1>Cases</h1></div>
-<div id="Souvenir"><h1>Souvenir</h1></div>
+<div id="Default"><h1>Кейсы</h1></div>
 <div id="eSports"><h1>eSports</h1></div>
-<div id="Special"><h1>Special</h1></div>
+<div id="Souvenir"><h1>Коллекции</h1></div>
+<div id="Special"><h1>Особые</h1></div>
 </div>
 <div class="navigat">
 <div class="navigate" id="navigate-main"><- Главная страница</div><div class="navigate" id="navigate-jackpot">Рулетка</div>
@@ -20,7 +20,8 @@
 <script>
 for(var i = 0; i < cases.length ; i++) {
 	var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
-	var curCase = "<div class='case' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name "+specialClass+"'>"+cases[i].name+"</span>";
+	var collection = (cases[i].type == "Souvenir") ? "souvenir" : "";
+	var curCase = "<div class='case "+collection+"' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name "+specialClass+"'>"+cases[i].name+"</span>";
 	switch (cases[i].type) {
 		case "Default":
 			$("#Default").append(curCase);
