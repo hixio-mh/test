@@ -352,5 +352,17 @@
 			"RUS" : "Трансформирующаяся воздушная база"
 		},
 		"youtube" : "https://www.youtube.com/embed/AoTNMK_bHlE"
+	}, {
+		"name" : {
+			"ENG" : "Mars rover (RUS)",
+			"RUS" : "Робо-Марсоход"
+		},
+		"youtube" : "https://www.youtube.com/embed/gLQ5BCidA48"
+	}, {
+		"name" : {
+			"ENG" : "Limousine (RUS)",
+			"RUS" : "Hammer лимузин"
+		},
+		"youtube" : "https://www.youtube.com/embed/oD6uEfUO0kU"
 	}
 ]
