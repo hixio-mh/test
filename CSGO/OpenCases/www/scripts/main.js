@@ -62,7 +62,7 @@ function fillCarusel(caseId) {
 		var type = item.type;
 		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 		
-		var name = getSkinName(item.skinName, "RU");
+		var name = getSkinName(item.skinName, Settings.language);
 		el += '<div class="weapon">'+
 				'<img src="'+img+'" />'+
 				'<div class="weaponInfo '+item.rarity+'"><span class="type">'+type+'<br>'+name+'</span></div>'+
@@ -133,7 +133,7 @@ $(".openCase").on("click", function() {
 		progress: function(e, t) {
 			progress_animate = Math.round(100 * t),
             s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
-            s > d && (caseScrollAudio.currentTime = 0,
+            s > d && (caseScrollAudio.pause(), caseScrollAudio.currentTime = 0,
             caseScrollAudio.play(),
             d++)
 		},
@@ -189,16 +189,6 @@ $(".closeCase").on("click", function(){
 	$("body").css("overflow", "visible");*/
 	caseOpening = false;
 })
-
-$(document).on("click", "#navigate-cases", function(){
-	window.location = "cases.html";
-});
-$(document).on("click", "#navigate-jackpot", function(){
-	window.location = "rulet.html";
-});
-$(document).on("click", "#navigate-main", function(){
-	window.location = "main.html";
-});
 
 function knifeTypes(type) {
 	switch (type) {

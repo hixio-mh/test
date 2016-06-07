@@ -12,12 +12,18 @@
 <script src="../scripts/skinNames.js"></script>
 <script src="../scripts/settings.js"></script>
 
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head>
-<body>
+<body data-localization="inventory">
+<div class="navigationBar" data-menu-EN="Inventory" data-menu-RU="Мой инвентарь"></div>
 <div class="sort">
 	<span class="sort-money" id="sort-type"></span>
 	<div class="dropdown">
@@ -56,26 +62,27 @@
 <button class='button_contract'>Обмен...</button>
 </div>
 <div class="statistic">
-<span id="stat-sum-text" class="stat">Сумма: <span id="stat-sum">0$</span></span>
-<span id="stat-count-text" class="stat">Предметов: <span id="stat-count"></span></span>
+<span class="stat"><span id="stat-sum-text">Сумма:</span> <span id="stat-sum">0$</span></span>
+<span class="stat"><span id="stat-count-text">Предметов:</span> <span id="stat-count"></span></span>
 </div>
 
 <script>
 fillInventory(inventory);
 var sortSpecial = {
 "RU": ["Все типы", "StatTrak", "Не StatTrak", "Сувениры", "Не сувениры", "Обычное"],
-"EN": ["All types", "StatTrak", "Not StatTrak", "Souvenir"]
+"EN": ["All types", "StatTrak", "Not StatTrak", "Souvenir", "Not Souvenir", "Normal"]
 }
 var sortWeapon = {
 "RU": ["Все оружия", "Пистолеты", "Винтовки", "Снайперские винтовки", "SMG", "Дробовики", "Пулеметы", "Ножи"],
 "EN": ["All weapons", "Pistols", "Rifles", "Sniper rifles", "SMGs", "Shotguns", "Machineguns", "Knives"]
 }
 var sortQuality = {
-"RU": ["Все качества", /*"Белое",*/ "Светло-синее", "Синее", "Фиолетовое", "Розовое", "Красное", "Золотое"],
-"EN": ["All qualities", "White", "Blue", "Purple", "Pink", "Red", "Gold"]
+"RU": ["Все качества", "Белое", "Светло-синее", "Синее", "Фиолетовое", "Розовое", "Красное", "Золотое"],
+"EN": ["All qualities", "White", "Light-blue", "Blue", "Purple", "Pink", "Red", "Gold"]
 }
 var qualitySort = [
 		" ",
+		"consumer",
 		"industrial",
 		"milspec",
 		"restricted",
@@ -142,8 +149,15 @@ $(document).on("click", ".weapon", function() {
 $(".glassBlur").on("click", function(){
 	$("#weaponInfoContainer").css("display", "none");
 	if ($(this).hasClass("savePrice")) {
-		if ($("#weaponPrice").text() != "0$")
-		
+		if ($("#weaponPrice").text() != "0$") {
+			var wp = {};
+			wp.typeAndName = $("#weaponName").text();
+			wp.quality = $("#weaponQuality").text();
+			wp.rarity = $("#weaponRarity").text();
+			wp.statTrak = ($('#statTrakImg').css('display') == 'block') ? true : false;
+			setWeaponPrice(wp, parseFloat($("#weaponPrice").text()));
+			saveInventory();
+		}
 		$(this).removeClass("savePrice");
 	}
 })
@@ -175,7 +189,7 @@ $('#startContract').on('click', function() {
 	
 	$('.contractButtons').css('display', 'block');
 	$('.button_contract').prop('disabled', true);
-	$('.inventoryList').css('padding', '25px 0 65px 0');
+	$('.inventoryList').css('padding-bottom', '65px');
 	$('#sort-special').prop('disabled', true);
 	$('#sort-quality').prop('disabled', true);
 	contractMode = true;
@@ -235,7 +249,7 @@ $('.button_resetContract').on('click', function() {
 	$('#sort-special :nth-child(1)').prop('selected', 'true').change();
 	$('#sort-quality :nth-child(1)').prop('selected', 'true').change();
 	$('#sort-weapon :nth-child(1)').prop('selected', 'true').change();
-	$('.inventoryList').css('padding', '25px 0 15px 0');
+	$('.inventoryList').css('padding-bottom', '15px');
 	
 	$('#sort-special').removeAttr('disabled');
 	$('#sort-quality').removeAttr('disabled');
@@ -257,6 +271,7 @@ function _removeWeaponFromInventoryObject(weapon) {
 		if ((inventory[i].type == weapon.type) && (getSkinName(inventory[i].skinName, "EN") == getSkinName(weapon.skinName, "EN")) && (getQualityName(inventory[i].quality)[0] == getQualityName(weapon.quality)[0]) && (inventory[i].price == weapon.price) && (inventory[i].statTrak == weapon.statTrak)) {
 			console.log("Removing weapon: "+inventory[i].type+" "+inventory[i].skinName);
 			inventory.splice(i, 1);
+			break;
 		}
 	}
 }
@@ -264,6 +279,28 @@ function _removeWeaponFromInventoryObject(weapon) {
 function _removeWeaponFromInventoryID(id) {
 	console.log("Removing weapon: "+inventory[id].type+" "+inventory[id].skinName);
 	inventory.splice(id, 1);
+}
+
+function setWeaponPrice(a, price) {
+	if (typeof a == 'number')
+		_setWeaponPriceID(a, price);
+	if (typeof a == 'string')
+		_setWeaponPriceID(parseInt(a), price);	
+	if (typeof a == 'object')
+		_setWeaponPriceObject(a, price);
+}
+
+function _setWeaponPriceObject(weapon, price) {
+	for (var i = 0; i < inventory.length; i++) {
+		if ((inventory[i].type+ " "+getSkinName(inventory[i].skinName, Settings.language) == weapon.typeAndName) && (getQualityName(inventory[i].quality)[0] == getQualityName(weapon.quality)[0]) && (inventory[i].statTrak == weapon.statTrak)) {
+			console.log("Price to weapon: "+inventory[i].type+" "+inventory[i].skinName + " | Была: "+inventory[i].price+"; Стала: "+price);
+			inventory[i].price = price;
+		}
+	}
+}
+
+function _setWeaponPriceID(id, price) {
+	inventory[id].price = price;
 }
 
 $("select").change(function(){

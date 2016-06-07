@@ -4,30 +4,109 @@
 
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/jackpotBots.js"></script>
 
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/inventory.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <!--IconSelect-->
 <script src="../scripts/iconselect/iconselect.js"></script>
 <script src="../scripts/iconselect/iscroll.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/iconselect/iconselect.css">
-
+<style>
+body {
+    background: url(../images/background.png) fixed no-repeat;
+    background-size: cover;
+    color: #fff;
+	font-family: LatoRegular;
+	margin: 0;
+}
+.settings {
+    width: 200px;
+    margin: 50px auto 0 auto;
+    background: rgba(255, 255, 255, 0.34);
+    padding: 1px 10px;
+    border-radius: 5px;
+}
+.box {
+	z-index:5;
+}
+.saveButton {
+   border: 1px solid #ffffff;
+   background: #589c3e;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65d68c), to(#589c3e));
+   background: -webkit-linear-gradient(top, #65d68c, #589c3e);
+   background: -moz-linear-gradient(top, #65d68c, #589c3e);
+   background: -ms-linear-gradient(top, #65d68c, #589c3e);
+   background: -o-linear-gradient(top, #65d68c, #589c3e);
+   padding: 8px 16px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   text-shadow: #000000 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: helvetica, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   margin: 0 auto;
+	display: block;
+}
+.saveButton:hover {
+   border: 1px solid #ffffff;
+   text-shadow: #000000 0 1px 0;
+   background: #589c3e;
+   background: -webkit-gradient(linear, left top, left bottom, from(#93f0b2), to(#589c3e));
+   background: -webkit-linear-gradient(top, #93f0b2, #589c3e);
+   background: -moz-linear-gradient(top, #93f0b2, #589c3e);
+   background: -ms-linear-gradient(top, #93f0b2, #589c3e);
+   background: -o-linear-gradient(top, #93f0b2, #589c3e);
+   color: #fff;
+}
+.saveButton:active {
+   text-shadow: #000000 0 1px 0;
+   border: 1px solid #ffffff;
+   background: #65d68c;
+   background: -webkit-gradient(linear, left top, left bottom, from(#589c3e), to(#589c3e));
+   background: -webkit-linear-gradient(top, #589c3e, #65d68c);
+   background: -moz-linear-gradient(top, #589c3e, #65d68c);
+   background: -ms-linear-gradient(top, #589c3e, #65d68c);
+   background: -o-linear-gradient(top, #589c3e, #65d68c);
+   color: #fff;
+}
+</style>
 </head>
-<body>
-
-<p>Ваше имя:<br>
+<body data-localization='settings'>
+<div class="navigationBar" data-menu-EN="Settings" data-menu-RU="Настройки"></div>
+<div class='settings'>
+<p><span id='local-name'>Ваше имя:</span><br>
 <input type="text" id="nickname" size="20">
 </p>
-<p>
-Аватарка:<br>
+<p><span id='local-avatar'>Аватарка:</span><br>
 <div id="avatar">
-
 </div>
 </p>
-<p>
-<button id="submit" value="Сохранить">Сохранить</button>
+<p><span id='local-language'>Язык:</span><br>
+	<div class="dropdown">
+		<select class="dropdown-select" id="language">
+			<option value="EN">English</option>
+			<option value="RU">Русский</option>
+		</select>
+	</div>
 </p>
-
+<p>
+<button id="submit" class="saveButton" value="Сохранить">Сохранить</button>
+</p>
+</div>
 
 <script>
 var iconSelect;
@@ -50,16 +129,21 @@ $(function() {
 	
 	$("#avatar").on("changed", function() {
 		$.cookie("playerAvatar", iconSelect.getSelectedValue());
+		$('.menu_playerInfo img').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
 	})
 	
 	$("#nickname").val(Player.nickname);
 	iconSelect.setSelectedIndex(Bot.images.length-parseInt(Player.avatar)-1);
+	
+	$('select option[value='+Settings.language+']').attr('selected', 'true');
 });
 
 $("#submit").on("click", function() {
 	var nick = $("#nickname").val();
 	if (nick != "")
 		$.cookie("playerNickname", nick);
+	var lang = $('#language option:selected').val();
+		$.cookie('settings_language', lang);
 		
 });
 </script>

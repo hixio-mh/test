@@ -44,11 +44,11 @@ body {
 	text-align: center;
     /* border-top: 1px dotted; */
 }
-.souvenir {
+.souvenir, .collection {
     box-shadow: none !important;
 	padding-bottom: 35px;
 }
-.souvenir img {
+.souvenir img, .collection img {
     height: 110px !important;
     background: linear-gradient(to top, RGBA(0, 0, 0, 0.37), RGBA(255, 255, 255, 0), rgba(255, 255, 255, 0)) !important;
     box-shadow: none !important;
@@ -285,23 +285,4 @@ span.winName {
 }
 .inventoryItemSelected {
 	background: url("../images/Cases/itembgSelected.png") #111;
-}
-.navigate {
-    display: inline-block;
-    width: 50%;
-    height: 40px;
-    background: #1D1D1D;
-}
-.navigat {
-    box-shadow: 0 -1px 4px #000;
-    text-align: center;
-    color: #fff;
-    font-size: 13pt;
-    line-height: 30pt;
-    font-family: "Courier new";
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    font-weight: bold;
-	cursor: pointer;
 }

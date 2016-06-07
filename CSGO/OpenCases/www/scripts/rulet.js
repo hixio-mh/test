@@ -76,7 +76,11 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
 	if (itemCount>5) value = 4;
 	
 	
-	$("#status").html(fromName + " внес " + itemCount + " " + okon[value]+" (~"+parseFloat(itemsCost).toFixed(2)+"$)");
+	if (Settings.language == "RU")
+		$("#status").html(fromName + " внес " + itemCount + " " + okon[value]+" (~"+parseFloat(itemsCost).toFixed(2)+"$)");
+	else if (Settings.language == "EN")
+		$("#status").html(fromName + " added " + itemCount + " " + ((itemCount == 1) ? "item" : "items") + " (~$"+parseFloat(itemsCost).toFixed(2)+")");
+		
 	
 	var players = '';
 	for (var i = 0; i < PlayersInGame.length; i++) {
@@ -132,7 +136,10 @@ function startGame() {
 			//caseOpening = true;
 			$(".closeInventory").click();
 			
-			$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
+			if (Settings.language == "RU") 
+				$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
+			else if (Settings.language == "EN")
+				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chanse<br><img src='../images/ava/"+win.avatar+"'>");
 			/*$(".winQuality").html(getItemQuality()[1]);
 			$(".winImg").attr("src", prefix + win.img + postfixBig);
 			$(".openCase").attr("disabled", "disabled");*/
@@ -169,6 +176,15 @@ function startGame() {
 				
 				//Statistic
 				statisticPlusOne('rulet-wins');
+				
+				var a = $.cookie('rulet-max-win');
+				var winSum = parseFloat($('.progressbar-text s').text());
+				if (typeof a == "undefined")
+					a = winSum;
+				else
+					a = winSum > parseFloat(a) ? winSum : parseFloat(a);
+				a++;
+				$.cookie('rulet-max-win', a);	
 			} else {
 				statisticPlusOne('rulet-loose');
 			}
@@ -230,7 +246,7 @@ function botAddItems() {
 			z++
 		}
 		itemsCost += +price;
-		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, "RU"), getImgUrl(botWeapons[i].img), qual, st, botWeapons[i].rarity, price)
+		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), qual, st, botWeapons[i].rarity, price)
 	}
 	PlayersInGame.push({
 		"nick" : botName,
@@ -339,14 +355,15 @@ $(document).on("click", ".weapon", function(){
 	}
 	
 	if ($("li").is(".inventoryItemSelected")) {
+		var sumText = Localization.jackpot2.sumText[Settings.language];
 		if ($("div").is("#inventorySum")){
 			var sumPr = 0.0;
 			$(".inventoryItemSelected").each(function(){
 				sumPr += parseFloat($("i", this).text(), 10)
 			});
-			$("#inventorySum").html("Сумма: "+sumPr.toFixed(2)+"$");
+			$("#inventorySum").html(sumText+sumPr.toFixed(2)+"$");
 		} else {
-			$(".inventoryList").append("<div id='inventorySum'>Сумма: "+$("i", this).text());
+			$(".inventoryList").append("<div id='inventorySum'>"+sumText+$("i", this).text());
 		}
 	} else {
 		$("#inventorySum").remove();
@@ -354,7 +371,7 @@ $(document).on("click", ".weapon", function(){
 })
 
 function fillInventory() {
-	$("#intentory-Player").html("Инвентарь пользователя <b>"+Player.nickname+"</b>");
+	$("#intentory-Player").html(Localization.jackpot2.playerInventory[Settings.language]);
 	$(".inventory li").remove();
 	
 	for(var i = 0; i < inventory.length; i++) {
@@ -370,7 +387,7 @@ function fillInventory() {
 		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +"' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
 	}
 	if (inventory.length == 0) {
-		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html?from=jackpot'>откройте пару кейсов.</a></li>");
+		$(".inventory").append("<li>"+Localization.jackpot2.emptyInventory+"</li>");
 	}
 $(".inventoryList").css("display", "block");
 }

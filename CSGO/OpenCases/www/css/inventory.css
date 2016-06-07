@@ -8,20 +8,21 @@
     padding-right: 40px;
     position: fixed;
     /*background: RGBA(0, 0, 0, 0.73);*/
-    width: calc(100% - 40px);
+	width: 100%;
     z-index: 1;
     /*height: 40px;*/
+	margin-top: 40px;
 }
 .closeInventory {
     position: fixed;
 	top: 6px
 }
 .inventoryList {
-    padding: 25px 0 15px 0;
+    padding: 60px 0 15px 0;
 }
-@media (max-width:515px) {
+@media (max-width:492px) {
 	.inventoryList {
-		padding-top: 60px;
+		padding-top: 100px;
 	}
 }
 .statistic {

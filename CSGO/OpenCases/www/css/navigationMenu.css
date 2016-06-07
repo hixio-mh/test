@@ -1,0 +1,71 @@
+.navigationBar {
+    background: #000;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    vertical-align: middle;
+	z-index:30;
+}
+.navigationBar_hamburger {
+    margin-top: 5px;
+    floaT: left;
+    margin-left: 10px;
+}
+.navigationBar span {
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    font-family: LatoBold;
+    font-size: 1.3em;
+	color: #fff;
+}
+.leftMenu {
+    height: 100%;
+    position: fixed;
+    background: rgba(27, 27, 27, 0.9);
+    width: 270px;
+    z-index: 1000;
+    box-shadow: 0 1px 6px #000;
+    top: 0;
+    /*min-width: 260px;
+    max-width: calc(100% - 40px);*/
+}
+.menu_playerInfo {
+    display: block;
+    height: 90px;
+    background: #303030;
+    box-shadow: -1px 2px 3px #000;
+}
+.menu_playerInfo img {
+    width: 80px;
+    border-radius: 50%;
+    line-height: 20px;
+    margin: 5px 10px 0 8px;
+}
+.menu_playerInfo span {
+    color: #fff;
+    text-align: center;
+    line-height: 90px;
+}
+.leftMenu ul {
+    list-style: none;
+    font-family: LatoLight;
+    font-size: 1.2em;
+	padding: 0;
+	margin-top: 0;
+}
+.leftMenu li {
+    border-bottom: 1px solid RGBA(255, 255, 255, 0.15);
+}
+.leftMenu a {
+    padding: 15px 10px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.icon {
+    margin: 0 17px 0 11px;
+    font-size: 1.2em;
+}

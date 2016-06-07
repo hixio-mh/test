@@ -14,12 +14,19 @@
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
 
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
 <!-- Стили -->
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/rulet.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head>
-<body style="">
+<body data-localization="jackpot">
+<div class="navigationBar" data-menu-EN="Jackpot" data-menu-RU="Рулетка"></div>
 <div id="circle"></div>
 <div id="status"></div>
 <div class="scrollerContainer">
@@ -40,11 +47,6 @@
 <div class="closeInventory"></div>
 <ul class="inventory"></ul>
 <button class="choseItems">Внести</button>
-</div>
-
-<!-- Панель навигации -->
-<div class="navigat">
-<div class="navigate" id="navigate-main"><- Главная страница</div><div class="navigate" id="navigate-cases">Кейсы</div>
 </div>
 
 <!-- Скрипт рулетки -->

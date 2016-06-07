@@ -5,6 +5,7 @@
 <script src="../scripts/jquery.cookie.js"></script>
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/quality.js"></script>
+<script src="../scripts/settings.js"></script>
 <script src="../scripts/skinNames.js"></script>
 <script src="../scripts/prices.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
@@ -13,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head>
-<body>
+<body data-localization="openCase">
 
 <div class="weapons">
 <div class="closeCase"></div>
@@ -28,7 +29,7 @@
 
 <div class="zabor"></div>
 <div class="win" style="display: none;">
-<span>Вы выиграли</span>
+<span id='youWon'>Вы выиграли</span>
 
 <span class="winName"></span>
 <span class="winQuality"></span>
@@ -39,12 +40,13 @@
 
 <button class="openCase">Открыть кейс</button>
 
-<div id="youCanWin">Вы можете выиграть один из данных предметов из коллекции <span></span></div>
+<div id="youCanWin"><font id="local-youCanWin">Вы можете выиграть один из данных предметов из коллекции</font> <span></span></div>
 <ul class="weaponsList">
 </ul>
 </div>
 <div id="caseID" style="display:none;"></div>
 <script src="../scripts/main.js"></script>
+<script src="../scripts/localization.js"></script>
 <script>
 $(function(){
 	var param = parseURLParams(window.location.href);
@@ -62,7 +64,7 @@ $(function(){
 		
 			var name = weapon.skinName;
 			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
-			name = getSkinName(name, "RU");
+			name = getSkinName(name, Settings.language);
 			var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div>";
 			$(".weaponsList").append("<li class='weapon'>"+weaponInfo+"</li>");
 		}
