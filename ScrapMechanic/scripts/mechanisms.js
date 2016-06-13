@@ -364,5 +364,17 @@
 			"RUS" : "Hammer лимузин"
 		},
 		"youtube" : "https://www.youtube.com/embed/oD6uEfUO0kU"
+	}, {
+		"name" : {
+			"ENG" : "Ray's Speeder (Star Wars) (RUS)",
+			"RUS" : "Спидер Рей (Star Wars)"
+		},
+		"youtube" : "https://www.youtube.com/embed/Pz1HqZZGo2Q"
+	}, {
+		"name" : {
+			"ENG" : "Just Cause 3 Mech, RC Plane, Bull, & Bendy Bus",
+			"RUS" : "Автобус, самолёт на пульте управления, механизм из Just Case 3"
+		},
+		"youtube" : "https://www.youtube.com/embed/VOEMmpWGwAk"
 	}
 ]
