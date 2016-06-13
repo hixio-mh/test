@@ -376,5 +376,17 @@
 			"RUS" : "Автобус, самолёт на пульте управления, механизм из Just Case 3"
 		},
 		"youtube" : "https://www.youtube.com/embed/VOEMmpWGwAk"
+	}, {
+		"name" : {
+			"ENG" : "The Diesel Rover",
+			"RUS" : "Diesel Rover"
+		},
+		"youtube" : "https://www.youtube.com/embed/1KqmKaoIdnU"
+	}, {
+		"name" : {
+			"ENG" : "Custom Dune Buggy",
+			"RUS" : "Багги"
+		},
+		"youtube" : "https://www.youtube.com/embed/pr_nHVHgwcs"
 	}
 ]
