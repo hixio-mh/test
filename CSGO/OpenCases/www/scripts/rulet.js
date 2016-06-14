@@ -27,6 +27,28 @@ var bar = new ProgressBar.Circle(circle, {
 bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
 bar.text.style.fontSize = '2rem';
 
+var addItemsSound = new Audio();
+addItemsSound.src = "../sound/interface/menuClick.wav";
+addItemsSound.volume = 0.9;
+
+var selectItemSound = new Audio();
+selectItemSound.src = "../sound/interface/SelectItem.wav";
+selectItemSound.volume = 0.9;
+
+var newItemsSound = new Audio();
+newItemsSound.src = "../sound/interface/jackpotAddItems.wav";
+newItemsSound.volume = 0.9;
+
+//if ($("#changeOrientation").css('display') == 'block') {
+	var orientationTimer = 0;
+	orientationTimer = setTimeout(function(){
+		$("#changeOrientation").hide('slow'),
+		$("#changeOrientation img").hide('slow', function() {
+			$("#changeOrientation").remove();
+		})
+	}, 2000);
+//}
+
 newGame();
 
 function newGame() {
@@ -58,6 +80,7 @@ $("#addItems").on("click", function(){
 	inventory = inventory.sort(function(a,b){
 		return b.price-a.price;
 	});
+	addItemsSound.play();
 	fillInventory();
 });
 
@@ -147,7 +170,7 @@ function startGame() {
 		progress: function(e, t) {
 			/*progress_animate = Math.round(100 * t),
             s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
-            s > d && (caseScrollAudio.currentTime = 0,
+            s > d && (caseScrollAudio.pause(),caseScrollAudio.currentTime = 0,
             caseScrollAudio.play(),
             d++)*/
 		},
@@ -248,6 +271,7 @@ function botAddItems() {
 		itemsCost += +price;
 		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), qual, st, botWeapons[i].rarity, price)
 	}
+	newItemsSound.play()
 	PlayersInGame.push({
 		"nick" : botName,
 		"avatar" : botImg,
@@ -341,6 +365,7 @@ $(".choseItems").on("click", function(){
 		for (var i = 0; i < playerWeapons.length; i++) {
 			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity)
 		}
+		newItemsSound.play();
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
 		$("#addItems").attr("disabled", "disabled");
 		$(".closeInventory").click();
@@ -348,10 +373,15 @@ $(".choseItems").on("click", function(){
 })
 
 $(document).on("click", ".weapon", function(){
+	selectItemSound.pause();
+	selectItemSound.currentTime = 0;
+	
 	if ($(".inventoryItemSelected").length < maxItems) {
 		$(this).toggleClass("inventoryItemSelected");
+		selectItemSound.play();
 	} else if ($(this).hasClass("inventoryItemSelected")) {
 		$(this).toggleClass("inventoryItemSelected");
+		selectItemSound.play();
 	}
 	
 	if ($("li").is(".inventoryItemSelected")) {
@@ -387,7 +417,7 @@ function fillInventory() {
 		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +"' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
 	}
 	if (inventory.length == 0) {
-		$(".inventory").append("<li>"+Localization.jackpot2.emptyInventory+"</li>");
+		$(".inventory").append("<li>"+Localization.jackpot2.emptyInventory[Settings.language]+"</li>");
 	}
 $(".inventoryList").css("display", "block");
 }

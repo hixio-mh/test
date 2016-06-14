@@ -28,6 +28,8 @@
     z-index: 1000;
     box-shadow: 0 1px 6px #000;
     top: 0;
+	-webkit-transform: translateZ(0);
+	overflow: auto;
     /*min-width: 260px;
     max-width: calc(100% - 40px);*/
 }

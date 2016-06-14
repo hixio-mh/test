@@ -1,7 +1,7 @@
 ﻿function getPrice(type, name, quality, statTrak) {
 	quality = getQualityName(quality).toLowerCase();
 	name = getSkinName(name, "EN").toLowerCase();
-	if (type.substring(0,1) == "★") type = knifeTypes(type.substring(2, type.length));
+	if (type.substring(0,1) == "★") type = type.substring(2, type.length);
 	if (type.indexOf("Сувенир") != -1) type = type.replace("Сувенир", "Souvenir");
 	var item = Prices.filter(function(obj) {
 		return obj.name.toLowerCase() == name && obj.type.toLowerCase() == type.toLowerCase() && obj.quality.toLowerCase() == quality;
@@ -60,6 +60,22 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 			}
 		}
 	);
+}
+
+function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
+	var n = type +' | '+ name;
+	n = n.replace(/ /gi, '_');
+	n = encodeURI(n);
+	
+	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
+		q: "select * from html where url='http://csgoitems.pro/en/skin/"+n+"' and xpath='//ul[@class=\"no-bullet five-up\"]'",
+		format: "json"
+	},
+	function(data) {
+		if (typeof data.query.results != "undefined") {
+			console.log(data);
+		}
+	});
 }
 
 var Prices = [

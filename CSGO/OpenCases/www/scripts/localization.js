@@ -1,13 +1,17 @@
 ﻿$(function () {
 	var category = $(document.body).data('localization');
 
+	localizate(category);
+})
+
+function localizate(category){
 	for (var i = 0; i < Localization[category].length; i++) {
 		$(Localization[category][i].selector).text(Localization[category][i].localization[Settings.language]);
 	}
 	for (var i = 0; i < Localization['menu'].length; i++) {
 		$(Localization['menu'][i].selector).text(Localization['menu'][i].localization[Settings.language]);
 	}
-})
+}
 var Localization = [];
 Localization.menu = [{
 		"selector" : "#local-menu-case",
@@ -44,6 +48,12 @@ Localization.menu = [{
 		"localization" : {
 			"RU" : "О программе",
 			"EN" : "About"
+		}
+	}, {
+		"selector" : "#local-menu-apps",
+		"localization" : {
+			"RU" : "Другие приложения",
+			"EN" : "Other apps"
 		}
 	}
 ],
@@ -91,8 +101,28 @@ Localization.openCase = [{
 			"RU" : "Вы можете выиграть один из данных предметов из коллекции",
 			"EN" : "You can win one of those items from collection"
 		}
+	}, {
+		"selector" : "#opened-text",
+		"localization" : {
+			"RU" : "Открыто: ",
+			"EN" : "Opened: "
+		}
 	}
 ],
+Localization.openCase2 = {
+	"openCase" : {
+		"RU" : "Открыть кейс",
+		"EN" : "Open case"
+	},
+	"opening" : {
+		"RU" : "Открываем кейс...",
+		"EN" : "Opening..."
+	},
+	"tryAgain" : {
+		"RU" : "Попробовать ещё раз",
+		"EN" : "Try again"
+	}
+}
 Localization.jackpot = [{
 		"selector" : "#addItems",
 		"localization" : {
@@ -210,7 +240,7 @@ Localization.statistic = [{
 	}, {
 		"selector" : "#knife-text",
 		"localization" : {
-			"RU" : "Красные:",
+			"RU" : "Ножи:",
 			"EN" : "Knives:"
 		}
 	}, {
@@ -256,6 +286,50 @@ Localization.settings = [{
 		"localization" : {
 			"RU" : "Сохранить",
 			"EN" : "Save"
+		}
+	},
+],
+Localization.settings2 = {
+	"saved" : {
+		"RU" : "Сохранено",
+		"EN" : "Saved"
+	}
+}
+Localization.about = [{
+		"selector" : "#developer",
+		"localization" : {
+			"RU" : "Главный разработчик",
+			"EN" : "Main developer"
+		}
+	}, {
+		"selector" : "#local-1",
+		"localization" : {
+			"RU" : "Если Вы обнаружили ошибки, или у Вас есть предложение, напишите на почту.",
+			"EN" : "If you found some bugs or you have a suggestion you can write me an email."
+		}
+	}, {
+		"selector" : "#local-2",
+		"localization" : {
+			"RU" : "Если хотите поблагодарить разработчика, можете подарить что-нибудь в стиме :)",
+			"EN" : "If you want to thank the developer you can send something in Steam :)"
+		}
+	}, {
+		"selector" : "#local-3",
+		"localization" : {
+			"RU" : "Не забудьте поставить оценку в маркете ^_^",
+			"EN" : "Do not forget to rate the app in the Play Market ^_^"
+		}
+	}, {
+		"selector" : "#copyright",
+		"localization" : {
+			"RU" : "Авторские права",
+			"EN" : "Copyright"
+		}
+	}, {
+		"selector" : "#local-4",
+		"localization" : {
+			"RU" : "Вся информация взята из открытых источников. Если что-либо в приложении нарушает ваши авторские права, свяжитесь со мной.",
+			"EN" : "All information is taken from public sources. If anything in the application infringes your copyright, please contact me."
 		}
 	},
 ]

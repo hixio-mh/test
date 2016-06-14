@@ -21,16 +21,27 @@
 	caseScrollAudio.playbackRate = 1;
 	caseScrollAudio.volume = 0.2;
 	
+	$(".openCase").attr("disabled", null);
+	
 	getInventory();
 
 $(document).on("click", ".case", function(){
 	caseId = this.id;
-	if (getURLParameter('from') != null) {
-		window.location = "open.html?caseId="+caseId+"&from="+getURLParameter('from'); 
+	if (cases[caseId].type == "Special") {
+		if (typeof $.cookie('specialCases') == 'undefined') $.cookie('specialCases', 0);
+		if (parseInt($.cookie('specialCases')) >= cases[caseId].casesToOpen) {
+			window.location = "open.html?caseId="+caseId;
+		} else {
+			$('.popup').css('display', 'block');
+			var needToOpen = cases[caseId].casesToOpen - parseInt($.cookie('specialCases'));
+			$('#special').text(needToOpen);
+		}		
 	} else {
 		window.location = "open.html?caseId="+caseId;
 	}
-	//window.scrollTo(0, 0);
+});
+$(document).on('click', '#closePopup', function() {
+	$('.popup').css('display', 'none');
 });
 
 function fillCarusel(caseId) {
@@ -76,12 +87,11 @@ function fillCarusel(caseId) {
 
 $(".openCase").on("click", function() {
 	$(".weapons").scrollTop(0);
-	if (caseOpening || $(".openCase").text() == "Открываем кейс...") {return false};
-	//$(".openCase").attr("disabled", "disabled");
+	if (caseOpening || $(".openCase").text() ==  Localization.openCase2.opening[Settings.language]) {return false};
 	$(".win").slideUp("slow");
 	$(".zabor-bot").css("display", "none");
-	if($(".openCase").text() == "Попробовать еще раз") {backToZero()}
-	$(".openCase").text("Открываем кейс...");
+	if($(".openCase").text() == Localization.openCase2.tryAgain[Settings.language]) {backToZero()}
+	$(".openCase").text(Localization.openCase2.opening[Settings.language]);
 	$(".openCase").attr("disabled", "disabled");
 	//var a = 1431 + 16*24;
 	var a = 127*winNumber;
@@ -138,12 +148,13 @@ $(".openCase").on("click", function() {
             d++)
 		},
 		complete: function(){
+			$("#opened").text(parseInt($("#opened").text())+1);
 			var price = parseFloat($(".winPrice").html());
 			win.price = price;
 			inventory.push(win);
 			saveInventory();
 			caseCloseAudio.play();
-			$(".openCase").text("Попробовать еще раз");
+			$(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
 			$(".win").slideDown("slow");
 			$(".zabor-bot").css("display", "block");
 			caseOpening = false;
@@ -154,6 +165,20 @@ $(".openCase").on("click", function() {
 			var caseId = $("#caseID").text();
 			statisticPlusOne('case'+caseId);
 			statisticPlusOne('weapon-'+win.rarity);
+			
+			var param = parseURLParams(window.location.href);
+			if(typeof param != "undefined") {
+				caseId = param.caseId[0];
+				if (cases[caseId].type == 'Special') {
+					$.cookie('specialCases', cases[caseId].casesToOpen - parseInt($.cookie('specialCases')));
+					if ($.cookie('specialCases') < cases[caseId].casesToOpen)
+						$('.openCase').attr("disabled", "disabled");
+				} else {
+					statisticPlusOne('specialCases');
+				}
+			} else {
+				statisticPlusOne('specialCases');
+			}
 		},
 		always: function() {
 			// $(".openCase").attr("disabled", null);
@@ -190,45 +215,8 @@ $(".closeCase").on("click", function(){
 	caseOpening = false;
 })
 
-function knifeTypes(type) {
-	switch (type) {
-		case "Охотничий нож":
-			return "Huntsman Knife"
-			break
-		case "Нож-бабочка":
-			return "Butterfly Knife"
-			break
-		case "Складной нож":
-			return "Flip Knife"
-			break
-		case "Керамбит":
-			return "Karambit"
-			break
-		case "Штык-нож M9":
-			return "M9 Bayonet"
-			break
-		case "Нож с лезвием-крюком":
-			return "Gut Knife"
-			break
-		case "Штык-нож":
-			return "Bayonet"
-			break
-		case "Фальшион":
-			return "Falchion Knife"
-			break
-		case "Тычковые ножи":
-			return "Shadow Daggers"
-			break
-		case "Нож Боуи":
-			return "Bowie Knife"
-			break
-		default:
-			return type
-	}
-}
-
 function statisticPlusOne(cookieName) {
-	var a = $.cookie(cookieName);
+	var a = $.cookie(cookieName, Number);
 	if (typeof a == "undefined")
 		a = 0;
 	else
@@ -274,7 +262,11 @@ function getInventory() {
 
 function getImgUrl(img, big) {
 	if (img.indexOf("images/") != -1)
-		return img;
+		if (typeof big != "undefined") {
+			return img.replace("125fx125f", "383fx383f");
+		} else {
+			return img;
+		}
 	else if (img.indexOf(".png") != -1) 
 		return "../images/Weapons/"+img;
 	else if (img.indexOf("steamcommunity") == -1) {
@@ -284,7 +276,11 @@ function getImgUrl(img, big) {
 			return prefix + img + postfix;
 	}
 	else 
-		return img;
+		if (typeof big != "undefined") {
+			return img.replace("125fx125f", "383fx383f");
+		} else {
+			return img;
+		}
 }
 
 function parseURLParams(url) {

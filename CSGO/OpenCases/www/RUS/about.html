@@ -1,26 +1,52 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/settings.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+ <script src="../scripts/localization.js"></script> 
+
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <title>О программе</title>
 </head>
-<body>
+<body data-localization="about">
+<div class="navigationBar" data-menu-EN="About" data-menu-RU="О программе"></div>
 <style>
 body {
 margin: 2px;
+color: #fff;
+}
+.container {
+    margin-top: 50px;
+    background: #6E6E6E;
+    padding: 0 10px 10px 10px;
+    border: 1px solid #fff;
+    color: #fff;
+}
+h3 {
+	text-align:center;
+}
+a {
+    color: #b7deff;
 }
 </style>
-<h1>О программе</h1>
-<h3><span>Главный разработчик</span></h3>
+<div class="container">
+<h3><span id='developer'>Главный разработчик</span></h3>
 VLADOS776<br>
 <ul>
-<li><b>Steam ID</b>: <a href="https://steamcommunity.com/id/vanushka2004" target="_blank">vanushka2004</a></li>
+<li><b>Steam</b>: <a href="https://steamcommunity.com/id/vanushka2004" target="_blank">vanushka2004</a></li>
 <li><b>Email</b>: kurtukovvlad@gmail.com</li></ul>
-Если Вы обнаружили ошибки, или у Вас есть предложение, напишите на почту.<br>
-Если хотите поблагодарить разработчика, можете подарить что-нибудь в стиме :)<br>
-Не забудьте поставить оценку в маркете ^_^
-<h3><span>Авторские права</span></h3>
-<p>Вся информация взята из открытых источников. Если что-либо в приложении нарушает ваши авторские права, свяжитесь со мной.</p>
+<span id='local-1'>Если Вы обнаружили ошибки, или у Вас есть предложение, напишите на почту.</span><br>
+<span id='local-2'>Если хотите поблагодарить разработчика, можете подарить что-нибудь в стиме :)</span><br>
+<span id='local-3'>Не забудьте поставить оценку в маркете ^_^</span>
+<h3><span id='copyright'>Авторские права</span></h3>
+<p id='local-4'>Вся информация взята из открытых источников. Если что-либо в приложении нарушает ваши авторские права, свяжитесь со мной.</p>
 </p>
+</div>
 </body>
 </html>

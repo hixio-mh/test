@@ -14,7 +14,6 @@
 <script src="../scripts/localization.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <!--IconSelect-->
 <script src="../scripts/iconselect/iconselect.js"></script>
@@ -38,7 +37,7 @@ body {
 .box {
 	z-index:5;
 }
-.Button {
+.saveButton {
    border: 1px solid #ffffff;
    background: #589c3e;
    background: -webkit-gradient(linear, left top, left bottom, from(#65d68c), to(#589c3e));
@@ -62,7 +61,7 @@ body {
    margin: 0 auto;
 	display: block;
 }
-.Button:hover {
+.saveButton:hover {
    border: 1px solid #ffffff;
    text-shadow: #000000 0 1px 0;
    background: #589c3e;
@@ -73,7 +72,7 @@ body {
    background: -o-linear-gradient(top, #93f0b2, #589c3e);
    color: #fff;
 }
-.Button:active {
+.saveButton:active {
    text-shadow: #000000 0 1px 0;
    border: 1px solid #ffffff;
    background: #65d68c;
@@ -84,19 +83,21 @@ body {
    background: -o-linear-gradient(top, #589c3e, #65d68c);
    color: #fff;
 }
-#reset {
-   background: -webkit-gradient(linear, left top, left bottom, from(#65a2d6), to(#3e5d9c));
-   background: -webkit-linear-gradient(top, #65a2d6, #3e5d9c);
-   background: -moz-linear-gradient(top, #65a2d6, #3e5d9c);
-   background: -ms-linear-gradient(top, #65a2d6, #3e5d9c);
-   background: -o-linear-gradient(top, #65a2d6, #3e5d9c);
-}
-#reset:hover, reset:active {
-   background: -webkit-gradient(linear, left top, left bottom, from(#92c5f0), to(#50699e));
-   background: -webkit-linear-gradient(top, #92c5f0, #50699e);
-   background: -moz-linear-gradient(top, #92c5f0, #50699e);
-   background: -ms-linear-gradient(top, #92c5f0, #50699e);
-   background: -o-linear-gradient(top, #92c5f0, #50699e);
+.popup {
+    width: 150px;
+    height: 50px;
+    background: rgba(238, 238, 238, 0.83);
+    color: #0CAD4C;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 8px;
+    border: 1px solid #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    font-size: 1.4em;
 }
 </style>
 </head>
@@ -119,18 +120,11 @@ body {
 	</div>
 </p>
 <p>
-<button id='reset' class='Button' value='Reset'>Полный сброс</button>
-<hr>
-<button id="submit" class="Button" value="Сохранить">Сохранить</button>
+<button id="submit" class="saveButton" value="Сохранить">Сохранить</button>
 </p>
 </div>
-<div class="popup" id='save' style="display: none">
+<div class="popup" style="display: none">
 <span id="popup-status"></span>
-</div>
-<div class="popup" id='resetPopup' style='text-align:center'>
-<span id='closePopup'></span>
-<span id='reset-text'>Вы уверены, что хотите очистить инвентарь и сбросить статистику?</span>
-<button class='button' id='resetConfirm'>Да</button>
 </div>
 <script>
 var iconSelect;
@@ -173,36 +167,9 @@ $("#submit").on("click", function() {
 	localizate('settings');
 	var saved = Localization.settings2.saved;
 	$("#popup-status").text(Settings.language == "RU" ? saved.RU : saved.EN);
-	$("#save").css("display", "block");
+	$(".popup").css("display", "block");
 	timerId = setTimeout(function(){$(".popup").css("display", "none")}, 1000)
 });
-
-$('#reset').on('click', function() {
-	$('#resetPopup').css('display', 'block');
-})
-$('#resetConfirm').on('click', function() {
-	localStorage.clear();
-	deleteAllCookies();
-	$('#closePopup').click();
-	$("#submit").click();
-	$("#popup-status").text("Очищено");//Settings.language == "RU" ? saved.RU : saved.EN);
-})
-
-$(document).on('click', '#closePopup', function() {
-	$('.popup').css('display', 'none');
-});
-
-function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
-
-    for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;";
-    }
-}
-
 </script>
 </body>
 </html>

@@ -1,4 +1,38 @@
-﻿body {
+﻿@media screen and (orientation:landscape) {
+	#changeOrientation {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 400px) and (orientation:portrait) {
+	#changeOrientation {
+		display: block !important;
+	}
+}
+#containter {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+#changeOrientation {
+	display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    background: RGB(255, 255, 255);
+    text-align: center;
+    width: 150px;
+    height: 60px;
+    z-index: 1000;
+    border-radius: 5px;
+}
+#changeOrientation img {
+    width: 100px;
+}
+body {
     margin: 0;
     padding-top: 5px;
 	overflow-x:hidden;
@@ -36,6 +70,7 @@ tr {
     color: #fff;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
     border-bottom: 2px solid;
+	max-width: 100%;
 }
 td:nth-child(2) {
 	width: 90px;

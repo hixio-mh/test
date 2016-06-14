@@ -61,27 +61,26 @@ $(function(){
 	var opened = 0;
 	while (i--) {
 		if (typeof $.cookie('case'+i) != "undefined")
-			opened += $.cookie('case'+i, Number)
+			opened += parseInt($.cookie('case'+i))
 	}
 	document.getElementById("caseOpened").textContent = opened;
 	
-	stat("white", $.cookie('weapon-consumer', Number));
-	stat("industrial", $.cookie('weapon-industrial', Number));
-	stat("blue", $.cookie('weapon-milspec', Number));
-	stat("restricted", $.cookie('weapon-restricted', Number));
-	stat("classified", $.cookie('weapon-classified', Number));
-	stat("covert", $.cookie('weapon-covert', Number));
-	stat("contract", $.cookie('contracts', Number));
-	stat('rulet', $.cookie('rulet-wins', Number)+"/"+$.cookie('rulet-loose', Number));
-	stat('rulet-max-win', '$'+$.cookie('rulet-max-win', Number));
-	stat('knife', $.cookie('knifes', Number));
-	stat("stattrak", $.cookie('statTrak', Number));
+	stat("white", $.cookie('weapon-consumer'));
+	stat("industrial", $.cookie('weapon-industrial'));
+	stat("blue", $.cookie('weapon-milspec'));
+	stat("restricted", $.cookie('weapon-restricted'));
+	stat("classified", $.cookie('weapon-classified'));
+	stat("covert", $.cookie('weapon-covert'));
+	stat("contract", $.cookie('contracts'));
+	stat('rulet', $.cookie('rulet-wins')+"/"+$.cookie('rulet-loose'));
+	stat('rulet-max-win', '$'+$.cookie('rulet-max-win'));
+	stat('knife', $.cookie('knifes'));
+	stat("stattrak", $.cookie('statTrak'));
 })
 
 function stat(selector, text) {
-	if (typeof text == "undefined")	text = "undefined";
-	if (typeof text == 'string') text = text.replace(/undefined/gi, '0');
-	
+	if (typeof text == "undefined") text = "undefined";
+	text = text.replace(/undefined/gi, '0');
 	document.getElementById(selector).textContent = text;
 }
 </script>

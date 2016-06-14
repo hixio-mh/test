@@ -165,7 +165,31 @@
     position: absolute;
     right: 0;
 }
-
+@media (max-height:495px) {
+	.fullWeaponInfo {
+		width: 450px;
+		padding: 5px;
+	}
+	#weaponImg {
+		width: 200px;
+		float: left;
+		border: 1px dashed rgba(248, 244, 244, 0.23);
+	}
+	#weaponInfoTable {
+		width: auto;
+		margin-top: 10px;
+	}
+	#weaponInfoTable tr td:nth-child(2n) {
+		padding-left: 15px;
+	}
+	#statTrakImg {
+		width: 55px;
+		position: absolute;
+		right: 0;
+		left: 7px;
+		bottom: 7px;
+	}
+}
 .contractButtons {
     position: fixed;
     bottom: 25px;

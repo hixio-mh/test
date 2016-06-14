@@ -16,6 +16,15 @@ body {
     height: 193px;
     box-shadow: 0px 0px 7px #000;
 }
+#showVideoAd {
+    border: 1px solid #055400;
+    margin: 0 auto;
+    display: block;
+    background: linear-gradient(to bottom, #8ada61, #3A7531);
+    color: #fff;
+    padding: 6px;
+    font-family: LatoRegular;
+}
 .name {
     display: block;
     /*text-align: left;*/
@@ -52,6 +61,44 @@ body {
     height: 110px !important;
     background: linear-gradient(to top, RGBA(0, 0, 0, 0.37), RGBA(255, 255, 255, 0), rgba(255, 255, 255, 0)) !important;
     box-shadow: none !important;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #40858A;
+    width: 250px;
+    z-index: 1;
+    font-family: LatoRegular;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px RGBA(0, 0, 0, 0.5);
+    color: #fff;
+	display: none;
+}
+#closePopup {
+    width: 22px;
+    height: 22px;
+    background: url(../images/close.png) #fff;
+    display: block;
+    position: absolute;
+    right: -12px;
+    top: -12px;
+    border-radius: 24px;
+    background-position: -1px;
+}
+#special {
+    font-weight: bold;
+    color: #ff9f9f;
+}
+
+.inventory li {
+    color: fff;
+}
+.inventory li a {
+    color: #a1e2ed;
 }
 
 /*WEAPONS*/
@@ -180,6 +227,7 @@ div.weapon > .weaponInfo {
 .casesCarusel {
     width: 15000px;
     text-align: left;
+	-webkit-transform: translateZ(0);
 }
 
 /*Если разрешение экрана меньше 495px*/
@@ -234,6 +282,11 @@ div.weapon > .weaponInfo {
     padding: 0 20px;
     margin: 25px 0 25px;
 }
+.openCase:disabled {
+    opacity: 0.6;
+    background: linear-gradient(to bottom, #8a8a8a, #484848);
+    border: 1px solid #303030;
+}
 /*WEAPONS_END*/
 .win {
     background: #003440;
@@ -249,6 +302,7 @@ span.winQuality {
 }
 .win img {
 	max-width: 100%;
+	width: 200px;
 }
 span.winName {
     color: #fff;
@@ -282,6 +336,10 @@ span.winName {
     /*position: absolute;*/
     background-position: 10px;
     display: none;
+}
+#opened-text, #opened {
+	color:#fff;
+	font-family: LatoRegular;
 }
 .inventoryItemSelected {
 	background: url("../images/Cases/itembgSelected.png") #111;
