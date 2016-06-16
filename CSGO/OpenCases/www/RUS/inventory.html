@@ -137,7 +137,7 @@ $(document).on("click", ".weapon", function() {
 	var statTrak = $(this).data("stattrak");
 	var quality = $(this).data("quality");
 	
-	if (price == "0") {
+	if (parseInt(price) == 0 || isNaN(price)) {
 		getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
 		$(".glassBlur").addClass("savePrice");
 	}

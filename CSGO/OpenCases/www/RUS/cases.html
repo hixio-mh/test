@@ -20,8 +20,9 @@
 <div class="navigationBar" data-menu-EN="Open Cases" data-menu-RU="Открыть кейсы"></div>
 <div class="popup">
 <span id='closePopup'></span>
-<span id='special-text'>Чтобы открыть специальный кейс, откройте ещё </span><span id='special'>?</span> <span id='special-text2'>кейсов.</span><br><span id='special-text3'>Или посмотрите рекламу.</span>
+<span id='js-local-special-text'>Чтобы открыть специальный кейс, откройте ещё</span> <span id='special'>?</span> <span id='js-local-special-text2'>кейсов.</span><br><span id='js-local-special-text3'>Или посмотрите рекламу.</span>
 <button id='showVideoAd'>Посмотреть рекламу</button>
+<span class='js-secretField' style='display: none'></span>
 </div>
 <div class="cases">
 <div id="Default"><h1>Кейсы</h1></div>
@@ -55,7 +56,11 @@ for(var i = 0; i < cases.length ; i++) {
 	}
 }
 $('#showVideoAd').on('click', function() {
-	client.showVideoAd();
+	try {
+		client.showVideoAd();
+	} catch(e) {
+	}
+	window.location = "open.html?caseId="+$('.js-secretField').text()+'&fromAd=1';
 });
 </script>
 </body></html>

@@ -81,10 +81,34 @@ Localization.cases = [{
 			"RU" : "Особые",
 			"EN" : "Special"
 		}
+	}, {
+		"selector" : "#js-local-special-text",
+		"localization" : {
+			"RU" : "Чтобы открыть специальный кейс, откройте ещё",
+			"EN" : "To open a special case, open"
+		}
+	}, {
+		"selector" : "#js-local-special-text2",
+		"localization" : {
+			"RU" : "кейсов.",
+			"EN" : "more cases."
+		}
+	}, {
+		"selector" : "#js-local-special-text3",
+		"localization" : {
+			"RU" : "Или посмотрите рекламу.",
+			"EN" : "Or watch the ads."
+		}
+	}, {
+		"selector" : "#showVideoAd",
+		"localization" : {
+			"RU" : "Посмотреть рекламу",
+			"EN" : "Watch the ads"
+		}
 	},
 ],
 Localization.openCase = [{
-		"selector" : "#youWon",
+		"selector" : "#win_youWon",
 		"localization" : {
 			"RU" : "Вы выиграли",
 			"EN" : "You won"
@@ -246,7 +270,7 @@ Localization.statistic = [{
 	}, {
 		"selector" : "#contract-text",
 		"localization" : {
-			"RU" : "Контакрты обмена:",
+			"RU" : "Контракты обмена:",
 			"EN" : "Trade up contracts:"
 		}
 	}, {

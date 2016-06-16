@@ -40,7 +40,8 @@
 
 function getMarketPrice(type, name, quality, statTrak, selector) {
 	if (statTrak != 0) type = "StatTrak™ " + type;
-	var n = type+" | "+name+" ("+getQualityName(quality)+")";
+	if (type.indexOf("Сувенир") != -1) type = type.replace("Сувенир", "Souvenir");
+	var n = type+" | "+getSkinName(name, 'EN')+" ("+getQualityName(quality)+")";
 	n = encodeURI(n);
 	
 	$.getJSON("https://query.yahooapis.com/v1/public/yql", {

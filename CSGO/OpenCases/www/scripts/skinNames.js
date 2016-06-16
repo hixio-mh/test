@@ -11,7 +11,7 @@
 			return sk[0]["EN"];
 	} else {
 		console.error("Wrong skin name! '"+skin+"'");
-		return "Wrong name";
+		return skin;
 	}
 }
 
@@ -907,8 +907,8 @@ var skinNames = [{
 	"RU" : "Захоронение",
 	"EN" : "Catacombs"
 }, {
-	"RU" : "Король драконов",
-	"EN" : "Dragon King"
+	"RU" : "龍王 (Король драконов)",
+	"EN" : "龍王 (Dragon King)"
 }, {
 	"RU" : "Блокировка",
 	"EN" : "System Lock"
@@ -1261,52 +1261,52 @@ var skinNames = [{
 	"RU" : "Проводник",
 	"EN" : "Lead Conduit"
 }, { //CHROMA 3
-	"RU" : "",
+	"RU" : "Атлас",
 	"EN" : "Atlas",
 }, {
-	"RU" : "",
+	"RU" : "Ветеран",
 	"EN" : "Fubar",
 }, {
-	"RU" : "",
+	"RU" : "Океанские мотивы",
 	"EN" : "Oceanic",
 }, {
-	"RU" : "",
+	"RU" : "Утечка отходов",
 	"EN" : "Bioleak",
 }, {
-	"RU" : "",
+	"RU" : "Призрак",
 	"EN" : "Spectre",
 }, {
-	"RU" : "",
+	"RU" : "Оранжевые осколки",
 	"EN" : "Orange Crash",
 }, {
-	"RU" : "",
+	"RU" : "Духовики",
 	"EN" : "Ventilators",
 }, {
-	"RU" : "",
+	"RU" : "Черный галстук",
 	"EN" : "Black Tie",
 }, {
-	"RU" : "",
+	"RU" : "Возвращение",
 	"EN" : "Re-Entry",
 }, {
-	"RU" : "",
+	"RU" : "Призрачный фанатик",
 	"EN" : "Ghost Crusader",
 }, {
-	"RU" : "",
+	"RU" : "Перестрелка",
 	"EN" : "Firefight",
 }, {
-	"RU" : "",
+	"RU" : "Красный ястреб",
 	"EN" : "Red Astor",
 }, {
-	"RU" : "",
+	"RU" : "Первобытный саблезуб",
 	"EN" : "Primal Saber",
 }, {
-	"RU" : "",
+	"RU" : "Скорая стая",
 	"EN" : "Fleet Flock",
 }, {
-	"RU" : "",
+	"RU" : "Огонь Чантико",
 	"EN" : "Chantico's Fire",
 }, {
-	"RU" : "",
+	"RU" : "Суд Анубиса",
 	"EN" : "Judgement of Anubis",
 }
 

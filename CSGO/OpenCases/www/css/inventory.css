@@ -139,7 +139,7 @@
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translateY(10px);
     border-radius: 7px;
     overflow: auto;
     max-height: 100%;
@@ -171,7 +171,7 @@
 		padding: 5px;
 	}
 	#weaponImg {
-		width: 200px;
+		width: 150px;
 		float: left;
 		border: 1px dashed rgba(248, 244, 244, 0.23);
 	}

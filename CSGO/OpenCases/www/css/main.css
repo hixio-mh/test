@@ -297,15 +297,15 @@ div.weapon > .weaponInfo {
     color: #FFCD48;
     display: block;
 }
-span.winQuality {
-	color: #fff;
+.win_quality {
+	color: #fff !important;
 }
-.win img {
+.win_img {
 	max-width: 100%;
 	width: 200px;
 }
-span.winName {
-    color: #fff;
+.win_name {
+    color: #fff !important;
     font-weight: bold;
     font-size: 20px;
     text-shadow: 1px 1px #000;
@@ -317,13 +317,13 @@ span.winName {
     font-size: 15px;
     font-family: sans-serif;
 }
-.zabor {
+.weapons_zabor {
     background: url(../images/zabor.png) repeat-x;
     width: 100%;
     height: 20px;
     position: absolute;
 }
-.zabor-bot {
+.weapons_zabor-bot {
     background: url(../images/zabor.png) repeat-x;
     width: 100%;
     height: 20px;

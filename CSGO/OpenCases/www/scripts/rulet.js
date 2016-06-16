@@ -257,17 +257,18 @@ function botAddItems() {
 		botWeapons.push(getRandomWeapon(0));
 	}
 	for (var i = 0; i < botWeapons.length; i++) {
-		var qual = getItemQuality()[1];
+		var qual = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
 		var st = ifStatTrak(botWeapons[i].type);
 		var price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
 		
 		var z = 0;
 		while (price == 0) {
-			qual = Quality[z].name[1];
+			qual = Quality[z].name[Settings.language == 'RU' ? 1 : 0];
 			price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
 			if (z == 4) break;
 			z++
 		}
+		if (Settings.language != 'RU' && botWeapons[i].type.indexOf('Сувенир') != -1) botWeapons[i].type = botWeapons[i].type.replace('Сувенир', 'Souvenir');
 		itemsCost += +price;
 		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), qual, st, botWeapons[i].rarity, price)
 	}

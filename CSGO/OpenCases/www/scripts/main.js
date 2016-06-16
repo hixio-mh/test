@@ -35,6 +35,8 @@ $(document).on("click", ".case", function(){
 			$('.popup').css('display', 'block');
 			var needToOpen = cases[caseId].casesToOpen - parseInt($.cookie('specialCases'));
 			$('#special').text(needToOpen);
+			$('#showVideoAd').data();
+			$('.js-secretField').text(caseId);
 		}		
 	} else {
 		window.location = "open.html?caseId="+caseId;
@@ -72,6 +74,7 @@ function fillCarusel(caseId) {
 		var img = getImgUrl(item.img);
 		var type = item.type;
 		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+		type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
 		
 		var name = getSkinName(item.skinName, Settings.language);
 		el += '<div class="weapon">'+
@@ -89,7 +92,7 @@ $(".openCase").on("click", function() {
 	$(".weapons").scrollTop(0);
 	if (caseOpening || $(".openCase").text() ==  Localization.openCase2.opening[Settings.language]) {return false};
 	$(".win").slideUp("slow");
-	$(".zabor-bot").css("display", "none");
+	$(".weapons_zabor-bot").css("display", "none");
 	if($(".openCase").text() == Localization.openCase2.tryAgain[Settings.language]) {backToZero()}
 	$(".openCase").text(Localization.openCase2.opening[Settings.language]);
 	$(".openCase").attr("disabled", "disabled");
@@ -104,40 +107,37 @@ $(".openCase").on("click", function() {
 			caseOpenAudio.play();
 			var type = win.type;
 			var statTrak = ifStatTrak(type);
-			var quality = getItemQuality()[1];
+			var quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
 			caseOpening = true;
 			
 			if (type.indexOf("|") != -1) {type = type.split("|")[1]}
-			var name = win.skinName;
-			var price = getPrice(type, getSkinName(name), quality, statTrak);
+			type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
+			var name = getSkinName(win.skinName, Settings.language);
+			var price = getPrice(type, name, quality, statTrak);
 			
 			var stopLoop = 0;
 			while (price == 0) {
-				quality = getItemQuality()[1];
-				price = getPrice(type, getSkinName(name), quality, statTrak);
+				quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
+				price = getPrice(type, name, quality, statTrak);
 				if (stopLoop == 15) break;
 				stopLoop++;
 			}
 			
-			$(".winPrice").html(price+"$");
+			$(".win_price").html(price+"$");
 			
-			if (price == 0) getMarketPrice(type, getSkinName(name, "EN"), getQualityName(quality), statTrak, ".winPrice");
+			if (price == 0) getMarketPrice(type, name, quality, statTrak, ".win_price");
 			
 			if (statTrak) {
 				type = "StatTrak™ " + type;
-				statisticPlusOne('statTrak');
 			}
-			$(".winName").html(type + " | " + getSkinName(name, "RU"));
-			$(".winQuality").html(quality);
-			$(".winImg").attr("src", getImgUrl(win.img, 1));
+			$(".win_name").html(type + " | " + name);
+			$(".win_quality").html(quality);
+			$(".win_img").attr("src", getImgUrl(win.img, 1));
 			$(".openCase").attr("disabled", "disabled");
 			win.statTrak = statTrak;
 			win.quality = quality;
 			win.price = price;
 			//getInventory();
-			
-			if (type.match(/.*(Н|н)ож.*/) != null)
-				statisticPlusOne('knifes');
 			
 		},
 		progress: function(e, t) {
@@ -156,21 +156,32 @@ $(".openCase").on("click", function() {
 			caseCloseAudio.play();
 			$(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
 			$(".win").slideDown("slow");
-			$(".zabor-bot").css("display", "block");
+			$(".weapons_zabor-bot").css("display", "block");
 			caseOpening = false;
 			$(".openCase").attr("disabled", null);
 			$(".weapons").scrollTop(185);
 			
 			//Statistic
-			var caseId = $("#caseID").text();
-			statisticPlusOne('case'+caseId);
+			var caseId = $("#youCanWin span").text();
+			statisticPlusOne('case-'+caseId);
 			statisticPlusOne('weapon-'+win.rarity);
+			if (win.statTrak) 
+				statisticPlusOne('statTrak');
 			
 			var param = parseURLParams(window.location.href);
 			if(typeof param != "undefined") {
 				caseId = param.caseId[0];
+				var fromAd = 0;
+				try {
+					fromAd = parseInt(param.fromAd[0]);
+				} catch (e) {}
+				
 				if (cases[caseId].type == 'Special') {
-					$.cookie('specialCases', cases[caseId].casesToOpen - parseInt($.cookie('specialCases')));
+					if (!fromAd) {
+						var need = $.cookie('specialCases', Number) - cases[caseId].casesToOpen;
+						need = (need < 0) ? 0 : need;
+						$.cookie('specialCases', need);
+					}
 					if ($.cookie('specialCases') < cases[caseId].casesToOpen)
 						$('.openCase').attr("disabled", "disabled");
 				} else {

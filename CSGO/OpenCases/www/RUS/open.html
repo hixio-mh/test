@@ -27,16 +27,16 @@
 	</div>
 </div>
 
-<div class="zabor"></div>
+<div class="weapons_zabor"></div>
 <div class="win" style="display: none;">
-<span id='youWon'>Вы выиграли</span>
+<span id='win_youWon'>Вы выиграли</span>
 
-<span class="winName"></span>
-<span class="winQuality"></span>
-<span class="winPrice"></span>
-<img src="" class="winImg">
+<span class="win_name"></span>
+<span class="win_quality"></span>
+<span class="win_price"></span>
+<img src="" class="win_img">
 </div>
-<div class="zabor-bot"></div>
+<div class="weapons_zabor-bot"></div>
 
 <button class="openCase">Открыть кейс</button>
 
@@ -56,18 +56,29 @@ $(function(){
 		caseId = param.caseId[0];
 		$("#caseID").text(caseId);
 		$("#youCanWin span").text(cases[caseId].name)
-		$("#opened").text($.cookie("case"+caseId));
+		$("#opened").text($.cookie("case-"+cases[caseId].name, Number));
+		
+		var rare = false;
 		
 		for(var i = 0; i < cases[caseId].weapons.length; i++) {
 			var weapon = cases[caseId].weapons[i];
+			if (weapon.rarity == 'rare' && rare == true) continue;			
 			var img = getImgUrl(weapon.img);
 		
 			var type = weapon.type;
 			if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+			type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
+			
 		
 			var name = weapon.skinName;
 			if(name.indexOf("|") != -1) {name = name.split("|")[1]}
 			name = getSkinName(name, Settings.language);
+			if (weapon.rarity == 'rare') {
+				type = '★ Rare Special Item ★';
+				name = '&nbsp;';
+				img = '../images/Weapons/rare.png';
+				rare = true;
+			}
 			var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div>";
 			$(".weaponsList").append("<li class='weapon'>"+weaponInfo+"</li>");
 		}
