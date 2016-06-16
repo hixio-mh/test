@@ -388,5 +388,17 @@
 			"RUS" : "Багги"
 		},
 		"youtube" : "https://www.youtube.com/embed/pr_nHVHgwcs"
+	}, {
+		"name" : {
+			"ENG" : "Space Ships",
+			"RUS" : "Космические корабли"
+		},
+		"youtube" : "https://www.youtube.com/embed/bDOdbchePWI"
+	}, {
+		"name" : {
+			"ENG" : "UFO on Wheels (RUS)",
+			"RUS" : "UFO on Wheels"
+		},
+		"youtube" : "https://www.youtube.com/embed/XO-K-tl_cQc"
 	}
 ]
