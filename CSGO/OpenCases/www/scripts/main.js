@@ -149,7 +149,7 @@ $(".openCase").on("click", function() {
 		},
 		complete: function(){
 			$("#opened").text(parseInt($("#opened").text())+1);
-			var price = parseFloat($(".winPrice").html());
+			var price = parseFloat($(".win-price").html());
 			win.price = price;
 			inventory.push(win);
 			saveInventory();
