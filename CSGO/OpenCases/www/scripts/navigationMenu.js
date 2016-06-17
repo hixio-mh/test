@@ -17,7 +17,7 @@ $(function() {
 					'<li><a href="faq.html"><span class="icon icon-question"></span><span>FAQ</span></a></li>'+
 					'<li><a href="settings.html"><span class="icon icon-cog"></span><span id="local-menu-settings">Настройки</span></a></li>'+
 					'<li><a href="about.html"><span class="icon icon-info"></span><span id="local-menu-about">О программе</span></a></li>'+
-					'<li><a href="#"><span class="icon icon-star-full"></span><span id="local-menu-apps">Другие приложения</span></a></li>'+
+					'<li><a href="apps.html"><span class="icon icon-star-full"></span><span id="local-menu-apps">Другие приложения</span></a></li>'+
 					'</ul>';
 	$(menu).html(menuHTML);
 })

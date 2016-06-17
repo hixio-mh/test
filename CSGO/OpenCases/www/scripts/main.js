@@ -60,16 +60,17 @@ function fillCarusel(caseId) {
 	if ((Math.rand(0, 10) > 3) && (a4.length + a3.length+a2.length+a1.length != 0)) {a5 = [];}
 	
 	if (c0 == undefined) {
-		var arr = a1.concat(a2, a3, a4, a5).shuffle().shuffle().shuffle();
+		var arr = a0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
 	} else {
-		var arr = c0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
+		var arr = c0.concat(a0, a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
 	}
 	var el = '';
-	if (arr.length <= winNumber) {
-		while (arr.length <= winNumber) {
-			arr = arr.concat(a1, a2, a3, a4).shuffle().shuffle();
-		}
+	while (arr.length <= (winNumber+3)) {
+		arr = arr.concat(a1, a2, a3, a4).shuffle().shuffle();
 	}
+	
+	if (arr.length > winNumber +3)
+		arr.splice(winNumber + 3, arr.length - (winNumber +3));
 	arr.forEach(function(item, index) {
 		var img = getImgUrl(item.img);
 		var type = item.type;

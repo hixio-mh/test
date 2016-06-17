@@ -1,32 +1,70 @@
 ﻿<html>
-<head>
-<title>FAQ</title>
-<script src="../scripts/jquery.min.js"></script>
-<script src="../scripts/jquery.cookie.js"></script>
-<script src="../scripts/settings.js"></script>
-<script src="../scripts/cases2.js"></script>
+	<head>
+		<title>FAQ</title>
+		<script src="../scripts/jquery.min.js"></script>
+		<script src="../scripts/jquery.cookie.js"></script>
+		<script src="../scripts/settings.js"></script>
+		<script src="../scripts/cases2.js"></script>
 
-<script src="../scripts/navigationMenu.js"></script>
-<link rel="stylesheet" href="../css/navigationMenu.css">
+		<script src="../scripts/navigationMenu.js"></script>
+		<link rel="stylesheet" href="../css/navigationMenu.css" />
 
-<script src="../scripts/localization.js"></script>
+		<script src="../scripts/localization.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/fonts.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-</head>
-<style>
-body {
-	color: #fff;
-}
-.container {
-    padding: 0 5px;
-    font-family: LatoRegular;
-}
-</style>
-<body data-localization='faq'>
-<div class="navigationBar" data-menu-EN="FAQ" data-menu-RU="FAQ"></div>
-
-<script>
-</script>
-</body>
+		<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+	</head>
+	<style>
+		body {
+		color: #fff;
+		}
+		.container {
+		padding: 0 10px;
+		font-family: LatoRegular;
+		margin-top: 48px;
+		}
+		ul.faq-list {
+		padding-left: 0;
+		list-style: none;
+		}
+		.faq-list li {
+		margin: 15px 0;
+		}
+		.question {
+		text-transform: uppercase;
+		background: #688798;
+		display: inline-block;
+		padding: 5px 8px;
+		border-radius: 5px 5px 0 0;
+		text-shadow: 0px 0px 2px RGBA(0, 0, 0, 0.27);
+		}
+		.answer {
+		background: #ededed;
+		display: block;
+		padding: 9px;
+		border-radius: 0 5px 5px 5px;
+		color: #000;
+		}
+	</style>
+	<body data-localization='faq'>
+		<div class="navigationBar" data-menu-EN="FAQ" data-menu-RU="FAQ"></div>
+		<div class='container'>
+			<ul class='faq-list'>
+				<li>
+					<span class='question' id='js-local-question-1'>Как играть в рулетку?</span>
+					<span class='answer' id='js-local-answer-1'>Максимальное число предметов, которые можно добавить: 6.<br> Максимальная стоимость - неограничена.<br>Игра начинается как только набирается 20 предметов.<br>Если вы добавили предметы и вышли из рулетки - предметы пропадают.</span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-2'>Почему цена предмета $0?</span>
+					<span class='answer' id='js-local-answer-2'>Цена предмета берется из базы. Если в базе нет цены, берётся с Торговой площадки стима. Если и там нет, тогда $0.<br>Если в стиме появился этот предмет, а у вас в инвентаре до сих пор цена $0 - откройте описание предмета, подождите пока загрузиться цена, закройте описание предмета и перезайдите в инвентарь.</span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-2'>Я нашел ошибку, что делать?</span>
+					<span class='answer' id='js-local-answer-2'>Срочно пишите на почту: <b>kurtukovvlad@gmail.com</b></span>
+				</li>
+			</ul>
+		</div>
+		<script>
+		</script>
+	</body>
 </html>

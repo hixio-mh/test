@@ -307,21 +307,41 @@ var cases = [{
 				"rarity" : "covert",
 				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0Ob3djFN79eJg4GYg_L4MrXVqXlU6sB9teXI8oTht1i1uRQ5fWv7II6ce1dsYl2F_wC8yL3p0MLuupmbyyM1uykmtiqInhzmgU0YZuxxxavJ__KWVeE"
 			}, {
-				"type" : "★ Gut Knife",
-				"skinName" : "Tiger Tooth",
+				"type" : "★ Karambit",
+				"skinName" : "Autotronic",
 				"rarity" : "rare",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhgZxD9AK5hSPw98RrTBjUz5sBma9u_8LMSFlC-9tWTLbQpOdgYHJHZXPCAZ1r4v0480fdeLZ2M83jt3irpPWlcCBXorm8MnrSZ-uw8-9ETQO4"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJk5O0nPbmMrbul35F59FjhefI9rP9jVWisiwwMiukcZiccQBtZVyF_lW7kLzvg8Xvup7Lz3Qx6CUj5iqLnBzhhxkZabBshKaaVxzAUIJQ4Np6"
 			}, {
-				"type" : "★ Flip Knife",
-				"skinName" : "Градиент",
+				"type" : "★ Karambit",
+				"skinName" : "Lore",
 				"rarity" : "rare",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFfY_M78A3TBS414NNcWNak8L5IcQ3u4oqTO-F6Mo1MH8bXX6WGYg6s4xg51agLL5Hb8n_qjH68Mm1YWg2rpDz-PIrjNA"
+				"img" : "Knives/Karambit/lore.png"
 			}, {
-				"type" : "★ Huntsman Knife",
-				"skinName" : "Ночь",
+				"type" : "★ Karambit",
+				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhzcwfWCKNfUMop-zfiACA6_PhuUdO_4rY5JV2t49fYO7V-ZdFJFsSBXPWAYwqp70s6gqRZfJyOqC_viSXtaGteXkG_8mxXmvjH5OVitTZMMg"
-			}
+				"img" : "Knives/Karambit/gamma_doppler.png"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Autotronic",
+				"rarity" : "rare",
+				"img" : "Knives/M9-Bayonet/autotronic.png"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Lore",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Igsj5aoTTl3Ju5Mpjj9bJ8I3jkWu4qgE7NnfyIoDGdg4_YwrYqAS8xrvthcK6vMyfyXBnsiFzti2Pyxe0g0tKbeFrm7XAHjZ37Nzu"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Freehand",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Kmsj5Mqnak29u_dVO07n--InxgUG5lB89IT6mOtXAIwE4YlnW8lW7yebp05Tpv5rJmCQ26Scl7HfanBfjhkkaZrNph_GACQLJ_Utp8Mc"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Gamma Doppler",
+				"rarity" : "rare",
+				"img" : "Knives/M9-Bayonet/gamma_doppler.png"
+			},
 		]
 	}, {
 		"name" : "Chroma 3",
@@ -1923,29 +1943,129 @@ var cases = [{
 				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1ObcTjxM08i_k4WZqPjmMrXWk1Rd4cJ5ntbN9J7yjRrg_kpsN2qiLYCTdAdtZA3V_gDowuzngMXuvp7OyXVk7HMk5ivZlxPln1gSOddL0hWc"
 			}, {
 				"type" : "★ M9 Bayonet",
-				"skinName" : "Кровавая паутина",
+				"skinName" : "Autotronic",
 				"rarity" : "rare",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywD1NjA36tRcWdKy_q4LFlC-9tWTLeR4ZtsfFsHXDvGCZAn7404_hvNUesSJoSPnjC28OW0PCRO6_D1VnuWZ-uw8Gn75-BI"
+				"img" : "Knives/M9-Bayonet/autotronic.png"
 			}, {
 				"type" : "★ M9 Bayonet",
-				"skinName" : "Градиент",
+				"skinName" : "Bright Water",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KlsjyMr_UqWdY781lteXA54vwxgLi-0FrNWqiI4CWIw5sYQnY81m3xLjs18LouZjNwXc3uCF27SuOy0SpwUYbghNKfR8"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Djsj7ML7QmFRa5sx3j9aYpbP4jVC9vh4DPzixc9OLIwVsZwzSrlK5wOu9jMPvuMzJwCZjunN0tHrbykSzg0kYabZmh_OWGkLeWfITTUunnw"
 			}, {
 				"type" : "★ M9 Bayonet",
-				"skinName" : "Волны",
+				"skinName" : "Black Laminate",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KmsjwPKvBmm5D19V5i_rEprP5gVO8vywwMiukcZicd1BtZFiG-gPqkLjm1JO56ZqYnXJl6SAhtHePm0G0g0lIO-VpjfHMVxzAUO3kMgPo"
+				"img" : "Knives/M9-Bayonet/black_laminate.png"
 			}, {
 				"type" : "★ M9 Bayonet",
-				"skinName" : "Убийство",
+				"skinName" : "Lore",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KmsjuNrnDl1Rd4cJ5ntbN9J7yjRrh-BVlZW3ydoTHdABsZ13Y_Qe5xue6gMC-vp-amntr6yQq4XfUzhTin1gSOZHog2Kf"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Igsj5aoTTl3Ju5Mpjj9bJ8I3jkWu4qgE7NnfyIoDGdg4_YwrYqAS8xrvthcK6vMyfyXBnsiFzti2Pyxe0g0tKbeFrm7XAHjZ37Nzu"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Freehand",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Kmsj5Mqnak29u_dVO07n--InxgUG5lB89IT6mOtXAIwE4YlnW8lW7yebp05Tpv5rJmCQ26Scl7HfanBfjhkkaZrNph_GACQLJ_Utp8Mc"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Gamma Doppler",
+				"rarity" : "rare",
+				"img" : "Knives/M9-Bayonet/gamma_doppler.png"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Doppler",
 				"rarity" : "rare",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywnhNiM9-NdvUcWJ57MHOlnt296fZOhoX4QdXZeFRPSOMAGuuE87haFaJ8OJpSPp3C68O2teXBa6qW8FzubUvbQ_12lHRSeu7bLbJUD0E9Y"
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywnhNiM9-NdvUcWJ57MHOlns296fZOhoX4QdXZeFRP-DMFr46h040vUMeZzYpS-62ny9OmhZWxC68jkAzOWF67Y-gmkeRyOu7bLbz4tHjC8"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Rust Coat",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywn9NjQm7cJva9y4_r0DFlG64NuDbt9wYZobSt7SWvHSNVuo4ho-iaULLceOqCzoiCq4bmcMWxvo_WhVzLPW7uRu0T4TXTHu-ivWhSeB"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Marble Fade",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywnhNioz-sVvUeiw9r8DFlC249qCLbcvMopOTMCFWaWEbw707ENr0_JdfJLc83663SnqMj9YUhrurGIDmuaZ-uw8ipOzogw"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Damascus Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywn9NiMz5cZwV8KlyOJWFlC249qCXOx9co8ZAZPYX_eGNQ-o6kg506dce5zaoXnt2S_objgJCRrq-GoGneODveY4imwIAy_n_4o6DWQ"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Tiger Tooth",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywniNjM778Jxa9ik9rUBLGOz7dWed64oOYxJTpaCXKKBMAj6uRk40qJVK8fcoS7u23zgP20JUxfq-2wAybWCpPI11SAedH7w"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Ultraviolet",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuyxvjNjcn-tdvUei6_rwOPWOz5cCRZq4pY4lEHMOBCPOHNA6s40w61KgPKsfbpy3m337hMmcPXELt8zgAyuLUpPI11X67t9n9"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Urban Masked",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuyxv8NjMz-MJcQcW09rU5JVW47Mapb-FuZ41STcnUWqKPMlj8401piagJecSIoHzv1XzhMz0MDxHj_mhWne6DvuQ-1HFWHSboOSh3gQ"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Stained",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywn9NiE9-sRmUOi6_rwOPWOz5cCRZq55NNhFTcHYXvOEZgr9vEht1vBZLpSOqHjr3iTsP2heXUXr_GxSyeOFpPI11TekLEVH"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Slaughter",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywnhNj036tVia9u_8LMSFlC-9tWTLbUvZtFKG8GCWKSAYFv770M_1qZaJsCM9ijt3366M2ZbXxvv8mJVmbOZ-uw8T4Gi0hg"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Scorched",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuyxv8NiMz-NdvUei6_rwOPWOz5cCRZq5-ONlMSZWGXvCCbwD740w-gKcLeZfapyru3iThOmtYDkHs8m9XnbfSpPI11XcQHFlR"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Safari Mesh",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuyxv8Nio3-89cQNa4yLcPLlSr296Xced5LtlMF8nWCfHVZQn_4kw_ifNbKZ2BqC--3y_gb2tYChTs-W0Hn7SBs-F1wjFBDsjagn4"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Night",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuyxvjNik77893a9u_8LMSFlC-9tWTLbV9Y4oeSpPUXqeHZFj-vk5thaJVJpXap3vtiCjhaz9cUxC6r2kMn-eZ-uw8rMzTcjo"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Forest DDPAT",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywD1NiM2-MZ3a9u_8LMSFlC-9tWTLbF6NdlNSsTWU_6HNw78vhg-h_AIfJeAoC6-iyi6PT8JUke-_2kGnu6Z-uw8FmO3LEw"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Fade",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywntNiEz7MJcWN6x_685JV2t49fYNbYsMt8aHJHXXPXXblv9u0MxiKhYeZbb9H7q2CnhPzoIWkfjrjhQyfjH5OUJpqnFow"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Crimson Web",
+				"rarity" : "rare",
+				"img" : "H4Yg36hHfHzMR9WintNQ3afK6m7sN3I8GIkGuHo1GHrWjRck8Vs6bmyeyVy4swxTv82xKeUocjgeggGqeyMPcNnPAy7gXz1nfO_NVrv5H0K72_oxoX08IRKDMLI6Lwp66I1eFORfMWRm1d5sveUyVKrc7UG6cTo5CcMJ7jYiWCmOhAN451wsOGuGklXk-QkRqYerL-QtaDQc2FnqZXFdLoDUSTvoWQ=="
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Case Hardened",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywn9Nig75MJna9u_8LMSFlC-9tWTLbcpYo4ZTJbYD_-GYQqu6k5q0aNcLZCIqCLmjyW9PmcCUxq982sCnu-Z-uw8NABrhGY"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Boreal Forest",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywD1NiE9-sJwQOi0-KkDKFCA6NuRa_RDbIkOSJXOWvGCNw6s401piKZYfpCO9Sy-iSzvb2ZbXRTj-G8BzuSE77U_hmlEEW_w87uLpmm_PQ"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Blue Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhqKzvAALlRUvAuywn9NiU-_cJna9u_8LMSFlC-9tWTLeN6MY0dSsWCWqKCZFr9uUk-hfQIKJLY9H68iSzrOmlfCULsq2NVnLSZ-uw8_unZThQ"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Blue Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEgznuShMhtupD_OfDd8Xntsl6p5GliFukBF0Oty-Pj5hdzvPWJ9cXew1-g34R3YzvZIyBI6zp7hecQvmttfDZ7UqZYlMG5SDW6CAYQ-o7k9uifUIfJeX4HS4j3Ti6UA"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Африканская сетка",
@@ -1953,34 +2073,129 @@ var cases = [{
 				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Yh8j5NqjZqX9Q5vp9g-7J4bP5iUazrl1tY2H6ItWSIQU-Y1DX_Vjsx-jnjZ657Z_LwCdm6HEl4nzbnBLlhxEfcKUx0rp-zgq-"
 			}, {
 				"type" : "★ Karambit",
-				"skinName" : "Зуб тигра",
+				"skinName" : "Bright Water",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJnJm0mPTxMrXunWVY7sBOh-zF_Jn4t1i1uRQ5fTryLIbBegRqaFzWqwLtl-7t1pTvv5_Jmyc3uycqtH3enh20hhwaZrBxxavJey8mJTk"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Autotronic",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJk5O0nPbmMrbul35F59FjhefI9rP9jVWisiwwMiukcZiccQBtZVyF_lW7kLzvg8Xvup7Lz3Qx6CUj5iqLnBzhhxkZabBshKaaVxzAUIJQ4Np6"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Black Laminate",
+				"rarity" : "rare",
+				"img" : "Knives/Karambit/black_laminate.png"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Lore",
+				"rarity" : "rare",
+				"img" : "Knives/Karambit/lore.png"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Freehand",
+				"rarity" : "rare",
+				"img" : "Knives/Karambit/freehand.png"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Gamma Doppler",
+				"rarity" : "rare",
+				"img" : "Knives/Karambit/gamma_doppler.png"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Doppler",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo7-TfoBjci5MJxa8e-9qgDeGOz7dWed64tNotMF8HZWvSON1_440Nqh6ZfJ5eP8yi9jivuP2kLWULqrm5VzuWApPI11QoHL2Zy"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Rust Coat",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo75Tf_HSI35PhoWt6w8oQLLFi28d-pb-FuZ41SG8OBU6KBMg344h0wgfReKpHf9Cq83Xy_Mm9eXRW6rz4FzeTUveM_hnFWHSaOGLKzXQ"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Marble Fade",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo7-TfhCDUw5MJcUtay8oQKIFu38JyTNuQsZtxLHpODXqfXMgGpvh8-1fUIK5eA8Xy61X69ODoCW0DqqT0GhqbZ7U3rlwo1"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Damascus Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo75TfoCCoz-8R2R-i6_rwOPWOz5cCRZq4oN4lLGZbXUvDVZwmpuR8w1aEOfsfb9i273Xu_aztZUhC-q2INnubWpPI11VyGQ9DQ"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Tiger Tooth",
 				"rarity" : "rare",
 				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo7-jf4ACA3-vhsRta48L45JVW47MbYYOQpYdEYGJSBW6CHY1v46U041alfKseO9CLt2yzrO25ZDhTq_W0Am_jH5OWLuQC7ZQ"
 			}, {
 				"type" : "★ Karambit",
-				"skinName" : "Поверхностная закалка",
+				"skinName" : "Ultraviolet",
 				"rarity" : "rare",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo75TfjACs37PhuUdO_4rY5JV2t49fYYLApNolKHJPTC6XTZAD76UM506lcJpLbpCPq1S27MjxZUhu9qGgCzPjH5OUcQbPO0g"
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMop-zf8HDUi5MJcWN6x_685JV2t49fYYLMsZN4fGcGFU6PVZFz16kNqiKVYe5CApHvp3Ci8PmgIWEfu_D5RnfjH5OVFYzsL6Q"
 			}, {
 				"type" : "★ Karambit",
-				"skinName" : "Убийство",
+				"skinName" : "Urban Masked",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlY20jfL2IbrummJW4NFOhujT8om70Azg_kQ6MTygdYKXJw9qMlnX_Fa3ye28gpC-vZSdynYxviZztyncmwv330_7Rx0jNA"
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMop5Df4CDc319JxVta4yLcPLlSr296Xced5LoxPGZTRCaCOZwH_6RpsgKVbLMSNony53nzhbmdYWkK9rG8NmebWvbF1wjFBWafnDHI"
 			}, {
 				"type" : "★ Karambit",
-				"skinName" : "Кровавая паутина",
+				"skinName" : "Stained",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJnJm0gPL2IITck29Y_chOhujT8om7iwLn_Ec4NWrwdoDDIFNtZlHT-QW6xOzmgZ_t6pTNznUyvnQg7Crclwv330__CL9_dg"
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo75TfqBjUx7cNcWN6x_685JV2t49fYNrQkZtlNScjYCaLXb136vh86iaBYfcGMo37u2njqO2deWRu6_GtRzPjH5OWh0rdYxA"
 			}, {
 				"type" : "★ Karambit",
-				"skinName" : "Дамасская сталь",
+				"skinName" : "Slaughter",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlZG0k_b5MqjSg3hu5Mx2gv3--Y3nj1H6_0Q9ZG-lI46TIQc-NQuE8gS-kr-918C76J2fnyM26SkhsC7UlhO30AYMMLK-PHGgTA"
+				"img" : "6FZQXKBwu39SUSLmAbr98lAamu3kALU_hp_x_OVctVUhXWen-Wz9bfKIPhgn2qF8SB3Bqu0ftTuAlPbu5EqiXy4fc63oaPpk4vk6EiSQsm1MC4qyqUr7IoyVx_alRqdVH1t2uu9k7WHi-TwaFY-lbkoPsfG3SPImzZn9rahMolF1CSf_tj7rPPSXbRIvwvE5WwyI--ob_zTQyqr7_h-iCCUeZ6bp"
 			}, {
 				"type" : "★ Karambit",
-				"skinName" : "Африканская сетка",
+				"skinName" : "Scorched",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJh5C0mvLnO4TFl2Vu5Mx2gv3--Y3nj1H6qkE4Zzqgco-cdwJsaF3XqVm_yL-70JG-7ZyamycyvXNz5SndzkG21wYMMLI7nV07EA"
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMop5DfoCDci5MJcWN6x_685JV2t49fYO7h9ZI5JHpKDUqKDZVyruUtsiPJdK5SIpHi73S69OWYCDhPrrmlWkPjH5OUGS-1aRQ"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Safari Mesh",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMop5DfhDDQ619NiWui6_rwOPWOz5cCRZq59MoxITJOGU_-DYlv070xriKBUfsHcpyi-3H67bz8NCELrrGtVzOfRpPI11aVlXOou"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Night",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMop-zfiACA6_PhvXdC-44QKKE644ZzCMbcoONweF8LWUvHUb1yv6E9tg6lcLZDfpX--1HjgMm0CXxS9_GNShqbZ7QXcaW5k"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Forest DDPAT",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMoy7TfoDTcz_PhvXdC-44QKKE644ZzCYOUvZNgYGsnXC_eCbgirvE9r1PJUesbaqHnu2izuPmZeXxrp8mgGhqbZ7fQ9-fxZ"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Fade",
+				"rarity" : "rare",
+				"img" : "hy71GAP3ufb8R-ppRUkn3z9iP6lHh7e2KIk5c6Gvb3hOJcLjWuv_5Fye9pdjKXtRJ2Vk7k6Yt7Iugj5hoLl4ckFn1ulL7_jtTO_ynWBjaEAjcy_2Cs35qyKDD3nhtX14cCPT_kzj7-hM7_SZUWB7RTJJJ7AawOz1L9RgIey_fi1LKoS5Se26tQmFo5w9MSwYM3B84E2e_Lgu1WImvrkqewE43Os="
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Crimson Web",
+				"rarity" : "rare",
+				"img" : "5DJI8C6QkPeBTzKNlwBr1Vx-gkFq4J63VYHhl3PmI3ItOX8Ld4zW5SGWLnOxYDdbRHnZBmP_nrNTiuaFcvA0eCJ7awFmiNHsMecqebIqJEpAb5IeJ6rQql-L150z_DFyEz9uFmGExukx5yVlgzgzSUdVmlg3p8X0B9C7lz6mZCd1MGoBZtqXtSPZLyu9KWZOUDvBAGirge8J0-yQafczI2IkYQM="
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Case Hardened",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo75TfjACs37PhvXdC-44QKKE644ZzDMeYlMtpFS8LZXPbQYwz47RowiaIMJpza8yzo1HvoO2YLCRfjrmIMhqbZ7XVFxf-F"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Boreal Forest",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMoy7TfqBjU3-9NcVtik8roKFlC249qCXOx9co8ZAciCD_-PNACv70g6h6RZKZbc83u83SS9OmYKWBbiqz0HneSB6bY-im4IAy_nZrgln78"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Blue Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhscxbDDKJXSMo75TfuBTI37PhvXdC-44QKKE644ZzHN-UlMtAfS5WED_-HNwn4u08_hqRbfcaI8S7o3X69P28PCRq__WgBhqbZ7SjpJGyH"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Blue Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEgznuShMhtupD_OfDd8Xntsl6p5GliFukBF0Oty-Pj5hdzvJALJfUfcz4Ea0C3NrucU2DIa3o7lfKgu9sYDPO7ArMdxOGpbSCPSPNwr0u0lpgaMLMdXX9w2bEeEd"
 			}, {
 				"type" : "★ Butterfly Knife",
 				"skinName" : "Градиент",
@@ -2013,34 +2228,129 @@ var cases = [{
 				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf0ebcZThQ6tCvq5OEqPn9NLPFqWdY781lteXA54vwxg2y-UZoZzrwIY6TdVc7ZViG-wW-kOu6gZK66JzJnXFm6CRwt3zfnxepwUYb2Pp00lU"
 			}, {
 				"type" : "★ Flip Knife",
-				"skinName" : "Зуб тигра",
+				"skinName" : "Bright Water",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD4uOinYeOhcj7IbrfkW5u5Mx2gv3--Y3nj1H6_0dtMGmnJtXDdgQ5NVHQrAO-xue6jZTt6p2dyXVn6SFwsy6JnhbihQYMMLJJD10GFg"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJK9eO5l4WKmcj_PbLXk1Rd4cJ5ntbN9J7yjRrir0BpNWChd47BcldsYwyB_VC_w-_qgMXqv5qcn3VruHUn4X2IyRa2n1gSOZ6lSNoc"
 			}, {
 				"type" : "★ Flip Knife",
-				"skinName" : "Мраморный градиент",
+				"skinName" : "Autotronic",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD4eO7lZKJm_LLNbrVk1Rd4cJ5ntbN9J7yjRrh_BJlamqidoCTcQRsMArX_lPqkufp0J7p7sidn3trvichsy7YzRG_n1gSORYEYb_6"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJF_-OwmImbqPbhJ7TFhGRf4cZOhuDG_ZjKhFWmrBZya2HxcIaUcFNoYA3X_1ntyLvsh5Xo6Jidz3BjuHMm7CmPyh2-hU1Ma_sv26IF0j6FwQ"
 			}, {
 				"type" : "★ Flip Knife",
-				"skinName" : "Градиент",
+				"skinName" : "Black Laminate",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD7eOwlYSOqPv9NLPFqWdQ-sJ0xLGQpIqtjQy1rUE5Y2n1I4PGcgI5MFGD-wS3l-7r18TpucyanHpg6CE8pSGKbZ02GvY"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJB-eOwmImbqOTgPLXUgWpC4Pp9g-7J4bP5iUazrl05ZT_0JdKUewVqY1HW_wO6xe260cO7vJzMwHNi7HV3sSmIzhPihElEcKUx0oH2X3dW"
 			}, {
 				"type" : "★ Flip Knife",
-				"skinName" : "Поверхностная закалка",
+				"skinName" : "Lore",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD_eO5nYyOk8j4OrzZglRd6dd2j6eQodmt0VDgrUBqZWrwJIKccg48ZQ7T_AS5l-nqh5e1uJrBnHAw63J2-z-DyM8HtRGF"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJB-eOwmImbqPv7Ib7um25V4dB8teXA54vwxlHjqkBta2vyIdOTIQM_YVmG_lfox7rtgMe_tJvMn3Awsykn7X7YnkSpwUYbImluMl8"
 			}, {
 				"type" : "★ Flip Knife",
-				"skinName" : "Ночь",
+				"skinName" : "Freehand",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJR4-O4nYeDg8j4OrzZglRd6dd2j6fC8dqk2wDi-xE6Nz_7II6cewRrY12G-gC6xL--hsfuvZqbzyZnvHIk-z-DyFVtBt8T"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD4eO7lZKAkvPLJqvummJW4NFOhujT8om73gDm-0dvaz_yLYWVIQE8N1GBrwS_l7zp0ZTpvcjNyHBgsnNzs3zZnwv330_U-q7jVg"
 			}, {
 				"type" : "★ Flip Knife",
-				"skinName" : "Сажа",
+				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJR_OOylZCbm_LLP7LWnn9u5MRjjeyP84jzjVHl-hdtYm37co6Udw48N1zT8gLowLi705e7uZrIziFku3EisGGdwUJi_yOknw"
+				"img" : "lo8PoK53WOPrFv9dLa5Dky7DxRHqB1ajP9gsR8lICzRfhDhb92se8UvP46MLzh8dNsSeVuMYVqc50ytVyF4cPlDGP1HhfgP6XM7irRWEIRoj1sEOvltWuT_dNUmJZBQ_V48ta-ZiBeQBhOKqBdFOWnWChljiSkiraIVxEYUITzAN23lVsDlepRqF4aleghsIIpnBD7c="
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Doppler",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD4eOym5Cbm_LmDKvZl3hUu_p9g-7J4bP5iUazrl0_ZWD7cIPBdFdsMwnZ-1Xqye67h5--6M-bynI173Ih4H6MmBO_1xtPcKUx0uQwW0b2"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Rust Coat",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFPY-Yu8Q3gNiw84cFma9qz87ITJGOz5cCRZq4pMo1MHZPUXqOCMlz0vB44hqJYfMbY8iq52SzobGpbWhXi82NXy-KCpPI11bIb1hbd"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Marble Fade",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFTY_g75grgDBg06cNma9u_8LMSFlC-9tWTLbUrYdFFHJGCXPCFZFusuEw8gvUOJpPcqH-9iHm_M2YOXBC9q25WnO6Z-uw8Y8ANU94"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Damascus Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFPY_E7-Qn_CjIh18tqU9-iyLcHO1u6qouUM7h-Y9tMHcTZC_KFZ131vxo4iKUJfsOO9CO5jn_hbj8PDhO--2Ia2LjQI41o9KY"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Tiger Tooth",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFQY-Ez8w3-Nigg6clkUei6_rwOPWOz5cCRZq4oNNkfH5TSCaCCZA6p40tu0qFaJsCBonu53XnpPWpZWkG9qz8Fm7ODpPI11e7G-Um7"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Ultraviolet",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPrNRY-Uv5hjgDBg-4cBrQOi69qkBLBLp5YXAYeIpMIwYHJWCDPeDNF307hhrhfRde5aA9Hu53im7OmwIXBO95CtazzhCH8L6"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Urban Masked",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPrNOY-E75A3THDUw6clcWN6x_685JV2t49fYYeQtY9hIHMnVD6eGZA2suRkwhqIMfMePoiK9iH6_PWlfD0fvr29RyvjH5OXG2hpQHA"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Stained",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFPY_M15gvpDRg-4cBrQOi69qkBLBK6vdPANrcqYdFOF5HRW6DVZQ766xk7gKMLLcePpi_s1Hm7OGdYXhPo5Ctaz043bOns"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Slaughter",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFTY-8_9hrtNis77893a9u35bwDZwnqsITBZeIqNdxLGpTYWKWCYwuvuUI-galde5SJoXy5iSq8PWgLUhH1ujVTthpPV9Y"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Scorched",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPrNOY_E75BjgDBg-4cBrQOi69qkBLBK54NSTZrEtZNlNG8iGUveDbgur7kgw0_dcecHfoS3q2izuaWkLChO-5Ctaz-iUruLD"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Safari Mesh",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPrNOY_g_5wDTHSY818tqU9-iyLcHO1u6qoHAMuMkNN4dTMeCCaODZwur7Us_h_ULJ8eB8n7p33m4Mm0CDkG--D4a2LjQKGuiy1Y"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Night",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPrNRY_sz8wD4Nis77893a9u35bwDZ1-7soPFN7YsYo4YScjUUv-PZFz_7x040aVYfsSK8Xju2n_vbmoMCRX1ujVT7gNIytI"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Forest DDPAT",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqhHY_E-5An4Nis77893a9u35bwDZwTnttbHMrIsZd8ZGsXYU_CPZwv840s61KdcJ8HYqCq91SXoOmtZWEL1ujVTYfKVD1U"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Fade",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFfY_M78A3TBS414NNcWNak8L5IcQ3u4oqTO-F6Mo1MH8bXX6WGYg6s4xg51agLL5Hb8n_qjH68Mm1YWg2rpDz-PIrjNA"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Crimson Web",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqhHY-I_9hvTBS414NNcWNak8L5ILAy959HPZrF4MNhITZaGWqfQZg6suBg7hPBbL5zapizq2SXqPz1fXQ2rpDxTuFR6rw"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Case Hardened",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFPY_oz-A3oNis77893a9u35bwDZw3rsYrPZ7R6M95KHMPQXv-Gbgv5vEg-1aYLKJCLoSPr2iW8OD1bCUf1ujVTxaDwZJQ"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Boreal Forest",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqhHY_M15g3_HRgw59VmVduJ-7IBIUiA6NOEZOUyZNxEGMjYX_eDZg6s7E8xgqQOfZSIoCrvj3u9azwPXkC6rzkHzeaA6awr3DgaDfI7XQ"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Blue Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5wOuqzNQhhfg3SPqFPY_c24Q3oNis77893a9u35bwDZwjmsdeQYLYlMo4YTMXVW_WFZ1z56kw-iaZcKpfdqSK81CTpOGkICBD1ujVTzVntbj4"
+			}, {
+				"type" : "★ Flip Knife",
+				"skinName" : "Blue Steel",
+				"rarity" : "rare",
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEgznuShMhtupD_OfDd8Xntsl6p5GliFukBF0Oty-Pj5hdzvEDalOEvA48gu8WXBhvZA6BtXn8ulffQu9t4KXMLItYdhLHcHVDqfTblqovx8mwP8KZWGkNYw"
 			}, {
 				"type" : "★ Huntsman Knife",
 				"skinName" : "Вороненая сталь",
@@ -3662,7 +3972,7 @@ var cases = [{
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAR17PLGeDBH092jk7-HnvD8J_XXxj8IuJIkib-VoNSi2VGx_UQ-Yzv3I4SQcVA7aAvS_FC6wru51pK1ot2XnmtK7ev7'
 			},
 		]
-	},  {
+	}, {
 		"name" : "Dust II",
 		"img" : "dust2.png",
 		"type" : "Souvenir",
@@ -4150,5 +4460,5 @@ var cases = [{
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhzw8zGZDZH_8iknZCOqPDmNr7fqX9U65xOguzA45W7ilfm_EVqYWvyIdSRJ1Q_YVzT8lC6wu3vjZW-uc-YwHUwvHZ05Hvaygv330_9fYlOZg'
 			},
 		]
-	}, 
+	},
 ]
