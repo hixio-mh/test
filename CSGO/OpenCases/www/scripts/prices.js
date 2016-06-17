@@ -49,6 +49,7 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 		format: "json"
 	},
 	function(data){
+			try {
 			if (data.query.results.json.success == "true") {
 				var pr = data.query.results.json.lowest_price;
 				pr = pr.replace(/,/ig, ".");
@@ -58,6 +59,9 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 				if (typeof selector != "undefined")
 					$(selector).text(pr+"$");
 				return pr;
+			}
+			} catch (e) {
+				getOtherMarketsPrice(type, name, quality, statTrak, selector);
 			}
 		}
 	);
@@ -74,7 +78,32 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
 	},
 	function(data) {
 		if (typeof data.query.results != "undefined") {
-			console.log(data);
+			var li = 0;
+			switch (getQualityName(quality)) {
+				case 'Factory New':
+					li = 0;
+					break;
+				case 'Minimal Wear':
+					li = 1;
+					break;
+				case 'Field-Tested':
+					li = 2;
+					break;
+				case 'Well-Worn':
+					li = 3;
+					break;
+				case 'Battle-Scarred':
+					li = 4;
+					break;
+				default:
+					li = 0;
+			}
+			var price = parseFloat(data.query.results.ul.li[li].ul.li[(statTrak == true) ? 3 : 1].a.content);
+			if (isNaN(price)) price = 0;
+			console.log('Other market: '+price);
+			if (typeof selector != "undefined")
+				$(selector).text(price+'$');
+			return price;
 		}
 	});
 }
