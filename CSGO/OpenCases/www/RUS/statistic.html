@@ -60,10 +60,10 @@ $(function(){
 	var i = cases.length;
 	var opened = 0;
 	while (i--) {
-		if (typeof $.cookie('case'+i) != "undefined")
-			opened += $.cookie('case'+i, Number)
+		if (typeof $.cookie('case-'+cases[i].name) != "undefined")
+			opened += $.cookie('case-'+cases[i].name, Number)
 	}
-	document.getElementById("caseOpened").textContent = opened;
+	$("#caseOpened").text(opened);
 	
 	stat("white", $.cookie('weapon-consumer', Number));
 	stat("industrial", $.cookie('weapon-industrial', Number));
