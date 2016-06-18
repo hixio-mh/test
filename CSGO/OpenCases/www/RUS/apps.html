@@ -44,7 +44,7 @@
 		white-space: nowrap;
 		}
 	</style>
-	<body data-localization='faq'>
+	<body data-localization='apps'>
 		<div class="navigationBar" data-menu-EN="Other apps" data-menu-RU="Другие приложения"></div>
 		<div class='container'>
 			<ul class='apps'>
@@ -54,7 +54,7 @@
 		<script>
 			var list = '';
 			for (var i = 0; i < appList.length; i++) {
-					if (appList[i].enable == true && appList[i].name[Settings.language] != '')
+					if (appList[i].enable == true && typeof appList[i].name[Settings.language] != 'undefined')
 					list += '<li style="background: url(\'../../android/' + appList[i].img + '\') left"><a href="' + appList[i].url + '">' + appList[i].name[Settings.language] + '</a></li>';
 					}
 					$('.apps').html(list);

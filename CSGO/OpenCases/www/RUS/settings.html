@@ -185,7 +185,7 @@ $('#resetConfirm').on('click', function() {
 	deleteAllCookies();
 	$('#closePopup').click();
 	$("#submit").click();
-	$("#popup-status").text("Очищено");//Settings.language == "RU" ? saved.RU : saved.EN);
+	$("#popup-status").text(Localization.settings2.reset[Settings.language]);//Settings.language == "RU" ? saved.RU : saved.EN);
 })
 
 $(document).on('click', '#closePopup', function() {

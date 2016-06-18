@@ -6,10 +6,12 @@
 
 function localizate(category){
 	for (var i = 0; i < Localization[category].length; i++) {
-		$(Localization[category][i].selector).text(Localization[category][i].localization[Settings.language]);
+		if (typeof Localization[category][i].localization[Settings.language] != 'undefined')
+			$(Localization[category][i].selector).html(Localization[category][i].localization[Settings.language]);
 	}
 	for (var i = 0; i < Localization['menu'].length; i++) {
-		$(Localization['menu'][i].selector).text(Localization['menu'][i].localization[Settings.language]);
+		if (typeof Localization['menu'][i].localization[Settings.language] != 'undefined')
+			$(Localization['menu'][i].selector).html(Localization['menu'][i].localization[Settings.language]);
 	}
 }
 var Localization = [];
@@ -287,6 +289,38 @@ Localization.statistic = [{
 		}
 	}
 ],
+Localization.faq = [{
+		"selector" : "#js-local-question-1",
+		"localization" : {
+			"EN" : "How to play jackpot?"
+		}
+	}, {
+		"selector" : "#js-local-answer-1",
+		"localization" : {
+			"EN" : "The max number of weapons that you can add: 6.<br>Maximum price - is unlimited.<br>The game will begin after 20 weapons will be collected.<br>If you add weapons and close the roulette - weapons will disappear."
+		}
+	}, {
+		"selector" : "#js-local-question-2",
+		"localization" : {
+			"EN" : "Why weapon price is $0?"
+		}
+	}, {
+		"selector" : "#js-local-answer-2",
+		"localization" : {
+			"EN" : "Weapons prices is taken from the database. If there are no prices for current weapon, then price is taken from the Steam Market. If there no price too, then $0. <br> When the weapon appear in market, open the weapon info in inventory, wait until the price is loaded, reopen inventory."
+		}
+	}, {
+		"selector" : "#js-local-question-3",
+		"localization" : {
+			"EN" : "I found a bug what should I do?"
+		}
+	}, {
+		"selector" : "#js-local-answer-3",
+		"localization" : {
+			"EN" : "You can contact me via email: <b>kurtukovvlad@gmail.com</ b>"
+		}
+	}
+],
 Localization.settings = [{
 		"selector" : "#local-name",
 		"localization" : {
@@ -306,7 +340,25 @@ Localization.settings = [{
 			"EN" : "Language:"
 		}
 	}, {
-		"selector" : ".saveButton",
+		"selector" : "#reset",
+		"localization" : {
+			"RU" : "Полный сброс",
+			"EN" : "Full reset"
+		}
+	}, {
+		"selector" : "#reset-text",
+		"localization" : {
+			"RU" : "Вы уверены, что хотите очистить инвентарь и сбросить статистику?",
+			"EN" : "All weapons will be deleted. Statistics will be reset. Are you sure?"
+		}
+	}, {
+		"selector" : "#resetConfirm",
+		"localization" : {
+			"RU" : "Да",
+			"EN" : "Yes"
+		}
+	}, {
+		"selector" : "#submit",
 		"localization" : {
 			"RU" : "Сохранить",
 			"EN" : "Save"
@@ -317,6 +369,10 @@ Localization.settings2 = {
 	"saved" : {
 		"RU" : "Сохранено",
 		"EN" : "Saved"
+	},
+	"reset" : {
+		"RU" : "Очищено",
+		"EN" : "Done"
 	}
 }
 Localization.about = [{
@@ -356,4 +412,5 @@ Localization.about = [{
 			"EN" : "All information is taken from public sources. If anything in the application infringes your copyright, please contact me."
 		}
 	},
-]
+],
+Localization.apps = []
