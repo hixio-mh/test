@@ -77,7 +77,14 @@ function fillCarusel(caseId) {
 		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
 		type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
 		
-		var name = getSkinName(item.skinName, Settings.language);
+		if (item.rarity == 'rare') {
+			type = '★ Rare Special Item ★';
+			name = '&nbsp;';
+			img = '../images/Weapons/rare.png';
+		} else {
+			var name = getSkinName(item.skinName, Settings.language);
+		}
+		if (item.rarity == 'rare') img = '../images/Weapons/rare.png';
 		el += '<div class="weapon">'+
 				'<img src="'+img+'" />'+
 				'<div class="weaponInfo '+item.rarity+'"><span class="type">'+type+'<br>'+name+'</span></div>'+

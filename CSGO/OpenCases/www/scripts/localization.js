@@ -297,17 +297,17 @@ Localization.faq = [{
 	}, {
 		"selector" : "#js-local-answer-1",
 		"localization" : {
-			"EN" : "The max number of weapons that you can add: 6.<br>Maximum price - is unlimited.<br>The game will begin after 20 weapons will be collected.<br>If you add weapons and close the roulette - weapons will disappear."
+			"EN" : "The max number of weapons that you can add: 6.<br>Maximum price is unlimited.<br>The game will begin after 20 weapons are collected.<br>If you add weapons and close the roulette, weapons will disappear."
 		}
 	}, {
 		"selector" : "#js-local-question-2",
 		"localization" : {
-			"EN" : "Why weapon price is $0?"
+			"EN" : "Why weapons price is $0?"
 		}
 	}, {
 		"selector" : "#js-local-answer-2",
 		"localization" : {
-			"EN" : "Weapons prices is taken from the database. If there are no prices for current weapon, then price is taken from the Steam Market. If there no price too, then $0. <br> When the weapon appear in market, open the weapon info in inventory, wait until the price is loaded, reopen inventory."
+			"EN" : "Weapons prices are taken from the database. If there are no prices for current weapon, then price is taken from the Steam Market. If there is no price as well, it counts as $0. <br> When the weapon appears in market, open the weapon info in inventory, wait until the price is loaded, reopen inventory."
 		}
 	}, {
 		"selector" : "#js-local-question-3",
