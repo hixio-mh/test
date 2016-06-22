@@ -406,5 +406,17 @@
 			"RUS" : "Поезд из 'Назад в будущее' & Безумный Макс"
 		},
 		"youtube" : "https://www.youtube.com/embed/g4jTGPIiBtQ"
+	}, {
+		"name" : {
+			"ENG" : "Flying helicopter & airplane",
+			"RUS" : "Вертолёт и самолёт"
+		},
+		"youtube" : "https://www.youtube.com/embed/9x6zitidKBo"
+	}, {
+		"name" : {
+			"ENG" : "RV & Low Rider",
+			"RUS" : "RV & Лоу райдер"
+		},
+		"youtube" : "https://www.youtube.com/embed/jtsUDL4nOIo"
 	}
 ]
