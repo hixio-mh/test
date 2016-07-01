@@ -121,6 +121,7 @@ $(".openCase").on("click", function() {
 			if (type.indexOf("|") != -1) {type = type.split("|")[1]}
 			type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
 			var name = getSkinName(win.skinName, Settings.language);
+			win.name = name;
 			var price = getPrice(type, name, quality, statTrak);
 			
 			var stopLoop = 0;
