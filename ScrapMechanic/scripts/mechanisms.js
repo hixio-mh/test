@@ -418,5 +418,59 @@
 			"RUS" : "RV & Лоу райдер"
 		},
 		"youtube" : "https://www.youtube.com/embed/jtsUDL4nOIo"
+	}, {
+		"name" : {
+			"ENG" : "Tank car (RUS)",
+			"RUS" : "Автоцистерна"
+		},
+		"youtube" : "https://www.youtube.com/embed/tTk6pVyubEw"
+	}, {
+		"name" : {
+			"ENG" : "Roly poly car (RUS)",
+			"RUS" : "Неваляшка"
+		},
+		"youtube" : "https://www.youtube.com/embed/2A0CXS3kwHI"
+	}, {
+		"name" : {
+			"ENG" : "Captain America V16 Coupe",
+			"RUS" : "Машина Капитана Америки"
+		},
+		"youtube" : "https://www.youtube.com/embed/Tj4l_jv80BQ"
+	}, {
+		"name" : {
+			"ENG" : "Modern Mansion Part 1",
+			"RUS" : "Современный особняк. Часть 1"
+		},
+		"youtube" : "https://www.youtube.com/embed/nkeg1LWIx0Q"
+	}, {
+		"name" : {
+			"ENG" : "Modern Mansion Part 2",
+			"RUS" : "Современный особняк. Часть 2"
+		},
+		"youtube" : "https://www.youtube.com/embed/Yw5FjU-3Gwk"
+	}, {
+		"name" : {
+			"ENG" : "SkyBase",
+			"RUS" : "Воздушная база"
+		},
+		"youtube" : "https://www.youtube.com/embed/yYaD5pR7BQg"
+	}, {
+		"name" : {
+			"ENG" : "Tubecar (RUS)",
+			"RUS" : "Трубомобиль"
+		},
+		"youtube" : "https://www.youtube.com/embed/y7v3ogtjy8A"
+	}, {
+		"name" : {
+			"ENG" : "Flying Locomotive (RUS)",
+			"RUS" : "Летающий паровоз"
+		},
+		"youtube" : "https://www.youtube.com/embed/qU-7nSMRQLg"
+	}, {
+		"name" : {
+			"ENG" : "Hot Rod. Drift (RUS)",
+			"RUS" : "Дрифт Хот Род"
+		},
+		"youtube" : "https://www.youtube.com/embed/1Q4XfEQFBtk"
 	}
 ]
