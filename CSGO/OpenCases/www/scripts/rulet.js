@@ -288,7 +288,8 @@ function botAddItems() {
 	}
 }
 
-function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, ifStatTrak, weaponRarity, price=0) {
+function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, ifStatTrak, weaponRarity, price) {
+	if (typeof price == 'undefined') price = 0;
 	var statTrak = (ifStatTrak == true) ? "StatTrak™ " : "";
 	if(weaponType.indexOf("|") != -1) {weaponType = weaponType.split("|")[1]}
 	if(weaponName.indexOf("|") != -1) {weaponName = weaponName.split("|")[1]}
