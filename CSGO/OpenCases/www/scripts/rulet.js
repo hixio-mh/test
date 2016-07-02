@@ -316,8 +316,10 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 	ItemsInGame.push(item);
 }
 
-function getRandomWeapon(specialClass=1) {
+function getRandomWeapon(specialClass) {
+	if (typeof specialClass == 'undefined') specialClass = 0;
 	var randomCaseId = Math.rand(0, cases.length-1);
+	
 	if ((specialClass == 0) && (typeof cases[randomCaseId].specialClass != "undefined")) {
 		randomCaseId = Math.rand(0, cases.length-1);
 		while (typeof cases[randomCaseId].specialClass != "undefined") {
@@ -426,7 +428,7 @@ $(".inventoryList").css("display", "block");
 
 function FillMyInventoryWithRandomWeapon(count){
 	while(count--) {
-		var weapon = getRandomWeapon()
+		var weapon = getRandomWeapon(1)
 		weapon.quality = getItemQuality()[1];
 		weapon.statTrak = ifStatTrak(weapon.type);
 		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
