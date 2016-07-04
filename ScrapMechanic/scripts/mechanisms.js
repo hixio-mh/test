@@ -397,7 +397,7 @@
 	}, {
 		"name" : {
 			"ENG" : "UFO on Wheels (RUS)",
-			"RUS" : "UFO on Wheels"
+			"RUS" : "НЛО на колесах"
 		},
 		"youtube" : "https://www.youtube.com/embed/XO-K-tl_cQc"
 	}, {
@@ -472,5 +472,23 @@
 			"RUS" : "Дрифт Хот Род"
 		},
 		"youtube" : "https://www.youtube.com/embed/1Q4XfEQFBtk"
+	}, {
+		"name" : {
+			"ENG" : "Fighting Cars (RUS)",
+			"RUS" : "Боевые машины"
+		},
+		"youtube" : "https://www.youtube.com/embed/CfatNCXCyhM"
+	}, {
+		"name" : {
+			"ENG" : "Living Room, Sliding Door, Ceiling Fans, and more",
+			"RUS" : "Гостинная, раздвижные двери, вентиляторы и другое"
+		},
+		"youtube" : "https://www.youtube.com/embed/FHfct1PmPN0"
+	}, {
+		"name" : {
+			"ENG" : "Scrap Dépôt world tour (FR)",
+			"RUS" : "Склад"
+		},
+		"youtube" : "https://www.youtube.com/embed/bKLvjvjhWFA"
 	}
 ]
