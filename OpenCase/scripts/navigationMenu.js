@@ -15,6 +15,7 @@ $(function() {
 					'<li><a href="inventory.html"><span class="icon icon-coin-dollar"></span><span id="local-menu-inventory">Мой инвентарь</span></a></li>'+
 					'<li><a href="statistic.html"><span class="icon icon-stats-bars"></span><span id="local-menu-stat">Статистика</span></a></li>'+
 					'<li><a href="faq.html"><span class="icon icon-question"></span><span>FAQ</span></a></li>'+
+					'<li><a href="news.html"><span class="icon icon-bullhorn"></span><span id="local-menu-news">Обновления</span></a></li>'+
 					'<li><a href="settings.html"><span class="icon icon-cog"></span><span id="local-menu-settings">Настройки</span></a></li>'+
 					'<li><a href="about.html"><span class="icon icon-info"></span><span id="local-menu-about">О программе</span></a></li>'+
 					'<li><a href="apps.html"><span class="icon icon-star-full"></span><span id="local-menu-apps">Другие приложения</span></a></li>'+

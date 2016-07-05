@@ -167,6 +167,48 @@ var cases = [{
 			},
 		]
 	}, {
+		"name" : "Assault",
+		"img" : "assault.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'SG 553',
+				'skinName' : 'Смерч',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwPz3ZTJQ4t2ym7-DkvbiKvWEwT9X7ZAp2riRo46i2lHj8xFrNjynctXBJAY_YQqG81W6le68h8Duot2XnjGENDPp'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Карамель',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwPz3cjxQ7dGzmL-DkvbiKvXTkjJV7JMp2uzCrIn0jlHhrUBvMjvxIYHAe1U3NQ2E8wftlebv18O7ot2XnuNTwZ3r'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Карамельное яблоко',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N086zkL-HnvD8J_WDz2pUv8cj2L-V94iniQft-xY_NWzydYOUcA89NVqD-FO-w7i70Me1ot2XnkOsbUS5'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Хот-род',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAZu7OHNdQJO5du-gM7SlvP2a-KFkDsD6cN33b6Z84rz0QXs8xJuZzymdYfDclU2M17W_Fm7366x0jzU3_8y'
+			}, {
+				'type' : 'Negev',
+				'skinName' : 'Анодированная синева',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf0v33fzxU9eO6nYeDg7mhN7rXlTgDuMQi3-vCpdjw2Ae2qRZsMG2mINSUIAQ3YlvZ8gW_k7q-m9bi60E-BDow'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Градиент',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0vL3dzxG6eO6nYeDg7miYr7VlWgHscN32LyT8dmm31XgrxdtZzvzJYDGIFM2Y16D-FfvlOu9m9bi66Oq9HyE'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Бульдозер',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRv7OrNfTFN--O-kYGdjrmnNb7Qkm4G7cZ3i7nH8I-n3gXl-0duZDqiJdfDelVqZVzW_1Xowe_om9bi66Howf2G'
+			},
+
+		]
+	}, {
 		"name" : "Nuke",
 		"img" : "Nuke.png",
 		"type" : "Collection",

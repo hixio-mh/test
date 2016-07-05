@@ -2,7 +2,7 @@
 var totalMoney = 0.00;
 var timerId;
 var botMinDec = 5000, botMaxDec = 10000;
-var maxItems = 6;
+var maxItems = 10;
 var usedName = [];
 var usedImages = [];
 var PlayersInGame = [];

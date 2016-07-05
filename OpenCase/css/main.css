@@ -227,7 +227,7 @@ div.weapon > .weaponInfo {
 .casesCarusel {
     width: 15000px;
     text-align: left;
-	-webkit-transform: translateZ(0);
+	-webkit-transform: translate3d(0, 0, 0);
 }
 
 /*Если разрешение экрана меньше 495px*/

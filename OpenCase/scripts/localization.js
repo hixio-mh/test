@@ -1,14 +1,14 @@
 ﻿$(function () {
 	var category = $(document.body).data('localization');
-
 	localizate(category);
 })
 
 function localizate(category){
-	for (var i = 0; i < Localization[category].length; i++) {
-		if (typeof Localization[category][i].localization[Settings.language] != 'undefined')
-			$(Localization[category][i].selector).html(Localization[category][i].localization[Settings.language]);
-	}
+	if (category != 'none')
+		for (var i = 0; i < Localization[category].length; i++) {
+			if (typeof Localization[category][i].localization[Settings.language] != 'undefined')
+				$(Localization[category][i].selector).html(Localization[category][i].localization[Settings.language]);
+		}
 	for (var i = 0; i < Localization['menu'].length; i++) {
 		if (typeof Localization['menu'][i].localization[Settings.language] != 'undefined')
 			$(Localization['menu'][i].selector).html(Localization['menu'][i].localization[Settings.language]);
@@ -38,6 +38,12 @@ Localization.menu = [{
 		"localization" : {
 			"RU" : "Статистика",
 			"EN" : "Statistic"
+		}
+	}, {
+		"selector" : "#local-menu-news",
+		"localization" : {
+			"RU" : "Обновления",
+			"EN" : "Updates"
 		}
 	}, {
 		"selector" : "#local-menu-settings",
@@ -297,7 +303,7 @@ Localization.faq = [{
 	}, {
 		"selector" : "#js-local-answer-1",
 		"localization" : {
-			"EN" : "The max number of weapons that you can add: 6.<br>Maximum price is unlimited.<br>The game will begin after 20 weapons are collected.<br>If you add weapons and close the roulette, weapons will disappear."
+			"EN" : "The max number of weapons that you can add: 10.<br>Maximum price is unlimited.<br>The game will begin after 20 weapons are collected.<br>If you add weapons and close the roulette, weapons will disappear."
 		}
 	}, {
 		"selector" : "#js-local-question-2",

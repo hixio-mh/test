@@ -94,6 +94,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-bullhorn:before {
+    content: "\e91a";
+}
 .icon-coin-dollar:before {
     content: "\e93b";
 }
