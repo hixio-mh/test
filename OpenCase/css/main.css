@@ -323,6 +323,7 @@ div.weapon > .weaponInfo {
     width: 100%;
     height: 20px;
     position: absolute;
+	z-index: 1;
 }
 .weapons_zabor-bot {
     background: url(../images/zabor.png) repeat-x;
