@@ -58,6 +58,8 @@ $(function(){
 		$("#youCanWin span").text(cases[caseId].name)
 		$("#opened").text($.cookie("case-"+cases[caseId].name, Number));
 		
+		document.title = "Открытие кейса — "+cases[caseId].name;
+		
 		var rare = false;
 		
 		for(var i = 0; i < cases[caseId].weapons.length; i++) {
