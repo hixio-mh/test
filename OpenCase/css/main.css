@@ -292,6 +292,7 @@ div.weapon > .weaponInfo {
     background: #003440;
     padding-top: 25px;
 	font-family: LatoRegular;
+	-webkit-transform: translate3d(0, 0, 0);
 }
 .win > span {
     color: #FFCD48;
