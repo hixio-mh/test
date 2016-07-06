@@ -39,9 +39,16 @@
 }
 
 function getMarketPrice(type, name, quality, statTrak, selector) {
-	if (statTrak != 0) type = "StatTrak™ " + type;
+	if (statTrak != 0) {
+		type = "StatTrak™ " + type;
+		statTrak = true;
+	} else {
+		statTrak = false;
+	}
+	name = getSkinName(name, 'EN');
+	quality = getQualityName(quality);
 	if (type.indexOf("Сувенир") != -1) type = type.replace("Сувенир", "Souvenir");
-	var n = type+" | "+getSkinName(name, 'EN')+" ("+getQualityName(quality)+")";
+	var n = type+" | "+name+" ("+quality+")";
 	n = encodeURI(n);
 	
 	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
@@ -57,11 +64,12 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 				pr = parseFloat(pr);
 				console.log(pr);
 				if (typeof selector != "undefined")
-					$(selector).text(pr+"$");
+					$(selector).html(pr+"$");
 				return pr;
 			}
 			} catch (e) {
-				getOtherMarketsPrice(type, name, quality, statTrak, selector);
+				//getOtherMarketsPrice(type, name, quality, statTrak, selector);
+				csgoStashGetURL(type, name, quality, statTrak, selector);
 			}
 		}
 	);
@@ -102,8 +110,69 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
 			if (isNaN(price)) price = 0;
 			console.log('Other market: '+price);
 			if (typeof selector != "undefined")
-				$(selector).text(price+'$');
+				$(selector).html(price+'$');
 			return price;
+		}
+	});
+}
+
+function csgoStashGetURL(type, name, quality, statTrak, selector) {
+	var type2 = type.replace(/ /gi, '+');
+	type2 = type2.replace(/StatTrak™\+/, '');
+	type2 = type2.replace(/Souvenir\+/, '');
+	type2 = type2.replace(/ПП.*Бизон/, 'PP-Bizon');
+	type2 = type2.replace(/★\+/, '');
+	console.log('%c '+type2+' %c | '+'%c '+name+' ', 'background:#af7b05;color:#fff','','background:#56af05;color:#fff')
+	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
+		q: "select * from html where url='http://csgostash.com/weapon/"+type2+"' and xpath='//a[contains(@href, \"csgostash.com/skin\") and img[contains(@alt, \""+type2.replace(/\+/gi, ' ')+" "+name+"\")]]'",
+		format: "json"
+	},
+	function(data) {
+		try {
+			var url = data.query.results.a.href;
+			csgoStash(url, quality, statTrak, selector);
+		} catch (err) {
+			//ERROR
+		}
+	});
+}
+
+function csgoStash(url, quality, statTrak, selector) {
+	var anyPrice = false;
+	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
+		q: "select * from html where url='"+url+"' and xpath='//a[contains(@class, \"btn-sm\") and not(contains(@class, \"price-tab-keys-button\"))]/span'",
+		format: "json"
+	},
+	function(data) {
+		try {
+			var spans = data.query.results.span;
+			for (var i = 0; i < spans.length; i++) {
+				var curr = spans[i];
+				if (curr.content == 'StatTrak') {
+					if (!statTrak) {
+						i+=2;
+						continue;
+					}
+					i++;
+					curr = spans[i];
+				}
+				if (curr.content == quality || anyPrice) {
+					if (spans[i+1].content[0] == '$') {
+						var price = parseFloat(spans[i+1].content.substr(1).replace(/,/gi, ''));
+						if (typeof selector != 'undefined')
+							$(selector).html(price+'$');
+						console.log('Quality: %c '+quality+' %c;StatTrak: '+'%c '+statTrak+' %c; anyPrice: '+'%c '+anyPrice+' %c; Price: %c '+price+'$ ', 'background:#af7b05;color:#fff','','background:#56af05;color:#fff', '', 'background:#0083a0;color:#fff','','background:#b005b3;color:#fff')
+						break;
+					} else {
+						if (spans[i+1].content == 'Not Possible') anyPrice = true;
+						i++;
+					}
+				} else {
+					i++;
+				}
+			}
+		} catch (err) {
+			//ERROR
 		}
 	});
 }

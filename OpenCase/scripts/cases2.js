@@ -3867,7 +3867,7 @@ var cases = [{
 				'rarity' : 'consumer',
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhz3MzHfTRU6eO-kYGdjrmjau-EzzkGvcEnibjDotqiilKyrUY-MGDwJYOVIwNoYg7V-le8yLztm9bi63kWu9PZ'
 			}, {
-				'type' : 'ПП-19 Бизон',
+				'type' : 'PP-Bizon',
 				'skinName' : 'Песчаная штриховка',
 				'rarity' : 'consumer',
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3ZTxS6eOlnI-Zg8jnMrXVqWdY781lxO3C89Wk21Xnqkc6MD33JoeVcwQ6aVqF8gK_krzqgMK8ucnAwXBr7Ck8pSGKKT36elM'
@@ -3948,7 +3948,7 @@ var cases = [{
 				'rarity' : 'consumer',
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zDeDBN4tOJkImKmvj6N6junm5Q_tw_372R9N333QPs_hJlZGjyIIHEJwJsZQ2G_ATtxO2-jZG5uc7Nn3M2sz5iuygclVPvsA'
 			}, {
-				'type' : 'ПП-19 Бизон',
+				'type' : 'PP-Bizon',
 				'skinName' : 'Бамбук',
 				'rarity' : 'consumer',
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf2-r3czxP7tO5q4qemfD4NoTYmGBu4MBwnPCP8dSj2Vbi_hJtZGCmJtKQJlBtZlnV8wC6l-bphMS0vpWYzHRmviQh52GdwUImyimesA'
