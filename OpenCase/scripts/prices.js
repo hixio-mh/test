@@ -34174,6 +34174,76 @@ var Prices = [
 	"statTrak" : 1,
 	"marketPrice" : 20.01,
 	"avgPrice" : 20.10
+}, { //Gamma
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Battle-Scarred",
+	"statTrak" : 0,
+	"marketPrice" : 409.90,
+	"avgPrice" : 409.90
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Well-Worn",
+	"statTrak" : 0,
+	"marketPrice" : 590.00,
+	"avgPrice" : 590.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Field-Tested",
+	"statTrak" : 0,
+	"marketPrice" : 600.00,
+	"avgPrice" : 600.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Minimal Wear",
+	"statTrak" : 0,
+	"marketPrice" : 950.00,
+	"avgPrice" : 950.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Factory New",
+	"statTrak" : 0,
+	"marketPrice" : 1180.00,
+	"avgPrice" : 1180.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Factory New",
+	"statTrak" : 1,
+	"marketPrice" : 5899.00,
+	"avgPrice" : 5899.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Minimal Wear",
+	"statTrak" : 1,
+	"marketPrice" : 4299.00,
+	"avgPrice" : 4299.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Field-Tested",
+	"statTrak" : 1,
+	"marketPrice" : 1334.00,
+	"avgPrice" : 1334.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Well-Worn",
+	"statTrak" : 1,
+	"marketPrice" : 1280.00,
+	"avgPrice" : 1280.00
+}, {
+	"type" : "★ Karambit",
+	"name" : "Lore",
+	"quality" : "Battle-Scarred",
+	"statTrak" : 1,
+	"marketPrice" : 1020.00,
+	"avgPrice" : 1020.00
 },
 
 ];
