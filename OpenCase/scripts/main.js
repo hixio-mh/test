@@ -164,8 +164,7 @@ $(".openCase").on("click", function() {
 			saveInventory();
 			caseCloseAudio.play();
 			$(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
-			$(".win").slideDown("slow");
-			$(".weapons_zabor-bot").css("display", "block");
+			$(".win").slideDown("fast");
 			caseOpening = false;
 			$(".openCase").attr("disabled", null);
 			$(".weapons").scrollTop(185);

@@ -128,6 +128,11 @@ Localization.openCase = [{
 			"EN" : "Open case"
 		}
 	}, {
+		"selector" : "#what-i-can-win-Button",
+		"localization" : {
+			"EN" : "What i can win?"
+		}
+	}, {
 		"selector" : "#local-youCanWin",
 		"localization" : {
 			"RU" : "Вы можете выиграть один из данных предметов из коллекции",

@@ -276,17 +276,25 @@ div.weapon > .weaponInfo {
     border: 1px solid #02a543;
     font-family: monospace;
     padding: 0 20px;
-    margin: 25px 0 25px;
+    margin: 15px 0 15px;
 }
 .openCase:disabled {
     opacity: 0.6;
     background: linear-gradient(to bottom, #8a8a8a, #484848);
     border: 1px solid #303030;
 }
+button#what-i-can-win-Button {
+    background: #9a6b6b;
+    background: linear-gradient(to top, #292929, #484848);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    padding: 7px 10px;
+	margin-top: 10px;
+}
 /*WEAPONS_END*/
 .win {
     background: #003440;
-    padding-top: 25px;
+    padding-top: 15px;
 	font-family: LatoRegular;
 	-webkit-transform: translate3d(0, 0, 0);
 }
