@@ -490,5 +490,29 @@
 			"RUS" : "Склад"
 		},
 		"youtube" : "https://www.youtube.com/embed/bKLvjvjhWFA"
+	}, {
+		"name" : {
+			"ENG" : "Space Fighter (RUS)",
+			"RUS" : "Космический истребитель"
+		},
+		"youtube" : "https://www.youtube.com/embed/iIWs0_0BDU0"
+	}, {
+		"name" : {
+			"ENG" : "Honda NSX",
+			"RUS" : "Honda NSX"
+		},
+		"youtube" : "https://www.youtube.com/embed/sMJezSLIX_I"
+	}, {
+		"name" : {
+			"ENG" : "Airport",
+			"RUS" : "Аэропорт"
+		},
+		"youtube" : "https://www.youtube.com/embed/VQjHeBPY2uA"
+	}, {
+		"name" : {
+			"ENG" : "Supercar (RUS)",
+			"RUS" : "Supercar"
+		},
+		"youtube" : "https://www.youtube.com/embed/btqcQdIKDiQ"
 	}
 ]
