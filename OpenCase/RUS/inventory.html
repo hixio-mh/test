@@ -49,8 +49,8 @@
 		<img src="../images/stattrak.png" id="statTrakImg"> 
 		<img src="" id="weaponImg">
 		<table id="weaponInfoTable">
-		<tr><td>Цена</td><td id="weaponPrice"></td></tr>
-		<tr><td>Качество</td><td id="weaponQuality"></td></tr>
+		<tr><td>Цена</td><td id="weaponPrice"></td><td style='width:25px;padding-left: 7px;'><button class='update_price'><span></span></button></td></tr>
+		<tr><td>Качество</td><td id="weaponQuality" colspan=2></td></tr>
 		</table>
 		<button class='button_startContract' style='margin-bottom: 7px;' id='startContract'>Контракт обмена</button>
 		<span id='weaponRarity' style='display:none;'></span>
@@ -137,10 +137,10 @@ $(document).on("click", ".weapon", function() {
 	var statTrak = $(this).data("stattrak");
 	var quality = $(this).data("quality");
 	
-	if (parseInt(price) == 0 || isNaN(price)) {
-		getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
-		$(".glassBlur").addClass("savePrice");
-	}
+	$("#weaponInfoContainer").data('name', name);
+	$("#weaponInfoContainer").data('type', type);
+	$("#weaponInfoContainer").data('stattrak', statTrak);
+	
 	
 	$("#weaponInfoContainer").css("display", "block");
 	$("#weaponImg").attr("src", getImgUrl(img, 1));
@@ -148,6 +148,11 @@ $(document).on("click", ".weapon", function() {
 	$("#weaponPrice").html(price+"$");
 	$("#weaponQuality").html(quality);
 	$('#weaponRarity').text(rarity);
+	
+	if (parseInt(price) == 0 || isNaN(price)) {
+		getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
+		$(".glassBlur").addClass("savePrice");
+	}
 	
 	$('#startContract').css('display', 'none');
 	if ((rarity != 'rare') && (rarity != 'covert'))
@@ -158,6 +163,7 @@ $(document).on("click", ".weapon", function() {
 })
 
 $(".glassBlur").on("click", function(){
+	if ($(this).hasClass('js-price-loading')) return false;
 	$("#weaponInfoContainer").css("display", "none");
 	if ($(this).hasClass("savePrice")) {
 		if ($("#weaponPrice").text() != "0$") {
@@ -171,7 +177,17 @@ $(".glassBlur").on("click", function(){
 		}
 		$(this).removeClass("savePrice");
 	}
-})
+});
+
+$(document).on('click', '.update_price', function(){
+	var name = $("#weaponInfoContainer").data("name");
+	var type = $("#weaponInfoContainer").data("type");
+	var statTrak = parseInt($("#weaponInfoContainer").data("stattrak"));
+	var quality = $("#weaponQuality").text();
+	
+	getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
+	$(".glassBlur").addClass("savePrice");
+});
 
 $(document).scroll(function() {
     $(".sort").css({background: $(this).scrollTop()>10 ? "RGBA(0, 0, 0, 0.73)":"none"});

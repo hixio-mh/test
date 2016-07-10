@@ -39,6 +39,8 @@
 }
 
 function getMarketPrice(type, name, quality, statTrak, selector) {
+	$(selector).html('<span class="current-price hide">'+$(selector).html()+'</span><span class="loading-animate"></span>');
+	$('.glassBlur').addClass('js-price-loading');
 	if (statTrak != 0) {
 		type = "StatTrak™ " + type;
 		statTrak = true;
@@ -65,6 +67,7 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 				console.log(pr);
 				if (typeof selector != "undefined")
 					$(selector).html(pr+"$");
+				$('.glassBlur').removeClass('js-price-loading');
 				return pr;
 			}
 			} catch (e) {
@@ -117,10 +120,14 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
 }
 
 function csgoStashGetURL(type, name, quality, statTrak, selector) {
+	var souvenir = false;
 	var type2 = type.replace(/ /gi, '+');
+	if (/Souvenir/.test(type)) souvenir = true;
 	type2 = type2.replace(/StatTrak™\+/, '');
 	type2 = type2.replace(/Souvenir\+/, '');
 	type2 = type2.replace(/ПП.*Бизон/, 'PP-Bizon');
+	type2 = type2.replace(/Керамбит/, 'Karambit');
+	type2 = type2.replace(/Штык-нож+M9/, 'M9+Bayonet');
 	type2 = type2.replace(/★\+/, '');
 	console.log('%c '+type2+' %c | '+'%c '+name+' ', 'background:#af7b05;color:#fff','','background:#56af05;color:#fff')
 	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
@@ -129,15 +136,20 @@ function csgoStashGetURL(type, name, quality, statTrak, selector) {
 	},
 	function(data) {
 		try {
+			if (data.query.results == null) {
+				$('.current-price').removeClass('hide');
+				$('.loading-animate').addClass('hide');
+				$('.glassBlur').removeClass('js-price-loading');
+			}
 			var url = data.query.results.a.href;
-			csgoStash(url, quality, statTrak, selector);
+			csgoStash(url, quality, statTrak, souvenir, selector);
 		} catch (err) {
 			//ERROR
 		}
 	});
 }
 
-function csgoStash(url, quality, statTrak, selector) {
+function csgoStash(url, quality, statTrak, souvenir, selector) {
 	var anyPrice = false;
 	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
 		q: "select * from html where url='"+url+"' and xpath='//a[contains(@class, \"btn-sm\") and not(contains(@class, \"price-tab-keys-button\"))]/span'",
@@ -147,6 +159,7 @@ function csgoStash(url, quality, statTrak, selector) {
 		try {
 			var spans = data.query.results.span;
 			for (var i = 0; i < spans.length; i++) {
+				var souvenirFound = false;
 				var curr = spans[i];
 				if (curr.content == 'StatTrak') {
 					if (!statTrak) {
@@ -155,24 +168,40 @@ function csgoStash(url, quality, statTrak, selector) {
 					}
 					i++;
 					curr = spans[i];
+				} else if (curr.class.indexOf('price-details-souv') != -1) {
+					if (!souvenir) {
+						i+=2;
+						continue;
+					}
+					i++;
+					curr = spans[i];
+					souvenirFound = true;
+					
 				}
 				if (curr.content == quality || anyPrice) {
+					if (souvenir && !souvenirFound) continue;
 					if (spans[i+1].content[0] == '$') {
 						var price = parseFloat(spans[i+1].content.substr(1).replace(/,/gi, ''));
 						if (typeof selector != 'undefined')
 							$(selector).html(price+'$');
-						console.log('Quality: %c '+quality+' %c;StatTrak: '+'%c '+statTrak+' %c; anyPrice: '+'%c '+anyPrice+' %c; Price: %c '+price+'$ ', 'background:#af7b05;color:#fff','','background:#56af05;color:#fff', '', 'background:#0083a0;color:#fff','','background:#b005b3;color:#fff')
+						console.log('Quality: %c '+quality+' %c;StatTrak: '+'%c '+statTrak+' %c Souvenir: '+'%c '+souvenir+' %c; anyPrice: '+'%c '+anyPrice+' %c; Price: %c '+price+'$ ', 'background:#af7b05;color:#fff','','background:#56af05;color:#fff','', 'background:#0083a0;color:#fff','','background:#c5c100;color:#fff','','background:#b005b3;color:#fff')
 						break;
 					} else {
-						if (spans[i+1].content == 'Not Possible') anyPrice = true;
+						if (spans[i+1].content == 'Not Possible' || spans[i+1].content == 'No Recent Price') anyPrice = true;
 						i++;
 					}
 				} else {
 					i++;
 				}
 			}
+			$('.current-price').removeClass('hide');
+			$('.loading-animate').addClass('hide');
+			$('.glassBlur').removeClass('js-price-loading');
 		} catch (err) {
 			//ERROR
+			$('.current-price').removeClass('hide');
+			$('.loading-animate').addClass('hide');
+			$('.glassBlur').removeClass('js-price-loading');
 		}
 	});
 }

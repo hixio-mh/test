@@ -343,6 +343,9 @@ button#what-i-can-win-Button {
     background-position: 10px;
     display: none;
 }
+.hide {
+	display: none;
+}
 #opened-text, #opened {
 	color:#fff;
 	font-family: LatoRegular;

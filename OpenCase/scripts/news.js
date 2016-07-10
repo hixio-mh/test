@@ -22,5 +22,13 @@
 		"RU" : " - Немного изменен интерфес.",
 		"EN" : " - Interface changes."
 	}
+},  {
+	"day" : 10,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Добавлена кнопка обновления цены.",
+		"EN" : " - New button for update price."
+	}
 }, 
 ];
