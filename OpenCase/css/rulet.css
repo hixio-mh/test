@@ -63,9 +63,14 @@ body {
 
 .items {
     border-collapse: collapse;
-    width: 500px;
+    /* width: 500px; */
     max-width: 100%;
 	margin: 0 auto;
+}
+@media (min-width:550px) {
+	.items {
+		width: 500px;
+	}
 }
 tr {
     color: #fff;
@@ -74,12 +79,12 @@ tr {
 	max-width: 100%;
 }
 td:nth-child(2) {
-	width: 90px;
-    padding-right: 10px;
+    width: 90px;
+    padding-right: 6px;
 }
 td {
-    padding-left: 6px;
-	position: relative;
+    padding: 2px 4px 2px 6px;
+    position: relative;
 }
 td p {
     text-align: center;

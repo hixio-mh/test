@@ -22,13 +22,21 @@
 		"RU" : " - Немного изменен интерфес.",
 		"EN" : " - Interface changes."
 	}
-},  {
+}, {
 	"day" : 10,
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
 		"RU" : " - Добавлена кнопка обновления цены.",
 		"EN" : " - New button for update price."
+	}
+}, {
+	"day" : 11,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлены некоторые ошибки в работе рулетки.<br> - Исправлены ошибки в интерфейсе для экранов с маленьким разрешением.<br> - Исправления в интерфейсе.",
+		"EN" : " - Fixed some bugs in the Jackpot.<br> - Fixed bugs in the interface for screens with small resolution.<br> - Interface changes."
 	}
 }, 
 ];

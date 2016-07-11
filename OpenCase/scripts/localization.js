@@ -235,67 +235,56 @@ Localization.inventory = [{
 Localization.statistic = [{
 		"selector" : "#caseOpened-text",
 		"localization" : {
-			"RU" : "Количество открытых кейсов:",
 			"EN" : "Total cases opened:"
 		}
 	}, {
 		"selector" : "#white-text",
 		"localization" : {
-			"RU" : "Белые:",
 			"EN" : "White:"
 		}
 	}, {
 		"selector" : "#industrial-text",
 		"localization" : {
-			"RU" : "Светло-синие:",
 			"EN" : "Light-blue:"
 		}
 	}, {
 		"selector" : "#blue-text",
 		"localization" : {
-			"RU" : "Синие:",
 			"EN" : "Blue:"
 		}
 	}, {
 		"selector" : "#restricted-text",
 		"localization" : {
-			"RU" : "Фиолетовые:",
 			"EN" : "Purple:"
 		}
 	}, {
 		"selector" : "#classified-text",
 		"localization" : {
-			"RU" : "Розовые:",
 			"EN" : "Pink:"
 		}
 	}, {
 		"selector" : "#covert-text",
 		"localization" : {
-			"RU" : "Красные:",
 			"EN" : "Red:"
 		}
 	}, {
 		"selector" : "#knife-text",
 		"localization" : {
-			"RU" : "Ножи:",
 			"EN" : "Knives:"
 		}
 	}, {
 		"selector" : "#contract-text",
 		"localization" : {
-			"RU" : "Контракты обмена:",
 			"EN" : "Trade up contracts:"
 		}
 	}, {
 		"selector" : "#rulet-text",
 		"localization" : {
-			"RU" : "Рулетка выиграно/проиграно:",
 			"EN" : "Jackpots won/lose:"
 		}
 	}, {
 		"selector" : "#rulet-max-win-text",
 		"localization" : {
-			"RU" : "Максимальный выигрыш в рулетке:",
 			"EN" : "Jackpot max money won:"
 		}
 	}
@@ -335,43 +324,36 @@ Localization.faq = [{
 Localization.settings = [{
 		"selector" : "#local-name",
 		"localization" : {
-			"RU" : "Ваше имя:",
 			"EN" : "Your name:"
 		}
 	}, {
 		"selector" : "#local-avatar",
 		"localization" : {
-			"RU" : "Аватарка:",
 			"EN" : "Avatar:"
 		}
 	}, {
 		"selector" : "#local-language",
 		"localization" : {
-			"RU" : "Язык:",
 			"EN" : "Language:"
 		}
 	}, {
 		"selector" : "#reset",
 		"localization" : {
-			"RU" : "Полный сброс",
 			"EN" : "Full reset"
 		}
 	}, {
 		"selector" : "#reset-text",
 		"localization" : {
-			"RU" : "Вы уверены, что хотите очистить инвентарь и сбросить статистику?",
 			"EN" : "All weapons will be deleted. Statistics will be reset. Are you sure?"
 		}
 	}, {
 		"selector" : "#resetConfirm",
 		"localization" : {
-			"RU" : "Да",
 			"EN" : "Yes"
 		}
 	}, {
 		"selector" : "#submit",
 		"localization" : {
-			"RU" : "Сохранить",
 			"EN" : "Save"
 		}
 	},
@@ -389,37 +371,36 @@ Localization.settings2 = {
 Localization.about = [{
 		"selector" : "#developer",
 		"localization" : {
-			"RU" : "Главный разработчик",
 			"EN" : "Main developer"
 		}
 	}, {
 		"selector" : "#local-1",
 		"localization" : {
-			"RU" : "Если Вы обнаружили ошибки, или у Вас есть предложение, напишите на почту.",
 			"EN" : "If you found some bugs or you have a suggestion you can write me an email."
 		}
 	}, {
 		"selector" : "#local-2",
 		"localization" : {
-			"RU" : "Если хотите поблагодарить разработчика, можете подарить что-нибудь в стиме :)",
 			"EN" : "If you want to thank the developer you can send something in Steam :)"
 		}
 	}, {
 		"selector" : "#local-3",
 		"localization" : {
-			"RU" : "Не забудьте поставить оценку в маркете ^_^",
 			"EN" : "Do not forget to rate the app in the Play Market ^_^"
+		}
+	}, {
+		"selector" : "#special-thanks",
+		"localization" : {
+			"EN" : "Special Thanks"
 		}
 	}, {
 		"selector" : "#copyright",
 		"localization" : {
-			"RU" : "Авторские права",
 			"EN" : "Copyright"
 		}
 	}, {
 		"selector" : "#local-4",
 		"localization" : {
-			"RU" : "Вся информация взята из открытых источников. Если что-либо в приложении нарушает ваши авторские права, свяжитесь со мной.",
 			"EN" : "All information is taken from public sources. If anything in the application infringes your copyright, please contact me."
 		}
 	},

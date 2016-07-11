@@ -10,6 +10,9 @@ var ItemsInGame = [];
 var ifCarusel = false;
 var lastTicket = 0;
 
+//DEBUG
+var DEBUG = true;
+
 var bar = new ProgressBar.Circle(circle, {
 	strokeWidth: 6,
 	easing: 'easeInOut',
@@ -54,7 +57,7 @@ newGame();
 function newGame() {
 	clearTimeout(timerId);
 	ifCarusel = false;
-	$(".win").slideUp("slow");
+	$(".win").slideUp("fast");
 	bar.animate(0);
 	bar.setText("0/20");
 	$("#addItems").attr("disabled", null);
@@ -125,7 +128,7 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
 function startGame() {
 	$("#addItems").attr("disabled", "disabled");
 	
-	winNumber = 70;
+	winNumber = 35;
 	
 	ifCarusel = true;
 	
@@ -133,6 +136,8 @@ function startGame() {
 	while (arr.length < winNumber+3) {
 		arr = arr.concat(PlayersInGame).shuffle().shuffle().shuffle();
 	}
+	if (arr.length > winNumber+3)
+		arr.splice(winNumber + 3, arr.length - (winNumber +3));
 	var el = '';
 	
 	arr[winNumber] = getJackpotWiner();
@@ -151,8 +156,8 @@ function startGame() {
 	var a = 141*winNumber - 141;
 	var l = 141;
 	var d = 0, s = 0;
-	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-75, a+20) }, {
-		duration: 10000,
+	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-70, a+15) }, {
+		duration: 7000,
 		easing: 'easeInOutCubic',
 		start: function(){
 			//caseOpenAudio.play();
@@ -163,9 +168,6 @@ function startGame() {
 				$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
 			else if (Settings.language == "EN")
 				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chanse<br><img src='../images/ava/"+win.avatar+"'>");
-			/*$(".winQuality").html(getItemQuality()[1]);
-			$(".winImg").attr("src", prefix + win.img + postfixBig);
-			$(".openCase").attr("disabled", "disabled");*/
 		},
 		progress: function(e, t) {
 			/*progress_animate = Math.round(100 * t),
@@ -175,26 +177,24 @@ function startGame() {
             d++)*/
 		},
 		complete: function(){
-			//caseCloseAudio.play();
-			//$(".openCase").text("Попробовать еще раз");
-			//$(".win").slideDown("slow");
-			//caseOpening = false;
-			//$(".openCase").attr("disabled", null);
-			//$(".weapons").scrollTop(185);
-			$(".win").slideDown("slow");
+			$(".win").show();
 			var timerId2 = 0;
 			timerId2 = setTimeout(function(){newGame();}, 7000);
 			
 			if(win.nick == Player.nickname) {
-				console.info("Player win! Inventory before:");
-				console.info(inventory);
+				if(DEBUG) {
+					console.info("Player win! Inventory before:");
+					console.info(inventory);
+				}
 				for (var i = 0; i < ItemsInGame.length; i++) {
 					inventory.push(ItemsInGame[i]);
 				}
-				console.info("Inventory after:");
-				console.info(inventory);
-				console.info("Items in game:");
-				console.info(ItemsInGame);
+				if(DEBUG) {
+					console.info("Inventory after:");
+					console.info(inventory);
+					console.info("Items in game:");
+					console.info(ItemsInGame);
+				}
 				saveInventory();
 				
 				//Statistic
@@ -206,43 +206,24 @@ function startGame() {
 					a = winSum;
 				else
 					a = winSum > parseFloat(a) ? winSum : parseFloat(a);
-				a++;
 				$.cookie('rulet-max-win', a);	
 			} else {
 				statisticPlusOne('rulet-loose');
 			}
 		},
-		always: function() {
-			//$(".openCase").attr("disabled", null);
-		}
 	})
 }
 
 function getJackpotWiner() {
-	//var sumChanses = 100;
-	//var sumWeights = 1;
 	var random = Math.rand(1, lastTicket);
 	
-	/*for(var i = 0; i < PlayersInGame.length; i++) {
-		sumChanses += PlayersInGame[i].chance;
-	}*/
 	for(var i = 0; i < PlayersInGame.length; i++) {
 		if ((PlayersInGame[i].tickets.from < random) && (random < PlayersInGame[i].tickets.to)) {
 			var log = [["Победил", PlayersInGame[i].nick],["Билеты от", PlayersInGame[i].tickets.from], ["Билеты до", PlayersInGame[i].tickets.to],["Случайное число", random]];
-			console.table(log);
+			if (DEBUG) console.table(log);
 			return PlayersInGame[i];
 			}
 	}
-	/*for(var i = 0; i < PlayersInGame.length; i++) {
-		sumWeights += PlayersInGame[i].weight;
-	}*/
-	/*var cursor = 0;
-	for(var i = 0; i < PlayersInGame.length; i++) {
-		cursor += PlayersInGame[i].weight / sumWeights;
-		if (cursor >= random) {
-			return PlayersInGame[i];
-		}
-	}*/
 }
 
 function botAddItems() {

@@ -213,12 +213,13 @@ div.weapon > .weaponInfo {
 #aCanvas {
     width: 383px;
     height: 136px;
-    margin: 0px auto;
     background: #090c0f;
     overflow: hidden;
     padding-top: 2px;
     padding-left: 1px;
-    z-index: 2;
+    z-index: 1;
+    position: relative;
+    left: calc(50% - 192px);
 }
 .casesCarusel {
     width: 15000px;
@@ -250,21 +251,8 @@ div.weapon > .weaponInfo {
 	.scrollerContainer {
 		margin: 45px 0 10px;
 	}
-	/*#caruselOver {
-		max-width: calc(100% - 2px);
-	}*/
-	#aCanvas {
-		max-width: calc(100% - 1px);
-	}
-	
 }
 
-/*Если разрешение экрана меньше 401px*/
-@media (max-width:401px) {
-	#caruselOver {
-		left: 0px;
-	}
-}
 
 /*CARUSEL_END*/
 .openCase {
