@@ -357,17 +357,17 @@ var cases = [{
 				"type" : "★ Karambit",
 				"skinName" : "Lore",
 				"rarity" : "rare",
-				"img" : "Knives/Karambit/lore.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJl5W0nPbmMrbummRD7fp9g-7J4bP5iUazrl1rY2DzddPEdwFsYgnSqwPqyey6hZ_qvM6dm3pnunFx4n2LmxTj1x9PcKUx0uHhTF2B"
 			}, {
 				"type" : "★ Karambit",
 				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "Knives/Karambit/gamma_doppler.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlY20kvrxIbrdklRc6ddzhuzI74nxt1i9rBsoDDWiZtHAbFBoMgyGrlLsw-_ohsXv6JvMz3Ix6yF2t3mLnBDm1R4faLdvhvyYTVmAR_seWA9jz4E"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Autotronic",
 				"rarity" : "rare",
-				"img" : "Knives/M9-Bayonet/autotronic.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJk5O0nPbmMrbul35F59FjhefI9rP9jVWisiwwMiukcZiccQBtZVyF_lW7kLzvg8Xvup7Lz3Qx6CUj5iqLnBzhhxkZabBshKaaVxzAUIJQ4Np6"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Lore",
@@ -382,7 +382,7 @@ var cases = [{
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "Knives/M9-Bayonet/gamma_doppler.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KmsjxPr7Dl2dV18hwmOvN8IXvjVCLpxo7Oy2ceNfXJVMgZAyB_lDqlL--15G97Z7AyyZividw5i6MyUeygBpEPLM90PDPHArKBrsJQvdXl_RMjw"
 			},
 		]
 	}, {
@@ -393,87 +393,87 @@ var cases = [{
 				"type" : "SG 553",
 				"skinName" : "Atlas",
 				"rarity" : "milspec",
-				"img" : "Chroma3/atlas.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0Ob3YjoXuY-JlZSHluTLP7LWnn9u5MRjjeyPoN-j2gXsrUttZWn3LIPDIw88Zg3R8wfvwei50MLt6ZnKnXswuiR342GdwULx076BRw"
 			}, {
 				"type" : "Sawed-Off",
 				"skinName" : "Fubar",
 				"rarity" : "milspec",
-				"img" : "Chroma3/fubar.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3di59_92hkYSEkfHLNa7Tl3lu5cB1g_zMyoD0mlOx5UdoNzyiIIPHd1U2NV3QqFm9yL3s0ZO675jNmyRkvyIg53mOlxThgRlSLrs4e6p2_yc"
 			}, {
 				"type" : "P2000",
 				"skinName" : "Oceanic",
 				"rarity" : "milspec",
-				"img" : "Chroma3/oceanic.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zAaAJSvozmxL-ElPL1PbLummJW4NFOhujT8om70FLi_0VpZzr2LYCRewE7MlDV-FG_k--718To6pqbwSQ163Il43ePygv330-1I2r84w"
 			}, {
 				"type" : "MP9",
 				"skinName" : "Bioleak",
 				"rarity" : "milspec",
-				"img" : "Chroma3/bioleak.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZt7P7YKAJA5dO6kYGAqPv9NLPFqWdQ-sJ0xO2Y99zx2FHtrRY9YWjzII6Sc1M-ZFnQqAW5weq908e8v86dnXRjvyY8pSGK5bVi9vE"
 			}, {
 				"type" : "M249",
 				"skinName" : "Spectre",
 				"rarity" : "milspec",
-				"img" : "Chroma3/spectre.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhjxszFI2kb08-mkYOfhfLLP7LWnn9u5MRjjeyP99z02ge3_0c5Zm_wLYbHdlRsNQvSqVK2yOfuhMC6787Lm3Zh7nEhsWGdwUJ2Zq7hgA"
 			}, {
 				"type" : "G3SG1",
 				"skinName" : "Orange Crash",
 				"rarity" : "milspec",
-				"img" : "Chroma3/Orange_Crash.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwOP3dm5R642JmYmHnuP9MrTDl2VW7fp9g-7J4bP5iUazrl1uYmynIYLBd1U2Z1nY_wS4wLrpgJC1uJXAwCA1uiIrs3mInxK30kkecKUx0niP4_PE"
 			}, {
 				"type" : "Dual Berettas",
 				"skinName" : "Ventilators",
 				"rarity" : "milspec",
-				"img" : "Chroma3/Ventilators.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3dShD4N6zhoWfg_bnDK3UmH9Y5MRlhfvSyoD8j1yglB89IT6mOoKQIVQ_Nw6E-FTqlO-60ZPutZ2bmHNjvnIjs3eIn0S_1EpOO7dtgPCACQLJsAlt72A"
 			}, {
 				"type" : "XM1014",
 				"skinName" : "Black Tie",
 				"rarity" : "restricted",
-				"img" : "Chroma3/Black_Tie.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PDdTiVPvYznwL-Yh_L3J6nEm1Rd4cJ5ntbN9J7yjRri-EJkNjz2JdWRcgNoM12F8gC6wb-60cDvv8nAwSZmuSB04nfUzhDln1gSOamXNP31"
 			}, {
 				"type" : "Tec-9",
 				"skinName" : "Re-Entry",
 				"rarity" : "restricted",
-				"img" : "Chroma3/Re-Entry.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhh3szcdD4b086zkIKHluTgDLfYkWNF18lwmO7Eu9zz0FCx_EZrYG6gd4WQI1U_NVnUqQe5xeftgZ6_tMmYzSZk63Iq4XbD30vg4jvN4E0"
 			}, {
 				"type" : "SSG 08",
 				"skinName" : "Ghost Crusader",
 				"rarity" : "restricted",
-				"img" : "Chroma3/Ghost_Crusader.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f1OD3Yi5FvISJlZKGlvT7Ib7ummJW4NFOhujT8om72ADn-Edua2_6d4CRJwdvYVDR-la-xOu-gcO97p7KyyM3s3Ml43yOnwv330-AaacpqQ"
 			}, {
 				"type" : "Galil AR",
 				"skinName" : "Firefight",
 				"rarity" : "restricted",
-				"img" : "Chroma3/Firefight.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczPYgJF7dC_mIGZqP76ML7fk3lQ_MpjteXI8oTht1i1uRQ5fW_1LY-Vc1Q2ZVrT_FDsxejuhZ7v6cnJmHdmv3Yn4HjYlxa-1RhFbbBxxavJuP_di1g"
 			}, {
 				"type" : "CZ75-Auto",
 				"skinName" : "Red Astor",
 				"rarity" : "restricted",
-				"img" : "Chroma3/Red_Astor.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf1OD3cicVud2JhoWPluTgPKnummJW4NFOhujT8om7jQTkrkVka2D7ItWQcg45ZgnR-lLolOjp0ZG86smfyCQwuyNwtyrVzQv3308yHtCojQ"
 			}, {
 				"type" : "UMP-45",
 				"skinName" : "Primal Saber",
 				"rarity" : "classified",
-				"img" : "Chroma3/Primal_Saber.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0Ob3ZDBSuImJhJKCmvb4ILrTk3lu5Mx2gv3--Y3nj1H6_UQ-Nj_6JdeRcQE9ZQzW_1W7wOi5g5PvuJ_BwXViu3Ig4HiJnRWziAYMMLJag8KlOQ"
 			}, {
 				"type" : "P250",
 				"skinName" : "Asiimov",
 				"rarity" : "classified",
-				"img" : "Chroma3/Asiimov.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhjxszYI2gS092lnYmGmOHLP7LWnn9u5MRjjeyPoo_2jgDi_hVrNzr2IdKXJg84YVzW_wW6weq8hJbv7s7BmnZnuHN3sGGdwUIcgRyEsg"
 			}, {
 				"type" : "AUG",
 				"skinName" : "Fleet Flock",
 				"rarity" : "classified",
-				"img" : "Chroma3/Fleet_Flock.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAR17PLddgJR-926mI-chMj4OrzZglRd6dd2j6eZpdz02wDlrhFuMjz2INLGcgBoMlCE8gTsxbro0cLuvM7Mn3NgsyR0-z-DyLrumJEn"
 			}, {
 				"type" : "M4A1-S",
 				"skinName" : "Chantico's Fire",
 				"rarity" : "covert",
-				"img" : "Chroma3/Chanticos_Fire.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO1gb-Gw_alIITCmX5d_MR6j_v--YXygECLpxIuNDztIoOSIFM9YFrYrgK8l-rnjJPpuZzJnCFiviQqt3nay0SxgRBFabdqgeveFwuw6cQQkw"
 			}, {
 				"type" : "PP-Bizon",
 				"skinName" : "Judgement of Anubis",
 				"rarity" : "covert",
-				"img" : "Chroma3/Judgement_of_Anubis.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf0Ob3czRY49KJl5WZhPLLP7LWnn9u5MRjjeyP9t2si1Lh80c4YDzxLNLHdg8_ZQzR_1S3krrsjZG1tZTNzHVqviR27WGdwUJIurA39A"
 			}, {
 				"type" : "★ Gut Knife",
 				"skinName" : "Tiger Tooth",
@@ -1987,7 +1987,7 @@ var cases = [{
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Autotronic",
 				"rarity" : "rare",
-				"img" : "Knives/M9-Bayonet/autotronic.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-MhMj5aoTTl3Ju6dBlhf3T-oL8i2u4ohQ0JwavdcTCJxhoaVmG_Fnoxua9hcS4vJrIznRjuHZx7XeLmRflhUxLP7NsgfPNTV-eGeUXSwZKyJQd"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Bright Water",
@@ -1997,7 +1997,7 @@ var cases = [{
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Black Laminate",
 				"rarity" : "rare",
-				"img" : "Knives/M9-Bayonet/black_laminate.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Igsj5aoTTl3Ju-9F-hOzW9J_9t1i9rBsoDDWiZtHAbFdqNQ2Crge8kO-615e_6ZnJnyRkuyAgsHiMlhS_1RlNaONqhvGfTQ6AR_seYQFe0Lg"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Lore",
@@ -2012,7 +2012,7 @@ var cases = [{
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "Knives/M9-Bayonet/gamma_doppler.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KmsjxPr7Dl2dV18hwmOvN8IXvjVCLpxo7Oy2ceNfXJVMgZAyB_lDqlL--15G97Z7AyyZividw5i6MyUeygBpEPLM90PDPHArKBrsJQvdXl_RMjw"
 			}, {
 				"type" : "★ M9 Bayonet",
 				"skinName" : "Doppler",
@@ -2127,22 +2127,22 @@ var cases = [{
 				"type" : "★ Karambit",
 				"skinName" : "Black Laminate",
 				"rarity" : "rare",
-				"img" : "Knives/Karambit/black_laminate.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJl5W0nPbmMrbuhX9e5sBmi_rJyoD8j1yglB89IT6mOteRd1JoMl-EqFS5we28h5Xp6p6czHVguXZxtnuMmEe10BEeOOM7gvaACQLJ8ajP6XE"
 			}, {
 				"type" : "★ Karambit",
 				"skinName" : "Lore",
 				"rarity" : "rare",
-				"img" : "Knives/Karambit/lore.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJl5W0nPbmMrbummRD7fp9g-7J4bP5iUazrl1rY2DzddPEdwFsYgnSqwPqyey6hZ_qvM6dm3pnunFx4n2LmxTj1x9PcKUx0uHhTF2B"
 			}, {
 				"type" : "★ Karambit",
 				"skinName" : "Freehand",
 				"rarity" : "rare",
-				"img" : "Knives/Karambit/freehand.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlY20mvbmOL7VqX5B18N4hOz--YXygECLpxIuNDztLI6Udlc9aQmGq1O9ye3rjZ_tu5_KyXNq7HMrsHmImxbhgRpNOOVrguveFwu3UI9Gug"
 			}, {
 				"type" : "★ Karambit",
 				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "Knives/Karambit/gamma_doppler.png"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlY20kvrxIbrdklRc6ddzhuzI74nxt1i9rBsoDDWiZtHAbFBoMgyGrlLsw-_ohsXv6JvMz3Ix6yF2t3mLnBDm1R4faLdvhvyYTVmAR_seWA9jz4E"
 			}, {
 				"type" : "★ Karambit",
 				"skinName" : "Doppler",
@@ -2530,7 +2530,7 @@ var cases = [{
 				"type" : "Galil AR",
 				"skinName" : "Щелкунчик",
 				"rarity" : "covert",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz58Ne-8PDZ1TQfXPqdfUPw2ywnuGyYh4chta9qz87ITJBLrs9TEO7d6MoxKGpaDU6CCMFyovhk81qdafpCJpSi9jyvhPGsCCUHi5CtazzBY6R44/"
+				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz58Ne-8PDZ1TQfXPqdfUPw2ywnuGyYh4chta9qz87ITJBLrs9TEO7d6MoxKGpaDU6CCMFyovhk81qdafpCJpSi9jyvhPGsCCUHi5CtazzBY6R44"
 			}, {
 				"type" : "P2000",
 				"skinName" : "Fire Elemental",

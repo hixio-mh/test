@@ -38,5 +38,13 @@
 		"RU" : " - Исправлены некоторые ошибки в работе рулетки.<br> - Исправлены ошибки в интерфейсе для экранов с маленьким разрешением.<br> - Исправления в интерфейсе.",
 		"EN" : " - Fixed some bugs in the Jackpot.<br> - Fixed bugs in the interface for screens with small resolution.<br> - Interface changes."
 	}
+}, {
+	"day" : 12,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Изменения в интерфейсе для экранов с маленьким разрешением.",
+		"EN" : " - Interface changes for screens with small resolution."
+	}
 }, 
 ];

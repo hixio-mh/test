@@ -10,10 +10,10 @@ body {
 }
 .case {
     display: inline-block;
-    margin: 5px;
-    width: 200px;
+	margin: 15px 6px;
+	width: 125px;
+	height: 138px;
     text-align: center;
-    height: 193px;
     box-shadow: 0px 0px 7px #000;
 }
 #showVideoAd {
@@ -27,19 +27,21 @@ body {
 }
 .name {
     display: block;
-    /*text-align: left;*/
+    /* text-align: left; */
+    position: absolute;
     background: linear-gradient(to right, #828F9E, #474C52);
     color: #fff;
-    height: 38px;
-    padding: 0 10px;
+    height: 33px;
+    padding: 5px 10px;
     padding-top: 2px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.84);
     font-family: LatoLight;
-    line-height: 2em;
+    line-height: 1.2em;
+    width: 105px;
 }
 .case img {
-    width: 190px;
-    height: 138px;
+    width: 115px;
+	height: 83px;
     background: linear-gradient(to top, #A8A8A8, #474747);
     padding: 5px;
     padding-bottom: 10px;
@@ -55,7 +57,7 @@ body {
 }
 .souvenir, .collection {
     box-shadow: none !important;
-	padding-bottom: 35px;
+	margin-bottom: 35px !important;
 }
 .souvenir img, .collection img {
     height: 110px !important;
@@ -226,25 +228,31 @@ div.weapon > .weaponInfo {
     text-align: left;
 	-webkit-transform: translate3d(0, 0, 0);
 }
-
+@media (max-width: 433px) {
 	.case {
-		margin: 15px 6px;
-		width: 125px;
-		height: 138px;
+		width: 80px;
+		height: 100px;
+		margin: 8px 6px;
 	}
 	.case img {
-		width: 115px;
-		height: 83px;
-		padding: 5px;
-		padding-bottom: 10px;
+		width: 70px;
+		height: 55px;
 	}
 	.name {
-		height: 38px;
-		padding: 5px 10px;
-		position: absolute;
-		width: 105px;
-		line-height: 1.2em;
+		line-height: 1em;
+		width: 78px;
+		height: 24px;
+		font-size: 0.8em;
+		padding: 3px 1px;
 	}
+	.collection, .souvenir {
+		/* box-shadow: none !important; */
+		margin-bottom: 13px !important;
+	}
+	.collection img, .souvenir img {
+		height: 62px !important;
+	}
+}
 /*Если разрешение экрана меньше 495px*/
 @media (max-width:495px) {
 	/*Carusel*/
