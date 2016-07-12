@@ -166,7 +166,7 @@ function startGame() {
 			
 			if (Settings.language == "RU") 
 				$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
-			else if (Settings.language == "EN")
+			else
 				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chanse<br><img src='../images/ava/"+win.avatar+"'>");
 		},
 		progress: function(e, t) {
