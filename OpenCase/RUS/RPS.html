@@ -42,7 +42,7 @@
 	</div>
 	<button class='add-item'>Внести оружие</button>
 	
-	<ul class='items'></ul>
+	<ul class='winItems'></ul>
 	
 	<!-- Инвентарь -->
 	<div class="inventoryList" style="display: none;">
@@ -120,7 +120,7 @@ $(".choseItems").on("click", function () {
 	$(".add-item").css("display", 'none');
 	$(".closeInventory").click();
 	
-	$('.items').append('<li>Вы добавили: '+winItems[0].type+' | '+winItems[0].skinName+' ($'+winItems[0].price+')<b class='+winItems[0].rarity+'></b>');
+	$('.winItems').append('<li>Вы добавили: '+winItems[0].type+' | '+winItems[0].skinName+' ($'+winItems[0].price+')<b class='+winItems[0].rarity+'></b>');
 	botAddWeapon(itemsCost);
 	
 	$('.choice').css('display', 'block');
@@ -178,7 +178,7 @@ function botAddWeapon(itemsCost) {
 	weapon.price = price;
 	if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
 	winItems.push(weapon);
-	$('.items').append('<li>Противник добавил: '+winItems[1].type+' | '+winItems[1].skinName+' ($'+winItems[1].price+')<b class='+winItems[1].rarity+'></b>');
+	$('.winItems').append('<li>Противник добавил: '+winItems[1].type+' | '+winItems[1].skinName+' ($'+winItems[1].price+')<b class='+winItems[1].rarity+'></b>');
 }
 	
 $('.choice__hand').on('click', function() {
@@ -234,7 +234,7 @@ function newGame() {
 	$('.comp-score span').text(enemyScore);
 	$('.round-count').text(round + '/' + totalRounds);
 	
-	$('.items').html('');
+	$('.winItems').html('');
 	
 	$('#js-player-img').attr('src', '../images/rps/rock.png');
 	$('#js-comp-img').attr('src', '../images/rps/rock.png');
