@@ -188,6 +188,8 @@ Localization.jackpot2 = {
 		"EN" : "Inventory is empty. <a href='cases.html?from=jackpot'>Open some cases to fill it.</a>"
 	}
 },
+Localization.rps = {
+},
 Localization.inventory = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
 		"localization" : {

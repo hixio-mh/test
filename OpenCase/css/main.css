@@ -263,7 +263,7 @@ div.weapon > .weaponInfo {
 
 
 /*CARUSEL_END*/
-.openCase {
+.openCase, .add-item {
     background: linear-gradient(to bottom, #00953b, #006910);
     display: inline-block;
     line-height: 35px;
