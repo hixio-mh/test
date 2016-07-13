@@ -3,7 +3,12 @@
 }
 .container {
     margin-top: 50px;
-	overflow-x: hidden;
+	width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
 }
 .battle-field {
     background: #323f52;
