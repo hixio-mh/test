@@ -16,12 +16,15 @@
 	"chance" : 10
 }];
 
-function getQualityName(fil) {
+function getQualityName(fil, lang) {
+	var num = 0;
+	if (typeof lang == 'undefined') lang = 'EN'
+	if (lang == 'RU') num = 1
 	var qua = Quality.filter(function(obj){
 		return obj.name.indexOf(fil) != -1;
 	})
 	if (qua.length != 0) {
-		return qua[0].name[0];
+		return qua[0].name[num];
 	} else {
 		console.error("Wrong quality! '"+fil+"'");
 		return "Wrong quality name";

@@ -1,5 +1,5 @@
 ﻿function getPrice(type, name, quality, statTrak) {
-	quality = getQualityName(quality).toLowerCase();
+	quality = getQualityName(quality, "EN").toLowerCase();
 	name = getSkinName(name, "EN").toLowerCase();
 	if (type.substring(0,1) == "★") type = type.substring(2, type.length);
 	if (type.indexOf("Сувенир") != -1) type = type.replace("Сувенир", "Souvenir");
@@ -48,7 +48,7 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 		statTrak = false;
 	}
 	name = getSkinName(name, 'EN');
-	quality = getQualityName(quality);
+	quality = getQualityName(quality, "EN");
 	if (type.indexOf("Сувенир") != -1) type = type.replace("Сувенир", "Souvenir");
 	var n = type+" | "+name+" ("+quality+")";
 	n = encodeURI(n);

@@ -124,7 +124,7 @@ $(".choseItems").on("click", function () {
 	botAddWeapon(itemsCost);
 	
 	$('.choice').css('display', 'block');
-	
+	$('.status').text('...');
 })
 	
 function botAddWeapon(itemsCost) {
@@ -173,6 +173,8 @@ function botAddWeapon(itemsCost) {
 		if (price > minPrice && price < maxPrice)
 			canContinue = true;
 	}
+	weapon.skinName = getSkinName(weapon.skinName);
+	weapon.quality = getQualityName(weapon.quality, Settings.language)
 	weapon.price = price;
 	if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
 	winItems.push(weapon);
@@ -194,10 +196,8 @@ $('.choice__hand').on('click', function() {
 });
 
 function listener(e) {
-	console.log('Animation End');
 	var playerChoice = $('.selected').data('choice');
 	var whoWin = startGame(playerChoice);
-	console.log('Win: '+whoWin);
 	
 	if (whoWin == 'player') {
 		yourScore++;

@@ -172,19 +172,19 @@ function startGame() {
 				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chanse<br><img src='../images/ava/"+win.avatar+"'>");
 			
 			if(win.nick == Player.nickname) {
-				if(DEBUG) {
+				/*if(DEBUG) {
 					console.info("Player win! Inventory before:");
 					console.info(inventory);
-				}
+				}*/
 				for (var i = 0; i < ItemsInGame.length; i++) {
 					inventory.push(ItemsInGame[i]);
 				}
-				if(DEBUG) {
+				/*if(DEBUG) {
 					console.info("Inventory after:");
 					console.info(inventory);
 					console.info("Items in game:");
 					console.info(ItemsInGame);
-				}
+				}*/
 				saveInventory();
 				
 				//Statistic
@@ -279,9 +279,9 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 	if(weaponName.indexOf("|") != -1) {weaponName = weaponName.split("|")[1]}
 	
 	price = (price == 0) ? getPrice(weaponType, weaponName, weaponQuality, ifStatTrak) : price;
-	if (price == 0) {
+	/*if (price == 0) {
 		console.error("Нет цены для предмета: "+weaponType+" | "+weaponName+" ("+weaponQuality+")");
-	}
+	}*/
 	var newItems = "<tr class='itemInItemsList "+weaponRarity+"'>"+
 				   "<td><p class='fromName'>"+fromName+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
 				   "("+weaponQuality+")</p></p></td><td><img src='"+weaponImg+"' class='weaponImg'></td></tr>";
