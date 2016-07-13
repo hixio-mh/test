@@ -9,9 +9,10 @@ var PlayersInGame = [];
 var ItemsInGame = [];
 var ifCarusel = false;
 var lastTicket = 0;
+var PlayerInGame = false;
 
 //DEBUG
-var DEBUG = true;
+var DEBUG = false;
 
 var bar = new ProgressBar.Circle(circle, {
 	strokeWidth: 6,
@@ -64,6 +65,7 @@ function newGame() {
 	itemsAccepted = 0;
 	totalMoney = 0;
 	lastTicket = 0;
+	PlayerInGame = false;
 	
 	$(".items tr").remove();
 	$(".items").append("<tr></tr>");
@@ -168,18 +170,6 @@ function startGame() {
 				$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
 			else
 				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chanse<br><img src='../images/ava/"+win.avatar+"'>");
-		},
-		progress: function(e, t) {
-			/*progress_animate = Math.round(100 * t),
-            s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
-            s > d && (caseScrollAudio.pause(),caseScrollAudio.currentTime = 0,
-            caseScrollAudio.play(),
-            d++)*/
-		},
-		complete: function(){
-			$(".win").show();
-			var timerId2 = 0;
-			timerId2 = setTimeout(function(){newGame();}, 7000);
 			
 			if(win.nick == Player.nickname) {
 				if(DEBUG) {
@@ -208,8 +198,21 @@ function startGame() {
 					a = winSum > parseFloat(a) ? winSum : parseFloat(a);
 				$.cookie('rulet-max-win', a);	
 			} else {
-				statisticPlusOne('rulet-loose');
+				if (PlayerInGame)
+					statisticPlusOne('rulet-loose');
 			}
+		},
+		progress: function(e, t) {
+			/*progress_animate = Math.round(100 * t),
+            s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
+            s > d && (caseScrollAudio.pause(),caseScrollAudio.currentTime = 0,
+            caseScrollAudio.play(),
+            d++)*/
+		},
+		complete: function(){
+			$(".win").show();
+			var timerId2 = 0;
+			timerId2 = setTimeout(function(){newGame();}, 7000);
 		},
 	})
 }
@@ -312,7 +315,7 @@ function getRandomWeapon(specialClass) {
 	return cases[randomCaseId].weapons[randomWeaponId];
 }
 
-$(".closeInventory").on("click", function(){
+$(document).on("click", '.closeInventory', function(){
 	$(".inventoryList").css("display", "none");
 	$("#inventorySum").remove();
 })
@@ -346,7 +349,6 @@ $(".choseItems").on("click", function(){
 		}
 		saveInventory();
 	
-	
 		for (var i = 0; i < playerWeapons.length; i++) {
 			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity)
 		}
@@ -354,6 +356,7 @@ $(".choseItems").on("click", function(){
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
 		$("#addItems").attr("disabled", "disabled");
 		$(".closeInventory").click();
+		PlayerInGame = true;
 	}
 })
 

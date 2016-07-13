@@ -46,5 +46,13 @@
 		"RU" : " - Изменения в интерфейсе для экранов с маленьким разрешением.",
 		"EN" : " - Interface changes for screens with small resolution."
 	}
+}, {
+	"day" : 13,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлен баг со статистикой с количеством проиграных игр в рулетке.",
+		"EN" : " - Fixed: statistics bug (wrong number of losses jackpot games)."
+	}
 }, 
 ];
