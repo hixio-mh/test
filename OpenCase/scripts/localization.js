@@ -350,12 +350,17 @@ Localization.statistic = [{
 	}, {
 		"selector" : "#rulet-text",
 		"localization" : {
-			"EN" : "Jackpots won/lose:"
+			"EN" : "Jackpots win/lose:"
 		}
 	}, {
 		"selector" : "#rulet-max-win-text",
 		"localization" : {
 			"EN" : "Jackpot max money won:"
+		}
+	}, {
+		"selector" : "#rps-text",
+		"localization" : {
+			"EN" : "Rock-Paper-Scissors win/lose:"
 		}
 	}
 ],

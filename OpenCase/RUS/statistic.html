@@ -55,6 +55,7 @@ tr:nth-child(2n) {
 <tr><td id="contract-text">Контракты обмена: </td><td id="contract"></td></tr>
 <tr><td id="rulet-text">Рулетка выиграно/проиграно: </td><td id="rulet"></td></tr>
 <tr><td id="rulet-max-win-text">Максимальный выигрыш в рулетке: </td><td id="rulet-max-win"></td></tr>
+<tr><td id="rps-text">Камень-ножницы-бумага выиграно/проиграно: </td><td id="rps"></td></tr>
 </table>
 </div>
 <script>
@@ -75,6 +76,7 @@ $(function(){
 	stat("covert", $.cookie('weapon-covert', Number));
 	stat("contract", $.cookie('contracts', Number));
 	stat('rulet', $.cookie('rulet-wins', Number)+"/"+$.cookie('rulet-loose', Number));
+	stat('rps', $.cookie('rps-wins', Number)+"/"+$.cookie('rps-loose', Number));
 	stat('rulet-max-win', '$'+$.cookie('rulet-max-win', Number));
 	stat('knife', $.cookie('weapon-rare', Number));
 	stat("stattrak", $.cookie('statTrak', Number));

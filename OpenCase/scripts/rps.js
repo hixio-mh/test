@@ -202,8 +202,10 @@ function endGame(playerWin) {
 			inventory.push(winItems[i]);
 		}
 		saveInventory();
+		statisticPlusOne('rps-wins');
 	} else {
 		$('.status').text(Localization.rps2.lostGame[Settings.language]);
+		statisticPlusOne('rps-loose');
 	}
 	
 	winItems = [];
