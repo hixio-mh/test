@@ -59,8 +59,8 @@
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Новая мини-игра - Камень-ножницы-бумага!",
-		"EN" : " - A new mini-game - Rock-paper-scissors!"
+		"RU" : " - Новая мини-игра - Камень-ножницы-бумага!<br> - Исправлена ошибка в Контрактах обмена.",
+		"EN" : " - A new mini-game - Rock-paper-scissors!<br> - Fixed: trade up contract bug."
 	}
 }, 
 ];
