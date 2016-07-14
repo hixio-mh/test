@@ -514,5 +514,23 @@
 			"RUS" : "Supercar"
 		},
 		"youtube" : "https://www.youtube.com/embed/btqcQdIKDiQ"
+	}, {
+		"name" : {
+			"ENG" : "Fallout 4 Rancher House",
+			"RUS" : "Дом из Fallout 4"
+		},
+		"youtube" : "https://www.youtube.com/embed/rNyJxdPXXA4"
+	}, {
+		"name" : {
+			"ENG" : "Pickup from Borderlands (RUS)",
+			"RUS" : "Пикап из Borderlands"
+		},
+		"youtube" : "https://www.youtube.com/embed/o-eQre9l4Q4"
+	}, {
+		"name" : {
+			"ENG" : "Mustang (RUS)",
+			"RUS" : "Боевой мустанг"
+		},
+		"youtube" : "https://www.youtube.com/embed/JR5swmP76Ic"
 	}
 ]
