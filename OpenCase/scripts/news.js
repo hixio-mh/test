@@ -54,5 +54,13 @@
 		"RU" : " - Исправлен баг со статистикой с количеством проиграных игр в рулетке.",
 		"EN" : " - Fixed: statistics bug (wrong number of losses jackpot games)."
 	}
+}, {
+	"day" : 14,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Новая мини-игра - Камень-ножницы-бумага!",
+		"EN" : " - A new mini-game - Rock-paper-scissors!"
+	}
 }, 
 ];
