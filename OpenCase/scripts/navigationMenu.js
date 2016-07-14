@@ -11,7 +11,12 @@ $(function() {
 	var menu = $('.leftMenu');
 	var menuHTML = '<div class="menu_playerInfo"><img src="../images/ava/'+Player.avatar+'" align="left"><span>'+Player.nickname+'</span></div>';
 	menuHTML += '<ul><li><a href="cases.html"><span class="icon icon-key2"></span><span id="local-menu-case">Открыть кейсы</span></a></li>'+
+					//'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Рулетка</span></a></li>'+
+					'<li class="js-podmenu" data-podmenu="games"><a href="#"><span class="icon icon-pacman"></span><span id="local-menu-games">Игры</span></a></li>'+
+					'<div class="podmenu hide podmenu-games">'+
 					'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Рулетка</span></a></li>'+
+					'<li><a href="rps.html"><span class="icon icon-scissors"></span><span id="local-menu-rps">Камень-ножницы-бумага</span></a></li>'+
+					'</div>'+
 					'<li><a href="inventory.html"><span class="icon icon-coin-dollar"></span><span id="local-menu-inventory">Мой инвентарь</span></a></li>'+
 					'<li><a href="statistic.html"><span class="icon icon-stats-bars"></span><span id="local-menu-stat">Статистика</span></a></li>'+
 					'<li><a href="faq.html"><span class="icon icon-question"></span><span>FAQ</span></a></li>'+
@@ -26,7 +31,10 @@ $(function() {
 /*$(document).on('click', '.leftMenu', function() {
 	menuClick.play();
 })*/
-
+$(document).on('click', '.js-podmenu', function(){
+	var podmenu = $(this).data('podmenu');
+	$('.podmenu-'+podmenu).toggleClass('hide');
+});
 $(document).on('click', '.navigationBar_hamburger', function() {
 	menuClick.play();
 	$('.leftMenu').animate({
