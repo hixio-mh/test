@@ -67,12 +67,7 @@
     color: #fff;
     text-decoration: none;
 }
-.podmenu {
-    font-size: 0.9em;
-}
-.podmenu li {
-    background: rgba(0,0,0,0.5);
-}
+
 .icon {
     margin: 0 17px 0 11px;
     font-size: 1.2em;

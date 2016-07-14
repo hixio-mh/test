@@ -94,9 +94,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-pacman:before {
-    content: "\e916";
-}
 .icon-bullhorn:before {
     content: "\e91a";
 }
@@ -123,9 +120,6 @@
 }
 .icon-info:before {
     content: "\ea0c";
-}
-.icon-scissors:before {
-    content: "\ea5a";
 }
 
 /* End icons in menu */

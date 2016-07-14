@@ -18,22 +18,14 @@ var Localization = [];
 Localization.menu = [{
 		"selector" : "#local-menu-case",
 		"localization" : {
+			"RU" : "Открыть кейсы",
 			"EN" : "Open case"
-		}
-	}, {
-		"selector" : "#local-menu-games",
-		"localization" : {
-			"EN" : "Games"
 		}
 	}, {
 		"selector" : "#local-menu-rulet",
 		"localization" : {
+			"RU" : "Рулетка",
 			"EN" : "Jackpot"
-		}
-	}, {
-		"selector" : "#local-menu-rps",
-		"localization" : {
-			"EN" : "Rock-Paper-Scissors"
 		}
 	}, {
 		"selector" : "#local-menu-inventory",
@@ -196,67 +188,7 @@ Localization.jackpot2 = {
 		"EN" : "Inventory is empty. <a href='cases.html?from=jackpot'>Open some cases to fill it.</a>"
 	}
 },
-Localization.rps = [{
-		'selector': ".status",
-		'localization' : {
-			"EN" : "Add weapon to start a game."
-		}
-	}, {
-		'selector': ".your-score",
-		'localization' : {
-			"EN" : "You <span>0</span>"
-		}
-	}, {
-		'selector': ".comp-score",
-		'localization' : {
-			"EN" : "Opponent <span>0</span>"
-		} 
-	}, {
-		'selector': ".choice span",
-		'localization' : {
-			"EN" : "Choose Rock, Paper or Scissors."
-		}
-	}, {
-		'selector': ".add-item",
-		'localization' : {
-			"EN" : "Add weapon"
-		}
-	}, {
-		'selector': ".choseItems",
-		'localization' : {
-			"EN" : "Add selected weapon"
-		}
-	},
-],
-Localization.rps2 = {
-	'youAdd' : {
-		"EN" : "You added: ",
-		"RU" : "Вы добавили: "
-	},
-	'opponentAdd' : {
-		"EN" : "Opponent added: ",
-		"RU" : "Противник добавил: "
-	},
-	'youWinRound' : {
-		"EN" : "You win this round!",
-		"RU" : "Вы победили в этом раунде!"
-	},
-	'youLostRound' : {
-		"EN" : "You lost this round.",
-		"RU" : "Вы проиграли в этом раунде."
-	},
-	'tie' : {
-		"EN" : "Tie!",
-		"RU" : "Ничья!"
-	},
-	'winGame' : {
-		"EN" : "You win!",
-		"RU" : "Вы победили!"
-	},
-	'lostGame' : {
-		"EN" : "You lost.",
-		"RU" : "Вы проиграли."
-	}
+Localization.rps = {
 },
 Localization.inventory = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
