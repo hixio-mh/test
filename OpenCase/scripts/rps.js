@@ -128,7 +128,7 @@ function botAddWeapon(itemsCost) {
 		if (price > minPrice && price < maxPrice)
 			canContinue = true;
 	}
-	weapon.skinName = getSkinName(weapon.skinName);
+	weapon.skinName = getSkinName(weapon.skinName, Settings.language);
 	weapon.quality = getQualityName(weapon.quality, Settings.language)
 	weapon.price = price;
 	if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
