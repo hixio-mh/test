@@ -1,5 +1,6 @@
 body {
-    background: url(../images/background.png) fixed no-repeat;
+    /* background: url(../images/background.png) fixed no-repeat; */
+	background: #19212b;
     background-size: cover;
 	margin: 0;
 }

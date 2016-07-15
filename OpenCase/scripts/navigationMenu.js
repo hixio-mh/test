@@ -36,12 +36,12 @@ $(document).on('click', '.js-podmenu', function(){
 	$('.podmenu-'+podmenu).toggleClass('hide');
 });
 $(document).on('click', '.navigationBar_hamburger', function() {
-	menuClick.play();
+	if (Settings.sounds) menuClick.play();
 	$('.leftMenu').animate({
 		left: ($('.leftMenu').css('left') == '0px') ? "-=270" : "+=270"
 		//css('left', '0px');
-	}, 700)
+	}, 400)
 	$('.navigationBar').animate({
 		left: ($('.leftMenu').css('left') == '0px') ? "-=270" : "+=270"
-	}, 700)
+	}, 400)
 })

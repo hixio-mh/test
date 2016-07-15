@@ -87,7 +87,7 @@ $("#addItems").on("click", function(){
 	inventory = inventory.sort(function(a,b){
 		return b.price-a.price;
 	});
-	addItemsSound.play();
+	if (Settings.sounds) addItemsSound.play();
 	fillInventory();
 });
 
@@ -258,7 +258,7 @@ function botAddItems() {
 		itemsCost += +price;
 		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), qual, st, botWeapons[i].rarity, price)
 	}
-	newItemsSound.play()
+	if (Settings.sounds) newItemsSound.play()
 	PlayersInGame.push({
 		"nick" : botName,
 		"avatar" : botImg,
@@ -284,7 +284,7 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 	/*if (price == 0) {
 		console.error("Нет цены для предмета: "+weaponType+" | "+weaponName+" ("+weaponQuality+")");
 	}*/
-	var newItems = "<tr class='itemInItemsList "+weaponRarity+"'>"+
+	var newItems = "<tr class='itemInItemsList "+weaponRarity+"-color'>"+
 				   "<td><p class='fromName'>"+fromName+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
 				   "("+weaponQuality+")</p></p></td><td><img src='"+weaponImg+"' class='weaponImg'></td></tr>";
 				   
@@ -354,7 +354,7 @@ $(".choseItems").on("click", function(){
 		for (var i = 0; i < playerWeapons.length; i++) {
 			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity)
 		}
-		newItemsSound.play();
+		if (Settings.sounds) newItemsSound.play();
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
 		$("#addItems").attr("disabled", "disabled");
 		$(".closeInventory").click();
@@ -368,10 +368,10 @@ $(document).on("click", ".weapon", function(){
 	
 	if ($(".inventoryItemSelected").length < maxItems) {
 		$(this).toggleClass("inventoryItemSelected");
-		selectItemSound.play();
+		if (Settings.sounds) selectItemSound.play();
 	} else if ($(this).hasClass("inventoryItemSelected")) {
 		$(this).toggleClass("inventoryItemSelected");
-		selectItemSound.play();
+		if (Settings.sounds) selectItemSound.play();
 	}
 	
 	if ($("li").is(".inventoryItemSelected")) {

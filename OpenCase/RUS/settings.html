@@ -22,21 +22,55 @@
 <link rel="stylesheet" type="text/css" href="../css/iconselect/iconselect.css">
 <style>
 body {
-    background: url(../images/background.png) fixed no-repeat;
-    background-size: cover;
     color: #fff;
 	font-family: LatoRegular;
+	background: #19212b;
 	margin: 0;
 }
 .settings {
-    width: 200px;
-    margin: 50px auto 0 auto;
-    background: rgba(255, 255, 255, 0.34);
-    padding: 1px 10px;
-    border-radius: 5px;
+    margin: 40px auto 0 auto;
+    padding: 1px;
 }
 .box {
 	z-index:5;
+}
+.option-block {
+    font-size: 1em;
+}
+.option-block__name {
+    color: #f1ff8a;
+	margin: 15px 0 5px 15px;
+    display: block;
+}
+.option {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+}
+.option > * {
+    display: block;
+    margin-left: 15px;
+    margin-top: 10px;
+	margin-right: 15px;
+}
+.option > *:nth-child(1) {
+    margin-top: 0;
+}
+.inline > * {
+	display: inline-block;
+}
+input#nickname {
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.34);
+    font-size: 0.9em;
+}
+input#nickname:focus {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+div#avatar {
+    margin-top: 10px;
 }
 .Button {
    border: 1px solid #ffffff;
@@ -98,26 +132,100 @@ body {
    background: -ms-linear-gradient(top, #92c5f0, #50699e);
    background: -o-linear-gradient(top, #92c5f0, #50699e);
 }
+.switch {
+    width: 2.67em;
+    height: 1.35em;
+    background: #e5e5e5;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+}
+.switch:before {
+    content: ' ';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 2.59em;
+    height: 1.31em;
+    background: #fff;
+    z-index: 1;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+}
+.switch:after {
+    content: ' ';
+    height: 1.24em;
+    width: 1.24em;
+    border-radius: 28px;
+    background: #fff;
+    position: absolute;
+    z-index: 2;
+    top: 1px;
+    left: 1px;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-box-shadow: 0 2px 5px #999999;
+    box-shadow: 0 2px 5px #999999;
+}
+.switchOn, .switchOn:before {
+	background: #4cd964 !important;
+}
+.switchOn:after {
+    left: 1.36em !important;
+}
+.switch-label {
+	float: right;
+	margin-top: 0;
+}
 </style>
 </head>
 <body data-localization='settings'>
 <div class="navigationBar" data-menu-EN="Settings" data-menu-RU="Настройки"></div>
 <div class='settings'>
-<p><span id='local-name'>Ваше имя:</span><br>
-<input type="text" id="nickname" size="20">
-</p>
-<p><span id='local-avatar'>Аватарка:</span><br>
-<div id="avatar">
-</div>
-</p>
-<p><span id='local-language'>Язык:</span><br>
-	<div class="dropdown">
-		<select class="dropdown-select" id="language">
-			<option value="EN">English</option>
-			<option value="RU">Русский</option>
-		</select>
+<div class='option-block'>
+	<span class='option-block__name' id='local-profile'>Профиль</span>
+	<div class='option'><span id='local-name'>Ваше имя</span>
+		<input type="text" id="nickname" size="20" />
 	</div>
-</p>
+	<div class='option'><span id='local-avatar'>Аватарка:</span>
+		<div id="avatar">
+		</div >
+	</div>
+</div>
+<div class='option-block'>
+	<span class='option-block__name' id='local-local'>Интерфейс</span>
+	<div class='option'>
+		<span id='local-language'>Язык</span>
+		<div class="dropdown">
+			<select class="dropdown-select" id="language">
+				<option value="EN">English</option>
+				<option value="RU">Русский</option>
+			</select>
+		</div>
+	</div>
+	<div class='option inline'>
+		<span id='local-sounds'>Звуки</span>
+		<label class='switch-label'>
+			<input type="checkbox" name='sounds' class='hide' />
+			<div class='switch' data-target='switch-sound'></div>
+		</label>
+	</div>
+	<div class='option inline'>
+		<span id='local-drop'>Быстрый дроп с кейсов</span>
+		<label class='switch-label'>
+			<input type="checkbox" name='drop' class='hide' />
+			<div class='switch' data-target='switch-drop'></div>
+		</label>
+	</div>
+</div>
 <p>
 <button id='reset' class='Button' value='Reset'>Полный сброс</button>
 <hr>
@@ -160,6 +268,15 @@ $(function() {
 	iconSelect.setSelectedIndex(Bot.images.length-parseInt(Player.avatar)-1);
 	
 	$('select option[value='+Settings.language+']').attr('selected', 'true');
+	
+	if (Settings.sounds == true) {
+		$('input[name="sounds"]').prop('checked', true);
+		$('.switch[data-target="switch-sound"]').addClass('switchOn');
+	}
+	if (Settings.drop == true) {
+		$('input[name="drop"]').prop('checked', true);
+		$('.switch[data-target="switch-drop"]').addClass('switchOn');
+	}
 });
 
 $("#submit").on("click", function() {
@@ -168,6 +285,8 @@ $("#submit").on("click", function() {
 		$.cookie("playerNickname", nick);
 	var lang = $('#language option:selected').val();
 		$.cookie('settings_language', lang);
+	$.cookie('settings_sounds', $('input[name="sounds"]').prop('checked'));
+	$.cookie('settings_drop', $('input[name="drop"]').prop('checked'));
 	
 	Settings.language = lang;
 	localizate('settings');
@@ -190,6 +309,10 @@ $('#resetConfirm').on('click', function() {
 
 $(document).on('click', '#closePopup', function() {
 	$('.popup').css('display', 'none');
+});
+
+ $('.switch').click(function () {
+	$(this).toggleClass("switchOn");
 });
 
 function deleteAllCookies() {

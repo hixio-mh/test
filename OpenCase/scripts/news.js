@@ -70,5 +70,13 @@
 		"RU" : " - В кейсе eSports Summer 2014 заменена AWP Боец на AWP Кортисейра.",
 		"EN" : " - Replaced the AWP Man'o'War with the AWP Kortiseyra in case eSports Summer 2014."
 	}
+}, {
+	"day" : 16,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Новый дизайн настроек.<br> - Новые настройки: звук, быстрый дроп с кейсов.<br> - Ускоренно выезжание левого меню.",
+		"EN" : " - Changed settings design. <br> - New settings: sound on/off, fast drop.<br> - Increase the sliding speed of left menu."
+	}
 }, 
 ];

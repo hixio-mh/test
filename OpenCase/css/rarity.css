@@ -1,3 +1,25 @@
+.consumer, .consumer-color {
+	background: #9EA7AE;
+}
+.milspec, .milspec-color {
+	background: #3747A7;
+}
+.restricted, .restricted-color {
+	background: #6533A6;
+}
+.classified, .classified-color {
+	background: #A41EA0;
+}
+.covert, .covert-color {
+	background: #BA3432;
+}
+.rare, .rare-color {
+	background: #DAB515;
+}
+.industrial, .industrial-color {
+	background: #4A78AD;
+}
+
 .consumer {
 	background: linear-gradient(to right,#9EA7AE,#687073);
 }

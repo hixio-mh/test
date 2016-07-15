@@ -108,11 +108,12 @@ $(".openCase").on("click", function() {
 	var a = 127*winNumber;
 	var l = 131;
 	var d = 0, s = 0;
+	var duration = (Settings.drop) ? 5000 : 10000;
 	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-50, a+60) }, {
-		duration: 10000,
+		duration: duration,
 		easing: 'easeOutCubic',
 		start: function(){
-			caseOpenAudio.play();
+			if (Settings.sounds) caseOpenAudio.play();
 			var type = win.type;
 			var statTrak = ifStatTrak(type);
 			var quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
@@ -150,11 +151,14 @@ $(".openCase").on("click", function() {
 			
 		},
 		progress: function(e, t) {
-			progress_animate = Math.round(100 * t),
-            s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
-            s > d && (caseScrollAudio.pause(), caseScrollAudio.currentTime = 0,
-            caseScrollAudio.play(),
-            d++)
+			 if (Settings.sounds) {
+				progress_animate = Math.round(100 * t),
+				s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
+				s > d && (caseScrollAudio.pause(), caseScrollAudio.currentTime = 0,
+				caseScrollAudio.play(),
+				d++)
+			 }
+			 
 		},
 		complete: function(){
 			$("#opened").text(parseInt($("#opened").text())+1);
@@ -162,7 +166,7 @@ $(".openCase").on("click", function() {
 			win.price = price;
 			inventory.push(win);
 			saveInventory();
-			caseCloseAudio.play();
+			if (Settings.sounds) caseCloseAudio.play();
 			$(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
 			$(".win").slideDown("fast");
 			caseOpening = false;

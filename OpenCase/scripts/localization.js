@@ -397,19 +397,39 @@ Localization.faq = [{
 	}
 ],
 Localization.settings = [{
+		"selector" : "#local-profile",
+		"localization" : {
+			"EN" : "Profile"
+		}
+	}, {
 		"selector" : "#local-name",
 		"localization" : {
-			"EN" : "Your name:"
+			"EN" : "Your name"
 		}
 	}, {
 		"selector" : "#local-avatar",
 		"localization" : {
-			"EN" : "Avatar:"
+			"EN" : "Avatar"
+		}
+	}, {
+		"selector" : "#local-local",
+		"localization" : {
+			"EN" : "Interface"
 		}
 	}, {
 		"selector" : "#local-language",
 		"localization" : {
-			"EN" : "Language:"
+			"EN" : "Language"
+		}
+	}, {
+		"selector" : "#local-sounds",
+		"localization" : {
+			"EN" : "Sound"
+		}
+	}, {
+		"selector" : "#local-drop",
+		"localization" : {
+			"EN" : "Fast drop (x2)"
 		}
 	}, {
 		"selector" : "#reset",
