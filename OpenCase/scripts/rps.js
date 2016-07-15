@@ -43,7 +43,8 @@ $(document).on("click", '.closeInventory', function(){
 
 $(document).on("click", ".weapon", function(){
 	selectItemSound.pause();
-	selectItemSound.currentTime = 0;
+	if (!isNaN(selectItemSound.duration))
+		selectItemSound.currentTime = 0;
 	
 	if ($(".inventoryItemSelected").length < maxItems) {
 		$(this).toggleClass("inventoryItemSelected");
@@ -131,7 +132,7 @@ function botAddWeapon(itemsCost) {
 	weapon.skinName = getSkinName(weapon.skinName, Settings.language);
 	weapon.quality = getQualityName(weapon.quality, Settings.language)
 	weapon.price = price;
-	if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
+	if (Settings.language != 'RU' && weapon.type.indexOf('‘увенир') != -1) weapon.type = weapon.type.replace('‘увенир', 'Souvenir');
 	winItems.push(weapon);
 	$('.winItems').append('<li>'+Localization.rps2.opponentAdd[Settings.language]+winItems[1].type+' | '+winItems[1].skinName+' ($'+winItems[1].price+')<b class='+winItems[1].rarity+'></b>');
 }

@@ -14,22 +14,26 @@ var PlayerInGame = false;
 //DEBUG
 var DEBUG = false;
 
-var bar = new ProgressBar.Circle(circle, {
-	strokeWidth: 6,
-	easing: 'easeInOut',
-	duration: 1000,
-	color: '#105868',
-	trailColor: '#2D96AE',
-	trailWidth: 6,
-	svgStyle: null,
-	text: {
-		value: '0/20',
-		alignToBottom: false
-	}
-});
-
-bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-bar.text.style.fontSize = '2rem';
+try {
+	var bar = new ProgressBar.Circle(circle, {
+			strokeWidth : 6,
+			easing : 'easeInOut',
+			duration : 1000,
+			color : '#105868',
+			trailColor : '#2D96AE',
+			trailWidth : 6,
+			svgStyle : null,
+			text : {
+				value : '0/20',
+				alignToBottom : false
+			}
+		});
+	
+	bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+	bar.text.style.fontSize = '2rem';
+} catch (err) {
+	//ERR
+}
 
 var addItemsSound = new Audio();
 addItemsSound.src = "../sound/interface/menuClick.wav";
@@ -52,8 +56,6 @@ newItemsSound.volume = 0.9;
 		})
 	}, 2000);
 //}
-
-newGame();
 
 function newGame() {
 	clearTimeout(timerId);
