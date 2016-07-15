@@ -62,5 +62,13 @@
 		"RU" : " - Новая мини-игра - Камень-ножницы-бумага!<br> - Исправлена ошибка в Контрактах обмена.",
 		"EN" : " - A new mini-game - Rock-paper-scissors!<br> - Fixed: trade up contract bug."
 	}
+}, {
+	"day" : 15,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - В кейсе eSports Summer 2014 заменена AWP Боец на AWP Кортисейра.",
+		"EN" : " - Replaced the AWP Man'o'War with the AWP Kortiseyra in case eSports Summer 2014."
+	}
 }, 
 ];
