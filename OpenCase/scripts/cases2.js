@@ -1882,9 +1882,9 @@ var cases = [{
 				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz51O_W0DzRyTRfSE6lQW8o0-x7tNis77893a9u35bwDZwy94YvDYrAtZIxJG5LVXf-Hbg_57E9sgKReLMaMoSPqi3u7O2pbU0X1ujVTSqeRL14"
 			}, {
 				"type" : "AWP",
-				"skinName" : "Man-o'-war",
-				"rarity" : "covert",
-				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz56I_OKMTpYcxPSPqdSU-cjywTlDi8m18tiRtCzuehScVm-4YKQNuQoZIlEGcfRUv6Abgv77E8w1PVZLpyO8SPn3yTpM24UG028omRZCoA"
+				"skinName" : "Corticera",
+				"rarity" : "classified",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17PXJZzhO7eO3g5C0m_7zO6_ummpD78A_3rqTrI-l3AOxqkJkamClJ46RdFc_MFDR_1K3k7_t1JS7upvMmHdn7z5iuygrdWg_VA"
 			}, {
 				"type" : "P2000",
 				"skinName" : "Corticera",
