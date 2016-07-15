@@ -364,7 +364,8 @@ $(".choseItems").on("click", function(){
 
 $(document).on("click", ".weapon", function(){
 	selectItemSound.pause();
-	selectItemSound.currentTime = 0;
+	if (!isNaN(selectItemSound.duration))
+		selectItemSound.currentTime = 0;
 	
 	if ($(".inventoryItemSelected").length < maxItems) {
 		$(this).toggleClass("inventoryItemSelected");

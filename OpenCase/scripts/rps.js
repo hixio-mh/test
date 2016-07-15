@@ -57,6 +57,10 @@ $(document).on("click", ".weapon", function(){
 
 $(".choseItems").on("click", function () {
 	var itemsCount = $(".inventoryItemSelected").length;
+	if (itemsCount == 0) {
+		$(".closeInventory").click();
+		return false;
+	}
 	//var playerWeapons = [];
 	var ids = [];
 	var itemsCost = 0;
@@ -217,6 +221,43 @@ function endGame(playerWin) {
 	
 	$(".choice").css("display", 'none');
 	$(".add-item").css("display", 'block');
+}
+
+function getRandomWeapon(specialClass) {
+	if (typeof specialClass == 'undefined') specialClass = 0;
+	var randomCaseId = Math.rand(0, cases.length-1);
+	
+	if ((specialClass == 0) && (typeof cases[randomCaseId].specialClass != "undefined")) {
+		randomCaseId = Math.rand(0, cases.length-1);
+		while (typeof cases[randomCaseId].specialClass != "undefined") {
+			randomCaseId = Math.rand(0, cases.length-1);
+		}
+	}
+	var randomWeaponId = Math.rand(0, cases[randomCaseId].weapons.length-1);
+	
+	return cases[randomCaseId].weapons[randomWeaponId];
+}
+
+function fillInventory() {
+	$("#intentory-Player").html(Localization.jackpot2.playerInventory[Settings.language]);
+	$(".inventory li").remove();
+	
+	for(var i = 0; i < inventory.length; i++) {
+		var weapon = inventory[i];
+		//var img = prefix + weapon.img + postfix;
+	
+		var type = weapon.type;
+		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
+	
+		var name = weapon.skinName;
+		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+		var weaponInfo = "<img src='"+getImgUrl(weapon.img)+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+		"</span></div><i>"+weapon.price+"$</i>";
+		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +"' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
+	}
+	if (inventory.length == 0) {
+		$(".inventory").append("<li>"+Localization.jackpot2.emptyInventory[Settings.language]+"</li>");
+	}
+$(".inventoryList").css("display", "block");
 }
 
 function startGame(userChoice) {
