@@ -48,10 +48,10 @@ $(document).on("click", ".weapon", function(){
 	
 	if ($(".inventoryItemSelected").length < maxItems) {
 		$(this).toggleClass("inventoryItemSelected");
-		selectItemSound.play();
+		if (Settings.sounds)selectItemSound.play();
 	} else if ($(this).hasClass("inventoryItemSelected")) {
 		$(this).toggleClass("inventoryItemSelected");
-		selectItemSound.play();
+		if (Settings.sounds)selectItemSound.play();
 	}
 });
 
