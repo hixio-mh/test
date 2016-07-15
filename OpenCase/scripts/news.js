@@ -75,8 +75,8 @@
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Новый дизайн настроек.<br> - Новые настройки: звук, быстрый дроп с кейсов.<br> - Ускоренно выезжание левого меню.",
-		"EN" : " - Changed settings design. <br> - New settings: sound on/off, fast drop.<br> - Increase the sliding speed of left menu."
+		"RU" : " - Новый дизайн настроек.<br> - Новые настройки: звук, быстрый дроп с кейсов.<br> - Ускоренно выезжание левого меню.<br> - Исправлена игра камень-ножницы-бумага? У меня работает ¯\\_(ツ)_/¯",
+		"EN" : " - Changed settings design. <br> - New settings: sound on/off, fast drop.<br> - Increase the sliding speed of left menu.<br> - RPS fixed? Maybe ¯\\_(ツ)_/¯"
 	}
 }, 
 ];
