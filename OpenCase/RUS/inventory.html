@@ -136,10 +136,12 @@ $(document).on("click", ".weapon", function() {
 	var price = $(this).data("price");
 	var statTrak = $(this).data("stattrak");
 	var quality = $(this).data("quality");
+	var id = parseInt($(this).attr('id'));
 	
 	$("#weaponInfoContainer").data('name', name);
 	$("#weaponInfoContainer").data('type', type);
 	$("#weaponInfoContainer").data('stattrak', statTrak);
+	$("#weaponInfoContainer").data('weaponId', id);
 	
 	
 	$("#weaponInfoContainer").css("display", "block");
@@ -168,11 +170,15 @@ $(".glassBlur").on("click", function(){
 	if ($(this).hasClass("savePrice")) {
 		if ($("#weaponPrice").text() != "0$") {
 			var wp = {};
+			wp.id = $('#weaponInfoContainer').data('weaponId');
 			wp.typeAndName = $("#weaponName").text();
 			wp.quality = $("#weaponQuality").text();
 			wp.rarity = $("#weaponRarity").text();
 			wp.statTrak = ($('#statTrakImg').css('display') == 'block') ? true : false;
-			setWeaponPrice(wp, parseFloat($("#weaponPrice").text()));
+			if (typeof wp.id != 'undefined' && !isNaN(wp.id)) 
+				setWeaponPrice(wp.id, parseFloat($("#weaponPrice").text()));
+			else
+				setWeaponPrice(wp, parseFloat($("#weaponPrice").text()));
 			saveInventory();
 		}
 		$(this).removeClass("savePrice");

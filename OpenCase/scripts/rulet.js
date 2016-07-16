@@ -19,9 +19,9 @@ try {
 			strokeWidth : 6,
 			easing : 'easeInOut',
 			duration : 1000,
-			color : '#105868',
-			trailColor : '#2D96AE',
-			trailWidth : 6,
+			color : '#b50606',
+			trailColor : '#fff',
+			trailWidth : 2,
 			svgStyle : null,
 			text : {
 				value : '0/20',
@@ -62,7 +62,7 @@ function newGame() {
 	ifCarusel = false;
 	$(".win").slideUp("fast");
 	bar.animate(0);
-	bar.setText("0/20");
+	bar.setText("0/20<hr><s>$0</s>");
 	$("#addItems").attr("disabled", null);
 	itemsAccepted = 0;
 	totalMoney = 0;
@@ -100,7 +100,7 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
 	if (step > 1) {step = 1}
 	totalMoney += +Math.round(parseFloat(itemsCost)*100)/100;
 	totalMoney = +Math.round(parseFloat(totalMoney)*100)/100;
-	bar.setText(itemsAccepted + '/20<br><s>'+totalMoney+'$</s>');
+	bar.setText(itemsAccepted + '/20<hr><s>$'+totalMoney+'</s>');
 	bar.animate(step);
 	
 	if (itemCount>5) value = 4;
@@ -352,7 +352,7 @@ $(".choseItems").on("click", function(){
 		saveInventory();
 	
 		for (var i = 0; i < playerWeapons.length; i++) {
-			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity)
+			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity, playerWeapons[i].price)
 		}
 		if (Settings.sounds) newItemsSound.play();
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);

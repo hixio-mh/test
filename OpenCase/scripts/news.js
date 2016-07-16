@@ -75,8 +75,8 @@
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Новый дизайн настроек.<br> - Новые настройки: звук, быстрый дроп с кейсов.<br> - Ускоренно выезжание левого меню.<br> - Исправлена игра камень-ножницы-бумага? У меня работает ¯\\_(ツ)_/¯",
-		"EN" : " - Changed settings design. <br> - New settings: sound on/off, fast drop.<br> - Increase the sliding speed of left menu.<br> - RPS fixed? Maybe ¯\\_(ツ)_/¯"
+		"RU" : " - Новый дизайн настроек.<br> - Новые настройки: звук, быстрый дроп с кейсов.<br> - Ускоренно выезжание левого меню.<br> - Исправлена игра камень-ножницы-бумага? У меня работает ¯\\_(ツ)_/¯<br> - Исправлен баг, когда цена на предмет обнулялась, после выигрыша в рулетке.<br> - Исправлен баг, когда цена на предмет не обновлялась, если она была 'NaN'.<br> - Немного изменен дизайн рулетки.",
+		"EN" : " - Changed settings design. <br> - New settings: sound on/off, fast drop.<br> - Increase the sliding speed of left menu.<br> - RPS fixed? Maybe ¯\\_(ツ)_/¯<br> - Fixed: price had reset after win in jackpot.<br> - Fixed: price didn't update if it was 'NaN'.<br> - Small changes in jackpot design."
 	}
 }, 
 ];
