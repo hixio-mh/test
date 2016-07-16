@@ -3829,7 +3829,7 @@ var cases = [{
 				"type" : "★ Flip Knife",
 				"skinName" : "Gamma Doppler",
 				"rarity" : "rare",
-				"img" : "lo8PoK53WOPrFv9dLa5Dky7DxRHqB1ajP9gsR8lICzRfhDhb92se8UvP46MLzh8dNsSeVuMYVqc50ytVyF4cPlDGP1HhfgP6XM7irRWEIRoj1sEOvltWuT_dNUmJZBQ_V48ta-ZiBeQBhOKqBdFOWnWChljiSkiraIVxEYUITzAN23lVsDlepRqF4aleghsIIpnBD7c="
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf1f_BYQJD4eOzmYWZlvvwDLbQhGld7cxrj-3--YXygECLpxIuNDztJoWcdA5vZV7Q_VfoxOfuh5Dv7s-ayiA3syUrtizfnxzj0kkZa7BogeveFwsRjj-vBQ"
 			}, {
 				"type" : "★ Flip Knife",
 				"skinName" : "Doppler",

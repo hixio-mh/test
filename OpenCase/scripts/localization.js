@@ -372,7 +372,7 @@ Localization.faq = [{
 	}, {
 		"selector" : "#js-local-answer-1",
 		"localization" : {
-			"EN" : "The max number of weapons that you can add: 10.<br>Maximum price is unlimited.<br>The game will begin after 20 weapons are collected.<br>If you add weapons and close the roulette, weapons will disappear."
+			"EN" : "The max number of weapons that you can add: 10.<br>Maximum price is unlimited.<br>The game will begin after 20 weapons are collected.<br>If you add weapons and close the jackpot, weapons will disappear."
 		}
 	}, {
 		"selector" : "#js-local-question-2",
