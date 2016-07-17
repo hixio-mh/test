@@ -14,7 +14,7 @@ $(function() {
 					//'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Рулетка</span></a></li>'+
 					'<li class="js-podmenu" data-podmenu="games"><a href="#"><span class="icon icon-pacman"></span><span id="local-menu-games">Игры</span></a></li>'+
 					'<div class="podmenu hide podmenu-games">'+
-					'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Рулетка</span></a></li>'+
+					'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Джекпот</span></a></li>'+
 					'<li><a href="RPS.html"><span class="icon icon-scissors"></span><span id="local-menu-rps">Камень-ножницы-бумага</span></a></li>'+
 					'</div>'+
 					'<li><a href="inventory.html"><span class="icon icon-coin-dollar"></span><span id="local-menu-inventory">Мой инвентарь</span></a></li>'+
