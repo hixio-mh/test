@@ -180,7 +180,32 @@ Localization.jackpot = [{
 			"RU" : "Внести",
 			"EN" : "Add selected items"
 		}
-	},
+	}, {
+		"selector" : "#local-dif-easy-peasy",
+		"localization" : {
+			"EN" : "Easy peasy $0.1 - $5"
+		}
+	}, {
+		"selector" : "#local-dif-easy",
+		"localization" : {
+			"EN" : "Easy $5 - $30"
+		}
+	}, {
+		"selector" : "#local-dif-normal",
+		"localization" : {
+			"EN" : "Normal $30 - $80"
+		}
+	}, {
+		"selector" : "#local-dif-hard",
+		"localization" : {
+			"EN" : "Hard $80 - $200"
+		}
+	},  {
+		"selector" : "#local-dif-hard",
+		"localization" : {
+			"EN" : "Legendary $200 - $∞"
+		}
+	}, 
 ],
 Localization.jackpot2 = {
 	"sumText" : {

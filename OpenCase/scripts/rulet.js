@@ -10,6 +10,10 @@ var ItemsInGame = [];
 var ifCarusel = false;
 var lastTicket = 0;
 var PlayerInGame = false;
+var priceRange = {
+	min: parseFloat($('#diffuculty option:selected').data('min')),
+	max: parseFloat($('#diffuculty option:selected').data('max'))
+	};
 
 //DEBUG
 var DEBUG = false;
@@ -63,7 +67,7 @@ function newGame() {
 	$(".win").slideUp("fast");
 	bar.animate(0);
 	bar.setText("0/20<hr><s>$0</s>");
-	$("#addItems").attr("disabled", null);
+	$("#addItems").prop("disabled", false);
 	itemsAccepted = 0;
 	totalMoney = 0;
 	lastTicket = 0;
@@ -74,6 +78,8 @@ function newGame() {
 	
 	$("#players").html("");
 	$(".casesCarusel").html("");
+
+	$('#diffuculty').prop('disabled', false);
 	
 	PlayersInGame = [];
 	ItemsInGame = [];
@@ -89,6 +95,15 @@ $("#addItems").on("click", function(){
 	});
 	if (Settings.sounds) addItemsSound.play();
 	fillInventory();
+});
+
+$('#diffuculty').change(function(){
+	var minPrice = parseFloat($('#diffuculty option:selected').data('min'));
+	var maxPrice = parseFloat($('#diffuculty option:selected').data('max'));
+	
+	priceRange.min = minPrice;
+	priceRange.max = maxPrice;
+	newGame();
 });
 
 function addItems(fromName, fromImg, itemCount, itemsCost) {
@@ -130,7 +145,8 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
 }
 
 function startGame() {
-	$("#addItems").attr("disabled", "disabled");
+	$("#addItems").prop("disabled", true);
+	$('#diffuculty').prop('disabled', true);
 	
 	winNumber = 35;
 	
@@ -238,25 +254,31 @@ function botAddItems() {
 	var botImg = Bot.images[Math.rand(0, Bot.images.length-1)];
 	var botWeapons = [];
 	var itemsCost = 0.00;
+	var qual, st, price;
+	var rand = Math.rand(1, maxItems);
 	
-	for (var i = 0; i < Math.rand(1, maxItems); i++) {
-		botWeapons.push(getRandomWeapon(0));
+	for (var i = 0; i < rand; i++) {
+		var weapon = getRandomWeapon(1);
+		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
+		weapon.statTrak = ifStatTrak(weapon.type);
+		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+		if (weapon.price > priceRange.min && weapon.price < priceRange.max)
+			botWeapons.push(weapon);
+		else
+			i--;
 	}
 	for (var i = 0; i < botWeapons.length; i++) {
-		var qual = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
-		var st = ifStatTrak(botWeapons[i].type);
-		var price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
 		
 		var z = 0;
-		while (price == 0) {
-			qual = Quality[z].name[Settings.language == 'RU' ? 1 : 0];
-			price = getPrice(botWeapons[i].type, botWeapons[i].skinName, qual, st);
+		while (weapon.price == 0) {
+			botWeapons[i].quality = Quality[z].name[Settings.language == 'RU' ? 1 : 0];
+			botWeapons[i].price = getPrice(botWeapons[i].type, botWeapons[i].skinName, botWeapons[i].quality, botWeapons[i].statTrak);
 			if (z == 4) break;
 			z++
 		}
 		if (Settings.language != 'RU' && botWeapons[i].type.indexOf('Сувенир') != -1) botWeapons[i].type = botWeapons[i].type.replace('Сувенир', 'Souvenir');
-		itemsCost += +price;
-		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), qual, st, botWeapons[i].rarity, price)
+		itemsCost += +botWeapons[i].price;
+		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), botWeapons[i].quality, botWeapons[i].statTrak, botWeapons[i].rarity, botWeapons[i].price)
 	}
 	if (Settings.sounds) newItemsSound.play()
 	PlayersInGame.push({
@@ -356,7 +378,8 @@ $(".choseItems").on("click", function(){
 		}
 		if (Settings.sounds) newItemsSound.play();
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
-		$("#addItems").attr("disabled", "disabled");
+		$("#addItems").prop("disabled", true);
+		$('#diffuculty').prop('disabled', true);
 		$(".closeInventory").click();
 		PlayerInGame = true;
 	}

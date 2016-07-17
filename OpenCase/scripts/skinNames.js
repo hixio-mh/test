@@ -1308,6 +1308,69 @@ var skinNames = [{
 }, {
 	"RU" : "Суд Анубиса",
 	"EN" : "Judgement of Anubis",
-}
+}, { // GAMMA
+	"RU" : "Полет",
+	"EN" : "Aerial",
+}, {
+	"RU" : "Ледниковый покров",
+	"EN" : "Ice Cap",
+}, {
+	"RU" : "Жнец",
+	"EN" : "Harvester",
+}, {
+	"RU" : "Железное покрытие",
+	"EN" : "Iron Clad",
+}, {
+	"RU" : "Экзо",
+	"EN" : "Exo",
+}, {
+	"RU" : "Плотоядный",
+	"EN" : "Carnivore",
+}, {
+	"RU" : "Неистовый даймё",
+	"EN" : "Violent Daimyo",
+}, {
+	"RU" : "Перезагрузка",
+	"EN" : "Reboot",
+}, {
+	"RU" : "В центре внимания",
+	"EN" : "Limelight",
+}, {
+	"RU" : "Воин дорог",
+	"EN" : "Chopper",
+}, {
+	"RU" : "Аристократ",
+	"EN" : "Aristocrat",
+}, {
+	"RU" : "Фобос",
+	"EN" : "Phobos",
+}, {
+	"RU" : "Императорский дракон",
+	"EN" : "Imperial Dragon",
+}, {
+	"RU" : "Кровавый спорт",
+	"EN" : "Bloodsport",
+}, {
+	"RU" : "Безлюдный космос",
+	"EN" : "Desolate Space",
+}, {
+	"RU" : "Механо-пушка",
+	"EN" : "Mecha Industries",
+}, {
+	"RU" : "Гамма-волны",
+	"EN" : "Gamma Doppler",
+}, {
+	"RU" : "Легенды",
+	"EN" : "Lore",
+}, {
+	"RU" : "Черный глянец",
+	"EN" : "Black Laminate",
+}, {
+	"RU" : "Автотроника",
+	"EN" : "Autotronic",
+}, {
+	"RU" : "Ручная роспись",
+	"EN" : "Freehand",
+},
 
 ]

@@ -60,9 +60,12 @@ body {
     margin: 10px 0;
     color: #fff;
 }
+.buttons {
+    text-align: center;
+}
 #addItems {
     margin: 10px auto;
-    display: block;
+    display: inline-block;
     background: linear-gradient(to bottom, #00953b, #006910);
     line-height: 35px;
     color: #fff;
@@ -70,7 +73,16 @@ body {
     border: 1px solid #02a543;
     font-family: monospace;
 }
-
+#diffuculty {
+    display: inline-block;
+    background: none;
+    color: #Fff;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 11px 5px;
+}
+#diffuculty option {
+    background: #19212B;
+}
 .items {
     border-collapse: collapse;
     /* width: 500px; */

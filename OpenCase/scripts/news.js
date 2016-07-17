@@ -67,7 +67,7 @@
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - В кейсе eSports Summer 2014 заменена AWP Боец на AWP Кортисейра.",
+		"RU" : " - В кейсе eSports Summer 2014 заменено AWP Боец на AWP Кортисейра.",
 		"EN" : " - Replaced the AWP Man'o'War with the AWP Kortiseyra in case eSports Summer 2014."
 	}
 }, {
@@ -77,6 +77,14 @@
 	"update" : {
 		"RU" : " - Новый дизайн настроек.<br> - Новые настройки: звук, быстрый дроп с кейсов.<br> - Ускоренно выезжание левого меню.<br> - Исправлена игра камень-ножницы-бумага? У меня работает ¯\\_(ツ)_/¯<br> - Исправлен баг, когда цена на предмет обнулялась, после выигрыша в рулетке.<br> - Исправлен баг, когда цена на предмет не обновлялась, если она была 'NaN'.<br> - Немного изменен дизайн рулетки.",
 		"EN" : " - Changed settings design. <br> - New settings: sound on/off, fast drop.<br> - Increase the sliding speed of left menu.<br> - RPS fixed? Maybe ¯\\_(ツ)_/¯<br> - Fixed: price had reset after win in jackpot.<br> - Fixed: price didn't update if it was 'NaN'.<br> - Small changes in jackpot design."
+	}
+}, {
+	"day" : 17,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Добавлены уровни сложности в рулетку.<br> - Обновлены цены на предметы.<br> - Переведены названия оружия из Гамма коллекции.",
+		"EN" : " - Difficulty levels in jackpot.<br> - Updated weapons prices."
 	}
 }, 
 ];

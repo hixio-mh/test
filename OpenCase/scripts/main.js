@@ -268,7 +268,7 @@ function getInventory() {
 		var st;
 		var item = {};
 		item.type = localStorage["inventory.item."+i+".type"];
-		item.skinName = localStorage["inventory.item."+i+".skinName"];
+		item.skinName = getSkinName(localStorage["inventory.item."+i+".skinName"], Settings.language);
 		item.rarity = localStorage["inventory.item."+i+".rarity"];
 		item.img = localStorage["inventory.item."+i+".img"];
 		item.quality = localStorage["inventory.item."+i+".quality"];
