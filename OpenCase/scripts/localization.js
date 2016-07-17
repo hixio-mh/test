@@ -201,7 +201,7 @@ Localization.jackpot = [{
 			"EN" : "Hard $80 - $200"
 		}
 	},  {
-		"selector" : "#local-dif-hard",
+		"selector" : "#local-dif-legendary",
 		"localization" : {
 			"EN" : "Legendary $200 - $∞"
 		}
