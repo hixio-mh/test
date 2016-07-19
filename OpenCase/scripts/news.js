@@ -86,5 +86,13 @@
 		"RU" : " - Добавлены уровни сложности в рулетку.<br> - Обновлены цены на предметы.<br> - Переведены названия оружия из Гамма коллекции.",
 		"EN" : " - Difficulty levels in jackpot.<br> - Updated weapons prices."
 	}
+}, {
+	"day" : 19,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Разработка игры подбрасывание монеты.",
+		"EN" : " - Development of the Coin Flip game is in progress."
+	}
 }, 
 ];
