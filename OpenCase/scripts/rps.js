@@ -185,6 +185,7 @@ function endGame(playerWin) {
 	if (playerWin) {
 		$('.status').text(Localization.rps2.winGame[Settings.language]);
 		for (var i = 0; i < winItems.length; i++) {
+			winItems[i].new = true;
 			inventory.push(winItems[i]);
 		}
 		saveInventory();

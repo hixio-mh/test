@@ -173,7 +173,7 @@ function startGame() {
 			if (Settings.language == "RU") 
 				$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
 			else
-				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chanse<br><img src='../images/ava/"+win.avatar+"'>");
+				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chance<br><img src='../images/ava/"+win.avatar+"'>");
 			
 			if(win.nick == Player.nickname) {
 				/*if(DEBUG) {
@@ -243,15 +243,17 @@ function botAddItems() {
 	var qual, st, price;
 	var rand = Math.rand(1, maxItems);
 	
-	for (var i = 0; i < rand; i++) {
+	while (botWeapons.length < rand) {
 		var weapon = getRandomWeapon(1);
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
 		weapon.statTrak = ifStatTrak(weapon.type);
-		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
-		if (weapon.price > priceRange.min && weapon.price < priceRange.max)
-			botWeapons.push(weapon);
-		else
-			i--;
+		var price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+		if (price > priceRange.min)
+			if (price < priceRange.max)
+				if (price != 0) {
+					weapon.price = price;
+					botWeapons.push(weapon);
+				}
 	}
 	for (var i = 0; i < botWeapons.length; i++) {
 		
@@ -293,7 +295,7 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 		console.error("Нет цены для предмета: "+weaponType+" | "+weaponName+" ("+weaponQuality+")");
 	}*/
 	var newItems = "<tr class='itemInItemsList "+weaponRarity+"-color'>"+
-				   "<td><p class='fromName'>"+fromName+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
+				   "<td><p class='fromName'>"+fromName+" $"+price+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
 				   "("+weaponQuality+")</p></p></td><td><img src='"+weaponImg+"' class='weaponImg'></td></tr>";
 				   
 	$(".items tr:first").before(newItems);

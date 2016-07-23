@@ -99,8 +99,8 @@
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - У недавно полученного оружия в инвентаре есть надпись 'NEW'.<br> - Изменено оформление выделенного предмета (для ставки).<br> - Убрана картинка в джекпоте, призывающая перевернуть телефон в горизонтальное положение.<br> - Продолжается разработка игры подбрасывание монеты.",
-		"EN" : " - New weapon has 'NEW' inscription in inventory.<br> - New design of the selected weapon.<br> - Picture in the jackpot calling flip the device to a horizontal position was removed.<br> - Development of the Coin Flip is still in progress."
+		"RU" : " - У недавно полученного оружия в инвентаре есть надпись 'NEW'.<br> - Изменено оформление выделенного предмета (для ставки).<br> - Убрана картинка в джекпоте, призывающая перевернуть телефон в горизонтальное положение.<br> - В рулетке пишется стоимость скина.<br> - Galil-AR | Песчаная буря заменен на Tec-9 | Песчаная буря в коллекции Phoenix.<br> - Продолжается разработка игры подбрасывание монеты.",
+		"EN" : " - New weapon has 'NEW' inscription in inventory.<br> - New design of the selected weapon.<br> - Picture in the jackpot calling flip the device to a horizontal position was removed.<br> - Prices of weapons in jackpot in items list.<br> - Replaced the Galil-AR | Sandstorm with the Tec-9 | Sandstorm in Operation Phoenix collection.<br> - Development of the Coin Flip is still in progress."
 	}
 }, 
 ];
