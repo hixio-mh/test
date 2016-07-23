@@ -283,6 +283,63 @@ Localization.rps2 = {
 		"RU" : "Вы проиграли."
 	}
 },
+Localization.coinflip = [{
+		'selector': "#local-table-players",
+		'localization' : {
+			"EN" : "Players"
+		}
+	}, {
+		'selector': "#local-table-items",
+		'localization' : {
+			"EN" : "Items"
+		}
+	}, {
+		'selector': "#local-table-total",
+		'localization' : {
+			"EN" : "Total"
+		} 
+	}, {
+		'selector': ".choseItems",
+		'localization' : {
+			"EN" : "Add selected weapon"
+		}
+	}, {
+		'selector': ".game__start__button",
+		'localization' : {
+			"EN" : "Start"
+		}
+	},
+],
+Localization.coinflip2 = {
+	'join' : {
+		"EN" : "Join",
+		"RU" : "Войти"
+	},
+	'view' : {
+		"EN" : "View",
+		"RU" : "Просмотр"
+	},
+	'add_weapons' : {
+		"EN" : "Add weapons",
+		"RU" : "Внести оружие"
+	},
+	'youLostRound' : {
+		"EN" : "You lost this round.",
+		"RU" : "Вы проиграли в этом раунде."
+	},
+	'tie' : {
+		"EN" : "Tie!",
+		"RU" : "Ничья!"
+	},
+	'winGame' : {
+		"EN" : "You win!",
+		"RU" : "Вы победили!"
+	},
+	'lostGame' : {
+		"EN" : "You lost.",
+		"RU" : "Вы проиграли."
+	}
+},
 Localization.inventory = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
 		"localization" : {

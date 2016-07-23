@@ -100,7 +100,6 @@ $(".openCase").on("click", function() {
 	$(".weapons").scrollTop(0);
 	if (caseOpening || $(".openCase").text() ==  Localization.openCase2.opening[Settings.language]) {return false};
 	$(".win").slideUp("slow");
-	$(".weapons_zabor-bot").css("display", "none");
 	if($(".openCase").text() == Localization.openCase2.tryAgain[Settings.language]) {backToZero()}
 	$(".openCase").text(Localization.openCase2.opening[Settings.language]);
 	$(".openCase").attr("disabled", "disabled");
@@ -164,6 +163,7 @@ $(".openCase").on("click", function() {
 			$("#opened").text(parseInt($("#opened").text())+1);
 			var price = parseFloat($(".win_price").html());
 			win.price = price;
+			win.new = true;
 			inventory.push(win);
 			saveInventory();
 			if (Settings.sounds) caseCloseAudio.play();
@@ -232,7 +232,6 @@ $(".closeCase").on("click", function(){
 	/*$(".weapons").css("display", "none");
 	$(".openCase").text("Открыть кейс");
 	$(".win").hide();
-	$(".zabor-bot").css("display", "none");
 	$(".casesCarusel").stop(true, true);
 	$("body").css("overflow", "visible");*/
 	caseOpening = false;
@@ -249,7 +248,7 @@ function statisticPlusOne(cookieName) {
 }
 
 function saveInventory() {
-	localStorage.clear();
+	if (typeof localStorage != 'undefined') localStorage.clear();
 	localStorage["inventory.count"] = inventory.length;
 	for(var i = 0; i < inventory.length; i++) {
 		localStorage["inventory.item."+i+".type"] = inventory[i].type;
@@ -259,10 +258,12 @@ function saveInventory() {
 		localStorage["inventory.item."+i+".quality"] = inventory[i].quality;
 		localStorage["inventory.item."+i+".statTrak"] = inventory[i].statTrak;
 		localStorage["inventory.item."+i+".price"] = inventory[i].price;
+		localStorage["inventory.item."+i+".new"] = inventory[i].new;
 	}
 }
 
 function getInventory() {
+	if (typeof localStorage == 'undefined') return false;
 	var count = parseInt(localStorage["inventory.count"], 10);
 	for(var i = 0; i < count; i++) {
 		var st;
@@ -274,11 +275,18 @@ function getInventory() {
 		item.quality = localStorage["inventory.item."+i+".quality"];
 		st = localStorage["inventory.item."+i+".statTrak"];
 		item.price = Number(localStorage["inventory.item."+i+".price"]);
+		item.new = localStorage["inventory.item."+i+".new"];
 		if ((st == "true") || (st == "1")) {
-			item.statTrak = 1;
+			item.statTrak = true;
 		} else {
-			item.statTrak = 0;
+			item.statTrak = false;
 		}
+		if ((item.new == "true") || (item.new == "1")) {
+			item.new = true;
+		} else {
+			item.new = false;
+		}
+		
 		inventory.push(item);
 	}
 }

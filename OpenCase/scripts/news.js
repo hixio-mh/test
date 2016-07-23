@@ -94,5 +94,13 @@
 		"RU" : " - Разработка игры подбрасывание монеты.",
 		"EN" : " - Development of the Coin Flip game is in progress."
 	}
+}, {
+	"day" : 23,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - У недавно полученного оружия в инвентаре есть надпись 'NEW'.<br> - Изменено оформление выделенного предмета (для ставки).<br> - Убрана картинка в джекпоте, призывающая перевернуть телефон в горизонтальное положение.<br> - Продолжается разработка игры подбрасывание монеты.",
+		"EN" : " - New weapon has 'NEW' inscription in inventory.<br> - New design of the selected weapon.<br> - Picture in the jackpot calling flip the device to a horizontal position was removed.<br> - Development of the Coin Flip is still in progress."
+	}
 }, 
 ];

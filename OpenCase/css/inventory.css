@@ -143,6 +143,7 @@
     border-radius: 7px;
     overflow: auto;
     max-height: 100%;
+	max-width: 100%;
 }
 #weaponImg {
     width: 90%;

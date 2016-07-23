@@ -170,15 +170,19 @@ $(".glassBlur").on("click", function(){
 	if ($(this).hasClass("savePrice")) {
 		if ($("#weaponPrice").text() != "0$") {
 			var wp = {};
+			var price = parseFloat($("#weaponPrice").text());
 			wp.id = $('#weaponInfoContainer').data('weaponId');
 			wp.typeAndName = $("#weaponName").text();
 			wp.quality = $("#weaponQuality").text();
 			wp.rarity = $("#weaponRarity").text();
 			wp.statTrak = ($('#statTrakImg').css('display') == 'block') ? true : false;
-			if (typeof wp.id != 'undefined' && !isNaN(wp.id)) 
-				setWeaponPrice(wp.id, parseFloat($("#weaponPrice").text()));
-			else
-				setWeaponPrice(wp, parseFloat($("#weaponPrice").text()));
+			if (typeof wp.id != 'undefined' && !isNaN(wp.id)) {
+				setWeaponPrice(wp.id, price);
+				$('#'+wp.id+'-inventoryItem').data('price', price);
+				$($('#'+wp.id+'-inventoryItem').children('i')[0]).text(price+'$');
+			} else {
+				setWeaponPrice(wp, price);
+			}
 			saveInventory();
 		}
 		$(this).removeClass("savePrice");
@@ -412,6 +416,7 @@ function sortInventory(currInventory, attr, value) {
 function fillInventory(currInventory) {
 	$(".inventory li").remove();
 	var sumPr = 0.0;
+	var need_save = false;
 	
 	currInventory = currInventory.sort(function(a,b){
 		return b.price-a.price;
@@ -421,6 +426,9 @@ function fillInventory(currInventory) {
 		var weapon = currInventory[i];
 		var img = getImgUrl(weapon.img);
 		
+		if (typeof weapon.new == 'undefined') 
+			weapon.new = false;
+		
 		sumPr += weapon.price;
 
 		var type = weapon.type;
@@ -429,7 +437,12 @@ function fillInventory(currInventory) {
 		var name = weapon.skinName;
 		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
 		var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div><i>"+weapon.price+"$</i>";
-		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +"' data-type='"+type+"' data-name='"+name+"' data-img='"+weapon.img+"' data-rarity='"+weapon.rarity+"' data-price='"+weapon.price+"' data-stattrak='"+weapon.statTrak+"' data-quality='"+weapon.quality+"' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
+		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +" "+((weapon.new == true) ? "new-weapon" : "")+"' data-type='"+type+"' data-name='"+name+"' data-img='"+weapon.img+"' data-rarity='"+weapon.rarity+"' data-price='"+weapon.price+"' data-stattrak='"+weapon.statTrak+"' data-quality='"+weapon.quality+"' id='"+i+"-inventoryItem'>"+weaponInfo+"</li>");
+		
+		if (weapon.new == true) {
+			inventory[i].new = false;
+			need_save = true;
+		}
 	}
 	if (inventory.length == 0) {
 		$(".inventory").append("<li>Инвентарь пуст. Чтобы пополнить его, <a href='cases.html?from=inventory'>откройте пару кейсов.</a></li>");
@@ -439,6 +452,7 @@ function fillInventory(currInventory) {
 	$("#stat-count").html(currInventory.length);
 
 //$(".inventoryList").css("display", "block");
+if (need_save) saveInventory();
 }
 
 $(".closeInventory").on("click", function(){

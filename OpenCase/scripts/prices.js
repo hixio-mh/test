@@ -1,3 +1,4 @@
+var DEBUG = false;
 function getPrice(type, name, quality, statTrak) {
 	quality = getQualityName(quality, "EN").toLowerCase();
 	name = getSkinName(name, "EN").toLowerCase();
@@ -9,11 +10,11 @@ function getPrice(type, name, quality, statTrak) {
 			return obj.name.toLowerCase() == name && obj.type.toLowerCase() == type.toLowerCase() && obj.quality.toLowerCase() == quality;
 		})
 		if (item.length == 1) {
-			console.warn("Найден только 1 предмет. StatTrak не учитывается.");
+			if (DEBUG) console.warn("Найден только 1 предмет. StatTrak не учитывается.");
 			if (item[0].marketPrice != 0) {
 				return item[0].marketPrice;
 			} else {
-				console.warn("Нет цены в маркете");
+				if (DEBUG) console.warn("Нет цены в маркете");
 				return item[0].avgPrice;
 			}
 		} else {
@@ -28,13 +29,13 @@ function getPrice(type, name, quality, statTrak) {
 			}
 			if (typeof item[0] == "undefined") {
 				var st = (statTrak == 1) ? "StatTrak™ " : "";
-				console.warn("Предмет не найден! " + st + type + " | " + name + " (" + quality + ")");
+				if (DEBUG) console.warn("Предмет не найден! " + st + type + " | " + name + " (" + quality + ")");
 				return 0
 			}
 			if (item[0].marketPrice != 0) {
 				return item[0].marketPrice;
 			} else {
-				console.warn("Нет цены в маркете");
+				if (DEBUG) console.warn("Нет цены в маркете");
 				return item[0].avgPrice;
 			}
 		}
@@ -67,7 +68,7 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 				pr = pr.replace(/,/ig, ".");
 				pr = pr.substr(0, pr.length - 1);
 				pr = parseFloat(pr);
-				console.log(pr);
+				if (DEBUG) console.log(pr);
 				if (typeof selector != "undefined")
 					$(selector).html(pr + "$");
 				$('.glassBlur').removeClass('js-price-loading');
@@ -114,7 +115,7 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
 			var price = parseFloat(data.query.results.ul.li[li].ul.li[(statTrak == true) ? 3 : 1].a.content);
 			if (isNaN(price))
 				price = 0;
-			console.log('Other market: ' + price);
+			if (DEBUG) console.log('Other market: ' + price);
 			if (typeof selector != "undefined")
 				$(selector).html(price + '$');
 			return price;
@@ -133,7 +134,7 @@ function csgoStashGetURL(type, name, quality, statTrak, selector) {
 	type2 = type2.replace(/Керамбит/, 'Karambit');
 	type2 = type2.replace(/Штык-нож+M9/, 'M9+Bayonet');
 	type2 = type2.replace(/★\+/, '');
-	console.log('%c ' + type2 + ' %c | ' + '%c ' + name + ' ', 'background:#af7b05;color:#fff', '', 'background:#56af05;color:#fff')
+	if (DEBUG) console.log('%c ' + type2 + ' %c | ' + '%c ' + name + ' ', 'background:#af7b05;color:#fff', '', 'background:#56af05;color:#fff')
 	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
 		q : "select * from html where url='http://csgostash.com/weapon/" + type2 + "'and xpath='//a[contains(@href, \"csgostash.com/skin\") and img[contains(@alt, \"" + type2.replace(/\+/gi, ' ') + " " + name + "\")]]'",
 		format : "json"
@@ -189,7 +190,7 @@ function csgoStash(url, quality, statTrak, souvenir, selector) {
 						var price = parseFloat(spans[i + 1].content.substr(1).replace(/,/gi, ''));
 						if (typeof selector != 'undefined')
 							$(selector).html(price + '$');
-						console.log('Quality: %c ' + quality + ' %c;StatTrak: ' + '%c ' + statTrak + ' %c Souvenir: ' + '%c ' + souvenir + ' %c; anyPrice: ' + '%c ' + anyPrice + ' %c; Price: %c ' + price + '$ ', 'background:#af7b05;color:#fff', '', 'background:#56af05;color:#fff', '', 'background:#0083a0;color:#fff', '', 'background:#c5c100;color:#fff', '', 'background:#b005b3;color:#fff')
+						if (DEBUG) console.log('Quality: %c ' + quality + ' %c;StatTrak: ' + '%c ' + statTrak + ' %c Souvenir: ' + '%c ' + souvenir + ' %c; anyPrice: ' + '%c ' + anyPrice + ' %c; Price: %c ' + price + '$ ', 'background:#af7b05;color:#fff', '', 'background:#56af05;color:#fff', '', 'background:#0083a0;color:#fff', '', 'background:#c5c100;color:#fff', '', 'background:#b005b3;color:#fff')
 						break;
 					} else {
 						if (spans[i + 1].content == 'Not Possible' || spans[i + 1].content == 'No Recent Price')
@@ -18693,67 +18694,67 @@ var Prices = [{
 		avgPrice : 18.11
 	}, {
 		type : 'M4A4',
-		name : '龍王',
-		quality : 'Dragon King) (Factory New',
+		name : '龍王 Dragon King',
+		quality : 'Factory New',
 		marketPrice : 9.44,
 		avgPrice : 9.36
 	}, {
 		type : 'M4A4',
-		name : '龍王',
-		quality : 'Dragon King) (Minimal Wear',
+		name : '龍王 Dragon King',
+		quality : 'Minimal Wear',
 		marketPrice : 5.44,
 		avgPrice : 5.34
 	}, {
 		type : 'M4A4',
-		name : '龍王',
-		quality : 'Dragon King) (Field-Tested',
+		name : '龍王 Dragon King',
+		quality : 'Field-Tested',
 		marketPrice : 3.15,
 		avgPrice : 3.13
 	}, {
 		type : 'M4A4',
-		name : '龍王',
-		quality : 'Dragon King) (Well-Worn',
+		name : '龍王 Dragon King',
+		quality : 'Well-Worn',
 		marketPrice : 4.08,
 		avgPrice : 4.19
 	}, {
 		type : 'M4A4',
-		name : '龍王',
-		quality : 'Dragon King) (Battle-Scarred',
+		name : '龍王 Dragon King',
+		quality : 'Battle-Scarred',
 		marketPrice : 2.82,
 		avgPrice : 2.64
 	}, {
 		type : 'M4A4',
 		statTrak : true,
-		name : '龍王',
-		quality : 'Dragon King) (Factory New',
+		name : '龍王 Dragon King',
+		quality : 'Factory New',
 		marketPrice : 31.70,
 		avgPrice : 31.32
 	}, {
 		type : 'M4A4',
 		statTrak : true,
-		name : '龍王',
-		quality : 'Dragon King) (Minimal Wear',
+		name : '龍王 Dragon King',
+		quality : 'Minimal Wear',
 		marketPrice : 20.65,
 		avgPrice : 19.32
 	}, {
 		type : 'M4A4',
 		statTrak : true,
-		name : '龍王',
-		quality : 'Dragon King) (Field-Tested',
+		name : '龍王 Dragon King',
+		quality : 'Field-Tested',
 		marketPrice : 11.40,
 		avgPrice : 10.40
 	}, {
 		type : 'M4A4',
 		statTrak : true,
-		name : '龍王',
-		quality : 'Dragon King) (Well-Worn',
+		name : '龍王 Dragon King',
+		quality : 'Well-Worn',
 		marketPrice : 15.52,
 		avgPrice : 15.14
 	}, {
 		type : 'M4A4',
 		statTrak : true,
-		name : '龍王',
-		quality : 'Dragon King) (Battle-Scarred',
+		name : '龍王 Dragon King',
+		quality : 'Battle-Scarred',
 		marketPrice : 8.80,
 		avgPrice : 8.60
 	}, {
