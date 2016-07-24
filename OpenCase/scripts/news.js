@@ -108,7 +108,7 @@
 	"year" : 2016,
 	"update" : {
 		"RU" : " - Исправлена картинка M9 Bayonet | Autotronic",
-		"EN" : " - Fixed: image of M9 Bayonet | Autotronic"
+		"EN" : " - Fixed: M9 Bayonet | Autotronic image."
 	}
 }, 
 ];
