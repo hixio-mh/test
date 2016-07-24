@@ -307,7 +307,8 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 		"img" : weaponImg,
 		"quality" : weaponQuality,
 		"statTrak" : ifStatTrak,
-		"price" : price
+		"price" : price,
+		"new" : true
 	}
 	ItemsInGame.push(item);
 }
