@@ -174,7 +174,7 @@ function showGame(game_id) {
 		$('.bot-inventory').append(weaponInfo);
 	}
 	if (PlayerInGame === false && typeof Games[game_id].winner == 'undefined') {
-		$('.player-inventory').append('<tr><td class="addWeapons" data-game-id="'+game_id+'">Внести оружие</td></tr>');
+		$('.player-inventory').append('<tr><td class="addWeapons" data-game-id="'+game_id+'">'+Localization.coinflip2.add_weapons[Settings.language]+'</td></tr>');
 		$('.game__start').css('display', 'none');
 		
 	} else if (typeof Games[game_id].winner == 'undefined') {
