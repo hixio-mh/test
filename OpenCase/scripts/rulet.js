@@ -185,7 +185,7 @@ function startGame() {
 				statisticPlusOne('rulet-wins');
 				
 				var a = $.cookie('rulet-max-win');
-				var winSum = parseFloat($('.progressbar-text s').text());
+				var winSum = parseFloat($('.progressbar-text s').text().substr(1));
 				if (typeof a == "undefined")
 					a = winSum;
 				else

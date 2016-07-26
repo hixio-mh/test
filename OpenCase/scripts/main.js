@@ -313,7 +313,6 @@ function menuNotification(items, message) {
 	switch(items) {
 		case 'inventory':
 			if ($('#local-menu-inventory .menu-notification').length) {
-				message = +message + +$('#local-menu-inventory .menu-notification').text();
 				$('#local-menu-inventory .menu-notification').text(message);
 			} else {
 				$('#local-menu-inventory').append('<span class="menu-notification">'+message+'</span>');
