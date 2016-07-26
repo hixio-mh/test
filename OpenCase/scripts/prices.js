@@ -26977,7 +26977,7 @@ var Prices = [{
 		name : 'Emerald Dragon',
 		quality : 'Factory New',
 		marketPrice : 0,
-		avgPrice : 2666.25
+		avgPrice : 1760.25
 	}, {
 		type : 'P90',
 		statTrak : true,
