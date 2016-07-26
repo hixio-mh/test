@@ -1,13 +1,13 @@
 var DEBUG = false;
 function getPrice(type, name, quality, statTrak) {
-	quality = getQualityName(quality, "EN").toLowerCase();
-	name = getSkinName(name, "EN").toLowerCase();
+	quality = getQualityName(quality, "EN");
+	name = getSkinName(name, "EN");
 	if (type.substring(0, 1) == "★")
 		type = type.substring(2, type.length);
 	if (type.indexOf("Сувенир") != -1)
 		type = type.replace("Сувенир", "Souvenir");
 	var item = Prices.filter(function (obj) {
-			return obj.name.toLowerCase() == name && obj.type.toLowerCase() == type.toLowerCase() && obj.quality.toLowerCase() == quality;
+			return obj.name == name && obj.type == type && obj.quality == quality;
 		})
 		if (item.length == 1) {
 			if (DEBUG) console.warn("Найден только 1 предмет. StatTrak не учитывается.");
