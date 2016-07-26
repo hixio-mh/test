@@ -30,7 +30,7 @@ var priceRange = {
 	legendary: {min: 200, max: 999999}
 };
 
-$(function() {
+$(window).load(function() {
 	var anim = document.getElementById('coin');
 	anim.addEventListener("animationend", coinStoped, false);
 	
@@ -49,7 +49,7 @@ $(function() {
 		list += "<tr><td class='table-name'><img src='../images/ava/"+Games[i].bot.img+"'><span>"+Games[i].bot.name+"</span></td><td>"+Games[i].bot.weapons.length+" items</td><td>$"+Games[i].bot.items_cost.toFixed(2)+"</td><td><span class='join "+Games[i].color+"' data-game-id="+i+">"+Localization.coinflip2.join[Settings.language]+"</span></td></tr>";
 	}
 	$('.games').append(list);
-	
+	$('#js-table-loading-gif').remove();
 });
 
 $(document).ready(function() {
