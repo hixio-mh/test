@@ -48,7 +48,16 @@ $(function() {
 	for (var i = 0; i < Games.length; i++) {
 		list += "<tr><td class='table-name'><img src='../images/ava/"+Games[i].bot.img+"'><span>"+Games[i].bot.name+"</span></td><td>"+Games[i].bot.weapons.length+" items</td><td>$"+Games[i].bot.items_cost.toFixed(2)+"</td><td><span class='join "+Games[i].color+"' data-game-id="+i+">"+Localization.coinflip2.join[Settings.language]+"</span></td></tr>";
 	}
-	$('.games').append(list);	
+	$('.games').append(list);
+	
+});
+
+$(document).ready(function() {
+	$('.navigationBar').append('<img src="../images/navigation/refresh.png" class="navigationBar_refresh">');
+});
+
+$(document).on('click', '.navigationBar_refresh', function(){
+	location.reload();
 });
 
 $(document).on('click', '.game__start span', function(){
@@ -71,29 +80,29 @@ function startGame() {
 
 function coinStoped() {
 	var timerId = 0;
+	var winner = $('#coin').attr('class');
+	if (winner == 'CT') {
+		$('.game__bot__img').addClass('winner-img');
+	} else {
+		$('.game__player__img').addClass('winner-img');
+		for (var i = 0; i < PlayerBet.weapons.length; i++) {
+			PlayerBet.weapons[i].new = true;
+			inventory.push(PlayerBet.weapons[i]);
+		}
+		for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
+			Games[PlayerInGame].bot.weapons[i].new = true;
+			inventory.push(Games[PlayerInGame].bot.weapons[i]);
+		}
+		saveInventory();
+	}
+	Games[PlayerInGame].winner = winner;
+	Games[PlayerInGame].player.weapons = [];
+	Games[PlayerInGame].player.items_cost = PlayerBet.items_cost;
+	for (var i = 0; i < PlayerBet.weapons.length; i++)
+		Games[PlayerInGame].player.weapons.push(PlayerBet.weapons[i]);
 	timerId = setTimeout(function(){
 		$('.coin-blur').addClass('hide');
 		$('#coin-flip-cont').addClass('hide');
-		var winner = $('#coin').attr('class');
-		if (winner == 'CT') {
-			$('.game__bot__img').addClass('winner-img');
-		} else {
-			$('.game__player__img').addClass('winner-img');
-			for (var i = 0; i < PlayerBet.weapons.length; i++) {
-				PlayerBet.weapons[i].new = true;
-				inventory.push(PlayerBet.weapons[i]);
-			}
-			for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
-				Games[PlayerInGame].bot.weapons[i].new = true;
-				inventory.push(Games[PlayerInGame].bot.weapons[i]);
-			}
-			saveInventory();
-		}
-		Games[PlayerInGame].winner = winner;
-		Games[PlayerInGame].player.weapons = [];
-		Games[PlayerInGame].player.items_cost = PlayerBet.items_cost;
-		for (var i = 0; i < PlayerBet.weapons.length; i++)
-			Games[PlayerInGame].player.weapons.push(PlayerBet.weapons[i]);
 		PlayerBet = {};
 		$($('.join')[PlayerInGame]).text(Localization.coinflip2.view[Settings.language]);
 		PlayerInGame = false;

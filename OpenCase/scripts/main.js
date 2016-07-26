@@ -124,6 +124,8 @@ $(".openCase").on("click", function() {
 			win.name = name;
 			var price = getPrice(type, name, quality, statTrak);
 			
+			win.type = type;
+			
 			var stopLoop = 0;
 			while (price == 0) {
 				quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
@@ -265,10 +267,12 @@ function saveInventory() {
 function getInventory() {
 	if (typeof localStorage == 'undefined') return false;
 	var count = parseInt(localStorage["inventory.count"], 10);
+	var new_weapon_count = 0;
 	for(var i = 0; i < count; i++) {
 		var st;
 		var item = {};
 		item.type = localStorage["inventory.item."+i+".type"];
+		if (typeof item.type == 'undefined') continue;
 		item.skinName = getSkinName(localStorage["inventory.item."+i+".skinName"], Settings.language);
 		item.rarity = localStorage["inventory.item."+i+".rarity"];
 		item.img = localStorage["inventory.item."+i+".img"];
@@ -283,11 +287,50 @@ function getInventory() {
 		}
 		if ((item.new == "true") || (item.new == "1")) {
 			item.new = true;
+			new_weapon_count++;
 		} else {
 			item.new = false;
 		}
 		
 		inventory.push(item);
+	}
+	if (new_weapon_count) menuNotification('inventory', ''+new_weapon_count)
+}
+
+function checkInventoryForNotification() {
+	if (typeof localStorage == 'undefined') return false;
+	var count = parseInt(localStorage["inventory.count"], 10);
+	var new_weapon_count = 0;
+	for(var i = 0; i < count; i++) {
+		var item_new = localStorage["inventory.item."+i+".new"];
+		if ((item_new == "true") || (item_new == "1"))
+			new_weapon_count++;
+	}
+	if (new_weapon_count) menuNotification('inventory', ''+new_weapon_count)
+}
+
+function menuNotification(items, message) {
+	switch(items) {
+		case 'inventory':
+			if ($('#local-menu-inventory .menu-notification').length) {
+				message = +message + +$('#local-menu-inventory .menu-notification').text();
+				$('#local-menu-inventory .menu-notification').text(message);
+			} else {
+				$('#local-menu-inventory').append('<span class="menu-notification">'+message+'</span>');
+			}
+			break
+		default:
+		break
+	}
+}
+
+function deleteMenuNotification(items) {
+	switch(items) {
+		case 'inventory':
+			$('#local-menu-inventory .menu-notification').remove();
+			break
+		default:
+		break
 	}
 }
 

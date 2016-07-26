@@ -176,19 +176,9 @@ function startGame() {
 				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chance<br><img src='../images/ava/"+win.avatar+"'>");
 			
 			if(win.nick == Player.nickname) {
-				/*if(DEBUG) {
-					console.info("Player win! Inventory before:");
-					console.info(inventory);
-				}*/
 				for (var i = 0; i < ItemsInGame.length; i++) {
 					inventory.push(ItemsInGame[i]);
 				}
-				/*if(DEBUG) {
-					console.info("Inventory after:");
-					console.info(inventory);
-					console.info("Items in game:");
-					console.info(ItemsInGame);
-				}*/
 				saveInventory();
 				
 				//Statistic
@@ -216,6 +206,7 @@ function startGame() {
 		complete: function(){
 			$(".win").show();
 			var timerId2 = 0;
+			checkInventoryForNotification()
 			timerId2 = setTimeout(function(){newGame();}, 7000);
 		},
 	})

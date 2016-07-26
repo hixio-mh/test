@@ -110,5 +110,13 @@
 		"RU" : " - Исправлена картинка M9 Bayonet | Autotronic",
 		"EN" : " - Fixed: M9 Bayonet | Autotronic image."
 	}
+}, {
+	"day" : 26,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - В меню написано количество нового оружия в инвентаре.",
+		"EN" : " - Count of new weapons in menu."
+	}
 }, 
 ];
