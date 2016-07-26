@@ -134,7 +134,7 @@ $(document).on("click", ".weapon", function() {
 	var img = $(this).data("img");
 	var rarity = $(this).data("rarity");
 	var price = $(this).data("price");
-	var statTrak = ($(this).data("stattrak") === 'true');
+	var statTrak = $(this).data("stattrak");
 	var quality = $(this).data("quality");
 	var id = parseInt($(this).attr('id'));
 	
