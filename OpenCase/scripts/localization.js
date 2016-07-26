@@ -13,7 +13,11 @@ function localizate(category){
 		if (typeof Localization['menu'][i].localization[Settings.language] != 'undefined')
 			$(Localization['menu'][i].selector).html(Localization['menu'][i].localization[Settings.language]);
 	}
-	checkInventoryForNotification()
+	try {
+		checkInventoryForNotification()
+	}catch (e) {
+		//ERROR
+	}
 }
 var Localization = [];
 Localization.menu = [{
