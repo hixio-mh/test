@@ -278,7 +278,8 @@ function botAddGame(difficulty) {
 		var rnd = Math.rand(0, Prices.length-1)
 		var weapon = Prices[rnd];
 		//console.log(rnd);
-		var price = weapon.avgPrice;
+		var price = (weapon.marketPrice == 0) ? weapon.avgPrice : weapon.marketPrice;
+		
 		if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
 			var type = weapon.type;
 			var name = getSkinName(weapon.name);
