@@ -134,9 +134,10 @@ $(document).on("click", ".weapon", function() {
 	var img = $(this).data("img");
 	var rarity = $(this).data("rarity");
 	var price = $(this).data("price");
-	var statTrak = $(this).data("stattrak");
+	var statTrak = ($(this).data("stattrak") === 'true');
 	var quality = $(this).data("quality");
 	var id = parseInt($(this).attr('id'));
+	
 	
 	$("#weaponInfoContainer").data('name', name);
 	$("#weaponInfoContainer").data('type', type);
@@ -161,7 +162,7 @@ $(document).on("click", ".weapon", function() {
 		if ((type.indexOf('Сувенир') == -1) && (type.indexOf('Souvenir') == -1))
 			$('#startContract').css('display', 'inline-block');
 	
-	$("#statTrakImg").css("display", (parseInt(statTrak) ? "block" : "none"))
+	$("#statTrakImg").css("display", (statTrak ? "block" : "none"))
 })
 
 $(".glassBlur").on("click", function(){
