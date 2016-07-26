@@ -274,7 +274,42 @@ function botAddGame(difficulty) {
 	
 	var weaponCount = Math.rand(3, maxWeapons);
 	console.log('Random number: '+'%c '+weaponCount+' ', 'background: #006E99')
-	for (var i = 0; i < weaponCount; i++) {
+	for (var q = 0; q < weaponCount; q++) {
+		var rnd = Math.rand(0, Prices.length-1)
+		var weapon = Prices[rnd];
+		//console.log(rnd);
+		var price = weapon.avgPrice;
+		if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
+			var type = weapon.type;
+			var name = getSkinName(weapon.name);
+			var quality = getQualityName(weapon.quality, Settings.language);
+			
+			var brk = false;
+			
+			for (var i = 0; i < cases.length; i++) {
+				for (var z = 0; z < cases[i].weapons.length; z++) 
+					if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName) == name)) {
+						var wp = cases[i].weapons[z];
+						wp.skinName = getSkinName(name, Settings.language);
+						wp.price = price;
+						wp.statTrak = (typeof weapon.statTrak == 'undefined') ? false : true;
+						wp.quality = quality;
+					
+						bot.weapons.push(wp);
+						bot.items_cost += price;
+					
+						brk = true;
+						break;
+					}
+				if (brk) break;
+			}
+			if (!brk) weaponCount++;
+		} else {
+			weaponCount++;
+		}
+	}
+	
+	/*for (var i = 0; i < weaponCount; i++) {
 		var weapon = getRandomWeapon(1);
 		weapon.skinName = getSkinName(weapon.skinName, Settings.language);
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
@@ -282,7 +317,6 @@ function botAddGame(difficulty) {
 		var price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
 		
 		if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
-			if (price == 0) debugger;
 			weapon.price = price;
 			bot.weapons.push(weapon);
 			bot.items_cost += weapon.price;
@@ -290,7 +324,7 @@ function botAddGame(difficulty) {
 			//i--;
 			weaponCount++;
 		}
-	}
+	}*/
 	var color = '';
 	if (bot.items_cost < 100) color = 'consumer-color';
 	if (bot.items_cost > 100 && bot.items_cost < 500) color = 'milspec-color';
