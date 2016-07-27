@@ -1,24 +1,4 @@
-﻿/*$(function($){
-
-var spinArray = ['animation1080','animation1260'];
-
-function getSpin() {
-var spin = spinArray[Math.floor(Math.random()*spinArray.length)];
-return spin;
-}
-
-$('#coin').on('click', function(){
-
-$('#coin').removeClass();
-
-setTimeout(function(){
-$('#coin').addClass(getSpin());
-}, 100);
-
-});
-
-});*/
-var Games = [];
+﻿var Games = [];
 var PlayerBet = {};
 var maxWeapons = 15;
 var maxItems = maxWeapons,
@@ -30,6 +10,16 @@ var priceRange = {
 	legendary: {min: 200, max: 999999}
 };
 var timerId = 0;
+
+var flipSoundCT = new Audio();
+flipSoundCT.src = "../sound/coinFlip.wav";
+flipSoundCT.volume = 0.7;
+flipSoundCT.loop = true;
+
+var clickSound = new Audio();
+clickSound.src = "../sound/interface/menuClick.wav";
+clickSound.volume = 0.9;
+
 
 $(window).load(function() {
 	var anim = document.getElementById('coin');
@@ -77,9 +67,13 @@ function startGame() {
 	$('#coin-flip-cont').removeClass('hide');
 	
 	$("#coin").addClass(animation);
+	
+	flipSoundCT.currentTime = 0;
+	if (Settings.sounds)flipSoundCT.play();
 }
 
 function coinStoped() {
+	if (Settings.sounds) flipSoundCT.pause();
 	var winner = $('#coin').attr('class');
 	if (winner == 'CT') {
 		$('.game__bot__img').addClass('winner-img');
@@ -156,14 +150,15 @@ $(document).on('click', '.addWeapons', function() {
 	inventory = inventory.sort(function(a,b){
 		return b.price-a.price;
 	});
+	if (Settings.sounds) clickSound.play();
 	fillInventory();
 });
 
 $(document).on('click', '.join', function(){
 	if (typeof PlayerBet.weapons != 'undefined') PlayerInGame = $(this).data('game-id');
+	if (Settings.sounds) clickSound.play();
 	showGame($(this).data('game-id'));
-	$('#coin').removeClass();
-	
+	$('#coin').removeClass();	
 });
 
 function showGame(game_id) {
@@ -248,6 +243,7 @@ $(document).on('click', '.close-game, .blur', function() {
 	$('.game__player__img').removeClass('winner-img');
 	$('.game').css('display', 'none');
 	$('.blur').css('display', 'none');
+	if (Settings.sounds) clickSound.play();
 	//PlayerInGame = false;
 });
 
@@ -255,6 +251,7 @@ $(document).on("click", ".choseItems", function(){
 	var itemsCount = $(".inventoryItemSelected").length;
 	var playerWeapons = [];
 	var ids = [];
+	if (Settings.sounds) clickSound.play();
 	if(itemsCount != 0) {
 		if (typeof PlayerBet.nick == 'undefined') {
 			PlayerBet = {
@@ -282,6 +279,7 @@ $(document).on("click", ".choseItems", function(){
 });
 $(document).on('click', ".closeInventory", function(){
 	if (typeof PlayerBet.items_cost == 'undefined') PlayerInGame = false;
+	if (Settings.sounds) clickSound.play();
 });
 
 function botAddGame(difficulty) {

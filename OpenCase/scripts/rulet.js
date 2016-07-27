@@ -206,7 +206,7 @@ function startGame() {
 		complete: function(){
 			$(".win").show();
 			var timerId2 = 0;
-			checkInventoryForNotification()
+			checkInventoryForNotification();
 			timerId2 = setTimeout(function(){newGame();}, 7000);
 		},
 	})
