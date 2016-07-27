@@ -117,14 +117,14 @@ function coinStoped() {
 function hideCoin() {
 	clearTimeout(timerId);
 	timerId = null;
+	var winner = $('#coin').attr('class');
 	$('.coin-blur').addClass('hide');
 	$('#coin-flip-cont').addClass('hide');
 	PlayerBet = {};
 	$($('.join')[PlayerInGame]).text(Localization.coinflip2.view[Settings.language]);
 	PlayerInGame = false;
-	maxItems = maxWeapons
+	maxItems = maxWeapons;
 	//newGame();
-		
 	$('.game__table__win').html(Localization.coinflip2.winner[Settings.language]+'<br><img src="../images/coinflip/'+winner.toLowerCase()+'.png">')
 }
 

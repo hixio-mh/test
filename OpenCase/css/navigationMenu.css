@@ -26,9 +26,10 @@
 	display: inline-block;
     text-align: center;
     line-height: 40px;
-    font-family: LatoBold;
+    font-family: Lato;
     font-size: 1.3em;
 	color: #fff;
+	font-weight: bold;
 }
 .leftMenu {
     height: 100%;
