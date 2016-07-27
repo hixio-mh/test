@@ -39,10 +39,10 @@ $(document).on('click', '.js-podmenu', function(){
 $(document).on('click', '.navigationBar_hamburger', function() {
 	if (Settings.sounds) menuClick.play();
 	$('.leftMenu').animate({
-		left: ($('.leftMenu').css('left') == '0px') ? "-=270" : "+=270"
+		left: ($('.leftMenu').css('left') == '0px') ? "-270px" : "0px"
 		//css('left', '0px');
 	}, 400)
 	$('.navigationBar').animate({
-		left: ($('.leftMenu').css('left') == '0px') ? "-=270" : "+=270"
+		left: ($('.leftMenu').css('left') == '0px') ? "0px" : "270px"
 	}, 400)
 })
