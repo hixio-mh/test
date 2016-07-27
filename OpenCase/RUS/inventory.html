@@ -374,13 +374,13 @@ $("select").change(function(){
 		sortedInventory = sortInventory(inventory, "statTrak", 0)
 		break
 	case 3:
-		sortedInventory = sortInventory(inventory, "type", /Сувенир.*/)
+		sortedInventory = sortInventory(inventory, "type", /(Сувенир|Souvenir).*/)
 		break
 	case 4:
-		sortedInventory = sortInventory(inventory, "type", /^(?!Сувенир).*/)
+		sortedInventory = sortInventory(inventory, "type", /^(?!(Сувенир|Souvenir)).*/)
 		break
 	case 5:
-		sortedInventory = sortInventory(inventory, "type", /^(?!Сувенир).*/)
+		sortedInventory = sortInventory(inventory, "type", /^(?!(Сувенир|Souvenir)).*/)
 		sortedInventory = sortInventory(sortedInventory, "statTrak", 0)
 		break
 	default:

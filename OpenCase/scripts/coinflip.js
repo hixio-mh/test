@@ -100,6 +100,7 @@ function coinStoped() {
 	Games[PlayerInGame].player.items_cost = PlayerBet.items_cost;
 	for (var i = 0; i < PlayerBet.weapons.length; i++)
 		Games[PlayerInGame].player.weapons.push(PlayerBet.weapons[i]);
+	checkInventoryForNotification();
 	timerId = setTimeout(function(){
 		$('.coin-blur').addClass('hide');
 		$('#coin-flip-cont').addClass('hide');
@@ -108,6 +109,8 @@ function coinStoped() {
 		PlayerInGame = false;
 		maxItems = maxWeapons
 		//newGame();
+		
+		$('.game__table__win').html(Localization.coinflip2.winner[Settings.language]+'<br><img src="../images/coinflip/'+winner+'.png">')
 		
 		}, 3000);
 	
@@ -161,6 +164,8 @@ function showGame(game_id) {
 	$('.game__player__img').attr('src', '../images/ava/'+Player.avatar);
 	$('.game__player__price').text('$0');
 	$('.game__player__chance').text('0%');
+	
+	$('.game__table__win').html("");
 		
 	var bot_inventory = Games[game_id].bot.weapons;
 	
@@ -211,6 +216,8 @@ function showGame(game_id) {
 		$('.game__player__price').text('$'+Games[game_id].player.items_cost.toFixed(2));
 		$('.game__bot__chance').text(Games[game_id].bot.chance.toFixed(1)+'%');
 		$('.game__start').css('display', 'none');
+		
+		$('.game__table__win').html(Localization.coinflip2.winner[Settings.language]+'<br><img src="../images/coinflip/'+Games[game_id].winner+'.png">')
 		
 		for(var i = 0; i < Games[game_id].player.weapons.length; i++) {
 			var weapon = Games[game_id].player.weapons[i];

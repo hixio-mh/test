@@ -108,9 +108,20 @@ ul.bot-inventory {
 	right: 5px;
     top: 5px;
 }
+.game__table {
+    text-align: center;
+    width: 100%;
+    color: #fff;
+}
+.game__table__td {
+	width: 50%;
+}
+.game__table__win img {
+	width: 50px;
+}
 .game__bot, .game__player {
     color: #fff;
-    width: 49%;
+    width: 100%;
     display: inline-block;
 	text-align: center;
     font-family: Lato;
@@ -205,6 +216,8 @@ td.addWeapons {
     border-radius: 2px;
     border: none;
 	cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
 .winner-img {
 	box-shadow: rgb(0, 255, 55) 0px 0px 20px;

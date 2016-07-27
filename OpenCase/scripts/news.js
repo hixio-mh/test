@@ -118,5 +118,13 @@
 		"RU" : " - В меню написано количество нового оружия в инвентаре.",
 		"EN" : " - Count of new weapons in menu."
 	}
+}, {
+	"day" : 27,
+	"month" : 7,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлена ошибка в инвентаре, когда в контракте обмена можно было использовать сувенирные оружия.",
+		"EN" : " - Bug in the inventory when souvenir weapons can be used in the trade up contract was fixed."
+	}
 }, 
 ];

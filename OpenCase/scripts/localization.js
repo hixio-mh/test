@@ -306,7 +306,7 @@ Localization.coinflip = [{
 	}, {
 		'selector': ".choseItems",
 		'localization' : {
-			"EN" : "Add selected weapon"
+			"EN" : "Add selected weapons"
 		}
 	}, {
 		'selector': ".game__start__button",
@@ -328,22 +328,10 @@ Localization.coinflip2 = {
 		"EN" : "Add weapons",
 		"RU" : "Внести оружие"
 	},
-	'youLostRound' : {
-		"EN" : "You lost this round.",
-		"RU" : "Вы проиграли в этом раунде."
+	'winner' : {
+		"EN" : "Winner",
+		"RU" : "Победитель"
 	},
-	'tie' : {
-		"EN" : "Tie!",
-		"RU" : "Ничья!"
-	},
-	'winGame' : {
-		"EN" : "You win!",
-		"RU" : "Вы победили!"
-	},
-	'lostGame' : {
-		"EN" : "You lost.",
-		"RU" : "Вы проиграли."
-	}
 },
 Localization.inventory = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",

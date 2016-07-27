@@ -203,6 +203,7 @@ function endGame(playerWin) {
 	
 	$(".choice").css("display", 'none');
 	$(".add-item").css("display", 'block');
+	checkInventoryForNotification();
 }
 
 function startGame(userChoice) {
