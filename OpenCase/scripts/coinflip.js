@@ -69,15 +69,12 @@ function startGame() {
 	$("#coin").addClass(animation);
 	
 	flipSoundCT.currentTime = 0;
-	if (Player.nickname == "VLADOS776") {
-		if (Settings.sounds)flipSoundCT.play();
-	}
+	if (Settings.sounds)flipSoundCT.play();
 }
 
 function coinStoped() {
-	if (Player.nickname == "VLADOS776") {
-		flipSoundCT.pause();
-	}
+	flipSoundCT.pause();
+	
 	var winner = $('#coin').attr('class');
 	if (winner == 'CT') {
 		$('.game__bot__img').addClass('winner-img');
@@ -105,10 +102,6 @@ function coinStoped() {
 	timerId = setTimeout(function(){
 		hideCoin();
 	}, 3000);
-	
-	$(document).on('click', '.coin-blur', function() {
-		hideCoin();
-	});
 	
 }
 
