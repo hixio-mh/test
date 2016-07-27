@@ -101,7 +101,7 @@ function coinStoped() {
 	
 	timerId = setTimeout(function(){
 		hideCoin();
-	}, 3000);
+	}, 2000);
 	
 }
 
