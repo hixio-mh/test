@@ -217,7 +217,7 @@ function showGame(game_id) {
 		$('.game__bot__chance').text(Games[game_id].bot.chance.toFixed(1)+'%');
 		$('.game__start').css('display', 'none');
 		
-		$('.game__table__win').html(Localization.coinflip2.winner[Settings.language]+'<br><img src="../images/coinflip/'+Games[game_id].winner+'.png">')
+		$('.game__table__win').html(Localization.coinflip2.winner[Settings.language]+'<br><img src="../images/coinflip/'+Games[game_id].winner.toLowerCase()+'.png">')
 		
 		for(var i = 0; i < Games[game_id].player.weapons.length; i++) {
 			var weapon = Games[game_id].player.weapons[i];
