@@ -41,6 +41,11 @@ Localization.menu = [{
 			"EN" : "Rock-Paper-Scissors"
 		}
 	}, {
+		"selector" : "#local-menu-coinflip",
+		"localization" : {
+			"EN" : "CoinFlip"
+		}
+	}, {
 		"selector" : "#local-menu-inventory",
 		"localization" : {
 			"RU" : "Мой инвентарь",

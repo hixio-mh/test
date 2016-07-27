@@ -4,10 +4,10 @@ var maxWeapons = 15;
 var maxItems = maxWeapons,
 	PlayerInGame = false;
 var priceRange = {
-	low: {min: 5, max: 30},
-	normal: {min: 30, max: 80},
-	hight: {min: 80, max: 200},
-	legendary: {min: 200, max: 999999}
+	low: {min: 20, max: 60},
+	normal: {min: 60, max: 120},
+	hight: {min: 120, max: 350},
+	legendary: {min: 350, max: 999999}
 };
 var timerId = 0;
 

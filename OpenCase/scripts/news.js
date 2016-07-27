@@ -123,8 +123,8 @@
 	"month" : 7,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Исправлена ошибка в инвентаре, когда в контракте обмена можно было использовать сувенирные оружия.",
-		"EN" : " - Bug in the inventory when souvenir weapons can be used in the trade up contract was fixed."
+		"RU" : " - Исправлена ошибка в инвентаре, когда в контракте обмена можно было использовать сувенирные оружия.<br> - Новая мини-игра: Монетка!<br> - Новая иконка для инвентаря.<br> - Изменен интерфейс инвентаря для девайсов с маленьким разрешением.",
+		"EN" : " - Bug in the inventory when souvenir weapons can be used in the trade up contract was fixed.<br> - New mini-game: CoinFlip!<br> - New icon for inventory."
 	}
 }, 
 ];

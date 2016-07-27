@@ -95,37 +95,40 @@
 }
 
 .icon-pacman:before {
-    content: "\e916";
+  content: "\e916";
 }
 .icon-bullhorn:before {
-    content: "\e91a";
+  content: "\e91a";
 }
 .icon-coin-dollar:before {
-    content: "\e93b";
+  content: "\e93b";
 }
 .icon-spinner5:before {
-    content: "\e97e";
+  content: "\e97e";
 }
 .icon-key2:before {
-    content: "\e98e";
+  content: "\e98e";
 }
 .icon-cog:before {
-    content: "\e994";
+  content: "\e994";
 }
 .icon-stats-bars:before {
-    content: "\e99c";
+  content: "\e99c";
+}
+.icon-list:before {
+  content: "\e9ba";
 }
 .icon-star-full:before {
-    content: "\e9d9";
+  content: "\e9d9";
 }
 .icon-question:before {
-    content: "\ea09";
+  content: "\ea09";
 }
 .icon-info:before {
-    content: "\ea0c";
+  content: "\ea0c";
 }
 .icon-scissors:before {
-    content: "\ea5a";
+  content: "\ea5a";
 }
 
 /* End icons in menu */

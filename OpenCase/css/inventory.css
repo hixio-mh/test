@@ -191,6 +191,32 @@
 		bottom: 7px;
 	}
 }
+
+@media (max-width: 450px) {
+	.weapon {
+		height: 109px;
+		width: 98px;
+	}
+	.wp-statTrak::before {
+		margin-top: 65px;
+	}
+	.weapon img {
+		width: 86px;
+		height: 91px;
+	}
+	.weaponInfo {
+		margin: -13px 0;
+	}
+	.type {
+		font-size: 9px;
+	}
+	.weapon i {
+		top: -103px;
+		font-size: 7pt;
+		font-family: Lato;
+		font-weight: Lighter;
+	}
+}
 .contractButtons {
     position: fixed;
     bottom: 25px;
