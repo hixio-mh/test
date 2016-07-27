@@ -194,7 +194,7 @@
 
 @media (max-width: 450px) {
 	.weapon {
-		height: 109px;
+		height: 113px;
 		width: 98px;
 	}
 	.wp-statTrak::before {
