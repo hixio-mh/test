@@ -106,6 +106,8 @@ function coinStoped() {
 }
 
 function hideCoin() {
+	flipSoundCT.pause();
+	
 	clearTimeout(timerId);
 	timerId = null;
 	var winner = $('#coin').attr('class');
