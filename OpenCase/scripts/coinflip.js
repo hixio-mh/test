@@ -69,11 +69,11 @@ function startGame() {
 	$("#coin").addClass(animation);
 	
 	flipSoundCT.currentTime = 0;
-	if (Settings.sounds)flipSoundCT.play();
+	//if (Settings.sounds)flipSoundCT.play();
 }
 
 function coinStoped() {
-	if (Settings.sounds) flipSoundCT.pause();
+	//if (Settings.sounds) flipSoundCT.pause();
 	var winner = $('#coin').attr('class');
 	if (winner == 'CT') {
 		$('.game__bot__img').addClass('winner-img');
