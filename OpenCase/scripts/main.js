@@ -164,6 +164,7 @@ $(".openCase").on("click", function() {
 		complete: function(){
 			$("#opened").text(parseInt($("#opened").text())+1);
 			var price = parseFloat($(".win_price").html());
+			if (isNaN(price)) price = 0;
 			win.price = price;
 			win.new = true;
 			inventory.push(win);

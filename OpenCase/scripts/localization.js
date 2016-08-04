@@ -102,6 +102,12 @@ Localization.cases = [{
 			"EN" : "Souvenir collections"
 		}
 	}, {
+		"selector" : "#Workshop h1",
+		"localization" : {
+			"RU" : "Мастерская",
+			"EN" : "Workshop"
+		}
+	}, {
 		"selector" : "#Special h1",
 		"localization" : {
 			"RU" : "Особые",

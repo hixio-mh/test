@@ -430,6 +430,7 @@ function fillInventory(currInventory) {
 		if (typeof weapon.new == 'undefined') 
 			weapon.new = false;
 		
+		if (isNaN(weapon.price)) weapon.price = 0;
 		sumPr += weapon.price;
 
 		var type = weapon.type;

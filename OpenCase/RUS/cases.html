@@ -30,6 +30,7 @@
 <div id="eSports"><h1>eSports</h1></div>
 <div id="Collection"><h1>Коллекции</h1></div>
 <div id="Souvenir"><h1>Сувенирные коллекции</h1></div>
+<div id="Workshop"><h1>Мастерская</h1></div>
 <div id="Special"><h1>Особые</h1></div>
 </div>
 <script>
@@ -53,6 +54,9 @@ for(var i = 0; i < cases.length ; i++) {
 			break;
 		case "Collection":
 			$("#Collection").append(curCase);
+			break;
+		case "Workshop":
+			$("#Workshop").append(curCase);
 			break;
 	}
 }

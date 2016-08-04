@@ -19,6 +19,9 @@
 .rare, .rare-color {
 	background: #DAB515;
 }
+.workshop, .workshop-color {
+    background: #9c1ba;
+}
 
 .consumer {
 	background: linear-gradient(to right,#9EA7AE,#687073);
@@ -40,4 +43,7 @@
 }
 .rare {
     background: linear-gradient(to right,#DAB515,#826E1B);
+}
+.workshop {
+	background: linear-gradient(to right,#29c1ba,#11575f);
 }

@@ -36207,5 +36207,915 @@ var Prices = [{
 		quality : 'Battle-Scarred',
 		marketPrice : 9.96,
 		avgPrice : 6.69
-	},
+	}, { //WorkShop Case Prices
+		type : 'Sawed-Off',
+		name : 'Cutaway',
+		quality : 'Battle-Scarred',
+		marketPrice : 0.8,
+		avgPrice : 0.8
+}, {
+		type : 'Sawed-Off',
+		name : 'Cutaway',
+		quality : 'Well-Worn',
+		marketPrice : 1.7,
+		avgPrice : 1.7
+}, {
+		type : 'Sawed-Off',
+		name : 'Cutaway',
+		quality : 'Field-Tested',
+		marketPrice : 2.2,
+		avgPrice : 2.2
+}, {
+		type : 'Sawed-Off',
+		name : 'Cutaway',
+		quality : 'Minimal Wear',
+		marketPrice : 3.5,
+		avgPrice : 3.5
+}, {
+		type : 'Sawed-Off',
+		name : 'Cutaway',
+		quality : 'Factory New',
+		marketPrice : 5.81,
+		avgPrice : 5.81
+}, {
+		type : 'PP-Bizon',
+		name : 'Nostromo',
+		quality : 'Battle-Scarred',
+		marketPrice : 2.3,
+		avgPrice : 2.3
+}, {
+		type : 'PP-Bizon',
+		name : 'Nostromo',
+		quality : 'Well-Worn',
+		marketPrice : 3.54,
+		avgPrice : 3.54
+}, {
+		type : 'PP-Bizon',
+		name : 'Nostromo',
+		quality : 'Field-Tested',
+		marketPrice : 5.21,
+		avgPrice : 5.21
+}, {
+		type : 'PP-Bizon',
+		name : 'Nostromo',
+		quality : 'Minimal Wear',
+		marketPrice : 6.15,
+		avgPrice : 6.15
+}, {
+		type : 'PP-Bizon',
+		name : 'Nostromo',
+		quality : 'Factory New',
+		marketPrice : 10.38,
+		avgPrice : 10.38
+}, {
+		type : 'Five-Seven',
+		name : 'Blot',
+		quality : 'Battle-Scarred',
+		marketPrice : 3.44,
+		avgPrice : 3.44
+}, {
+		type : 'Five-Seven',
+		name : 'Blot',
+		quality : 'Well-Worn',
+		marketPrice : 4.62,
+		avgPrice : 4.62
+}, {
+		type : 'Five-Seven',
+		name : 'Blot',
+		quality : 'Field-Tested',
+		marketPrice : 5.3,
+		avgPrice : 5.3
+}, {
+		type : 'Five-Seven',
+		name : 'Blot',
+		quality : 'Minimal Wear',
+		marketPrice : 6.84,
+		avgPrice : 6.84
+}, {
+		type : 'Five-Seven',
+		name : 'Blot',
+		quality : 'Factory New',
+		marketPrice : 8.95,
+		avgPrice : 8.95
+}, {
+		type : 'SSG 08',
+		name : 'King Cobra',
+		quality : 'Battle-Scarred',
+		marketPrice : 0.1,
+		avgPrice : 0.1
+}, {
+		type : 'SSG 08',
+		name : 'King Cobra',
+		quality : 'Well-Worn',
+		marketPrice : 0.3,
+		avgPrice : 0.3
+}, {
+		type : 'SSG 08',
+		name : 'King Cobra',
+		quality : 'Field-Tested',
+		marketPrice : 0.6,
+		avgPrice : 0.6
+}, {
+		type : 'SSG 08',
+		name : 'King Cobra',
+		quality : 'Minimal Wear',
+		marketPrice : 0.9,
+		avgPrice : 0.9
+}, {
+		type : 'SSG 08',
+		name : 'King Cobra',
+		quality : 'Factory New',
+		marketPrice : 1.6,
+		avgPrice : 1.6
+}, {
+		type : 'MAC-10',
+		name : 'Kinetics',
+		quality : 'Battle-Scarred',
+		marketPrice : 4.7,
+		avgPrice : 4.7
+}, {
+		type : 'MAC-10',
+		name : 'Kinetics',
+		quality : 'Well-Worn',
+		marketPrice : 6.5,
+		avgPrice : 6.5
+}, {
+		type : 'MAC-10',
+		name : 'Kinetics',
+		quality : 'Field-Tested',
+		marketPrice : 8.9,
+		avgPrice : 8.9
+}, {
+		type : 'MAC-10',
+		name : 'Kinetics',
+		quality : 'Minimal Wear',
+		marketPrice : 12.5,
+		avgPrice : 12.5
+}, {
+		type : 'MAC-10',
+		name : 'Kinetics',
+		quality : 'Factory New',
+		marketPrice : 15.7,
+		avgPrice : 15.7
+}, {
+		type : 'M4A1-S',
+		name : 'Never Fly',
+		quality : 'Battle-Scarred',
+		marketPrice : 4.9,
+		avgPrice : 5.9
+}, {
+		type : 'M4A1-S',
+		name : 'Never Fly',
+		quality : 'Well-Worn',
+		marketPrice : 8.4,
+		avgPrice : 8.4
+}, {
+		type : 'M4A1-S',
+		name : 'Never Fly',
+		quality : 'Field-Tested',
+		marketPrice : 12.1,
+		avgPrice : 12.1
+}, {
+		type : 'M4A1-S',
+		name : 'Never Fly',
+		quality : 'Minimal Wear',
+		marketPrice : 20.8,
+		avgPrice : 3.8
+}, {
+		type : 'M4A1-S',
+		name : 'Never Fly',
+		quality : 'Factory New',
+		marketPrice : 23.6,
+		avgPrice : 23.6
+}, {
+		type : 'CZ75',
+		name : 'Badass Comic',
+		quality : 'Battle-Scarred',
+		marketPrice : 10.1,
+		avgPrice : 10.1
+}, {
+		type : 'CZ75',
+		name : 'Badass Comic',
+		quality : 'Well-Worn',
+		marketPrice : 13.6,
+		avgPrice : 13.6
+}, {
+		type : 'CZ75',
+		name : 'Badass Comic',
+		quality : 'Field-Tested',
+		marketPrice : 17.6,
+		avgPrice : 17.6
+}, {
+		type : 'CZ75',
+		name : 'Badass Comic',
+		quality : 'Minimal Wear',
+		marketPrice : 23.2,
+		avgPrice : 23.2
+}, {
+		type : 'CZ75',
+		name : 'Badass Comic',
+		quality : 'Factory New',
+		marketPrice : 34.8,
+		avgPrice : 34.8
+}, {
+		type : 'P250',
+		name : 'N-Force',
+		quality : 'Battle-Scarred',
+		marketPrice : 7.0,
+		avgPrice : 7.0
+}, {
+		type : 'P250',
+		name : 'N-Force',
+		quality : 'Well-Worn',
+		marketPrice : 14.4,
+		avgPrice : 14.4
+}, {
+		type : 'P250',
+		name : 'N-Force',
+		quality : 'Field-Tested',
+		marketPrice : 19.9,
+		avgPrice : 19.9
+}, {
+		type : 'P250',
+		name : 'N-Force',
+		quality : 'Minimal Wear',
+		marketPrice : 27.8,
+		avgPrice : 27.8
+}, {
+		type : 'P250',
+		name : 'N-Force',
+		quality : 'Factory New',
+		marketPrice : 36.4,
+		avgPrice : 36.4
+}, {
+		type : 'AWP',
+		name : 'Phoenix',
+		quality : 'Battle-Scarred',
+		marketPrice : 9.5,
+		avgPrice : 9.6
+}, {
+		type : 'AWP',
+		name : 'Phoenix',
+		quality : 'Well-Worn',
+		marketPrice : 14.4,
+		avgPrice : 14.5
+}, {
+		type : 'AWP',
+		name : 'Phoenix',
+		quality : 'Field-Tested',
+		marketPrice : 22,
+		avgPrice : 22
+}, {
+		type : 'AWP',
+		name : 'Phoenix',
+		quality : 'Minimal Wear',
+		marketPrice : 37.9,
+		avgPrice : 37.6
+}, {
+		type : 'AWP',
+		name : 'Phoenix',
+		quality : 'Factory New',
+		marketPrice : 51.3,
+		avgPrice : 51.3
+}, {
+		type : 'Desert Eagle',
+		name : 'Gold',
+		quality : 'Battle-Scarred',
+		marketPrice : 7.5,
+		avgPrice : 7.6
+}, {
+		type : 'Desert Eagle',
+		name : 'Gold',
+		quality : 'Well-Worn',
+		marketPrice : 11.2,
+		avgPrice : 11.2
+}, {
+		type : 'Desert Eagle',
+		name : 'Gold',
+		quality : 'Field-Tested',
+		marketPrice : 27.4,
+		avgPrice : 27.4
+}, {
+		type : 'Desert Eagle',
+		name : 'Gold',
+		quality : 'Minimal Wear',
+		marketPrice : 54.2,
+		avgPrice : 54.2
+}, {
+		type : 'Desert Eagle',
+		name : 'Gold',
+		quality : 'Factory New',
+		marketPrice : 77.1,
+		avgPrice : 77.1
+}, {
+		type : 'AK-47',
+		name : 'Fluentem',
+		quality : 'Battle-Scarred',
+		marketPrice : 22.5,
+		avgPrice : 22.6
+}, {
+		type : 'AK-47',
+		name : 'Fluentem',
+		quality : 'Well-Worn',
+		marketPrice : 28.2,
+		avgPrice : 28.2
+}, {
+		type : 'AK-47',
+		name : 'Fluentem',
+		quality : 'Field-Tested',
+		marketPrice : 41.4,
+		avgPrice : 41.4
+}, {
+		type : 'AK-47',
+		name : 'Fluentem',
+		quality : 'Minimal Wear',
+		marketPrice : 68.2,
+		avgPrice : 68.2
+}, {
+		type : 'AK-47',
+		name : 'Fluentem',
+		quality : 'Factory New',
+		marketPrice : 97.1,
+		avgPrice : 97.1
+}, {
+		type : 'USP-S',
+		name : 'Draco',
+		quality : 'Battle-Scarred',
+		marketPrice : 10.5,
+		avgPrice : 10.6
+}, {
+		type : 'USP-S',
+		name : 'Draco',
+		quality : 'Well-Worn',
+		marketPrice : 16.2,
+		avgPrice : 16.2
+}, {
+		type : 'USP-S',
+		name : 'Draco',
+		quality : 'Field-Tested',
+		marketPrice : 28.4,
+		avgPrice : 28.4
+}, {
+		type : 'USP-S',
+		name : 'Draco',
+		quality : 'Minimal Wear',
+		marketPrice : 36.2,
+		avgPrice : 36.2
+}, {
+		type : 'USP-S',
+		name : 'Draco',
+		quality : 'Factory New',
+		marketPrice : 54.1,
+		avgPrice : 54.1
+}, {
+		type : '★ Gut Knife',
+		name : 'Revenge is Sweet',
+		quality : 'Battle-Scarred',
+		marketPrice : 99,
+		avgPrice : 99
+}, {
+		type : '★ Gut Knife',
+		name : 'Revenge is Sweet',
+		quality : 'Well-Worn',
+		marketPrice : 120,
+		avgPrice : 120
+}, {
+		type : '★ Gut Knife',
+		name : 'Revenge is Sweet',
+		quality : 'Field-Tested',
+		marketPrice : 170,
+		avgPrice : 170
+}, {
+		type : '★ Gut Knife',
+		name : 'Revenge is Sweet',
+		quality : 'Minimal Wear',
+		marketPrice : 210,
+		avgPrice : 210
+}, {
+		type : '★ Gut Knife',
+		name : 'Revenge is Sweet',
+		quality : 'Factory New',
+		marketPrice : 300,
+		avgPrice : 300
+}, {
+		type : '★ Karambit',
+		name : 'Purple Abstract',
+		quality : 'Battle-Scarred',
+		marketPrice : 158.3,
+		avgPrice : 158
+}, {
+		type : '★ Karambit',
+		name : 'Purple Abstract',
+		quality : 'Well-Worn',
+		marketPrice : 193.6,
+		avgPrice : 193.6
+}, {
+		type : '★ Karambit',
+		name : 'Purple Abstract',
+		quality : 'Field-Tested',
+		marketPrice : 230.1,
+		avgPrice : 230.1
+}, {
+		type : '★ Karambit',
+		name : 'Purple Abstract',
+		quality : 'Minimal Wear',
+		marketPrice : 272.6,
+		avgPrice : 272.6
+}, {
+		type : '★ Karambit',
+		name : 'Purple Abstract',
+		quality : 'Factory New',
+		marketPrice : 397.6,
+		avgPrice : 397.6
+}, { //WorkShop StatTrak Case Prices
+		type : 'Sawed-Off',
+		statTrak : true,
+		name : 'Cutaway',
+		quality : 'Battle-Scarred',
+		marketPrice : 1.96,
+		avgPrice : 1.96
+}, {
+		type : 'Sawed-Off',
+		statTrak : true,
+		name : 'Cutaway',
+		quality : 'Well-Worn',
+		marketPrice : 3.24,
+		avgPrice : 3.24
+}, {
+		type : 'Sawed-Off',
+		statTrak : true,
+		name : 'Cutaway',
+		quality : 'Field-Tested',
+		marketPrice : 5.41,
+		avgPrice : 5.41
+}, {
+		type : 'Sawed-Off',
+		statTrak : true,
+		name : 'Cutaway',
+		quality : 'Minimal Wear',
+		marketPrice : 7.22,
+		avgPrice : 7.22
+}, {
+		type : 'Sawed-Off',
+		statTrak : true,
+		name : 'Cutaway',
+		quality : 'Factory New',
+		marketPrice : 9.44,
+		avgPrice : 9.44
+}, {
+		type : 'PP-Bizon',
+		statTrak : true,
+		name : 'Nostromo',
+		quality : 'Battle-Scarred',
+		marketPrice : 4.9,
+		avgPrice : 4.9
+}, {
+		type : 'PP-Bizon',
+		statTrak : true,
+		name : 'Nostromo',
+		quality : 'Well-Worn',
+		marketPrice : 6.3,
+		avgPrice : 6.3
+}, {
+		type : 'PP-Bizon',
+		statTrak : true,
+		name : 'Nostromo',
+		quality : 'Field-Tested',
+		marketPrice : 8.8,
+		avgPrice : 8.8
+}, {
+		type : 'PP-Bizon',
+		statTrak : true,
+		name : 'Nostromo',
+		quality : 'Minimal Wear',
+		marketPrice : 12.5,
+		avgPrice : 12.5
+}, {
+		type : 'PP-Bizon',
+		statTrak : true,
+		name : 'Nostromo',
+		quality : 'Factory New',
+		marketPrice : 17.0,
+		avgPrice : 17.0
+}, {
+		type : 'Five-Seven',
+		statTrak : true,
+		name : 'Blot',
+		quality : 'Battle-Scarred',
+		marketPrice : 4.8,
+		avgPrice : 4.8
+}, {
+		type : 'Five-Seven',
+		statTrak : true,
+		name : 'Blot',
+		quality : 'Well-Worn',
+		marketPrice : 5.96,
+		avgPrice : 5.96
+}, {
+		type : 'Five-Seven',
+		statTrak : true,
+		name : 'Blot',
+		quality : 'Field-Tested',
+		marketPrice : 7.8,
+		avgPrice : 7.8
+}, {
+		type : 'Five-Seven',
+		statTrak : true,
+		name : 'Blot',
+		quality : 'Minimal Wear',
+		marketPrice : 9.7,
+		avgPrice : 9.7
+}, {
+		type : 'Five-Seven',
+		statTrak : true,
+		name : 'Blot',
+		quality : 'Factory New',
+		marketPrice : 11.7,
+		avgPrice : 11.7
+}, {
+		type : 'SSG 08',
+		statTrak : true,
+		name : 'King Cobra',
+		quality : 'Battle-Scarred',
+		marketPrice : 0.2,
+		avgPrice : 0.2
+}, {
+		type : 'SSG 08',
+		statTrak : true,
+		name : 'King Cobra',
+		quality : 'Well-Worn',
+		marketPrice : 0.6,
+		avgPrice : 0.6
+}, {
+		type : 'SSG 08',
+		statTrak : true,
+		name : 'King Cobra',
+		quality : 'Field-Tested',
+		marketPrice : 0.9,
+		avgPrice : 0.9
+}, {
+		type : 'SSG 08',
+		statTrak : true,
+		name : 'King Cobra',
+		quality : 'Minimal Wear',
+		marketPrice : 1.3,
+		avgPrice : 1.3
+}, {
+		type : 'SSG 08',
+		statTrak : true,
+		name : 'King Cobra',
+		quality : 'Factory New',
+		marketPrice : 1.9,
+		avgPrice : 1.9
+}, {
+		type : 'MAC-10',
+		statTrak : true,
+		name : 'Kinetics',
+		quality : 'Battle-Scarred',
+		marketPrice : 6.2,
+		avgPrice : 6.2
+}, {
+		type : 'MAC-10',
+		statTrak : true,
+		name : 'Kinetics',
+		quality : 'Well-Worn',
+		marketPrice : 7.9,
+		avgPrice : 7.9
+}, {
+		type : 'MAC-10',
+		statTrak : true,
+		name : 'Kinetics',
+		quality : 'Field-Tested',
+		marketPrice : 9.3,
+		avgPrice : 9.3
+}, {
+		type : 'MAC-10',
+		statTrak : true,
+		name : 'Kinetics',
+		quality : 'Minimal Wear',
+		marketPrice : 13,
+		avgPrice : 13
+}, {
+		type : 'MAC-10',
+		statTrak : true,
+		name : 'Kinetics',
+		quality : 'Factory New',
+		marketPrice : 21,
+		avgPrice : 21
+}, {
+		type : 'M4A1-S',
+		statTrak : true,
+		name : 'Never Fly',
+		quality : 'Battle-Scarred',
+		marketPrice : 8.8,
+		avgPrice : 8.8
+}, {
+		type : 'M4A1-S',
+		statTrak : true,
+		name : 'Never Fly',
+		quality : 'Well-Worn',
+		marketPrice : 10.4,
+		avgPrice : 10.4
+}, {
+		type : 'M4A1-S',
+		statTrak : true,
+		name : 'Never Fly',
+		quality : 'Field-Tested',
+		marketPrice : 14.8,
+		avgPrice : 14.8
+}, {
+		type : 'M4A1-S',
+		statTrak : true,
+		name : 'Never Fly',
+		quality : 'Minimal Wear',
+		marketPrice : 21.8,
+		avgPrice : 21.8
+}, {
+		type : 'M4A1-S',
+		statTrak : true,
+		name : 'Never Fly',
+		quality : 'Factory New',
+		marketPrice : 30.1,
+		avgPrice : 30.1
+}, {
+		type : 'CZ75',
+		statTrak : true,
+		name : 'Badass Comic',
+		quality : 'Battle-Scarred',
+		marketPrice : 12.7,
+		avgPrice : 12.7
+}, {
+		type : 'CZ75',
+		statTrak : true,
+		name : 'Badass Comic',
+		quality : 'Well-Worn',
+		marketPrice : 19.1,
+		avgPrice : 18.1
+}, {
+		type : 'CZ75',
+		statTrak : true,
+		name : 'Badass Comic',
+		quality : 'Field-Tested',
+		marketPrice : 24.9,
+		avgPrice : 24.9
+}, {
+		type : 'CZ75',
+		statTrak : true,
+		name : 'Badass Comic',
+		quality : 'Minimal Wear',
+		marketPrice : 37.1,
+		avgPrice : 37.1
+}, {
+		type : 'CZ75',
+		statTrak : true,
+		name : 'Badass Comic',
+		quality : 'Factory New',
+		marketPrice : 53.7,
+		avgPrice : 53.7
+}, {
+		type : 'P250',
+		statTrak : true,
+		name : 'N-Force',
+		quality : 'Battle-Scarred',
+		marketPrice : 11.8,
+		avgPrice : 11.8
+}, {
+		type : 'P250',
+		statTrak : true,
+		name : 'N-Force',
+		quality : 'Well-Worn',
+		marketPrice : 17.4,
+		avgPrice : 17.4
+}, {
+		type : 'P250',
+		statTrak : true,
+		name : 'N-Force',
+		quality : 'Field-Tested',
+		marketPrice : 23.8,
+		avgPrice : 23.9
+}, {
+		type : 'P250',
+		statTrak : true,
+		name : 'N-Force',
+		quality : 'Minimal Wear',
+		marketPrice : 37.7,
+		avgPrice : 37.7
+}, {
+		type : 'P250',
+		statTrak : true,
+		name : 'N-Force',
+		quality : 'Factory New',
+		marketPrice : 58.8,
+		avgPrice : 58.8
+}, {
+		type : 'AWP',
+		statTrak : true,
+		name : 'Phoenix',
+		quality : 'Battle-Scarred',
+		marketPrice : 14.9,
+		avgPrice : 14.9
+}, {
+		type : 'AWP',
+		statTrak : true,
+		name : 'Phoenix',
+		quality : 'Well-Worn',
+		marketPrice : 18.6,
+		avgPrice : 18.6
+}, {
+		type : 'AWP',
+		statTrak : true,
+		name : 'Phoenix',
+		quality : 'Field-Tested',
+		marketPrice : 29.3,
+		avgPrice : 29.3
+}, {
+		type : 'AWP',
+		statTrak : true,
+		name : 'Phoenix',
+		quality : 'Minimal Wear',
+		marketPrice : 47.2,
+		avgPrice : 47.6
+}, {
+		type : 'AWP',
+		statTrak : true,
+		name : 'Phoenix',
+		quality : 'Factory New',
+		marketPrice : 82.1,
+		avgPrice : 82.1
+}, {
+		type : 'Desert Eagle',
+		statTrak : true,
+		name : 'Gold',
+		quality : 'Battle-Scarred',
+		marketPrice : 15.3,
+		avgPrice : 15.6
+}, {
+		type : 'Desert Eagle',
+		statTrak : true,
+		name : 'Gold',
+		quality : 'Well-Worn',
+		marketPrice : 23.2,
+		avgPrice : 23.2
+}, {
+		type : 'Desert Eagle',
+		statTrak : true,
+		name : 'Gold',
+		quality : 'Field-Tested',
+		marketPrice : 33.2,
+		avgPrice : 33.2
+}, {
+		type : 'Desert Eagle',
+		statTrak : true,
+		name : 'Gold',
+		quality : 'Minimal Wear',
+		marketPrice : 58.2,
+		avgPrice : 58.2
+}, {
+		type : 'Desert Eagle',
+		statTrak : true,
+		name : 'Gold',
+		quality : 'Factory New',
+		marketPrice : 114.1,
+		avgPrice : 114.1
+}, {
+		type : 'AK-47',
+		statTrak : true,
+		name : 'Fluentem',
+		quality : 'Battle-Scarred',
+		marketPrice : 30.8,
+		avgPrice : 30.8
+}, {
+		type : 'AK-47',
+		statTrak : true,
+		name : 'Fluentem',
+		quality : 'Well-Worn',
+		marketPrice : 37.2,
+		avgPrice : 37.2
+}, {
+		type : 'AK-47',
+		statTrak : true,
+		name : 'Fluentem',
+		quality : 'Field-Tested',
+		marketPrice : 56.4,
+		avgPrice : 56.4
+}, {
+		type : 'AK-47',
+		statTrak : true,
+		name : 'Fluentem',
+		quality : 'Minimal Wear',
+		marketPrice : 89.2,
+		avgPrice : 89.2
+}, {
+		type : 'AK-47',
+		statTrak : true,
+		name : 'Fluentem',
+		quality : 'Factory New',
+		marketPrice : 128.7,
+		avgPrice : 128.7
+}, {
+		type : 'USP-S',
+		statTrak : true,
+		name : 'Draco',
+		quality : 'Battle-Scarred',
+		marketPrice : 17.2,
+		avgPrice : 17.2
+}, {
+		type : 'USP-S',
+		statTrak : true,
+		name : 'Draco',
+		quality : 'Well-Worn',
+		marketPrice : 27.2,
+		avgPrice : 27.2
+}, {
+		type : 'USP-S',
+		statTrak : true,
+		name : 'Draco',
+		quality : 'Field-Tested',
+		marketPrice : 40.9,
+		avgPrice : 40.9
+}, {
+		type : 'USP-S',
+		statTrak : true,
+		name : 'Draco',
+		quality : 'Minimal Wear',
+		marketPrice : 52.5,
+		avgPrice : 52.5
+}, {
+		type : 'USP-S',
+		statTrak : true,
+		name : 'Draco',
+		quality : 'Factory New',
+		marketPrice : 89.1,
+		avgPrice : 89.1
+}, {
+		type : '★ Gut Knife',
+		statTrak : true,
+		name : 'Revenge is Sweet',
+		quality : 'Battle-Scarred',
+		marketPrice : 147,
+		avgPrice : 140
+}, {
+		type : '★ Gut Knife',
+		statTrak : true,
+		name : 'Revenge is Sweet',
+		quality : 'Well-Worn',
+		marketPrice : 182.4,
+		avgPrice : 180.5
+}, {
+		type : '★ Gut Knife',
+		statTrak : true,
+		name : 'Revenge is Sweet',
+		quality : 'Field-Tested',
+		marketPrice : 232.9,
+		avgPrice : 232.9
+}, {
+		type : '★ Gut Knife',
+		statTrak : true,
+		name : 'Revenge is Sweet',
+		quality : 'Minimal Wear',
+		marketPrice : 294.1,
+		avgPrice : 294.1
+}, {
+		type : '★ Gut Knife',
+		statTrak : true,
+		name : 'Revenge is Sweet',
+		quality : 'Factory New',
+		marketPrice : 383.7,
+		avgPrice : 383.7
+}, {
+		type : '★ Karambit',
+		statTrak : true,
+		name : 'Purple Abstract',
+		quality : 'Battle-Scarred',
+		marketPrice : 195.3,
+		avgPrice : 195
+}, {
+		type : '★ Karambit',
+		statTrak : true,
+		name : 'Purple Abstract',
+		quality : 'Well-Worn',
+		marketPrice : 227.3,
+		avgPrice : 227.3
+}, {
+		type : '★ Karambit',
+		statTrak : true,
+		name : 'Purple Abstract',
+		quality : 'Field-Tested',
+		marketPrice : 260.2,
+		avgPrice : 260.2
+}, {
+		type : '★ Karambit',
+		statTrak : true,
+		name : 'Purple Abstract',
+		quality : 'Minimal Wear',
+		marketPrice : 301.2,
+		avgPrice : 301.5
+}, {
+		type : '★ Karambit',
+		statTrak : true,
+		name : 'Purple Abstract',
+		quality : 'Factory New',
+		marketPrice : 440.6,
+		avgPrice : 440.6
+}, 
 ]

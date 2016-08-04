@@ -126,5 +126,13 @@
 		"RU" : " - Исправлена ошибка в инвентаре, когда в контракте обмена можно было использовать сувенирные оружия.<br> - Новая мини-игра: Монетка!<br> - Новая иконка для инвентаря.<br> - Изменен интерфейс инвентаря для девайсов с маленьким разрешением.<br> - Исправлен баг, когда меню уезжало вправо за экран.",
 		"EN" : " - Bug in the inventory when souvenir weapons can be used in the trade up contract was fixed.<br> - New mini-game: CoinFlip!<br> - New icon for inventory.<br> - Changes in the interface in inventory for screens with small resolution.<br> - A bug when the left menu moved to the right out of the screen was fixed."
 	}
+}, {
+	"day" : 4,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Новый кейс 'Workshop'.",
+		"EN" : " - New 'Workshop' case."
+	}
 }, 
 ];

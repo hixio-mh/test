@@ -4502,5 +4502,83 @@ var cases = [{
 				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz56P7fiDzRyTRDQCKJLSPAF9QO4Xhg_7cNqQdr4ou8Ffw-7s4GUM7IlYdAdH8bRUqSCblyv6Rg6hKcOKJSKqSq-1SrsPHBKBUSRoheuWQ"
 			}
 		]
-	}, 
+	}, {
+		"name" : "Workshop",
+		"img" : "ak47.png",
+		"type" : "Workshop",
+		"specialClass" : "workshop",
+		"casesToOpen" : 50,
+		"weapons" : [{
+				"type" : "Sawed-Off",
+				"skinName" : "Cutaway",
+				"rarity" : "milspec",
+				"img" : "Workshop/Sawed-Off-Cutaway.png"
+		}, {
+				"type" : "PP-Bizon",
+				"skinName" : "Nostromo",
+				"rarity" : "milspec",
+				"img" : "Workshop/PP-Bizon-Nostromo.png"
+		}, {
+				"type" : "Five-Seven",
+				"skinName" : "Blot",
+				"rarity" : "milspec",
+				"img" : "Workshop/Five-Seven-Blot.png"
+		}, {
+				"type" : "SSG 08",
+				"skinName" : "King Cobra",
+				"rarity" : "milspec",
+				"img" : "Workshop/SSG-08-King-Cobra.png"
+		}, {
+				"type" : "MAC-10",
+				"skinName" : "Kinetics",
+				"rarity" : "restricted",
+				"img" : "Workshop/MAC-10-Kinetics.png"
+		}, {
+				"type" : "M4A1-S",
+				"skinName" : "Never Fly",
+				"rarity" : "restricted",
+				"img" : "Workshop/M4A1-S-Never-Fly.png"
+		}, {
+				"type" : "CZ75",
+				"skinName" : "Badass Comic",
+				"rarity" : "restricted",
+				"img" : "Workshop/CZ75-Badass-Comic.png"
+		}, {
+				"type" : "P250",
+				"skinName" : "N-Force",
+				"rarity" : "restricted",
+				"img" : "Workshop/P250-N-Force-R.png"
+		}, {
+				"type" : "AWP",
+				"skinName" : "Phoenix",
+				"rarity" : "classified",
+				"img" : "Workshop/AWP-Phoenix.png"
+		}, {
+				"type" : "Desert Eagle",
+				"skinName" : "Gold",
+				"rarity" : "classified",
+				"img" : "Workshop/Deagle-Gold.png"
+		}, {
+				"type" : "AK-47",
+				"skinName" : "Fluentem",
+				"rarity" : "covert",
+				"img" : "Workshop/AK-47-Fluentem.png"
+		},  {
+				"type" : "USP-S",
+				"skinName" : "Draco",
+				"rarity" : "covert",
+				"img" : "Workshop/USP-S-Draco.png"
+		}, {
+				"type" : "★ Gut Knife",
+				"skinName" : "Revenge in Sweet",
+				"rarity" : "rare",
+				"img" : "Workshop/Gut-Knife-Revenge-is-Sweet.png"
+		}, {
+				"type" : "★ Karambit",
+				"skinName" : "Purple Abstract",
+				"rarity" : "rare",
+				"img" : "Workshop/Karambit-Purple-Abstract.png"
+		}, 
+		]
+	},
 ]
