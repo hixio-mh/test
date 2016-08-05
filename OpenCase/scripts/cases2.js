@@ -4504,7 +4504,7 @@ var cases = [{
 		]
 	}, {
 		"name" : "Workshop",
-		"img" : "ak47.png",
+		"img" : "Workshop.png",
 		"type" : "Workshop",
 		"specialClass" : "workshop",
 		"casesToOpen" : 50,

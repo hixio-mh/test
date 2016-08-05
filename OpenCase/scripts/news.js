@@ -134,5 +134,13 @@
 		"RU" : " - Новый кейс 'Workshop'.",
 		"EN" : " - New 'Workshop' case."
 	}
+}, {
+	"day" : 5,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлена ошибка, когда не показывалась аватарка после сброса.<br> - Новая иконка для кейса 'Workshop'",
+		"EN" : " - Bug fixes.<br> - New icon for 'Workshop' case."
+	}
 }, 
 ];

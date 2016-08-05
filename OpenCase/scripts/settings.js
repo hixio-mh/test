@@ -10,7 +10,7 @@ var Settings = {
 
 if (typeof $.cookie("playerNickname") != "undefined")
 	Player.nickname = $.cookie("playerNickname")
-if (typeof $.cookie("playerAvatar") != "undefined")
+if (typeof $.cookie("playerAvatar") != "undefined" && $.cookie("playerAvatar") != "")
 	Player.avatar = $.cookie("playerAvatar")
 if (typeof $.cookie("settings_language") != "undefined")
 	Settings.language = $.cookie("settings_language")
