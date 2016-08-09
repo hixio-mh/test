@@ -29,10 +29,6 @@ $(function() {
 $('.add-item').on('click', function(){
 newGame();
 
-inventory = inventory.sort(function(a,b){
-	return b.price-a.price;
-});
-
 fillInventory();
 });
 
@@ -46,16 +42,24 @@ $(".choseItems").on("click", function () {
 	var ids = [];
 	var itemsCost = 0;
 
-	$(".inventoryItemSelected").each(function () {
-		winItems.push(inventory[parseInt(this.id)]);
-		itemsCost += inventory[parseInt(this.id)].price;
-		ids.push(parseInt(this.id));
-	})
-	for (var i = 0; i < ids.length; i++) {
-		var d = ids[ids.length - i - 1];
-		inventory.splice(d, 1);
+	if (isAndroid()) {
+		$(".inventoryItemSelected").each(function () {
+			winItems.push(getWeapon(parseInt($(this).data('id'))));
+			itemsCost += getWeapon(parseInt($(this).data('id'))).price;
+			deleteWeapon($(this).data('id'));
+		})
+	}else{
+		$(".inventoryItemSelected").each(function () {
+			winItems.push(inventory[parseInt(this.id)]);
+			itemsCost += inventory[parseInt(this.id)].price;
+			ids.push(parseInt(this.id));
+		})
+		for (var i = 0; i < ids.length; i++) {
+			var d = ids[ids.length - i - 1];
+			inventory.splice(d, 1);
+		}
+		saveInventory();
 	}
-	saveInventory();
 	/*newItemsSound.play();
 	addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);*/
 	$(".add-item").css("display", 'none');
@@ -186,9 +190,12 @@ function endGame(playerWin) {
 		$('.status').text(Localization.rps2.winGame[Settings.language]);
 		for (var i = 0; i < winItems.length; i++) {
 			winItems[i].new = true;
-			inventory.push(winItems[i]);
+			if (!isAndroid())
+				inventory.push(winItems[i]);
+			else
+				saveWeapon(winItems[i]);
 		}
-		saveInventory();
+		if (!isAndroid()) saveInventory();
 		statisticPlusOne('rps-wins');
 	} else {
 		$('.status').text(Localization.rps2.lostGame[Settings.language]);

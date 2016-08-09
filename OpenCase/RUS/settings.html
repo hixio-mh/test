@@ -300,8 +300,13 @@ $('#reset').on('click', function() {
 	$('#resetPopup').css('display', 'block');
 })
 $('#resetConfirm').on('click', function() {
-	localStorage.clear();
-	deleteAllCookies();
+	if (isAndroid()) {
+		client.deleteAllInventory();
+		deleteAllCookies();
+	} else {
+		localStorage.clear();
+		deleteAllCookies();
+	}
 	$('#closePopup').click();
 	$("#submit").click();
 	$("#popup-status").text(Localization.settings2.reset[Settings.language]);//Settings.language == "RU" ? saved.RU : saved.EN);
@@ -324,6 +329,15 @@ function deleteAllCookies() {
     	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
     	document.cookie = name + "=;";
     }
+}
+
+function isAndroid() {
+	try {
+		var a = client.isAndroid();
+		return true;
+	} catch (e) {
+		return false;
+	}
 }
 
 </script>

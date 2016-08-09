@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head>
-<body data-localization="cases">
+<body data-localization="cases" data-inventory="no-load">
 <div class="navigationBar" data-menu-EN="Open Cases" data-menu-RU="Открыть кейсы"></div>
 <div class="popup">
 <span id='closePopup'></span>
@@ -60,12 +60,35 @@ for(var i = 0; i < cases.length ; i++) {
 			break;
 	}
 }
-$('#showVideoAd').on('click', function() {
-	try {
-		client.showVideoAd();
-	} catch(e) {
+
+$(function() {
+	if (isAndroid()) {
+		fromLocalStorageToDB();
+		
+		var version = parseFloat(client.getCurrentAppVersionName());
+
+		if (version < 1.1) {
+			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
+		}
 	}
-	window.location = "open.html?caseId="+$('.js-secretField').text()+'&fromAd=1';
+});
+	
+$(document).on('click', '#new-version__update', function () {
+	location = 'https://play.google.com/store/apps/details?id=csgo.opencase';
+});	
+
+$(document).on('click', '#new-version__later', function () {
+	$('.new-version').css('display', 'none');
+});
+
+
+$('#showVideoAd').on('click', function() {
+	if (isAndroid()) 
+		client.showVideoAd("open.html?caseId="+$('.js-secretField').text()+'&fromAd=1');
+	else {
+		window.location = "open.html?caseId="+$('.js-secretField').text()+'&fromAd=1';
+	}
+
 });
 </script>
 </body></html>

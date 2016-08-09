@@ -139,6 +139,20 @@ Localization.cases = [{
 		}
 	},
 ],
+Localization.cases2 = {
+	"new_version" : {
+		"RU" : "Доступна новая версия приложения.",
+		"EN" : "New version of the app is available."
+	},
+	"new_version_button_update" : {
+		"RU" : "Обновить",
+		"EN" : "Update"
+	},
+	"new_version_button_later" : {
+		"RU" : "Позже",
+		"EN" : "Later"
+	}
+},
 Localization.openCase = [{
 		"selector" : "#win_youWon",
 		"localization" : {

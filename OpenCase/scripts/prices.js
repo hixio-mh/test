@@ -36207,20 +36207,13 @@ var Prices = [{
 		quality : 'Battle-Scarred',
 		marketPrice : 9.96,
 		avgPrice : 6.69
-
-	}, { //WorkShop Case Prices
-		type : 'Sawed-Off',
-		name : 'Cutaway',
-		quality : 'Battle-Scarred',
-		marketPrice : 0.8,
-		avgPrice : 0.8
-
 	}, {
 		type : 'Sawed-Off',
 		name : 'Cutaway',
 		quality : 'Well-Worn',
 		marketPrice : 1.7,
 		avgPrice : 1.7
+
 	}, {
 		type : 'Sawed-Off',
 		name : 'Cutaway',
@@ -37120,4 +37113,4 @@ var Prices = [{
 		marketPrice : 440.6,
 		avgPrice : 440.6
 	},
-]
+	]

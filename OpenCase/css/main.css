@@ -94,7 +94,7 @@ body {
 }
 
 .inventory li {
-    color: fff;
+    color: #fff;
 }
 .inventory li a {
     color: #a1e2ed;
@@ -370,4 +370,31 @@ button#what-i-can-win-Button {
     margin-left: -30px;
     margin-top: -17px;
     background: url(../images/weapon_selected.png);
+}
+
+.new-version {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgb(121, 0, 0);
+    color: #fff;
+    font-family: Lato;
+    text-align: center;
+    padding: 8px 0;
+}
+.new-version b {
+    display: block;
+}
+.new-version__button {
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 5px;
+    width: 80px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+	cursor: pointer;
+}
+span#new-version__update {
+    margin-left: 10px;
 }

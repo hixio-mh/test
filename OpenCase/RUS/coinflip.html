@@ -34,50 +34,49 @@
 		<tr><th id='local-table-players'>Игроки</th><th id='local-table-items'>Предметы</th><th colspan=2 id='local-table-total'>Стоимость</th></tr>
 		<tr id='js-table-loading-gif'><td colspan =4><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></td></tr>
 	</table>
-	
+
 	<!-- Инвентарь -->
-<div class="inventoryList" style="display: none;">
-<span id="intentory-Player"></span>
-<div class="closeInventory"></div>
-<ul class="inventory inv-price-counter"></ul>
-<button class="choseItems">Внести</button>
-</div>
+	<div class="inventoryList" style="display: none;">
+		<span id="intentory-Player"></span>
+		<div class="closeInventory"></div>
+		<ul class="inventory inv-price-counter"></ul>
+		<button class="choseItems">Внести</button>
+	</div>
 
-<!-- Предметы в игре -->
-<div class='blur' style='display:none'></div>
-<div class='game' style='display:none'>
-	<div class='close-game'></div>
-	<table class='game__table'>
-	<tr><td class='game__table__td'>
-	<div class='game__bot'>
-		<span class='game__bot__nick'></span>
-		<img src='' class='game__bot__img'>
-		<span class='game__bot__price'></span>
-		<span class='game__bot__chance'>100%</span>
-	</div></td><td class='game__table__win'></td>
-	<td class='game__table__td'>
-	<div class='game__player'>
-		<span class='game__player__nick'>?</span>
-		<img src='../images/ava/0.jpg' class='game__player__img'>
-		<span class='game__player__price'>$0</span>
-		<span class='game__player__chance'>0%</span>
-	</div></td>
-	</tr></table>
-	<div class='game__start' style='display: none'><span class='game__start__button'>Начать игру</span></div>
-	<table class='bot-inventory'>
-	</table>
-	<table class='player-inventory'>
-	</table>
-</div>
+	<!-- Предметы в игре -->
+	<div class='blur' style='display:none'></div>
+	<div class='game' style='display:none'>
+		<div class='close-game'></div>
+		<table class='game__table'>
+			<tr><td class='game__table__td'>
+					<div class='game__bot'>
+						<span class='game__bot__nick'></span>
+						<img src='' class='game__bot__img'>
+							<span class='game__bot__price'></span>
+							<span class='game__bot__chance'>100%</span>
+						</div></td><td class='game__table__win'></td>
+					<td class='game__table__td'>
+						<div class='game__player'>
+							<span class='game__player__nick'>?</span>
+							<img src='../images/ava/0.jpg' class='game__player__img'>
+								<span class='game__player__price'>$0</span>
+								<span class='game__player__chance'>0%</span>
+							</div></td>
+					</tr></table>
+				<div class='game__start' style='display: none'><span class='game__start__button'>Начать игру</span></div>
+				<table class='bot-inventory'>
+				</table>
+				<table class='player-inventory'>
+				</table>
+			</div>
 
-<div class='coin-blur hide'></div>
-<div id="coin-flip-cont" class='hide'>
-		<div id="coin">
-			<div class="t"></div>
-			<div class="ct"></div>
+			<div class='coin-blur hide'></div>
+			<div id="coin-flip-cont" class='hide'>
+				<div id="coin">
+					<div class="t"></div>
+					<div class="ct"></div>
+				</div>
+			</div>
 		</div>
-</div>
-
-</div>
 </body>
 </html>

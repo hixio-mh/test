@@ -158,6 +158,9 @@
     width: 100%;
     color: #fff;
 }
+#weaponInfoTable td {
+    text-align: left;
+}
 #weaponInfoTable td:nth-child(2n) {
     text-align: right;
 }

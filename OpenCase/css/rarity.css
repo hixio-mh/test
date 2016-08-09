@@ -20,7 +20,7 @@
 	background: #DAB515;
 }
 .workshop, .workshop-color {
-    background: #9c1ba;
+    background: #0ec571;
 }
 
 .consumer {
@@ -45,5 +45,5 @@
     background: linear-gradient(to right,#DAB515,#826E1B);
 }
 .workshop {
-	background: linear-gradient(to right,#29c1ba,#11575f);
+    background: linear-gradient(to right,#0ec571,#076339);
 }

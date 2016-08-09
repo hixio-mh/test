@@ -80,15 +80,27 @@ function coinStoped() {
 		$('.game__bot__img').addClass('winner-img');
 	} else {
 		$('.game__player__img').addClass('winner-img');
-		for (var i = 0; i < PlayerBet.weapons.length; i++) {
-			PlayerBet.weapons[i].new = true;
-			inventory.push(PlayerBet.weapons[i]);
+		if (isAndroid()) {
+			for (var i = 0; i < PlayerBet.weapons.length; i++) {
+				PlayerBet.weapons[i].new = true;
+				saveWeapon(PlayerBet.weapons[i]);
+			}
+			for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
+				Games[PlayerInGame].bot.weapons[i].new = true;
+				saveWeapon(Games[PlayerInGame].bot.weapons[i]);
+			}
+		} else {
+			for (var i = 0; i < PlayerBet.weapons.length; i++) {
+				PlayerBet.weapons[i].new = true;
+				inventory.push(PlayerBet.weapons[i]);
+			}
+			for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
+				Games[PlayerInGame].bot.weapons[i].new = true;
+				inventory.push(Games[PlayerInGame].bot.weapons[i]);
+			}
+			saveInventory();
+
 		}
-		for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
-			Games[PlayerInGame].bot.weapons[i].new = true;
-			inventory.push(Games[PlayerInGame].bot.weapons[i]);
-		}
-		saveInventory();
 	}
 	Games[PlayerInGame].winner = winner;
 	Games[PlayerInGame].player.weapons = [];
@@ -129,7 +141,6 @@ var getRandomItem = function(list, weight) {
      
     var random_num = Math.rand(0, total_weight);
     var weight_sum = 0;
-    //console.log(random_num)
      
     for (var i = 0; i < list.length; i++) {
         weight_sum += weight[i];
@@ -146,9 +157,6 @@ var getRandomItem = function(list, weight) {
 
 $(document).on('click', '.addWeapons', function() {	
 	PlayerInGame = $(this).data('game-id');
-	inventory = inventory.sort(function(a,b){
-		return b.price-a.price;
-	});
 	if (Settings.sounds) clickSound.play();
 	fillInventory();
 });
@@ -188,7 +196,7 @@ function showGame(game_id) {
 		$('.player-inventory').append('<tr><td class="addWeapons" data-game-id="'+game_id+'">'+Localization.coinflip2.add_weapons[Settings.language]+'</td></tr>');
 		$('.game__start').css('display', 'none');
 		
-	} else if (typeof Games[game_id].winner == 'undefined') {
+	} else if (typeof Games[game_id].winner == 'undefined' && PlayerBet.weapons.length != 0) {
 		$('.game__player__price').text('$'+PlayerBet.items_cost.toFixed(2));
 		
 		for(var i = 0; i < PlayerBet.weapons.length; i++) {
@@ -260,16 +268,25 @@ $(document).on("click", ".choseItems", function(){
 			};
 			PlayerBet.weapons = [];
 		}
-		$(".inventoryItemSelected").each(function(){
-			PlayerBet.weapons.push(inventory[parseInt(this.id)]);
-			PlayerBet.items_cost += inventory[parseInt(this.id)].price;
-			ids.push(parseInt(this.id));
-		})
-		for (var i = 0; i < ids.length; i++) {
-			var d = ids[ids.length-i-1];
-			inventory.splice(d, 1);
+		if (isAndroid()) {
+			$(".inventoryItemSelected").each(function () {
+				PlayerBet.weapons.push(getWeapon(parseInt($(this).data('id'))));
+				PlayerBet.items_cost += getWeapon(parseInt($(this).data('id'))).price;
+				deleteWeapon($(this).data('id'));
+			})
+			$('#js-loading-inventory').remove();
+		} else {
+			$(".inventoryItemSelected").each(function () {
+				PlayerBet.weapons.push(inventory[parseInt(this.id)]);
+				PlayerBet.items_cost += inventory[parseInt(this.id)].price;
+				ids.push(parseInt(this.id));
+			})
+			for (var i = 0; i < ids.length; i++) {
+				var d = ids[ids.length - i - 1];
+				inventory.splice(d, 1);
+			}
+			saveInventory();
 		}
-		saveInventory();
 
 		$(".inventoryList").css("display", "none");
 		$("#inventorySum").remove();
@@ -289,11 +306,9 @@ function botAddGame(difficulty) {
 	bot.items_cost = 0.0;
 	
 	var weaponCount = Math.rand(3, maxWeapons);
-	console.log('Random number: '+'%c '+weaponCount+' ', 'background: #006E99')
 	for (var q = 0; q < weaponCount; q++) {
 		var rnd = Math.rand(0, Prices.length-1)
 		var weapon = Prices[rnd];
-		//console.log(rnd);
 		var price = (weapon.marketPrice == 0) ? weapon.avgPrice : weapon.marketPrice;
 		
 		if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {

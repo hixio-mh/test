@@ -1,6 +1,6 @@
 var Player = {
 	"nickname" : "Player", 
-	"avatar" : "24.jpg"
+	"avatar" : "0.jpg"
 }
 var Settings = {
 	"language" : "EN",

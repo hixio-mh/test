@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 </head>
-<body data-localization="openCase">
+<body data-localization="openCase" data-inventory="no-load">
 
 <div class="weapons">
 <div class="closeCase"></div>
@@ -56,7 +56,13 @@ $(function(){
 		caseId = param.caseId[0];
 		$("#caseID").text(caseId);
 		$("#youCanWin span").text(cases[caseId].name)
-		$("#opened").text($.cookie("case-"+cases[caseId].name, Number));
+		var opened = 0;
+		if (isAndroid())
+			opened = parseInt(client.getStatistic("case-"+cases[caseId].name));
+		else
+			opened = $.cookie("case-"+cases[caseId].name, Number)
+			
+		$("#opened").text(opened);
 		
 		document.title = "Открытие кейса — "+cases[caseId].name;
 		
@@ -65,33 +71,46 @@ $(function(){
 });
 $('#what-i-can-win-Button').on('click', function(){weaponList()});
 function weaponList() {
-			var rare = false;
-			for(var i = 0; i < cases[caseId].weapons.length; i++) {
-				var weapon = cases[caseId].weapons[i];
-				if (weapon.rarity == 'rare' && rare == true) continue;			
-				var img = getImgUrl(weapon.img);
-		
-				var type = weapon.type;
-				if(type.indexOf("|") != -1) {type = type.split("|")[1]}
-				type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
-			
-		
-				var name = weapon.skinName;
-				if(name.indexOf("|") != -1) {name = name.split("|")[1]}
-				name = getSkinName(name, Settings.language);
-				if (weapon.rarity == 'rare') {
-					type = '★ Rare Special Item ★';
-					name = '&nbsp;';
-					img = '../images/Weapons/rare.png';
-					rare = true;
-				}
-				var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div>";
-				$(".weaponsList").append("<li class='weapon'>"+weaponInfo+"</li>");
-			}
-			$(".weaponsList").css("display", "block");
-			$("#youCanWin").css("display", "block");
-			$('#what-i-can-win-Button').css('display', 'none');
+	var rare = false;
+	for (var i = 0; i < cases[caseId].weapons.length; i++) {
+		var weapon = cases[caseId].weapons[i];
+		if (weapon.rarity == 'rare' && rare == true)
+			continue;
+		var img = getImgUrl(weapon.img);
+
+		var type = weapon.type;
+		if (type.indexOf("|") != -1) {
+			type = type.split("|")[1]
 		}
+		type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
+
+		var name = weapon.skinName;
+		if (name.indexOf("|") != -1) {
+			name = name.split("|")[1]
+		}
+		name = getSkinName(name, Settings.language);
+		if (weapon.rarity == 'rare') {
+			type = '★ Rare Special Item ★';
+			name = '&nbsp;';
+			img = '../images/Weapons/rare.png';
+			rare = true;
+		}
+		var weaponInfo = "<img src='" + img + "'><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
+		$(".weaponsList").append("<li class='weapon'>" + weaponInfo + "</li>");
+	}
+	$(".weaponsList").css("display", "block");
+	$("#youCanWin").css("display", "block");
+	$('#what-i-can-win-Button').css('display', 'none');
+}
+
+function isAndroid() {
+	try {
+		var a = client.isAndroid();
+		return true;
+	} catch (e) {
+		return false;
+	}
+}
 </script>
 </body>
 </html>

@@ -177,20 +177,26 @@ function startGame() {
 			
 			if(win.nick == Player.nickname) {
 				for (var i = 0; i < ItemsInGame.length; i++) {
-					inventory.push(ItemsInGame[i]);
+					if (isAndroid()) 
+						saveWeapon(ItemsInGame[i]);
+					else
+						inventory.push(ItemsInGame[i]);
+					
 				}
-				saveInventory();
+				if (!isAndroid())
+					saveInventory();
 				
 				//Statistic
 				statisticPlusOne('rulet-wins');
 				
-				var a = $.cookie('rulet-max-win');
+				var a = getStatistic('rulet-max-win');
+				
 				var winSum = parseFloat($('.progressbar-text s').text().substr(1));
 				if (typeof a == "undefined")
 					a = winSum;
 				else
 					a = winSum > parseFloat(a) ? winSum : parseFloat(a);
-				$.cookie('rulet-max-win', a);	
+				saveStatistic('rulet-max-win', a);	
 			} else {
 				if (PlayerInGame)
 					statisticPlusOne('rulet-loose');
@@ -311,11 +317,20 @@ $(".choseItems").on("click", function(){
 	var itemsCost = 0;
 	if(itemsCount != 0) {
 		
-		$(".inventoryItemSelected").each(function(){
-			playerWeapons.push(inventory[parseInt(this.id)]);
-			itemsCost += inventory[parseInt(this.id)].price;
-			ids.push(parseInt(this.id));
-		})
+		if (isAndroid()) {
+			$(".inventoryItemSelected").each(function () {
+				playerWeapons.push(getWeapon(parseInt($(this).data('id'))));
+				itemsCost += getWeapon(parseInt($(this).data('id'))).price;
+				//ids.push(parseInt(this.id));
+				deleteWeapon($(this).data('id'));
+			})
+		}else {
+			$(".inventoryItemSelected").each(function () {
+				playerWeapons.push(inventory[parseInt(this.id)]);
+				itemsCost += inventory[parseInt($(this).id)].price;
+				ids.push(parseInt(this.id));
+			})
+		}
 		PlayersInGame.push({
 			"nick" : Player.nickname,
 			"avatar" : Player.avatar, 
@@ -327,12 +342,14 @@ $(".choseItems").on("click", function(){
 			}
 		});
 		lastTicket += (itemsCost * 100);
-		for (var i = 0; i < ids.length; i++) {
-			var d = ids[ids.length-i-1];
-			inventory.splice(d, 1);
+		if (!isAndroid()) {
+			for (var i = 0; i < ids.length; i++) {
+				var d = ids[ids.length - i - 1];
+				inventory.splice(d, 1);
+			}
+			saveInventory();
 		}
-		saveInventory();
-	
+		
 		for (var i = 0; i < playerWeapons.length; i++) {
 			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity, playerWeapons[i].price)
 		}
@@ -345,13 +362,13 @@ $(".choseItems").on("click", function(){
 	}
 })
 
-
 function FillMyInventoryWithRandomWeapon(count){
 	while(count--) {
 		var weapon = getRandomWeapon(1)
 		weapon.quality = getItemQuality()[1];
 		weapon.statTrak = ifStatTrak(weapon.type);
 		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+		weapon.new = true;
 		
 		var z = 0;
 		while (weapon.price == 0) {
@@ -360,7 +377,10 @@ function FillMyInventoryWithRandomWeapon(count){
 			if (z == 4) break;
 			z++
 		}
-		inventory.push(weapon);
+		if(isAndroid())
+			saveWeapon(weapon);
+		else
+			inventory.push(weapon);
 	}
-	saveInventory();
+	if(!isAndroid()) saveInventory();
 }
