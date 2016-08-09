@@ -147,8 +147,8 @@
 	"month" : 8,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Скоро выйдет обновление, затрагивающие работу инвентаря, если найдете какие-нибудь ошибки, пожалуйста, напишите мне на почту kurtukovvlad@gmail.com",
-		"EN" : " - The big update will be released soon. If you find any bugs, please contact me via email kurtukovvlad@gmail.com"
+		"RU" : " - Улучшен алгоритм сохранения оружия. Теперь оружие не должно пропадать.<br> - Улучшен алгоритм загрузки оружия. Теперь инвентарь загружается быстрее при большом количестве оружия. И оружие загружается по мере прокрутки инвентаря.<br> - Изменена страница ошибки, если не удаётся подключиться к серверу.<br><br>Если вы обнаружили какие-либо ошибки, свяжитесь со мной kurtukovvlad@gmail.com.",
+		"EN" : " - Improved save/load weapons algorithm. Now weapons don't disappear and inventory loads faster with a lot of weapons.<br> - Changed the error page, if can't connect to the server.<br><br>If you find any bugs contact me kurtukovvlad@gmail."
 	}
 }, 
 ];
