@@ -142,5 +142,13 @@
 		"RU" : " - Исправлена ошибка, когда не показывалась аватарка после сброса.<br> - Новая иконка для кейса 'Workshop'",
 		"EN" : " - Bug fixes.<br> - New icon for 'Workshop' case."
 	}
+}, {
+	"day" : 9,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Скоро выйдет обновление, затрагивающие работу инвентаря, если найдете какие-нибудь ошибки, пожалуйста, напишите мне на почту kurtukovvlad@gmail.com",
+		"EN" : " - The big update will be released soon. If you find any bugs, please contact me via email kurtukovvlad@gmail.com"
+	}
 }, 
 ];
