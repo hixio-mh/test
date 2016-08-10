@@ -223,6 +223,35 @@ body {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 7px rgba(0, 0, 0, 1);
     z-index: 2;
 }
+#caruselOver:before, #caruselOver:after {
+    content: '';
+    width: 100px;
+    height: 137px;
+    position: absolute;
+    display: block;
+    background: url(../images/Weapons/shadow.png);
+}
+#caruselOver:before {
+	left: 0px;
+}
+#caruselOver:after {
+	right: 0px;
+	-webkit-transform: rotate(180deg);
+			transform: rotate(180deg);
+}
+#aCanvas:before {
+    content: '';
+    width: 124px;
+    height: 136px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.29), transparent, transparent);
+    display: block;
+    position: absolute;
+    margin-left: 106px;
+	-webkit-transform: rotate(66deg);
+			transform: rotate(66deg);
+    margin-top: -55px;
+	z-index: 50;
+}
 #aCanvas {
     width: 383px;
     height: 136px;
