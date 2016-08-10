@@ -188,6 +188,7 @@ function startGame() {
 				
 				//Statistic
 				statisticPlusOne('rulet-wins');
+				//changePoints(2);
 				
 				var a = getStatistic('rulet-max-win');
 				
@@ -327,7 +328,7 @@ $(".choseItems").on("click", function(){
 		}else {
 			$(".inventoryItemSelected").each(function () {
 				playerWeapons.push(inventory[parseInt(this.id)]);
-				itemsCost += inventory[parseInt($(this).id)].price;
+				itemsCost += inventory[parseInt(this.id)].price;
 				ids.push(parseInt(this.id));
 			})
 		}
