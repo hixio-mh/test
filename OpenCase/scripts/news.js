@@ -150,5 +150,13 @@
 		"RU" : " - Улучшен алгоритм сохранения оружия. Теперь оружие не должно пропадать.<br> - Улучшен алгоритм загрузки оружия. Теперь инвентарь загружается быстрее при большом количестве оружия. И оружие загружается по мере прокрутки инвентаря.<br> - Изменена страница ошибки, если не удаётся подключиться к серверу.<br><br>Если вы обнаружили какие-либо ошибки, свяжитесь со мной kurtukovvlad@gmail.com.",
 		"EN" : " - Improved save/load weapons algorithm. Now weapons don't disappear and inventory loads faster with a lot of weapons.<br> - Changed the error page, if can't connect to the server.<br><br>If you find any bugs contact me kurtukovvlad@gmail."
 	}
+}, {
+	"day" : 10,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Тень и блики в открытии кейсов.",
+		"EN" : " - Shadow in weapon carousel in open case."
+	}
 }, 
 ];
