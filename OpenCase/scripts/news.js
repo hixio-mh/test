@@ -155,8 +155,8 @@
 	"month" : 8,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Тень и блики в открытии кейсов.",
-		"EN" : " - Shadow in weapon carousel in open case."
+		"RU" : " - Тень и блики в открытии кейсов и джекпоте.",
+		"EN" : " - Shadow in weapon carousel in the open case and in the jackpot."
 	}
 }, 
 ];
