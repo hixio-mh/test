@@ -532,5 +532,29 @@
 			"RUS" : "Боевой мустанг"
 		},
 		"youtube" : "https://www.youtube.com/embed/JR5swmP76Ic"
-	}
+	}, {
+		"name" : {
+			"ENG" : "Star Wars Creations",
+			"RUS" : "Механизмы из Star Wars"
+		},
+		"youtube" : "https://www.youtube.com/embed/rEFmkMHROv8"
+	}, {
+		"name" : {
+			"ENG" : "Sports Cars, Trucks, & Carriages",
+			"RUS" : "Спортивные машины, грузовики и кареты"
+		},
+		"youtube" : "https://www.youtube.com/embed/KBvwAADQWEI"
+	}, {
+		"name" : {
+			"ENG" : "The Biggest Monster Truck",
+			"RUS" : "Самый Большой Monster Truck"
+		},
+		"youtube" : "https://www.youtube.com/embed/sjDX0-nOP18"
+	}, {
+		"name" : {
+			"ENG" : "New Logic Gate & Time Blocks! Modern House Update",
+			"RUS" : "Новые блоки с логикой и Таймеры"
+		},
+		"youtube" : "https://www.youtube.com/embed/kNI0IgsDivI"
+	},
 ]
