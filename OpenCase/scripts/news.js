@@ -158,5 +158,13 @@
 		"RU" : " - Тень и блики в открытии кейсов и джекпоте.",
 		"EN" : " - Shadow in weapon carousel in the open case and in the jackpot."
 	}
+}, {
+	"day" : 13,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлены неправильные цены в монетке.",
+		"EN" : " - Wrong prices in CoinFlip was fixed."
+	}
 }, 
 ];
