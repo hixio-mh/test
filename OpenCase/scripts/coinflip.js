@@ -30,7 +30,6 @@ $(window).load(function() {
 	for (var i = 0; i < games_order.length; i++) {
 		var game = botAddGame(games_order[i]);
 		Games.push(game);
-		//list += "<tr><td class='table-name'><img src='../images/ava/"+game.img+"'><span>"+game.name+"</span></td><td>"+game.weapons.length+" items <span class='view'>(view)</span></td><td>$"+game.items_cost+" / Open</td><td><span class='join "+game.color+"' data-game-id="+i+">Join</span></td></tr>";
 	}
 	Games = Games.sort(function(a,b){
 		return parseFloat(a.bot.items_cost)-parseFloat(b.bot.items_cost);
@@ -99,8 +98,8 @@ function coinStoped() {
 				inventory.push(Games[PlayerInGame].bot.weapons[i]);
 			}
 			saveInventory();
-
 		}
+		//changePoints(2);
 	}
 	Games[PlayerInGame].winner = winner;
 	Games[PlayerInGame].player.weapons = [];
@@ -135,23 +134,19 @@ function hideCoin() {
 
 
 var getRandomItem = function(list, weight) {
-    var total_weight = weight.reduce(function (prev, cur, i, arr) {
-        return prev + cur;
-    });
-     
+    var total_weight = 100;
+
     var random_num = Math.rand(0, total_weight);
     var weight_sum = 0;
-     
+
     for (var i = 0; i < list.length; i++) {
         weight_sum += weight[i];
         weight_sum = +weight_sum.toFixed(2);
-         
+        
         if (random_num <= weight_sum) {
             return list[i];
         }
     }
-     
-    // end of function
 };
  
 
@@ -309,7 +304,7 @@ function botAddGame(difficulty) {
 	for (var q = 0; q < weaponCount; q++) {
 		var rnd = Math.rand(0, Prices.length-1)
 		var weapon = Prices[rnd];
-		var price = (weapon.marketPrice == 0) ? weapon.avgPrice : weapon.marketPrice;
+		var price = weapon.marketPrice == 0 ? weapon.avgPrice : weapon.marketPrice;
 		
 		if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
 			var type = weapon.type;
@@ -321,7 +316,10 @@ function botAddGame(difficulty) {
 			for (var i = 0; i < cases.length; i++) {
 				for (var z = 0; z < cases[i].weapons.length; z++) 
 					if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName) == name)) {
-						var wp = cases[i].weapons[z];
+						
+						var wp = {}
+						for (var key in cases[i].weapons[z])
+							wp[key] = cases[i].weapons[z][key];
 						wp.skinName = getSkinName(name, Settings.language);
 						wp.price = price;
 						wp.statTrak = (typeof weapon.statTrak == 'undefined') ? false : true;
@@ -340,23 +338,6 @@ function botAddGame(difficulty) {
 			weaponCount++;
 		}
 	}
-	
-	/*for (var i = 0; i < weaponCount; i++) {
-		var weapon = getRandomWeapon(1);
-		weapon.skinName = getSkinName(weapon.skinName, Settings.language);
-		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
-		weapon.statTrak = ifStatTrak(weapon.type);
-		var price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
-		
-		if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
-			weapon.price = price;
-			bot.weapons.push(weapon);
-			bot.items_cost += weapon.price;
-		} else {
-			//i--;
-			weaponCount++;
-		}
-	}*/
 	var color = '';
 	if (bot.items_cost < 100) color = 'consumer-color';
 	if (bot.items_cost > 100 && bot.items_cost < 500) color = 'milspec-color';
