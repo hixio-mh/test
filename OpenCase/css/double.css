@@ -1,0 +1,149 @@
+﻿#containter {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+	padding-top:50px;
+	color: #fff;
+	font-family: Lato;
+}
+
+@media (max-width:495px) {
+	.scrollerContainer {
+		margin: 10px 0;
+	}
+}
+.margin-left-body {
+	margin-left: 8px;
+}
+
+.last-games {
+    text-align: center;
+    overflow: hidden;
+	height: 46px;
+	background: url(../images/double/last-games-background.png) #484848;
+}
+.inline {
+    display: inline-block;
+    font-family: LatoBold;
+}
+.black-ball, .green-ball, .red-ball {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2em;
+    font-size: 1.3em;
+    margin: 3px;
+}
+.green-block, .black-block, .red-block {
+    width: 96px;
+	height: 96px;
+    margin-top: 3px;
+}
+.black-ball, .black-block {
+    background: #262626;
+}
+.red-ball, .red-block {
+    background: #A20000;
+}
+.green-ball, .green-block {
+    background: #29AD26;
+}
+
+#caruselOver {
+    height: 104px;
+	overflow: hidden;
+}
+#aCanvas {
+    height: 104px;
+}
+.bets {
+    height: 29px;
+    white-space: nowrap;
+    overflow-x: auto;
+    margin-right: 9px;
+    margin-left: 9px;
+    text-align: center;
+}
+.bets > span {
+    margin-left: 0px;
+    padding: 5px 10px;
+    background: #e7e7e7;
+    color: #3F3F3F;
+    display: inline-block;
+    border-right: 1px solid #303030;
+    border-top: 1px solid #303030;
+    font-size: 0.9em;
+	cursor: pointer;
+}
+#bet {
+    width: calc(100% - 16px);
+    text-align: center;
+    height: 37px;
+    font-size: 1em;
+    border: 1px solid #303030;
+    margin: 0 8px;
+}
+
+
+.bets-table {
+    width: 100%;
+}
+.bets-tables__table {
+    width: 33%;
+    float: left;
+    border-collapse: collapse;
+}
+.bets-tables__table td {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+	color: #fff;
+}
+.bet-to-color {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    color: #fff;
+}
+.bet-red {
+    background: #950000;
+    background: url(../images/double/x2.png) right no-repeat, #950000;
+    background: url(../images/double/x2.png) right no-repeat, linear-gradient(to top, #950000, #D22626);
+}
+.bet-green {
+    background: #1E7D1B;
+    background: url(../images/double/x14.png) right -6px no-repeat, #1E7D1B;
+    background: url(../images/double/x14.png) right -6px no-repeat, linear-gradient(to top, #1E7D1B, #27A723);
+}
+.bet-black {
+    background: #262626;
+    background: url(../images/double/x2.png) right no-repeat, #262626;
+    background: url(../images/double/x2.png) right no-repeat, linear-gradient(to top, #262626, #626161);
+}
+.the-bet__player {
+    padding: 7px 4px;
+}
+.the-bet__player img {
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+.the-bet td:nth-child(2) {
+    text-align: right;
+    padding-right: 4px;
+	border-left: none;
+}
+.the-bet td:nth-child(1) {
+    border-right: none;
+}
+@media (max-width: 552px) {
+	.the-bet {
+		font-size: 0.7em;
+	}
+}
+@media (max-width: 420px) {
+	.the-bet__player img {
+		display:none;
+	}
+}

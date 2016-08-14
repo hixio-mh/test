@@ -1,0 +1,78 @@
+﻿<html>
+<head>
+<title>Double</title>
+<!-- Скрипты -->
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/jackpotBots.js"></script>
+<script src="../scripts/inventory.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+<!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/double.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+
+<script src="../scripts/double.js"></script>
+</head>
+
+<body data-localization="double" data-inventory='no-load'>
+<div id="containter">
+<div class="navigationBar" data-menu-EN="Double" data-menu-RU="Дабл"></div>
+<span id='last_games_text' class='margin-left-body'>Previous numbers:</span>
+<div class='last-games'></div>
+
+<div class="scrollerContainer">
+	<div id="caruselOver"><div id="caruselLine"></div></div>
+	<div id="aCanvas">
+		<div class="casesCarusel">
+		</div>
+	</div>
+</div>
+<span id='balance-text' class='margin-left-body'>Balance:</span> <span id='balance'>0</span>
+<div class="bets">
+<span class='add-to-bet' data-bet='clear'>Clear</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span>
+</div>
+<input type="text" id="bet" maxlength='7'/>
+
+<div class='bets-tables'>
+
+			<table class='bets-tables__table bets-red-table'>
+			<tr><td colspan=2><button class='bet-to-color bet-red'>1 — 7</button></td></tr>
+			</table>
+
+			<table class='bets-tables__table bets-green-table'>
+			<tr><td colspan=2><button class='bet-to-color bet-green'>0</button></td></tr>
+			</table>
+
+			<table class='bets-tables__table bets-black-table'>
+			<tr><td colspan=2><button class='bet-to-color bet-black'>8 — 14</button></td></tr>
+			</table>
+
+</div>
+
+
+<!-- Инвентарь -->
+<div class="inventoryList" style="display: none;">
+	<span id="intentory-Player"></span>
+	<div class="closeInventory"></div>
+	<ul class="inventory inv-price-counter"></ul>
+	<button class="choseItems">Внести</button>
+</div>
+
+</div>
+
+</body>
+</html>
