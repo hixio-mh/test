@@ -97,6 +97,7 @@ function startGame() {
 						statisticPlusOne('double-wins');
 						changePoints(2);
 					} else {
+						changePoints(-1);
 						statisticPlusOne('double-loose');
 					}
 				saveStatistic('doubleBalance', Player.doubleBalance);
@@ -230,7 +231,7 @@ $(document).on("click", ".choseItems", function(){
 		
 		if (itemsCost) {
 			Player.doubleBalance += itemsCost*100;
-			Player.doubleBalance = parseFloat(Player.doubleBalance.toFixed(2));
+			Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(2));
 			$('#balance').text(Player.doubleBalance);
 			saveStatistic('doubleBalance', Player.doubleBalance);
 		}

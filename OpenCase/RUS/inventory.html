@@ -283,6 +283,8 @@ $('.button_contract').on('click', function() {
 			if (collection[i].rarity == nextQuality)
 				nextQualityWeapons.push(collection[i]);
 		var newWeapon = nextQualityWeapons[Math.rand(0, nextQualityWeapons.length-1)];
+	} else {
+		return false;
 	}
 	
 	newWeapon.quality = getItemQuality()[1];

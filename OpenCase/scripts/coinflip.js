@@ -80,6 +80,7 @@ function coinStoped() {
 	if (winner == 'CT') {
 		$('.game__bot__img').addClass('winner-img');
 		statisticPlusOne('coinflip-loose');
+		changePoints(-1);
 	} else {
 		$('.game__player__img').addClass('winner-img');
 		if (isAndroid()) {

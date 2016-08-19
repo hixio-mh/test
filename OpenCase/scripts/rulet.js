@@ -199,8 +199,10 @@ function startGame() {
 					a = winSum > parseFloat(a) ? winSum : parseFloat(a);
 				saveStatistic('rulet-max-win', a);	
 			} else {
-				if (PlayerInGame)
+				if (PlayerInGame) {
 					statisticPlusOne('rulet-loose');
+					changePoints(-1);
+				}
 			}
 		},
 		progress: function(e, t) {
