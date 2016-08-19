@@ -67,8 +67,10 @@ function startGame() {
 	
 	$("#coin").addClass(animation);
 	
-	flipSoundCT.currentTime = 0;
-	if (Settings.sounds)flipSoundCT.play();
+	if (Settings.sounds) {
+		flipSoundCT.currentTime = 0;
+		flipSoundCT.play();
+	}
 }
 
 function coinStoped() {
