@@ -127,6 +127,18 @@
 .icon-info:before {
   content: "\ea0c";
 }
+/*.icon-make-group:before {
+  content: "\ea58";
+}*/
+.icon-make-group::before {
+    content: "";
+    background: url(../images/double/coin-white.png);
+    background-size: cover;
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+	vertical-align: middle;
+}
 .icon-scissors:before {
   content: "\ea5a";
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ранги</title>
+<!-- Скрипты -->
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+<!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+
+<style>
+#containter {
+	font-family: Lato;
+	padding-top: 45px;
+}
+.your-points {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 40px;
+    right: 0;
+    border-radius: 0 0 0 5px;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+}
+#locl-your-points {
+    display: block;
+}
+.ranks-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.rank {
+    color: #fff;
+    padding: 5px;
+    border-bottom: 1px solid;
+}
+.rank.selected {
+    background: rgba(0, 255, 38, 0.2);
+}
+.rank > span {
+    display: block;
+}
+.rank__name {
+    font-weight: 100;
+    font-size: 1.2em;
+}
+.rank img {
+    width: 80px;
+    margin-right: 5px;
+    display: block;
+}
+.rank table {
+    border-collapse: collapse;
+	width:100%;
+}
+.rank table td {
+    padding: 4px;
+}
+.rank table tr:nth-child(2n) {
+    background: rgba(255, 255, 255, 0.3);
+}
+.rank table td:nth-child(2n) {
+    text-align: right;
+}
+</style>
+</head>
+
+<body data-localization="ranks" data-inventory='no-load'>
+<div id="containter">
+<div class="navigationBar" data-menu-EN="Ranks" data-menu-RU="Ранги"></div>
+	<div class='your-points'><span id='locl-your-points'>Ваши очки</span><b id='points'></b></div>
+	<ul class='ranks-list'></ul>
+</div>
+
+<script>
+	$(function() {
+		$("#points").text(Player.points);
+		var list = "";
+		var cl='';
+		for(var i = 0; i < Ranks.length; i++) {
+			cl = (getRank().name == Ranks[i].name) ? ' selected' : '';
+			list += "<li class='rank"+cl+"'><span class='rank__name'>"+Ranks[i].name+"</span><img src='"+Ranks[i].img+"'><table><tr><td>Очков необходимо:</td><td>"+Ranks[i].points+"</td></tr><tr><td>Ежедневная награда дабл кредитами:</td><td>"+Ranks[i].doubleBonus+"</td></tr></table></li>"
+		}
+		$('.ranks-list').html(list);
+	});
+</script>
+</body>
+</html>

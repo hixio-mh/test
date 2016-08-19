@@ -6,10 +6,10 @@
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
 <script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/skinNames.js"></script>
-<script src="../scripts/settings.js"></script>
-<script src="../scripts/main.js"></script>
 <script src="../scripts/prices.js"></script>
 <script src="../scripts/quality.js"></script>
 
@@ -212,10 +212,18 @@ $(".glassBlur").on("click", function(){
 $(document).on('click', '.update_price', function(){
 	var name = $("#weaponInfoContainer").data("name");
 	var type = $("#weaponInfoContainer").data("type");
-	var statTrak = parseInt($("#weaponInfoContainer").data("stattrak"));
+	var statTrak = $("#weaponInfoContainer").data("stattrak") == true;
 	var quality = $("#weaponQuality").text();
-	
-	getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
+	var price = parseFloat($('#weaponPrice').text());
+	if (price == 0) {
+		price = getPrice(type, name, quality, statTrak);
+		if (price == 0 && !isNaN(price))
+			getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
+		else
+			$('#weaponPrice').text(price+'$');
+	} else {
+		getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
+	}
 	$(".glassBlur").addClass("savePrice");
 });
 

@@ -139,7 +139,8 @@
     top: 50%;
     left: 50%;
     position: absolute;
-    transform: translate(-50%, -50%) translateY(10px);
+	-webkit-transform: translate(-50%, -50%) translateY(10px);
+			transform: translate(-50%, -50%) translateY(10px);
     border-radius: 7px;
     overflow: auto;
     max-height: 100%;

@@ -41,6 +41,8 @@
     width: 96px;
 	height: 96px;
     margin-top: 3px;
+	text-align: center;
+	font-size: 1.3em;
 }
 .black-ball, .black-block {
     background: #262626;
@@ -59,17 +61,47 @@
 #aCanvas {
     height: 104px;
 }
+.big-progress {
+    height: 30px;
+    text-align: center;
+    line-height: 1.9em;
+}
+.big-progress span {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+	color: #000;
+}
+#progress-countdown {
+    width: 100%;
+}
+.progress-bar {
+	-webkit-transition: width 0.1s linear;
+		 -o-transition: width 0.1s linear;
+			transition: width 0.1s linear;
+}
+#fillBalance.button {
+    display: inline-block;
+    background: #009034;
+    font-size: 0.8em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+	cursor: pointer;
+}
 .bets {
-    height: 29px;
+    height: 35px;
     white-space: nowrap;
     overflow-x: auto;
     margin-right: 9px;
     margin-left: 9px;
     text-align: center;
+	margin-top: 6px;
 }
 .bets > span {
     margin-left: 0px;
-    padding: 5px 10px;
+    padding: 8px 10px;
     background: #e7e7e7;
     color: #3F3F3F;
     display: inline-block;
@@ -84,7 +116,7 @@
     height: 37px;
     font-size: 1em;
     border: 1px solid #303030;
-    margin: 0 8px;
+    margin: 5px 8px;
 }
 
 
@@ -92,7 +124,7 @@
     width: 100%;
 }
 .bets-tables__table {
-    width: 33%;
+    width: 33.3%;
     float: left;
     border-collapse: collapse;
 }
@@ -105,6 +137,10 @@
     border: none;
     padding: 4px;
     color: #fff;
+	height: 35px;
+}
+.bet-to-color:disabled {
+    opacity: 0.7;
 }
 .bet-red {
     background: #950000;
@@ -113,8 +149,8 @@
 }
 .bet-green {
     background: #1E7D1B;
-    background: url(../images/double/x14.png) right -6px no-repeat, #1E7D1B;
-    background: url(../images/double/x14.png) right -6px no-repeat, linear-gradient(to top, #1E7D1B, #27A723);
+    background: url(../images/double/x14.png) right no-repeat, #1E7D1B;
+    background: url(../images/double/x14.png) right no-repeat, linear-gradient(to top, #1E7D1B, #27A723);
 }
 .bet-black {
     background: #262626;
@@ -137,12 +173,12 @@
 .the-bet td:nth-child(1) {
     border-right: none;
 }
-@media (max-width: 552px) {
+@media (max-width: 595px) {
 	.the-bet {
 		font-size: 0.7em;
 	}
 }
-@media (max-width: 420px) {
+@media (max-width: 450px) {
 	.the-bet__player img {
 		display:none;
 	}

@@ -188,7 +188,7 @@ function startGame() {
 				
 				//Statistic
 				statisticPlusOne('rulet-wins');
-				//changePoints(2);
+				changePoints(2);
 				
 				var a = getStatistic('rulet-max-win');
 				
@@ -244,7 +244,7 @@ function botAddItems() {
 	while (botWeapons.length < rand) {
 		var weapon = getRandomWeapon(1);
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
-		weapon.statTrak = ifStatTrak(weapon.type);
+		weapon.statTrak = ifStatTrak(weapon.type, weapon.skinName);
 		var price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
 		if (price > priceRange.min)
 			if (price < priceRange.max)
@@ -367,7 +367,7 @@ function FillMyInventoryWithRandomWeapon(count){
 	while(count--) {
 		var weapon = getRandomWeapon(1)
 		weapon.quality = getItemQuality()[1];
-		weapon.statTrak = ifStatTrak(weapon.type);
+		weapon.statTrak = ifStatTrak(weapon.type, weapon.name);
 		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
 		weapon.new = true;
 		

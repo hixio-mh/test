@@ -60,8 +60,6 @@ $(".choseItems").on("click", function () {
 		}
 		saveInventory();
 	}
-	/*newItemsSound.play();
-	addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);*/
 	$(".add-item").css("display", 'none');
 	$(".closeInventory").click();
 	
@@ -105,7 +103,7 @@ function botAddWeapon(itemsCost) {
 	while (!canContinue) {
 		var weapon = getRandomWeapon(0);
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
-		weapon.statTrak = ifStatTrak(weapon.type);
+		weapon.statTrak = ifStatTrak(weapon.type, weapon.skinName);
 		price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
 		
 		var z = 0;
@@ -196,6 +194,7 @@ function endGame(playerWin) {
 				saveWeapon(winItems[i]);
 		}
 		if (!isAndroid()) saveInventory();
+		changePoints(1);
 		statisticPlusOne('rps-wins');
 	} else {
 		$('.status').text(Localization.rps2.lostGame[Settings.language]);

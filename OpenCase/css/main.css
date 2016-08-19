@@ -92,7 +92,28 @@ body {
     border-radius: 24px;
     background-position: -1px;
 }
-
+.inline-link {
+    display: inline-block;
+    position: relative;
+    padding-left: 6px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.34);
+    color: #E4EC6A;
+}
+.inline-link:hover {
+   /*color: #3C9CE7;*/
+}
+ 
+.inline-link:before {
+    content: "\25BA";
+    font-size: 80%;
+    display: inline-block;
+    padding-right: 3px;
+    pointer-events: none;
+}
+.inline-link:hover:before {
+    color: #000;
+}
 .inventory li {
     color: #fff;
 }
@@ -426,4 +447,16 @@ button#what-i-can-win-Button {
 }
 span#new-version__update {
     margin-left: 10px;
+}
+.js-var {
+    font-style: normal;
+}
+.error-log {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 4px;
+    color: #fff;
+    background: #480000;
+    font-family: Lato;
 }

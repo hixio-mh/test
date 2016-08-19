@@ -3,6 +3,7 @@
 		<title>FAQ</title>
 		<script src="../scripts/jquery.min.js"></script>
 		<script src="../scripts/jquery.cookie.js"></script>
+		<script src="../scripts/main.js"></script>
 		<script src="../scripts/settings.js"></script>
 		<script src="../scripts/cases2.js"></script>
 
@@ -45,6 +46,9 @@
 		border-radius: 0 5px 5px 5px;
 		color: #000;
 		}
+		.answer li {
+			margin: 5px 0;
+		}
 	</style>
 	<body data-localization='faq'>
 		<div class="navigationBar" data-menu-EN="FAQ" data-menu-RU="FAQ"></div>
@@ -57,6 +61,14 @@
 				<li>
 					<span class='question' id='js-local-question-2'>Почему цена предмета $0?</span>
 					<span class='answer' id='js-local-answer-2'>Цена предмета берется из базы. Если в базе нет цены, берётся с Торговой площадки стима. Если и там нет, тогда $0.<br>Если в стиме появился этот предмет, а у вас в инвентаре до сих пор цена $0 - откройте описание предмета, подождите пока загрузиться цена, закройте описание предмета и перезайдите в инвентарь.</span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-rank'>Как поднять ранг?</span>
+					<span class='answer' id='js-local-answer-rank'>Чтобы повысить ранг, нужно заработать очки. Очки, даются за следующие действия:<ul><li>Открыть приложение — <i class='js-var' data-var='DAILY_REWARD_POINTS'></i> очков (награда даётся раз в день)</li><li>Открыть кейс — <i class='js-var' data-var='OPEN_CASE_REWARD_POINTS'></i> очко</li><li>Победить в мини-игре — <i class='js-var' data-var='GAME_WIN_REWARD_POINTS'></i> очка</ul></span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-dobulePoints'>Где можно потратить очки дабла?</span>
+					<span class='answer' id='js-local-answer-dobulePoints'>На данный момент - нигде. Торговая площадка в разработке. Там можно будет использовать валюту дабла.</span>
 				</li>
 				<li>
 					<span class='question' id='js-local-question-3'>Я нашел ошибку, что делать?</span>

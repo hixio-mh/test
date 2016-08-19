@@ -9,14 +9,20 @@ $(function() {
 	bar.html(barHTML);
 	$(document.body).prepend('<div class="leftMenu" style="left: -270px"></div>');
 	var menu = $('.leftMenu');
-	var menuHTML = '<div class="menu_playerInfo"><img src="../images/ava/'+Player.avatar+'" align="left"><span>'+Player.nickname+'</span></div>';
-	menuHTML += '<ul><li><a href="cases.html"><span class="icon icon-key2"></span><span id="local-menu-case">Открыть кейсы</span></a></li>'+
-					//'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Рулетка</span></a></li>'+
+	var rank = getRank();
+	var nextRank = getNextRank();
+	var percent = ((Player.points - getRank().points) * 100) / (getNextRank().points - getRank().points);
+	if (getNextRank().points - getRank().points == 0) percent = 100;
+	var menuHTML = '<div class="menu_playerInfo"><img src="../images/ava/'+Player.avatar+'" align="left" class="menu_ava"><span>'+Player.nickname+'</span>'+
+					'<div class="menu_rank"><img src="'+rank.img+'" id="left-rank"><img src="'+nextRank.img+'" style="float:right" id="right-rank"><div class="progress"><div class="progress-bar" id="player-rank-progress" style="width: '+percent+'%"></div></div></div>'+
+					'</div>';
+		menuHTML += '<ul><li><a href="cases.html"><span class="icon icon-key2"></span><span id="local-menu-case">Открыть кейсы</span></a></li>'+
 					'<li class="js-podmenu" data-podmenu="games"><a href="#"><span class="icon icon-pacman"></span><span id="local-menu-games">Игры</span></a></li>'+
 					'<div class="podmenu hide podmenu-games">'+
 					'<li><a href="rulet.html"><span class="icon icon-spinner5"></span><span id="local-menu-rulet">Джекпот</span></a></li>'+
 					'<li><a href="RPS.html"><span class="icon icon-scissors"></span><span id="local-menu-rps">Камень-ножницы-бумага</span></a></li>'+
 					'<li><a href="coinflip.html"><span class="icon icon-coin-dollar"></span><span id="local-menu-coinflip">Монетка</span></a></li>'+
+					'<li><a href="double.html"><span class="icon icon-make-group"></span><span id="local-menu-double">Дабл</span></a></li>'+
 					'</div>'+
 					'<li><a href="inventory.html"><span class="icon icon-list"></span><span id="local-menu-inventory">Мой инвентарь</span></a></li>'+
 					'<li><a href="statistic.html"><span class="icon icon-stats-bars"></span><span id="local-menu-stat">Статистика</span></a></li>'+

@@ -36207,13 +36207,20 @@ var Prices = [{
 		quality : 'Battle-Scarred',
 		marketPrice : 9.96,
 		avgPrice : 6.69
+
+	}, { //WorkShop Case Prices
+		type : 'Sawed-Off',
+		name : 'Cutaway',
+		quality : 'Battle-Scarred',
+		marketPrice : 0.8,
+		avgPrice : 0.8
+
 	}, {
 		type : 'Sawed-Off',
 		name : 'Cutaway',
 		quality : 'Well-Worn',
 		marketPrice : 1.7,
 		avgPrice : 1.7
-
 	}, {
 		type : 'Sawed-Off',
 		name : 'Cutaway',
@@ -36563,61 +36570,61 @@ var Prices = [{
 		marketPrice : 54.1,
 		avgPrice : 54.1
 	}, {
-		type : '★ Gut Knife',
-		name : 'Revenge is Sweet',
+		type : 'Gut Knife',
+		name : 'Revenge in Sweet',
 		quality : 'Battle-Scarred',
 		marketPrice : 99,
 		avgPrice : 99
 	}, {
-		type : '★ Gut Knife',
-		name : 'Revenge is Sweet',
+		type : 'Gut Knife',
+		name : 'Revenge in Sweet',
 		quality : 'Well-Worn',
 		marketPrice : 120,
 		avgPrice : 120
 	}, {
-		type : '★ Gut Knife',
-		name : 'Revenge is Sweet',
+		type : 'Gut Knife',
+		name : 'Revenge in Sweet',
 		quality : 'Field-Tested',
 		marketPrice : 170,
 		avgPrice : 170
 	}, {
-		type : '★ Gut Knife',
-		name : 'Revenge is Sweet',
+		type : 'Gut Knife',
+		name : 'Revenge in Sweet',
 		quality : 'Minimal Wear',
 		marketPrice : 210,
 		avgPrice : 210
 	}, {
-		type : '★ Gut Knife',
-		name : 'Revenge is Sweet',
+		type : 'Gut Knife',
+		name : 'Revenge in Sweet',
 		quality : 'Factory New',
 		marketPrice : 300,
 		avgPrice : 300
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		name : 'Purple Abstract',
 		quality : 'Battle-Scarred',
 		marketPrice : 158.3,
 		avgPrice : 158
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		name : 'Purple Abstract',
 		quality : 'Well-Worn',
 		marketPrice : 193.6,
 		avgPrice : 193.6
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		name : 'Purple Abstract',
 		quality : 'Field-Tested',
 		marketPrice : 230.1,
 		avgPrice : 230.1
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		name : 'Purple Abstract',
 		quality : 'Minimal Wear',
 		marketPrice : 272.6,
 		avgPrice : 272.6
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		name : 'Purple Abstract',
 		quality : 'Factory New',
 		marketPrice : 397.6,
@@ -37043,74 +37050,74 @@ var Prices = [{
 		marketPrice : 89.1,
 		avgPrice : 89.1
 	}, {
-		type : '★ Gut Knife',
+		type : 'Gut Knife',
 		statTrak : true,
-		name : 'Revenge is Sweet',
+		name : 'Revenge in Sweet',
 		quality : 'Battle-Scarred',
 		marketPrice : 147,
 		avgPrice : 140
 	}, {
-		type : '★ Gut Knife',
+		type : 'Gut Knife',
 		statTrak : true,
-		name : 'Revenge is Sweet',
+		name : 'Revenge in Sweet',
 		quality : 'Well-Worn',
 		marketPrice : 182.4,
 		avgPrice : 180.5
 	}, {
-		type : '★ Gut Knife',
+		type : 'Gut Knife',
 		statTrak : true,
-		name : 'Revenge is Sweet',
+		name : 'Revenge in Sweet',
 		quality : 'Field-Tested',
 		marketPrice : 232.9,
 		avgPrice : 232.9
 	}, {
-		type : '★ Gut Knife',
+		type : 'Gut Knife',
 		statTrak : true,
-		name : 'Revenge is Sweet',
+		name : 'Revenge in Sweet',
 		quality : 'Minimal Wear',
 		marketPrice : 294.1,
 		avgPrice : 294.1
 	}, {
-		type : '★ Gut Knife',
+		type : 'Gut Knife',
 		statTrak : true,
-		name : 'Revenge is Sweet',
+		name : 'Revenge in Sweet',
 		quality : 'Factory New',
 		marketPrice : 383.7,
 		avgPrice : 383.7
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		statTrak : true,
 		name : 'Purple Abstract',
 		quality : 'Battle-Scarred',
 		marketPrice : 195.3,
 		avgPrice : 195
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		statTrak : true,
 		name : 'Purple Abstract',
 		quality : 'Well-Worn',
 		marketPrice : 227.3,
 		avgPrice : 227.3
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		statTrak : true,
 		name : 'Purple Abstract',
 		quality : 'Field-Tested',
 		marketPrice : 260.2,
 		avgPrice : 260.2
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		statTrak : true,
 		name : 'Purple Abstract',
 		quality : 'Minimal Wear',
 		marketPrice : 301.2,
 		avgPrice : 301.5
 	}, {
-		type : '★ Karambit',
+		type : 'Karambit',
 		statTrak : true,
 		name : 'Purple Abstract',
 		quality : 'Factory New',
 		marketPrice : 440.6,
 		avgPrice : 440.6
 	},
-	]
+]

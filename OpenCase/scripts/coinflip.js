@@ -77,6 +77,7 @@ function coinStoped() {
 	var winner = $('#coin').attr('class');
 	if (winner == 'CT') {
 		$('.game__bot__img').addClass('winner-img');
+		statisticPlusOne('coinflip-loose');
 	} else {
 		$('.game__player__img').addClass('winner-img');
 		if (isAndroid()) {
@@ -99,7 +100,16 @@ function coinStoped() {
 			}
 			saveInventory();
 		}
-		//changePoints(2);
+		changePoints(2);
+		statisticPlusOne('coinflip-wins');
+		
+		var a = getStatistic('coinflip-max-win', 0);
+		var winSum = Games[PlayerInGame].bot.items_cost + PlayerBet.items_cost;
+		if (a == 0)
+			a = winSum;
+		else
+			a = winSum > parseFloat(a) ? winSum : parseFloat(a);
+		saveStatistic('coinflip-max-win', a.toFixed(2));
 	}
 	Games[PlayerInGame].winner = winner;
 	Games[PlayerInGame].player.weapons = [];
@@ -113,7 +123,6 @@ function coinStoped() {
 	timerId = setTimeout(function(){
 		hideCoin();
 	}, 2000);
-	
 }
 
 function hideCoin() {

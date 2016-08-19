@@ -1,6 +1,10 @@
 ﻿$(function () {
 	var category = $(document.body).data('localization');
-	localizate(category);
+	try{
+		localizate(category);
+	} catch(e) {
+		console.error('No localization');
+	}
 })
 
 function localizate(category){
@@ -18,6 +22,11 @@ function localizate(category){
 	}catch (e) {
 		//ERROR
 	}
+	if ($('.js-var').length) 
+		$('.js-var').each(function() {
+			vr = $(this).data('var');
+			$(this).html(eval(vr));
+		});
 }
 var Localization = [];
 Localization.menu = [{
@@ -44,6 +53,11 @@ Localization.menu = [{
 		"selector" : "#local-menu-coinflip",
 		"localization" : {
 			"EN" : "CoinFlip"
+		}
+	}, {
+		"selector" : "#local-menu-double",
+		"localization" : {
+			"EN" : "Double"
 		}
 	}, {
 		"selector" : "#local-menu-inventory",
@@ -137,6 +151,21 @@ Localization.cases = [{
 			"RU" : "Посмотреть рекламу",
 			"EN" : "Watch the ads"
 		}
+	}, {
+		"selector" : "#js-local-rank-text",
+		"localization" : {
+			"EN" : "Only players with rank"
+		}
+	}, {
+		"selector" : "#js-local-rank-text2",
+		"localization" : {
+			"EN" : " and higher can open this case."
+		}
+	}, {
+		"selector" : "#js-local-rank-text3",
+		"localization" : {
+			"EN" : "How to rank up?"
+		}
 	},
 ],
 Localization.cases2 = {
@@ -151,6 +180,14 @@ Localization.cases2 = {
 	"new_version_button_later" : {
 		"RU" : "Позже",
 		"EN" : "Later"
+	},
+	"daily_reward_title" : {
+		"RU" : "Награда!",
+		"EN" : "Reward!"
+	},
+	"daily_reward_msg" : {
+		"RU" : 'Вы получили ежедневную награду!<br>+'+DAILY_REWARD_POINTS+' очков ранга | +'+getRank(Player.points).doubleBonus+' очков дабла.',
+		"EN" : 'You get daily reward!<br>+'+DAILY_REWARD_POINTS+' rank points | +'+getRank(Player.points).doubleBonus+' double points.'
 	}
 },
 Localization.openCase = [{
@@ -358,6 +395,36 @@ Localization.coinflip2 = {
 		"RU" : "Победитель"
 	},
 },
+Localization.double = [{
+		"selector" : "#last_games_text",
+		"localization" : {
+			"RU" : "Предыдущие числа:",
+			"EN" : "Previous numbers:"
+		}
+	}, {
+		"selector" : "#fillBalance",
+		"localization" : {
+			"RU" : "Пополнить баланс",
+			"EN" : "Fill up balance"
+		}
+	}, {
+		"selector" : "#balance-text",
+		"localization" : {
+			"RU" : "Баланс:",
+			"EN" : "Balance:"
+		}
+	},
+],
+Localization.double2 = {
+	'rollingIn' : {
+		"EN" : "Rolling in",
+		"RU" : "Розыгрыш через:"
+	},
+	'rolling' : {
+		"EN" : "ROLLING",
+		"RU" : "Идет розыгрыш"
+	},
+},
 Localization.inventory = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
 		"localization" : {
@@ -462,6 +529,21 @@ Localization.statistic = [{
 		"localization" : {
 			"EN" : "Rock-Paper-Scissors win/lose:"
 		}
+	}, {
+		"selector" : "#coinflip-text",
+		"localization" : {
+			"EN" : "Coinflip win/lose:"
+		}
+	}, {
+		"selector" : "#coinflip-max-win-text",
+		"localization" : {
+			"EN" : "Coinflip max money won:"
+		}
+	}, {
+		"selector" : "#double-text",
+		"localization" : {
+			"EN" : "Double win/lose:"
+		}
 	}
 ],
 Localization.faq = [{
@@ -483,6 +565,26 @@ Localization.faq = [{
 		"selector" : "#js-local-answer-2",
 		"localization" : {
 			"EN" : "Weapons prices are taken from the database. If there are no prices for current weapon, then price is taken from the Steam Market. If there is no price as well, it counts as $0. <br> When the weapon appears in market, open the weapon info in inventory, wait until the price is loaded, reopen inventory."
+		}
+	}, {
+		"selector" : "#js-local-question-rank",
+		"localization" : {
+			"EN" : "How to rank up?"
+		}
+	}, {
+		"selector" : "#js-local-answer-rank",
+		"localization" : {
+			"EN" : "For increase your rank you need points. Points are given for the following steps: <ul><li>Open the app - <i class='js-var' data-var='DAILY_REWARD_POINTS'></i> points (award is given once a day)</li><li>Open the case - <i class='js-var' data-var='OPEN_CASE_REWARD_POINTS'></i> point</li><li>Won in the mini-game - <i class='js-var' data-var='GAME_WIN_REWARD_POINTS'></i> points</ul>"
+		}
+	}, {
+		"selector" : "#js-local-question-doublePoints",
+		"localization" : {
+			"EN" : "Where I can spend double credits?"
+		}
+	}, {
+		"selector" : "#js-local-answer-doublePoints",
+		"localization" : {
+			"EN" : "For now - nowhere. Marketplace is in development."
 		}
 	}, {
 		"selector" : "#js-local-question-3",
@@ -554,13 +656,25 @@ Localization.settings = [{
 	},
 ],
 Localization.settings2 = {
+	"notificationTitle" : {
+		"RU" : "Статус",
+		"EN" : "Status"
+	},
 	"saved" : {
 		"RU" : "Сохранено",
 		"EN" : "Saved"
 	},
-	"reset" : {
+	"resetDone" : {
 		"RU" : "Очищено",
 		"EN" : "Done"
+	},
+	"resetQuestionTitle" : {
+		"RU" : "Полный сброс",
+		"EN" : "Full Reset"
+	},
+	"resetQuestion": {
+		"RU" : "Вы уверены, что хотите очистить инвентарь и сбросить статистику?",
+		"EN" : "All weapons will be deleted. Statistics will be reset. Are you sure?"
 	}
 }
 Localization.about = [{

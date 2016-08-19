@@ -5,6 +5,7 @@
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery.cookie.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
+<script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/jackpotBots.js"></script>
 
@@ -16,10 +17,15 @@
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 <!--IconSelect-->
 <script src="../scripts/iconselect/iconselect.js"></script>
 <script src="../scripts/iconselect/iscroll.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/iconselect/iconselect.css">
+
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" href="../css/Lobibox.min.css"/>
+<script src="../scripts/Lobibox.min.js"></script>
 <style>
 body {
     color: #fff;
@@ -185,6 +191,9 @@ div#avatar {
 	float: right;
 	margin-top: 0;
 }
+.lobibox-body-text {
+	color: #000;
+}
 </style>
 </head>
 <body data-localization='settings'>
@@ -232,14 +241,6 @@ div#avatar {
 <button id="submit" class="Button" value="Сохранить">Сохранить</button>
 </p>
 </div>
-<div class="popup" id='save' style="display: none">
-<span id="popup-status"></span>
-</div>
-<div class="popup" id='resetPopup' style='text-align:center'>
-<span id='closePopup'></span>
-<span id='reset-text'>Вы уверены, что хотите очистить инвентарь и сбросить статистику?</span>
-<button class='button' id='resetConfirm'>Да</button>
-</div>
 <script>
 var iconSelect;
 
@@ -260,8 +261,8 @@ $(function() {
 	iconSelect.refresh(icons);
 	
 	$("#avatar").on("changed", function() {
-		$.cookie("playerAvatar", iconSelect.getSelectedValue());
-		$('.menu_playerInfo img').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
+		saveStatistic("playerAvatar", iconSelect.getSelectedValue());
+		$('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
 	})
 	
 	$("#nickname").val(Player.nickname);
@@ -282,53 +283,75 @@ $(function() {
 $("#submit").on("click", function() {
 	var nick = $("#nickname").val();
 	if (nick != "")
-		$.cookie("playerNickname", nick);
+		saveStatistic("playerNickname", nick);
 	var lang = $('#language option:selected').val();
-		$.cookie('settings_language', lang);
-	$.cookie('settings_sounds', $('input[name="sounds"]').prop('checked'));
-	$.cookie('settings_drop', $('input[name="drop"]').prop('checked'));
+		saveStatistic('settings_language', lang);
+	saveStatistic('settings_sounds', $('input[name="sounds"]').prop('checked'));
+	saveStatistic('settings_drop', $('input[name="drop"]').prop('checked'));
 	
 	Settings.language = lang;
 	localizate('settings');
-	var saved = Localization.settings2.saved;
-	$("#popup-status").text(Settings.language == "RU" ? saved.RU : saved.EN);
-	$("#save").css("display", "block");
-	timerId = setTimeout(function(){$(".popup").css("display", "none")}, 1000)
+
+	Lobibox.notify('info', {
+			pauseDelayOnHover: false,
+			continueDelayOnInactiveTab: false,
+			width: $(window).width(),
+			position: 'top center',
+			icon: false,
+			title: Localization.settings2.notificationTitle[Settings.language],
+			delay: 2000,
+			size: 'mini',
+			showClass: 'fadeInDown',
+			hideClass: 'fadeOutUp',
+			msg: Localization.settings2.saved[Settings.language]
+		});
 });
 
-$('#reset').on('click', function() {
-	$('#resetPopup').css('display', 'block');
+$('#reset').on('click', function () {
+	Lobibox.confirm({
+		iconSource : 'fontAwesome',
+		title : Localization.settings2.resetQuestionTitle[Settings.language],
+		msg : Localization.settings2.resetQuestion[Settings.language],
+		callback : function ($tihs, type, ev) {
+			if (type == 'yes') {
+				if (isAndroid()) {
+					client.deleteAllInventory();
+					deleteAllCookies();
+				} else {
+					localStorage.clear();
+					deleteAllCookies();
+				}
+				Lobibox.notify('info', {
+					pauseDelayOnHover : false,
+					continueDelayOnInactiveTab : false,
+					width : $(window).width(),
+					position : 'top center',
+					icon : false,
+					title : Localization.settings2.resetQuestionTitle[Settings.language],
+					delay : 2000,
+					size : 'mini',
+					showClass : 'fadeInDown',
+					hideClass : 'fadeOutUp',
+					msg : Localization.settings2.resetDone[Settings.language]
+				});
+			}
+		}
+	});
 })
-$('#resetConfirm').on('click', function() {
-	if (isAndroid()) {
-		client.deleteAllInventory();
-		deleteAllCookies();
-	} else {
-		localStorage.clear();
-		deleteAllCookies();
-	}
-	$('#closePopup').click();
-	$("#submit").click();
-	$("#popup-status").text(Localization.settings2.reset[Settings.language]);//Settings.language == "RU" ? saved.RU : saved.EN);
-})
-
-$(document).on('click', '#closePopup', function() {
-	$('.popup').css('display', 'none');
-});
 
  $('.switch').click(function () {
 	$(this).toggleClass("switchOn");
 });
 
 function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
+	var cookies = document.cookie.split(";");
 
-    for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;";
-    }
+	for (var i = 0; i < cookies.length; i++) {
+		var cookie = cookies[i];
+		var eqPos = cookie.indexOf("=");
+		var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+		document.cookie = name + "=;";
+	}
 }
 
 function isAndroid() {

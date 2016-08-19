@@ -4,13 +4,14 @@
 <!-- Скрипты -->
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery.cookie.js"></script>
-<script src="../scripts/cases2.js"></script>
-<script src="../scripts/settings.js"></script>
-<script src="../scripts/skinNames.js"></script>
 <script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/skinNames.js"></script>
 <script src="../scripts/quality.js"></script>
 <script src="../scripts/prices.js"></script>
 <script src="../scripts/jackpotBots.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
 <script src="../scripts/inventory.js"></script>
 
 <script src="../scripts/navigationMenu.js"></script>
@@ -23,7 +24,9 @@
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/double.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
 <link rel="stylesheet" type="text/css" href="../css/loading.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
 
 <script src="../scripts/double.js"></script>
 </head>
@@ -41,26 +44,29 @@
 		</div>
 	</div>
 </div>
+<div class='progress big-progress'>
+	<span>Roling in</span>
+	<div class='progress-bar' id='progress-countdown'></div>
+</div>
 <span id='balance-text' class='margin-left-body'>Balance:</span> <span id='balance'>0</span>
+<div class='button' id='fillBalance'>Fill up balance</div>
 <div class="bets">
-<span class='add-to-bet' data-bet='clear'>Clear</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span>
+<span class='add-to-bet' data-bet='clear'>0</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span>
 </div>
 <input type="text" id="bet" maxlength='7'/>
 
 <div class='bets-tables'>
+	<table class='bets-tables__table bets-red-table'>
+		<tr><td colspan=2><button class='bet-to-color bet-red'>1 — 7</button></td></tr>
+	</table>
 
-			<table class='bets-tables__table bets-red-table'>
-			<tr><td colspan=2><button class='bet-to-color bet-red'>1 — 7</button></td></tr>
-			</table>
+	<table class='bets-tables__table bets-green-table'>
+		<tr><td colspan=2><button class='bet-to-color bet-green'>0</button></td></tr>
+	</table>
 
-			<table class='bets-tables__table bets-green-table'>
-			<tr><td colspan=2><button class='bet-to-color bet-green'>0</button></td></tr>
-			</table>
-
-			<table class='bets-tables__table bets-black-table'>
-			<tr><td colspan=2><button class='bet-to-color bet-black'>8 — 14</button></td></tr>
-			</table>
-
+	<table class='bets-tables__table bets-black-table'>
+		<tr><td colspan=2><button class='bet-to-color bet-black'>8 — 14</button></td></tr>
+	</table>
 </div>
 
 
@@ -69,7 +75,7 @@
 	<span id="intentory-Player"></span>
 	<div class="closeInventory"></div>
 	<ul class="inventory inv-price-counter"></ul>
-	<button class="choseItems">Внести</button>
+	<button class="choseItems">Обменять</button>
 </div>
 
 </div>

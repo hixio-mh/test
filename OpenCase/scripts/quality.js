@@ -55,10 +55,29 @@ function getItemQuality() {
 	}
 }
 
-function ifStatTrak(type) {
+function getCollection(type, name) {
+	var collection="";
+	for (var i = 0; i < cases.length; i++) {
+		for (var z = 0; z < cases[i].weapons.length; z++) 
+			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name)) {
+				collection = cases[i];
+				break;
+			}
+		if (typeof collection != 'undefined' && collection != '') break;
+	}
+	return collection;
+}
+
+function ifStatTrak(type, name) {
+	type = type || "";
+	name = name || "";
 	if (type != "") {
 		if (type.indexOf("Сувенир") != -1) return false;
 		if (type.indexOf("Souvenir") != -1) return false;
+	}
+	if (type != "" && name != "") {
+		col = getCollection(type, name);
+		if (col != "" && col.type == 'Collection') return false;
 	}
 	return (random = Math.random() > 0.8) ? true : false;
 }

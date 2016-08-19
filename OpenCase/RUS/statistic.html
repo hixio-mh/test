@@ -3,6 +3,7 @@
 <title>Статистика</title>
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/cases2.js"></script>
 
@@ -39,10 +40,25 @@ tr:nth-child(2n) {
 .container {
     font-family: LatoRegular;
 }
+.buttons-div {
+    text-align: center;
+    margin-top: 5px;
+}
+.button {
+    background: #296ca5;
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
 </style>
 <body data-localization='statistic'>
 <div class="navigationBar" data-menu-EN="Statistic" data-menu-RU="Статистика"></div>
-<div class="container"><table>
+<div class="container">
+<table>
 <tr><td id="caseOpened-text">Количество открытых кейсов: </td><td id="caseOpened"></td></tr>
 <tr><td id="stattrak-text">StatTrak: </td><td id="stattrak"></td></tr>
 <tr><td id="white-text">Белые:</td><td id="white"></td></tr>
@@ -56,7 +72,13 @@ tr:nth-child(2n) {
 <tr><td id="rulet-text">Рулетка выиграно/проиграно: </td><td id="rulet"></td></tr>
 <tr><td id="rulet-max-win-text">Максимальный выигрыш в рулетке: </td><td id="rulet-max-win"></td></tr>
 <tr><td id="rps-text">Камень-ножницы-бумага выиграно/проиграно: </td><td id="rps"></td></tr>
+<tr><td id="coinflip-text">Монетка выиграно/проиграно: </td><td id="coinflip"></td></tr>
+<tr><td id="coinflip-max-win-text">Максимальный выигрыш в монетке: </td><td id="coinflip-max-win"></td></tr>
+<tr><td id="double-text">Дабл выиграно/проиграно: </td><td id="double"></td></tr>
 </table>
+<div class='buttons-div'>
+	<a href='ranks.html' class='button'>Ранги</a>
+</div>
 </div>
 <script>
 $(function(){
@@ -73,7 +95,7 @@ $(function(){
 	}
 	
 	$("#caseOpened").text(opened);
-	
+
 	stat("white", getStatistic('weapon-consumer'));
 	stat("industrial", getStatistic('weapon-industrial'));
 	stat("blue", getStatistic('weapon-milspec'));
@@ -86,6 +108,9 @@ $(function(){
 	stat('rulet-max-win', '$'+getStatistic('rulet-max-win'));
 	stat('knife', getStatistic('weapon-rare'));
 	stat("stattrak", getStatistic('statTrak'));
+	stat("double", getStatistic('double-wins')+'/'+getStatistic('double-loose'));
+	stat("coinflip", getStatistic('coinflip-wins')+'/'+getStatistic('coinflip-loose'));
+	stat("coinflip-max-win", getStatistic('coinflip-max-win'));
 })
 
 function stat(selector, text) {
@@ -119,24 +144,6 @@ function convertStatistic() {
 	client.saveStatistic("statTrak", $.cookie('statTrak', Number));
 	client.saveStatistic('is-tryed-to-convert-statistic', 1);
 	console.log('converted');
-}
-
-function saveStatistic(key, value) {
-	if (isAndroid()) {
-		client.saveStatistic(key, value);
-	} else {
-		$.cookie(key, value);
-	}
-}
-
-function getStatistic(key) {
-	if (isAndroid()) {
-		return client.getStatistic(key);
-	} else {
-		var result = $.cookie(key);
-		
-		return (result == "") ? "0" : result;
-	}
 }
 
 function isAndroid() {
