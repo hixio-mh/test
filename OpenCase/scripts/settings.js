@@ -86,35 +86,35 @@ var Ranks = [
 		doubleBonus: 500
 	}, {
 		name: 'Master Guardian I',
-		points: 360,
+		points: 380,
 		doubleBonus: 550
 	}, {
 		name: 'Master Guardian II',
-		points: 450,
+		points: 480,
 		doubleBonus: 600
 	}, {
 		name: 'Master Guardian Elite',
-		points: 520,
+		points: 580,
 		doubleBonus: 650
 	}, {
 		name: 'Distinguished Master Guardian',
-		points: 600,
+		points: 690,
 		doubleBonus: 700
 	}, {
 		name: 'Legendary Eagle',
-		points: 700,
+		points: 800,
 		doubleBonus: 750
 	}, {
 		name: 'Legendary Eagle Master',
-		points: 800,
+		points: 920,
 		doubleBonus: 800
 	}, {
 		name: 'Supreme Master First Class',
-		points: 910,
+		points: 1030,
 		doubleBonus: 850
 	}, {
 		name: 'The Global Elite',
-		points: 1020,
+		points: 1140,
 		doubleBonus: 900
 	}, 
 ];
