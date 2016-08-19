@@ -544,6 +544,11 @@ Localization.statistic = [{
 		"localization" : {
 			"EN" : "Double win/lose:"
 		}
+	}, {
+		"selector" : ".button",
+		"localization" : {
+			"EN" : "Ranks"
+		}
 	}
 ],
 Localization.faq = [{
@@ -598,6 +603,24 @@ Localization.faq = [{
 		}
 	}
 ],
+Localization.ranks = [{
+		"selector" : "#locl-your-points",
+		"localization" : {
+			"EN" : "Your points"
+		}
+	},
+],
+Localization.ranks2 = {
+		"pointsNeed" : {
+			"EN" : "Points needed:",
+			"RU" : "Очков необходимо"
+		},
+		"doubleAward" : {
+			"EN" : "Daily double credits award:",
+			"RU" : "Ежедневная награда дабл кредитами:"
+		}
+},
+
 Localization.settings = [{
 		"selector" : "#local-profile",
 		"localization" : {

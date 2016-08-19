@@ -93,7 +93,7 @@
 		var cl='';
 		for(var i = 0; i < Ranks.length; i++) {
 			cl = (getRank().name == Ranks[i].name) ? ' selected' : '';
-			list += "<li class='rank"+cl+"'><span class='rank__name'>"+Ranks[i].name+"</span><img src='"+Ranks[i].img+"'><table><tr><td>Очков необходимо:</td><td>"+Ranks[i].points+"</td></tr><tr><td>Ежедневная награда дабл кредитами:</td><td>"+Ranks[i].doubleBonus+"</td></tr></table></li>"
+			list += "<li class='rank"+cl+"'><span class='rank__name'>"+Ranks[i].name+"</span><img src='"+Ranks[i].img+"'><table><tr><td>"+Localization.ranks2.pointsNeed[Settings.language]+"</td><td>"+Ranks[i].points+"</td></tr><tr><td>"+Localization.ranks2.doubleAward[Settings.language]+"</td><td>"+Ranks[i].doubleBonus+"</td></tr></table></li>"
 		}
 		$('.ranks-list').html(list);
 	});
