@@ -45,12 +45,14 @@
 <div id="Special"><h1>Особые</h1></div>
 </div>
 <script>
-for(var i = 0; i < cases.length ; i++) {
-	var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
-	var collection = (cases[i].type == "Souvenir") ? "souvenir" : (cases[i].type == "Collection") ? "collection" : "" ;
-	//var collection = (cases[i].type == "Collection") ? "collection" : "";
-	var curCase = "<div class='case "+collection+"' id="+i+"><img src='../images/Cases/cases/"+cases[i].img+"'><span class='name "+specialClass+"'>"+cases[i].name+"</span>";
-	switch (cases[i].type) {
+
+$(function () {
+	for (var i = 0; i < cases.length; i++) {
+		var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
+		var collection = (cases[i].type == "Souvenir") ? "souvenir" : (cases[i].type == "Collection") ? "collection" : "";
+		//var collection = (cases[i].type == "Collection") ? "collection" : "";
+		var curCase = "<div class='case " + collection + "' id=" + i + "><img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
+		switch (cases[i].type) {
 		case "Default":
 			$("#Default").append(curCase);
 			break;
@@ -69,26 +71,22 @@ for(var i = 0; i < cases.length ; i++) {
 		case "Workshop":
 			$("#Workshop").append(curCase);
 			break;
+		}
 	}
-}
-
-$(function() {
 	if (isAndroid()) {
 		fromLocalStorageToDB();
-		
+
 		var version = client.getCurrentAppVersionName();
 
 		if (version != "1.2.1") {
 			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
 		}
 	}
-	
-	
-	
+
 	var lastReward = getStatistic('lastPointReward', 0);
 	var now = new Date();
-	if (lastReward == '0') 
-		lastReward = new Date(now.getFullYear(), now.getMonth(), now.getDate()-1);
+	if (lastReward == '0')
+		lastReward = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
 	else
 		lastReward = new Date(lastReward);
 
@@ -100,37 +98,36 @@ $(function() {
 		changePoints(DAILY_REWARD_POINTS);
 		Player.doubleBalance += getRank(Player.points).doubleBonus;
 		Lobibox.notify('info', {
-			pauseDelayOnHover: false,
-			continueDelayOnInactiveTab: false,
-			width: $(window).width(),
-			position: 'top center',
-			icon: false,
-			title: Localization.cases2.daily_reward_title[Settings.language],
-			size: 'mini',
-			showClass: 'fadeInDown',
-			hideClass: 'fadeOutUp',
-			msg: Localization.cases2.daily_reward_msg[Settings.language]
+			pauseDelayOnHover : false,
+			continueDelayOnInactiveTab : false,
+			width : $(window).width(),
+			position : 'top center',
+			icon : false,
+			title : Localization.cases2.daily_reward_title[Settings.language],
+			size : 'mini',
+			showClass : 'fadeInDown',
+			hideClass : 'fadeOutUp',
+			msg : Localization.cases2.daily_reward_msg[Settings.language]
 		});
-		
-		saveStatistic('lastPointReward', ''+today);
+
+		saveStatistic('lastPointReward', '' + today);
 		saveStatistic('doubleBalance', Player.doubleBalance);
 	}
 });
-	
+
 $(document).on('click', '#new-version__update', function () {
 	location = 'https://play.google.com/store/apps/details?id=csgo.opencase';
-});	
+});
 
 $(document).on('click', '#new-version__later', function () {
 	$('.new-version').css('display', 'none');
 });
 
-
-$('#showVideoAd').on('click', function() {
-	if (isAndroid()) 
-		client.showVideoAd("open.html?caseId="+$('.js-secretField').text()+'&fromAd=1');
+$('#showVideoAd').on('click', function () {
+	if (isAndroid())
+		client.showVideoAd("open.html?caseId=" + $('.js-secretField').text() + '&fromAd=1');
 	else {
-		window.location = "open.html?caseId="+$('.js-secretField').text()+'&fromAd=1';
+		window.location = "open.html?caseId=" + $('.js-secretField').text() + '&fromAd=1';
 	}
 
 });
