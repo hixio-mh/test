@@ -606,6 +606,7 @@ Localization.faq = [{
 Localization.ranks = [{
 		"selector" : "#locl-your-points",
 		"localization" : {
+			"RU" : "Ваши очки",
 			"EN" : "Your points"
 		}
 	},
