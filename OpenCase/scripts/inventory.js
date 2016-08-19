@@ -7,7 +7,7 @@ $(function() {
 	
 	$('.inventoryList').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80) {
-			if (!inventory_loading && isAndroid())
+			if (!inventory_loading && isAndroid() && client.getInventoryLength("") == $('.weapon').length && Player.nickname == "VLADOS776")
 				fillInventory();
         }
 });
@@ -29,8 +29,6 @@ function getRandomWeapon(specialClass) {
 }
 
 function fillInventory() {
-	if (isAndroid() && client.getInventoryLength("") == $('.weapon').length && Player.nickname == "VLADOS776")
-		return false;
 	if ($('#js-loading-inventory').length == 0){
 		if (isAndroid()) {
 			if ($('.weapon').length != 0) {
