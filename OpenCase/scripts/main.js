@@ -24,8 +24,12 @@ $(function () {
 });
 
 window.onerror = function(msg, url, line, col, error) {
-	var a = url.split('/');
-	var errorFile = a[a.length - 1];
+	if (url) {
+		var a = url.split('/');
+		var errorFile = a[a.length - 1];
+	} else {
+		errorFile = 'none.js';
+	}
 	extra = ':'+line;
 	extra += !col ? '' : ':'+col;
 		
