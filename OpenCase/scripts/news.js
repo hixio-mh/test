@@ -166,5 +166,13 @@
 		"RU" : " - Исправлены неправильные цены в монетке.",
 		"EN" : " - Wrong prices in CoinFlip was fixed."
 	}
+}, {
+	"day" : 19,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Новый кейс Gamma 2!",
+		"EN" : " - New Gamma 2 Case!"
+	}
 }, 
 ];

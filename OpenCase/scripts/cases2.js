@@ -260,6 +260,132 @@ var cases = [{
 			},
 		]
 	}, {
+		"name" : "Gamma 2",
+		"img" : "gamma2.png",
+		"type" : "Default",
+		"weapons" : [{
+				"type" : "XM1014",
+				"skinName" : "Slipstream",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PvRTiVPvYznwL-Nhfb3J7rdqWld_cBOhuDG_Zi7jQ3j-UM6MW6hIY-XelJsaQqDrFa3lejtjZO87cvMmyRnvSVw7CqOmgv3309KvhYMug"
+			}, {
+				"type" : "UMP-45",
+				"skinName" : "Briefing",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0Ob3ZDBSuImJmYWfhf7gNqnQqWdY781lxL2X9I-h2wzsqkpqZmigIYOQJ1U4aVzZ-VS2k-bq05C87ZXOmnFhsnQ8pSGKJGHF3CM"
+			}, {
+				"type" : "P90",
+				"skinName" : "Grim",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FAR17OORIQJF_tW7mb-HnvD8J_WEzz4AvMEmiLyV89qm31Ln-kdvYWChdoXDJ1A_Ml-GrAW_k-_qhsTtot2Xnl5g8bQH"
+			}, {
+				"type" : "Negev",
+				"skinName" : "Dazzle",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf2-r3fzhF6cqJkIGRjfvxDLfYkWNFppYk37HE9omniQPk-UZuNzqidY7AIw9rYlrU_1K3kLvu1JLq75ybmnJ9-n51ZvItZMo"
+			}, {
+				"type" : "G3SG1",
+				"skinName" : "Ventilator",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf1OD3dm5R642JgoWFg_74Mq_ehFRd4cJ5nqeU9oim3gDnr0c4ajqnJIOce1M8ZAnR-VG8lOnnjZC9vc-dwCNjuiIh-z-DyLXb1QOb"
+			}, {
+				"type" : "Five-SeveN",
+				"skinName" : "Scumbria",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjxT09q_goW0hPLiNrXuhWhE5cdjg-j--YXygED6qRBsZj-gIoKWd1Q2ZV3S_wC-kLzugZbu75rLnHJguHEr7SuMzRK2gQYMMLImO8cY6g"
+			}, {
+				"type" : "CZ75-Auto",
+				"skinName" : "Imprint",
+				"rarity" : "milspec",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf1OD3cicVueOihoWKk8j4OrzZgiUJ65cm3O3Dot-lilbn-EdrZDiidYOXJAFvY1vY-FTow-fq0Je4v5vN1zI97U0IONk-"
+			}, {
+				"type" : "SG 553",
+				"skinName" : "Triarch",
+				"rarity" : "restricted",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0Ob3YjoXuYqJgJKCluX3O4Tdn2xZ_Isij-iWoY7wiQHn-xI4NzjyJIbBcAM3YFnT_VPtkO3uhsPttZTNzHEypGB8snpeMLkS"
+			}, {
+				"type" : "SCAR-20",
+				"skinName" : "Powercore",
+				"rarity" : "restricted",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7PTbTi5B7c7kxL-bmODxIbjehG5u5Mx2gv2Potj3i1Di_hFtMm2iIYTBJgU3Zg2Er1TvkOvm1566vM6YzSFgsikh7GGdwUIxojBz1A"
+			}, {
+				"type" : "MAG-7",
+				"skinName" : "Petroglyph",
+				"rarity" : "restricted",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhjxszFcDoV08iknYKKm8j4OrzZgiVSupcn3buZ9Iqh3AOy-0RkY2GmdYOcdwJrM1GB-FW7w-bvjJTotZrL1zI97ch2lL8S"
+			}, {
+				"type" : "Glock-18",
+				"skinName" : "Weasel",
+				"rarity" : "restricted",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0Ob3djFN79fnzL-ckvbnNrfummJW4NE_j7mT8Nrw3QXt_RY-NzymIIHGdw87ZlHZrAe-wO-70ZC4uZzNzndjvz5iuyhP0kvddA"
+			}, {
+				"type" : "Desert Eagle",
+				"skinName" : "Directive",
+				"rarity" : "restricted",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLZTjlH_9mkgL-OlvD4NoTSmWVC_MRzhuz--YXygED6rRFuNWv1I4XBJgU3aF-B-FDsl7jmhJS16Z2dyydhsyRx5XzdlhDiiQYMMLJVFcMKgw"
+			}, {
+				"type" : "Tec-9",
+				"skinName" : "Fuel Injector",
+				"rarity" : "classified",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhnwMzcdD4b08-jhIWZlP_1IbzUklRd4cJ5nqfEpon3iwbkrUJsNjimJISSewZoNFHV_VG9k-jvjJ_t786YyCZisiAr-z-DyHMz0KNe"
+			}, {
+				"type" : "MP9",
+				"skinName" : "Airlock",
+				"rarity" : "classified",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAR17P7YKAJM7c61nZO0m_7zO6-flT0C7cR32e_A99T23gGxqEA9MWvxcNedcAY7MgqF-QK7wO3pg8K77YOJlyX5QzWtUg"
+			}, {
+				"type" : "AUG",
+				"skinName" : "Syd Mead",
+				"rarity" : "classified",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFABz7PLddgJR9diJmYWKk8j4OrzZgiUCu5Yk077Epdmg3QLn8hVpN270IYKUIQU4YgnZqAO9ybrmgJa5ucvK1zI97Wf9hRPh"
+			}, {
+				"type" : "FAMAS",
+				"skinName" : "Roll Cage",
+				"rarity" : "covert",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRf1OD3dzxP7c-JhoGHm-7LP7LWnn8fvZYpiOjE8NihjVbj_EE4NmD2JIScJwI8Z1-Fq1jtxe_uhZfu7s7AzWwj5HcX23zPaA"
+			}, {
+				"type" : "AK-47",
+				"skinName" : "Neon Revolution",
+				"rarity" : "covert",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszJemkV0924lZKIn-7LP7LWnn9u5MRjjeyPo4ms0FLkqEU6MDv7JdfEJ1VvYVuD_1frlLrpjZ-6vsvMySFq73Yr4WGdwUIt-GQI9g"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Autotronic",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJk5O0nPbmMrbul35F59FjhefI9rP9jVWisiwwMiukcZiccQBtZVyF_lW7kLzvg8Xvup7Lz3Qx6CUj5iqLnBzhhxkZabBshKaaVxzAUIJQ4Np6"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Lore",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJl5W0nPbmMrbummRD7fp9g-7J4bP5iUazrl1rY2DzddPEdwFsYgnSqwPqyey6hZ_qvM6dm3pnunFx4n2LmxTj1x9PcKUx0uHhTF2B"
+			}, {
+				"type" : "★ Karambit",
+				"skinName" : "Gamma Doppler",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlY20kvrxIbrdklRc6ddzhuzI74nxt1i9rBsoDDWiZtHAbFBoMgyGrlLsw-_ohsXv6JvMz3Ix6yF2t3mLnBDm1R4faLdvhvyYTVmAR_seWA9jz4E"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Autotronic",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-MhMj5aoTTl3Ju6dBlhf3T-oL8i2u4ohQ0JwavdcTCJxhoaVmG_Fnoxua9hcS4vJrIznRjuHZx7XeLmRflhUxLP7NsgfPNTV-eGeUXSwZKyJQd"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Lore",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Igsj5aoTTl3Ju5Mpjj9bJ8I3jkWu4qgE7NnfyIoDGdg4_YwrYqAS8xrvthcK6vMyfyXBnsiFzti2Pyxe0g0tKbeFrm7XAHjZ37Nzu"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Freehand",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Kmsj5Mqnak29u_dVO07n--InxgUG5lB89IT6mOtXAIwE4YlnW8lW7yebp05Tpv5rJmCQ26Scl7HfanBfjhkkaZrNph_GACQLJ_Utp8Mc"
+			}, {
+				"type" : "★ M9 Bayonet",
+				"skinName" : "Gamma Doppler",
+				"rarity" : "rare",
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KmsjxPr7Dl2dV18hwmOvN8IXvjVCLpxo7Oy2ceNfXJVMgZAyB_lDqlL--15G97Z7AyyZividw5i6MyUeygBpEPLM90PDPHArKBrsJQvdXl_RMjw"
+			},
+		]
+	}, {
 		"name" : "Gamma",
 		"img" : "gamma.png",
 		"type" : "Default",
@@ -3453,6 +3579,7 @@ var cases = [{
 		"name" : "Knife Case",
 		"img" : "knife.png",
 		"type" : "Special",
+		"minRank" : "Legendary Eagle Master",
 		"specialClass" : "rare",
 		"casesToOpen" : 200,
 		"weapons" : [{
@@ -3991,6 +4118,7 @@ var cases = [{
 		"name" : "Covert Case",
 		"img" : "tainoe.png",
 		"type" : "Special",
+		"minRank" : "Master Guardian Elite",
 		"specialClass" : "covert",
 		"casesToOpen" : 170,
 		"weapons" : [{
@@ -4119,6 +4247,7 @@ var cases = [{
 		"name" : "Classified Case",
 		"img" : "secret.png",
 		"type" : "Special",
+		"minRank" : "Gold Nova III",
 		"specialClass" : "classified",
 		"casesToOpen" : 125,
 		"weapons" : [{
@@ -4217,6 +4346,7 @@ var cases = [{
 		"name" : "AWP Case",
 		"img" : "awp.png",
 		"type" : "Special",
+		"minRank" : "Silver Elite Master",
 		"specialClass" : "AWP",
 		"casesToOpen" : 100,
 		"weapons" : [{
@@ -4310,6 +4440,7 @@ var cases = [{
 		"name" : "M4A1-S Case",
 		"img" : "m4a1-s.png",
 		"type" : "Special",
+		"minRank" : "Silver III",
 		"specialClass" : "M4A1-S",
 		"casesToOpen" : 75,
 		"weapons" : [{
@@ -4398,6 +4529,7 @@ var cases = [{
 		"name" : "AK-47 Case",
 		"img" : "ak47.png",
 		"type" : "Special",
+		"minRank" : "Silver II",
 		"specialClass" : "AK-47",
 		"casesToOpen" : 50,
 		"weapons" : [{
