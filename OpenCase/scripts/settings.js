@@ -173,7 +173,7 @@ function changePoints(val) {
 			$("#right-rank").attr('src', getNextRank().img);
 			try {
 				if (isAndroid()) {
-					client.sendToAnalytics("Rank", "Ranked up to "+getRank().name, "cases.html");
+					client.sendToAnalytics("Rank", "Rank", "Ranked up to "+getRank().name, "cases.html");
 				}
 			}catch (e) {
 				//ERROR
