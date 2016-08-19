@@ -29,6 +29,8 @@ function getRandomWeapon(specialClass) {
 }
 
 function fillInventory() {
+	if (isAndroid() && client.getInventoryLength("") == $('.weapon').length && Player.nickname == "VLADOS776")
+		return false;
 	if ($('#js-loading-inventory').length == 0){
 		if (isAndroid()) {
 			if ($('.weapon').length != 0) {

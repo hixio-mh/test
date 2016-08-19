@@ -37,7 +37,7 @@ window.onerror = function(msg, url, line, col, error) {
 	if (isAndroid()) {
 		client.sendToAnalytics('Error', 'Error', action, url);
 	}
-	$(document.body).append('<div class="error-log">ERROR<br>'+action+'</div');
+	$(document.body).append('<div class="error-log">'+action+'</div');
 };
 
 
