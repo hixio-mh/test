@@ -7,7 +7,7 @@ $(function() {
 	
 	$('.inventoryList').on('scroll', function() {
         if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80) {
-			if (!inventory_loading && isAndroid() && client.getInventoryLength("") != $('.weapon').length && Player.nickname == "VLADOS776")
+			if (!inventory_loading && isAndroid() && client.getInventoryLength("") != $('.weapon').length)
 				fillInventory();
         }
 });
