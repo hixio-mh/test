@@ -235,7 +235,8 @@ left: calc(50% - 100px);
 #coin {
 position: relative;
 width: 200px;
-transform-style: preserve-3d;
+-webkit-transform-style: preserve-3d;
+		transform-style: preserve-3d;
 }
 
 #coin .t, #coin .ct {
@@ -245,14 +246,16 @@ height: 200px;
 }
 
 #coin .t {
-transform: translateZ(1px);
+-webkit-transform: translateZ(1px);
+		transform: translateZ(1px);
 border-radius: 50%;
 background: url(../images/coinflip/t.png);
 background-size: cover;
 }
 
 #coin .ct {
-transform: translateZ(-1px) rotateY(180deg);
+-webkit-transform: translateZ(-1px) rotateY(180deg);
+		transform: translateZ(-1px) rotateY(180deg);
 border-radius: 50%;
 background: url(../images/coinflip/ct.png);
 background-size: cover;
