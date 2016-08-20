@@ -74,6 +74,7 @@
 }
 .right img {
     transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
 }
 .status {
     color: #fff;
@@ -161,6 +162,17 @@ ul.winItems li b {
 	transform: rotate(0);
   }
 }
+@-webkit-keyframes shake-left {
+  from {
+	-webkit-transform: rotate(0);
+  }
+  50% {
+	-webkit-transform: rotate(-45deg);
+  }
+  100% {
+	-webkit-transform: rotate(0);
+  }
+}
 @keyframes shake-right {
   from {
 	transform: rotate(0);
@@ -170,6 +182,17 @@ ul.winItems li b {
   }
   100% {
 	transform: rotate(0);
+  }
+}
+@-webkit-keyframes shake-right {
+  from {
+	-webkit-transform: rotate(0);
+  }
+  50% {
+	-webkit-transform: rotate(45deg);
+  }
+  100% {
+	-webkit-transform: rotate(0);
   }
 }
 /* @keyframes shake {
