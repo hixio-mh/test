@@ -1,5 +1,6 @@
 var anim = document.getElementById('js-left-hand');
 anim.addEventListener("animationend", listener, false);
+anim.addEventListener("webkitAnimationEnd", listener, false);
 
 
 var yourScore = 0,
