@@ -146,10 +146,12 @@ ul.winItems li b {
     height: 5px;
 }
 .animation-shake-left {
-	animation: shake-left 0.8s linear both 3;
+	-webkit-animation: shake-left 0.8s linear both 3;
+			animation: shake-left 0.8s linear both 3;
 }
 .animation-shake-right {
-	animation: shake-right 0.8s linear both 3;
+	-webkit-animation: shake-right 0.8s linear both 3;
+			animation: shake-right 0.8s linear both 3;
 }
 @keyframes shake-left {
   from {
