@@ -125,3 +125,8 @@ i.double-icon {
     display: block;
     text-align: left;
 }
+.ui-menu .ui-menu-item {
+    line-height: 30px;
+    border-bottom: 1px solid RGBA(0, 0, 0, 0.16);
+    padding-left: 5px;
+}
