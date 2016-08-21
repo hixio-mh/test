@@ -301,9 +301,9 @@ function getWeaponImg(type, name) {
 }
 
 function getWeaponRarity(type, name) {
-	var coll = getCollection(type, name);
-	type = type.replace(/Souvenir/g, 'Сувенир');
 	name = getSkinName(name);
+	type = type.replace(/Souvenir/g, 'Сувенир');
+	var coll = getCollection(type, name);
 	for (var i = 0; i < coll.weapons.length; i++) {
 		if (coll.weapons[i].type == type && getSkinName(coll.weapons[i].skinName) == name)
 			return coll.weapons[i].rarity;
