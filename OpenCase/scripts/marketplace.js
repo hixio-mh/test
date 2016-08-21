@@ -68,7 +68,7 @@ $(document).on('click', '#buy-double', function () {
 		quality: $("#weaponQuality").text(),
 		statTrak: $("#weaponInfoContainer").data('stattrak'),
 		rarity: rarity,
-		price: $("#weaponInfoContainer").data('price').replace(/\$/, ''),
+		price: parseInt($("#weaponInfoContainer").data('price').replace(/\$/, '')),
 		new: true,
 	}
 	if (isAndroid()) {
