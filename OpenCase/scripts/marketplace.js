@@ -68,7 +68,7 @@ $(document).on('click', '#buy-double', function () {
 		quality: $("#weaponQuality").text(),
 		statTrak: $("#weaponInfoContainer").data('stattrak'),
 		rarity: rarity,
-		price: parseInt($("#weaponInfoContainer").data('price').replace(/\$/, '')),
+		price: parseFloat($("#weaponInfoContainer").data('price').replace(/\$/, '')),
 		new: true,
 	}
 	if (isAndroid()) {
@@ -77,8 +77,7 @@ $(document).on('click', '#buy-double', function () {
 		inventory.push(weapon);
 		saveInventory();
 	}
-	var pr = weapon.price.replace(/\$/g, '');
-	Player.doubleBalance -= parseInt((pr*100).toFixed(0));
+	Player.doubleBalance -= parseInt((weapon.price*100).toFixed(0));
 	saveStatistic('doubleBalance', Player.doubleBalance);
 	$("#playerBalance").html(Player.doubleBalance+' <i class="double-icon"></i>');
 	checkInventoryForNotification();
