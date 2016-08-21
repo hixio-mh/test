@@ -129,6 +129,10 @@
 	display: block;
 	margin: 15px auto;
 }
+#whoBet {
+    background: #e0e0e0;
+    color: #000;
+}
 ul.winItems {
     list-style: none;
     padding-left: 0;

@@ -275,6 +275,41 @@ function deleteMenuNotification(items) {
 	}
 }
 
+function getCollection(type, name) {
+	var collection="";
+	type = type.replace(/Souvenir/g, 'Сувенир');
+	for (var i = 0; i < cases.length; i++) {
+		for (var z = 0; z < cases[i].weapons.length; z++) 
+			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name)) {
+				collection = cases[i];
+				break;
+			}
+		if (typeof collection != 'undefined' && collection != '') break;
+	}
+	return collection;
+}
+
+function getWeaponImg(type, name) {
+	type = type.replace(/Souvenir/g, 'Сувенир');
+	name = getSkinName(name);
+	var coll = getCollection(type, name);
+	if (!coll) return 'none.png';
+	for (var i = 0; i < coll.weapons.length; i++) {
+		if (coll.weapons[i].type == type && getSkinName(coll.weapons[i].skinName) == name)
+			return coll.weapons[i].img;
+	}
+}
+
+function getWeaponRarity(type, name) {
+	var coll = getCollection(type, name);
+	type = type.replace(/Souvenir/g, 'Сувенир');
+	name = getSkinName(name);
+	for (var i = 0; i < coll.weapons.length; i++) {
+		if (coll.weapons[i].type == type && getSkinName(coll.weapons[i].skinName) == name)
+			return coll.weapons[i].rarity;
+	}
+}
+
 function getImgUrl(img, big) {
 	if (img.indexOf("images/") != -1)
 		if (typeof big != "undefined") {

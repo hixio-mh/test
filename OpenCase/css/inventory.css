@@ -154,6 +154,8 @@
     display: block;
     padding: 8px 0;
     border-bottom: 1px solid rgba(238, 238, 238, 0.31);
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 #weaponInfoTable {
     width: 100%;

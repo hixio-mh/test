@@ -40,8 +40,40 @@ function getPrice(type, name, quality, statTrak) {
 			}
 		}
 }
+function getPriceIfExists(type, name, quality, statTrak) {
+	quality = getQualityName(quality, "EN");
+	name = getSkinName(name, "EN");
+	if (type.substring(0, 1) == "★")
+		type = type.substring(2, type.length);
+	if (type.indexOf("Сувенир") != -1)
+		type = type.replace("Сувенир", "Souvenir");
+	var item = Prices.filter(function (obj) {
+			return obj.name == name && obj.type == type && obj.quality == quality;
+		})
+		if (item.length == 0) {
+			return 0;
+		} else {
+			if (statTrak == 1) {
+				item = item.filter(function (obj) {
+						return obj.statTrak == true;
+					})
+			} else {
+				item = item.filter(function (obj) {
+						return typeof obj.statTrak == "undefined";
+					})
+			}
+			if (typeof item[0] == "undefined") {
+				return 0
+			}
+			if (item[0].marketPrice != 0) {
+				return item[0].marketPrice;
+			} else {
+				return item[0].avgPrice;
+			}
+		}
+}
 
-function getMarketPrice(type, name, quality, statTrak, selector) {
+function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) {
 	$(selector).html('<span class="current-price hide">' + $(selector).html() + '</span><span class="loading-animate"></span>');
 	$('.glassBlur').addClass('js-price-loading');
 	if (statTrak != 0 && statTrak != false) {
@@ -76,7 +108,7 @@ function getMarketPrice(type, name, quality, statTrak, selector) {
 			}
 		} catch (e) {
 			//getOtherMarketsPrice(type, name, quality, statTrak, selector);
-			csgoStashGetURL(type, name, quality, statTrak, selector);
+			csgoStashGetURL(type, name, quality, statTrak, selector, allowanyPrice);
 		}
 	});
 }
@@ -123,7 +155,7 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
 	});
 }
 
-function csgoStashGetURL(type, name, quality, statTrak, selector) {
+function csgoStashGetURL(type, name, quality, statTrak, selector, allowanyPrice) {
 	var souvenir = false;
 	var type2 = type.replace(/ /gi, '+');
 	if (/Souvenir/.test(type))
@@ -147,14 +179,15 @@ function csgoStashGetURL(type, name, quality, statTrak, selector) {
 				$('.glassBlur').removeClass('js-price-loading');
 			}
 			var url = data.query.results.a.href;
-			csgoStash(url, quality, statTrak, souvenir, selector);
+			csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice);
 		} catch (err) {
 			//ERROR
 		}
 	});
 }
 
-function csgoStash(url, quality, statTrak, souvenir, selector) {
+function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
+	if (typeof allowanyPrice == 'undefined') allowanyPrice = true;
 	var anyPrice = false;
 	$.getJSON("https://query.yahooapis.com/v1/public/yql", {
 		q : "select * from html where url='" + url + "' and xpath='//a[contains(@class, \"btn-sm\") and not(contains(@class, \"price-tab-keys-button\"))]/span'",
@@ -165,6 +198,7 @@ function csgoStash(url, quality, statTrak, souvenir, selector) {
 			var spans = data.query.results.span;
 			for (var i = 0; i < spans.length; i++) {
 				var souvenirFound = false;
+				var statTrakFound = false;
 				var curr = spans[i];
 				if (curr.content == 'StatTrak') {
 					if (!statTrak) {
@@ -173,6 +207,7 @@ function csgoStash(url, quality, statTrak, souvenir, selector) {
 					}
 					i++;
 					curr = spans[i];
+					statTrakFound = true;
 				} else if (curr.class.indexOf('price-details-souv') != -1) {
 					if (!souvenir) {
 						i += 2;
@@ -181,10 +216,9 @@ function csgoStash(url, quality, statTrak, souvenir, selector) {
 					i++;
 					curr = spans[i];
 					souvenirFound = true;
-
 				}
-				if (curr.content == quality || anyPrice) {
-					if (souvenir && !souvenirFound)
+				if (curr.content == quality  || anyPrice) {
+					if ((souvenir && !souvenirFound) || (statTrak && !statTrakFound))
 						continue;
 					if (spans[i + 1].content[0] == '$') {
 						var price = parseFloat(spans[i + 1].content.substr(1).replace(/,/gi, ''));
@@ -194,7 +228,7 @@ function csgoStash(url, quality, statTrak, souvenir, selector) {
 						break;
 					} else {
 						if (spans[i + 1].content == 'Not Possible' || spans[i + 1].content == 'No Recent Price')
-							anyPrice = true;
+							if (allowanyPrice) anyPrice = true;
 						i++;
 					}
 				} else {

@@ -55,19 +55,6 @@ function getItemQuality() {
 	}
 }
 
-function getCollection(type, name) {
-	var collection="";
-	for (var i = 0; i < cases.length; i++) {
-		for (var z = 0; z < cases[i].weapons.length; z++) 
-			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name)) {
-				collection = cases[i];
-				break;
-			}
-		if (typeof collection != 'undefined' && collection != '') break;
-	}
-	return collection;
-}
-
 function ifStatTrak(type, name) {
 	type = type || "";
 	name = name || "";

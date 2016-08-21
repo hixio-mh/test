@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Торговая площадка</title>
+<!-- Скрипты -->
+<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/jquery-ui.min.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+<!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/inventory.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="../css/marketplace.css">
+
+<script src="../scripts/marketplace.js"></script>
+<style>
+
+</style>>
+</head>
+<body data-localization="ranks" data-inventory='no-load'>
+<div id="containter">
+<div class="navigationBar" data-menu-EN="Marketplace" data-menu-RU="Торговая площадка"></div>
+<div id="containter">
+	<div id="search">
+		<input type="text" name="search_text" id="search_text" placeholder="Search"/>
+		<input type="button" name="search_button" id="search_button"></a>
+	</div>
+	
+	<table id="search_result"></table>
+	
+	<div id="weaponInfoContainer" style="display: none">
+	<div class="glassBlur" style='width: 100%; height: 100%'></div>
+	<div class="fullWeaponInfo" >
+		<span id="weaponName"></span>
+		<img src="" id="weaponImg">
+		<table id="weaponInfoTable">
+		<tr><td>Цена</td><td id="weaponPrice"></td></tr>
+		<tr><td>Качество</td><td id="weaponQuality"></td></tr>
+		</table>
+		<span id='buy-text'>Купить:</span>
+		<button class='button_startContract' style='margin-bottom: 7px;' id='buy-double'>Купить</button>
+		<span id='weaponRarity' style='display:none;'></span>
+	</div>
+</div>
+</div>
+</body>
+</html>
