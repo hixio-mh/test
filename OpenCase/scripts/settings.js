@@ -22,6 +22,7 @@ var Settings = {
 	Player.avatar = getStatistic("playerAvatar", '0.jpg');
 	Player.points = parseInt(getStatistic('playerPoints', 0));
 	Player.doubleBalance = parseInt(getStatistic('doubleBalance', 0));
+	if (isNaN(Player.doubleBalance)) Player.doubleBalance = 10000;
 
 	Settings.language = getStatistic("settings_language", 'EN');
 	Settings.sounds = getStatistic("settings_sounds", 'true') === 'true';

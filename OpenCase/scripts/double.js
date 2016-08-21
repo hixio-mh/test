@@ -29,7 +29,7 @@ $(function() {
 	$(".last-games").html(lastGamesHTML);
 	
 	$('#bet').val('0');
-	$('#balance').text(Player.doubleBalance);
+	$('#balance').text(Player.doubleBalance.toFixed(0));
 	
 	newGame();
 });
@@ -93,6 +93,7 @@ function startGame() {
 							Player.doubleBalance += playerBet[i].bet * 14;
 							break
 						}
+						Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
 						$('#balance').text(Player.doubleBalance);
 						statisticPlusOne('double-wins');
 						changePoints(2);
@@ -100,6 +101,7 @@ function startGame() {
 						changePoints(-1);
 						statisticPlusOne('double-loose');
 					}
+					
 				saveStatistic('doubleBalance', Player.doubleBalance);
 			}
 			win = getWinnerNumber();
@@ -194,6 +196,7 @@ $(document).on('click', '.bet-to-color', function() {
 	playerBet.push({color: color, bet: bet});
 	
 	Player.doubleBalance -= bet;
+	Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
 	$('#balance').text(Player.doubleBalance);
 	saveStatistic('doubleBalance', Player.doubleBalance);
 	
@@ -231,7 +234,7 @@ $(document).on("click", ".choseItems", function(){
 		
 		if (itemsCost) {
 			Player.doubleBalance += itemsCost*100;
-			Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(2));
+			Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
 			$('#balance').text(Player.doubleBalance);
 			saveStatistic('doubleBalance', Player.doubleBalance);
 		}
