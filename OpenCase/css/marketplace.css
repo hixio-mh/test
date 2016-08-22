@@ -43,13 +43,16 @@
 }
 #search_button {
     border: 0 none;
-    background: #1f7f5c url(../images/marketplace/search.png) center no-repeat;
+    background: #1f7f5c;
     width: 60px;
     float: left;
     padding: 0;
     text-align: center;
     height: 52px;
     cursor: pointer;
+	color: #fff;
+	line-height: 49px;
+	font-size: 22px;
 }
 #search_result {
     margin: 0 auto;
@@ -129,4 +132,25 @@ i.double-icon {
     line-height: 30px;
     border-bottom: 1px solid RGBA(0, 0, 0, 0.16);
     padding-left: 5px;
+}
+.buy-animation {
+    display: block;
+    position: absolute;
+    color: #00bd2a;
+    top: 20px;
+    font-size: 14em;
+    margin: 0 auto;
+    left: 91px;
+    width: 0px;
+    overflow: hidden;
+    text-shadow: 0px 0px 10px RGBA(0, 0, 0, 0.8);
+}
+.buy-animation:before {
+	content: '✓';
+}
+.buy-animation-show {
+	width:165px;
+}
+#buy-double:disabled {
+	opacity: 0.5;
 }

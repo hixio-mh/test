@@ -1,4 +1,9 @@
-﻿$(function() {
+﻿var buySound = new Audio();
+buySound.src = "../sound/buy.wav";
+buySound.playbackRate = 1;
+buySound.volume = 0.4;
+
+$(function() {
 	var autocompleteTags = [];
 	for (var i = 0; i < cases.length; i++)
 		for (var z = 0; z < cases[i].weapons.length; z++) {
@@ -71,17 +76,39 @@ $(document).on('click', '#buy-double', function () {
 		price: parseFloat($("#weaponInfoContainer").data('price').replace(/\$/, '')),
 		new: true,
 	}
+	if (Player.doubleBalance < weapon.price*100) {
+		$('#weaponPrice').addClass('animated flash');
+		setTimeout(function(){
+			$('#weaponPrice').removeClass('animated flash')
+		}, 1000);
+		return false;
+	}
 	if (isAndroid()) {
 		saveWeapon(weapon);
 	} else {
 		inventory.push(weapon);
 		saveInventory();
 	}
+	if (Settings.sounds) buySound.play();
 	Player.doubleBalance -= parseInt((weapon.price*100).toFixed(0));
 	saveStatistic('doubleBalance', Player.doubleBalance);
 	$("#playerBalance").html(Player.doubleBalance+' <i class="double-icon"></i>');
+	
+	$("#buy-double").prop('disabled', true);
+	$(".buy-animation").addClass("buy-animation-show", 500, hideBuyCheck);
+	
 	checkInventoryForNotification();
 });
+
+function hideBuyCheck() {
+	$(".buy-animation").addClass('animated zoomOut');
+	setTimeout(function() {
+        $( ".buy-animation" ).removeClass( "buy-animation-show" );
+        $( ".buy-animation" ).removeClass( "animated" );
+        $( ".buy-animation" ).removeClass( "zoomOut" );
+		$("#buy-double").prop('disabled', false);
+      }, 800 );
+}
 
 $(document).on('click', '#search_button', function() {
 	if ($("#search_text").val() != '');

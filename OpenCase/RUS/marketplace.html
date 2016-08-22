@@ -20,6 +20,7 @@
 
 <!-- Стили -->
 <link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
@@ -37,7 +38,9 @@
 <div id="containter">
 	<div id="search">
 		<input type="text" name="search_text" id="search_text" placeholder="Search"/>
-		<input type="button" name="search_button" id="search_button"></a>
+		<span type="button" name="search_button" id="search_button">
+		<i class="fa fa-search" aria-hidden="true"></i>
+		</span>
 	</div>
 	
 	<table id="search_result"></table>
@@ -47,6 +50,7 @@
 	<div class="fullWeaponInfo" >
 		<span id="weaponName"></span>
 		<img src="" id="weaponImg">
+		<div class='buy-animation'></div>
 		<table id="weaponInfoTable">
 		<tr><td>Цена</td><td id="weaponPrice"></td></tr>
 		<tr><td>Качество</td><td id="weaponQuality"></td></tr>
