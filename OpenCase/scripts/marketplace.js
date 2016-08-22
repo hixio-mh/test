@@ -4,6 +4,11 @@ buySound.playbackRate = 1;
 buySound.volume = 0.4;
 
 $(function() {
+});
+
+$(document).ready(function() {
+	$('.navigationBar').append('<sup class="beta"> beta</sup><span id="playerBalance">'+Player.doubleBalance+' <i class="double-icon"></i></span>');
+	
 	var autocompleteTags = [];
 	for (var i = 0; i < cases.length; i++)
 		for (var z = 0; z < cases[i].weapons.length; z++) {
@@ -16,10 +21,6 @@ $(function() {
 	$("#search_text").autocomplete({
 		source: autocompleteTags
 	})
-});
-
-$(document).ready(function() {
-	$('.navigationBar').append('<sup class="beta"> beta</sup><span id="playerBalance">'+Player.doubleBalance+' <i class="double-icon"></i></span>');
 });
 
 $(document).on('click', '.item', function() {
