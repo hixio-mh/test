@@ -19,7 +19,7 @@ $(function() {
 });
 
 $(document).ready(function() {
-	$('.navigationBar').append('<sup id="beta">beta</sup><span id="playerBalance">'+Player.doubleBalance+' <i class="double-icon"></i></span>');
+	$('.navigationBar').append('<sup class="beta"> beta</sup><span id="playerBalance">'+Player.doubleBalance+' <i class="double-icon"></i></span>');
 });
 
 $(document).on('click', '.item', function() {

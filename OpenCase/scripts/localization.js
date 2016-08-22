@@ -66,6 +66,12 @@ Localization.menu = [{
 			"EN" : "My inventory"
 		}
 	}, {
+		"selector" : "#local-menu-market",
+		"localization" : {
+			"RU" : "Магазин<sup class='beta'> beta</sup>",
+			"EN" : "Market<sup class='beta'> beta</sup>"
+		}
+	}, {
 		"selector" : "#local-menu-stat",
 		"localization" : {
 			"RU" : "Статистика",

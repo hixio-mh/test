@@ -187,8 +187,8 @@
 	"month" : 8,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Монетка исправлена.",
-		"EN" : " - Coinflip was fixed."
+		"RU" : " - Монетка исправлена<br> - Добавлен магазин.",
+		"EN" : " - Coinflip was fixed<br> - New Market."
 	}
 }, 
 ];

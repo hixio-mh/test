@@ -128,3 +128,9 @@
     font-size: 0.8em;
     line-height: 1.5em;
 }
+sup.beta {
+    color: red;
+    font-size: 0.65em;
+    font-family: Lato;
+    font-weight: 400;
+}
