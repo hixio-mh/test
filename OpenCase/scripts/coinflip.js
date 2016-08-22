@@ -24,6 +24,7 @@ clickSound.volume = 0.9;
 $(window).load(function() {
 	var anim = document.getElementById('coin');
 	anim.addEventListener("animationend", coinStoped, false);
+	anim.addEventListener("webkitAnimationEnd", coinStoped, false);
 	
 	var games_order = ['low', 'low', 'normal', 'normal', 'hight', 'hight', 'legendary', 'legendary'];
 	var list = '';
@@ -74,7 +75,7 @@ function startGame() {
 }
 
 function coinStoped() {
-	flipSoundCT.pause();
+	if (Settings.sounds) flipSoundCT.pause();
 	
 	var winner = $('#coin').attr('class');
 	if (winner == 'CT') {
