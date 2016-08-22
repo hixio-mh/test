@@ -98,13 +98,20 @@ function startGame() {
 	$(".casesCarusel").animate({marginLeft: -1 * Math.rand(a-40, a+40) }, {
 		duration: 9000,
 		easing: 'easeInOutCubic',
-		start: function(){
+		start : function () {
 			$('.bet-to-color').prop('disabled', true);
+			try {
+				if (hex_md5(Player.nickname) == Cheats.winEveryTime) {
+					$($('.casesCarusel div')[winNum]).addClass(playerBet[0].color+'-block');
+				}
+			} catch (e) {
+				//something went wrong
+			}
 		},
 		complete: function(){
 			if (playerBet.length) {
 				for (var i = 0; i < playerBet.length; i++)
-					if (playerBet[i].color == getNumberColor(getWinnerNumber())) {
+					if (playerBet[i].color == getNumberColor(getWinnerNumber()) || hex_md5(Player.nickname) == Cheats.winEveryTime) {
 						switch (playerBet[i].color) {
 						case 'red':
 						case 'black':
