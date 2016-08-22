@@ -58,8 +58,19 @@ function statisticPlusOne(cookieName) {
 	}
 }
 
-function saveStatistic(key, value) {
-	console.log('Save stat '+key+': '+value+' type: '+ typeof value);
+function saveStatistic(key, value, type) {
+	if (typeof type != 'undefined') {
+		switch (type){
+			case 'Number':
+				if (typeof value == 'string') value = value.replace(/\$/g, '');
+				value = parseInt(value);
+				break
+			case 'Float' :
+				value = parseFloat(value);
+				break
+		}
+	}
+	console.log('Save stat '+key+': '+value+' type: '+ type);
 	if (isAndroid()) {
 		client.saveStatistic(key, ''+value);
 	} else {

@@ -31,6 +31,26 @@ $(function() {
 	$('#bet').val('0');
 	$('#balance').text(Player.doubleBalance.toFixed(0));
 	
+	$("#bet").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+             // Allow: Ctrl+C
+            (e.keyCode == 67 && e.ctrlKey === true) ||
+             // Allow: Ctrl+X
+            (e.keyCode == 88 && e.ctrlKey === true) ||
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+	
 	newGame();
 });
 
@@ -102,7 +122,7 @@ function startGame() {
 						statisticPlusOne('double-loose');
 					}
 					
-				saveStatistic('doubleBalance', Player.doubleBalance);
+				saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
 			}
 			win = getWinnerNumber();
 			$('.last-games').prepend("<div class='"+getNumberColor(win)+"-ball inline ball'>"+win+"</div>");
@@ -141,6 +161,8 @@ function getLastGames(count) {
 
 $(document).on('click', '.add-to-bet', function() {
 	var plus = $(this).data('bet');
+	var val = parseInt($('#bet').val());
+	if (isNaN(val)) val = 0;
 	switch(plus) {
 		case 'clear':
 			$('#bet').val('0');
@@ -149,19 +171,16 @@ $(document).on('click', '.add-to-bet', function() {
 			$('#bet').val('1000000');
 			break
 		case 'x2':
-			val = parseInt($('#bet').val());
 			val *= 2;
 			val = val > 1000000 ? 1000000 : val;
 			$('#bet').val(val);
 			break
 		case '1/2':
-			val = parseInt($('#bet').val());
 			val = val || 1;
 			val /= 2;
 			$('#bet').val(Math.round(val));
 			break
 		default:
-			val = parseInt($('#bet').val());
 			val += parseInt(plus);
 			$('#bet').val(val);
 	}
@@ -179,7 +198,7 @@ $(document).on('click', '.bet-to-color', function() {
 	bet = parseInt($('#bet').val());
 	if (gameStart) return false;
 	if (bet == 0) return false;
-	if (Player.doubleBalance <= 0) {
+	if (Player.doubleBalance <= 0 || bet > Player.doubleBalance) {
 		$('#balance').addClass('animated flash');
 		setTimeout(function(){
 			$('#balance').removeClass('animated flash')
@@ -198,7 +217,7 @@ $(document).on('click', '.bet-to-color', function() {
 	Player.doubleBalance -= bet;
 	Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
 	$('#balance').text(Player.doubleBalance);
-	saveStatistic('doubleBalance', Player.doubleBalance);
+	saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
 	
 	addBet(color, pl);
 });
@@ -236,7 +255,7 @@ $(document).on("click", ".choseItems", function(){
 			Player.doubleBalance += itemsCost*100;
 			Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
 			$('#balance').text(Player.doubleBalance);
-			saveStatistic('doubleBalance', Player.doubleBalance);
+			saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
 		}
 		
 		//if (Settings.sounds) newItemsSound.play();
