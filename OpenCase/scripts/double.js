@@ -3,7 +3,8 @@ var colors = ['r', 'b', 'r', 'b', 'r', 'b', 'r', 'g', 'b', 'r', 'b', 'r', 'b', '
 var botMinDec = 700,
 	botMaxDec = 3000,
 	botMinBet = 1,
-	botMaxBet = 1000;
+	botMaxBet = 1000,
+	betLimit  = 1000000;
 var timerBots,
 	intervalCountdown,
 	winNumber = 40,
@@ -62,7 +63,7 @@ function newGame() {
 	
 	fillCarusel(parseInt($(".ball:first-child").text()));
 	
-	botMaxBet = Player.doubleBalance + 1000;
+	botMaxBet = Player.doubleBalance + 1000 > betLimit ? betLimit : Player.doubleBalance + 1000;
 	
 	countdownTimer = countdownTime;
 	$('.the-bet').fadeOut(300, function(){ $(this).remove();});
@@ -168,11 +169,11 @@ $(document).on('click', '.add-to-bet', function() {
 			$('#bet').val('0');
 			break
 		case 'max':
-			$('#bet').val('1000000');
+			$('#bet').val(betLimit);
 			break
 		case 'x2':
 			val *= 2;
-			val = val > 1000000 ? 1000000 : val;
+			val = val > betLimit ? betLimit : val;
 			$('#bet').val(val);
 			break
 		case '1/2':
@@ -184,7 +185,7 @@ $(document).on('click', '.add-to-bet', function() {
 			val += parseInt(plus);
 			$('#bet').val(val);
 	}
-	if (parseInt($("#bet").val()) > 1000000) $('#bet').val('1000000');
+	if (parseInt($("#bet").val()) > betLimit) $('#bet').val(betLimit);
 	if (parseInt($("#bet").val()) > Player.doubleBalance) $('#bet').val(Player.doubleBalance);
 	if (Player.doubleBalance <= 0) {
 		$('#balance').addClass('animated flash');
