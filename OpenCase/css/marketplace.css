@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
+#beta {
+    color: red;
+}
 #containter {
 	margin-top:25px;
 }
@@ -127,6 +129,7 @@ i.double-icon {
 #buy-text {
     display: block;
     text-align: left;
+	margin-left: 3px;
 }
 .ui-menu .ui-menu-item {
     line-height: 30px;

@@ -469,6 +469,23 @@ Localization.inventory = [{
 		}
 	},
 ],
+Localization.marketplace = [{
+		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
+		"localization" : {
+			"EN" : "Price"
+		}
+	}, {
+		"selector" : "#weaponInfoTable tr:nth-child(2) td:nth-child(1)",
+		"localization" : {
+			"EN" : "Quality"
+		}
+	}, {
+		"selector" : "#buy-text",
+		"localization" : {
+			"EN" : "Buy:"
+		}
+	}
+],
 Localization.statistic = [{
 		"selector" : "#caseOpened-text",
 		"localization" : {
