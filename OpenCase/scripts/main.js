@@ -100,20 +100,20 @@ function saveInventory() {
 		localStorage["inventory.item." + i + ".quality"] = inventory[i].quality;
 		localStorage["inventory.item." + i + ".statTrak"] = inventory[i].statTrak;
 		localStorage["inventory.item." + i + ".price"] = inventory[i].price;
-		localStorage["inventory.item." + i + ".new"] = inventory[i].new;
+		localStorage["inventory.item." + i + ".new"] = inventory[i]['new'];
 	}
 }
 
 function saveWeapon(weapon) {
 	//Weapon - object;
 	if (isAndroid()) {
-		var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon.new);
+		var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
 	}
 }
 function updateWeapon(weapon) {
 	//Weapon - object;
 	if (isAndroid()) {
-		var rowID = client.updateWeapon(weapon.id, weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon.new);
+		var rowID = client.updateWeapon(weapon.id, weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
 	}
 }
 function getWeapon(id) {
@@ -159,16 +159,16 @@ function fromLocalStorageToDB() {
 		item.quality = localStorage["inventory.item." + i + ".quality"];
 		st = localStorage["inventory.item." + i + ".statTrak"];
 		item.price = Number(localStorage["inventory.item." + i + ".price"]);
-		item.new = localStorage["inventory.item." + i + ".new"];
+		item['new'] = localStorage["inventory.item." + i + ".new"];
 		if ((st == "true") || (st == "1")) {
 			item.statTrak = true;
 		} else {
 			item.statTrak = false;
 		}
-		if ((item.new == "true") || (item.new == "1")) {
-			item.new = true;
+		if ((item['new'] == "true") || (item['new'] == "1")) {
+			item['new'] = true;
 		} else {
-			item.new = false;
+			item['new'] = false;
 		}
 		saveWeapon(item);
 	}
@@ -215,17 +215,17 @@ function _getInventoryLocalStorage() {
 		item.quality = localStorage["inventory.item." + i + ".quality"];
 		st = localStorage["inventory.item." + i + ".statTrak"];
 		item.price = Number(localStorage["inventory.item." + i + ".price"]);
-		item.new = localStorage["inventory.item." + i + ".new"];
+		item['new'] = localStorage["inventory.item." + i + ".new"];
 		if ((st == "true") || (st == "1")) {
 			item.statTrak = true;
 		} else {
 			item.statTrak = false;
 		}
-		if ((item.new == "true") || (item.new == "1")) {
-			item.new = true;
+		if ((item['new'] == "true") || (item['new'] == "1")) {
+			item['new'] = true;
 			new_weapon_count++;
 		} else {
-			item.new = false;
+			item['new'] = false;
 		}
 
 		inventoryLocal.push(item);

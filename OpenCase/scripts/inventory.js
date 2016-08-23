@@ -61,8 +61,8 @@ function fillInventory() {
 		var weapon = inventory[i];
 		//var img = prefix + weapon.img + postfix;
 		
-		if (typeof weapon.new == 'undefined') 
-			weapon.new = false;
+		if (typeof weapon['new'] == 'undefined') 
+			weapon['new'] = false;
 	
 		var type = weapon.type;
 		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
@@ -70,10 +70,10 @@ function fillInventory() {
 		var name = weapon.skinName;
 		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
 		var weaponInfo = "<img src='"+getImgUrl(weapon.img)+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+		"</span></div><i>"+weapon.price+"$</i>";
-		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +" "+((weapon.new == true) ? "new-weapon" : "")+"' id='"+i+"-inventoryItem' data-id='"+weapon.id+"'>"+weaponInfo+"</li>");
+		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +" "+((weapon['new'] == true) ? "new-weapon" : "")+"' id='"+i+"-inventoryItem' data-id='"+weapon.id+"'>"+weaponInfo+"</li>");
 		
-		if (weapon.new == true) {
-			inventory[i].new = false;
+		if (weapon['new'] == true) {
+			inventory[i]['new'] = false;
 			if (isAndroid()) updateWeapon(inventory[i]);
 			need_save = true;
 		}

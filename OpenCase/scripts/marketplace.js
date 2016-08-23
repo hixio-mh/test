@@ -75,7 +75,7 @@ $(document).on('click', '#buy-double', function () {
 		statTrak: $("#weaponInfoContainer").data('stattrak'),
 		rarity: rarity,
 		price: parseFloat($("#weaponInfoContainer").data('price').replace(/\$/, '')),
-		new: true,
+		'new': true,
 	}
 	if (Player.doubleBalance < weapon.price*100) {
 		$('#weaponPrice').addClass('animated flash');

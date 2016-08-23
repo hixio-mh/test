@@ -188,7 +188,7 @@ $(document).on("click", ".openCase", function () {
 			if (isNaN(price))
 				price = 0;
 			win.price = price;
-			win.new = true;
+			win['new'] = true;
 			inventory.push(win);
 			if (isAndroid())
 				saveWeapon(win);

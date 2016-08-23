@@ -401,7 +401,7 @@ Localization.coinflip2 = {
 		"RU" : "Победитель"
 	},
 },
-Localization.double = [{
+Localization['double'] = [{
 		"selector" : "#last_games_text",
 		"localization" : {
 			"RU" : "Предыдущие числа:",

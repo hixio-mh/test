@@ -208,7 +208,7 @@ function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
 					i++;
 					curr = spans[i];
 					statTrakFound = true;
-				} else if (curr.class.indexOf('price-details-souv') != -1) {
+				} else if (curr['class'].indexOf('price-details-souv') != -1) {
 					if (!souvenir) {
 						i += 2;
 						continue;

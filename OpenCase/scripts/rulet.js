@@ -383,7 +383,7 @@ function FillMyInventoryWithRandomWeapon(count){
 		weapon.quality = getItemQuality()[1];
 		weapon.statTrak = ifStatTrak(weapon.type, weapon.name);
 		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
-		weapon.new = true;
+		weapon['new'] = true;
 		
 		var z = 0;
 		while (weapon.price == 0) {

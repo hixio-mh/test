@@ -89,7 +89,6 @@ function countDown() {
 
 function startGame() {
 	gameStart = true;
-	
 	winNum = Math.rand(winNumber-3, winNumber+5);
 	
 	var a = 96*winNum - 144;

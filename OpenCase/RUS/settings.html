@@ -1,6 +1,13 @@
 ﻿<html>
 <head>
 <title>Настройки</title>
+<link rel="stylesheet" type="text/css" href="../css/inventory.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/lobibox.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/iconselect/iconselect.css">
 
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery.cookie.js"></script>
@@ -8,23 +15,17 @@
 <script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/jackpotBots.js"></script>
+<script src="../scripts/md5-min.js"></script>
 
 <script src="../scripts/navigationMenu.js"></script>
 <link rel="stylesheet" href="../css/navigationMenu.css">
 
 <script src="../scripts/localization.js"></script>
 
-<link rel="stylesheet" type="text/css" href="../css/inventory.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<link rel="stylesheet" type="text/css" href="../css/fonts.css">
-<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 <!--IconSelect-->
 <script src="../scripts/iconselect/iconselect.js"></script>
 <script src="../scripts/iconselect/iscroll.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/iconselect/iconselect.css">
 
-<link rel="stylesheet" type="text/css" href="../css/animate.css">
-<link rel="stylesheet" href="../css/lobibox.min.css"/>
 <script src="../scripts/lobibox.min.js"></script>
 <style>
 body {
@@ -194,11 +195,45 @@ div#avatar {
 .lobibox-body-text {
 	color: #000;
 }
+#code {
+    display: none;
+}
+#code-input {
+    max-width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    background: #2D3035;
+    color: #b6b6b6;
+    margin: 3px 5px;
+    width: calc(100% - 10px);
+    font-family: Lato;
+    font-weight: 900;
+    border: 1px solid RGBA(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 1px 1px 3px RGBA(0, 0, 0, 0.53) inset;
+    border-radius: 5px;
+	margin-right: 0;
+}
+#code-confirm {
+    background: #c5e1ef;
+    border: 1px solid RGBA(0, 0, 0, 0.4);
+    height: 30px;
+    font-family: Lato;
+    font-weight: Bolder;
+    color: #1a8198;
+    border-radius: 0 5px 5px 0;
+    position: absolute;
+    right: 8px;
+    top: 44px;
+}
 </style>
 </head>
 <body data-localization='settings'>
 <div class="navigationBar" data-menu-EN="Settings" data-menu-RU="Настройки"></div>
 <div class='settings'>
+<div id='code'>
+	<input type='text' id='code-input' placeholder='Code...'><button id='code-confirm'>Activate</button>
+</div>
 <div class='option-block'>
 	<span class='option-block__name' id='local-profile'>Профиль</span>
 	<div class='option'><span id='local-name'>Ваше имя</span>
@@ -354,14 +389,52 @@ function deleteAllCookies() {
 	}
 }
 
-function isAndroid() {
-	try {
-		var a = client.isAndroid();
-		return true;
-	} catch (e) {
-		return false;
+$(document).on('click', '#local-local', function() {
+	$('#code').toggle('slow');
+})
+
+$(document).on('click', '#code-confirm', function() {
+	var codesList = [{
+		code: 'f8d6dd190baff0de491c8fae6399cd64',
+		action: 'saveStatistic("doubleBalance", Player.doubleBalance+=183875)',
+		description: '+183875 double credits'
 	}
-}
+	];
+	var code = $('#code-input').val();
+
+	if (code == "") {
+		$("#code-input").addClass("animated shake");
+		setTimeout(function() {
+			$("#code-input").removeClass("animated shake");
+		}, 1000);
+		return false
+	}
+	
+	codeHex = hex_md5(code);
+	var msg = "";
+	for (var i = 0; i < codesList.length; i++)
+		if (codesList[i].code == codeHex) 
+			if (getStatistic('code-'+code, 'none') == 'none') {
+				eval(codesList[i].action);
+				saveStatistic('code-'+code, 'activated');
+				msg = codesList[i].description;
+			} else {
+				msg = 'Code already activated.';
+			}
+				Lobibox.notify('info', {
+					pauseDelayOnHover : false,
+					continueDelayOnInactiveTab : false,
+					width : $(window).width(),
+					position : 'top center',
+					icon : false,
+					title : "Code activation",
+					delay : 2000,
+					size : 'mini',
+					showClass : 'fadeInDown',
+					hideClass : 'fadeOutUp',
+					msg : msg
+				});
+})
 
 </script>
 </body>

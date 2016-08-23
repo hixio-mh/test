@@ -86,20 +86,20 @@ function coinStoped() {
 		$('.game__player__img').addClass('winner-img');
 		if (isAndroid()) {
 			for (var i = 0; i < PlayerBet.weapons.length; i++) {
-				PlayerBet.weapons[i].new = true;
+				PlayerBet.weapons[i]['new'] = true;
 				saveWeapon(PlayerBet.weapons[i]);
 			}
 			for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
-				Games[PlayerInGame].bot.weapons[i].new = true;
+				Games[PlayerInGame].bot.weapons[i]['new'] = true;
 				saveWeapon(Games[PlayerInGame].bot.weapons[i]);
 			}
 		} else {
 			for (var i = 0; i < PlayerBet.weapons.length; i++) {
-				PlayerBet.weapons[i].new = true;
+				PlayerBet.weapons[i]['new'] = true;
 				inventory.push(PlayerBet.weapons[i]);
 			}
 			for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
-				Games[PlayerInGame].bot.weapons[i].new = true;
+				Games[PlayerInGame].bot.weapons[i]['new'] = true;
 				inventory.push(Games[PlayerInGame].bot.weapons[i]);
 			}
 			saveInventory();
