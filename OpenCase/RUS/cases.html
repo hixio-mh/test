@@ -77,7 +77,7 @@ $(function () {
 
 		var version = client.getCurrentAppVersionName();
 
-		if (version != "1.2.1") {
+		if (version != "1.2.1" && false) {
 			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
 		}
 	}
