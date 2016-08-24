@@ -315,6 +315,8 @@ function getWeaponRarity(type, name) {
 	name = getSkinName(name);
 	type = type.replace(/Souvenir/g, 'Сувенир');
 	var coll = getCollection(type, name);
+	if (typeof coll == undefined && isAndroid())
+		client.sendToAnalytics("Error", "Error", "Cant find collection: "+type+" | "+name, "main.js")
 	for (var i = 0; i < coll.weapons.length; i++) {
 		if (coll.weapons[i].type == type && getSkinName(coll.weapons[i].skinName) == name)
 			return coll.weapons[i].rarity;
