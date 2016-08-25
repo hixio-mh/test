@@ -287,6 +287,15 @@ function deleteMenuNotification(items) {
 }
 
 function getCollection(type, name) {
+	try {
+		var param = parseURLParams(window.location.href);
+		if(typeof param != "undefined") {
+			var caseId = param.caseId[0];
+			return cases[parseInt(caseId)]
+		}
+	} catch (e) {
+		//Error
+	}
 	var collection="";
 	type = type.replace(/Souvenir/g, 'Сувенир');
 	for (var i = 0; i < cases.length; i++) {
