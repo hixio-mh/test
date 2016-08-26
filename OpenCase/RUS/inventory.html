@@ -182,7 +182,7 @@ $(document).on("click", ".weapon", function() {
 })
 
 $(document).on("click", ".glassBlur, .fullWeaponInfo-close", function(){
-	if ($(this).hasClass('js-price-loading')) return false;
+	if ($(".glassBlur").hasClass('js-price-loading')) return false;
 	$("#weaponInfoContainer").css("display", "none");
 	if ($(this).hasClass("savePrice")) {
 		if ($("#weaponPrice").text() != "0$" && $("#weaponPrice").text() != "NaN$") {
