@@ -3,14 +3,17 @@ selectItemSound.src = "../sound/interface/SelectItem.wav";
 selectItemSound.volume = 0.9;
 
 $(function() {
-	$('.inventory').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
+	if ($(".inventory").length) {
+		$('.inventory').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
 	
-	$('.inventoryList').on('scroll', function() {
-        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80) {
-			if (!inventory_loading && isAndroid() && client.getInventoryLength("") != $('.weapon').length)
-				fillInventory();
-        }
-});
+		$('.inventoryList').on('scroll', function() {
+			if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80) {
+				if (!inventory_loading && isAndroid() && client.getInventoryLength("") != $('.weapon').length)
+					fillInventory();
+			}
+	
+		});
+	}
 })
 
 function getRandomWeapon(specialClass) {

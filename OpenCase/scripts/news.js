@@ -190,5 +190,13 @@
 		"RU" : " - Монетка исправлена<br> - Добавлен магазин.",
 		"EN" : " - Coinflip was fixed<br> - New Market."
 	}
+}, {
+	"day" : 23,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлены картинки у Tec-9 | Лавина и XM1014 | Горелка Теклу в коллекции Revolver Case<br> - Новый кейс - Workshop 2!",
+		"EN" : " - Images of Tec-9 | Avalanche and XM1014 | Teclu Burner was fixed<br> - New Workshop 2 case!"
+	}
 }, 
 ];

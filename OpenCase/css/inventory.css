@@ -146,6 +146,18 @@
     max-height: 100%;
 	max-width: 100%;
 }
+.fullWeaponInfo-close {
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 0, 0, 0.5);
+    display: block;
+    position: absolute;
+    border-radius: 0 0 0 7px;
+    right: 0;
+    line-height: 1.7em;
+    font-weight: bolder;
+	cursor: pointer;
+}
 #weaponImg {
     width: 90%;
 }

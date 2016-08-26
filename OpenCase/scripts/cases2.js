@@ -862,12 +862,12 @@ var cases = [{
 				"type" : "Tec-9",
 				"skinName" : "Avalanche",
 				"rarity" : "restricted",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf1OD3YjoXuY-JgImMkuXLPrTFnlRd4cJ5nqeQrYjw2FHhrkNuam73JdeTdQU9YVjT8gS4xei51MS9uZTPnyE17ygq-z-DyOkB2OsD"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhjxszcdD4b092glYyKmfT8NoTdn2xZ_It0iL-Wp9r02gDk80c-NWylJ9WdIQ5tZliDrlnrkO3ogZS57ZrJwSdgpGB8sqmt10R9"
 			}, {
 				"type" : "XM1014",
 				"skinName" : "Teclu Burner",
 				"rarity" : "restricted",
-				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhjxszcdD4b092glYyKmfT8NoTdn2xZ_It0iL-Wp9r02gDk80c-NWylJ9WdIQ5tZliDrlnrkO3ogZS57ZrJwSdgpGB8sqmt10R9"
+				"img" : "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PLZTiVPvYznwL-DmOPLIbTVqWdY781lxO-Xo9j32Afirko-ZzygIoWddwE6N1nXq1jsxru-hZ-8ucjBmndk7yA8pSGKrPA1flw"
 			}, {
 				"type" : "AK-47",
 				"skinName" : "Point Disarray",
@@ -4710,6 +4710,99 @@ var cases = [{
 				"skinName" : "Purple Abstract",
 				"rarity" : "rare",
 				"img" : "Workshop/Karambit-Purple-Abstract.png"
+		}, 
+		]
+	}, {
+		"name" : "Workshop 2",
+		"img" : "Workshop2.png",
+		"type" : "Workshop",
+		"specialClass" : "workshop",
+		"casesToOpen" : 50,
+		"weapons" : [{
+				"type" : "Tec-9",
+				"skinName" : "Chemical smoke",
+				"rarity" : "milspec",
+				"img" : "Workshop2/Tec-9-Chemical-smoke.png"
+		}, {
+				"type" : "PP-Bizon",
+				"skinName" : "TF2",
+				"rarity" : "milspec",
+				"img" : "Workshop2/PP-Bizon-TF2.png"
+		}, {
+				"type" : "USP-S",
+				"skinName" : "Dystopia",
+				"rarity" : "milspec",
+				"img" : "Workshop2/USP-S-Dystopia.png"
+		}, {
+				"type" : "SG 553",
+				"skinName" : "Erlkoenig",
+				"rarity" : "milspec",
+				"img" : "Workshop2/Galil-AR-Erlkoenig.png"
+		}, {
+				"type" : "M4A4",
+				"skinName" : "DeathWalker",
+				"rarity" : "restricted",
+				"img" : "Workshop2/M4A4-DeathWalker.png"
+		}, {
+				"type" : "UMP-45",
+				"skinName" : "Armamancer",
+				"rarity" : "restricted",
+				"img" : "Workshop2/UMP-45-Armamancer.png"
+		}, {
+				"type" : "MP7",
+				"skinName" : "Way of the Samurai",
+				"rarity" : "restricted",
+				"img" : "Workshop2/MP7-Way-of-the-Samurai.png"
+		}, {
+				"type" : "R8 Revolver",
+				"skinName" : "Kingdom of Dragons",
+				"rarity" : "restricted",
+				"img" : "Workshop2/R8-Revolver-Kingdom-of-Dragons.png"
+		}, {
+				"type" : "FAMAS",
+				"skinName" : "BlueWolf",
+				"rarity" : "classified",
+				"img" : "Workshop2/FAMAS-BlueWolf.png"
+		}, {
+				"type" : "M4A1-S",
+				"skinName" : "BlueWolf",
+				"rarity" : "classified",
+				"img" : "Workshop2/M4A1-S-BlueWolf.png"
+		}, {
+				"type" : "AWP",
+				"skinName" : "BlueWolf",
+				"rarity" : "classified",
+				"img" : "Workshop2/AWP-BlueWolf.png"
+		}, {
+				"type" : "Glock-18",
+				"skinName" : "BlueWolf",
+				"rarity" : "covert",
+				"img" : "Workshop2/Glock-18-BlueWolf.png"
+		}, {
+				"type" : "AK-47",
+				"skinName" : "BlueWolf",
+				"rarity" : "covert",
+				"img" : "Workshop2/AK-47-BlueWolf.png"
+		}, {
+				"type" : "★ Gut Knife",
+				"skinName" : "Revenge in Sweet",
+				"rarity" : "rare",
+				"img" : "Workshop/Gut-Knife-Revenge-is-Sweet.png"
+		}, {
+				"type" : "★ Karambit",
+				"skinName" : "Purple Abstract",
+				"rarity" : "rare",
+				"img" : "Workshop/Karambit-Purple-Abstract.png"
+		}, {
+				"type" : "★ Karambit",
+				"skinName" : "Bloodline",
+				"rarity" : "rare",
+				"img" : "Workshop2/Karambit-Bloodline.png"
+		}, {
+				"type" : "★ Karambit",
+				"skinName" : "Scorpion",
+				"rarity" : "rare",
+				"img" : "Workshop2/Karambit-Scorpion.png"
 		}, 
 		]
 	},

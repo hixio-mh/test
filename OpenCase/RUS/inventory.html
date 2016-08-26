@@ -49,6 +49,7 @@
 <div id="weaponInfoContainer" style="display: none">
 	<div class="glassBlur" style='width: 100%; height: 100%'></div>
 	<div class="fullWeaponInfo" >
+		<span class="fullWeaponInfo-close">X</span>
 		<span id="weaponName"></span>
 		<img src="../images/stattrak.png" id="statTrakImg"> 
 		<img src="" id="weaponImg">
@@ -180,7 +181,7 @@ $(document).on("click", ".weapon", function() {
 	$("#statTrakImg").css("display", (statTrak ? "block" : "none"))
 })
 
-$(".glassBlur").on("click", function(){
+$(document).on("click", ".glassBlur, .fullWeaponInfo-close", function(){
 	if ($(this).hasClass('js-price-loading')) return false;
 	$("#weaponInfoContainer").css("display", "none");
 	if ($(this).hasClass("savePrice")) {
