@@ -1,7 +1,4 @@
-﻿var selectItemSound = new Audio();
-selectItemSound.src = "../sound/interface/SelectItem.wav";
-selectItemSound.volume = 0.9;
-
+﻿
 $(function() {
 	if ($(".inventory").length) {
 		$('.inventory').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
@@ -95,9 +92,7 @@ inventory_loading = false;
 }
 
 $(document).on("click", ".weapon", function(){
-	selectItemSound.pause();
-	if (!isNaN(selectItemSound.duration))
-		selectItemSound.currentTime = 0;
+	Sound("selectitem", "play");
 	
 	var parent = $(this).parent()[0];
 	
@@ -105,10 +100,10 @@ $(document).on("click", ".weapon", function(){
 	
 	if ($(".inventoryItemSelected").length < maxItems) {
 		$(this).toggleClass("inventoryItemSelected");
-		if (Settings.sounds)selectItemSound.play();
+		Sound("selectitems", "play");
 	} else if ($(this).hasClass("inventoryItemSelected")) {
 		$(this).toggleClass("inventoryItemSelected");
-		if (Settings.sounds)selectItemSound.play();
+		Sound("selectitems", "play");
 	}
 	
 	if ($(parent).hasClass('inv-price-counter')) {

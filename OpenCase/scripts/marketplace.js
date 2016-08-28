@@ -1,7 +1,3 @@
-﻿var buySound = new Audio();
-buySound.src = "../sound/buy.wav";
-buySound.playbackRate = 1;
-buySound.volume = 0.4;
 
 $(function() {
 });
@@ -90,7 +86,7 @@ $(document).on('click', '#buy-double', function () {
 		inventory.push(weapon);
 		saveInventory();
 	}
-	if (Settings.sounds) buySound.play();
+	Sound("buy", "play");
 	Player.doubleBalance -= parseInt((weapon.price*100).toFixed(0));
 	saveStatistic('doubleBalance', Player.doubleBalance);
 	$("#playerBalance").html(Player.doubleBalance+' <i class="double-icon"></i>');

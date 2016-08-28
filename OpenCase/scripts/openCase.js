@@ -128,8 +128,7 @@ $(document).on("click", ".openCase", function () {
 		duration : duration,
 		easing : 'easeOutCubic',
 		start : function () {
-			if (Settings.sounds)
-				caseOpenAudio.play();
+			Sound("open", "play", 5);
 			var type = win.type;
 			var name = getSkinName(win.skinName, Settings.language);
 			win.name = name;
@@ -176,8 +175,7 @@ $(document).on("click", ".openCase", function () {
 			if (Settings.sounds) {
 				progress_animate = Math.round(100 * t),
 				s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
-				s > d && (caseScrollAudio.pause(), caseScrollAudio.currentTime = 0,
-					caseScrollAudio.play(),
+				s > d && (Sound("scroll", "play"),
 					d++)
 			}
 
@@ -194,8 +192,7 @@ $(document).on("click", ".openCase", function () {
 				saveWeapon(win);
 			else
 				saveInventory();
-			if (Settings.sounds)
-				caseCloseAudio.play();
+			Sound("close", "play", 5);
 			$(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
 			$(".win").slideDown("fast");
 			caseOpening = false;

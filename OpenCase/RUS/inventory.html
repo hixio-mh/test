@@ -119,20 +119,9 @@ for (var i = 0; i < sortQuality[Settings.language].length; i++) {
 	$("#sort-quality").append("<option value='"+i+"'>"+sortQuality[Settings.language][i]+"</option>");
 }
 
-var selectItemSound = new Audio();
-selectItemSound.src = "../sound/interface/SelectItem.wav";
-selectItemSound.volume = 0.9;
-
-var contractSound = new Audio();
-contractSound.src = "../sound/interface/contract.wav";
-contractSound.volume = 0.9;
 
 $(document).on("click", ".weapon", function() {
-	if (Settings.sounds) {
-		selectItemSound.pause();
-		selectItemSound.currentTime = 0;
-		selectItemSound.play();
-	}
+	Sound("selectitems", "play");
 	if (contractMode) {
 		if (($(this).data('type').indexOf('Сувенир') != -1) && ($(this).data('type').indexOf('Souvenir') != -1))
 			return false;
@@ -320,7 +309,7 @@ $('.button_contract').on('click', function() {
 	else
 		saveInventory();
 	statisticPlusOne('contracts');
-	if (Settings.sounds) contractSound.play();
+	Sound("contract", "play");
 	$('.button_resetContract').click();
 })
 

@@ -36,15 +36,15 @@ $(function() {
 	$(menu).html(menuHTML);
 })
 
-/*$(document).on('click', '.leftMenu', function() {
-	menuClick.play();
-})*/
 $(document).on('click', '.js-podmenu', function(){
 	var podmenu = $(this).data('podmenu');
 	$('.podmenu-'+podmenu).toggleClass('hide');
 });
+$(document).on('click', '.leftMenu ul a', function(){
+	Sound("click", "play");
+});
 $(document).on('click', '.navigationBar_hamburger', function() {
-	if (Settings.sounds) menuClick.play();
+	Sound("menuclick", "play");
 	$('.leftMenu').animate({
 		left: ($('.leftMenu').css('left') == '0px') ? "-270px" : "0px"
 		//css('left', '0px');

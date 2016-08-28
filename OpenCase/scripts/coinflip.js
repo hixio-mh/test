@@ -11,16 +11,6 @@ var priceRange = {
 };
 var timerId = 0;
 
-var flipSoundCT = new Audio();
-flipSoundCT.src = "../sound/coinFlip.wav";
-flipSoundCT.volume = 0.7;
-flipSoundCT.loop = true;
-
-var clickSound = new Audio();
-clickSound.src = "../sound/interface/menuClick.wav";
-clickSound.volume = 0.9;
-
-
 $(window).load(function() {
 	var anim = document.getElementById('coin');
 	anim.addEventListener("animationend", coinStoped, false);
@@ -67,15 +57,16 @@ function startGame() {
 	$('#coin-flip-cont').removeClass('hide');
 	
 	$("#coin").addClass(animation);
+	var repeat = 9;
+	if (win == "CT") repeat = 10;
 	
-	if (Settings.sounds) {
-		flipSoundCT.currentTime = 0;
-		flipSoundCT.play();
-	}
+	setTimeout(function() {
+		Sound("coinflip", "play", 0, repeat);
+	}, 250);
 }
 
 function coinStoped() {
-	if (Settings.sounds) flipSoundCT.pause();
+	if (!isAndroid()) Sound("coinflip", "pause");
 	
 	var winner = $('#coin').attr('class');
 	if (winner == 'CT') {
@@ -130,7 +121,6 @@ function coinStoped() {
 }
 
 function hideCoin() {
-	flipSoundCT.pause();
 	
 	clearTimeout(timerId);
 	timerId = null;
@@ -154,7 +144,6 @@ var getRandomItem = function(list, weight) {
 			return list[1];
 		}
 	} catch(e) {
-		//something went wrong
 	}
 
     var random_num = Math.rand(0, total_weight);
@@ -173,13 +162,13 @@ var getRandomItem = function(list, weight) {
 
 $(document).on('click', '.addWeapons', function() {	
 	PlayerInGame = $(this).data('game-id');
-	if (Settings.sounds) clickSound.play();
+	Sound("click", "play");
 	fillInventory();
 });
 
 $(document).on('click', '.join', function(){
 	if (typeof PlayerBet.weapons != 'undefined') PlayerInGame = $(this).data('game-id');
-	if (Settings.sounds) clickSound.play();
+	Sound("click", "play");
 	showGame($(this).data('game-id'));
 	$('#coin').removeClass();	
 });
@@ -266,7 +255,7 @@ $(document).on('click', '.close-game, .blur', function() {
 	$('.game__player__img').removeClass('winner-img');
 	$('.game').css('display', 'none');
 	$('.blur').css('display', 'none');
-	if (Settings.sounds) clickSound.play();
+	Sound("click", "play");
 	//PlayerInGame = false;
 });
 
@@ -274,7 +263,7 @@ $(document).on("click", ".choseItems", function(){
 	var itemsCount = $(".inventoryItemSelected").length;
 	var playerWeapons = [];
 	var ids = [];
-	if (Settings.sounds) clickSound.play();
+	Sound("click", "play");
 	if(itemsCount != 0) {
 		if (typeof PlayerBet.nick == 'undefined') {
 			PlayerBet = {
@@ -311,7 +300,7 @@ $(document).on("click", ".choseItems", function(){
 });
 $(document).on('click', ".closeInventory", function(){
 	if (typeof PlayerBet.items_cost == 'undefined') PlayerInGame = false;
-	if (Settings.sounds) clickSound.play();
+	Sound("click", "play");
 });
 
 function botAddGame(difficulty) {

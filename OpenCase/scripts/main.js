@@ -5,19 +5,6 @@ var inventory_length = 0;
 var inventory_step = 50,
 inventory_loading = false;
 
-var caseOpenAudio = new Audio();
-caseOpenAudio.src = "../sound/open.wav";
-caseOpenAudio.volume = 0.2;
-
-var caseCloseAudio = new Audio();
-caseCloseAudio.src = "../sound/close.wav";
-caseCloseAudio.volume = 0.2;
-
-var caseScrollAudio = new Audio();
-caseScrollAudio.src = "../sound/scroll.wav";
-caseScrollAudio.playbackRate = 1;
-caseScrollAudio.volume = 0.2;
-
 $(function () {
 	if (!isAndroid())
 		inventory = getInventory();
@@ -39,6 +26,109 @@ window.onerror = function(msg, url, line, col, error) {
 	}
 	$(document.body).append('<div class="error-log">'+action+'</div');
 };
+
+if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()) < 1.3)) {
+	var openSound = new Audio();
+	openSound.src = "../sound/open.wav";
+	openSound.volume = 1;
+
+	var closeSound = new Audio();
+	closeSound.src = "../sound/close.wav";
+	closeSound.volume = 1;
+
+	var scrollSound = new Audio();
+	scrollSound.src = "../sound/scroll.wav";
+	scrollSound.playbackRate = 1;
+	scrollSound.volume = 1;
+
+	var menuClickSound = new Audio();
+	menuClickSound.src = "../sound/interface/menuClick.wav";
+	menuClickSound.volume = 1;
+
+	var addItemsSound = new Audio();
+	addItemsSound.src = "../sound/interface/jackpotAddItems.wav";
+	addItemsSound.volume = 1;
+
+	var selectItemSound = new Audio();
+	selectItemSound.src = "../sound/interface/SelectItem.wav";
+	selectItemSound.volume = 1;
+
+	var contractSound = new Audio();
+	contractSound.src = "../sound/interface/contract.wav";
+	contractSound.volume = 1;
+
+	var buySound = new Audio();
+	buySound.src = "../sound/buy.wav";
+	buySound.playbackRate = 1;
+	buySound.volume = 1;
+
+	var coinFlipSound = new Audio();
+	coinFlipSound.src = "../sound/coinFlip.wav";
+	coinFlipSound.volume = 1;
+	coinFlipSound.loop = true;
+}
+
+function Sound(soundGet, action, priority, repeat, speed) {
+	if (!Settings.sounds) return false;
+	action = action || "play";
+	priority = priority || 0;
+	repeat = repeat || 0;
+	speed = speed || 1;
+	var sound;
+	
+	if (soundGet == "click") soundGet = "menuclick";
+	
+	if (isAndroid() && parseFloat(client.getCurrentAppVersionName()) >= 1.3) {
+		client.playSound(soundGet.toLowerCase(), priority, repeat, speed)
+	} else {
+		switch (soundGet.toLowerCase()) {
+		case "open":
+			sound = openSound;
+			break;
+		case "close":
+			sound = closeSound;
+			break;
+		case "scroll":
+			sound = scrollSound;
+			break;
+		case "menuclick":
+			sound = menuClickSound;
+			break;
+		case "additems":
+			sound = addItemsSound;
+			break;
+		case "selectitems":
+			sound = selectItemSound;
+			break;
+		case "contract":
+			sound = contractSound;
+			break;
+		case "buy":
+			sound = buySound;
+			break;
+		case "coinflip":
+			sound = coinFlipSound;
+			break;
+		}
+		if (sound) {
+			sound.pause();
+			sound.currentTime = 0;
+			if (action == "play")
+				sound.play();
+			/*switch (action) {
+			case "play":
+				sound.pause();
+				sound.currentTime = 0;
+				sound.play();
+				break;
+			case "pause":
+				sound.pause();
+				sound.currentTime = 0;
+				break;
+			}*/
+		}
+	}
+}
 
 
 function statisticPlusOne(cookieName) {

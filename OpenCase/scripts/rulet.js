@@ -39,14 +39,6 @@ try {
 	//ERR
 }
 
-var addItemsSound = new Audio();
-addItemsSound.src = "../sound/interface/menuClick.wav";
-addItemsSound.volume = 0.9;
-
-var newItemsSound = new Audio();
-newItemsSound.src = "../sound/interface/jackpotAddItems.wav";
-newItemsSound.volume = 0.9;
-
 function newGame() {
 	clearTimeout(timerId);
 	ifCarusel = false;
