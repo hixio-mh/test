@@ -17,10 +17,19 @@ window.onerror = function(msg, url, line, col, error) {
 	} else {
 		errorFile = 'none.js';
 	}
+	var screen = "";
+	try {
+		screen = window.location.href;
+		if (screen) {
+			var temp = screen.split('/');
+			screen = temp[temp.length-1].replace('.html', '.h');
+			screen = " in "+screen;
+		}
+	} catch (e){}
 	extra = ':'+line;
 	extra += !col ? '' : ':'+col;
 		
-	var action = msg+' | '+errorFile+extra;
+	var action = msg+' | '+errorFile+extra+screen;
 	if (isAndroid()) {
 		client.sendToAnalytics('Error', 'Error', action, url);
 	}
