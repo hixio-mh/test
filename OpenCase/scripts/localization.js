@@ -29,6 +29,10 @@ function localizate(category){
 		});
 }
 var Localization = [];
+Localization.souvenir = {
+	"RU" : "Сувенир",
+	"EN" : "Souvenir"
+},
 Localization.menu = [{
 		"selector" : "#local-menu-case",
 		"localization" : {
@@ -475,6 +479,16 @@ Localization.inventory = [{
 		}
 	},
 ],
+Localization.inventory2 = {
+	'contract_error' : {
+		"EN" : "Try another weapon.",
+		"RU" : "Попробуйте другое оружие"
+	},
+	'contract_error_title' : {
+		"EN" : "Error",
+		"RU" : "Ошибка"
+	},
+},
 Localization.marketplace = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
 		"localization" : {

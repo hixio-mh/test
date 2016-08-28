@@ -2,6 +2,13 @@
 <html>
 <head>
 <title>Инвентарь</title>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/inventory.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+<link rel="stylesheet" href="../css/lobibox.min.css"/>
 
 <script src="../scripts/jquery.min.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
@@ -14,15 +21,9 @@
 <script src="../scripts/quality.js"></script>
 
 <script src="../scripts/navigationMenu.js"></script>
-<link rel="stylesheet" href="../css/navigationMenu.css">
 
 <script src="../scripts/localization.js"></script>
-
-<link rel="stylesheet" type="text/css" href="../css/rarity.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<link rel="stylesheet" type="text/css" href="../css/inventory.css">
-<link rel="stylesheet" type="text/css" href="../css/fonts.css">
-<link rel="stylesheet" type="text/css" href="../css/loading.css">
+<script src="../scripts/lobibox.min.js"></script>
 </head>
 <body data-localization="inventory" data-inventory='no-load'>
 <div class="navigationBar" data-menu-EN="Inventory" data-menu-RU="Мой инвентарь"></div>
@@ -173,7 +174,7 @@ $(document).on("click", ".weapon", function() {
 $(document).on("click", ".glassBlur, .fullWeaponInfo-close", function(){
 	if ($(".glassBlur").hasClass('js-price-loading')) return false;
 	$("#weaponInfoContainer").css("display", "none");
-	if ($(this).hasClass("savePrice")) {
+	if ($(".glassBlur").hasClass("savePrice")) {
 		if ($("#weaponPrice").text() != "0$" && $("#weaponPrice").text() != "NaN$") {
 			var wp = {};
 			var price = parseFloat($("#weaponPrice").text());
@@ -274,6 +275,22 @@ $('.button_contract').on('click', function() {
 				nextQualityWeapons.push(collection[i]);
 		var newWeapon = nextQualityWeapons[Math.rand(0, nextQualityWeapons.length-1)];
 	} else {
+		return false;
+	}
+	
+	if (typeof newWeapon == 'undefined') {
+		Lobibox.notify('error', {
+			pauseDelayOnHover : false,
+			continueDelayOnInactiveTab : false,
+			width : $(window).width(),
+			position : 'top center',
+			icon : false,
+			title : Localization.inventory2.contract_error_title[Settings.language],
+			size : 'mini',
+			showClass : 'fadeInDown',
+			hideClass : 'fadeOutUp',
+			msg : Localization.inventory2.contract_error[Settings.language]
+		});
 		return false;
 	}
 	
@@ -561,7 +578,7 @@ function fillInventory(currInventory, sumPr) {
 		else
 			id = i;
 		
-		var weaponInfo = "<img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div><i>"+weapon.price+"$</i>";
+		var weaponInfo = "<i>$"+weapon.price+"</i><img src='"+img+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+"</span></div>";
 		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +" "+((weapon.new == true) ? "new-weapon" : "")+"' data-type='"+type+"' data-name='"+name+"' data-img='"+weapon.img+"' data-rarity='"+weapon.rarity+"' data-price='"+weapon.price+"' data-stattrak='"+weapon.statTrak+"' data-quality='"+weapon.quality+"' data-id='"+id+"' id='"+id+"-inventoryItem'>"+weaponInfo+"</li>");
 		
 		if (weapon.new == true) {
