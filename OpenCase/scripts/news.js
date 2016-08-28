@@ -203,8 +203,8 @@
 	"month" : 8,
 	"year" : 2016,
 	"update" : {
-		"RU" : " - Исправлены ошибки в верстке в Монетке и Дабле для девайсов с маленьким разрешением экрана<br> - Исправлены ошибки в контракте обмена<br> - Исправлено положение цены на предмет в инвентаре",
-		"EN" : " - Fixed some bugs in the design of the coinflip and the double for devices with small screen resolution<br> - Bugs in trade up contract was fixed<br> - Fixed weapon price location in inventory"
+		"RU" : " - Исправлены ошибки в верстке в Монетке и Дабле для девайсов с маленьким разрешением экрана",
+		"EN" : " - Fixed some bugs in the design of a coinflip and a double for devices with small screen resolution."
 	}
 }, 
 ];
