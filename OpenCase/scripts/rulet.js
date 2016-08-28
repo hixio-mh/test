@@ -272,7 +272,7 @@ function botAddItems() {
 		itemsCost += +botWeapons[i].price;
 		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), botWeapons[i].quality, botWeapons[i].statTrak, botWeapons[i].rarity, botWeapons[i].price)
 	}
-	if (Settings.sounds) newItemsSound.play()
+	Sound("additems", "play");
 	PlayersInGame.push({
 		"nick" : botName,
 		"avatar" : botImg,
@@ -360,7 +360,7 @@ $(".choseItems").on("click", function(){
 		for (var i = 0; i < playerWeapons.length; i++) {
 			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity, playerWeapons[i].price)
 		}
-		if (Settings.sounds) newItemsSound.play();
+		Sound("additems", "play");
 		addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
 		$("#addItems").prop("disabled", true);
 		$('#diffuculty').prop('disabled', true);
