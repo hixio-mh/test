@@ -25,11 +25,6 @@ background-color: #333;
 		top: -122px !important;
 	}
 }
-@media(max-width:316px) {
-	.bot-inventory, .player-inventory {
-		width: 45% !important;
-	}
-}
 .games {
     width: 100%;
 	border-collapse: collapse;
@@ -177,13 +172,20 @@ ul.bot-inventory {
     padding: 8px 11px;
     margin: 10px 0;
 }
+.inventory-tables-holder {
+    width: 100%;
+}
+.inventory-tables-holder > tbody > tr > td {
+    width: 50%;
+    vertical-align: top;
+}
 .bot-inventory, .player-inventory {
     color: #fff;
     text-align: left;
     border-collapse: collapse;
     font-family: Lato;
 	font-size: 0.85em;
-	width: 49%;
+	width: 100%;
 }
 .bot-inventory {
 	float: left;
@@ -262,31 +264,31 @@ background-size: cover;
 }
 
 #coin.T {
--webkit-animation: rotate1080 5s linear forwards; 
-animation: rotate1080 5s linear forwards;
+-webkit-animation: rotate1800 5s linear forwards; 
+animation: rotate1800 5s linear forwards;
 }
 
 #coin.CT {
--webkit-animation: rotate1260 5.3s linear forwards; 
-animation: rotate1260 5.3s linear forwards;
+-webkit-animation: rotate1980 5.5s linear forwards; 
+animation: rotate1980 5.5s linear forwards;
 }
 
-@-webkit-keyframes rotate1080 {
+@-webkit-keyframes rotate1800 {
 from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
 to { -webkit-transform: rotateY(/*1080deg*/1800deg); -moz-transform: rotateY(1800deg); transform: rotateY(1800deg); }
 }
 
-@keyframes rotate1080 {
+@keyframes rotate1800 {
 from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
 to { -webkit-transform: rotateY(/*1080deg*/1800deg); -moz-transform: rotateY(1800deg); transform: rotateY(1800deg); }
 }
 
-@-webkit-keyframes rotate1260 {
+@-webkit-keyframes rotate1980 {
 from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
 to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
 }
 
-@keyframes rotate1260 {
+@keyframes rotate1980 {
 from { -webkit-transform: rotateY(0); -moz-transform: rotateY(0); transform: rotateY(0); }
 to { -webkit-transform: rotateY(1980deg); -moz-transform: rotateY(1980deg); transform: rotateY(1980deg); }
 }

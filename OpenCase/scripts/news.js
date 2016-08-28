@@ -191,12 +191,20 @@
 		"EN" : " - Coinflip was fixed<br> - New Market."
 	}
 }, {
-	"day" : 23,
+	"day" : 26,
 	"month" : 8,
 	"year" : 2016,
 	"update" : {
 		"RU" : " - Исправлены картинки у Tec-9 | Лавина и XM1014 | Горелка Теклу в коллекции Revolver Case<br> - Новый кейс - Workshop 2!",
 		"EN" : " - Images of Tec-9 | Avalanche and XM1014 | Teclu Burner was fixed<br> - New Workshop 2 case!"
+	}
+}, {
+	"day" : 28,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Исправлены ошибки в верстке в Монетке и Дабле для девайсов с маленьким разрешением экрана",
+		"EN" : " - Fixed some bugs in the design of a coinflip and a double for devices with small screen resolution."
 	}
 }, 
 ];

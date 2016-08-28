@@ -120,11 +120,16 @@
 }
 
 
-.bets-table {
+.bets-tables {
     width: 100%;
+	border-collapse: collapse;
+}
+table.bets-tables > tbody > tr > td {
+    vertical-align: top;
+	width: 33.33%
 }
 .bets-tables__table {
-    width: 33.3%;
+    width: 100%;
     float: left;
     border-collapse: collapse;
 }
@@ -181,5 +186,10 @@
 @media (max-width: 450px) {
 	.the-bet__player img {
 		display:none;
+	}
+}
+@media (max-width: 340px) {
+	.the-bet {
+		font-size:0.6em;
 	}
 }

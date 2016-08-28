@@ -168,7 +168,7 @@ $(document).on("click", ".weapon", function() {
 	$("#weaponQuality").html(quality);
 	$('#weaponRarity').text(rarity);
 	
-	if (parseInt(price) == 0 || isNaN(price)) {
+	if (parseFloat(price) == 0 || isNaN(price)) {
 		getMarketPrice(type, name, quality, statTrak, '#weaponPrice');
 		$(".glassBlur").addClass("savePrice");
 	}
