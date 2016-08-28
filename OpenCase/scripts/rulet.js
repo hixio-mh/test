@@ -71,7 +71,7 @@ $("#addItems").on("click", function(){
 	inventory = inventory.sort(function(a,b){
 		return b.price-a.price;
 	});
-	if (Settings.sounds) addItemsSound.play();
+	Sound("additems", "play");
 	fillInventory();
 });
 
