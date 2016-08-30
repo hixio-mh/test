@@ -188,6 +188,7 @@
 	.fullWeaponInfo {
 		width: 450px;
 		padding: 5px;
+		padding-top: 0;
 	}
 	#weaponImg {
 		width: 150px;

@@ -1,4 +1,5 @@
 ﻿var caseId = 0;
+var souvenirCase = false;
 var caseOpening = false;
 
 $(".openCase").attr("disabled", null);
@@ -6,7 +7,8 @@ $(".openCase").attr("disabled", null);
 $(document).on("click", ".case", function () {
 	$("#rank-popup").css('display', 'none');
 	$('#special-popup').css('display', 'none');
-	caseId = this.id;
+	caseId = $(this).data('case-id');
+	souvenir = $(this).data('souvenir');
 	if (typeof cases[caseId].minRank != 'undefined' && getRank().id < getRankByName(cases[caseId].minRank).id) {
 		needRank = getRankByName(cases[caseId].minRank);
 		$("#rank-popup").css('display', 'block');
@@ -16,7 +18,7 @@ $(document).on("click", ".case", function () {
 	if (cases[caseId].type == "Special") {
 		
 		if (parseInt(getStatistic('specialCases', 0)) >= cases[caseId].casesToOpen) {
-			window.location = "open.html?caseId=" + caseId;
+			window.location = "open.html?caseId=" + caseId+((souvenir) ? "&souvenir="+souvenir : '');
 		} else {
 			$('#special-popup').css('display', 'block');
 			var needToOpen = cases[caseId].casesToOpen - parseInt(getStatistic('specialCases', 0));
@@ -25,7 +27,7 @@ $(document).on("click", ".case", function () {
 			$('.js-secretField').text(caseId);
 		}
 	} else {
-		window.location = "open.html?caseId=" + caseId;
+		window.location = "open.html?caseId=" + caseId+((souvenir) ? "&souvenir="+souvenir : '');
 	}
 });
 $(document).on('click', '#closePopup', function () {
@@ -61,7 +63,7 @@ function fillCarusel(caseId) {
 	if ((Math.rand(0, 10) > 5) && (a5.length + a3.length + a2.length + a1.length != 0)) {
 		a4 = [];
 	}
-	if ((Math.rand(0, 10) > 3) && (a4.length + a3.length + a2.length + a1.length != 0)) {
+	if ((Math.rand(0, 10) > 1) && (a4.length + a3.length + a2.length + a1.length != 0)) {
 		a5 = [];
 	}
 
@@ -83,7 +85,7 @@ function fillCarusel(caseId) {
 		if (type.indexOf("|") != -1) {
 			type = type.split("|")[1]
 		}
-		type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
+		type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 
 		if (item.rarity == 'rare') {
 			type = '★ Rare Special Item ★';
@@ -139,7 +141,7 @@ $(document).on("click", ".openCase", function () {
 			if (type.indexOf("|") != -1) {
 				type = type.split("|")[1]
 			}
-			type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
+			type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 			var price = getPrice(type, name, quality, statTrak);
 
 			win.type = type;

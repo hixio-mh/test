@@ -56,6 +56,9 @@ $(function(){
 	var param = parseURLParams(window.location.href);
 	if(typeof param != "undefined") {
 		caseId = param.caseId[0];
+		try {
+			souvenirCase = param.souvenir[0] == 'true';
+		} catch(e) {}
 		$("#caseID").text(caseId);
 		$("#youCanWin span").text(cases[caseId].name)
 		var opened = 0;
@@ -84,7 +87,7 @@ function weaponList() {
 		if (type.indexOf("|") != -1) {
 			type = type.split("|")[1]
 		}
-		type = (type.indexOf('Сувенир') != -1 && Settings.language != 'RU') ? type.replace('Сувенир', 'Souvenir') : type;
+		type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 
 		var name = weapon.skinName;
 		if (name.indexOf("|") != -1) {

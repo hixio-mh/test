@@ -7,7 +7,7 @@ var yourScore = 0,
 	enemyScore = 0,
 	totalRounds = 3,
 	round = 1,
-	maxItems = 1;
+	maxItems = 5;
 	
 var winItems = [];
 
@@ -64,7 +64,11 @@ $(".choseItems").on("click", function () {
 	$(".add-item").css("display", 'none');
 	$(".closeInventory").click();
 	
-	$('.winItems').append('<li>'+Localization.rps2.youAdd[Settings.language]+winItems[0].type+' | '+winItems[0].skinName+' ($'+winItems[0].price+')<b class='+winItems[0].rarity+'></b>');
+	$('.winItems').append('<li id="whoBet">'+Localization.rps2.youAdd[Settings.language]+'</li>');
+	
+	for (var i = 0; i < winItems.length; i++) {
+		$('.winItems').append('<li>'+winItems[i].type+' | '+winItems[i].skinName+' ($'+winItems[i].price+')<b class='+winItems[i].rarity+'></b>');
+	}
 	botAddWeapon(itemsCost);
 	
 	$('.choice').css('display', 'block');
@@ -101,6 +105,8 @@ function botAddWeapon(itemsCost) {
 	}
 	
 	var canContinue = false;
+	var weapons = [];
+	wpLength = winItems.length;
 	while (!canContinue) {
 		var weapon = getRandomWeapon(0);
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
@@ -114,15 +120,19 @@ function botAddWeapon(itemsCost) {
 			if (z == 4) break;
 			z++
 		}
-		if (price > minPrice && price < maxPrice)
-			canContinue = true;
+		if (price > minPrice && price < maxPrice) {
+			weapon.skinName = getSkinName(weapon.skinName, Settings.language);
+			weapon.quality = getQualityName(weapon.quality, Settings.language)
+			weapon.price = price;
+			weapons.push(weapon);
+			if (wpLength == weapons.length) canContinue = true;
+		}
 	}
-	weapon.skinName = getSkinName(weapon.skinName, Settings.language);
-	weapon.quality = getQualityName(weapon.quality, Settings.language)
-	weapon.price = price;
-	if (Settings.language != 'RU' && weapon.type.indexOf('‘увенир') != -1) weapon.type = weapon.type.replace('‘увенир', 'Souvenir');
-	winItems.push(weapon);
-	$('.winItems').append('<li>'+Localization.rps2.opponentAdd[Settings.language]+winItems[1].type+' | '+winItems[1].skinName+' ($'+winItems[1].price+')<b class='+winItems[1].rarity+'></b>');
+	if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
+	winItems = winItems.concat(weapons);
+	$('.winItems').append('<li id="whoBet">'+Localization.rps2.opponentAdd[Settings.language]+'</li>');
+	for (var i = wpLength; i < winItems.length; i++)
+		$('.winItems').append('<li>'+winItems[i].type+' | '+winItems[i].skinName+' ($'+winItems[i].price+')<b class='+winItems[i].rarity+'></b>');
 }
 	
 $('.choice__hand').on('click', function() {
@@ -188,7 +198,7 @@ function endGame(playerWin) {
 	if (playerWin) {
 		$('.status').text(Localization.rps2.winGame[Settings.language]);
 		for (var i = 0; i < winItems.length; i++) {
-			winItems[i].new = true;
+			winItems[i]['new'] = true;
 			if (!isAndroid())
 				inventory.push(winItems[i]);
 			else

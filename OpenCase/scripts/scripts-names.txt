@@ -16,3 +16,4 @@ news.js
 ranks.js
 rps.js
 rulet.js
+sounds.js

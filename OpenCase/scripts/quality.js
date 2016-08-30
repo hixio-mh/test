@@ -65,6 +65,7 @@ function ifStatTrak(type, name) {
 	if (type != "" && name != "") {
 		col = getCollection(type, name);
 		if (col != "" && col.type == 'Collection') return false;
+		if (typeof col.canBeStatTrak != 'undefined' && col.canBeStatTrak == false) return false;
 	}
 	return (random = Math.random() > 0.8) ? true : false;
 }

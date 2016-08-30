@@ -396,7 +396,7 @@ function getCollection(type, name) {
 		//Error
 	}
 	var collection="";
-	type = type.replace(/Souvenir/g, 'Сувенир');
+	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''));
 	for (var i = 0; i < cases.length; i++) {
 		for (var z = 0; z < cases[i].weapons.length; z++) 
 			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name)) {
@@ -409,7 +409,7 @@ function getCollection(type, name) {
 }
 
 function getWeaponImg(type, name) {
-	type = type.replace(/Souvenir/g, 'Сувенир');
+	type = type.replace(/(Souvenir|Сувенир)/g, '');
 	name = getSkinName(name);
 	var coll = getCollection(type, name);
 	if (!coll) return 'none.png';
@@ -421,7 +421,7 @@ function getWeaponImg(type, name) {
 
 function getWeaponRarity(type, name) {
 	name = getSkinName(name);
-	type = type.replace(/Souvenir/g, 'Сувенир');
+	type = type.replace(/(Souvenir|Сувенир)/g, '');
 	var coll = getCollection(type, name);
 	if (typeof coll == undefined && isAndroid())
 		client.sendToAnalytics("Error", "Error", "Cant find collection: "+type+" | "+name, "main.js")

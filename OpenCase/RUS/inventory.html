@@ -257,22 +257,16 @@ $('.button_contract').on('click', function() {
 	var weapon = $('.inventoryItemSelected')[Math.rand(0, 9)];
 	var type = weapon.getAttribute('data-type');
 	var name = getSkinName(weapon.getAttribute('data-name'), "EN");
+	var quality = $(weapon).data("quality");
 	
-	var collection;
-	for (var i = 0; i < cases.length; i++) {
-		for (var z = 0; z < cases[i].weapons.length; z++) 
-			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name)) {
-				collection = cases[i].weapons;
-				break;
-			}
-		if (typeof collection != 'undefined') break;
-	}
+	var collection = getCollection(type, name);
+	
 	if (typeof collection != "undefined") {
 		var nextQuality = qualitySort[qualitySort.indexOf(weapon.getAttribute('data-rarity'))+1];
 		var nextQualityWeapons = [];
-		for (var i = 0; i < collection.length; i++)
-			if (collection[i].rarity == nextQuality)
-				nextQualityWeapons.push(collection[i]);
+		for (var i = 0; i < collection.weapons.length; i++)
+			if (collection.weapons[i].rarity == nextQuality)
+				nextQualityWeapons.push(collection.weapons[i]);
 		var newWeapon = nextQualityWeapons[Math.rand(0, nextQualityWeapons.length-1)];
 	} else {
 		return false;
@@ -294,7 +288,7 @@ $('.button_contract').on('click', function() {
 		return false;
 	}
 	
-	newWeapon.quality = getItemQuality()[1];
+	newWeapon.quality = quality;
 	newWeapon.statTrak = $('#sort-special :selected').val() == "3" ? 1 : 0;
 	newWeapon.skinName = getSkinName(newWeapon.skinName, Settings.language)
 	newWeapon.price = getPrice(newWeapon.type, newWeapon.skinName, newWeapon.quality, newWeapon.statTrak);
@@ -567,10 +561,9 @@ function fillInventory(currInventory, sumPr) {
 		if (!isAndroid()) sumPr += weapon.price;
 
 		var type = weapon.type;
-		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
-
-		var name = weapon.skinName;
-		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+		type = (Settings.language == 'RU') ? type.replace(/Souvenir/gi, "Сувенир") : type.replace(/Сувенир/gi, "Souvenir");
+		
+		var name = getSkinName(weapon.skinName, Settings.language);
 		
 		var id;
 		if (isAndroid()) 

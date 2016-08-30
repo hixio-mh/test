@@ -24,6 +24,10 @@ function getRandomWeapon(specialClass) {
 		}
 	}
 	var randomWeaponId = Math.rand(0, cases[randomCaseId].weapons.length-1);
+	var wp = cases[randomCaseId].weapons[randomWeaponId]
+	
+	if (typeof cases[randomCaseId].canBeSouvenir != 'undefined' && cases[randomCaseId].canBeSouvenir)
+		wp.type = (Math.rand(0, 10) > 7) ? Localization.souvenir[Settings.language]+' '+wp.type : wp.type;
 	
 	return cases[randomCaseId].weapons[randomWeaponId];
 }
@@ -65,10 +69,9 @@ function fillInventory() {
 			weapon['new'] = false;
 	
 		var type = weapon.type;
-		if(type.indexOf("|") != -1) {type = type.split("|")[1]}
-	
-		var name = weapon.skinName;
-		if(name.indexOf("|") != -1) {name = name.split("|")[1]}
+		type = (Settings.language == 'RU') ? type.replace(/souvenir/gi, "Сувенир") : type.replace(/Сувенир/gi, "Souvenir");
+		
+		var name = getSkinName(weapon.skinName, Settings.language);
 		var weaponInfo = "<img src='"+getImgUrl(weapon.img)+"'><div class='weaponInfo "+weapon.rarity+"'><span class='type'>"+type+"<br>"+name+		"</span></div><i>"+weapon.price+"$</i>";
 		$(".inventory").append("<li class='weapon "+ ((weapon.statTrak == 1) ? "wp-statTrak" : "") +" "+((weapon['new'] == true) ? "new-weapon" : "")+"' id='"+i+"-inventoryItem' data-id='"+weapon.id+"'>"+weaponInfo+"</li>");
 		

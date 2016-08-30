@@ -50,14 +50,14 @@ $(function () {
 		var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
 		var collection = (cases[i].type == "Souvenir") ? "souvenir" : (cases[i].type == "Collection") ? "collection" : "";
 		//var collection = (cases[i].type == "Collection") ? "collection" : "";
-		var curCase = "<div class='case " + collection + "' id=" + i + "><img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
+		var curCase = "<div class='case " + collection + "' data-case-id=" + i + " data-souvenir='false'><img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
 		switch (cases[i].type) {
 		case "Default":
 			$("#Default").append(curCase);
 			break;
-		case "Souvenir":
+		/*case "Souvenir":
 			$("#Souvenir").append(curCase);
-			break;
+			break;*/
 		case "eSports":
 			$("#eSports").append(curCase);
 			break;
@@ -70,6 +70,10 @@ $(function () {
 		case "Workshop":
 			$("#Workshop").append(curCase);
 			break;
+		}
+		if (typeof cases[i].canBeSouvenir != 'undefined' && cases[i].canBeSouvenir == true) {
+			curCase = curCase.replace("data-souvenir='false'", "data-souvenir='true'");
+			$("#Souvenir").append(curCase);
 		}
 	}
 	if (isAndroid()) {
@@ -84,7 +88,7 @@ $(function () {
 
 	var lastReward = getStatistic('lastPointReward', 0);
 	var now = new Date();
-	if (lastReward == '0')
+	if (lastReward == 0)
 		lastReward = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
 	else
 		lastReward = new Date(lastReward);

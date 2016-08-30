@@ -1,5 +1,8 @@
 ﻿function getSkinName(skin, loc) {
 	if (typeof loc == "undefined") loc = "EN";
+	if (skin.match(/[a-z]/g) != null && skin.match(/[a-z]/g).length > 2 && loc == "EN") return skin;
+	if (skin.match(/[а-я]/g) != null && skin.match(/[а-я]/g).length > 2 && loc == "RU") return skin;
+	
 	var sk = skinNames.filter(function(obj){
 		if (obj.RU.toLowerCase() == skin.toLowerCase()) return obj.EN;
 		if (obj.EN.toLowerCase() == skin.toLowerCase()) return obj.EN;

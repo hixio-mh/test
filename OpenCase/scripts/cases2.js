@@ -4,8 +4,411 @@ var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/"
 	var postfix = "/125fx125f";
 var postfixBig = "/383fx383f";
 var cases = [{
+		"name" : "Assault",
+		"img" : "assault.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'SG 553',
+				'skinName' : 'Смерч',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwPz3ZTJQ4t2ym7-DkvbiKvWEwT9X7ZAp2riRo46i2lHj8xFrNjynctXBJAY_YQqG81W6le68h8Duot2XnjGENDPp'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Карамель',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwPz3cjxQ7dGzmL-DkvbiKvXTkjJV7JMp2uzCrIn0jlHhrUBvMjvxIYHAe1U3NQ2E8wftlebv18O7ot2XnuNTwZ3r'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Карамельное яблоко',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N086zkL-HnvD8J_WDz2pUv8cj2L-V94iniQft-xY_NWzydYOUcA89NVqD-FO-w7i70Me1ot2XnkOsbUS5'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Хот-род',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAZu7OHNdQJO5du-gM7SlvP2a-KFkDsD6cN33b6Z84rz0QXs8xJuZzymdYfDclU2M17W_Fm7366x0jzU3_8y'
+			}, {
+				'type' : 'Negev',
+				'skinName' : 'Анодированная синева',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf0v33fzxU9eO6nYeDg7mhN7rXlTgDuMQi3-vCpdjw2Ae2qRZsMG2mINSUIAQ3YlvZ8gW_k7q-m9bi60E-BDow'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Градиент',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0vL3dzxG6eO6nYeDg7miYr7VlWgHscN32LyT8dmm31XgrxdtZzvzJYDGIFM2Y16D-FfvlOu9m9bi66Oq9HyE'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Бульдозер',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRv7OrNfTFN--O-kYGdjrmnNb7Qkm4G7cZ3i7nH8I-n3gXl-0duZDqiJdfDelVqZVzW_1Xowe_om9bi66Howf2G'
+			},
+
+		]
+	}, {
+		"name" : "Aztec",
+		"img" : "aztec.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'Nova',
+				'skinName' : 'Forest Leaves',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhzw8zEdDxU6c-JmImMn-O6MeyElWkB65Rz0rvCoY-kiQHh8hVsMWincYWUcwVtN1HW_VG8yO_og4j84sqw9HSVkg'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Jungle',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N09ajmoeHksj4OrzZgiVVsZ102LyUp9SmiQy3rRdsajiid9SXdwI-ZAnS_AS7ye66hsK9vpSf1zI97brss9rb'
+			}, {
+				'type' : 'SSG 08',
+				'skinName' : 'Lichen Dashed',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwOP3YjVN_siJgIGbksj4OrzZgiVXusMk3r6Xo4qi2lfs80I-MGnxJNSccAJsNF2Br1G8x7q805a6ucmY1zI97WgcbLEr'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Jungle Spray',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhzw8zbYS9D9eO8gY6Mm_LLP7LWnn8f6cMk2L3E9NqkilHm8hI-a2inctSWcAc8Zl-C81nvw-_uhpW06MjKzmwj5Hd9a9y0Zw'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Jungle Tiger',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhoyszeTilL69mkq4yCkP_gfbjVkDhXsMAl2b3E9N-j0ADmrRJpYWmgddTAIQ4_Yw2BqAC9l-y51JOi_MOeuFGxnXQ'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Ossified',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhh3szHYi5L6sWJmImMn-O6YeLTx24FuMByiLyWrd3wjQKy_0Q-Z2_zcIWWdQRsZAvW_FG_lenpjYj84srtx4T2zA'
+			},
+
+		]
+	}, {
+		"name" : "Baggage",
+		"img" : "baggage.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'MP9',
+				'skinName' : 'Зеленая клетка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FA957OPEcDRGvuO-kYGdjrmkMOrVxDhTupdw3b6T8dzz2AbjqUNuNzr3I4SWcgI3aVvU-Qe2wr-6m9bi6ztN_cUk'
+			}, {
+				'type' : 'CZ75-Auto',
+				'skinName' : 'Зеленая клетка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf2-r3YTFD5djkq4iOluHtfeqAx29X7MN33u_H8I_wjgHhr0M-N2v6d4OWdgA3NF-FqFi5kOu5gsKi_MOeUYTvLOo'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'Наемник',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwPz3YTBB09C_k4if2aKiYL-IwjgAvcQki7_HoNul2w23qBc6Zjv1I4THJAA7NV7Q8gK2wOfxxcjrGqjj_1M'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Оливковая клетка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957OPEcDRGveO7kYSCgvq6auLVzmlX6pcmj7GU9I_w0QywqUNsMG3wIYCWegA-ZVGE_VS_x7y6h4j84soz3jvt3w'
+			}, {
+				'type' : 'SSG 08',
+				'skinName' : 'Песчаные дюны',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwPz3YjxM6OO6nYeDg7mjYrjTwzxTsZx0j7CU9NWn2wXkqUc6ZmynI4GVe1RtZA7VqQK8xOu6m9bi6zNHnIHx'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Пассажир',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0Ob3fShF692xkb-GlvSlY4TZk2pH8Yty37GTrYj2iwaw-kVlMTj3dtCRJFc9MluB-FG2kuq9h5S7vJTNzHYypGB8srnlEt5q'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Эконом-класс',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zLZAJO-duxlYeOqOemY-uBqWdY781lxL_F84_wiQPnqhVkMmqgcoKXcgI8NwrX_wPrx-fsgZPv6pjMy3dgvic8pSGKGYo2X-E'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Кожа',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FAR17PHafipM09CzlZSDkuXLI-KBqWNU6dNoxOqSpI_z3wbt-xBqYjjxd9CTdVBrNAvV-FbrwLi8hce56JvPyHZguSM8pSGKiqmG55o'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Странник',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0Ob3fShF692xkb-YkKKhYITck29Y_cg_37iSotjw2gDl_0JvZWqlJdSSdgA7YljQqVfvl73mg5O-usvIzXFj7D5iuygYr35g1g'
+			}, {
+				'type' : 'USP-S',
+				'skinName' : 'Бизнес-класс',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq4yekPD1NL7ug3hBpdZOhuDG_Zi721WwqBJvMGH2coPEJwRsYVDT_lm3kO_vgJ_pvZ_MzXZivXZ04nyOlwv330_YPZS7Gw'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Первый класс',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cih9686zkY60m_L1J7PUhFRC6dJ0jubH87P4jVC9vh5yNWyhdYLEIFc6aFiGrwC2yLi6gsK-6M7KyHIwuyJwsXbVnhW0hxpFaPsv26Ju1DZk9g'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Красная кожа',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PDdTjFH7ci-kZK0j_qlY-qFqWdY781lxL3Dp4qjjgOwrUQ4Y2qlJNTDIAQ5YAzRrlG4kufrjcTutM6dmiBj6SA8pSGKXAbUj-c'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Первый класс',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszPYzhH4uO6kYGfn_LmDLrawjxu5cB1g_zMu9rw0Fbl-kJuY2r3cI-RIVI-MlzTr1foxOe6hcC-6ZvPnCFquChz5XjD30vgHKsTYF0'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Пилот',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLZTi1L4NOiq4SOlvD4NoTck29Y_cg_3bzHptWg2AK1qEs4NmqhcYeWelc6ZFiD-1G6wejmh8K9u5nIz3Zhvj5iuyh1BFVufw'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Путешественник',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszfdDFO08iklZaOm_LwDLrawjxu5Mx2gv2PotytiQHnqhBoZGqnI9XBcgQ-Yl_Y_Vfvyey9g8S4753JzSA1s3Eh5GGdwUIoc5a5cw'
+			},
+		]
+	}, {
+		"name" : "Bank",
+		"img" : "bank.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'MP7',
+				'skinName' : 'Пиксельный камуфляж «Лес»',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PfMYTxW09C_k4if2aemY-zXlD5X7ZVw2-yTpI_xjFXm8xZsY2ylI4-TclA8NQvU_VO2k-fxxcjrEfavWb4'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Пиксельный камуфляж «Город»',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszMdS1D-OOjhoK0mvLwOq7c2D4B6pwijLiXpt6s3lDkrkJvZG-hLI7Ee1M7YVmC8gO-kunrjZK1tJXXiSw0uDynv1g'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Пиксельный камуфляж «Лес»',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR96NimlZS0m_7zO6-fkzhXvJIniL6Xrdqs21Xk_0Vlam2iLYbAcFdtMFjU_wW9w-e6g5-5u4OJlyXfj1l0Bw'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Армейский блеск',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0v73cC9P9eOlnImFksj4OrzZgiVQuJJw077FoIr3iQPnqhY5MD-gIdXGewU4ZQ3QrlW9lerojZ--v5rK1zI97cHouWKJ'
+			}, {
+				'type' : 'Negev',
+				'skinName' : 'Армейский блеск',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf0v73cC9P9eOlnImFksj5Nr_Yg2YfvcQnjLGVrNn0jgGxqhJqYTunctWRdQE8YlCE-lS4lbzsjZTovp3AmGwj5HdxpNpfKQ'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Гремучая смерть',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf2-r3fzhQ49i_lb-HnvD8J_WEwjsBvpJ33bmS94qiigTm-xdkNTynctXGdAU8Y13S-QDsxerm0ZC0ot2Xnjdfx6Ff'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Серебро',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0v33YjRO-tmkq4yCkP_gfbqEkmpQvpYg2u2Ro9yl3gS1_xE_ZmqnJteTdgc7YgmEq1m7lLq61pWi_MOeTf6eBqg'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Клетчатая сталь',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhh3szHZzxO09SzjL-HnvD8J_WGwD0AuZ0o07nDptun3gLl_BY4ZWvzJ9Ocd1dsMl_R_lC5lby7hZO7ot2XnnibtMPm'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'Зеленое яблоко',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwPz3di9H6dKJmImMn-O6YePSwm4GupIk3evEo9ii3wG3-kJtYjigJNOScwI8MFnU_QLvkrzm1oj84srJ8w6n6Q'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Углепластик',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0v73cjxQ7tO4q4aClfLmDLfYkWNFpscj37nDrdqlilax_RVrMm_7LYKRelVtZV-C_ADtw-vrh5Hpv8nBzXp9-n517oYZno4'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Метеорит',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTj5Q9c-ilYyHnu3xN4TVl3la18l4jeHVu97x31Dj_kA9a2DwcdWWJAZvZV_Qqwe3x-fv1Me6uMmanCE3vSEm4ynD30vgrmdJqGM'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Смокинг',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczbfgJN_t-3q4yCkP_gfe7VlDwJv5Up3r-V8Nym2Vfi80U9NmumI4WVJw83Zg3Q-1S8x7_o0Mei_MOe7tXEvoo'
+			}, {
+				'type' : 'CZ75-Auto',
+				'skinName' : 'Смокинг',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZfwPz3fi9B7eO6nYeDg7msZ-KBzj0E7cdw2b_CpdX2i1Dj_hJlMWilLYWRdgNoN1qF8we8k-a5m9bi6-1tbAt1'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Изумрудные завитки',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszYeDNR-M6_hIW0lvygZITZk2pH8Yt33byV8N-ii1Dn8kVqMWv0IYGQIQ47YQvS_FG4k-i6h8Tq6pjBznBqpGB8snmEYrAC'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Франклин',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhjxszFfjNH9eO7kYSCgvq6Z-mHwjIFu8Yl3-3Hotr03QC28ktkYmGnIoXAdARoZVzZ_VW7yeu7jIj84sqiLuLNUw'
+			},
+		]
+	}, {
+		"name" : "Cache",
+		"img" : "Cache.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'AUG',
+				'skinName' : 'Радиационная опасность',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRw7P3dejhR-M6_hIW0mOX1PbzUqWpE7_p9g-7J4cKh2wTt-kBkMT32do_Adwc2Z1rYrlS_xr_tgpO7uJqcmnswuCIi4ivegVXp1vNtKNLo'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Лихач',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N09ukkZm0meL3P77QhFRe-sR_jez-84XjjWunrgU5PQavfdHNNhg_N1HZq1W3k7_uhJG4vczKz3Frv3V05Xbem0G_gR5KaOdr0fHKS1mZGeUXSy0Rtb_k'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Радиоактивные осадки',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3fyhJ6c-ihombksj5MqnemWVu-8Ik37r--YXygED68kZlam-icdTBJgBqZVvQ8gW7xum5gZ696Z2aznFhvyB25yzVnUawhQYMMLKoKiteww'
+			}, {
+				'type' : 'Negev',
+				'skinName' : 'Радиоактивные отходы',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFfwOP3fyhB4Nm3hr-bluPgNqnfxVRf7cJ0nNbN_Iv9nBrmr0c_N2D1co_EewI9Z1-E_gK8w-fmhJS5vMibwHFmuiQh4ivVzUCxn1gSOZtaCfWE'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Заражение',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszGZD5O6d2kq5OAgvv4IO_uhjkEuPp9g-7J4cKt21bjqEE5Nj-lJNKTJFI-NF6E_Vm-k7vvjZe5vZzInXNqs3Em4yvbgVXp1h42q_cG'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Химический зеленый',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwPz3di9H9eO4gYOHkvbmDLzDk25f18d4kObPyoD8j1yg5UNrYTzxIdSUJFc9ZQ7V-gXvwubqhZW9vJnLzSBr6Ckk7HfezEOxiRxSLrs41lh6pmw'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Костемолка',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PLFTjNX79CzlZK0hPzhP7fCx1RJ5ZQh273--YXygED6_EJqNmHxLYDGcgFqYg3WrlTtyLjq05S8up3Mmntluihwty3al0bmgAYMMLKwoJ4rnA'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Токсичность',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszGZD5O6d2kq5OAgvv4IO7ugm5Ssfp9g-7J4cLx0Aew_Bc5ZzryJNLHIQNoMA3Z-FTvxb29gJW978zOmHo373V05ivcgVXp1mJNZYNi'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Реактор',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73fyhB4Nm3hr-bluPgNqnfx1RW5MpygdbJ8I3jkRrm_xA4a2v6d4LGc1M2YQqFrgO5lea5hJW4uM7LyHtl6CchtHzVyRWxn1gSOQY07qpC'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Ядерный сад',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0v73fyhB4Nm3hr-YnOL4P6iCqWZQ65QhteTE8YXghRrn_xBvZj-gdYaXIAM9ZA2Bq1G9krq7hpa4uZ7Bn3ExvyEnsH7alhXhn1gSOXsb08Wt'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Закат',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FA957P3dcjFH7c6JhIGfg_LmPenum3sI18h0juDU-MKljAbi-UM4MDrycNTAdFRoNQzZ-1a9yOy60JK96pnIwHZnuiNw5X_bgVXp1qKBy7Rx'
+			}, {
+				'type' : 'FAMAS',
+				'skinName' : 'Стикс',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRf0v73fyhB4Nm3hr-YnOL4P6iDqW1Q5cRiteHE9JrsxgWx-ERkZ2r0cdDHd1M_MF_R-FS6l7-81MK0vZzLyyRi7HMjsyrUyxCpwUYbBN7dJDM'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Цербер',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczLZAJB6c60hpWYqPD1P7LdqWNU6dNoxLGWoI2liwG18hZsZW2hcY6cIFNvMAvS_Ffrye-6h8e4uJqbwHpnsyA8pSGK_cSp9dA'
+			},
+		]
+	}, {
+		"name" : "Chop Shop",
+		"img" : "chopshop.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'M249',
+				'skinName' : 'Ударная дрель',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhz3MzDdCRB49C5hpO0n_L1JaKfwDpTsJF1ib3C99ymiwyw_UtvYjqiJNPHJFU4Zw2BrlC9w-fvjZLt6YOJlyVhnYj89A'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Армейский блеск',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7PLFTjxQ4cWJh4iCmfLLPr7Vn35cppV02LuXrYmgilG3-kJsZzvycdLDdQFraVyE8wO2l-_p0Z-56sjBzid9-n51ZugYOhk'
+			}, {
+				'type' : 'MAG-7',
+				'skinName' : 'Чайка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzJYChD09SzlZaS2aL3ZL3TwjIHsJImjuiYo4mg3lC3rkY5Z2DycYfGdVM3aFjXrlS-wuvxxcjrKyci_ww'
+			}, {
+				'type' : 'CZ75-Auto',
+				'skinName' : 'Армейский блеск',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v73cC9P9eOlnImFksj5Nr_Yg2Yfv5dwiLjHpdyjjgS18kZlNW2gcdCSIQQ8ZF7SqQLtl7vp18C97ZvNwGwj5He_r99Vaw'
+			}, {
+				'type' : 'USP-S',
+				'skinName' : 'Едва зеленый',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ08-5q4uDlvz9DLzDk25f1810i__Yu42g2lLm8kA4N26md9fBcgE2ZlvZ8gW9wey-jZC16pudz3Jjsicg5CrD30vgwzvxu2M'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Ночь',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7ODHTjNL69Siq4iOluHtfeqIk29XvMcn2LmTrN-sjVW280E-Ym3yIo-WI1I-ZwqC_lK5l728hZei_MOe7MNzwV8'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Городской щебень',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczAaAJU7c6_l4GGmMjhIbnQmFRZ7cRnk6eVpd2k3Qyx_UNpY2ymI4aQcVVoY1iDrAO2kOjshJPtus_NzCNq6HUl-z-DyJA6J-Hc'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Нитро',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N09OklY6Mksj1MLjUmH9C1810i__Yu9um2w22qkJkZ2-hctCWJ1I2NQ2E81G8x7q505G9vczAznRjuSQn4C3D30vgF3v-5zk'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Градиент',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0vL3dzxG6eO6nYeDg7miZbqDxj8B7Z0n2-3E94mjjQTirRI9MTjyIIWQeg84Y1DS_lm3wOfom9bi6-g13CfU'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Полная остановка',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957OXJYzRB7dG5q5KOk8j8NrrHjyVXupIg2biQptSt3gPlrUZlNmmhcNWSIFI5M1rT_ATtybjmhce06pqb1zI97QxO8B3s'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Снежная мгла',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhz3MzfeTRW6dOjgL-DkvbiKvWElTII6ZIhj--Sp433jgXj-UduMGr2JIbBJ1dsaQ6DrwC8xL_n0Jbuot2XnjwhZrR8'
+			}, {
+				'type' : 'CZ75-Auto',
+				'skinName' : 'Изумруд',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v33dDBH_t26kL-HnvD8J_WElT8Gu5Eg27iVotv00Azg80ZtMDimIo-ceg45YAuCrFbtyenv1sW6ot2Xntd6B4y4'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Дуэлист',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3fDJW5Nmkq4-NqOfxMqndqW5d4dF0teTE8YXghRq1-UM5Nj_yIYKQewFrY1rR_1i-x-u61MXouMmdzHc37yEmsH7ayRO3n1gSOdhIizzL'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Бульдозер',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwPz3aDhO4NOhq4iOluHtfbqClG0JvMQp2rmVod_z3w3n8hE5YGmncoSddgE9aV6ErFS3kufvgMCi_MOeujbJjuM'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Сумеречная галактика',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73cCxX7eOwmIWInOTLP7LWnn8f7ZJ13rjC8NjxilLkqBduaj_ycdSWJldvZAuF-gPsxuvs1MTovZTJymwj5Hd3abH-_Q'
+			}, {
+				'type' : 'M4A1-S',
+				'skinName' : 'Хот-род',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO3mr-ZkvPLPu_Qx3hu5Mx2gv2P8I-g0VHtqUNlNmimLdCRdFdoYFCErwC4xLu6jJbpuc-dnydq73Jw5GGdwULhEbgmIQ'
+			},
+
+		]
+	}, {
 		"name" : "Cobblestone",
 		"img" : "Cobblestone.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
 		"type" : "Collection",
 		"weapons" : [{
 				'type' : 'UMP-45',
@@ -86,8 +489,664 @@ var cases = [{
 
 		]
 	}, {
+		"name" : "Dust",
+		"img" : "Dust.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'AK-47',
+				'skinName' : 'Хищник',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhzw8zSdD9Q7d-3mb-HnvD8J_WEkDoE65x03rjDrI322QfhqUtrMD2icNSRcgFtaFDX-AS9wL3u05S1ot2Xnn9ZGujG'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Песчаная буря',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhoyszMdC5H_siJmImMn-O6YOvVx24C7MZy2rrD9I_00FDgqkA6YWvxdoXHegM_MAzR-AK5xunmjIj84sqcbwbCfw'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Пальма',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODYTi1D4NGJmImMn-O6Nr-IxT5VsZYj3biQrNqk3gThqEA-Y2qhLI-TdwA-N1yFqAfryebphIj84spWYPOlFA'
+			}, {
+				'type' : 'AWP',
+				'skinName' : 'Змеиная кожа',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FBRw7ODGcDZH09GzkImemrmsY-PUxmgAv5Up2rnFrdmijlXgqUA_ZjzzIIKQcQA7Y1uE_Fbtlefum9bi68KPYhsE'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Медянка',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFA957PDHYS1H_tSzlYS0m_7zO6-fxz0H7sEk37zDpdyi3VKxqUVla277J4-ce1I3YV6D_lS8yLrt0ZC_vYOJlyXik3twsg'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Медь',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cCx979OmhIWZqPrxN7LEmyUJ6ZBz07CUoYjz2lCx-kFpazr6JoaTe1U8Yl_V_gLtyOntgJe975qa1zI97eqxrstO'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Пламя',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLJTjtO7dGzh7-HnvD8J_XVkjoFuMYiiLqUrI-k3le3r0s5amj7d9eTI1I-M1rW-Fm_xO-50Jfvot2XnhS4_w8U'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Латунь',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3cy9D_8-JnIWKge66YOLTlT8IvJcgibjEoYn331Cx-kI4N2CgJdKXIQJvYV2Eq1S3k-281oj84sq0SysHHg'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Скорпион',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJfAJR79OkhImEmcjkYeuBxlRd4cJ5nqeZo9-m21Xh8kY-MG-gIoeWe1c6NFDU_VK6lOi6156078nKyiZg7yEm-z-DyIv3UiOT'
+			},
+		]
+	}, {
+		"name" : "Dust II",
+		"img" : "dust2.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'G3SG1',
+				'skinName' : 'Песчаная буря',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3dThR6c6iq4yCkP_gfe_Uwz4HuZ0p3u-Q9oiijgyw_UpqZjv6d4GcewdoaVGB_VG8k-nt15Ki_MOekXjyVoE'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Песчаная штриховка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRw7OfJYTh9_9S5hpS0hPb6N4Tdn2xZ_Isp07rFpY70i1Lk-ERpY233LNXAJAJsNFmG_FW3xOfu15-6vp_AyXU2pGB8suBC9uz5'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Хищник',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhzw8zSdD9Q7d-3mb-DkvbiKvXSwDMEsJci0u_Fooii31Ky8kE-ZzzwJoCTcQA4NV_Zq1bolOzogsDpot2Xno1tLOyh'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Песчаные дюны',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhz3MzbcDNG09C_k4if2fSjZLmGwDkBsZZz3r6Zo4mliwTj-0BtZDz1dYSUcAdtYw3XqFXtyejxxcjrr8fSJ40'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Песчаное напыление',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7ODYYzxb08-3moS0mvLwOq7c2GlUuZR0ibiRpNqs2VXi-kI5Mm2hd4GdIQM9NwrW-Va5xObmjJK-uczXiSw0I3Bdoc4'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Песчаная сетка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODYTjBH_9SJh4GFk8j5Nr_Yg2Yf6ZEl3O3D99mm2gTkrUBsYzj0LIWWcwRtYgvU-1K7w-7tg5fv75TPnWwj5HeMNR9tGQ'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Африканская сетка',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhzw8zFdC5K08i3mr-HnvD8J_WBxTwD6ZB12b7Hodumig23rUY5YTymJ4TBcFA7NVvW-FW5l-zr1JXtot2XnkNBBWuK'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Апельсиновая корка',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5S08i3hIW0mOX1PbzUqWdY781lxO2WrdjwiwS38kFtYG-mLdCWJAU9MgnQ81W6xbi5gcDpuszIn3dguiA8pSGKjf2ztEE'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Пальма',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldfwOP3YTxO4eO6nYeDg7n2YeOGlWpTvpwj2-zEpNjx0A3krkFlNm2nJoWVdQM8ZwnW-FK2wOzmm9bi64Jdj8z-'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Смешанный камуфляж',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszecC9L7927m7-HnvD8J_WJlzMHu5Yo2urFpYr22gDnqEBqam6gJ9KQdwc_YlGE-VS7wri70Ja_ot2Xnk_reDFK'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Змеиная кожа',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi19_9K3n4W0m_7zO6-fw24HvcQi37nHptz0iQHt-Rc5YWr3coCWc1I7NVqDrli2ye3n08S46YOJlyXnI7k0UA'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Латунь',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf0uL3cy9D_8-JnIWKge66YrrQwGpTsZ0m27rF8NqjjVCwqUA4NziiIYHBJAQ_ZwyC_VDtw7-6h4j84sq1nvST4w'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Дамасская сталь',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0uL3dTxP7c-1gZO0hPChZujummJW4NE_372Sptmg3gzjrUNvam-icIeVJ1I8N1rX-lTskuzrh8XpucudnyAwvz5iuygR9uL9aQ'
+			}, {
+				'type' : 'M4A1-S',
+				'skinName' : 'Смешанный камуфляж',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-dluX9MLrcmVRd4cJ5nqeWrNit2AewqhY_Yj31cIDGJgRtZV-E8gS2xOzv0Z_qucvJm3M16SFw-z-DyBeWkcOk'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Янтарный градиент',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJcAJE7dizq42Og_b4P7LSqWZU7Mxkh6fErN_22VbkqRBrZmn3cIOTewdqZAqE8lm_xO7ngsW_vM6YzndjuSEm-z-DyNwC_Q0C'
+			}, {
+				'type' : 'R8',
+				'skinName' : 'Янтарный градиент',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopL-zJAt21uH3cDx96t2ykb-GkuP1P7fYlVRD7dN-hv_E57P5gVO8vywwMiukcZjBdwBraVmG_1nsk-nug8fvus6YyHFj6HQm5HfdnUfliRFKbLE7habIVxzAUNH92sAX'
+			},
+		]
+	}, {
+		"name" : "Gods & Monsters",
+		"img" : "godsmonsters.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'AUG',
+				'skinName' : 'Дедал',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRw7P_JcyRQ5dKinNO0mvLwOq7c2DJTv51zjrnE8NygiQzh_kc-a2iiLNSSdlc3aQnUrwDolb-80MLv7pnXiSw0HmqdeSU'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Луна в знаке Весов',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf2-r3azJG5d21xb-GkvP9JrafkjkA7cYn2--TrY7z0QTk-hE-MD-lJITHegI9ZV3Vq1Xvx7jvgJG5tIOJlyWrNM96nA'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Луна в знаке Весов',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszSfjlL7d_nq4iOluHtfbiEwDlQ65Up0rCQptXxjle1-hZlMWvzLIecewZqM1vV_AW-ye651sKi_MOegT0cVm4'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Астерион',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7P_JcyRQ5dKinL-GkvP9JraflD8JsJ0p076Y99Sl0A3j-RA-azv2cYaScQ89Y1iE-QTskri-hpHq7oOJlyWB9kL-pA'
+			}, {
+				'type' : 'AWP',
+				'skinName' : 'Солнце в знаке Льва',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957OnHdTRD746JnIWKge66ZezUkjNX7Jwp2rnCpo2t2Qfk8xJpMTqld47DdlI_ZgqCqQLsxbvmgIj84sqMMdFayA'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Аид',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszAcDlH_-O-kYGdjrmnY7rSkD9VvcFwib7A8Nrx2w3srkA-NW3wLdCRdVU9Mg7X-FS4l-7mm9bi68L8E_3E'
+			}, {
+				'type' : 'M249',
+				'skinName' : 'Приморский прогноз',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhoyszSfjlL7d_lq4iOluHtfevTxm8J6Z0m3uyUp96li1K1-BFrazz7IteRdFQ4aFnWqQTrwrrnhJ-i_MOedcIbTZY'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Лабиринт',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zbYQJO7d6vhomFg_-mDLbUkmJE5Ysn37GQ9Nuh3QHm8hBvZmmiJNDBewM3M1vXrAC_xOm90MLt7svLwSNqpGB8sm38TgsC'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Лабиринт минотавра',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0Ob3fTxA9c6_mpSDqPrxN7LEmyVU7p0o3-iU8Y-k3QS2qEU9ZT_6d9Sdew46MgqE_QO7lLrog8C47ZuY1zI97d-e9afQ'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Ящик Пандоры',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZh7OPJfzlN_t2JmYWPnuL5fevTlz0F7pIgieqUrYitiQWy-hdrNWumddfAcVU_NF3Zr1jvxbvu1sWi_MOepgbcjQQ'
+			}, {
+				'type' : 'M4A1-S',
+				'skinName' : 'Падение Икара',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-ClPbmJqjummJW4NE_3ujHpY2sigXl-UFoZGj7JYCXdgQ4YVnQ-1Lqxenn1MLpuszJz3tk6D5iuyjCqdNpmA'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'Хронос',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf0Ob3cjVQ49K5h7-MxOTzYoTck29Y_cg_3-3A8Nqj2VLl_Bc4YT32IIWRcQJsaV_Y-1Lskr2-15G4up6bm3Ayuz5iuyjiZUxvZw'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Посейдон',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszYfi5H5di5mr-GkvP9JrafwDtV7cAl2uiYpoqt3Q3n-kNkZWCmINTHe1I_YgrV-wS8xb-91p_vuoOJlyUlgXdlZw'
+			}, {
+				'type' : 'AWP',
+				'skinName' : 'Медуза',
+				'rarity' : 'covert',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17P7NdShR7eO3g5C0mvLwOq7c2DkAvJQg27iT9NWm2VK3rkU6YmmiI4SVJAQ9MljUr1O5ku7ug8K1usnXiSw07gvX0uU'
+			},
+		]
+	}, {
+		"name" : "Inferno",
+		"img" : "inferno.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'MAG-7',
+				'skinName' : 'Песчаные дюны',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzbcDNG09GzkImemrmtMe2CzmhQ6sR0j7zC89ig3VCyrktqNmqiJYOXdAQ8YQzWr1Ptlejmm9bi60MVxb_X'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Грецкий орех',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhjxszfcDFM-ciJmo-dlsj5Nr_Yg2YfuJIn2O2Wo92m2gXh-Bdramr1ItKUJlM3YFiC-Ae2kOi7hpbu7cydn2wj5HdE8usZbQ'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Смерч',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz3Mzcfi9M7di5q42Ok_7hPvXTlG5X6cYh3-3E89Sk0AfnrkBkY2mhJIfEcwM4M1CDqVfsyem5gsW4ot2Xnj287ZlO'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Пороховой дым',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszPdDFS6dKJmYWPnuL5fb6AxG5XvcZ1i72UotWg3Ae1rUBoMm6gcYbDJ1dtZwvW_lC7xbrsh5Ki_MOeZVXbyKM'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Анодированная синева',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf0v33fzxU9eO6nYeDg7msZOKIz2hS7ZEki7mS89Tw0Ae3-Us4MWD7LIGRegc-MF2D81i-ku_vm9bi644LgQp9'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Латунь',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhhwszKYzxR_-O7kYSCgvq6ZLnXlThXu8QhiLuR89-hiwex_EA-MG_wcIfGdlQ3ZwrWqwK3kOy914j84spCpFtqYA'
+			},
+		]
+	}, {
+		"name" : "Italy",
+		"img" : "italy.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'AUG',
+				'skinName' : 'Наемник',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7OPFcgJO5du-gM6OxfakZbnQw28H65Eg2L2RrYin3ADjrkJqYWz0Jo6UdVNrYV3SqAW9366x0l1OAhlP'
+			}, {
+				'type' : 'FAMAS',
+				'skinName' : 'Колония',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRfwPz3Yi1D79mJmYGZnvnxDLfYkWNFpsdy2uiQpNyt2FftqUA-ZmmgJYXBJlRrZQmGq1Lox7jmg5W9vcucmnZ9-n51AJPKCtE'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Грунтовая вода',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhz3MzHfTRU6eO-kYGdjrmjau-EzzkGvcEnibjDotqiilKyrUY-MGDwJYOVIwNoYg7V-le8yLztm9bi63kWu9PZ'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Песчаная штриховка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3ZTxS6eOlnI-Zg8jnMrXVqWdY781lxO3C89Wk21Xnqkc6MD33JoeVcwQ6aVqF8gK_krzqgMK8ucnAwXBr7Ck8pSGKKT36elM'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Песчаные дюны',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhz3MzbcDNG09C_k4if2aSna-6FwzsJu5Ypj-uVrdyk2wzkqEQ4ZD3wJo7DcAQ2ZAmE-QC5xejxxcjrmUdg9dQ'
+			}, {
+				'type' : 'M4A1-S',
+				'skinName' : 'Северный лес',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-NmOXxIK_ulGRD7cR9teHE9JrsxlGy_EdvMGGmI9LAewNvaFrY-VG5wLy9jcXov8nOmHMx6ygl4XePlxGpwUYbs3f5UC8'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Патина',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf0uL3dzJQ79myq4yCkP_gfbiHwz8DvZMn27rEpdSs21bl_RE5YW6iI4CXc1NtZV7Zq1e9kOfmgJOi_MOekFRFcA0'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Калифорнийский камуфляж',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PvRTitD_tW1lY2EqPPxIL7DglRd4cJ5nqeZrN-ki1ayrUE9MmrxLY-Xeg85ZlzS-gW-xOjug8S_vJucm3IysyF0-z-DyLOku5tY'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Пороховой дым',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf2-r3djhO_Nm4q42Ok_7hPvWHwDkJu8Ao3uzA9I-kigbk-0Q5ZWGidYGddg84ZVDT_Vfrk-no0Je7ot2XnjSEoaSR'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Мраморный гранит',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zAaAJF_t24nZSOqP_xMq3I2DtTucNz3rmQpt2sjAew-kpqNTj6cI6UI1dsMwmF-gS_x-q8hZTvtJTXiSw0GvFmxcU'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Карамельное яблоко',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhz3MzadDl94dmynZWG2aega-7TkjtQuMMgj7iR9NugiQft-RJtNm-ndoCRIwVvM1jSrwK9kO_xxcjr6R38t40'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Полная остановка',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR9-t2knYOKmvjLIb7VqWdY781lxLHF99il0Ffg-EJrNmj6dtDBJA5vNQvWqVK_ye3sh5G0upvNy3FnviU8pSGKve7IyHk'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Анодированная синева',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFAZu7P3JZyR94NWxnJTFwPWjY-6CxT1Su8B03r6T8Y6s2wft-EJpam6lJNfHcw8_Y1nXqFLqkvCv28FJ8mUtyA'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Карамельное яблоко',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3YzhG09C_k4if2aajMeqJlzgF6ZF10r2RrNyg3Qzjrkptazj7IYaVdwE4NFHRqFHtk-fxxcjr1j3fJ1k'
+			}, {
+				'type' : 'AWP',
+				'skinName' : 'Гадюка',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957ODGcDZH_9e_mr-DkvbiKvWFxDhTvMMi3ryWrNyj0Qbi8kQ4Nz3xI9CWJgQ8Nw3Vr1i_wem5hJ-9ot2XnjzZQCBr'
+			},
+		]
+	}, {
+		"name" : "Lake",
+		"img" : "lake.png",
+		"type" : "Collection",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
+		"weapons" : [{
+				'type' : 'G3SG1',
+				'skinName' : 'Jungle Dashed',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwOP3ZTxS6eOlnI-Zg8j-JrXWmm5u5Mx2gv2Ppd7zjATirxFkNWD2JIGde1Q4MlyCrAe8x-u705a6uJ7Aynph6SUq4GGdwUKYnSlmwg'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Waves Perforated',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3ZTxS6eOym5SYqOD1Jb7CqWdY781lxL-Tp9n331Wx-0NvMDylddfHdVJrMgnXrwC7wOnqgpC1tZzJzHcx6HQ8pSGKCgprHXY'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Sage Spray',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczbYQJR_M63jb-PkuTxIa_uhWpW7fp9g-7J4cKm3FLl-UVkMGugcoeXJwE5aFzV-Vnsxu_rhZK5usnKznNl7igj5HvfgVXp1li1IAsv'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Storm',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Blue Spruce',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODHTjBN_8-JmImMn-O6ZuiBzjwIvsNw3OzHp4nxiVXg_hJqMG-mI4XGdw86ZFqGqVO4xOnnhIj84sodiQTp-w'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Boreal Forest',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszOfi9H_8iJlo-Zkvb4DLfYkWNFpsEp2rzDpo-g3lLj_0duYzyiJoPAcwJqM1DWr1btl-bujZfotZXIynZ9-n51cU1OKdk'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Blue Steel',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PLZTj9O-dmyq4yCkP_gfeiDxDMEuMBz2r_F89mm3Qay-ENuMW-nINLDJFQ_NVrU_VPqkL3qjJCi_MOe-fT9b8U'
+			}, {
+				'type' : 'FAMAS',
+				'skinName' : 'Cyanospatter',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRf2-r3YzhH6uO6nYeDg7nwYOqCzm0FvJwgiLyVpN-n3AW2rUVoMmHxcYaQdgNqNQvUqVjrye67m9bi68H1zE-y'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Night Ops',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf2-r3ZzxQ5d-3mY-0mf7zO6_ummJW4NE_jLmUrN_22gCw-kdvYGqmIo7GdVNsYQ3Z-1e9yevtgpbouZvIyyBnvD5iuyhUzb9WHg'
+			}, {
+				'type' : 'AWP',
+				'skinName' : 'Safari Mesh',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FBRw7P7NYjV9-N24q4yCkP_gfeiHxjNS6sBz0-vDpNqmilKw-RE5MDv3cdTGIVM8ZF_WqFjtkOnn0Z-i_MOe5x-cbmw'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Mudder',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tdn2xZ_Isn27zD8Nyt3FDgqRBlNzv7d4-ddgM_N1nT-VS_kr-6hMDtvMiaz3swpGB8spRzyX72'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Anodized Navy',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0v33fzxU9eO6nYeDg7mhMO-ElTpSu5Yg2rmXrNjziwTl-xJvajuiLYTAcVdoMArRrlbtxLvom9bi65LEnjT7'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Teardown',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7P7NYjV95NOiq4GFk8j3PLfVqWdY781lxOuQ8Nug0VG3_EVkYmz7LIXHJAVrY1HT-FC7lO3ngJ7p7czJznRg6CE8pSGK_1A-hqA'
+			}, {
+				'type' : 'USP-S',
+				'skinName' : 'Night Ops',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09Svq5aKhf73MrbeqWVY781lteXI8oThxlCy-hA9MGqlJoHAIw4_Y1vXqwLskue7gJC9v5qfzCdg7nR05XjfyxCpwUYbxcylpaA'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Cobalt Quartz',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf0v73ci9b_8i3mIyCjfLwDLndg25u5Mx2gv2PoNug3lDk-RVlamn7cYfGdlI5YQ3WrFDqyLq-0JO_7p7OynM16SB0sWGdwULhW51YQw'
+			},
+		]
+	}, {
+		"name" : "Militia",
+		"img" : "militia.png",
+		"type" : "Collection",
+		"canBeSouvenir": false,
+		"canBeStatTrak": false,
+		"weapons" : [{
+				'type' : 'XM1014',
+				'skinName' : 'Grassland',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODHTjpQ7c-lmIGFk8j4OrzZgiUFuZd02rHHoIqk0QSwqUJpNm_yJY7Acw9tZw2B-la7w7y91MPovZXJ1zI97b6G3gQJ'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Tornado',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldfwPz3ZTJQ4t2ym7-HnvD8J_XXzzIJuJwi2LjArNT03Vfi8hdqa2z6ddeUcwdsYVjY-1m4l-bthZG4ot2Xnqk4tkhH'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Forest Leaves',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3fThD-tmlq4yCkP_gfbjUxGoGv5Z13b3CpdmliwXsrUplNziidYWcJgJsZ1_Q8la2kLy7jJ-i_MOeb20uXFE'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Grassland Leaves',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zbYQJO6d2gkZO0kOX1IKjdl2VV18l4jeHVu42i0AzhrkdoajzzLYGUelQ7YliB_we2lOq9gp_tv53AynM1uyAmti3D30vgX-J8LAE'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Blaze Orange',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszAZDNW6c6JloyKjfLLPKnQmGxU18l4jeHVu9_0iQzl-UNvZmHwI4WcI1M9Z1nX8lbox-zqjJG66MiczyBk6yF053rD30vgAuPsDfg'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Modern Hunter',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszAZDNW6c6JmY-PkuX6DLfYkWNFppUgj7-WoNnx0Vbg-RdtZmD3LIWSJAA-MwmE_Vjrwbjph5-56MvBnSB9-n51v2AAFR4'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Blaze Orange',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszAZDNW6c6JloyKjfLLPKnQmGxU18l4jeHVu9_0iQzl-UNvZmHwI4WcI1M9Z1nX8lbox-zqjJG66MiczyBk6yF053rD30vgAuPsDfg'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Modern Hunter',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf2-r3eShM-Nmkq42Ek_LmPYTdn2xZ_Ish3rGYpN2i3lay-0FkZzuiINCdcgY8MlqD-VO6xeu818LpuZ2YwSFlpGB8sl1JW1qL'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Modern Hunter',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszAZDNW6c6JmY-PkuX6DLfYkWNFppEmiLCQ8I2i3FHs-RVqNmn3JdTGJARqYVuD-1C5k7vph8fpvpjAyXt9-n51ZoikmFc'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Modern Hunter',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhoyszAZDNW6c6JmY-PkuX6DLfYkWNFppwm37rD8I72jAaxr0c-MTj7dYKWcAQ2Yg7T_wK7le_mgp-9vsmbwCZ9-n51LLZAfPE'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Splash Jam',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7PvRTjVX4sizhr-Jm_buNoTBn2Va18l4jeHVu46iiVLhrhY4ZTumJNWSJg87NAvQ-wS8lLrmhJC0uJydmHJjv3NxsyzD30vgw6xVMJ0'
+			}, 
+		]
+	}, {
+		"name" : "Mirage",
+		"img" : "mirage.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'AUG',
+				'skinName' : 'Колония',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODYcD5H09G3homFksj5Nr_Yg2Yfu8Yk3eySodyj2wHn-RVoaz3zdo7BelA_MFrT-lLokOjn18W4uJuYymwj5HdT1XK3KQ'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'Африканская сетка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwOP3fDhR5OOilY60m_7zO6-fxzJQ68Z02OiQpdyl2FXmqENvNWGlLI_BIQU3Nw7Rqwe9lOa81Je1uYOJlyWUbIPIHw'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Охотничья будка',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczbYQJP6c--q5OHluT8Nqjunm5Q_tw_ieyVod322w3l_hdvNjugctOUegU7NAmBqwToku3ogcXu6ciam3UwuT5iuyio602etQ'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Наемник',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N08y7l7-HnvD8J_XUlD1QuJ113rGW89-h2gew8kZqa2D7dtfAdVQ2ZVzT-QO_l-rp0ZS5ot2Xngcmh8ed'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Сажа',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7PfJYS1O6eO-kYGdjrnwa-7QxDlT68F33rjEpNuijgayr0VpamjyJ47AIwdqZ13Qrlm6wey9m9bi6yqeJsBm'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Костяная маска',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zccC1H09C_k4if2a_xML6Dxj8GupIoibmUod-n3Vbkr0FqYGv2IY_BJwc6ZAuFrFS8xb_xxcjr7uv4usk'
+			}, {
+				'type' : 'SG 553',
+				'skinName' : 'Крокодиловая сетка',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3fDhR5OOmjZSDmPnLP7LWnn8f7cAmi7uSoN_z3A3trRBuYWGlLI7EI1c3aAqE_QDtxbrm08fvvZ_Mzmwj5HcvKiIfXQ'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Апельсиновая корка',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7OfJYTh94863moeOqPv9NLPF2D4Jv5V12e2TpNj23VbgqBdlYWqnIo7Gdlc-YF6C_VO7yOjnhZ7o7pzXiSw0U0YXXNA'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Грунтовая вода',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3fjFL-tmJmImMn-O6YrrXxWoJvJMp2euQ892n21DkqRBtZGryLdKUdg85aAqG_QC_w-_ugIj84sq2hgy4GQ'
+			}, {
+				'type' : 'Negev',
+				'skinName' : 'Калифорнийский камуфляж',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf2-r3ZzxQ5d-3mY-0k_LnNqnFqWdY781lxLiXrI7x31e38ktqNTz7doWRcwdtYw7YrgK6yeq71MK46cjAnyQ1vSE8pSGKUNGnClk'
+			}, {
+				'type' : 'SSG 08',
+				'skinName' : 'Тропическая гроза',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwOP3YTxO4eOlnIGPmODLP7LWnn8f7scj3uuU8IiniQTnqkBpMmjxcoPAJwE_Z16CqVW7yb-9gcfpu5qczmwj5Hf46J1P4Q'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Хот-род',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZu7OHNdQJO5du-gM7bwqb2MeuClTsCv8Ek2LiZ9t2giwa28hVlZGD0doSUIANqYV_U_gC2366x0j0WoURS'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Янтарный градиент',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0vL3dzxG6eO7kZSKm_v9MITdn2xZ_It13rzC9Nqj21DsqEs6ZWyiLI7AcVdsMl3W_1W7kr3vhJHotZzLnXFgpGB8sjEeQG_x'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Пламя',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0vL3dzFD4dmlq4yCkP_gfeuCxTMG7pFw2uiV9I-jjlHi-0dvZDygLY-dJw89NQ3QqFK3lOe9jcSi_MOeUg1XNk4'
+			}, {
+				'type' : 'MAG-7',
+				'skinName' : 'Бульдозер',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzRdDFO48uJnIWKge66ZeuHzjMEu8Yk3LyUo4mijgDn_RVrZzumddPGcVJoZAzQr1jsw-65hoj84sp82E9QXw'
+			},
+		]
+	}, {
+		"name" : "Nuke",
+		"img" : "Nuke.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'MAG-7',
+				'skinName' : 'Радиоактивная опасность',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzw8zGZDZH_8iknZCOqPXmPKzfqWZU7Mxkh6fDo932iVHm_xBsZm6gIoHEIQI7ZFHW_FHqx-jn15Hq75TKziZnuSMr-z-DyCCeIKrx'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Радиоактивная опасность',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3fyhJ6c-ihombksj2IbTGmFRc7cF4n-SP8dys3FfgqRI4ZD_6d9eQIQNvMAnS_lm7w-y70ZG_vJqbzyFhvCR35mGdwUKuhR019A'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Радиоактивная опасность',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi194sm9kZOfhf7kNoTThGRG5vp8j-3I4IG7ig2y_0ZsMGn2do6QJA4_NQ7Z-VO8xry5hMTvuM7Lm3Iw6XEgsHaMzAv33088hDSHPw'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Радиоактивные осадки',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7P3dejhR-M6_hIW0mvbmPLTfqWZU7Mxkh6fHo4rz0Ve2-0U_azvyIIadJAA8aQyC_Vm4w-bn1pXouJnPnSM26XYq-z-DyFErgtK5'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Радиоактивные осадки',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwOP3fyhJ6c-ihombksj5MqnemWVu5Mx2gv2PrN6s3gPhrUdoNWnwJIXDdQFoNQzV_1e9xebtjJK9u5WcmiRhuXRw5GGdwUKpyEqAXg'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Радиоактивные осадки',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODYTjNX59mlgJKCh_LLPrrDmWRf18l4jeHVu9T33lK1qBVvYzynIoaQdQM-aA6Dqwe8kua-gpPtvJmay3RhsyIi5i7D30vgm-UlNbc'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Радиационная опасность',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhzw8zGZDZH_8iknZCOqPjmMrXWk1Rc7cF4n-SP9o6h2gfjrhY-Z2-lcYWde1NsNAmC-APok-zm0Z-_vMvBz3tq7yEmsWGdwUJ6nxi7Dw'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Ядерная угроза',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zGZDZH_8iknZCOqPDmNr7fqWNU6dNoxLmQrdX031DhrRY5YGmgLNDBIQU5NFDT_gS-ybi5gp_uu5iayyc2uyM8pSGKb7DLmmE'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Ядерная угроза',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhzw8zGZDZH_8iknZCOqPDmNr7fqX9U65xOguzA45W7ilfm_EVqYWvyIdSRJ1Q_YVzT8lC6wu3vjZW-uc-YwHUwvHZ05Hvaygv330_9fYlOZg'
+			},
+		]
+	}, {
+		"name" : "Office",
+		"img" : "office.png",
+		"canBeSouvenir": false,
+		"canBeStatTrak": false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'FAMAS',
+				'skinName' : 'Contrast Spray',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRfwOP3Yi1Q7cWJmImMn-O6Nb6Jzj1VsJch3b2X9tzz3Afn-BBsNmmmdYDBcQY2ZV_Tr1O6wL3r14j84sqUdMychw'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Winter Forest',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczAaAJE486zh5S0gP76J77DqWdY781lxLvApY723Vfj80c6MG_0LISWcgJrM1uFrFe2lOq5hZHvus7AyyZg6HY8pSGKRerlrt4'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'Arctic Camo',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3cC9B-NW1q4yCkP_gfevUlD4F7cBzieyQoN2i3QXnrhA4MWr0LI6Rdw9tYVHT_1m3xu-5gpGi_MOeXMs2wjo'
+			}, {
+				'type' : 'M249',
+				'skinName' : 'Blizzard Marbleized',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhoyszKfTRY9t2kkL-HnvD8J_XVxD8GvZYhi-2YoYnw2lXkqEJqZ2jyItSde1BqYg7T8gC6wrq905W8ot2XnqjzBKae'
+			}, {
+				'type' : 'P2000',
+				'skinName' : 'Silver',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJfwJR5dCgkZK0m_7zO6-fzj9T7sEjjLnD8Y-iiVbi-kc4ajqnI4eVcVQ5NVjX-1e-x-_ujZe6uoOJlyU5sT_JRA'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Whiteout',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRv7OTAeClH48miq4yCkP_gferXxDwDv5Zy27GY9t2sigDm_kVrMT2nIILDJFU9NF2Cr1a-lL_s1JKi_MOeui7SoYY'
+			}, 
+		]
+	}, {
 		"name" : "Overpass",
 		"img" : "Overpass.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
 		"type" : "Collection",
 		"weapons" : [{
 				'type' : 'M249',
@@ -167,97 +1226,299 @@ var cases = [{
 			},
 		]
 	}, {
-		"name" : "Assault",
-		"img" : "assault.png",
+		"name" : "Rising Sun",
+		"img" : "risingsun.png",
 		"type" : "Collection",
 		"weapons" : [{
-				'type' : 'SG 553',
-				'skinName' : 'Смерч',
+				'type' : 'G3SG1',
+				'skinName' : 'Оранжевое кимоно',
 				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwPz3ZTJQ4t2ym7-DkvbiKvWEwT9X7ZAp2riRo46i2lHj8xFrNjynctXBJAY_YQqG81W6le68h8Duot2XnjGENDPp'
-			}, {
-				'type' : 'UMP-45',
-				'skinName' : 'Карамель',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwPz3cjxQ7dGzmL-DkvbiKvXTkjJV7JMp2uzCrIn0jlHhrUBvMjvxIYHAe1U3NQ2E8wftlebv18O7ot2XnuNTwZ3r'
-			}, {
-				'type' : 'Five-SeveN',
-				'skinName' : 'Карамельное яблоко',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N086zkL-HnvD8J_WDz2pUv8cj2L-V94iniQft-xY_NWzydYOUcA89NVqD-FO-w7i70Me1ot2XnkOsbUS5'
-			}, {
-				'type' : 'AUG',
-				'skinName' : 'Хот-род',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAZu7OHNdQJO5du-gM7SlvP2a-KFkDsD6cN33b6Z84rz0QXs8xJuZzymdYfDclU2M17W_Fm7366x0jzU3_8y'
-			}, {
-				'type' : 'Negev',
-				'skinName' : 'Анодированная синева',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf0v33fzxU9eO6nYeDg7mhN7rXlTgDuMQi3-vCpdjw2Ae2qRZsMG2mINSUIAQ3YlvZ8gW_k7q-m9bi60E-BDow'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Градиент',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0vL3dzxG6eO6nYeDg7miYr7VlWgHscN32LyT8dmm31XgrxdtZzvzJYDGIFM2Y16D-FfvlOu9m9bi66Oq9HyE'
-			}, {
-				'type' : 'MP9',
-				'skinName' : 'Бульдозер',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRv7OrNfTFN--O-kYGdjrmnNb7Qkm4G7cZ3i7nH8I-n3gXl-0duZDqiJdfDelVqZVzW_1Xowe_om9bi66Howf2G'
-			},
-
-		]
-	}, {
-		"name" : "Nuke",
-		"img" : "Nuke.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'MAG-7',
-				'skinName' : 'Радиоактивная опасность',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzw8zGZDZH_8iknZCOqPXmPKzfqWZU7Mxkh6fDo932iVHm_xBsZm6gIoHEIQI7ZFHW_FHqx-jn15Hq75TKziZnuSMr-z-DyCCeIKrx'
-			}, {
-				'type' : 'PP-Bizon',
-				'skinName' : 'Радиоактивная опасность',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3fyhJ6c-ihombksj2IbTGmFRc7cF4n-SP8dys3FfgqRI4ZD_6d9eQIQNvMAnS_lm7w-y70ZG_vJqbzyFhvCR35mGdwUKuhR019A'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Радиоактивная опасность',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi194sm9kZOfhf7kNoTThGRG5vp8j-3I4IG7ig2y_0ZsMGn2do6QJA4_NQ7Z-VO8xry5hMTvuM7Lm3Iw6XEgsHaMzAv33088hDSHPw'
-			}, {
-				'type' : 'P90',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7P3dejhR-M6_hIW0mvbmPLTfqWZU7Mxkh6fHo4rz0Ve2-0U_azvyIIadJAA8aQyC_Vm4w-bn1pXouJnPnSM26XYq-z-DyFErgtK5'
-			}, {
-				'type' : 'UMP-45',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwOP3fyhJ6c-ihombksj5MqnemWVu5Mx2gv2PrN6s3gPhrUdoNWnwJIXDdQFoNQzV_1e9xebtjJK9u5WcmiRhuXRw5GGdwUKpyEqAXg'
-			}, {
-				'type' : 'XM1014',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODYTjNX59mlgJKCh_LLPrrDmWRf18l4jeHVu9T33lK1qBVvYzynIoaQdQM-aA6Dqwe8kua-gpPtvJmay3RhsyIi5i7D30vgm-UlNbc'
-			}, {
-				'type' : 'M4A4',
-				'skinName' : 'Радиационная опасность',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhzw8zGZDZH_8iknZCOqPjmMrXWk1Rc7cF4n-SP9o6h2gfjrhY-Z2-lcYWde1NsNAmC-APok-zm0Z-_vMvBz3tq7yEmsWGdwUJ6nxi7Dw'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Ядерная угроза',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zGZDZH_8iknZCOqPDmNr7fqWNU6dNoxLmQrdX031DhrRY5YGmgLNDBIQU5NFDT_gS-ybi5gp_uu5iayyc2uyM8pSGKb7DLmmE'
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3ejRP49K5q4SClvr7Pb_CqWRD6ct2j9bJ8I3jkRrnqEI9Njv2ddKWIQE3YQ7T_lPtwuvr1sS675zKmyQwuXYk43zcn0bmn1gSOQyGRkl0'
 			}, {
 				'type' : 'Tec-9',
-				'skinName' : 'Ядерная угроза',
+				'skinName' : 'Бамбуковые заросли',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszKcDBA49OJnpWFkPvxDLPUl31IppEijOvFrdr0iwzirRA4Ymqnco_HcAc-NFCD_VK9l7_njJDtuczAynR9-n51oajK6Us'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Кимоно цвета мяты',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zDeDBN4tOJkImKmvj6N6junm5Q_tw_372R9N333QPs_hJlZGjyIIHEJwJsZQ2G_ATtxO2-jZG5uc7Nn3M2sz5iuygclVPvsA'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Бамбук',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf2-r3czxP7tO5q4qemfD4NoTYmGBu4MBwnPCP8dSj2Vbi_hJtZGCmJtKQJlBtZlnV8wC6l-bphMS0vpWYzHRmviQh52GdwUImyimesA'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Тень бамбука',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR97t27lo-EqP3hPbzdk1RT5MRygdbJ8I3jkRrgqEpqN2D2LY6XJFA_N1rV_ljrx--8g8W97ZrPnSY1syh0tCmInRy-n1gSOTvdU3xS'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Ночная буря',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTi5H7c-im5KGqP_xMq3I2DID7pZw2b6UpY6hjQTj_0ZkNz_xcdOXdgA2aV_S8gXqk7jqg5G-v53XiSw0vau75Eg'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Малиновое кимоно',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszDeDBN4tOJkImKmvj6N6juhG5V1810i__Yu4it0QHm-ks_YWn1IIXEcFI2Yl_U8gDtkObvhpa4vMicm3RjsiBz5yrD30vggAIcFk0'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Терраса',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszPdDJP6ciknYO0hOPxI6juj25d5MpmteTE8YXghRq2rhE6NzyiI4adIFU_ZFmCq1Dqle_thce0upjBz3IxuSIrsXaOnhHin1gSOam774aE'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'Водная терраса',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczJfAJF6dO7kZSZnvTLIK_Uhnhu4MBwnPCPoI_2iVK1_RVrMGz2IYKRdVdrMF6E_wW_w-bqhZbpu5rIz3Ni6Cgms2GdwUJTK7A28Q'
+			}, {
+				'type' : 'MAG-7',
+				'skinName' : 'Антитерраса',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhoyszPdDJP6ciknYO0hOPxI6jukXlU7ctOguzA45W72Q3k_hdpYm-iIYSddQc-YVyD-lK7l-3v1p-56MiYz3RquCV2sHvfzQv330-hLT2elw'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Рассвет',
 				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhzw8zGZDZH_8iknZCOqPDmNr7fqX9U65xOguzA45W7ilfm_EVqYWvyIdSRJ1Q_YVzT8lC6wu3vjZW-uc-YwHUwvHZ05Hvaygv330_9fYlOZg'
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhh3szDeDBN4tOJh5WFhf7nNoTZk2pH8Ysii7uYo4r221DkqkdvZm37LYecdlQ8YgrSrgK3kOzu05C-u53AyXI1pGB8suJlCAfZ'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Буря на закате 壱',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTi5H7c-im5KGqPX4PLTVqWZU7Mxkh6eYoNug0Qzn80Y9ZTyncNPAJlJvMF2EqFi6wOa-gpC47pmYz3Zk6XF2-z-DyOzAiWG4'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Буря на закате 弐',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTi5H7c-im5KGqOT8PLHeqWNU6dNoxLHEoY6n2VXiqEdpazulddOWIAdtZFGF8lnol7_uh5K_upybnHs3vCc8pSGKn-HkWew'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Неоновое кимоно',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjVb09e_mY-FmMjwOrrcmWVV-_p8j-3I4IG70AHk-xZqMm2iItWQcgc-MwzT_Fm3xubqjJe87p7KzydmvyMg4H3ayQv3309niA2tcQ'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Гидропоника',
+				'rarity' : 'classified',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhh3szKcDBA49OJnpWFkPvxDLfYkWNFppwpie2Rp9_w0VDm-UNrMj30IoPHdAY-M1rY-1K7w7291pO8vJTJzHN9-n51xLwwH8g'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Акихабара',
+				'rarity' : 'covert',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAR17PLGeDBH092jk7-HnvD8J_XXxj8IuJIkib-VoNSi2VGx_UQ-Yzv3I4SQcVA7aAvS_FC6wru51pK1ot2XnmtK7ev7'
 			},
+		]
+	}, {
+		"name" : "Safehouse",
+		"img" : "safehouse.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak" : false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'MP7',
+				'skinName' : 'Army Recon',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7ODYYzxb092kmZm0m_7zO6-fkzMGsccp0rmZ89T20QLjrkc6Y2GlcNOUewJqZwzV8ge4xbq50cS-6IOJlyXkj-WPVg'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Army Mesh',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhzw8zFdC5K092kmZm0m_7zO6-flDkFuJFz3OjApY-ijQXh80c6Nmv1LYfGJFNsMF_Qrlm8wr-505O6voOJlyUZNPPaxw'
+			}, {
+				'type' : 'SSG 08',
+				'skinName' : 'Blue Spruce',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwPz3fDJR_-O6nYeDg7mjZ-yExW9Qu5wkj7-W8dis2AXk-kFqamHwLNLDcA5rYArW-VC9kOzqm9bi61mW1oPB'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Contractor',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODHTi1P7-O6nYeDg7n3YL6Bw2lQ7cZy27yTp9X00Qztrxc4Y2DwLYCRJw9tZQ3ZrAPrx-a-m9bi67t5CePh'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Contractor',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJfwPz3YTBB09C_k4if2fL2Y7mHw20IvpRy2L7Hp9-mjAzs_0U_a2nwJIeTdAA3Y13X-1PryO3xxcjroxw_w2w'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Orange Peel',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7OfJYTh94863moeOqPv9NLPF2D4Jv5V12e2TpNj23VbgqBdlYWqnIo7Gdlc-YF6C_VO7yOjnhZ7o7pzXiSw0U0YXXNA'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Condemned',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRw7P7NYjV96tOkkZOfqPH9Ib7ummJW4NE_j-jD89v33g23qkJoZ26hcdOQewBtNQqBrFO_k-rn1sK7uZ7OnSAw7z5iuyhKuKzaAw'
+			}, {
+				'type' : 'USP-S',
+				'skinName' : 'Forest Leaves',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ08-mq4yOluHxIITdn2xZ_Itw3bjCrYj23AzmrRY9ZziidYfGdFQ7MlnR_wS9xu6-gsO9v5mdnSQ3pGB8stw9ewh8'
+			}, {
+				'type' : 'Galil AR',
+				'skinName' : 'VariCamo',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczAaAJU7c6_l4GGmMj4OrzZgiUFsJwij-3E89qt2wzh-Us6Mj2gd4bEdQ8-MFiFrlC9w72705Tqvc_A1zI97VeOATXT'
+			}, {
+				'type' : 'M249',
+				'skinName' : 'Gator Mesh',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhzw8zFdC5K08yvgIiEmcj4OrzZgiUCscMj2u-UodWsiQOw_Us5azv6JNecJwY4ZQvZ81LryL_nhZXou5_I1zI97T4Sdvxh'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'VariCamo',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3ZzxQ5d-3mY-0m_7zO6-fwGgIvJF00ruRrdzz3gyw80Rka2igcNfHegA2ZFqF81K5xL-5jMTutYOJlyXlhr-41Q'
+			}, {
+				'type' : 'FAMAS',
+				'skinName' : 'Teardown',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRfwOP3fDhR5OO-m5S0lvnwDLjemm9u5Mx2gv2P9tWmiQPk-xE-YDqlINKUdgQ6YAzTqVm9xuvpjMS5u5zPwXcxunIg7GGdwUK4xWYQ4w'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Silver Quartz',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjxP09-kjZOflvv4OqHUklRC4clnj_v--YXygED6-hBpNmuldoPEcQM6YF3S-Qe_l7js1JS06pnIyno3siN3sCvezhOw1wYMMLJHgOIdFw'
+			}, {
+				'type' : 'SSG 08',
+				'skinName' : 'Acid Fade',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0vL3dzxG6eOxhoGYhPv1Pb_ummJW4NE_0ruYoNz0jgflqEJrZD3yII-dcQA4ZFzV8wXqlLvogsC6v57OwCRn7j5iuyiZeoRmBw'
+			}, {
+				'type' : 'M4A1-S',
+				'skinName' : 'Nitro',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uOlm7-Ehfb6NL7ul2hS7ctlmdbN_Iv9nBri-UY6ZmGgcNWQdAI_N1zU-gLtl-y50J66us7KyHdh6CUq5XyJnkO1n1gSOWcLwBkX'
+			}, 
+		]
+	}, {
+		"name" : "Train",
+		"img" : "train.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak" : false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'PP-Bizon',
+				'skinName' : 'Urban Dashed',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3ZTxS6eOlnI-Zg8jhIbnQmFRd4cJ5nqeQod3z21blrUFoMTr1d4-Tdlc5aQuB_1nswua8hZft6JrOyiQx6SEg-z-DyOXCGwQA'
+			}, {
+				'type' : 'Nova',
+				'skinName' : 'Polar Mesh',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhzw8zFdC5K092kl5SClMj3PLXFhGpC_Pp9g-7J4cL30AGyqEdqZW_2doaQIQRvYQ2Fq1i7xL_ojJK66ZvNzSNkvCEq7HvZgVXp1kdWkONk'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Forest Night',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjVb09q5hoWYg8j6OrzZglRd4cJ5nqfH9t6h3Qzs_RE5N2CmI46ccQM-YFrXrFm6xb-50JC_6p7Nn3RnsyMk-z-DyFDWgkdW'
+			}, {
+				'type' : 'G3SG1',
+				'skinName' : 'Polar Camo',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3cC9B-NW1q4OEmePmMqjFqWdY781lxO2Qodih3ALjrhZlam72cIfHdlI7Y1DXq1O2wbvng5646ZrKynpnsyM8pSGKziuLMdo'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Colony',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJfwPz3Yi1D79mJmYGZnvnxDLfYkWNFppQh2-qX996s2wXhr0BrNzvzIYbEdlU5aVnXq1XtwO_qhJHu7czIz3V9-n51SayrbWI'
+			}, {
+				'type' : 'UMP-45',
+				'skinName' : 'Urban DDPAT',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf2-r3dTlS7ciJgZKJqPv9NLPF2DlQsJNw2bvD8N2t3gG1qURrZm6nLIbHJFRrNFzUqVm-x-jt0MO46JTXiSw0-ev9IDQ'
+			}, {
+				'type' : 'M4A4',
+				'skinName' : 'Urban DDPAT',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhoyszMdS1D-OOjhoK0m_7zO6-fwWhU7JQn27uR8dmhilewqEE6Mjj1ItKXcwNvNFDR-lW_kLzthsTvuIOJlyVFp_EY2g'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Candy Apple',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldfwPz3YzhG09C_k4if2aD2Y-6DlDsHscQp2L6RoNWs2VDm8xU_NWv0JYTBdABsNAzT_AC-kObxxcjrpiSwxaw'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Ash Wood',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7OffeDpR09C_k4if2aSmNeKDz2kHvsZ1jLqVrNWi0A3jqkdkYW_zdYOWewI4NF_Y_AC7wu_xxcjrWn3XXSU'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Carbon Fiber',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7PLFTj5D_t65mr-NnvXxIYTdn2xZ_Isgj7vDrN2t0FXjqBU6MWv1d4HEewc8aFHVrgS9w-e90ZG86J2dyCZqpGB8suxfkl-y'
+			}, {
+				'type' : 'MAG-7',
+				'skinName' : 'Metallic DDPAT',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhh3szdYz9D4uO6nYeDg7mgariClDMFusQh2LiTo9nw0FCw_UU6Y2ymdtOXclBtZl6B_AXolby-m9bi6yrTVV9L'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Metallic DDPAT',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhh3szdYz9D4uO6nYeDg7mmNe3UkD8GsMEo3erDp9St31K3_0JsZTqlLI-SdA5oZwuDqQW2lLrpm9bi6_KhRAkC'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Silver Quartz',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjxP09-kjZOflvv4OqHUklRC4clnj_v--YXygED6-hBpNmuldoPEcQM6YF3S-Qe_l7js1JS06pnIyno3siN3sCvezhOw1wYMMLJHgOIdFw'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Amber Fade',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cDx96t2ykb-GkuP1P7fYlVRd4cJ5nqfA9Nuh2Qzm-0VlZmqmcILHdQE-ZgyEqAK2xOe915fp7pqbn3Qws3Fw-z-DyIWEAXkH'
+			}, {
+				'type' : 'Desert Eagle',
+				'skinName' : 'Urban Rubble',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTitD_tW1lY2EqOLmMbrfqWdY781lxOiYotWkjATk_0VuY2-lLI6VegNoYwzQ8lS-lL3qgpHvusvMyncyvic8pSGK-KHzzSg'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Red Quartz',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhh3szLYyRR-N26mImRkvPLP7LWnn8fv50miL7A8N6s0Vfn-BJsY2r2JYOQcQFqZFvT_wO9ybrqjZ_pvsjAn2wj5Hc2tBLiaQ'
+			}, 
+		]
+	}, {
+		"name" : "Vertigo",
+		"img" : "vertigo.png",
+		"canBeSouvenir": false,
+		"canBeStatTrak" : false,
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'XM1014',
+				'skinName' : 'Urban Perforated',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODYTilD_NmJkI-fhMjhIbnQmFRd4cJ5nqeWoN322VHm-0ZlNmihLdSdJ1A4ZQrUqQW3xbzth8O_uc6amiZjvicl-z-DyOX_dJuw'
+			}, {
+				'type' : 'MAC-10',
+				'skinName' : 'Urban DDPAT',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf2-r3dTlS7ciJgZKJqPv9NLPF2DoCvZ10iOjF8Nr321Hn8xA_YGH3IIOSc1c_NVCB8lnqlLy6hpS8v5vXiSw0rU_vVoI'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Carbon Fiber',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf0v73cjxQ7tO4q4aClfLmDLfYkWNFpsdy3u_D8YnxjgPlqUA-amvxdYSQewBqMAvYrge9kuvvhpa66c6fzHN9-n51aYxySVE'
+			}, {
+				'type' : 'P90',
+				'skinName' : 'Glacier Mesh',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7P7NYjV969C3l4mOhcj4OrzZgiUGvJck2bCYpdzx3QXs_RVqaz2mctSQJFdtZg3Wq1m8xunu1pW8vsmd1zI97XX66x_K'
+			}, {
+				'type' : 'AK-47',
+				'skinName' : 'Black Laminate',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhoyszJemkV4N27q4KcqPv9NLPF2GgEuJFyi-uTotT03A3h_hZlYWv2IdPAcAY8Y1vU-gPrw7rvjJ6-7ZnXiSw034A6uhk'
+			}, {
+				'type' : 'Dual Berettas',
+				'skinName' : 'Demolition',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJfwPz3ZTxM69mknY6OqPrxN7LEmyUJ7JUmi-zFrNys3ATiqUduZGymdYTGJldoMFzX_Va3lebshZa_uMzO1zI97ULd0Egc'
+			}, 
 		]
 	}, {
 		"name" : "Gamma 2",
@@ -2175,77 +3436,6 @@ var cases = [{
 			}
 		]
 	}, {
-		"name" : "Cache",
-		"img" : "Cache.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'AUG',
-				'skinName' : 'Радиационная опасность',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRw7P3dejhR-M6_hIW0mOX1PbzUqWpE7_p9g-7J4cKh2wTt-kBkMT32do_Adwc2Z1rYrlS_xr_tgpO7uJqcmnswuCIi4ivegVXp1vNtKNLo'
-			}, {
-				'type' : 'Five-SeveN',
-				'skinName' : 'Лихач',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N09ukkZm0meL3P77QhFRe-sR_jez-84XjjWunrgU5PQavfdHNNhg_N1HZq1W3k7_uhJG4vczKz3Frv3V05Xbem0G_gR5KaOdr0fHKS1mZGeUXSy0Rtb_k'
-			}, {
-				'type' : 'SG 553',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3fyhJ6c-ihombksj5MqnemWVu-8Ik37r--YXygED68kZlam-icdTBJgBqZVvQ8gW7xum5gZ696Z2aznFhvyB25yzVnUawhQYMMLKoKiteww'
-			}, {
-				'type' : 'Negev',
-				'skinName' : 'Радиоактивные отходы',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFfwOP3fyhB4Nm3hr-bluPgNqnfxVRf7cJ0nNbN_Iv9nBrmr0c_N2D1co_EewI9Z1-E_gK8w-fmhJS5vMibwHFmuiQh4ivVzUCxn1gSOZtaCfWE'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Заражение',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszGZD5O6d2kq5OAgvv4IO_uhjkEuPp9g-7J4cKt21bjqEE5Nj-lJNKTJFI-NF6E_Vm-k7vvjZe5vZzInXNqs3Em4yvbgVXp1h42q_cG'
-			}, {
-				'type' : 'PP-Bizon',
-				'skinName' : 'Химический зеленый',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwPz3di9H9eO4gYOHkvbmDLzDk25f18d4kObPyoD8j1yg5UNrYTzxIdSUJFc9ZQ7V-gXvwubqhZW9vJnLzSBr6Ckk7HfezEOxiRxSLrs41lh6pmw'
-			}, {
-				'type' : 'XM1014',
-				'skinName' : 'Костемолка',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PLFTjNX79CzlZK0hPzhP7fCx1RJ5ZQh273--YXygED6_EJqNmHxLYDGcgFqYg3WrlTtyLjq05S8up3Mmntluihwty3al0bmgAYMMLKwoJ4rnA'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Токсичность',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszGZD5O6d2kq5OAgvv4IO7ugm5Ssfp9g-7J4cLx0Aew_Bc5ZzryJNLHIQNoMA3Z-FTvxb29gJW978zOmHo373V05ivcgVXp1mJNZYNi'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Реактор',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73fyhB4Nm3hr-bluPgNqnfx1RW5MpygdbJ8I3jkRrm_xA4a2v6d4LGc1M2YQqFrgO5lea5hJW4uM7LyHtl6CchtHzVyRWxn1gSOQY07qpC'
-			}, {
-				'type' : 'MAC-10',
-				'skinName' : 'Ядерный сад',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0v73fyhB4Nm3hr-YnOL4P6iCqWZQ65QhteTE8YXghRrn_xBvZj-gdYaXIAM9ZA2Bq1G9krq7hpa4uZ7Bn3ExvyEnsH7alhXhn1gSOXsb08Wt'
-			}, {
-				'type' : 'MP9',
-				'skinName' : 'Закат',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FA957P3dcjFH7c6JhIGfg_LmPenum3sI18h0juDU-MKljAbi-UM4MDrycNTAdFRoNQzZ-1a9yOy60JK96pnIwHZnuiNw5X_bgVXp1qKBy7Rx'
-			}, {
-				'type' : 'FAMAS',
-				'skinName' : 'Стикс',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRf0v73fyhB4Nm3hr-YnOL4P6iDqW1Q5cRiteHE9JrsxgWx-ERkZ2r0cdDHd1M_MF_R-FS6l7-81MK0vZzLyyRi7HMjsyrUyxCpwUYbBN7dJDM'
-			}, {
-				'type' : 'Galil AR',
-				'skinName' : 'Цербер',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczLZAJB6c60hpWYqPD1P7LdqWNU6dNoxLGWoI2liwG18hZsZW2hcY6cIFNvMAvS_Ffrye-6h8e4uJqbwHpnsyA8pSGK_cSp9dA'
-			},
-		]
-	}, {
 		"name" : "Operation Bravo",
 		"img" : "bravo_case.png",
 		"type" : "Default",
@@ -2340,1240 +3530,6 @@ var cases = [{
 				"rarity" : "rare",
 				"img" : "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz55Nfq6PjJzTQXTPq9XUPA-ywTlDi8m18tiRtCzueJUeQTpstfEYrF6Md8aS5HXXfaEMwmv7hhqiaQLK5DYqHvnji3pPW4UG028JI0XXjw"
 			}
-		]
-	}, {
-		"name" : "Dust II",
-		"img" : "dust2.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'G3SG1',
-				'skinName' : 'Песчаная буря',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3dThR6c6iq4yCkP_gfe_Uwz4HuZ0p3u-Q9oiijgyw_UpqZjv6d4GcewdoaVGB_VG8k-nt15Ki_MOekXjyVoE'
-			}, {
-				'type' : 'MP9',
-				'skinName' : 'Песчаная штриховка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRw7OfJYTh9_9S5hpS0hPb6N4Tdn2xZ_Isp07rFpY70i1Lk-ERpY233LNXAJAJsNFmG_FW3xOfu15-6vp_AyXU2pGB8suBC9uz5'
-			}, {
-				'type' : 'Nova',
-				'skinName' : 'Хищник',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhzw8zSdD9Q7d-3mb-DkvbiKvXSwDMEsJci0u_Fooii31Ky8kE-ZzzwJoCTcQA4NV_Zq1bolOzogsDpot2Xno1tLOyh'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Песчаные дюны',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhz3MzbcDNG09C_k4if2fSjZLmGwDkBsZZz3r6Zo4mliwTj-0BtZDz1dYSUcAdtYw3XqFXtyejxxcjrr8fSJ40'
-			}, {
-				'type' : 'P90',
-				'skinName' : 'Песчаное напыление',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7ODYYzxb08-3moS0mvLwOq7c2GlUuZR0ibiRpNqs2VXi-kI5Mm2hd4GdIQM9NwrW-Va5xObmjJK-uczXiSw0I3Bdoc4'
-			}, {
-				'type' : 'SCAR-20',
-				'skinName' : 'Песчаная сетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODYTjBH_9SJh4GFk8j5Nr_Yg2Yf6ZEl3O3D99mm2gTkrUBsYzj0LIWWcwRtYgvU-1K7w-7tg5fv75TPnWwj5HeMNR9tGQ'
-			}, {
-				'type' : 'AK-47',
-				'skinName' : 'Африканская сетка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhzw8zFdC5K08i3mr-HnvD8J_WBxTwD6ZB12b7Hodumig23rUY5YTymJ4TBcFA7NVvW-FW5l-zr1JXtot2XnkNBBWuK'
-			}, {
-				'type' : 'Five-SeveN',
-				'skinName' : 'Апельсиновая корка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5S08i3hIW0mOX1PbzUqWdY781lxO2WrdjwiwS38kFtYG-mLdCWJAU9MgnQ81W6xbi5gcDpuszIn3dguiA8pSGKjf2ztEE'
-			}, {
-				'type' : 'MAC-10',
-				'skinName' : 'Пальма',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldfwOP3YTxO4eO6nYeDg7n2YeOGlWpTvpwj2-zEpNjx0A3krkFlNm2nJoWVdQM8ZwnW-FK2wOzmm9bi64Jdj8z-'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Смешанный камуфляж',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszecC9L7927m7-HnvD8J_WJlzMHu5Yo2urFpYr22gDnqEBqam6gJ9KQdwc_YlGE-VS7wri70Ja_ot2Xnk_reDFK'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Змеиная кожа',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi19_9K3n4W0m_7zO6-fw24HvcQi37nHptz0iQHt-Rc5YWr3coCWc1I7NVqDrli2ye3n08S46YOJlyXnI7k0UA'
-			}, {
-				'type' : 'PP-Bizon',
-				'skinName' : 'Латунь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf0uL3cy9D_8-JnIWKge66YrrQwGpTsZ0m27rF8NqjjVCwqUA4NziiIYHBJAQ_ZwyC_VDtw7-6h4j84sq1nvST4w'
-			}, {
-				'type' : 'SG 553',
-				'skinName' : 'Дамасская сталь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0uL3dTxP7c-1gZO0hPChZujummJW4NE_372Sptmg3gzjrUNvam-icIeVJ1I8N1rX-lTskuzrh8XpucudnyAwvz5iuygR9uL9aQ'
-			}, {
-				'type' : 'M4A1-S',
-				'skinName' : 'Смешанный камуфляж',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-dluX9MLrcmVRd4cJ5nqeWrNit2AewqhY_Yj31cIDGJgRtZV-E8gS2xOzv0Z_qucvJm3M16SFw-z-DyBeWkcOk'
-			}, {
-				'type' : 'P2000',
-				'skinName' : 'Янтарный градиент',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJcAJE7dizq42Og_b4P7LSqWZU7Mxkh6fErN_22VbkqRBrZmn3cIOTewdqZAqE8lm_xO7ngsW_vM6YzndjuSEm-z-DyNwC_Q0C'
-			}, {
-				'type' : 'R8',
-				'skinName' : 'Янтарный градиент',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopL-zJAt21uH3cDx96t2ykb-GkuP1P7fYlVRD7dN-hv_E57P5gVO8vywwMiukcZjBdwBraVmG_1nsk-nug8fvus6YyHFj6HQm5HfdnUfliRFKbLE7habIVxzAUNH92sAX'
-			},
-		]
-	}, {
-		"name" : "Mirage",
-		"img" : "mirage.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'AUG',
-				'skinName' : 'Колония',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODYcD5H09G3homFksj5Nr_Yg2Yfu8Yk3eySodyj2wHn-RVoaz3zdo7BelA_MFrT-lLokOjn18W4uJuYymwj5HdT1XK3KQ'
-			}, {
-				'type' : 'G3SG1',
-				'skinName' : 'Африканская сетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwOP3fDhR5OOilY60m_7zO6-fxzJQ68Z02OiQpdyl2FXmqENvNWGlLI_BIQU3Nw7Rqwe9lOa81Je1uYOJlyWUbIPIHw'
-			}, {
-				'type' : 'Galil AR',
-				'skinName' : 'Охотничья будка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczbYQJP6c--q5OHluT8Nqjunm5Q_tw_ieyVod322w3l_hdvNjugctOUegU7NAmBqwToku3ogcXu6ciam3UwuT5iuyio602etQ'
-			}, {
-				'type' : 'Five-SeveN',
-				'skinName' : 'Наемник',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N08y7l7-HnvD8J_XUlD1QuJ113rGW89-h2gew8kZqa2D7dtfAdVQ2ZVzT-QO_l-rp0ZS5ot2Xngcmh8ed'
-			}, {
-				'type' : 'P90',
-				'skinName' : 'Сажа',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7PfJYS1O6eO-kYGdjrnwa-7QxDlT68F33rjEpNuijgayr0VpamjyJ47AIwdqZ13Qrlm6wey9m9bi6yqeJsBm'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Костяная маска',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zccC1H09C_k4if2a_xML6Dxj8GupIoibmUod-n3Vbkr0FqYGv2IY_BJwc6ZAuFrFS8xb_xxcjr7uv4usk'
-			}, {
-				'type' : 'SG 553',
-				'skinName' : 'Крокодиловая сетка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3fDhR5OOmjZSDmPnLP7LWnn8f7cAmi7uSoN_z3A3trRBuYWGlLI7EI1c3aAqE_QDtxbrm08fvvZ_Mzmwj5HcvKiIfXQ'
-			}, {
-				'type' : 'MP7',
-				'skinName' : 'Апельсиновая корка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7OfJYTh94863moeOqPv9NLPF2D4Jv5V12e2TpNj23VbgqBdlYWqnIo7Gdlc-YF6C_VO7yOjnhZ7o7pzXiSw0U0YXXNA'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Грунтовая вода',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3fjFL-tmJmImMn-O6YrrXxWoJvJMp2euQ892n21DkqRBtZGryLdKUdg85aAqG_QC_w-_ugIj84sq2hgy4GQ'
-			}, {
-				'type' : 'Negev',
-				'skinName' : 'Калифорнийский камуфляж',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf2-r3ZzxQ5d-3mY-0k_LnNqnFqWdY781lxLiXrI7x31e38ktqNTz7doWRcwdtYw7YrgK6yeq71MK46cjAnyQ1vSE8pSGKUNGnClk'
-			}, {
-				'type' : 'SSG 08',
-				'skinName' : 'Тропическая гроза',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwOP3YTxO4eOlnIGPmODLP7LWnn8f7scj3uuU8IiniQTnqkBpMmjxcoPAJwE_Z16CqVW7yb-9gcfpu5qczmwj5Hf46J1P4Q'
-			}, {
-				'type' : 'MP9',
-				'skinName' : 'Хот-род',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZu7OHNdQJO5du-gM7bwqb2MeuClTsCv8Ek2LiZ9t2giwa28hVlZGD0doSUIANqYV_U_gC2366x0j0WoURS'
-			}, {
-				'type' : 'MAC-10',
-				'skinName' : 'Янтарный градиент',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0vL3dzxG6eO7kZSKm_v9MITdn2xZ_It13rzC9Nqj21DsqEs6ZWyiLI7AcVdsMl3W_1W7kr3vhJHotZzLnXFgpGB8sjEeQG_x'
-			}, {
-				'type' : 'UMP-45',
-				'skinName' : 'Пламя',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0vL3dzFD4dmlq4yCkP_gfeuCxTMG7pFw2uiV9I-jjlHi-0dvZDygLY-dJw89NQ3QqFK3lOe9jcSi_MOeUg1XNk4'
-			}, {
-				'type' : 'MAG-7',
-				'skinName' : 'Бульдозер',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzRdDFO48uJnIWKge66ZeuHzjMEu8Yk3LyUo4mijgDn_RVrZzumddPGcVJoZAzQr1jsw-65hoj84sp82E9QXw'
-			},
-		]
-	}, {
-		"name" : "Inferno",
-		"img" : "inferno.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'MAG-7',
-				'skinName' : 'Песчаные дюны',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzbcDNG09GzkImemrmtMe2CzmhQ6sR0j7zC89ig3VCyrktqNmqiJYOXdAQ8YQzWr1Ptlejmm9bi60MVxb_X'
-			}, {
-				'type' : 'Nova',
-				'skinName' : 'Грецкий орех',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhjxszfcDFM-ciJmo-dlsj5Nr_Yg2YfuJIn2O2Wo92m2gXh-Bdramr1ItKUJlM3YFiC-Ae2kOi7hpbu7cydn2wj5HdE8usZbQ'
-			}, {
-				'type' : 'M4A4',
-				'skinName' : 'Смерч',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz3Mzcfi9M7di5q42Ok_7hPvXTlG5X6cYh3-3E89Sk0AfnrkBkY2mhJIfEcwM4M1CDqVfsyem5gsW4ot2Xnj287ZlO'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Пороховой дым',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszPdDFS6dKJmYWPnuL5fb6AxG5XvcZ1i72UotWg3Ae1rUBoMm6gcYbDJ1dtZwvW_lC7xbrsh5Ki_MOeZVXbyKM'
-			}, {
-				'type' : 'Dual Berettas',
-				'skinName' : 'Анодированная синева',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf0v33fzxU9eO6nYeDg7msZOKIz2hS7ZEki7mS89Tw0Ae3-Us4MWD7LIGRegc-MF2D81i-ku_vm9bi644LgQp9'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Латунь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhhwszKYzxR_-O7kYSCgvq6ZLnXlThXu8QhiLuR89-hiwex_EA-MG_wcIfGdlQ3ZwrWqwK3kOy914j84spCpFtqYA'
-			},
-		]
-	}, {
-		"name" : "Dust",
-		"img" : "Dust.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'AK-47',
-				'skinName' : 'Хищник',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhzw8zSdD9Q7d-3mb-HnvD8J_WEkDoE65x03rjDrI322QfhqUtrMD2icNSRcgFtaFDX-AS9wL3u05S1ot2Xnn9ZGujG'
-			}, {
-				'type' : 'M4A4',
-				'skinName' : 'Песчаная буря',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhoyszMdC5H_siJmImMn-O6YOvVx24C7MZy2rrD9I_00FDgqkA6YWvxdoXHegM_MAzR-AK5xunmjIj84sqcbwbCfw'
-			}, {
-				'type' : 'SCAR-20',
-				'skinName' : 'Пальма',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODYTi1D4NGJmImMn-O6Nr-IxT5VsZYj3biQrNqk3gThqEA-Y2qhLI-TdwA-N1yFqAfryebphIj84spWYPOlFA'
-			}, {
-				'type' : 'AWP',
-				'skinName' : 'Змеиная кожа',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FBRw7ODGcDZH09GzkImemrmsY-PUxmgAv5Up2rnFrdmijlXgqUA_ZjzzIIKQcQA7Y1uE_Fbtlefum9bi68KPYhsE'
-			}, {
-				'type' : 'AUG',
-				'skinName' : 'Медянка',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFA957PDHYS1H_tSzlYS0m_7zO6-fxz0H7sEk37zDpdyi3VKxqUVla277J4-ce1I3YV6D_lS8yLrt0ZC_vYOJlyXik3twsg'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Медь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cCx979OmhIWZqPrxN7LEmyUJ6ZBz07CUoYjz2lCx-kFpazr6JoaTe1U8Yl_V_gLtyOntgJe975qa1zI97eqxrstO'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Пламя',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLJTjtO7dGzh7-HnvD8J_XVkjoFuMYiiLqUrI-k3le3r0s5amj7d9eTI1I-M1rW-Fm_xO-50Jfvot2XnhS4_w8U'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Латунь',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3cy9D_8-JnIWKge66YOLTlT8IvJcgibjEoYn331Cx-kI4N2CgJdKXIQJvYV2Eq1S3k-281oj84sq0SysHHg'
-			}, {
-				'type' : 'P2000',
-				'skinName' : 'Скорпион',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJfAJR79OkhImEmcjkYeuBxlRd4cJ5nqeZo9-m21Xh8kY-MG-gIoeWe1c6NFDU_VK6lOi6156078nKyiZg7yEm-z-DyIv3UiOT'
-			},
-		]
-	}, {
-		"name" : "Baggage",
-		"img" : "baggage.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'MP9',
-				'skinName' : 'Зеленая клетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FA957OPEcDRGvuO-kYGdjrmkMOrVxDhTupdw3b6T8dzz2AbjqUNuNzr3I4SWcgI3aVvU-Qe2wr-6m9bi6ztN_cUk'
-			}, {
-				'type' : 'CZ75-Auto',
-				'skinName' : 'Зеленая клетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf2-r3YTFD5djkq4iOluHtfeqAx29X7MN33u_H8I_wjgHhr0M-N2v6d4OWdgA3NF-FqFi5kOu5gsKi_MOeUYTvLOo'
-			}, {
-				'type' : 'G3SG1',
-				'skinName' : 'Наемник',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwPz3YTBB09C_k4if2aKiYL-IwjgAvcQki7_HoNul2w23qBc6Zjv1I4THJAA7NV7Q8gK2wOfxxcjrGqjj_1M'
-			}, {
-				'type' : 'MP7',
-				'skinName' : 'Оливковая клетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957OPEcDRGveO7kYSCgvq6auLVzmlX6pcmj7GU9I_w0QywqUNsMG3wIYCWegA-ZVGE_VS_x7y6h4j84soz3jvt3w'
-			}, {
-				'type' : 'SSG 08',
-				'skinName' : 'Песчаные дюны',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwPz3YjxM6OO6nYeDg7mjYrjTwzxTsZx0j7CU9NWn2wXkqUc6ZmynI4GVe1RtZA7VqQK8xOu6m9bi6zNHnIHx'
-			}, {
-				'type' : 'MAC-10',
-				'skinName' : 'Пассажир',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0Ob3fShF692xkb-GlvSlY4TZk2pH8Yty37GTrYj2iwaw-kVlMTj3dtCRJFc9MluB-FG2kuq9h5S7vJTNzHYypGB8srnlEt5q'
-			}, {
-				'type' : 'P2000',
-				'skinName' : 'Эконом-класс',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zLZAJO-duxlYeOqOemY-uBqWdY781lxL_F84_wiQPnqhVkMmqgcoKXcgI8NwrX_wPrx-fsgZPv6pjMy3dgvic8pSGKGYo2X-E'
-			}, {
-				'type' : 'P90',
-				'skinName' : 'Кожа',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FAR17PHafipM09CzlZSDkuXLI-KBqWNU6dNoxOqSpI_z3wbt-xBqYjjxd9CTdVBrNAvV-FbrwLi8hce56JvPyHZguSM8pSGKiqmG55o'
-			}, {
-				'type' : 'SG 553',
-				'skinName' : 'Странник',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0Ob3fShF692xkb-YkKKhYITck29Y_cg_37iSotjw2gDl_0JvZWqlJdSSdgA7YljQqVfvl73mg5O-usvIzXFj7D5iuygYr35g1g'
-			}, {
-				'type' : 'USP-S',
-				'skinName' : 'Бизнес-класс',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq4yekPD1NL7ug3hBpdZOhuDG_Zi721WwqBJvMGH2coPEJwRsYVDT_lm3kO_vgJ_pvZ_MzXZivXZ04nyOlwv330_YPZS7Gw'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Первый класс',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cih9686zkY60m_L1J7PUhFRC6dJ0jubH87P4jVC9vh5yNWyhdYLEIFc6aFiGrwC2yLi6gsK-6M7KyHIwuyJwsXbVnhW0hxpFaPsv26Ju1DZk9g'
-			}, {
-				'type' : 'XM1014',
-				'skinName' : 'Красная кожа',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PDdTjFH7ci-kZK0j_qlY-qFqWdY781lxL3Dp4qjjgOwrUQ4Y2qlJNTDIAQ5YAzRrlG4kufrjcTutM6dmiBj6SA8pSGKXAbUj-c'
-			}, {
-				'type' : 'AK-47',
-				'skinName' : 'Первый класс',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszPYzhH4uO6kYGfn_LmDLrawjxu5cB1g_zMu9rw0Fbl-kJuY2r3cI-RIVI-MlzTr1foxOe6hcC-6ZvPnCFquChz5XjD30vgHKsTYF0'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Пилот',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLZTi1L4NOiq4SOlvD4NoTck29Y_cg_3bzHptWg2AK1qEs4NmqhcYeWelc6ZFiD-1G6wejmh8K9u5nIz3Zhvj5iuyh1BFVufw'
-			}, {
-				'type' : 'AK-47',
-				'skinName' : 'Путешественник',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszfdDFO08iklZaOm_LwDLrawjxu5Mx2gv2PotytiQHnqhBoZGqnI9XBcgQ-Yl_Y_Vfvyey9g8S4753JzSA1s3Eh5GGdwUIoc5a5cw'
-			},
-		]
-	}, {
-		"name" : "Bank",
-		"img" : "bank.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'MP7',
-				'skinName' : 'Пиксельный камуфляж «Лес»',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PfMYTxW09C_k4if2aemY-zXlD5X7ZVw2-yTpI_xjFXm8xZsY2ylI4-TclA8NQvU_VO2k-fxxcjrEfavWb4'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Пиксельный камуфляж «Город»',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszMdS1D-OOjhoK0mvLwOq7c2D4B6pwijLiXpt6s3lDkrkJvZG-hLI7Ee1M7YVmC8gO-kunrjZK1tJXXiSw0uDynv1g'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Пиксельный камуфляж «Лес»',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR96NimlZS0m_7zO6-fkzhXvJIniL6Xrdqs21Xk_0Vlam2iLYbAcFdtMFjU_wW9w-e6g5-5u4OJlyXfj1l0Bw'
-			}, {
-				'type' : 'SG 553',
-				'skinName' : 'Армейский блеск',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0v73cC9P9eOlnImFksj4OrzZgiVQuJJw077FoIr3iQPnqhY5MD-gIdXGewU4ZQ3QrlW9lerojZ--v5rK1zI97cHouWKJ'
-			}, {
-				'type' : 'Negev',
-				'skinName' : 'Армейский блеск',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf0v73cC9P9eOlnImFksj5Nr_Yg2YfvcQnjLGVrNn0jgGxqhJqYTunctWRdQE8YlCE-lS4lbzsjZTovp3AmGwj5HdxpNpfKQ'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Гремучая смерть',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf2-r3fzhQ49i_lb-HnvD8J_WEwjsBvpJ33bmS94qiigTm-xdkNTynctXGdAU8Y13S-QDsxerm0ZC0ot2Xnjdfx6Ff'
-			}, {
-				'type' : 'MAC-10',
-				'skinName' : 'Серебро',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0v33YjRO-tmkq4yCkP_gfbqEkmpQvpYg2u2Ro9yl3gS1_xE_ZmqnJteTdgc7YgmEq1m7lLq61pWi_MOeTf6eBqg'
-			}, {
-				'type' : 'Nova',
-				'skinName' : 'Клетчатая сталь',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhh3szHZzxO09SzjL-HnvD8J_WGwD0AuZ0o07nDptun3gLl_BY4ZWvzJ9Ocd1dsMl_R_lC5lby7hZO7ot2XnnibtMPm'
-			}, {
-				'type' : 'G3SG1',
-				'skinName' : 'Зеленое яблоко',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwPz3di9H6dKJmImMn-O6YePSwm4GupIk3evEo9ii3wG3-kJtYjigJNOScwI8MFnU_QLvkrzm1oj84srJ8w6n6Q'
-			}, {
-				'type' : 'UMP-45',
-				'skinName' : 'Углепластик',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0v73cjxQ7tO4q4aClfLmDLfYkWNFpscj37nDrdqlilax_RVrMm_7LYKRelVtZV-C_ADtw-vrh5Hpv8nBzXp9-n517oYZno4'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Метеорит',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTj5Q9c-ilYyHnu3xN4TVl3la18l4jeHVu97x31Dj_kA9a2DwcdWWJAZvZV_Qqwe3x-fv1Me6uMmanCE3vSEm4ynD30vgrmdJqGM'
-			}, {
-				'type' : 'Galil AR',
-				'skinName' : 'Смокинг',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczbfgJN_t-3q4yCkP_gfe7VlDwJv5Up3r-V8Nym2Vfi80U9NmumI4WVJw83Zg3Q-1S8x7_o0Mei_MOe7tXEvoo'
-			}, {
-				'type' : 'CZ75-Auto',
-				'skinName' : 'Смокинг',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZfwPz3fi9B7eO6nYeDg7msZ-KBzj0E7cdw2b_CpdX2i1Dj_hJlMWilLYWRdgNoN1qF8we8k-a5m9bi6-1tbAt1'
-			}, {
-				'type' : 'AK-47',
-				'skinName' : 'Изумрудные завитки',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhjxszYeDNR-M6_hIW0lvygZITZk2pH8Yt33byV8N-ii1Dn8kVqMWv0IYGQIQ47YQvS_FG4k-i6h8Tq6pjBznBqpGB8snmEYrAC'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Франклин',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhjxszFfjNH9eO7kYSCgvq6Z-mHwjIFu8Yl3-3Hotr03QC28ktkYmGnIoXAdARoZVzZ_VW7yeu7jIj84sqiLuLNUw'
-			},
-		]
-	}, {
-		"name" : "Chop Shop",
-		"img" : "chopshop.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'M249',
-				'skinName' : 'Ударная дрель',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhz3MzDdCRB49C5hpO0n_L1JaKfwDpTsJF1ib3C99ymiwyw_UtvYjqiJNPHJFU4Zw2BrlC9w-fvjZLt6YOJlyVhnYj89A'
-			}, {
-				'type' : 'SCAR-20',
-				'skinName' : 'Армейский блеск',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7PLFTjxQ4cWJh4iCmfLLPr7Vn35cppV02LuXrYmgilG3-kJsZzvycdLDdQFraVyE8wO2l-_p0Z-56sjBzid9-n51ZugYOhk'
-			}, {
-				'type' : 'MAG-7',
-				'skinName' : 'Чайка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzJYChD09SzlZaS2aL3ZL3TwjIHsJImjuiYo4mg3lC3rkY5Z2DycYfGdVM3aFjXrlS-wuvxxcjrKyci_ww'
-			}, {
-				'type' : 'CZ75-Auto',
-				'skinName' : 'Армейский блеск',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v73cC9P9eOlnImFksj5Nr_Yg2Yfv5dwiLjHpdyjjgS18kZlNW2gcdCSIQQ8ZF7SqQLtl7vp18C97ZvNwGwj5He_r99Vaw'
-			}, {
-				'type' : 'USP-S',
-				'skinName' : 'Едва зеленый',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ08-5q4uDlvz9DLzDk25f1810i__Yu42g2lLm8kA4N26md9fBcgE2ZlvZ8gW9wey-jZC16pudz3Jjsicg5CrD30vgwzvxu2M'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Ночь',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7ODHTjNL69Siq4iOluHtfeqIk29XvMcn2LmTrN-sjVW280E-Ym3yIo-WI1I-ZwqC_lK5l728hZei_MOe7MNzwV8'
-			}, {
-				'type' : 'Galil AR',
-				'skinName' : 'Городской щебень',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczAaAJU7c6_l4GGmMjhIbnQmFRZ7cRnk6eVpd2k3Qyx_UNpY2ymI4aQcVVoY1iDrAO2kOjshJPtus_NzCNq6HUl-z-DyJA6J-Hc'
-			}, {
-				'type' : 'Five-SeveN',
-				'skinName' : 'Нитро',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N09OklY6Mksj1MLjUmH9C1810i__Yu9um2w22qkJkZ2-hctCWJ1I2NQ2E81G8x7q505G9vczAznRjuSQn4C3D30vgF3v-5zk'
-			}, {
-				'type' : 'MAC-10',
-				'skinName' : 'Градиент',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0vL3dzxG6eO6nYeDg7miZbqDxj8B7Z0n2-3E94mjjQTirRI9MTjyIIWQeg84Y1DS_lm3wOfom9bi6-g13CfU'
-			}, {
-				'type' : 'MP7',
-				'skinName' : 'Полная остановка',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957OXJYzRB7dG5q5KOk8j8NrrHjyVXupIg2biQptSt3gPlrUZlNmmhcNWSIFI5M1rT_ATtybjmhce06pqb1zI97QxO8B3s'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Снежная мгла',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhz3MzfeTRW6dOjgL-DkvbiKvWElTII6ZIhj--Sp433jgXj-UduMGr2JIbBJ1dsaQ6DrwC8xL_n0Jbuot2XnjwhZrR8'
-			}, {
-				'type' : 'CZ75-Auto',
-				'skinName' : 'Изумруд',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v33dDBH_t26kL-HnvD8J_WElT8Gu5Eg27iVotv00Azg80ZtMDimIo-ceg45YAuCrFbtyenv1sW6ot2Xntd6B4y4'
-			}, {
-				'type' : 'Dual Berettas',
-				'skinName' : 'Дуэлист',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3fDJW5Nmkq4-NqOfxMqndqW5d4dF0teTE8YXghRq1-UM5Nj_yIYKQewFrY1rR_1i-x-u61MXouMmdzHc37yEmsH7ayRO3n1gSOdhIizzL'
-			}, {
-				'type' : 'SG 553',
-				'skinName' : 'Бульдозер',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwPz3aDhO4NOhq4iOluHtfbqClG0JvMQp2rmVod_z3w3n8hE5YGmncoSddgE9aV6ErFS3kufvgMCi_MOeujbJjuM'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Сумеречная галактика',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73cCxX7eOwmIWInOTLP7LWnn8f7ZJ13rjC8NjxilLkqBduaj_ycdSWJldvZAuF-gPsxuvs1MTovZTJymwj5Hd3abH-_Q'
-			}, {
-				'type' : 'M4A1-S',
-				'skinName' : 'Хот-род',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO3mr-ZkvPLPu_Qx3hu5Mx2gv2P8I-g0VHtqUNlNmimLdCRdFdoYFCErwC4xLu6jJbpuc-dnydq73Jw5GGdwULhEbgmIQ'
-			},
-
-		]
-	}, {
-		"name" : "Gods & Monsters",
-		"img" : "godsmonsters.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'AUG',
-				'skinName' : 'Дедал',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRw7P_JcyRQ5dKinNO0mvLwOq7c2DJTv51zjrnE8NygiQzh_kc-a2iiLNSSdlc3aQnUrwDolb-80MLv7pnXiSw0HmqdeSU'
-			}, {
-				'type' : 'Dual Berettas',
-				'skinName' : 'Луна в знаке Весов',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf2-r3azJG5d21xb-GkvP9JrafkjkA7cYn2--TrY7z0QTk-hE-MD-lJITHegI9ZV3Vq1Xvx7jvgJG5tIOJlyWrNM96nA'
-			}, {
-				'type' : 'Nova',
-				'skinName' : 'Луна в знаке Весов',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszSfjlL7d_nq4iOluHtfbiEwDlQ65Up0rCQptXxjle1-hZlMWvzLIecewZqM1vV_AW-ye651sKi_MOegT0cVm4'
-			}, {
-				'type' : 'MP7',
-				'skinName' : 'Астерион',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7P_JcyRQ5dKinL-GkvP9JraflD8JsJ0p076Y99Sl0A3j-RA-azv2cYaScQ89Y1iE-QTskri-hpHq7oOJlyWB9kL-pA'
-			}, {
-				'type' : 'AWP',
-				'skinName' : 'Солнце в знаке Льва',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957OnHdTRD746JnIWKge66ZezUkjNX7Jwp2rnCpo2t2Qfk8xJpMTqld47DdlI_ZgqCqQLsxbvmgIj84sqMMdFayA'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Аид',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszAcDlH_-O-kYGdjrmnY7rSkD9VvcFwib7A8Nrx2w3srkA-NW3wLdCRdVU9Mg7X-FS4l-7mm9bi68L8E_3E'
-			}, {
-				'type' : 'M249',
-				'skinName' : 'Приморский прогноз',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhoyszSfjlL7d_lq4iOluHtfevTxm8J6Z0m3uyUp96li1K1-BFrazz7IteRdFQ4aFnWqQTrwrrnhJ-i_MOedcIbTZY'
-			}, {
-				'type' : 'P2000',
-				'skinName' : 'Лабиринт',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zbYQJO7d6vhomFg_-mDLbUkmJE5Ysn37GQ9Nuh3QHm8hBvZmmiJNDBewM3M1vXrAC_xOm90MLt7svLwSNqpGB8sm38TgsC'
-			}, {
-				'type' : 'UMP-45',
-				'skinName' : 'Лабиринт минотавра',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0Ob3fTxA9c6_mpSDqPrxN7LEmyVU7p0o3-iU8Y-k3QS2qEU9ZT_6d9Sdew46MgqE_QO7lLrog8C47ZuY1zI97d-e9afQ'
-			}, {
-				'type' : 'MP9',
-				'skinName' : 'Ящик Пандоры',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZh7OPJfzlN_t2JmYWPnuL5fevTlz0F7pIgieqUrYitiQWy-hdrNWumddfAcVU_NF3Zr1jvxbvu1sWi_MOepgbcjQQ'
-			}, {
-				'type' : 'M4A1-S',
-				'skinName' : 'Падение Икара',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-ClPbmJqjummJW4NE_3ujHpY2sigXl-UFoZGj7JYCXdgQ4YVnQ-1Lqxenn1MLpuszJz3tk6D5iuyjCqdNpmA'
-			}, {
-				'type' : 'G3SG1',
-				'skinName' : 'Хронос',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf0Ob3cjVQ49K5h7-MxOTzYoTck29Y_cg_3-3A8Nqj2VLl_Bc4YT32IIWRcQJsaV_Y-1Lskr2-15G4up6bm3Ayuz5iuyjiZUxvZw'
-			}, {
-				'type' : 'M4A4',
-				'skinName' : 'Посейдон',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhjxszYfi5H5di5mr-GkvP9JrafwDtV7cAl2uiYpoqt3Q3n-kNkZWCmINTHe1I_YgrV-wS8xb-91p_vuoOJlyUlgXdlZw'
-			}, {
-				'type' : 'AWP',
-				'skinName' : 'Медуза',
-				'rarity' : 'covert',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17P7NdShR7eO3g5C0mvLwOq7c2DkAvJQg27iT9NWm2VK3rkU6YmmiI4SVJAQ9MljUr1O5ku7ug8K1usnXiSw07gvX0uU'
-			},
-		]
-	}, {
-		"name" : "Italy",
-		"img" : "italy.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'AUG',
-				'skinName' : 'Наемник',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7OPFcgJO5du-gM6OxfakZbnQw28H65Eg2L2RrYin3ADjrkJqYWz0Jo6UdVNrYV3SqAW9366x0l1OAhlP'
-			}, {
-				'type' : 'FAMAS',
-				'skinName' : 'Колония',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRfwPz3Yi1D79mJmYGZnvnxDLfYkWNFpsdy2uiQpNyt2FftqUA-ZmmgJYXBJlRrZQmGq1Lox7jmg5W9vcucmnZ9-n51AJPKCtE'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Грунтовая вода',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhz3MzHfTRU6eO-kYGdjrmjau-EzzkGvcEnibjDotqiilKyrUY-MGDwJYOVIwNoYg7V-le8yLztm9bi63kWu9PZ'
-			}, {
-				'type' : 'PP-Bizon',
-				'skinName' : 'Песчаная штриховка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3ZTxS6eOlnI-Zg8jnMrXVqWdY781lxO3C89Wk21Xnqkc6MD33JoeVcwQ6aVqF8gK_krzqgMK8ucnAwXBr7Ck8pSGKKT36elM'
-			}, {
-				'type' : 'Nova',
-				'skinName' : 'Песчаные дюны',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhz3MzbcDNG09C_k4if2aSna-6FwzsJu5Ypj-uVrdyk2wzkqEQ4ZD3wJo7DcAQ2ZAmE-QC5xejxxcjrmUdg9dQ'
-			}, {
-				'type' : 'M4A1-S',
-				'skinName' : 'Северный лес',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-NmOXxIK_ulGRD7cR9teHE9JrsxlGy_EdvMGGmI9LAewNvaFrY-VG5wLy9jcXov8nOmHMx6ygl4XePlxGpwUYbs3f5UC8'
-			}, {
-				'type' : 'Dual Berettas',
-				'skinName' : 'Патина',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf0uL3dzJQ79myq4yCkP_gfbiHwz8DvZMn27rEpdSs21bl_RE5YW6iI4CXc1NtZV7Zq1e9kOfmgJOi_MOekFRFcA0'
-			}, {
-				'type' : 'XM1014',
-				'skinName' : 'Калифорнийский камуфляж',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PvRTitD_tW1lY2EqPPxIL7DglRd4cJ5nqeZrN-ki1ayrUE9MmrxLY-Xeg85ZlzS-gW-xOjug8S_vJucm3IysyF0-z-DyLOku5tY'
-			}, {
-				'type' : 'UMP-45',
-				'skinName' : 'Пороховой дым',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf2-r3djhO_Nm4q42Ok_7hPvWHwDkJu8Ao3uzA9I-kigbk-0Q5ZWGidYGddg84ZVDT_Vfrk-no0Je7ot2XnjSEoaSR'
-			}, {
-				'type' : 'P2000',
-				'skinName' : 'Мраморный гранит',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zAaAJF_t24nZSOqP_xMq3I2DtTucNz3rmQpt2sjAew-kpqNTj6cI6UI1dsMwmF-gS_x-q8hZTvtJTXiSw0GvFmxcU'
-			}, {
-				'type' : 'Nova',
-				'skinName' : 'Карамельное яблоко',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhz3MzadDl94dmynZWG2aega-7TkjtQuMMgj7iR9NugiQft-RJtNm-ndoCRIwVvM1jSrwK9kO_xxcjr6R38t40'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Полная остановка',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR9-t2knYOKmvjLIb7VqWdY781lxLHF99il0Ffg-EJrNmj6dtDBJA5vNQvWqVK_ye3sh5G0upvNy3FnviU8pSGKve7IyHk'
-			}, {
-				'type' : 'MP7',
-				'skinName' : 'Анодированная синева',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFAZu7P3JZyR94NWxnJTFwPWjY-6CxT1Su8B03r6T8Y6s2wft-EJpam6lJNfHcw8_Y1nXqFLqkvCv28FJ8mUtyA'
-			}, {
-				'type' : 'Glock-18',
-				'skinName' : 'Карамельное яблоко',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3YzhG09C_k4if2aajMeqJlzgF6ZF10r2RrNyg3Qzjrkptazj7IYaVdwE4NFHRqFHtk-fxxcjr1j3fJ1k'
-			}, {
-				'type' : 'AWP',
-				'skinName' : 'Гадюка',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957ODGcDZH_9e_mr-DkvbiKvWFxDhTvMMi3ryWrNyj0Qbi8kQ4Nz3xI9CWJgQ8Nw3Vr1i_wem5hJ-9ot2XnjzZQCBr'
-			},
-		]
-	}, {
-		"name" : "Rising Sun",
-		"img" : "risingsun.png",
-		"type" : "Collection",
-		"weapons" : [{
-				'type' : 'G3SG1',
-				'skinName' : 'Оранжевое кимоно',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3ejRP49K5q4SClvr7Pb_CqWRD6ct2j9bJ8I3jkRrnqEI9Njv2ddKWIQE3YQ7T_lPtwuvr1sS675zKmyQwuXYk43zcn0bmn1gSOQyGRkl0'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Бамбуковые заросли',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszKcDBA49OJnpWFkPvxDLPUl31IppEijOvFrdr0iwzirRA4Ymqnco_HcAc-NFCD_VK9l7_njJDtuczAynR9-n51oajK6Us'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Кимоно цвета мяты',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zDeDBN4tOJkImKmvj6N6junm5Q_tw_372R9N333QPs_hJlZGjyIIHEJwJsZQ2G_ATtxO2-jZG5uc7Nn3M2sz5iuygclVPvsA'
-			}, {
-				'type' : 'PP-Bizon',
-				'skinName' : 'Бамбук',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf2-r3czxP7tO5q4qemfD4NoTYmGBu4MBwnPCP8dSj2Vbi_hJtZGCmJtKQJlBtZlnV8wC6l-bphMS0vpWYzHRmviQh52GdwUImyimesA'
-			}, {
-				'type' : 'Sawed-Off',
-				'skinName' : 'Тень бамбука',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR97t27lo-EqP3hPbzdk1RT5MRygdbJ8I3jkRrgqEpqN2D2LY6XJFA_N1rV_ljrx--8g8W97ZrPnSY1syh0tCmInRy-n1gSOTvdU3xS'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Ночная буря',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTi5H7c-im5KGqP_xMq3I2DID7pZw2b6UpY6hjQTj_0ZkNz_xcdOXdgA2aV_S8gXqk7jqg5G-v53XiSw0vau75Eg'
-			}, {
-				'type' : 'P250',
-				'skinName' : 'Малиновое кимоно',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszDeDBN4tOJkImKmvj6N6juhG5V1810i__Yu4it0QHm-ks_YWn1IIXEcFI2Yl_U8gDtkObvhpa4vMicm3RjsiBz5yrD30vggAIcFk0'
-			}, {
-				'type' : 'Tec-9',
-				'skinName' : 'Терраса',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszPdDJP6ciknYO0hOPxI6juj25d5MpmteTE8YXghRq2rhE6NzyiI4adIFU_ZFmCq1Dqle_thce0upjBz3IxuSIrsXaOnhHin1gSOam774aE'
-			}, {
-				'type' : 'Galil AR',
-				'skinName' : 'Водная терраса',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczJfAJF6dO7kZSZnvTLIK_Uhnhu4MBwnPCPoI_2iVK1_RVrMGz2IYKRdVdrMF6E_wW_w-bqhZbpu5rIz3Ni6Cgms2GdwUJTK7A28Q'
-			}, {
-				'type' : 'MAG-7',
-				'skinName' : 'Антитерраса',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhoyszPdDJP6ciknYO0hOPxI6jukXlU7ctOguzA45W72Q3k_hdpYm-iIYSddQc-YVyD-lK7l-3v1p-56MiYz3RquCV2sHvfzQv330-hLT2elw'
-			}, {
-				'type' : 'M4A4',
-				'skinName' : 'Рассвет',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhh3szDeDBN4tOJh5WFhf7nNoTZk2pH8Ysii7uYo4r221DkqkdvZm37LYecdlQ8YgrSrgK3kOzu05C-u53AyXI1pGB8suJlCAfZ'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Буря на закате 壱',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTi5H7c-im5KGqPX4PLTVqWZU7Mxkh6eYoNug0Qzn80Y9ZTyncNPAJlJvMF2EqFi6wOa-gpC47pmYz3Zk6XF2-z-DyOzAiWG4'
-			}, {
-				'type' : 'Desert Eagle',
-				'skinName' : 'Буря на закате 弐',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLFTi5H7c-im5KGqOT8PLHeqWNU6dNoxLHEoY6n2VXiqEdpazulddOWIAdtZFGF8lnol7_uh5K_upybnHs3vCc8pSGKn-HkWew'
-			}, {
-				'type' : 'Five-SeveN',
-				'skinName' : 'Неоновое кимоно',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjVb09e_mY-FmMjwOrrcmWVV-_p8j-3I4IG70AHk-xZqMm2iItWQcgc-MwzT_Fm3xubqjJe87p7KzydmvyMg4H3ayQv3309niA2tcQ'
-			}, {
-				'type' : 'AK-47',
-				'skinName' : 'Гидропоника',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhh3szKcDBA49OJnpWFkPvxDLfYkWNFppwpie2Rp9_w0VDm-UNrMj30IoPHdAY-M1rY-1K7w7291pO8vJTJzHN9-n51xLwwH8g'
-			}, {
-				'type' : 'AUG',
-				'skinName' : 'Акихабара',
-				'rarity' : 'covert',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAR17PLGeDBH092jk7-HnvD8J_XXxj8IuJIkib-VoNSi2VGx_UQ-Yzv3I4SQcVA7aAvS_FC6wru51pK1ot2XnmtK7ev7'
-			},
-		]
-	}, {
-		"name" : "Dust II",
-		"img" : "dust2.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир G3SG1',
-				'skinName' : 'Песчаная буря',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf2-r3dThR6c6iq4yCkP_gfe_Uwz4HuZ0p3u-Q9oiijgyw_UpqZjv6d4GcewdoaVGB_VG8k-nt15Ki_MOekXjyVoE'
-			}, {
-				'type' : 'Сувенир MP9',
-				'skinName' : 'Песчаная штриховка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRw7OfJYTh9_9S5hpS0hPb6N4Tdn2xZ_Isp07rFpY70i1Lk-ERpY233LNXAJAJsNFmG_FW3xOfu15-6vp_AyXU2pGB8suBC9uz5'
-			}, {
-				'type' : 'Сувенир Nova',
-				'skinName' : 'Хищник',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhzw8zSdD9Q7d-3mb-DkvbiKvXSwDMEsJci0u_Fooii31Ky8kE-ZzzwJoCTcQA4NV_Zq1bolOzogsDpot2Xno1tLOyh'
-			}, {
-				'type' : 'Сувенир P250',
-				'skinName' : 'Песчаные дюны',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhz3MzbcDNG09C_k4if2fSjZLmGwDkBsZZz3r6Zo4mliwTj-0BtZDz1dYSUcAdtYw3XqFXtyejxxcjrr8fSJ40'
-			}, {
-				'type' : 'Сувенир P90',
-				'skinName' : 'Песчаное напыление',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7ODYYzxb08-3moS0mvLwOq7c2GlUuZR0ibiRpNqs2VXi-kI5Mm2hd4GdIQM9NwrW-Va5xObmjJK-uczXiSw0I3Bdoc4'
-			}, {
-				'type' : 'Сувенир SCAR-20',
-				'skinName' : 'Песчаная сетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODYTjBH_9SJh4GFk8j5Nr_Yg2Yf6ZEl3O3D99mm2gTkrUBsYzj0LIWWcwRtYgvU-1K7w-7tg5fv75TPnWwj5HeMNR9tGQ'
-			}, {
-				'type' : 'Сувенир AK-47',
-				'skinName' : 'Африканская сетка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot7HxfDhzw8zFdC5K08i3mr-HnvD8J_WBxTwD6ZB12b7Hodumig23rUY5YTymJ4TBcFA7NVvW-FW5l-zr1JXtot2XnkNBBWuK'
-			}, {
-				'type' : 'Сувенир Five-SeveN',
-				'skinName' : 'Апельсиновая корка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5S08i3hIW0mOX1PbzUqWdY781lxO2WrdjwiwS38kFtYG-mLdCWJAU9MgnQ81W6xbi5gcDpuszIn3dguiA8pSGKjf2ztEE'
-			}, {
-				'type' : 'Сувенир MAC-10',
-				'skinName' : 'Пальма',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldfwOP3YTxO4eO6nYeDg7n2YeOGlWpTvpwj2-zEpNjx0A3krkFlNm2nJoWVdQM8ZwnW-FK2wOzmm9bi64Jdj8z-'
-			}, {
-				'type' : 'Сувенир Tec-9',
-				'skinName' : 'Смешанный камуфляж',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszecC9L7927m7-HnvD8J_WJlzMHu5Yo2urFpYr22gDnqEBqam6gJ9KQdwc_YlGE-VS7wri70Ja_ot2Xnk_reDFK'
-			}, {
-				'type' : 'Сувенир Sawed-Off',
-				'skinName' : 'Змеиная кожа',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi19_9K3n4W0m_7zO6-fw24HvcQi37nHptz0iQHt-Rc5YWr3coCWc1I7NVqDrli2ye3n08S46YOJlyXnI7k0UA'
-			}, {
-				'type' : 'Сувенир PP-Bizon',
-				'skinName' : 'Латунь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf0uL3cy9D_8-JnIWKge66YrrQwGpTsZ0m27rF8NqjjVCwqUA4NziiIYHBJAQ_ZwyC_VDtw7-6h4j84sq1nvST4w'
-			}, {
-				'type' : 'Сувенир SG 553',
-				'skinName' : 'Дамасская сталь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFf0uL3dTxP7c-1gZO0hPChZujummJW4NE_372Sptmg3gzjrUNvam-icIeVJ1I8N1rX-lTskuzrh8XpucudnyAwvz5iuygR9uL9aQ'
-			}, {
-				'type' : 'Сувенир M4A1-S',
-				'skinName' : 'Смешанный камуфляж',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO-jb-dluX9MLrcmVRd4cJ5nqeWrNit2AewqhY_Yj31cIDGJgRtZV-E8gS2xOzv0Z_qucvJm3M16SFw-z-DyBeWkcOk'
-			}, {
-				'type' : 'Сувенир P2000',
-				'skinName' : 'Янтарный градиент',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJcAJE7dizq42Og_b4P7LSqWZU7Mxkh6fErN_22VbkqRBrZmn3cIOTewdqZAqE8lm_xO7ngsW_vM6YzndjuSEm-z-DyNwC_Q0C'
-			}, {
-				'type' : 'Сувенир R8',
-				'skinName' : 'Янтарный градиент',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopL-zJAt21uH3cDx96t2ykb-GkuP1P7fYlVRD7dN-hv_E57P5gVO8vywwMiukcZjBdwBraVmG_1nsk-nug8fvus6YyHFj6HQm5HfdnUfliRFKbLE7habIVxzAUNH92sAX'
-			},
-		]
-	}, {
-		"name" : "Mirage",
-		"img" : "mirage.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир AUG',
-				'skinName' : 'Колония',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODYcD5H09G3homFksj5Nr_Yg2Yfu8Yk3eySodyj2wHn-RVoaz3zdo7BelA_MFrT-lLokOjn18W4uJuYymwj5HdT1XK3KQ'
-			}, {
-				'type' : 'Сувенир G3SG1',
-				'skinName' : 'Африканская сетка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZfwOP3fDhR5OOilY60m_7zO6-fxzJQ68Z02OiQpdyl2FXmqENvNWGlLI_BIQU3Nw7Rqwe9lOa81Je1uYOJlyWUbIPIHw'
-			}, {
-				'type' : 'Сувенир Galil AR',
-				'skinName' : 'Охотничья будка',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczbYQJP6c--q5OHluT8Nqjunm5Q_tw_ieyVod322w3l_hdvNjugctOUegU7NAmBqwToku3ogcXu6ciam3UwuT5iuyio602etQ'
-			}, {
-				'type' : 'Сувенир Five-SeveN',
-				'skinName' : 'Наемник',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N08y7l7-HnvD8J_XUlD1QuJ113rGW89-h2gew8kZqa2D7dtfAdVQ2ZVzT-QO_l-rp0ZS5ot2Xngcmh8ed'
-			}, {
-				'type' : 'Сувенир P90',
-				'skinName' : 'Сажа',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7PfJYS1O6eO-kYGdjrnwa-7QxDlT68F33rjEpNuijgayr0VpamjyJ47AIwdqZ13Qrlm6wey9m9bi6yqeJsBm'
-			}, {
-				'type' : 'Сувенир P250',
-				'skinName' : 'Костяная маска',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zccC1H09C_k4if2a_xML6Dxj8GupIoibmUod-n3Vbkr0FqYGv2IY_BJwc6ZAuFrFS8xb_xxcjr7uv4usk'
-			}, {
-				'type' : 'Сувенир SG 553',
-				'skinName' : 'Крокодиловая сетка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3fDhR5OOmjZSDmPnLP7LWnn8f7cAmi7uSoN_z3A3trRBuYWGlLI7EI1c3aAqE_QDtxbrm08fvvZ_Mzmwj5HcvKiIfXQ'
-			}, {
-				'type' : 'Сувенир MP7',
-				'skinName' : 'Апельсиновая корка',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRw7OfJYTh94863moeOqPv9NLPF2D4Jv5V12e2TpNj23VbgqBdlYWqnIo7Gdlc-YF6C_VO7yOjnhZ7o7pzXiSw0U0YXXNA'
-			}, {
-				'type' : 'Сувенир Glock-18',
-				'skinName' : 'Грунтовая вода',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3fjFL-tmJmImMn-O6YrrXxWoJvJMp2euQ892n21DkqRBtZGryLdKUdg85aAqG_QC_w-_ugIj84sq2hgy4GQ'
-			}, {
-				'type' : 'Сувенир Negev',
-				'skinName' : 'Калифорнийский камуфляж',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFf2-r3ZzxQ5d-3mY-0k_LnNqnFqWdY781lxLiXrI7x31e38ktqNTz7doWRcwdtYw7YrgK6yeq71MK46cjAnyQ1vSE8pSGKUNGnClk'
-			}, {
-				'type' : 'Сувенир SSG 08',
-				'skinName' : 'Тропическая гроза',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19fwOP3YTxO4eOlnIGPmODLP7LWnn8f7scj3uuU8IiniQTnqkBpMmjxcoPAJwE_Z16CqVW7yb-9gcfpu5qczmwj5Hf46J1P4Q'
-			}, {
-				'type' : 'Сувенир MP9',
-				'skinName' : 'Хот-род',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZu7OHNdQJO5du-gM7bwqb2MeuClTsCv8Ek2LiZ9t2giwa28hVlZGD0doSUIANqYV_U_gC2366x0j0WoURS'
-			}, {
-				'type' : 'Сувенир MAC-10',
-				'skinName' : 'Янтарный градиент',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0vL3dzxG6eO7kZSKm_v9MITdn2xZ_It13rzC9Nqj21DsqEs6ZWyiLI7AcVdsMl3W_1W7kr3vhJHotZzLnXFgpGB8sjEeQG_x'
-			}, {
-				'type' : 'Сувенир UMP-45',
-				'skinName' : 'Пламя',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1Jf0vL3dzFD4dmlq4yCkP_gfeuCxTMG7pFw2uiV9I-jjlHi-0dvZDygLY-dJw89NQ3QqFK3lOe9jcSi_MOeUg1XNk4'
-			}, {
-				'type' : 'Сувенир MAG-7',
-				'skinName' : 'Бульдозер',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzRdDFO48uJnIWKge66ZeuHzjMEu8Yk3LyUo4mijgDn_RVrZzumddPGcVJoZAzQr1jsw-65hoj84sp82E9QXw'
-			},
-		]
-	}, {
-		"name" : "Inferno",
-		"img" : "inferno.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир MAG-7',
-				'skinName' : 'Песчаные дюны',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzbcDNG09GzkImemrmtMe2CzmhQ6sR0j7zC89ig3VCyrktqNmqiJYOXdAQ8YQzWr1Ptlejmm9bi60MVxb_X'
-			}, {
-				'type' : 'Сувенир Nova',
-				'skinName' : 'Грецкий орех',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhjxszfcDFM-ciJmo-dlsj5Nr_Yg2YfuJIn2O2Wo92m2gXh-Bdramr1ItKUJlM3YFiC-Ae2kOi7hpbu7cydn2wj5HdE8usZbQ'
-			}, {
-				'type' : 'Сувенир M4A4',
-				'skinName' : 'Смерч',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz3Mzcfi9M7di5q42Ok_7hPvXTlG5X6cYh3-3E89Sk0AfnrkBkY2mhJIfEcwM4M1CDqVfsyem5gsW4ot2Xnj287ZlO'
-			}, {
-				'type' : 'Сувенир P250',
-				'skinName' : 'Пороховой дым',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszPdDFS6dKJmYWPnuL5fb6AxG5XvcZ1i72UotWg3Ae1rUBoMm6gcYbDJ1dtZwvW_lC7xbrsh5Ki_MOeZVXbyKM'
-			}, {
-				'type' : 'Сувенир Dual Berettas',
-				'skinName' : 'Анодированная синева',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf0v33fzxU9eO6nYeDg7msZOKIz2hS7ZEki7mS89Tw0Ae3-Us4MWD7LIGRegc-MF2D81i-ku_vm9bi644LgQp9'
-			}, {
-				'type' : 'Сувенир Tec-9',
-				'skinName' : 'Латунь',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhhwszKYzxR_-O7kYSCgvq6ZLnXlThXu8QhiLuR89-hiwex_EA-MG_wcIfGdlQ3ZwrWqwK3kOy914j84spCpFtqYA'
-			},
-		]
-	}, {
-		"name" : "Cache",
-		"img" : "Cache.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир AUG',
-				'skinName' : 'Радиационная опасность',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRw7P3dejhR-M6_hIW0mOX1PbzUqWpE7_p9g-7J4cKh2wTt-kBkMT32do_Adwc2Z1rYrlS_xr_tgpO7uJqcmnswuCIi4ivegVXp1vNtKNLo'
-			}, {
-				'type' : 'Сувенир Five-SeveN',
-				'skinName' : 'Лихач',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTi5N09ukkZm0meL3P77QhFRe-sR_jez-84XjjWunrgU5PQavfdHNNhg_N1HZq1W3k7_uhJG4vczKz3Frv3V05Xbem0G_gR5KaOdr0fHKS1mZGeUXSy0Rtb_k'
-			}, {
-				'type' : 'Сувенир SG 553',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopb3wflFfwOP3fyhJ6c-ihombksj5MqnemWVu-8Ik37r--YXygED68kZlam-icdTBJgBqZVvQ8gW7xum5gZ696Z2aznFhvyB25yzVnUawhQYMMLKoKiteww'
-			}, {
-				'type' : 'Сувенир Negev',
-				'skinName' : 'Радиоактивные отходы',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFfwOP3fyhB4Nm3hr-bluPgNqnfxVRf7cJ0nNbN_Iv9nBrmr0c_N2D1co_EewI9Z1-E_gK8w-fmhJS5vMibwHFmuiQh4ivVzUCxn1gSOZtaCfWE'
-			}, {
-				'type' : 'Сувенир P250',
-				'skinName' : 'Заражение',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszGZD5O6d2kq5OAgvv4IO_uhjkEuPp9g-7J4cKt21bjqEE5Nj-lJNKTJFI-NF6E_Vm-k7vvjZe5vZzInXNqs3Em4yvbgVXp1h42q_cG'
-			}, {
-				'type' : 'Сувенир PP-Bizon',
-				'skinName' : 'Химический зеленый',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwPz3di9H9eO4gYOHkvbmDLzDk25f18d4kObPyoD8j1yg5UNrYTzxIdSUJFc9ZQ7V-gXvwubqhZW9vJnLzSBr6Ckk7HfezEOxiRxSLrs41lh6pmw'
-			}, {
-				'type' : 'Сувенир XM1014',
-				'skinName' : 'Костемолка',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PLFTjNX79CzlZK0hPzhP7fCx1RJ5ZQh273--YXygED6_EJqNmHxLYDGcgFqYg3WrlTtyLjq05S8up3Mmntluihwty3al0bmgAYMMLKwoJ4rnA'
-			}, {
-				'type' : 'Сувенир Tec-9',
-				'skinName' : 'Токсичность',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhoyszGZD5O6d2kq5OAgvv4IO7ugm5Ssfp9g-7J4cLx0Aew_Bc5ZzryJNLHIQNoMA3Z-FTvxb29gJW978zOmHo373V05ivcgVXp1mJNZYNi'
-			}, {
-				'type' : 'Сувенир Glock-18',
-				'skinName' : 'Реактор',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0v73fyhB4Nm3hr-bluPgNqnfx1RW5MpygdbJ8I3jkRrm_xA4a2v6d4LGc1M2YQqFrgO5lea5hJW4uM7LyHtl6CchtHzVyRWxn1gSOQY07qpC'
-			}, {
-				'type' : 'Сувенир MAC-10',
-				'skinName' : 'Ядерный сад',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldf0v73fyhB4Nm3hr-YnOL4P6iCqWZQ65QhteTE8YXghRrn_xBvZj-gdYaXIAM9ZA2Bq1G9krq7hpa4uZ7Bn3ExvyEnsH7alhXhn1gSOXsb08Wt'
-			}, {
-				'type' : 'Сувенир MP9',
-				'skinName' : 'Закат',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FA957P3dcjFH7c6JhIGfg_LmPenum3sI18h0juDU-MKljAbi-UM4MDrycNTAdFRoNQzZ-1a9yOy60JK96pnIwHZnuiNw5X_bgVXp1qKBy7Rx'
-			}, {
-				'type' : 'Сувенир FAMAS',
-				'skinName' : 'Стикс',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRf0v73fyhB4Nm3hr-YnOL4P6iDqW1Q5cRiteHE9JrsxgWx-ERkZ2r0cdDHd1M_MF_R-FS6l7-81MK0vZzLyyRi7HMjsyrUyxCpwUYbBN7dJDM'
-			}, {
-				'type' : 'Сувенир Galil AR',
-				'skinName' : 'Цербер',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczLZAJB6c60hpWYqPD1P7LdqWNU6dNoxLGWoI2liwG18hZsZW2hcY6cIFNvMAvS_Ffrye-6h8e4uJqbwHpnsyA8pSGK_cSp9dA'
-			},
-		]
-	}, {
-		"name" : "Cobblestone",
-		"img" : "Cobblestone.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир UMP-45',
-				'skinName' : 'Индиго',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwPz3eDNG5du5q4GFk8jzIb7IqWZU7Mxkh6eW842tjQawqkU6Mm2ldtecdlA7NwrZ-gftw-fvhsK46JSdzXRkvHQh-z-DyNBCEWOJ'
-			}, {
-				'type' : 'Сувенир Dual Berettas',
-				'skinName' : 'Терн',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf2-r3ZzRM6c-JmYWPnuL5feOIxD5Qv5Al2L3FpY3wiw21qBA-N2qhIIXEdVI5M1vU8wXtxL-7gJCi_MOe_3Qy_VQ'
-			}, {
-				'type' : 'Сувенир MAC-10',
-				'skinName' : 'Индиго',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7umeldfwPz3eDNG5du5q4GFk8jzIb7IqWZU7Mxkh6eZrdz32FK1rUppNzr6cISUdFU_aV_T-AW6ye7uhcC-tcjOzXFl7nV0-z-DyL4k_fgB'
-			}, {
-				'type' : 'Сувенир SCAR-20',
-				'skinName' : 'Гроза',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7ODHTi5W4867kpKEmePLPr7Vn35cpsdwi-_Hoo-g2wOx-0NoYW31LITAdAU9YA3Z-lnvkO_vjcLptcybwXV9-n51LW6fRVs'
-			}, {
-				'type' : 'Сувенир P90',
-				'skinName' : 'Гроза',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRv7ODcfi9P6s65mpS0mvLwOq7c2GoB650g2eiR94qs2Q3m_0M5YmqgcY6Scgc7ZQuCrli5kLq71sfv7snXiSw0T9wLGPo'
-			}, {
-				'type' : 'Сувенир USP-S',
-				'skinName' : 'Королевский синий',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09Svq4mFk_7zPITEhXtu4MBwnPCPpdX2jQyx_0prY2HxctKcI1A3NAzZ_Fa8wezv0cW1uZSYnCRj7HFx4GGdwULF8u3CAA'
-			}, {
-				'type' : 'Сувенир Sawed-Off',
-				'skinName' : 'Пыльник',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cCx9_8izkYy0mvLwOq7c2DwI65Ep2L2Q9N6l3QLjqRdrNWymLNWSJg44YV7Z-FnoxLi60JG76J_XiSw0L_5zRr8'
-			}, {
-				'type' : 'Сувенир MAG-7',
-				'skinName' : 'Серебро',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhh3czbeDFU6c6JmImMn-O6Nb3Txz9TsZZ107qR84qs3Q3m-0prZzyncIGdIVA4M1vRqFW2l7vrhoj84soh4IEyPw'
-			}, {
-				'type' : 'Сувенир Nova',
-				'skinName' : 'Зеленое яблоко',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhz3MzPYzhH4uO6nYeDg7nyZbmDxzgAvsYp2rnD992s2Abm_UJuNm2hLYCQJAFqYlnSr1nrxbjqm9bi6-wzwI-Q'
-			}, {
-				'type' : 'Сувенир P2000',
-				'skinName' : 'Кольчуга',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJfAJB5N2_mo2KnvvLP7LWnn8fupN00u2U8NykigK1rUs4MGH2dtOWdlVoYF7Y-VHrl-jtjZa9upufnWwj5HdqMVWH_w'
-			}, {
-				'type' : 'Сувенир MP9',
-				'skinName' : 'Темный век',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZt7P7NZTxO09W4mIGSqPv9NLPF2GoFsZMp2-_Dpo2m0Vaw-ERkY2zycNKXcFBoaA7Z8lnolebshMK4vcvXiSw0RlUWR70'
-			}, {
-				'type' : 'Сувенир Desert Eagle',
-				'skinName' : 'Пищаль',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PLZTjVD4ti1lY6FmPnLPr7Vn35cpsR33bmW9I2niQLj_kA9MG2mcNLGdlU7ZQ2F_FG8levohJa96J_Kz3J9-n51SNwWmb4'
-			}, {
-				'type' : 'Сувенир CZ75-Auto',
-				'skinName' : 'Чаша',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v73YzJb7dCJmImMn-O6NeLXwWlVsMAk2buQ842l3QPmqhc_YTv0I4aQcgA-aQ3V_1a-krq-04j84sqdvOTuGQ'
-			}, {
-				'type' : 'Сувенир M4A1-S',
-				'skinName' : 'Рыцарь',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO3mb-GkuP1P6jummJW4NE_2-zHpN2g3Vfj-kFvZ2ChJtfEJ1M2YF_Sq1LqkOm515fpup-cyHFluD5iuyj8q1fJzg'
-			}, {
-				'type' : 'Сувенир AWP',
-				'skinName' : 'История о драконе',
-				'rarity' : 'covert',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17P7NdTRH-t26q4SZlvD7PYTQgXtu5cB1g_zMu9zw3g2yrkVtZ2r6IoSVdAU-ZVrY_lS6lb_ogsDqu57NmCQ27iJx53nD30vgUTXWscs'
-			},
-
-		]
-	}, {
-		"name" : "Overpass",
-		"img" : "Overpass.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир M249',
-				'skinName' : 'Контрастные цвета',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhzw8zbYS9D9eO-kYGdjrnyMOjTkGkCuJYh3-qUrN-i3Ay3qEo6MGmiJYPGdwI9NVrZqVjsl-y7m9bi66ggGMLw'
-			}, {
-				'type' : 'Сувенир UMP-45',
-				'skinName' : 'Сажа',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwOP3dTxS_NCzq42Ok_7hPvWAlzsGv5Jy27rDo4r22lG1qhFvazv7IIPAelU2YguG-wC2w7vn08W8ot2XnjjPeAaD'
-			}, {
-				'type' : 'Сувенир MAG-7',
-				'skinName' : 'Гроза',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhz3MzbZTJQ4dqkm46fqPrxN7LEmyUEup1127nEoN6l3lfm-EZrMj3xIYGTJAU2Ml7Yrlftxui6hJe46pqc1zI97WswWNrq'
-			}, {
-				'type' : 'Сувенир MP9',
-				'skinName' : 'Гроза',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRv7ODcfi9P6s65mpS0mvLwOq7c2GoG65wnib6Q9tXz3VLkqBVpZ2rzIdfGd1c7ZVzU8gK8xuy-0Ja86svXiSw038eOvP4'
-			}, {
-				'type' : 'Сувенир Sawed-Off',
-				'skinName' : 'Белое напыление',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi19_8yklZm0k_LnNqnFqXhQ78BOguzA45W72AWxqERpMmzwLNeTeg82MlDW-gK4k73tg8K4uszBmnM1vyZzsCrVnwv3309qRyEFCw'
-			}, {
-				'type' : 'Сувенир MP7',
-				'skinName' : 'Пороховой дым',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFA957PTNfS1H4uO7kYSCgvq6ZbnXwW5UuJ0nju3D8NSs31KwrhdsYmnyd9eSIwVtaQqF_lfswry-gYj84sqn5btZoA'
-			}, {
-				'type' : 'Сувенир Desert Eagle',
-				'skinName' : 'Пиксельный камуфляж «Город»',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjlG_N2iq5WZlcj5Nr_Yg2YfscQo3r3H9Nuki1HsrkdlMGuncoCcJAc9ZF_Q_1Dqk-zrhJDqvZ7Jymwj5HeAXIDD2Q'
-			}, {
-				'type' : 'Сувенир Glock-18',
-				'skinName' : 'Ночь',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3fzRF5MiJmYWPnuL5fb7TxG0D7cYk27zCotin2Fay8kA_NmzwI4WTcwZvYwzY_lntwbzv08Oi_MOe5mNtCOI'
-			}, {
-				'type' : 'Сувенир P2000',
-				'skinName' : 'Цвет луга',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zbfgJF_t2lh4yKmfPLPr7Vn35cppQj3rqS9oit3gyx-UdlYm_wIIaQdg84YAvU_lm9lee9hcO-78zBnCF9-n51xIPJ5Oo'
-			}, {
-				'type' : 'Сувенир CZ75-Auto',
-				'skinName' : 'Нитро',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZfwPz3fi9D4tuzq4GIlPL6J6iDqWZU7Mxkh6eSo9Wm0FW3_hJrajinJtXDcg82MgnY-lS3leq8gJS56ZXOnCRh6yN2-z-DyFmfHqmu'
-			}, {
-				'type' : 'Сувенир SSG 08',
-				'skinName' : 'Объезд',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f2-r3Yi5FvISJmYGZnPLmDLbUkmJE5Ysm37-Vpoj32wXs-EJrNmumLNDAclI6Z1zX_Vjqxb29hcO878nPmyRlpGB8sq1srR54'
-			}, {
-				'type' : 'Сувенир XM1014',
-				'skinName' : 'Смешанный синий камуфляж',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PvRTitD_tW1lY2EqPX4Jr7um25V4dB8xOyXoI7w2gayrUZoYj32IdPAdgY7ZAvV-ljvwevtgJe_6pScyicx7CM8pSGKFSQfI94'
-			}, {
-				'type' : 'Сувенир USP-S',
-				'skinName' : 'Следы асфальта',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh8jnMrXVhmpB7dd0jtbJ8I3jkRrk-kA6amCgd9edcg9qaA7YrgLrxeu60JG87prMy3dquCB2tHaJzkHmn1gSOSGslERB'
-			}, {
-				'type' : 'Сувенир AWP',
-				'skinName' : 'Пиксельный камуфляж «Розовый»',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957PfMYTxW08y_mou0mvLwOq7c2DxUscQkiO2S8I-h2gTm-hA4NTyhdoDDcVU3MwzV_1G4xb_uhpPo6Z7XiSw03MaHlHE'
-			}, {
-				'type' : 'Сувенир M4A1-S',
-				'skinName' : 'Шедевр',
-				'rarity' : 'classified',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO1gb-Gw_alfqjuhWJd7ctyj9bM8Ij8nVn6_ERkNT_0IoXHIQI9M1CE_1G3ku6605K-us7InyNhvnQnt37VnkOx1QYMMLJOVeO32Q'
-			},
-		]
-	}, {
-		"name" : "Nuke",
-		"img" : "Nuke.png",
-		"type" : "Souvenir",
-		"weapons" : [{
-				'type' : 'Сувенир MAG-7',
-				'skinName' : 'Радиоактивная опасность',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzw8zGZDZH_8iknZCOqPXmPKzfqWZU7Mxkh6fDo932iVHm_xBsZm6gIoHEIQI7ZFHW_FHqx-jn15Hq75TKziZnuSMr-z-DyCCeIKrx'
-			}, {
-				'type' : 'Сувенир PP-Bizon',
-				'skinName' : 'Радиоактивная опасность',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlfwOP3fyhJ6c-ihombksj2IbTGmFRc7cF4n-SP8dys3FfgqRI4ZD_6d9eQIQNvMAnS_lm7w-y70ZG_vJqbzyFhvCR35mGdwUKuhR019A'
-			}, {
-				'type' : 'Сувенир Sawed-Off',
-				'skinName' : 'Радиоактивная опасность',
-				'rarity' : 'consumer',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3Yi194sm9kZOfhf7kNoTThGRG5vp8j-3I4IG7ig2y_0ZsMGn2do6QJA4_NQ7Z-VO8xry5hMTvuM7Lm3Iw6XEgsHaMzAv33088hDSHPw'
-			}, {
-				'type' : 'Сувенир P90',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FBRw7P3dejhR-M6_hIW0mvbmPLTfqWZU7Mxkh6fHo4rz0Ve2-0U_azvyIIadJAA8aQyC_Vm4w-bn1pXouJnPnSM26XYq-z-DyFErgtK5'
-			}, {
-				'type' : 'Сувенир UMP-45',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo7e1f1JfwOP3fyhJ6c-ihombksj5MqnemWVu5Mx2gv2PrN6s3gPhrUdoNWnwJIXDdQFoNQzV_1e9xebtjJK9u5WcmiRhuXRw5GGdwUKpyEqAXg'
-			}, {
-				'type' : 'Сувенир XM1014',
-				'skinName' : 'Радиоактивные осадки',
-				'rarity' : 'industrial',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODYTjNX59mlgJKCh_LLPrrDmWRf18l4jeHVu9T33lK1qBVvYzynIoaQdQM-aA6Dqwe8kua-gpPtvJmay3RhsyIi5i7D30vgm-UlNbc'
-			}, {
-				'type' : 'Сувенир M4A4',
-				'skinName' : 'Радиационная опасность',
-				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhzw8zGZDZH_8iknZCOqPjmMrXWk1Rc7cF4n-SP9o6h2gfjrhY-Z2-lcYWde1NsNAmC-APok-zm0Z-_vMvBz3tq7yEmsWGdwUJ6nxi7Dw'
-			}, {
-				'type' : 'Сувенир P250',
-				'skinName' : 'Ядерная угроза',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhzw8zGZDZH_8iknZCOqPDmNr7fqWNU6dNoxLmQrdX031DhrRY5YGmgLNDBIQU5NFDT_gS-ybi5gp_uu5iayyc2uyM8pSGKb7DLmmE'
-			}, {
-				'type' : 'Сувенир Tec-9',
-				'skinName' : 'Ядерная угроза',
-				'rarity' : 'restricted',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhzw8zGZDZH_8iknZCOqPDmNr7fqX9U65xOguzA45W7ilfm_EVqYWvyIdSRJ1Q_YVzT8lC6wu3vjZW-uc-YwHUwvHZ05Hvaygv330_9fYlOZg'
-			},
 		]
 	}, {
 		"name" : "Knife Case",

@@ -154,3 +154,82 @@ i.double-icon {
 #buy-double:disabled {
 	opacity: 0.5;
 }
+.sales {
+    text-align: center;
+}
+.sales-weapon {
+    background: #fff;
+    margin: 8px;
+    text-align: center;
+    padding: 20px;
+	font-family: Lato;
+	max-width: 150px;
+	display: inline-block;
+	box-shadow: 0 0 3px RGBA(0, 0, 0, 0.4);
+	cursor: pointer;
+}
+.sales-discount {
+    position: absolute;
+    margin-left: -13px;
+    display: block;
+    margin-top: -24px;
+    background: #b60000;
+    color: #fff;
+    padding: 5px;
+    font-size: 0.7em;
+    padding-top: 10px;
+    opacity: 0.8;
+    border-radius: 0 0 5px 5px;
+}
+.sales-discount::before {
+    content: ;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 0px;
+    right: -5px;
+    border-bottom: 4px solid #860000;
+    border-right: 6px solid transparent;
+}
+.sales-weapon img {
+    max-width: calc(100% - 50px);
+    display: block;
+    margin: 0 auto;
+}
+.sales-weapon-name {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+	font-size: 0.8em;
+	color: #565656;
+}
+.prices_old-price {
+    text-decoration: line-through;
+    font-size: 0.75em;
+	color: #5f5f5f;
+}
+.prices_new-price {
+    color: #b70000;
+    font-weight: bold;
+}
+.sold-out > * {
+	opacity: 0.4;
+}
+.sold-out::after {
+    content: 'SOLD OUT';
+    display: block;
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    -webkit-transform: translate(-50%, -50%) rotate(-35deg);
+    top: 50%;
+    left: 50%;
+    text-shadow: 0 0 1px RGBA(0, 0, 0, 0.71);
+    border: 3px solid;
+    padding: 4px;
+}

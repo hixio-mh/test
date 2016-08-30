@@ -268,7 +268,6 @@ function botAddItems() {
 			if (z == 4) break;
 			z++
 		}
-		if (Settings.language != 'RU' && botWeapons[i].type.indexOf('Сувенир') != -1) botWeapons[i].type = botWeapons[i].type.replace('Сувенир', 'Souvenir');
 		itemsCost += +botWeapons[i].price;
 		itemsList(botName, botWeapons[i].type, getSkinName(botWeapons[i].skinName, Settings.language), getImgUrl(botWeapons[i].img), botWeapons[i].quality, botWeapons[i].statTrak, botWeapons[i].rarity, botWeapons[i].price)
 	}
