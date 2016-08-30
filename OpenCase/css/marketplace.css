@@ -167,6 +167,7 @@ i.double-icon {
 	display: inline-block;
 	box-shadow: 0 0 3px RGBA(0, 0, 0, 0.4);
 	cursor: pointer;
+	position: relative;
 }
 .sales-discount {
     position: absolute;
@@ -225,10 +226,10 @@ i.double-icon {
     position: absolute;
     color: red;
     font-weight: bold;
-    transform: translate(-50%, -50%) rotate(-35deg);
-    -webkit-transform: translate(-50%, -50%) rotate(-35deg);
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(-35deg);
+			transform: translate(-50%, -50%) rotate(-35deg);
     text-shadow: 0 0 1px RGBA(0, 0, 0, 0.71);
     border: 3px solid;
     padding: 4px;
