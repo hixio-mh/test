@@ -217,14 +217,11 @@
 		width: 98px;
 	}
 	.wp-statTrak::before {
-		margin-top: 65px;
+		top: 65px;
 	}
 	.weapon img {
 		width: 86px;
 		height: 91px;
-	}
-	.weaponInfo {
-		margin: -13px 0;
 	}
 	.type {
 		font-size: 9px;
