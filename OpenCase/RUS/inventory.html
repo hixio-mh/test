@@ -563,6 +563,8 @@ function fillInventory(currInventory, sumPr) {
 		var type = weapon.type;
 		type = (Settings.language == 'RU') ? type.replace(/Souvenir/gi, "Сувенир") : type.replace(/Сувенир/gi, "Souvenir");
 		
+		type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language]+' ')
+		
 		var name = getSkinName(weapon.skinName, Settings.language);
 		
 		var id;
