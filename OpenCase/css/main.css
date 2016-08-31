@@ -15,6 +15,7 @@ body {
 	width: 125px;
 	height: 138px;
     text-align: center;
+	background: linear-gradient(to top, #A8A8A8, #474747);
     box-shadow: 0px 0px 7px #000;
 }
 #showVideoAd {
@@ -28,7 +29,6 @@ body {
 }
 .name {
     display: block;
-    /* text-align: left; */
     position: absolute;
     background: linear-gradient(to right, #828F9E, #474C52);
     color: #fff;
@@ -39,14 +39,13 @@ body {
     font-family: LatoLight;
     line-height: 1.2em;
     width: 105px;
+	box-shadow: 0 -1px 2px rgba(50, 50, 50, 0.52);
 }
 .case img {
-    width: 115px;
+    max-width: 115px;
 	height: 83px;
-    background: linear-gradient(to top, #A8A8A8, #474747);
     padding: 5px;
     padding-bottom: 10px;
-	box-shadow: 0 -1px 1px rgba(50, 50, 50, 0.52) inset;
 }
 .cases h1 {
     color: #fff;
@@ -59,10 +58,10 @@ body {
 .souvenir, .collection {
     box-shadow: none !important;
 	margin-bottom: 35px !important;
+	background: linear-gradient(to top, RGBA(0, 0, 0, 0.37), RGBA(255, 255, 255, 0), rgba(255, 255, 255, 0)) !important;
 }
 .souvenir img, .collection img {
     height: 110px !important;
-    background: linear-gradient(to top, RGBA(0, 0, 0, 0.37), RGBA(255, 255, 255, 0), rgba(255, 255, 255, 0)) !important;
     box-shadow: none !important;
 }
 
@@ -151,6 +150,8 @@ body {
     width: 123px;
     margin: 5px 4px;
 	text-align: right;
+	overflow: hidden;
+	position: relative;
 }
 .weapon img {
     margin: 0 auto;
@@ -159,9 +160,11 @@ body {
     display: block;
 }
 .weaponInfo {
-    margin: -13px 0;
 	text-align: left;
     overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 .weapon i {
     font-style: normal;
@@ -182,7 +185,7 @@ body {
     border-left: 10px solid #DCDE37;
 }
 .new-weapon {
-    border: 2px solid rgba(63, 255, 0, 0.43);
+    border: 2px solid #54B335;
     margin: 3px 2px;
 }
 .new-weapon:after {
@@ -191,9 +194,11 @@ body {
     width: 30px;
     height: 30px;
     position: absolute;
-    margin-left: -30px;
-    margin-top: -17px;
+    /*margin-left: -30px;
+    margin-top: -17px;*/
     background: url(../images/new_weapon.png);
+	bottom: 0;
+	right: 0;
 }
 .type {
     background-size: cover;
