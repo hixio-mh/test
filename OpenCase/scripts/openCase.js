@@ -141,12 +141,7 @@ $(document).on("click", ".openCase", function () {
 			if (type.indexOf("|") != -1) {
 				type = type.split("|")[1]
 			}
-			type = $.trim(type.replace(/(Сувенир|Souvenir)/gi, ''));
-			if (souvenirCase && !type.match(/(Сувенир|Souvenir)/))
-				type = Localization.souvenir[Settings.language]+' '+type;
-			
-			type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language]+' ')
-			
+			type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 			var price = getPrice(type, name, quality, statTrak);
 
 			win.type = type;
