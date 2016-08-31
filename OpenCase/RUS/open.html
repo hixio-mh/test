@@ -52,6 +52,7 @@
 <script src="../scripts/main.js"></script>
 <script src="../scripts/localization.js"></script>
 <script>
+if (typeof souvenirCase == 'undefined') var souvenirCase = false;
 $(function(){
 	var param = parseURLParams(window.location.href);
 	if(typeof param != "undefined") {
