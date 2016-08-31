@@ -214,5 +214,13 @@
 		"RU" : " - Новые коллекции: Aztec, Lake, Militia, Office, Safehouse, Train, Vertigo<br> - Ежедневные скидки в магазине",
 		"EN" : " - New collections: Aztec, Lake, Militia, Office, Safehouse, Train, Vertigo<br> - Daily discounts in market."
 	}
+}, {
+	"day" : 31,
+	"month" : 8,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Качества оружия в магазине на русском языке<br> - Исправлено повторение слова 'Сувенир'",
+		"EN" : " - A bug when the 'Souvenir' word repeats was fixed"
+	}
 }, 
 ];

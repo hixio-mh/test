@@ -253,7 +253,7 @@ function getAllWeaponInfo(type, name, loadPrices) {
 				info.push({
 					'type': (souvenir?'Souvenir '+type:type),
 					'skinName': name,
-					'quality' : quality,
+					'quality' : getQualityName(quality, Settings.language),
 					'statTrak' : statTrak,
 					'price': pr,
 					'img': img
