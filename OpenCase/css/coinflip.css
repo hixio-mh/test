@@ -13,16 +13,10 @@ background-color: #333;
 	.container {
 		font-size:80%;
 	}
-	.weapon i {
-		top: -116px !important;
-	}
 }
 @media(min-width:600px) {
 	.container {
 		font-size:120%;
-	}
-	.weapon i {
-		top: -122px !important;
 	}
 }
 .games {
@@ -63,9 +57,6 @@ background-color: #333;
 ul.bot-inventory {
     padding: 0 10px;
     padding-top: 10px;
-}
-.weapon i {
-    top: -120px;
 }
 .blur {
     position: fixed;
