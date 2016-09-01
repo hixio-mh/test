@@ -423,8 +423,10 @@ function getWeaponRarity(type, name) {
 	name = getSkinName(name);
 	type = type.replace(/(Souvenir|Сувенир)/g, '');
 	var coll = getCollection(type, name);
-	if (typeof coll == undefined && isAndroid())
-		client.sendToAnalytics("Error", "Error", "Cant find collection: "+type+" | "+name, "main.js")
+	if (typeof coll.weapons == undefined && isAndroid()) {
+		client.sendToAnalytics("Error", "Error", "Cant find collection for "+type+" | "+name, "main.js");
+		return "Factory New";
+	}
 	for (var i = 0; i < coll.weapons.length; i++) {
 		if (coll.weapons[i].type == type && getSkinName(coll.weapons[i].skinName) == name)
 			return coll.weapons[i].rarity;
