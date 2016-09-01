@@ -432,6 +432,7 @@ function getWeaponRarity(type, name) {
 }
 
 function getImgUrl(img, big) {
+	if (typeof img == 'undefined') return "../images/none.png";
 	if (img.indexOf("images/") != -1)
 		if (typeof big != "undefined") {
 			return img.replace("125fx125f", "383fx383f");
