@@ -1,5 +1,7 @@
 ﻿function getSkinName(skin, loc) {
 	if (typeof loc == "undefined") loc = "EN";
+	if (typeof skin == 'undefined') return "Error! Make screenshot and send it to developer."
+	
 	if (skin.match(/[a-z]/g) != null && skin.match(/[a-z]/g).length > 2 && loc == "EN") return skin;
 	if (skin.match(/[а-я]/g) != null && skin.match(/[а-я]/g).length > 2 && loc == "RU") return skin;
 	
