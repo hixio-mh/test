@@ -432,6 +432,11 @@ function getWeaponRarity(type, name) {
 }
 
 function getImgUrl(img, big) {
+	var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/"
+	prefix = window.location.protocol == "http:" ? prefix.replace("https", "http") : prefix;
+	var postfix = "/125fx125f";
+	var postfixBig = "/383fx383f";
+	
 	if (typeof img == 'undefined') return "../images/none.png";
 	if (img.indexOf("images/") != -1)
 		if (typeof big != "undefined") {
