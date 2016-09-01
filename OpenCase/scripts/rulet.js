@@ -278,8 +278,8 @@ function botAddItems() {
 		"chance" : "0",
 		"itemsCost" : itemsCost,
 		"tickets" : {
-			"from" : lastTicket+1,
-			"to" : (itemsCost * 100) + lastTicket +1
+			"from" : lastTicket + 1,
+			"to" : (itemsCost * 100) + lastTicket + 1
 		}
 	});
 	lastTicket += (itemsCost * 100);

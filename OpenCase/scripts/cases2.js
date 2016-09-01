@@ -744,6 +744,8 @@ var cases = [{
 	}, {
 		"name" : "Italy",
 		"img" : "italy.png",
+		"canBeSouvenir": true,
+		"canBeStatTrak": false,
 		"type" : "Collection",
 		"weapons" : [{
 				'type' : 'AUG',

@@ -222,5 +222,13 @@
 		"RU" : " - Качества оружия в магазине на русском языке<br> - Исправлено повторение слова 'Сувенир'",
 		"EN" : " - A bug when the 'Souvenir' word repeats was fixed"
 	}
+}, {
+	"day" : 1,
+	"month" : 9,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Добавлена сувенирная коллекция Italy",
+		"EN" : " - Souvenir collection Italy was added"
+	}
 }, 
 ];
