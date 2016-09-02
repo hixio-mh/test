@@ -1029,7 +1029,7 @@
 				'type' : 'XM1014',
 				'skinName' : 'Blaze Orange',
 				'rarity' : 'milspec',
-				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszAZDNW6c6JloyKjfLLPKnQmGxU18l4jeHVu9_0iQzl-UNvZmHwI4WcI1M9Z1nX8lbox-zqjJG66MiczyBk6yF053rD30vgAuPsDfg'
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07PvRTjVX4sizhr-Jm_buNoTehGpf78BOhuDG_Zi7jFGy-EJrYmmmJYLHdwE9aVrZq1O_wua508W7756cmCYxuXYm7CrYzAv3308_zX4FKA'
 			}, {
 				'type' : 'PP-Bizon',
 				'skinName' : 'Modern Hunter',
