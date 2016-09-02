@@ -128,7 +128,6 @@ function botAddWeapon(itemsCost) {
 			if (wpLength == weapons.length) canContinue = true;
 		}
 	}
-	if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
 	winItems = winItems.concat(weapons);
 	$('.winItems').append('<li id="whoBet">'+Localization.rps2.opponentAdd[Settings.language]+'</li>');
 	for (var i = wpLength; i < winItems.length; i++)

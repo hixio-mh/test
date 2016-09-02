@@ -1,9 +1,91 @@
-﻿//var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/";
-//var prefix = "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz"
-var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/"
-	var postfix = "/125fx125f";
-var postfixBig = "/383fx383f";
-var cases = [{
+﻿var cases = [{
+		"name" : "Alpha",
+		"img" : "alpha.png",
+		"type" : "Collection",
+		"weapons" : [{
+				'type' : 'M249',
+				'skinName' : 'Jungle DDPAT',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhoyszMdS1D-OO8gY6Mm_LLManQgGRu5Mx2gv2P8dWm0AXm-UBqZ233ddDGdAFvYQzZ81Xtle25g8Dt7ZnLyCNmvSEj4WGdwUIqtfR_xQ'
+			}, {
+				'type' : 'Tec-9',
+				'skinName' : 'Tornado',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoor-mcjhz3Mzcfi9M7di5q4KZluH7DLfYkWNFpscoiOrA8NSljlXl8hJsMmuiJYKSdg46ZVrX_VK9wOnt1pS9tJSam3t9-n510ZX2qrw'
+			}, {
+				'type' : 'MP9',
+				'skinName' : 'Dry Season',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FBRw7OfJYTh96NOih7-JhfbiPITdn2xZ_It03L-Tod6k2lfh-0VuYmzxLYPDJANsN1mC_gK3k7rogJS_6M_KmCBmpGB8slvDS5gi'
+			}, {
+				'type' : 'Five-SeveN',
+				'skinName' : 'Anodized Gunmetal',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLOzLhRlxfbGTjxM09ujmo2Og_b4DLnDl31e18l4jeHVu9r0iVLk-EVsYDj0cdCSdg5oZFvZ_wDow7_ohp7qtJTAn3ZhuSUg5y3D30vgIk2HfTE'
+			}, {
+				'type' : 'XM1014',
+				'skinName' : 'Jungle',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgporrf0e1Y07ODHTjdX4tu6kb-JhfbiPITdn2xZ_IshiLmYrNT22Vfm_0Q6NTr7I4bHIFJsMlyD_1K4yOi80Z7ttZrNn3FjpGB8soGqpBfa'
+			}, {
+				'type' : 'MP7',
+				'skinName' : 'Groundwater',
+				'rarity' : 'consumer',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFBRv7PzEeCtH096klZaEqPv9NLPF2G1VvJxwj7nCpN3ziQDgrRFqYmjzcoLAIQ9qYlzW_1Dqxbvp05-9tJjXiSw0MtBfwCk'
+			}, {
+				'type' : 'Glock-18',
+				'skinName' : 'Sand Dune',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxfwPz3YjxM6OO0hoGdmMj4OrzZgiVTvZUk27iU99Xw31XnrkVoa2n1LYHDcgQ4YwzX_AK3xO_n1pC56ZjJ1zI97Z-o7L5L'
+			}, {
+				'type' : 'SSG 08',
+				'skinName' : 'Mayan Dreams',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f2-r3fDxb7dKJkJKOlvrnDLnDl31e18l4jeHVu9qh31Xs_hY6NWn0cYCQdANraA3S8lW3x-a7jMW9vczInCFnuHRz43fD30vgXl6H59Q'
+			}, {
+				'type' : 'Negev',
+				'skinName' : 'Palm',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouL-iLhFfwOP3YTxO4eO0hoGdmMj4OrzZgiUCupIgi7HE8Yr33Aaw-kVvNWj7dY-QdVRtYF7SrgXowe-5h5_ov52Y1zI97QWVHCTw'
+			}, {
+				'type' : 'Sawed-Off',
+				'skinName' : 'Mosaico',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3eSR97dC_q5SCm_LLManQgGRu5Mx2gv2PrNusigHj_hBsZjv6JNfHe1draVvWrAe8ye3mg5G_u57LynpisnUjt2GdwUKBUvVtoA'
+			}, {
+				'type' : 'P250',
+				'skinName' : 'Facets',
+				'rarity' : 'industrial',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopujwezhoyszLYyhP_NCzq4SKhfzLManQgGRu5Mx2gv2PpNmsjVHnrkA5Zjr2JIHBegA3MlHQ8li3xua-jcPotJ_BwHU16XZz4WGdwUK2FlY9Zg'
+			}, {
+				'type' : 'MAG-7',
+				'skinName' : 'Hazard',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhzw8zAcCdD_tiJlpKKgfjLP7LWnn8fvZR30r2SpY3wiQDiqks6amqmIYaRJFQ3NAnZ_1Htlenoh5-_vMnPnWwj5HeouX7iBw'
+			}, {
+				'type' : 'PP-Bizon',
+				'skinName' : 'Rust Coat',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotLO_JAlf0uL3YilH6dCJlpKKgfjLP7LWnn8f6cZ037uY8ImjjASxrhU5amj2LdPEJAY6YQrT_FXvlebqhsXv6pXAymwj5HcaiWp-nA'
+			}, {
+				'type' : 'AUG',
+				'skinName' : 'Anodized Navy',
+				'rarity' : 'milspec',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFAZu7P3JZyR97s63go-0m_7zO6-fzjsEv5Yp0uuQ8dui3wTt_RBsYG-lJdSXJg5sMFGDr1C7wO7sg5G06IOJlyVTQYQwXg'
+			}, {
+				'type' : 'FAMAS',
+				'skinName' : 'Spitfire',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRfwOP3Yi1L-Nq_hoW0kfb5MqjulHlQ_spOhuDG_Zi7iVfg_kY-Y273LYGWcVQ-MwyDr1G_yL3v0Jbvu5nLznI3vCgrsC3Umgv3308XRo8TmA'
+			}, {
+				'type' : 'SCAR-20',
+				'skinName' : 'Emerald',
+				'rarity' : 'restricted',
+				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbmkOVUw7PLGTjhP6c63mIS0leX1JbTummJW4NE_2-_F8Y322gKw_UFkZ232dtLGew47Zw3Q_gO7lOe8g5_quZ_PyHBj6D5iuyhXhSRN_w'
+			},
+
+		]
+	}, {
 		"name" : "Assault",
 		"img" : "assault.png",
 		"type" : "Collection",
@@ -668,7 +750,7 @@ var cases = [{
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-jxcjhoyszSfjlL7d_lq4iOluHtfevTxm8J6Z0m3uyUp96li1K1-BFrazz7IteRdFQ4aFnWqQTrwrrnhJ-i_MOedcIbTZY'
 			}, {
 				'type' : 'P2000',
-				'skinName' : 'Лабиринт',
+				'skinName' : 'Pathfinder',
 				'rarity' : 'industrial',
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zbYQJO7d6vhomFg_-mDLbUkmJE5Ysn37GQ9Nuh3QHm8hBvZmmiJNDBewM3M1vXrAC_xOm90MLt7svLwSNqpGB8sm38TgsC'
 			}, {

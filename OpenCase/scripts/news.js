@@ -230,5 +230,13 @@
 		"RU" : " - Добавлена сувенирная коллекция Italy",
 		"EN" : " - Souvenir collection Italy was added"
 	}
+}, {
+	"day" : 2,
+	"month" : 9,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Добавлена коллекция Alpha<br> - Исправлена ошибка с ценой на P2000 | Лабиринт. К сожалению, если этот предмет уже есть в вашем инвентаре, то цена не обновится, только для новых предметов цена будет нормальной.",
+		"EN" : " - Alpha collection was added<br> - Changed name of P2000 from Labyrinth to Pathfinder."
+	}
 }, 
 ];

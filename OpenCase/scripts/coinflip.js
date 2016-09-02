@@ -193,7 +193,6 @@ function showGame(game_id) {
 	for(var i = 0; i < bot_inventory.length; i++) {
 		var weapon = bot_inventory[i];
 	
-		if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
 		var weaponInfo = "<tr><td class='"+weapon.rarity+"-color inv_rarity'></td><td><span class='inv_type'>"+weapon.type+"</span><span class='inv_name'>"+weapon.skinName+"</span></td><td class='inv_price'>$"+weapon.price+"</td></tr>";
 		$('.bot-inventory').append(weaponInfo);
 	}
@@ -207,7 +206,7 @@ function showGame(game_id) {
 		for(var i = 0; i < PlayerBet.weapons.length; i++) {
 			var weapon = PlayerBet.weapons[i];
 	
-			if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
+			
 			var weaponInfo = "<tr><td class='inv_price'>$"+weapon.price+"</td><td><span class='inv_type'>"+weapon.type+"</span><span class='inv_name'>"+weapon.skinName+"</span></td><td class='"+weapon.rarity+"-color inv_rarity'></td></tr>";
 			$('.player-inventory').append(weaponInfo);
 		}
@@ -241,7 +240,6 @@ function showGame(game_id) {
 		for(var i = 0; i < Games[game_id].player.weapons.length; i++) {
 			var weapon = Games[game_id].player.weapons[i];
 	
-			if (Settings.language != 'RU' && weapon.type.indexOf('Сувенир') != -1) weapon.type = weapon.type.replace('Сувенир', 'Souvenir');
 			var weaponInfo = "<tr><td class='inv_price'>$"+weapon.price+"</td><td><span class='inv_type'>"+weapon.type+"</span><span class='inv_name'>"+weapon.skinName+"</span></td><td class='"+weapon.rarity+"-color inv_rarity'></td></tr>";
 			$('.player-inventory').append(weaponInfo);
 		}

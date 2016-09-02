@@ -261,15 +261,13 @@ $('.button_contract').on('click', function() {
 	
 	var collection = getCollection(type, name);
 	
-	if (typeof collection != "undefined") {
+	if (typeof collection.weapons != "undefined") {
 		var nextQuality = qualitySort[qualitySort.indexOf(weapon.getAttribute('data-rarity'))+1];
 		var nextQualityWeapons = [];
 		for (var i = 0; i < collection.weapons.length; i++)
 			if (collection.weapons[i].rarity == nextQuality)
 				nextQualityWeapons.push(collection.weapons[i]);
 		var newWeapon = nextQualityWeapons[Math.rand(0, nextQualityWeapons.length-1)];
-	} else {
-		return false;
 	}
 	
 	if (typeof newWeapon == 'undefined') {
