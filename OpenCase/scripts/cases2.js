@@ -1038,7 +1038,7 @@
 			}, {
 				'type' : 'Nova',
 				'skinName' : 'Modern Hunter',
-				'rarity' : 'industrial',
+				'rarity' : 'milspec',
 				'img' : '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhoyszAZDNW6c6JmY-PkuX6DLfYkWNFppEmiLCQ8I2i3FHs-RVqNmn3JdTGJARqYVuD-1C5k7vph8fpvpjAyXt9-n51ZoikmFc'
 			}, {
 				'type' : 'M4A4',
