@@ -131,9 +131,13 @@ function startGame() {
 	ifCarusel = true;
 	
 	var arr = [];
-	while (arr.length < winNumber+3) {
-		arr = arr.concat(PlayersInGame).shuffle().shuffle().shuffle();
+	for (var i = 0; i < PlayersInGame.length; i++) {
+		var count = parseInt(PlayersInGame[i].chance);
+		for (var z = 0; z < count; z++) {
+			arr.push(PlayersInGame[i]);
+		}
 	}
+	arr = arr.shuffle().shuffle().shuffle();
 	if (arr.length > winNumber+3)
 		arr.splice(winNumber + 3, arr.length - (winNumber +3));
 	var el = '';
@@ -239,9 +243,9 @@ function getJackpotWiner() {
 
 function botAddItems() {
 	if (ifCarusel == false) {
-	var botName = Bot.names[Math.rand(0, Bot.names.length-1)];
+	var botName = getRandomBotName();
 	
-	var botImg = Bot.images[Math.rand(0, Bot.images.length-1)];
+	var botImg = getRandomBotImg();
 	var botWeapons = [];
 	var itemsCost = 0.00;
 	var qual, st, price;

@@ -28,7 +28,6 @@ var Settings = {
 	Settings.sounds = getStatistic("settings_sounds", 'true') === 'true';
 	Settings.drop = getStatistic("settings_drop", 'false') === 'true';
 
-
 function fromCookieToAndroid() {
 	cookieList = ["playerNickname", "playerAvatar", "settings_language", "settings_sounds", "settings_drop"];
 	

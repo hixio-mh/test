@@ -69,7 +69,7 @@ $(".choseItems").on("click", function () {
 	for (var i = 0; i < winItems.length; i++) {
 		$('.winItems').append('<li>'+winItems[i].type+' | '+winItems[i].skinName+' ($'+winItems[i].price+')<b class='+winItems[i].rarity+'></b>');
 	}
-	botAddWeapon(itemsCost);
+	botAddWeapon(itemsCost/winItems.length);
 	
 	$('.choice').css('display', 'block');
 	$('.status').text('...');

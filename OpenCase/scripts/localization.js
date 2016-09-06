@@ -736,6 +736,14 @@ Localization.settings2 = {
 	"resetQuestion": {
 		"RU" : "Вы уверены, что хотите очистить инвентарь и сбросить статистику?",
 		"EN" : "All weapons will be deleted. Statistics will be reset. Are you sure?"
+	},
+	"notValidNicknameTitle" : {
+		"RU" : "Ошибка",
+		"EN" : "Error"
+	},
+	"notValidNickname": {
+		"RU" : "В имени могут быть только буквы и цифры.",
+		"EN" : "Wrong name. Only letters and numbers are available."
 	}
 }
 Localization.about = [{
