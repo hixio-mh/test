@@ -398,7 +398,7 @@ function getCollection(type, name) {
 		//Error
 	}
 	var collection="";
-	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''), type.replace(/★/, ''));
+	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''));
 	for (var i = 0; i < cases.length; i++) {
 		for (var z = 0; z < cases[i].weapons.length; z++) 
 			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == getSkinName(name))) {
