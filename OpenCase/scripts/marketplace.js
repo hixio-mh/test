@@ -190,6 +190,7 @@ function search(searchStr) {
 	var info = [];
 	if (searchStr.indexOf(' | ') != -1) {
 		var wp = searchStr.split(' | ');
+		if (wp[0] == "P2000" && wp[1] == "Лабиринт") wp[1] = "Pathfinder" 
 		info = getAllWeaponInfo(wp[0], wp[1], true);
 	} else {
 		if ($(".ui-menu-item").length != 0) {
