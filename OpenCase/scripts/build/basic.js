@@ -539,6 +539,7 @@ function deleteMenuNotification(items) {
 
 function getCollection(type, name) {
 	if (name = "Man-o") name = "Man-o'-war";
+	if (name = "Chantico") name = "Chantico's fire";
 	try {
 		var param = parseURLParams(window.location.href);
 		if(typeof param != "undefined") {
@@ -549,7 +550,7 @@ function getCollection(type, name) {
 		//Error
 	}
 	var collection="";
-	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''));
+	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''), type.replace(/★/, ''));
 	for (var i = 0; i < cases.length; i++) {
 		for (var z = 0; z < cases[i].weapons.length; z++) 
 			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == getSkinName(name))) {
