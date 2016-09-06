@@ -386,8 +386,8 @@ function deleteMenuNotification(items) {
 }
 
 function getCollection(type, name) {
-	if (name = "Man-o") name = "Man-o'-war";
-	if (name = "Chantico") name = "Chantico's fire";
+	if (name == "Man-o") name = "Man-o'-war";
+	if (name == "Chantico") name = "Chantico's fire";
 	try {
 		var param = parseURLParams(window.location.href);
 		if(typeof param != "undefined") {
