@@ -386,6 +386,7 @@ function deleteMenuNotification(items) {
 }
 
 function getCollection(type, name) {
+	if (name = "Man-o") name = "Man-o'-war";
 	try {
 		var param = parseURLParams(window.location.href);
 		if(typeof param != "undefined") {
@@ -399,7 +400,7 @@ function getCollection(type, name) {
 	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''));
 	for (var i = 0; i < cases.length; i++) {
 		for (var z = 0; z < cases[i].weapons.length; z++) 
-			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == name)) {
+			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == getSkinName(name))) {
 				collection = cases[i];
 				break;
 			}
