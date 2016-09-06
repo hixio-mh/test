@@ -1,4 +1,4 @@
-﻿var win;
+var win;
 var winNumber = 35;
 var inventory = [];
 var inventory_length = 0;
