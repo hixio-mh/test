@@ -238,5 +238,13 @@
 		"RU" : " - Добавлена коллекция Alpha<br> - Исправлена ошибка с ценой на P2000 | Лабиринт. К сожалению, если этот предмет уже есть в вашем инвентаре, то цена не обновится, только для новых предметов цена будет нормальной.<br> - Исправлено изображение XM1014 | Оранжевое пламя.",
 		"EN" : " - Alpha collection was added<br> - Changed name of P2000 from Labyrinth to Pathfinder."
 	}
+}, {
+	"day" : 6,
+	"month" : 9,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - Изменен алгоритм рулетки",
+		"EN" : " - Jackpot algorithm was changed. You can check by yourself."
+	}
 }, 
 ];
