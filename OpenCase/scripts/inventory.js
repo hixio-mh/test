@@ -63,6 +63,7 @@ function fillInventory() {
 	
 	for(var i = 0; i < inventory.length; i++) {
 		var weapon = inventory[i];
+		//var img = prefix + weapon.img + postfix;
 		
 		if (typeof weapon['new'] == 'undefined') 
 			weapon['new'] = false;
