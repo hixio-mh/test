@@ -28,7 +28,7 @@ window.onerror = function(msg, url, line, col, error) {
 	} catch (e){}
 	extra = ':'+line;
 	extra += !col ? '' : ':'+col;
-		
+
 	var action = msg+' | '+errorFile+extra+screen;
 	if (isAndroid()) {
 		client.sendToAnalytics('Error', 'Error', action, url);
@@ -84,9 +84,9 @@ function Sound(soundGet, action, priority, repeat, speed) {
 	repeat = repeat || 0;
 	speed = speed || 1;
 	var sound;
-	
+
 	if (soundGet == "click") soundGet = "menuclick";
-	
+
 	if (isAndroid() && parseFloat(client.getCurrentAppVersionName()) >= 1.3) {
 		client.playSound(soundGet.toLowerCase(), priority, repeat, speed)
 	} else {
@@ -358,6 +358,7 @@ function checkInventoryForNotification() {
 		}
 	}
 	if (new_weapon_count)
+		if (new_weapon_count > 100) new_weapon_count = 99;
 		menuNotification('inventory', '' + new_weapon_count)
 }
 
@@ -400,7 +401,7 @@ function getCollection(type, name) {
 	var collection="";
 	type = $.trim(type.replace(/(Souvenir|Сувенир)/g, ''));
 	for (var i = 0; i < cases.length; i++) {
-		for (var z = 0; z < cases[i].weapons.length; z++) 
+		for (var z = 0; z < cases[i].weapons.length; z++)
 			if ((cases[i].weapons[z].type == type) && (getSkinName(cases[i].weapons[z].skinName, "EN") == getSkinName(name))) {
 				collection = cases[i];
 				break;
@@ -440,7 +441,7 @@ function getImgUrl(img, big) {
 	prefix = window.location.protocol == "http:" ? prefix.replace("https", "http") : prefix;
 	var postfix = "/125fx125f";
 	var postfixBig = "/383fx383f";
-	
+
 	if (typeof img == 'undefined') return "../images/none.png";
 	if (img.indexOf("images/") != -1)
 		if (typeof big != "undefined") {

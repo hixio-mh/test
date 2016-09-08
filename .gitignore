@@ -47,3 +47,4 @@ Temporary Items
 .apdisk
 OpenCase/scripts/Minimize JS - Open Case.exe
 OpenCase/node_modules/**
+OpenCase/tests/**

@@ -22,7 +22,7 @@ function localizate(category){
 	}catch (e) {
 		//ERROR
 	}
-	if ($('.js-var').length) 
+	if ($('.js-var').length)
 		$('.js-var').each(function() {
 			vr = $(this).data('var');
 			$(this).html(eval(vr));
@@ -282,7 +282,7 @@ Localization.jackpot = [{
 		"localization" : {
 			"EN" : "Legendary $200 - $∞"
 		}
-	}, 
+	},
 ],
 Localization.jackpot2 = {
 	"sumText" : {
@@ -312,7 +312,7 @@ Localization.rps = [{
 		'selector': ".comp-score",
 		'localization' : {
 			"EN" : "Opponent <span>0</span>"
-		} 
+		}
 	}, {
 		'selector': ".choice span",
 		'localization' : {
@@ -374,7 +374,7 @@ Localization.coinflip = [{
 		'selector': "#local-table-total",
 		'localization' : {
 			"EN" : "Total"
-		} 
+		}
 	}, {
 		'selector': ".choseItems",
 		'localization' : {
@@ -435,6 +435,14 @@ Localization.double2 = {
 		"RU" : "Идет розыгрыш"
 	},
 },
+Localization.spinking = [{
+		"selector" : "#ssst",
+		"localization" : {
+			"RU" : "Баланс:",
+			"EN" : "Balance:"
+		}
+	},
+],
 Localization.inventory = [{
 		"selector" : "#weaponInfoTable tr:nth-child(1) td:nth-child(1)",
 		"localization" : {

@@ -8,7 +8,7 @@ var yourScore = 0,
 	totalRounds = 3,
 	round = 1,
 	maxItems = 5;
-	
+
 var winItems = [];
 
 var addItemsSound = new Audio();
@@ -63,18 +63,18 @@ $(".choseItems").on("click", function () {
 	}
 	$(".add-item").css("display", 'none');
 	$(".closeInventory").click();
-	
+
 	$('.winItems').append('<li id="whoBet">'+Localization.rps2.youAdd[Settings.language]+'</li>');
-	
+
 	for (var i = 0; i < winItems.length; i++) {
 		$('.winItems').append('<li>'+winItems[i].type+' | '+winItems[i].skinName+' ($'+winItems[i].price+')<b class='+winItems[i].rarity+'></b>');
 	}
 	botAddWeapon(itemsCost/winItems.length);
-	
+
 	$('.choice').css('display', 'block');
 	$('.status').text('...');
 })
-	
+
 function botAddWeapon(itemsCost) {
 	var minPrice = 0,
 		maxPrice = 0;
@@ -103,7 +103,7 @@ function botAddWeapon(itemsCost) {
 		minPrice = itemsCost - 200;
 		maxPrice = itemsCost + 200;
 	}
-	
+
 	var canContinue = false;
 	var weapons = [];
 	wpLength = winItems.length;
@@ -112,7 +112,7 @@ function botAddWeapon(itemsCost) {
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
 		weapon.statTrak = ifStatTrak(weapon.type, weapon.skinName);
 		price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
-		
+
 		var z = 0;
 		while (price == 0) {
 			qual = Quality[z].name[Settings.language == 'RU' ? 1 : 0];
@@ -133,17 +133,17 @@ function botAddWeapon(itemsCost) {
 	for (var i = wpLength; i < winItems.length; i++)
 		$('.winItems').append('<li>'+winItems[i].type+' | '+winItems[i].skinName+' ($'+winItems[i].price+')<b class='+winItems[i].rarity+'></b>');
 }
-	
+
 $('.choice__hand').on('click', function() {
-	
+
 	$(this).addClass('selected');
 	$('.status').text('...');
-	
+
 	$('.choice__hand').prop('disabled', true);
-	
+
 	$('#js-player-img').attr('src', '../images/rps/rock.png');
 	$('#js-comp-img').attr('src', '../images/rps/rock.png');
-	
+
 	$('.battle-field .left').addClass('animation-shake-left');
 	$('.battle-field .right').addClass('animation-shake-right');
 });
@@ -151,7 +151,7 @@ $('.choice__hand').on('click', function() {
 function listener(e) {
 	var playerChoice = $('.selected').data('choice');
 	var whoWin = startGame(playerChoice);
-	
+
 	if (whoWin == 'player') {
 		yourScore++;
 		round++;
@@ -165,13 +165,13 @@ function listener(e) {
 	} else {
 		$('.status').text(Localization.rps2.tie[Settings.language]);
 	}
-	
-	
+
+
 	$('.battle-field .left').removeClass('animation-shake-left');
 	$('.battle-field .right').removeClass('animation-shake-right');
 	$('.choice__hand').removeClass('selected');
 	$('.choice__hand').prop('disabled', false);
-	
+
 	if (round == totalRounds+1 || (yourScore == 2 && enemyScore == 0) || (yourScore == 0 && enemyScore == 2))
 		endGame((yourScore > enemyScore) ? true : false);
 	else
@@ -182,13 +182,13 @@ function newGame() {
 	round = 1;
 	yourScore = 0;
 	enemyScore = 0;
-	
+
 	$('.your-score span').text(yourScore);
 	$('.comp-score span').text(enemyScore);
 	$('.round-count').text(round + '/' + totalRounds);
-	
+
 	$('.winItems').html('');
-	
+
 	$('#js-player-img').attr('src', '../images/rps/rock.png');
 	$('#js-comp-img').attr('src', '../images/rps/rock.png');
 }
@@ -211,13 +211,13 @@ function endGame(playerWin) {
 		statisticPlusOne('rps-loose');
 		changePoints(-1);
 	}
-	
+
 	winItems = [];
-	
+
 	round = 1;
 	yourScore = 0;
 	enemyScore = 0;
-	
+
 	$(".choice").css("display", 'none');
 	$(".add-item").css("display", 'block');
 	checkInventoryForNotification();

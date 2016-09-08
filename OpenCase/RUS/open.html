@@ -13,6 +13,7 @@
 <script src="../scripts/openCase.js"></script>
 <script src="../scripts/jquery-ui.min.js"></script>
 
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
@@ -103,7 +104,7 @@ function weaponList() {
 			rare = true;
 		}
 		var weaponInfo = "<img src='" + img + "'><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
-		$(".weaponsList").append("<li class='weapon'>" + weaponInfo + "</li>");
+		$(".weaponsList").append("<li class='weapon animated fadeInDown'>" + weaponInfo + "</li>");
 	}
 	$(".weaponsList").css("display", "block");
 	$("#youCanWin").css("display", "block");
