@@ -2,7 +2,8 @@
 var totalMoney = 0.00;
 var timerId;
 var botMinDec = 5000, botMaxDec = 10000;
-var maxItems = 10;
+var maxItems = 15;
+var itemsLimit = 50;
 var usedName = [];
 var usedImages = [];
 var PlayersInGame = [];
@@ -28,11 +29,11 @@ try {
 			trailWidth : 2,
 			svgStyle : null,
 			text : {
-				value : '0/20',
+				value : '0/'+itemsLimit,
 				alignToBottom : false
 			}
 		});
-	
+
 	bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
 	bar.text.style.fontSize = '2rem';
 } catch (err) {
@@ -44,26 +45,26 @@ function newGame() {
 	ifCarusel = false;
 	$(".win").slideUp("fast");
 	bar.animate(0);
-	bar.setText("0/20<hr><s>$0</s>");
+	bar.setText("0/"+itemsLimit+"<hr><s>$0</s>");
 	$("#addItems").prop("disabled", false);
 	itemsAccepted = 0;
 	totalMoney = 0;
 	lastTicket = 0;
 	PlayerInGame = false;
-	
+
 	$(".items tr").remove();
 	$(".items").append("<tr></tr>");
-	
+
 	$("#players").html("");
 	$(".casesCarusel").html("");
 
 	$('#diffuculty').prop('disabled', false);
-	
+
 	PlayersInGame = [];
 	ItemsInGame = [];
-	
+
 	{marginLeft: 0}
-	
+
 	timerId = setTimeout(function(){botAddItems()}, Math.rand(botMinDec, botMaxDec));
 }
 
@@ -78,7 +79,7 @@ $("#addItems").on("click", function(){
 $('#diffuculty').change(function(){
 	var minPrice = parseFloat($('#diffuculty option:selected').data('min'));
 	var maxPrice = parseFloat($('#diffuculty option:selected').data('max'));
-	
+
 	priceRange.min = minPrice;
 	priceRange.max = maxPrice;
 	newGame();
@@ -87,24 +88,23 @@ $('#diffuculty').change(function(){
 function addItems(fromName, fromImg, itemCount, itemsCost) {
 	var okon = ["предмет", "предмета","предмета","предмета","предметов"];
 	itemsAccepted += itemCount;
-	var step = itemsAccepted * 100 / 20 /100;
+	var step = itemsAccepted * 100 / itemsLimit /100;
 	var value = itemCount-1;
 	//step += bar.value();
 	if (step > 1) {step = 1}
 	totalMoney += +Math.round(parseFloat(itemsCost)*100)/100;
 	totalMoney = +Math.round(parseFloat(totalMoney)*100)/100;
-	bar.setText(itemsAccepted + '/20<hr><s>$'+totalMoney+'</s>');
+	bar.setText(itemsAccepted + '/'+itemsLimit+'<hr><s>$'+totalMoney+'</s>');
 	bar.animate(step);
-	
+
 	if (itemCount>5) value = 4;
-	
-	
+
+
 	if (Settings.language == "RU")
 		$("#status").html(fromName + " внес " + itemCount + " " + okon[value]+" (~"+parseFloat(itemsCost).toFixed(2)+"$)");
 	else if (Settings.language == "EN")
 		$("#status").html(fromName + " added " + itemCount + " " + ((itemCount == 1) ? "item" : "items") + " (~$"+parseFloat(itemsCost).toFixed(2)+")");
-		
-	
+
 	var players = '';
 	for (var i = 0; i < PlayersInGame.length; i++) {
 		var chance = 0.0;
@@ -113,10 +113,10 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
 		PlayersInGame[i].chance = chance;
 	}
 	$("#players").html(players);
-	
+
 	clearTimeout(timerId);
-	if (itemsAccepted >= 20) {startGame()}
-	
+	if (itemsAccepted >= itemsLimit) {startGame()}
+
 	if (ifCarusel == false) {
 		timerId = setTimeout(function(){botAddItems()}, Math.rand(botMinDec, botMaxDec));
 	}
@@ -125,11 +125,11 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
 function startGame() {
 	$("#addItems").prop("disabled", true);
 	$('#diffuculty').prop('disabled', true);
-	
+
 	winNumber = 35;
-	
+
 	ifCarusel = true;
-	
+
 	var arr = [];
 	for (var i = 0; i < PlayersInGame.length; i++) {
 		var count = parseInt(PlayersInGame[i].chance);
@@ -141,9 +141,9 @@ function startGame() {
 	if (arr.length > winNumber+3)
 		arr.splice(winNumber + 3, arr.length - (winNumber +3));
 	var el = '';
-	
+
 	arr[winNumber] = getJackpotWiner();
-	
+
 	arr.forEach(function(item, index) {
 		var img = '../images/ava/' + item.avatar;
 
@@ -154,7 +154,7 @@ function startGame() {
 	win = arr[winNumber];
 	$(".casesCarusel").html(el);
 	$(".casesCarusel").css("margin-left", "0px");
-	
+
 	var a = 141*winNumber - 141;
 	var l = 141;
 	var d = 0, s = 0;
@@ -165,35 +165,35 @@ function startGame() {
 			//caseOpenAudio.play();
 			//caseOpening = true;
 			$(".closeInventory").click();
-			
-			if (Settings.language == "RU") 
+
+			if (Settings.language == "RU")
 				$(".win").html("Победил: <b>"+win.nick + "</b><br>с шансом "+win.chance+"%<br><img src='../images/ava/"+win.avatar+"'>");
 			else
 				$(".win").html("<b>"+win.nick + "</b> won <br>with "+win.chance+"% chance<br><img src='../images/ava/"+win.avatar+"'>");
-			
+
 			if(win.nick == Player.nickname) {
 				for (var i = 0; i < ItemsInGame.length; i++) {
-					if (isAndroid()) 
+					if (isAndroid())
 						saveWeapon(ItemsInGame[i]);
 					else
 						inventory.push(ItemsInGame[i]);
-					
+
 				}
 				if (!isAndroid())
 					saveInventory();
-				
+
 				//Statistic
 				statisticPlusOne('rulet-wins');
 				changePoints(2);
-				
+
 				var a = getStatistic('rulet-max-win');
-				
+
 				var winSum = parseFloat($('.progressbar-text s').text().substr(1));
 				if (typeof a == "undefined")
 					a = winSum;
 				else
 					a = winSum > parseFloat(a) ? winSum : parseFloat(a);
-				saveStatistic('rulet-max-win', a);	
+				saveStatistic('rulet-max-win', a);
 			} else {
 				if (PlayerInGame) {
 					statisticPlusOne('rulet-loose');
@@ -219,8 +219,8 @@ function startGame() {
 
 function getJackpotWiner() {
 	var random = Math.rand(1, lastTicket);
-	
-	try {	
+
+	try {
 		if (hex_md5(Player.nickname) == Cheats.winEveryTime) {
 			for (var i = 0; i < PlayersInGame.length; i++) {
 				if (PlayersInGame[i].nick == Player.nickname)
@@ -230,8 +230,8 @@ function getJackpotWiner() {
 	} catch(e) {
 		//something went wrong
 	}
-		
-	
+
+
 	for(var i = 0; i < PlayersInGame.length; i++) {
 		if ((PlayersInGame[i].tickets.from < random) && (random < PlayersInGame[i].tickets.to)) {
 			var log = [["Победил", PlayersInGame[i].nick],["Билеты от", PlayersInGame[i].tickets.from], ["Билеты до", PlayersInGame[i].tickets.to],["Случайное число", random]];
@@ -244,13 +244,13 @@ function getJackpotWiner() {
 function botAddItems() {
 	if (ifCarusel == false) {
 	var botName = getRandomBotName();
-	
+
 	var botImg = getRandomBotImg();
 	var botWeapons = [];
 	var itemsCost = 0.00;
 	var qual, st, price;
 	var rand = Math.rand(1, maxItems);
-	
+
 	while (botWeapons.length < rand) {
 		var weapon = getRandomWeapon(1);
 		weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
@@ -264,7 +264,7 @@ function botAddItems() {
 				}
 	}
 	for (var i = 0; i < botWeapons.length; i++) {
-		
+
 		var z = 0;
 		while (weapon.price == 0) {
 			botWeapons[i].quality = Quality[z].name[Settings.language == 'RU' ? 1 : 0];
@@ -296,7 +296,7 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 	var statTrak = (ifStatTrak == true) ? "StatTrak™ " : "";
 	if(weaponType.indexOf("|") != -1) {weaponType = weaponType.split("|")[1]}
 	if(weaponName.indexOf("|") != -1) {weaponName = weaponName.split("|")[1]}
-	
+
 	price = (price == 0) ? getPrice(weaponType, weaponName, weaponQuality, ifStatTrak) : price;
 	/*if (price == 0) {
 		console.error("Нет цены для предмета: "+weaponType+" | "+weaponName+" ("+weaponQuality+")");
@@ -304,9 +304,9 @@ function itemsList(fromName, weaponType, weaponName, weaponImg, weaponQuality, i
 	var newItems = "<tr class='itemInItemsList "+weaponRarity+"-color'>"+
 				   "<td><p class='fromName'>"+fromName+" $"+price+"</p><p>"+statTrak + weaponType+" | "+weaponName+"<p class='quality'>"+
 				   "("+weaponQuality+")</p></p></td><td><img src='"+weaponImg+"' class='weaponImg'></td></tr>";
-				   
+
 	$(".items tr:first").before(newItems);
-	
+
 	var item = {
 		"type" : weaponType,
 		"skinName" : weaponName,
@@ -326,7 +326,7 @@ $(".choseItems").on("click", function(){
 	var ids = [];
 	var itemsCost = 0;
 	if(itemsCount != 0) {
-		
+
 		if (isAndroid()) {
 			$(".inventoryItemSelected").each(function () {
 				playerWeapons.push(getWeapon(parseInt($(this).data('id'))));
@@ -343,8 +343,8 @@ $(".choseItems").on("click", function(){
 		}
 		PlayersInGame.push({
 			"nick" : Player.nickname,
-			"avatar" : Player.avatar, 
-			"chance" : "0", 
+			"avatar" : Player.avatar,
+			"chance" : "0",
 			"itemsCost" : itemsCost,
 			"tickets" : {
 				"from" : lastTicket+1,
@@ -359,7 +359,7 @@ $(".choseItems").on("click", function(){
 			}
 			saveInventory();
 		}
-		
+
 		for (var i = 0; i < playerWeapons.length; i++) {
 			itemsList(Player.nickname, playerWeapons[i].type, playerWeapons[i].skinName, getImgUrl(playerWeapons[i].img), playerWeapons[i].quality, playerWeapons[i].statTrak, playerWeapons[i].rarity, playerWeapons[i].price)
 		}
@@ -379,7 +379,7 @@ function FillMyInventoryWithRandomWeapon(count){
 		weapon.statTrak = ifStatTrak(weapon.type, weapon.name);
 		weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
 		weapon['new'] = true;
-		
+
 		var z = 0;
 		while (weapon.price == 0) {
 			weapon.quality = Quality[z].name[1];
