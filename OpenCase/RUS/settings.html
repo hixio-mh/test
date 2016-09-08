@@ -288,23 +288,23 @@ $(function() {
 		"iconsHeight": 50,
 	});
 	var icons = [];
-	
+
 	var i = Bot.images.length;
 	while (i--) {
 		icons.push({"iconFilePath":"../images/ava/"+Bot.images[i], "iconValue": Bot.images[i]});
 	}
 	iconSelect.refresh(icons);
-	
+
 	$("#avatar").on("changed", function() {
 		saveStatistic("playerAvatar", iconSelect.getSelectedValue());
 		$('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
 	})
-	
+
 	$("#nickname").val(Player.nickname);
 	iconSelect.setSelectedIndex(Bot.images.length-parseInt(Player.avatar)-1);
-	
+
 	$('select option[value='+Settings.language+']').attr('selected', 'true');
-	
+
 	if (Settings.sounds == true) {
 		$('input[name="sounds"]').prop('checked', true);
 		$('.switch[data-target="switch-sound"]').addClass('switchOn');
@@ -340,7 +340,7 @@ $("#submit").on("click", function() {
 		saveStatistic('settings_language', lang);
 	saveStatistic('settings_sounds', $('input[name="sounds"]').prop('checked'));
 	saveStatistic('settings_drop', $('input[name="drop"]').prop('checked'));
-	
+
 	Settings.language = lang;
 	localizate('settings');
 
@@ -415,7 +415,11 @@ $(document).on('click', '#code-confirm', function() {
 		code: 'f8d6dd190baff0de491c8fae6399cd64',
 		action: 'saveStatistic("doubleBalance", Player.doubleBalance+=183875)',
 		description: '+183875 double credits'
-	}
+	}, {
+    code: 'fe63765176c7bd5b069d4e6c7eee3d34',
+    action: 'saveStatistic("doubleBalance", Player.doubleBalance+=50000)',
+    description: '+50000 double credits'
+  }
 	];
 	var code = $('#code-input').val();
 
@@ -426,11 +430,11 @@ $(document).on('click', '#code-confirm', function() {
 		}, 1000);
 		return false
 	}
-	
+
 	codeHex = hex_md5(code);
 	var msg = "";
 	for (var i = 0; i < codesList.length; i++)
-		if (codesList[i].code == codeHex) 
+		if (codesList[i].code == codeHex)
 			if (getStatistic('code-'+code, 'none') == 'none') {
 				eval(codesList[i].action);
 				saveStatistic('code-'+code, 'activated');
