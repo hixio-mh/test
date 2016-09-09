@@ -1,0 +1,73 @@
+#containter {
+	font-family: Lato;
+}
+.spinking {
+	background-size:cover;
+}
+.bg-industrial {
+	background-image: url(../images/spinking/background-industrial.png);
+}
+.bg-milspec {
+	background-image: url(../images/spinking/background-milspec.png);
+}
+.bg-covert {
+	background-image: url(../images/spinking/background-covert.png);
+}
+.bg-rare {
+	background-image: url(../images/spinking/background-rare.png);
+}
+.img-holder {
+    height: 75px;
+    text-align: center;
+    background: #fff;
+    border-radius: 50%;
+    width: 75px;
+    margin: 0 auto;
+    margin-top: 7px;
+    overflow: hidden;
+		box-shadow: 0 0 1px RGBA(0, 0, 0, 0.2);
+}
+.weapon img {
+    height: 100%;
+		width: auto;
+}
+.xCounter {
+    position: absolute;
+    top: 7px;
+    right: 17px;
+    background: #fff;
+    color: #000;
+    padding: 6px;
+    border-radius: 50%;
+    font-size: .8em;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 1.2em;
+}
+.weaponInfo {
+  width: 100%;
+	font-size: 11px;
+	padding: 3px;
+	background: RGBA(0, 0, 0, 0.3);
+	overflow: hidden;
+	white-space: nowrap;
+}
+.spinking-item-name, .spinking-item-descr {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.spinking-item-name {
+	font-weight: bold;
+	font-size: 13px;
+}
+#icons-copyright {
+    color: #313841;
+    font-size: 0.7em;
+		margin-left: 5px;
+}
+#icons-copyright a {
+    color: #3C4653;
+    text-decoration: none;
+}

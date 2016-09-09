@@ -357,9 +357,9 @@ function checkInventoryForNotification() {
 				new_weapon_count++;
 		}
 	}
-	if (new_weapon_count)
-		if (new_weapon_count > 100) new_weapon_count = 99;
+	if (new_weapon_count) {
 		menuNotification('inventory', '' + new_weapon_count)
+	}
 }
 
 function menuNotification(items, message) {

@@ -120,13 +120,12 @@
     float: right;
     background: #dc3e3e;
     font-family: LatoRegular;
-    border-radius: 50%;
+    border-radius: 5px;
     line-height: 100%;
-    width: 23px;
-    height: 23px;
     text-align: center;
     font-size: 0.8em;
-    line-height: 1.5em;
+    padding: 4px 5px;
+    margin-top: 4px;
 }
 sup.beta {
     color: red;

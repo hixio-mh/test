@@ -21,6 +21,7 @@ var Spins = [{
 		},
 		"img": "respin.png",
 		"rarity" : "milspec",
+		"code" : "startSpin()",
 		"weight" : 6
 	}, {
 		"name" : {
@@ -34,6 +35,7 @@ var Spins = [{
 		"img": "comeback.png",
 		"imgStyles": "height: 90%;margin-top:3px;",
 		"rarity" : "milspec",
+		"code" : "",
 		"weight" : 6
 	}, {
 		"name" : {
@@ -48,6 +50,7 @@ var Spins = [{
 		"imgStyles": "height: 80%;margin-top:5px;",
 		"xCounter": 3,
 		"rarity" : "milspec",
+		"code" : "",
 		"weight" : 6
 	}, {
 		"name" : {
@@ -60,6 +63,7 @@ var Spins = [{
 		},
 		"img": "knife.png",
 		"rarity" : "rare",
+		"code" : "",
 		"weight" : 1
 	},
 ]

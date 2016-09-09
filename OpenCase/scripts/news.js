@@ -254,5 +254,13 @@
 		"RU" : " - Увеличен максимальный порог предметов в джекпоте до 50! Количество предметов, которые вы можете поставить увеличено до 15!<br>Новости о будущих обновлениях теперь будут публиковаться на <a href='https://www.patreon.com/VLADOS776' target='_blank'>Patreon</a>",
 		"EN" : " - Increased the maximum items in jackpot to 50! The number of items that you can place in bet increased to 15! <br> News about future updates will be published on a <a href='https://www.patreon.com/VLADOS776' target='_blank'>Patreon</a>"
 	}
+}, {
+	"day" : 9,
+	"month" : 9,
+	"year" : 2016,
+	"update" : {
+		"RU" : " - [Дизайн] Новый дизайн для счетчика нового оружия в меню<br> - [Исправлено] Баг с нулевым количеством нового оружия",
+		"EN" : " - [Design] New design for new weapons counter in menu<br> - [Fixed] Null new weapons"
+	}
 },
 ];
