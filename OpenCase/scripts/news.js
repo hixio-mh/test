@@ -260,7 +260,7 @@ var news = [{
     "month": 9,
     "year": 2016,
     "update": {
-        "RU": " - [Дизайн] Новый дизайн для счетчика нового оружия в меню<br> - [Исправлено] Баг с нулевым количеством нового оружия",
-        "EN": " - [Design] New design for new weapons counter in menu<br> - [Fixed] Null new weapons"
+        "RU": " - [Дизайн] Новый дизайн для счетчика нового оружия в меню<br> - [Дизайн] Новый дизайн джекпота<br> - [Исправлено] Баг с нулевым количеством нового оружия<br> - [Исправлено] В инвентаре нет фона у сувенирного оружия, купленного в магазине",
+        "EN": " - [Design] New design for new weapons counter in menu<br> - [Design] New jackpot design<br> - [Fixed] Null new weapons<br> - [Fixed] Souvenir weapons has no background in inventory"
     }
 }, ];
