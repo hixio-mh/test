@@ -17,6 +17,9 @@
 .bg-rare {
 	background-image: url(../images/spinking/background-rare.png);
 }
+.casesCarusel {
+	-webkit-transform: translateZ(0);
+}
 .img-holder {
     height: 75px;
     text-align: center;
