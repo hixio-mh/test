@@ -271,4 +271,12 @@ var news = [{
         "RU": " - [Исправлено] Изображение Flip Knife | Пиксельный камуфляж «Лес»",
         "EN": " - [Fixed] Flip Knife | Forest DDPAD image"
     }
+}, {
+    "day": 11,
+    "month": 9,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Отрицательные ставки в дабле",
+        "EN": " - [Fixed] Negative bets in double"
+    }
 }, ];
