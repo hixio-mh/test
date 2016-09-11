@@ -47,7 +47,7 @@ try {
 function newGame() {
     clearTimeout(timerId);
     ifCarusel = false;
-    $(".win").slideUp("fast");
+    $(".win").slideUp("slow");
     bar.animate(0);
     bar.setText("0/" + itemsLimit + "<hr><s>$0</s>");
     $("#addItems").prop("disabled", false);
@@ -56,8 +56,7 @@ function newGame() {
     lastTicket = 0;
     PlayerInGame = false;
 
-    $(".items tr").remove();
-    $(".items").append("<tr></tr>");
+    $(".items li").remove();
 
     $("#players").html("");
     $(".casesCarusel").html("");
@@ -267,7 +266,6 @@ function getJackpotWiner() {
 function botAddItems() {
     if (ifCarusel == false) {
         var botName = getRandomBotName();
-
         var botImg = getRandomBotImg();
         var botWeapons = [];
         var itemsCost = 0.00;
@@ -316,8 +314,8 @@ function botAddItems() {
 
 function itemsList(fromName, fromImg, tickets, itemsCost, weapons) {
     if (typeof weapons == 'undefined' || weapons.length == 0) return false;
-    var bet = "<tr class='game-bet'><td class='game-bet__player'><img src='../images/ava/" + fromImg + "'>" + fromName + "</td><td class='game-bet__tickets'><span class='game-bet__tickets__price'>$" + itemsCost.toFixed(2) + "</span><i class='fa fa-ticket'></i> " + ('' + parseInt(tickets.from)).replace(ticketsRegExp, '$1&#8198;') + " - " + ('' + parseInt(tickets.to)).replace(ticketsRegExp, '$1&#8198;') + "</td></tr>" +
-        "<tr class='bet-items'><td colspan=2>";
+    var bet = "<li class='game-bet animated zoomIn'><div class='game-bet__info'><div class='game-bet__player'><img src='../images/ava/" + fromImg + "'>" + fromName + "</div><div class='game-bet__tickets'><span class='game-bet__tickets__price'>$" + itemsCost.toFixed(2) + "</span><i class='fa fa-ticket'></i> " + ('' + parseInt(tickets.from)).replace(ticketsRegExp, '$1&#8198;') + " - " + ('' + parseInt(tickets.to)).replace(ticketsRegExp, '$1&#8198;') + "</div></div></div>" +
+        "<div class='bet-items " + (weapons.length > 4 ? "hide-items" : "") + "'><div colspan=2>";
     for (var i = 0; i < weapons.length; i++) {
         var weapon = weapons[i];
         var statTrak = (weapon.statTrak == true) ? "StatTrak™ " : "";
@@ -333,9 +331,14 @@ function itemsList(fromName, fromImg, tickets, itemsCost, weapons) {
         item.new = true;
         ItemsInGame.push(item);
     }
-    bet += "</td></tr>";
-    $(".items tr:first").before(bet);
+    bet += "</div></div>";
+    $(bet).hide().prependTo(".items").slideToggle();
+    //$(".items").prepend(bet);
 }
+
+$(document).on('click', '.hide-items, .show-items', function() {
+    $(this).toggleClass('hide-items show-items', 800);
+})
 
 $(".choseItems").on("click", function() {
     var itemsCount = $(".inventoryItemSelected").length;
