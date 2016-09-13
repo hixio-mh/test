@@ -1,22 +1,89 @@
+body {
+	overflow-x: hidden;
+}
 #containter {
-	font-family: Lato;
-	padding-top: 40px;
+    font-family: Lato;
+    padding-top: 40px;
 }
+
+#balance-text, #balance {
+    color: #fff;
+}
+
+#balance-text {
+    margin-left: 10px;
+}
+
+@media (max-width:495px) {
+	/*Carusel*/
+	.scrollerContainer {
+		margin: 10px 0;
+	}
+}
+
+.bets {
+    height: 35px;
+    white-space: nowrap;
+    overflow-x: auto;
+    margin-right: 9px;
+    margin-left: 9px;
+    text-align: center;
+    margin-top: 6px;
+}
+
+.bets>span {
+    margin-left: 0px;
+    padding: 8px 10px;
+    background: #e7e7e7;
+    color: #3F3F3F;
+    display: inline-block;
+    border-right: 1px solid #303030;
+    border-top: 1px solid #303030;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+#bet {
+    width: calc(100% - 16px);
+    text-align: center;
+    height: 37px;
+    font-size: 1em;
+    border: 1px solid #303030;
+    margin: 5px 8px;
+}
+.winList {
+    padding: 5px;
+    list-style: none;
+}
+
 .spinking {
-	background-size:cover;
+    background-size: cover;
 }
+
 .bg-industrial {
-	background-image: url(../images/spinking/background-industrial.png);
+    background-image: url(../images/spinking/background-industrial.png);
 }
+
 .bg-milspec {
-	background-image: url(../images/spinking/background-milspec.png);
+    background-image: url(../images/spinking/background-milspec.png);
 }
+
+.bg-classified {
+    background-image: url(../images/spinking/background-classified.png);
+}
+
+.bg-restricted {
+    background-image: url(../images/spinking/background-restricted.png);
+}
+
 .bg-covert {
-	background-image: url(../images/spinking/background-covert.png);
+    background-image: url(../images/spinking/background-covert.png);
 }
+
 .bg-rare {
-	background-image: url(../images/spinking/background-rare.png);
+    background-image: url(../images/spinking/background-rare.png);
 }
+
 .img-holder {
     height: 75px;
     text-align: center;
@@ -26,12 +93,14 @@
     margin: 0 auto;
     margin-top: 7px;
     overflow: hidden;
-		box-shadow: 0 0 1px RGBA(0, 0, 0, 0.2);
+    box-shadow: 0 0 1px RGBA(0, 0, 0, 0.2);
 }
+
 .weapon img {
     height: 100%;
-		width: auto;
+    width: auto;
 }
+
 .xCounter {
     position: absolute;
     top: 7px;
@@ -46,29 +115,42 @@
     text-align: center;
     line-height: 1.2em;
 }
+
 .weaponInfo {
-  width: 100%;
-	font-size: 11px;
-	padding: 3px;
-	background: RGBA(0, 0, 0, 0.3);
-	overflow: hidden;
-	white-space: nowrap;
+    width: 100%;
+    font-size: 11px;
+    padding: 3px;
+    background: RGBA(0, 0, 0, 0.3);
+    overflow: hidden;
+    white-space: nowrap;
 }
+
 .spinking-item-name, .spinking-item-descr {
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
 .spinking-item-name {
-	font-weight: bold;
-	font-size: 13px;
+    font-weight: bold;
+    font-size: 13px;
 }
+
 #icons-copyright {
     color: #313841;
     font-size: 0.7em;
-		margin-left: 5px;
+    margin-left: 5px;
 }
+
 #icons-copyright a {
     color: #3C4653;
     text-decoration: none;
+}
+@keyframes test {
+	0%{
+		margin:auto;
+	}
+	100% {
+		margin: auto;
+	}
 }

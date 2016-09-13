@@ -9,15 +9,38 @@ webpackJsonp_name_([0,1],[
 	var Spins = __webpack_require__(2);
 	exports.results = results;
 	var caseOpening = false;
+	var betLimit = 1000000;
 	
 	$(function () {
 	    for (var i = 0; i < Spins.length; i++) {
 	        Spins[i].id = i;
-	    }fillCarusel();
+	    }$('#bet').val('0');
+	    $('#balance').text(Player.doubleBalance.toFixed(0));
+	    $("#bet").keydown(function (e) {
+	        // Allow: backspace, delete, tab, escape, enter and .
+	        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+	        // Allow: Ctrl+A
+	        e.keyCode == 65 && e.ctrlKey === true ||
+	        // Allow: Ctrl+C
+	        e.keyCode == 67 && e.ctrlKey === true ||
+	        // Allow: Ctrl+X
+	        e.keyCode == 88 && e.ctrlKey === true ||
+	        // Allow: home, end, left, right
+	        e.keyCode >= 35 && e.keyCode <= 39) {
+	            // let it happen, don't do anything
+	            return;
+	        }
+	        // Ensure that it is a number and stop the keypress
+	        if ((e.shiftKey || e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
+	            e.preventDefault();
+	        }
+	    });
+	    fillCarusel();
 	    fillItems();
 	});
 	
 	function newGame() {
+	    $("#spin").prop("disabled", false);
 	    fillCarusel();
 	}
 	exports.newGame = newGame;
@@ -44,6 +67,9 @@ webpackJsonp_name_([0,1],[
 	
 	    $(".casesCarusel").html(carusel);
 	    $(".casesCarusel").css("margin-left", "0px");
+	    setTimeout(function () {
+	        $(".casesCarusel .weapon").removeClass("animated fadeInDown");
+	    }, 1000);
 	}
 	
 	function spin() {
@@ -58,9 +84,11 @@ webpackJsonp_name_([0,1],[
 	    $(".casesCarusel").animate({
 	        marginLeft: -1 * Math.rand(a - 48, a + 75)
 	    }, {
-	        duration: 8000,
-	        easing: 'easeOutCubic',
-	        start: function start() {},
+	        duration: 10000,
+	        easing: 'easeOutSine',
+	        start: function start() {
+	            $("#spin").prop("disabled", true);
+	        },
 	        progress: function progress(e, t) {
 	            if (Settings.sounds) {
 	                progress_animate = Math.round(100 * t), s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l), s > d && (Sound("scroll", "play"), d++);
@@ -70,7 +98,8 @@ webpackJsonp_name_([0,1],[
 	            //$(".win").slideDown("fast");
 	            caseOpening = false;
 	            if (win.code != "") eval(win.code);
-	            $("#spin").attr("onclick", "spinking.results.retry();");
+	            $("#spin").attr("onclick", "spinking.buttonSpin(true);");
+	            $("#spin").prop("disabled", false);
 	            //$(".openCase").attr("disabled", null);
 	            //$(".weapons").scrollTop(185);
 	
@@ -84,6 +113,20 @@ webpackJsonp_name_([0,1],[
 	    });
 	}
 	exports.spin = spin;
+	
+	function buttonSpin(respin) {
+	    respin = respin || false;
+	    var bet = getBet();
+	    if (bet == 0) return false;
+	
+	    if (bet > Player.doubleBalance) bet = Player.doubleBalance;
+	    $("#bet").val(bet);
+	    Player.doubleBalance -= bet;
+	    $("#balance").text(Player.doubleBalance);
+	    saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
+	    if (!respin) spin();else results.retry();
+	}
+	exports.buttonSpin = buttonSpin;
 	
 	//exports.retry = retry;
 	
@@ -113,6 +156,67 @@ webpackJsonp_name_([0,1],[
 	    }
 	}
 	
+	$(document).on('click', '.add-to-bet', function () {
+	    var plus = $(this).data('bet');
+	    var val = parseInt($('#bet').val());
+	    if (isNaN(val)) val = 0;
+	    switch (plus) {
+	        case 'clear':
+	            $('#bet').val('0');
+	            break;
+	        case 'max':
+	            $('#bet').val(betLimit);
+	            break;
+	        case 'x2':
+	            val *= 2;
+	            val = val > betLimit ? betLimit : val;
+	            $('#bet').val(val);
+	            break;
+	        case '1/2':
+	            val = val || 1;
+	            val /= 2;
+	            $('#bet').val(Math.round(val));
+	            break;
+	        default:
+	            val += parseInt(plus);
+	            $('#bet').val(val);
+	    }
+	    if (parseInt($("#bet").val()) > betLimit) $('#bet').val(betLimit);
+	    if (parseInt($("#bet").val()) > Player.doubleBalance) $('#bet').val(Player.doubleBalance);
+	    if (Player.doubleBalance <= 0) {
+	        $('#balance').addClass('animated flash');
+	        setTimeout(function () {
+	            $('#balance').removeClass('animated flash');
+	        }, 1000);
+	    }
+	});
+	
+	function getBet() {
+	    var bet = parseInt($("#bet").val());
+	    if (bet < 0) bet = 0;
+	    return bet;
+	}
+	exports.getBet = getBet;
+	
+	function getRandomWeapon(specialClass) {
+	    if (typeof specialClass == 'undefined') specialClass = 0;
+	    var randomCaseId = Math.rand(0, cases.length - 1);
+	
+	    if (specialClass == 0 && typeof cases[randomCaseId].specialClass != "undefined") {
+	        randomCaseId = Math.rand(0, cases.length - 1);
+	        while (typeof cases[randomCaseId].specialClass != "undefined") {
+	            randomCaseId = Math.rand(0, cases.length - 1);
+	        }
+	    }
+	    var randomWeaponId = Math.rand(0, cases[randomCaseId].weapons.length - 1);
+	    var wp = cases[randomCaseId].weapons[randomWeaponId];
+	
+	    if (typeof cases[randomCaseId].canBeSouvenir != 'undefined' && cases[randomCaseId].canBeSouvenir) wp.type = Math.rand(0, 10) > 7 ? Localization.souvenir[Settings.language] + ' ' + wp.type : wp.type;
+	
+	    return cases[randomCaseId].weapons[randomWeaponId];
+	}
+	exports.getRandomWeapon = getRandomWeapon;
+	
 	function fillItems() {
 	    var allItems = "";
 	    for (var i = 0; i < Spins.length; i++) {
@@ -128,10 +232,64 @@ webpackJsonp_name_([0,1],[
 	"use strict";
 	
 	module.exports = {
-	    giveRandomKnive: function giveRandomKnive() {},
-	
+	    giveRandomKnive: function giveRandomKnive() {
+	        for (var i = 0; i < cases.length; i++) {
+	            if (cases[i].name == "Knife Case") {
+	                var weapon = cases[i].weapons[Math.rand(0, cases[i].weapons.length - 1)];
+	                break;
+	            }
+	        }
+	        weapon.statTrak = false;
+	        weapon.quality = getItemQuality()[0];
+	        weapon['new'] = true;
+	        weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+	        if (weapon.price == 0) {
+	            spinking.results.giveRandomKnive();
+	            return false;
+	        }
+	        inventory.push(weapon);
+	        if (isAndroid()) saveWeapon(weapon);else saveInventory();
+	        Lobibox.alert("success", {
+	            title: "Random Knife",
+	            iconSource: 'fontAwesome',
+	            msg: weapon.type + " | " + getSkinName(weapon.skinName, Settings.language) + " (" + weapon.quality + ")"
+	        });
+	        checkInventoryForNotification();
+	    },
+	    randomItem: function randomItem(count) {
+	        count = count || 1;
+	        var msg = "";
+	        for (var i = 0; i < count; i++) {
+	            var weapon = spinking.getRandomWeapon();
+	            weapon.statTrak = false;
+	            weapon.quality = getItemQuality()[0];
+	            weapon['new'] = true;
+	            weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+	            if (weapon.price == 0 || weapon.type.indexOf("★") != -1) {
+	                i--;
+	                continue;
+	            }
+	            msg += weapon.type + " | " + getSkinName(weapon.skinName, Settings.language) + " (" + weapon.quality + ")<br>";
+	            inventory.push(weapon);
+	            if (isAndroid()) saveWeapon(weapon);
+	        }
+	        if (!isAndroid()) saveInventory();
+	        Lobibox.alert("success", {
+	            title: "Random Knife",
+	            iconSource: 'fontAwesome',
+	            msg: msg
+	        });
+	        checkInventoryForNotification();
+	    },
+	    returnBet: function returnBet(multy) {
+	        multy = multy || 1;
+	        Player.doubleBalance += parseInt(spinking.getBet() * multy);
+	        $('#balance').text(Player.doubleBalance);
+	        saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
+	    },
 	    retry: function retry() {
 	        $(".casesCarusel").children(".weapon").addClass("animated fadeOutDown");
+	        $("#spin").prop("disabled", true);
 	        sleep(1000).then(function () {
 	            $(".casesCarusel").empty();
 	            spinking.newGame();
@@ -145,6 +303,7 @@ webpackJsonp_name_([0,1],[
 	        return setTimeout(resolve, time);
 	    });
 	}
+	exports.sleep = sleep;
 
 /***/ },
 /* 2 */
@@ -153,6 +312,19 @@ webpackJsonp_name_([0,1],[
 	"use strict";
 	
 	var Spins = [{
+	    "name": {
+	        "RU": "Только не это",
+	        "EN": "Not this pls"
+	    },
+	    "description": {
+	        "RU": "Опустошает инвентарь",
+	        "EN": "Empties your inventory"
+	    },
+	    "img": "emptyInventory.png",
+	    "imgStyles": "height: 103%;margin:-1px;",
+	    "rarity": "covert",
+	    "chance": 0
+	}, {
 	    "name": {
 	        "RU": "N0thing",
 	        "EN": "N0thing"
@@ -163,7 +335,7 @@ webpackJsonp_name_([0,1],[
 	    },
 	    "img": "nothing.png",
 	    "rarity": "industrial",
-	    "chance": 8
+	    "chance": 15
 	}, {
 	    "name": {
 	        "RU": "Повтор",
@@ -176,7 +348,35 @@ webpackJsonp_name_([0,1],[
 	    "img": "respin.png",
 	    "rarity": "milspec",
 	    "code": "results.retry();",
-	    "chance": 7
+	    "chance": 13
+	}, {
+	    "name": {
+	        "RU": "Хоть что-то",
+	        "EN": "Better than nothing"
+	    },
+	    "description": {
+	        "RU": "Возвращение половины ставки",
+	        "EN": "Return half of your bet"
+	    },
+	    "img": "half.png",
+	    "imgStyles": "height: 90%;margin-top:5px;",
+	    "rarity": "milspec",
+	    "code": "results.returnBet(0.5);",
+	    "chance": 10
+	}, {
+	    "name": {
+	        "RU": "Эко раунд",
+	        "EN": "Eco round"
+	    },
+	    "description": {
+	        "RU": "1 случайная вещь",
+	        "EN": "1 random weapon"
+	    },
+	    "img": "gun.png",
+	    "imgStyles": "height: 103%;margin:-1px;",
+	    "rarity": "milspec",
+	    "code": "results.randomItem(1);",
+	    "chance": 8
 	}, {
 	    "name": {
 	        "RU": "Comeback",
@@ -186,10 +386,25 @@ webpackJsonp_name_([0,1],[
 	        "RU": "Возвращение ставки",
 	        "EN": "Return your bet"
 	    },
-	    "img": "comeback.png",
-	    "imgStyles": "height: 90%;margin-top:3px;",
-	    "rarity": "milspec",
-	    "code": "",
+	    "img": "betMultiply.png",
+	    "imgStyles": "height: 80%;margin-top:5px;",
+	    "rarity": "restricted",
+	    "code": "results.returnBet(1);",
+	    "chance": 8
+	}, {
+	    "name": {
+	        "RU": "Двойная удача",
+	        "EN": "Double kill"
+	    },
+	    "description": {
+	        "RU": "Ваша ставка x2",
+	        "EN": "Return your bet x2"
+	    },
+	    "img": "betMultiply.png",
+	    "imgStyles": "height: 80%;margin-top:5px;",
+	    "xCounter": 2,
+	    "rarity": "classified",
+	    "code": "results.returnBet(2);",
 	    "chance": 6
 	}, {
 	    "name": {
@@ -203,9 +418,23 @@ webpackJsonp_name_([0,1],[
 	    "img": "betMultiply.png",
 	    "imgStyles": "height: 80%;margin-top:5px;",
 	    "xCounter": 3,
-	    "rarity": "milspec",
-	    "code": "",
+	    "rarity": "covert",
+	    "code": "results.returnBet(3);",
 	    "chance": 4
+	}, {
+	    "name": {
+	        "RU": "Я БОГАТ!",
+	        "EN": "I AM RICH!"
+	    },
+	    "description": {
+	        "RU": "Ваша ставка x100",
+	        "EN": "Return your bet x100"
+	    },
+	    "img": "rich.png",
+	    "imgStyles": "height: 80%;margin-top:5px;",
+	    "rarity": "rare",
+	    "code": "results.returnBet(100)",
+	    "chance": 1
 	}, {
 	    "name": {
 	        "RU": "НОЖ!!!",

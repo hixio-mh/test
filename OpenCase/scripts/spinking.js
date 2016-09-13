@@ -2,15 +2,39 @@ var results = require("./spinking_result.js");
 var Spins = require("./spins.js");
 exports.results = results;
 var caseOpening = false;
+var betLimit = 1000000;
 
 $(function() {
     for (var i = 0; i < Spins.length; i++)
         Spins[i].id = i;
+
+    $('#bet').val('0');
+    $('#balance').text(Player.doubleBalance.toFixed(0));
+    $("#bet").keydown(function(e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+            // Allow: Ctrl+A
+            (e.keyCode == 65 && e.ctrlKey === true) ||
+            // Allow: Ctrl+C
+            (e.keyCode == 67 && e.ctrlKey === true) ||
+            // Allow: Ctrl+X
+            (e.keyCode == 88 && e.ctrlKey === true) ||
+            // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+            // let it happen, don't do anything
+            return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
     fillCarusel();
     fillItems();
 })
 
 function newGame() {
+    $("#spin").prop("disabled", false);
     fillCarusel();
 }
 exports.newGame = newGame;
@@ -39,6 +63,9 @@ function fillCarusel() {
 
     $(".casesCarusel").html(carusel);
     $(".casesCarusel").css("margin-left", "0px");
+    setTimeout(function() {
+        $(".casesCarusel .weapon").removeClass("animated fadeInDown");
+    }, 1000);
 }
 
 function spin() {
@@ -53,10 +80,10 @@ function spin() {
     $(".casesCarusel").animate({
         marginLeft: -1 * Math.rand(a - 48, a + 75)
     }, {
-        duration: 8000,
-        easing: 'easeOutCubic',
+        duration: 10000,
+        easing: 'easeOutSine',
         start: function() {
-
+            $("#spin").prop("disabled", true);
 
         },
         progress: function(e, t) {
@@ -73,7 +100,8 @@ function spin() {
             caseOpening = false;
             if (win.code != "")
                 eval(win.code);
-            $("#spin").attr("onclick", "spinking.results.retry();");
+            $("#spin").attr("onclick", "spinking.buttonSpin(true);");
+            $("#spin").prop("disabled", false);
             //$(".openCase").attr("disabled", null);
             //$(".weapons").scrollTop(185);
 
@@ -88,6 +116,23 @@ function spin() {
     })
 }
 exports.spin = spin;
+
+function buttonSpin(respin) {
+    respin = respin || false;
+    var bet = getBet();
+    if (bet == 0) return false;
+
+    if (bet > Player.doubleBalance) bet = Player.doubleBalance;
+    $("#bet").val(bet);
+    Player.doubleBalance -= bet;
+    $("#balance").text(Player.doubleBalance);
+    saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
+    if (!respin)
+        spin();
+    else
+        results.retry();
+}
+exports.buttonSpin = buttonSpin;
 
 //exports.retry = retry;
 
@@ -120,6 +165,68 @@ function getResult() {
             return Spins[i];
     }
 }
+
+$(document).on('click', '.add-to-bet', function() {
+    var plus = $(this).data('bet');
+    var val = parseInt($('#bet').val());
+    if (isNaN(val)) val = 0;
+    switch (plus) {
+        case 'clear':
+            $('#bet').val('0');
+            break
+        case 'max':
+            $('#bet').val(betLimit);
+            break
+        case 'x2':
+            val *= 2;
+            val = val > betLimit ? betLimit : val;
+            $('#bet').val(val);
+            break
+        case '1/2':
+            val = val || 1;
+            val /= 2;
+            $('#bet').val(Math.round(val));
+            break
+        default:
+            val += parseInt(plus);
+            $('#bet').val(val);
+    }
+    if (parseInt($("#bet").val()) > betLimit) $('#bet').val(betLimit);
+    if (parseInt($("#bet").val()) > Player.doubleBalance) $('#bet').val(Player.doubleBalance);
+    if (Player.doubleBalance <= 0) {
+        $('#balance').addClass('animated flash');
+        setTimeout(function() {
+            $('#balance').removeClass('animated flash')
+        }, 1000);
+    }
+});
+
+function getBet() {
+    var bet = parseInt($("#bet").val());
+    if (bet < 0) bet = 0;
+    return bet;
+}
+exports.getBet = getBet;
+
+function getRandomWeapon(specialClass) {
+    if (typeof specialClass == 'undefined') specialClass = 0;
+    var randomCaseId = Math.rand(0, cases.length - 1);
+
+    if ((specialClass == 0) && (typeof cases[randomCaseId].specialClass != "undefined")) {
+        randomCaseId = Math.rand(0, cases.length - 1);
+        while (typeof cases[randomCaseId].specialClass != "undefined") {
+            randomCaseId = Math.rand(0, cases.length - 1);
+        }
+    }
+    var randomWeaponId = Math.rand(0, cases[randomCaseId].weapons.length - 1);
+    var wp = cases[randomCaseId].weapons[randomWeaponId]
+
+    if (typeof cases[randomCaseId].canBeSouvenir != 'undefined' && cases[randomCaseId].canBeSouvenir)
+        wp.type = (Math.rand(0, 10) > 7) ? Localization.souvenir[Settings.language] + ' ' + wp.type : wp.type;
+
+    return cases[randomCaseId].weapons[randomWeaponId];
+}
+exports.getRandomWeapon = getRandomWeapon;
 
 function fillItems() {
     var allItems = "";

@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" href="../css/loading.css">
 <link rel="stylesheet" type="text/css" href="../css/spinking.css">
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/Lobibox.css">
 
 <!-- Скрипты -->
 <script src="../scripts/build/libs.js"></script>
@@ -21,8 +23,6 @@
 <!-- <script src="../scripts/inventory.js"></script> -->
 <script src="../scripts/build/common.js"></script>
 <script src="../scripts/build/spinking.js"></script>
-
-<script src="../scripts/md5-min.js"></script>
 
 <script src="../scripts/navigationMenu.js"></script>
 <link rel="stylesheet" href="../css/navigationMenu.css">
@@ -41,12 +41,14 @@
 		</div>
 	</div>
 </div>
-
-<div class="win"></div>
-<
+<span id='balance-text' class='margin-left-body'>Balance:</span> <span id='balance'>0</span><br>
+<div class="bets">
+<span class='add-to-bet' data-bet='clear'>0</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span>
+</div>
+<input type="text" id="bet" maxlength='7' pattern="^[0-9]+$"/>
 <div class='buttons'>
 	<button id="addItems">Внести предметы</button>
-	<button id="spin" onclick="spinking.spin();">Spin</button>
+	<button id="spin" onclick="spinking.buttonSpin();">Spin</button>
 </div>
 <ul class="winList"></ul>
 
@@ -56,9 +58,8 @@
 <div class="closeInventory"></div>
 <ul class="inventory inv-price-counter"></ul>
 <button class="choseItems">Внести</button>
-</div
->
-<div id='icons-copyright'>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+</div>
+<div id='icons-copyright'>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a>, <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> and <a href="http://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 </div>
 </body>
 </html>
