@@ -173,7 +173,9 @@ function saveStatistic(key, value, type) {
     if (isAndroid()) {
         client.saveStatistic(key, '' + value);
     } else {
-        $.cookie(key, value);
+        $.cookie(key, value, {
+            expires: 200
+        });
     }
 }
 
@@ -431,7 +433,7 @@ function getWeaponRarity(type, name) {
     var coll = getCollection(type, name);
     if (typeof coll.weapons == 'undefined' && isAndroid()) {
         client.sendToAnalytics("Error", "Error", "Cant find collection for " + type + " | " + name, "main.js");
-        return "Factory New";
+        return "milspic";
     }
     for (var i = 0; i < coll.weapons.length; i++) {
         if (coll.weapons[i].type == type && getSkinName(coll.weapons[i].skinName) == name)
