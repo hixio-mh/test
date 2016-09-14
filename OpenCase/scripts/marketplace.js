@@ -52,7 +52,7 @@ $(document).ready(function() {
     if (Sales.length) {
         var SalesHTML = "";
         for (var i = 0; i < Sales.length; i++) {
-            SalesHTML += "<div class='sales-weapon animated zoomIn " + (Sales[i].soldOut ? "sold-out" : "") + "' data-weapon-info-json='" + JSON.stringify(Sales[i]) + "' data-sales-id='" + i + "'><span class='sales-discount'>" + discount + "%</span><img src='" + getImgUrl(Sales[i].img, 1) + "'><span class='sales-weapon-name'>" + Sales[i].type + " | " + getSkinName(Sales[i].skinName) + "</span><div class='prices'><span class='prices_old-price'>$" + (Sales[i].price * (100 + discount) / 100).toFixed(2) + "</span> <span class='prices_new-price'>$" + Sales[i].price + "</span></div></div>";
+            SalesHTML += "<div class='sales-weapon animated zoomIn " + (Sales[i].soldOut ? "sold-out" : "") + "' data-weapon-info-json='" + JSON.stringify(Sales[i]) + "' data-sales-id='" + i + "'><span class='sales-discount'>" + discount + "%</span><img src='" + getImgUrl(Sales[i].img, 1) + "'><span class='sales-weapon-name'>" + Sales[i].type + " | " + getSkinName(Sales[i].skinName, Settings.language) + "</span><div class='prices'><span class='prices_old-price'>$" + (Sales[i].price * (100 + discount) / 100).toFixed(2) + "</span> <span class='prices_new-price'>$" + Sales[i].price + "</span></div></div>";
             saveStatistic("market-sales-weapon-" + i, JSON.stringify(Sales[i]));
         }
         saveStatistic("lastSalesUpdate", '' + today);
