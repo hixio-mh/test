@@ -455,7 +455,7 @@ webpackJsonp_name_([0,1],[
 	    "imgStyles": "height: 103%;margin:-1px;",
 	    "xCounter": 5,
 	    "rarity": "classified",
-	    "code": "results.randomItem(1);",
+	    "code": "results.randomItem(5);",
 	    "chance": 7
 	}, {
 	    "name": {
