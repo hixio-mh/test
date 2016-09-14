@@ -231,7 +231,7 @@ exports.getRandomWeapon = getRandomWeapon;
 function fillItems() {
     var allItems = "";
     for (var i = 0; i < Spins.length; i++) {
-        allItems += "<li class='weapon spinking bg-" + Spins[i].rarity + " animated fadeInDown'><div class='img-holder'><img src='../images/spinking/icons/" + Spins[i].img + "' " + (typeof Spins[i].imgStyles != "undefined" ? "style='" + Spins[i].imgStyles + "'" : "") + "></div>" + (typeof Spins[i].xCounter != "undefined" ?
+        allItems += "<li class='weapon spinking bg-" + Spins[i].rarity + " animated fadeInUp'><div class='img-holder'><img src='../images/spinking/icons/" + Spins[i].img + "' " + (typeof Spins[i].imgStyles != "undefined" ? "style='" + Spins[i].imgStyles + "'" : "") + "></div>" + (typeof Spins[i].xCounter != "undefined" ?
                 "<span class='xCounter'>x" + Spins[i].xCounter + "</span>" : "") +
             "<div class='weaponInfo'><span class='spinking-item-name'>" + Spins[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + Spins[i].description[Settings.language] + "</span></div></li>";
     }

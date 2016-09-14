@@ -54,6 +54,7 @@ body {
 .winList {
     padding: 5px;
     list-style: none;
+		text-align: center;
 }
 
 .spinking {

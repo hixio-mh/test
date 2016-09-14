@@ -57,6 +57,9 @@ module.exports = function(grunt) {
                     library: '[name]'
                 },
                 watch: true,
+                watchOptions: {
+                    aggregateTimeout: 300
+                },
                 keepalive: true,
                 devtool: "source-map",
                 module: {

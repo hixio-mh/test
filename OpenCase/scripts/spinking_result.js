@@ -26,7 +26,8 @@ module.exports = {
         });
         checkInventoryForNotification();
     },
-    randomItem: function(count) {
+    randomItem: function(count, rarity) {
+        rarity = rarity || "all";
         count = count || 1;
         var msg = "";
         for (var i = 0; i < count; i++) {
@@ -39,7 +40,11 @@ module.exports = {
                 i--;
                 continue;
             }
-            msg += `${weapon.type} | ${getSkinName(weapon.skinName, Settings.language)} (${weapon.quality})<br>`
+            if (rarity != "all" && weapon.rarity != rarity) {
+                i--;
+                continue;
+            }
+            msg += `${weapon.type} | ${getSkinName(weapon.skinName, Settings.language)} (${weapon.quality})<br>`;
             inventory.push(weapon);
             if (isAndroid())
                 saveWeapon(weapon);
@@ -47,7 +52,7 @@ module.exports = {
         if (!isAndroid())
             saveInventory();
         Lobibox.alert("success", {
-            title: "Random Knife",
+            title: "Random Weapon",
             iconSource: 'fontAwesome',
             msg: msg
         });
@@ -58,6 +63,40 @@ module.exports = {
         Player.doubleBalance += parseInt(spinking.getBet() * multy);
         $('#balance').text(Player.doubleBalance);
         saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
+    },
+    weapon: function(type, skinName, collection) {
+        for (var i = 0; i < cases.length; i++) {
+            if (cases[i].name == collection) {
+                for (var z = 0; z < cases[i].weapons.length; z++)
+                    if (cases[i].weapons[z].type == type && getSkinName(cases[i].weapons[z].skinName) == getSkinName(skinName)) {
+                        var weapon = cases[i].weapons[z];
+                        break;
+                    }
+            }
+        }
+        if (typeof weapon == 'undefined')
+            spinking.results.retry();
+
+        weapon.statTrak = false;
+        weapon.quality = getItemQuality()[0];
+        weapon['new'] = true;
+        weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+        if (weapon.price == 0) {
+            spinking.results.weapon(type, skinName, collection);
+            return false;
+        }
+        var msg = `${weapon.type} | ${getSkinName(weapon.skinName, Settings.language)} (${weapon.quality})`;
+        inventory.push(weapon);
+        if (isAndroid())
+            saveWeapon(weapon);
+        else
+            saveInventory();
+        Lobibox.alert("success", {
+            title: "Weapon",
+            iconSource: 'fontAwesome',
+            msg: msg
+        });
+        checkInventoryForNotification();
     },
     retry: function() {
         $(".casesCarusel").children(".weapon").addClass("animated fadeOutDown");

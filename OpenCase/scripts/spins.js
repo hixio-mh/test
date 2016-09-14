@@ -22,7 +22,7 @@ var Spins = [{
     },
     "img": "nothing.png",
     "rarity": "industrial",
-    "chance": 15
+    "chance": 20
 }, {
     "name": {
         "RU": "Повтор",
@@ -35,35 +35,21 @@ var Spins = [{
     "img": "respin.png",
     "rarity": "milspec",
     "code": "results.retry();",
-    "chance": 13
+    "chance": 18
 }, {
     "name": {
         "RU": "Хоть что-то",
         "EN": "Better than nothing"
     },
     "description": {
-        "RU": "Возвращение половины ставки",
+        "RU": "1/2 вашей ставки",
         "EN": "Return half of your bet"
     },
     "img": "half.png",
     "imgStyles": "height: 90%;margin-top:5px;",
     "rarity": "milspec",
     "code": "results.returnBet(0.5);",
-    "chance": 10
-}, {
-    "name": {
-        "RU": "Эко раунд",
-        "EN": "Eco round"
-    },
-    "description": {
-        "RU": "1 случайная вещь",
-        "EN": "1 random weapon"
-    },
-    "img": "gun.png",
-    "imgStyles": "height: 103%;margin:-1px;",
-    "rarity": "milspec",
-    "code": "results.randomItem(1);",
-    "chance": 8
+    "chance": 16
 }, {
     "name": {
         "RU": "Comeback",
@@ -77,7 +63,21 @@ var Spins = [{
     "imgStyles": "height: 80%;margin-top:5px;",
     "rarity": "restricted",
     "code": "results.returnBet(1);",
-    "chance": 8
+    "chance": 15
+}, {
+    "name": {
+        "RU": "Эко раунд",
+        "EN": "Eco round"
+    },
+    "description": {
+        "RU": "1 случайная вещь",
+        "EN": "1 random weapon"
+    },
+    "img": "gun.png",
+    "imgStyles": "height: 103%;margin:-1px;",
+    "rarity": "restricted",
+    "code": "results.randomItem(1, 'milspec');",
+    "chance": 13
 }, {
     "name": {
         "RU": "Двойная удача",
@@ -92,7 +92,22 @@ var Spins = [{
     "xCounter": 2,
     "rarity": "classified",
     "code": "results.returnBet(2);",
-    "chance": 6
+    "chance": 9
+}, {
+    "name": {
+        "RU": "Форс бай",
+        "EN": "Force buy"
+    },
+    "description": {
+        "RU": "5 случайных вещей",
+        "EN": "5 random weapons"
+    },
+    "img": "gun.png",
+    "imgStyles": "height: 103%;margin:-1px;",
+    "xCounter": 5,
+    "rarity": "classified",
+    "code": "results.randomItem(1);",
+    "chance": 7
 }, {
     "name": {
         "RU": "Тройная удача",
@@ -107,7 +122,7 @@ var Spins = [{
     "xCounter": 3,
     "rarity": "covert",
     "code": "results.returnBet(3);",
-    "chance": 4
+    "chance": 5
 }, {
     "name": {
         "RU": "Я БОГАТ!",
@@ -121,6 +136,19 @@ var Spins = [{
     "imgStyles": "height: 80%;margin-top:5px;",
     "rarity": "rare",
     "code": "results.returnBet(100)",
+    "chance": 2
+}, {
+    "name": {
+        "RU": "Дракон",
+        "EN": "Dragon"
+    },
+    "description": {
+        "RU": "История о драконе",
+        "EN": "AWP Dragon Lore"
+    },
+    "img": "dragon.png",
+    "rarity": "rare",
+    "code": "results.weapon('AWP', 'Dragon Lore', 'Cobblestone')",
     "chance": 1
 }, {
     "name": {

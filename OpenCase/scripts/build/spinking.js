@@ -220,7 +220,7 @@ webpackJsonp_name_([0,1],[
 	function fillItems() {
 	    var allItems = "";
 	    for (var i = 0; i < Spins.length; i++) {
-	        allItems += "<li class='weapon spinking bg-" + Spins[i].rarity + " animated fadeInDown'><div class='img-holder'><img src='../images/spinking/icons/" + Spins[i].img + "' " + (typeof Spins[i].imgStyles != "undefined" ? "style='" + Spins[i].imgStyles + "'" : "") + "></div>" + (typeof Spins[i].xCounter != "undefined" ? "<span class='xCounter'>x" + Spins[i].xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + Spins[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + Spins[i].description[Settings.language] + "</span></div></li>";
+	        allItems += "<li class='weapon spinking bg-" + Spins[i].rarity + " animated fadeInUp'><div class='img-holder'><img src='../images/spinking/icons/" + Spins[i].img + "' " + (typeof Spins[i].imgStyles != "undefined" ? "style='" + Spins[i].imgStyles + "'" : "") + "></div>" + (typeof Spins[i].xCounter != "undefined" ? "<span class='xCounter'>x" + Spins[i].xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + Spins[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + Spins[i].description[Settings.language] + "</span></div></li>";
 	    }
 	    $(".winList").html(allItems);
 	};
@@ -256,7 +256,8 @@ webpackJsonp_name_([0,1],[
 	        });
 	        checkInventoryForNotification();
 	    },
-	    randomItem: function randomItem(count) {
+	    randomItem: function randomItem(count, rarity) {
+	        rarity = rarity || "all";
 	        count = count || 1;
 	        var msg = "";
 	        for (var i = 0; i < count; i++) {
@@ -269,13 +270,17 @@ webpackJsonp_name_([0,1],[
 	                i--;
 	                continue;
 	            }
+	            if (rarity != "all" && weapon.rarity != rarity) {
+	                i--;
+	                continue;
+	            }
 	            msg += weapon.type + " | " + getSkinName(weapon.skinName, Settings.language) + " (" + weapon.quality + ")<br>";
 	            inventory.push(weapon);
 	            if (isAndroid()) saveWeapon(weapon);
 	        }
 	        if (!isAndroid()) saveInventory();
 	        Lobibox.alert("success", {
-	            title: "Random Knife",
+	            title: "Random Weapon",
 	            iconSource: 'fontAwesome',
 	            msg: msg
 	        });
@@ -286,6 +291,37 @@ webpackJsonp_name_([0,1],[
 	        Player.doubleBalance += parseInt(spinking.getBet() * multy);
 	        $('#balance').text(Player.doubleBalance);
 	        saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
+	    },
+	    weapon: function weapon(type, skinName, collection) {
+	        for (var i = 0; i < cases.length; i++) {
+	            if (cases[i].name == collection) {
+	                for (var z = 0; z < cases[i].weapons.length; z++) {
+	                    if (cases[i].weapons[z].type == type && getSkinName(cases[i].weapons[z].skinName) == getSkinName(skinName)) {
+	                        var weapon = cases[i].weapons[z];
+	                        break;
+	                    }
+	                }
+	            }
+	        }
+	        if (typeof weapon == 'undefined') spinking.results.retry();
+	
+	        weapon.statTrak = false;
+	        weapon.quality = getItemQuality()[0];
+	        weapon['new'] = true;
+	        weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+	        if (weapon.price == 0) {
+	            spinking.results.weapon(type, skinName, collection);
+	            return false;
+	        }
+	        var msg = weapon.type + " | " + getSkinName(weapon.skinName, Settings.language) + " (" + weapon.quality + ")";
+	        inventory.push(weapon);
+	        if (isAndroid()) saveWeapon(weapon);else saveInventory();
+	        Lobibox.alert("success", {
+	            title: "Weapon",
+	            iconSource: 'fontAwesome',
+	            msg: msg
+	        });
+	        checkInventoryForNotification();
 	    },
 	    retry: function retry() {
 	        $(".casesCarusel").children(".weapon").addClass("animated fadeOutDown");
@@ -335,7 +371,7 @@ webpackJsonp_name_([0,1],[
 	    },
 	    "img": "nothing.png",
 	    "rarity": "industrial",
-	    "chance": 15
+	    "chance": 20
 	}, {
 	    "name": {
 	        "RU": "Повтор",
@@ -348,35 +384,21 @@ webpackJsonp_name_([0,1],[
 	    "img": "respin.png",
 	    "rarity": "milspec",
 	    "code": "results.retry();",
-	    "chance": 13
+	    "chance": 18
 	}, {
 	    "name": {
 	        "RU": "Хоть что-то",
 	        "EN": "Better than nothing"
 	    },
 	    "description": {
-	        "RU": "Возвращение половины ставки",
+	        "RU": "1/2 вашей ставки",
 	        "EN": "Return half of your bet"
 	    },
 	    "img": "half.png",
 	    "imgStyles": "height: 90%;margin-top:5px;",
 	    "rarity": "milspec",
 	    "code": "results.returnBet(0.5);",
-	    "chance": 10
-	}, {
-	    "name": {
-	        "RU": "Эко раунд",
-	        "EN": "Eco round"
-	    },
-	    "description": {
-	        "RU": "1 случайная вещь",
-	        "EN": "1 random weapon"
-	    },
-	    "img": "gun.png",
-	    "imgStyles": "height: 103%;margin:-1px;",
-	    "rarity": "milspec",
-	    "code": "results.randomItem(1);",
-	    "chance": 8
+	    "chance": 16
 	}, {
 	    "name": {
 	        "RU": "Comeback",
@@ -390,7 +412,21 @@ webpackJsonp_name_([0,1],[
 	    "imgStyles": "height: 80%;margin-top:5px;",
 	    "rarity": "restricted",
 	    "code": "results.returnBet(1);",
-	    "chance": 8
+	    "chance": 15
+	}, {
+	    "name": {
+	        "RU": "Эко раунд",
+	        "EN": "Eco round"
+	    },
+	    "description": {
+	        "RU": "1 случайная вещь",
+	        "EN": "1 random weapon"
+	    },
+	    "img": "gun.png",
+	    "imgStyles": "height: 103%;margin:-1px;",
+	    "rarity": "restricted",
+	    "code": "results.randomItem(1, 'milspec');",
+	    "chance": 13
 	}, {
 	    "name": {
 	        "RU": "Двойная удача",
@@ -405,7 +441,22 @@ webpackJsonp_name_([0,1],[
 	    "xCounter": 2,
 	    "rarity": "classified",
 	    "code": "results.returnBet(2);",
-	    "chance": 6
+	    "chance": 9
+	}, {
+	    "name": {
+	        "RU": "Форс бай",
+	        "EN": "Force buy"
+	    },
+	    "description": {
+	        "RU": "5 случайных вещей",
+	        "EN": "5 random weapons"
+	    },
+	    "img": "gun.png",
+	    "imgStyles": "height: 103%;margin:-1px;",
+	    "xCounter": 5,
+	    "rarity": "classified",
+	    "code": "results.randomItem(1);",
+	    "chance": 7
 	}, {
 	    "name": {
 	        "RU": "Тройная удача",
@@ -420,7 +471,7 @@ webpackJsonp_name_([0,1],[
 	    "xCounter": 3,
 	    "rarity": "covert",
 	    "code": "results.returnBet(3);",
-	    "chance": 4
+	    "chance": 5
 	}, {
 	    "name": {
 	        "RU": "Я БОГАТ!",
@@ -434,6 +485,19 @@ webpackJsonp_name_([0,1],[
 	    "imgStyles": "height: 80%;margin-top:5px;",
 	    "rarity": "rare",
 	    "code": "results.returnBet(100)",
+	    "chance": 2
+	}, {
+	    "name": {
+	        "RU": "Дракон",
+	        "EN": "Dragon"
+	    },
+	    "description": {
+	        "RU": "История о драконе",
+	        "EN": "AWP Dragon Lore"
+	    },
+	    "img": "dragon.png",
+	    "rarity": "rare",
+	    "code": "results.weapon('AWP', 'Dragon Lore', 'Cobblestone')",
 	    "chance": 1
 	}, {
 	    "name": {
