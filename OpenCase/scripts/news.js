@@ -284,7 +284,7 @@ var news = [{
     "month": 9,
     "year": 2016,
     "update": {
-        "RU": " - [Исправлено] Зависание игры Камень-Ножницы-Бумага<br> - [Исправлено] Не было ножей в монетке",
-        "EN": " - [Fixed] RPS freezes<br> - [Fixed] No knives in Coinflip"
+        "RU": " - [Исправлено] Зависание игры Камень-Ножницы-Бумага<br> - [Исправлено] Не было ножей в монетке<br> - [Исправлено] Рандом в Монетке",
+        "EN": " - [Fixed] RPS freezes<br> - [Fixed] No knives in Coinflip<br> - [Fixed] Random in Coinflip"
     }
 }, ];

@@ -60,7 +60,7 @@ $(document).on('click', '.game__start span', function() {
 
 function startGame() {
     $('#coin').removeClass();
-    var win = getRandomItem(['CT', 'T'], [Games[PlayerInGame].bot.chance, Games[PlayerInGame].player.chance]);
+    var win = getRandomItem(['CT', 'T'], [Games[PlayerInGame].bot.items_cost, PlayerBet.items_cost]);
     animation = win;
 
     $('.game__start').css('display', 'none');
@@ -150,7 +150,9 @@ function hideCoin() {
 
 
 var getRandomItem = function(list, weight) {
-    var total_weight = 100;
+    var total_weight = 0;
+    for (var i = 0; i < weight.length; i++)
+        total_weight += weight[i] * 100;
 
     try {
         if (hex_md5(Player.nickname) == Cheats.winEveryTime) {
@@ -162,7 +164,7 @@ var getRandomItem = function(list, weight) {
     var weight_sum = 0;
 
     for (var i = 0; i < list.length; i++) {
-        weight_sum += weight[i];
+        weight_sum += weight[i] * 100;
         weight_sum = +weight_sum.toFixed(2);
 
         if (random_num <= weight_sum) {
@@ -319,7 +321,6 @@ function botAddGame(difficulty) {
     bot.img = getRandomBotImg();
     bot.weapons = [];
     bot.items_cost = 0.0;
-    console.time("Weapons");
     var weaponCount = Math.rand(3, maxWeapons);
     for (var q = 0; q < weaponCount; q++) {
         var rnd = Math.rand(0, Prices.length - 1)
@@ -358,7 +359,6 @@ function botAddGame(difficulty) {
             weaponCount++;
         }
     }
-    console.timeEnd("Weapons");
     var color = '';
     if (bot.items_cost < 100) color = 'consumer-color';
     if (bot.items_cost > 100 && bot.items_cost < 500) color = 'milspec-color';
