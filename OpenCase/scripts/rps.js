@@ -69,10 +69,13 @@ $(".choseItems").on("click", function() {
     for (var i = 0; i < winItems.length; i++) {
         $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].skinName + ' ($' + winItems[i].price + ')<b class=' + winItems[i].rarity + '></b>');
     }
-    botAddWeapon(itemsCost / winItems.length);
+    $('.status').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
+    setTimeout(function() {
+        botAddWeapon(itemsCost / winItems.length);
+        $('.choice').css('display', 'block');
+        $('.status').text('...');
+    }, 200);
 
-    $('.choice').css('display', 'block');
-    $('.status').text('...');
 })
 
 function botAddWeapon(itemsCost) {
