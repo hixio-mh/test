@@ -81,7 +81,7 @@ webpackJsonp_name_([0,1],[
 	    var d = 0,
 	        s = 0;
 	    var progress_animate = 0;
-	    jQuery.fx.interval = 25;
+	    jQuery.fx.interval = 10;
 	    $(".casesCarusel").animate({
 	        marginLeft: -1 * Math.rand(a - 48, a + 75)
 	    }, {
