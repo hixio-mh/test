@@ -123,11 +123,7 @@ function botAddWeapon(itemsCost) {
             type = type.replace(/(Souvenir |Сувенир )/gi, '');
             for (var i = 0; i < cases.length; i++) {
                 for (var z = 0; z < cases[i].weapons.length - 1; z++) {
-                    var case_type = cases[i].weapons[z].type.replace(/★ /, '');
-                    var case_name = getSkinName(cases[i].weapons[z].skinName);
-                    console.log("Compare: " + case_type + " | " + case_name + " -> " + type + " | " + name + " (Types compared: " + (case_type == type) + " | names: " + (case_name == name) + ")");
-
-                    if ((case_type == type) && (case_name == name)) {
+                    if ((cases[i].weapons[z].type.replace(/★ /, '') == type) && (getSkinName(cases[i].weapons[z].skinName) == name)) {
 
                         var wp = {}
                         for (var key in cases[i].weapons[z])
