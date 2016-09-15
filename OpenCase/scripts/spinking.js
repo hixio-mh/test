@@ -77,6 +77,7 @@ function spin() {
     var d = 0,
         s = 0;
     var progress_animate = 0;
+    jQuery.fx.interval = 25;
     $(".casesCarusel").animate({
         marginLeft: -1 * Math.rand(a - 48, a + 75)
     }, {
