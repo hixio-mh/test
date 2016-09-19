@@ -57,6 +57,10 @@ button.button_glass:hover {
 button.button_glass:active {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5) inset;
 }
+.button_glass:disabled {
+    -webkit-filter: grayscale(1);
+    opacity: 0.5;
+}
 button.with_icon {
   padding-left: calc(1em + 10px);
 }
@@ -70,5 +74,5 @@ button.double_icon:before {
     vertical-align: middle;
     position: absolute;
     left: 7px;
-    top: 8px;
+    top: 0.35em;
 }
