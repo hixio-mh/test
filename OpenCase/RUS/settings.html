@@ -415,6 +415,10 @@ $(document).on('click', '#code-confirm', function() {
     code: 'fe63765176c7bd5b069d4e6c7eee3d34',
     action: 'saveStatistic("doubleBalance", Player.doubleBalance+=50000)',
     description: '+50000 double credits'
+  }, {
+    simpleCode: 'localServer',
+    action: 'location="http://192.168.1.205:8080"',
+    description: 'Go to local web server.'
   }
 	];
 	var code = $('#code-input').val();
@@ -430,7 +434,7 @@ $(document).on('click', '#code-confirm', function() {
 	codeHex = hex_md5(code);
 	var msg = "";
 	for (var i = 0; i < codesList.length; i++)
-		if (codesList[i].code == codeHex)
+		if (codesList[i].code == codeHex || (typeof codesList[i].simpleCode !="undefined" && codesList[i].simpleCode == code))
 			if (getStatistic('code-'+code, 'none') == 'none') {
 				eval(codesList[i].action);
 				saveStatistic('code-'+code, 'activated');
