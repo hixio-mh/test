@@ -1,0 +1,74 @@
+.corner_holder {
+  position: relative;
+  display: inline-block;
+  transition-duration: 0.5s;
+}
+.corner_left:before,.corner_left:after, .corner_right:before,.corner_right:after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  display: block;
+  position: absolute;
+  border-color: #04AADC;
+  color: #04AADC;
+}
+.corner_left:before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.corner_left:after {
+  bottom: 0;
+  left: 0;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+}
+.corner_right:before {
+  top: 0;
+  right: 0;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+.corner_right:after {
+  right: 0;
+  bottom: 0;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+button.button_glass {
+    font-size: 1.1em;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid #23699a;
+    color: #fff;
+    box-shadow: 0 0px 10px rgba(24, 135, 177, 0.53) inset;
+    padding: 5px;
+    position: relative;
+    min-width: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+}
+button.button_glass:hover {
+    box-shadow: 0 0px 10px rgb(24, 135, 177) inset;
+}
+button.button_glass:active {
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5) inset;
+}
+button.with_icon {
+  padding-left: calc(1em + 10px);
+}
+button.double_icon:before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: url(../images/double/coin-white.png);
+    background-size: cover;
+    vertical-align: middle;
+    position: absolute;
+    left: 7px;
+    top: 8px;
+}
