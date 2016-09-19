@@ -221,7 +221,7 @@ webpackJsonp_name_([0,1],[
 	function fillItems() {
 	    var allItems = "";
 	    for (var i = 0; i < Spins.length; i++) {
-	        allItems += "<li class='weapon spinking bg-" + Spins[i].rarity + " animated fadeInUp'><div class='img-holder'><img src='../images/spinking/icons/" + Spins[i].img + "' " + (typeof Spins[i].imgStyles != "undefined" ? "style='" + Spins[i].imgStyles + "'" : "") + "></div>" + (typeof Spins[i].xCounter != "undefined" ? "<span class='xCounter'>x" + Spins[i].xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + Spins[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + Spins[i].description[Settings.language] + "</span></div></li>";
+	        allItems += "<li class='weapon spinking bg-" + Spins[i].rarity + " animated fadeInUp'><div class='img-holder'><img src='../images/spinking/icons/" + Spins[i].img + "' " + (typeof Spins[i].imgStyles != "undefined" ? "style='" + Spins[i].imgStyles + "'" : "") + "></div>" + (typeof Spins[i].xCounter != "undefined" ? "<span class='xCounter'>" + Spins[i].xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + Spins[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + Spins[i].description[Settings.language] + "</span></div></li>";
 	    }
 	    $(".winList").html(allItems);
 	};
@@ -457,7 +457,7 @@ webpackJsonp_name_([0,1],[
 	    "xCounter": 5,
 	    "rarity": "classified",
 	    "code": "results.randomItem(5);",
-	    "chance": 7
+	    "chance": 3
 	}, {
 	    "name": {
 	        "RU": "Тройная удача",
@@ -473,6 +473,21 @@ webpackJsonp_name_([0,1],[
 	    "rarity": "covert",
 	    "code": "results.returnBet(3);",
 	    "chance": 5
+	}, {
+	    "name": {
+	        "RU": "Фулл бай",
+	        "EN": "Full buy"
+	    },
+	    "description": {
+	        "RU": "10 случайных вещей",
+	        "EN": "10 random weapons"
+	    },
+	    "img": "gun.png",
+	    "imgStyles": "height: 103%;margin:-1px;",
+	    "xCounter": 10,
+	    "rarity": "covert",
+	    "code": "results.randomItem(5);",
+	    "chance": 2
 	}, {
 	    "name": {
 	        "RU": "Я БОГАТ!",
@@ -497,6 +512,7 @@ webpackJsonp_name_([0,1],[
 	        "EN": "AWP Dragon Lore"
 	    },
 	    "img": "dragon.png",
+	    "imgStyles": "height: 90%;margin-top: 8px;",
 	    "rarity": "rare",
 	    "code": "results.weapon('AWP', 'Dragon Lore', 'Cobblestone')",
 	    "chance": 1
@@ -510,6 +526,7 @@ webpackJsonp_name_([0,1],[
 	        "EN": "Random knife!"
 	    },
 	    "img": "knife.png",
+	    "imgStyles": "height:70%;margin-top: 15px;",
 	    "rarity": "rare",
 	    "code": "results.giveRandomKnive()",
 	    "chance": 1

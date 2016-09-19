@@ -107,7 +107,7 @@ var Spins = [{
     "xCounter": 5,
     "rarity": "classified",
     "code": "results.randomItem(5);",
-    "chance": 7
+    "chance": 3
 }, {
     "name": {
         "RU": "Тройная удача",
@@ -123,6 +123,21 @@ var Spins = [{
     "rarity": "covert",
     "code": "results.returnBet(3);",
     "chance": 5
+}, {
+    "name": {
+        "RU": "Фулл бай",
+        "EN": "Full buy"
+    },
+    "description": {
+        "RU": "10 случайных вещей",
+        "EN": "10 random weapons"
+    },
+    "img": "gun.png",
+    "imgStyles": "height: 103%;margin:-1px;",
+    "xCounter": 10,
+    "rarity": "covert",
+    "code": "results.randomItem(5);",
+    "chance": 2
 }, {
     "name": {
         "RU": "Я БОГАТ!",
@@ -147,6 +162,7 @@ var Spins = [{
         "EN": "AWP Dragon Lore"
     },
     "img": "dragon.png",
+    "imgStyles": "height: 90%;margin-top: 8px;",
     "rarity": "rare",
     "code": "results.weapon('AWP', 'Dragon Lore', 'Cobblestone')",
     "chance": 1
@@ -160,6 +176,7 @@ var Spins = [{
         "EN": "Random knife!"
     },
     "img": "knife.png",
+    "imgStyles": "height:70%;margin-top: 15px;",
     "rarity": "rare",
     "code": "results.giveRandomKnive()",
     "chance": 1
