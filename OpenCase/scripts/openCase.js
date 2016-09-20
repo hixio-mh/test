@@ -276,28 +276,29 @@ function backToZero() {
 }
 
 $(document).on("click", "#double_sell_button", function() {
-            if (isAndroid()) {
-                var special = "where ID=(select max(ID) from Inventory)";
-                var weapon = getInventory(1, 1, special)[0];
-                console.log("weapon: " + weapon);
-                if (typeof weapon != undefined) {
-                    deleteWeapon(weapon.id);
-                }
-            } else {
-                inventory = inventory.splice(inventory.length - 1, 1);
-                saveInventory();
-            }
-            var doublePoints = parseInt($("#double_sell_button").text());
-            Player.doubleBalance += doublePoints;
-            saveStatistic('doubleBalance', Player.doubleBalance);
-            $("#double_sell_button").prop("disabled", true);
-            $(".win").addClass("sold-out big");
-            Sound("buy");
-            if (isAndroid()) {
-                client.sendToAnalytics("Open case", "Selling weapon", "Player has sold weapon for " + doublePoints + " double points", "openCase.js");
-            })
+    if (isAndroid()) {
+        var special = "where ID=(select max(ID) from Inventory)";
+        var weapon = getInventory(1, 1, special)[0];
+        console.log("weapon: " + weapon);
+        if (typeof weapon != undefined) {
+            deleteWeapon(weapon.id);
+        }
+    } else {
+        inventory = inventory.splice(inventory.length - 1, 1);
+        saveInventory();
+    }
+    var doublePoints = parseInt($("#double_sell_button").text());
+    Player.doubleBalance += doublePoints;
+    saveStatistic('doubleBalance', Player.doubleBalance);
+    $("#double_sell_button").prop("disabled", true);
+    $(".win").addClass("sold-out big");
+    Sound("buy");
+    if (isAndroid()) {
+        client.sendToAnalytics("Open case", "Selling weapon", "Player has sold weapon for " + doublePoints + " double points", "openCase.js");
+    }
+})
 
-        $(document).on("click", ".closeCase", function() {
-            window.location = "cases.html";
-            caseOpening = false;
-        })
+$(document).on("click", ".closeCase", function() {
+    window.location = "cases.html";
+    caseOpening = false;
+})
