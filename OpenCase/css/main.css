@@ -103,7 +103,7 @@ body {
 .inline-link:hover {
    /*color: #3C9CE7;*/
 }
- 
+
 .inline-link:before {
     content: "\25BA";
     font-size: 80%;
@@ -321,7 +321,7 @@ body {
 		height: 62px !important;
 	}
 }
-/*Если разрешение экрана меньше 495px*/
+/*пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 495px*/
 @media (max-width:495px) {
 	/*Carusel*/
 	.scrollerContainer {
@@ -445,4 +445,54 @@ span#new-version__update {
     color: #fff;
     background: #480000;
     font-family: Lato;
+}
+.win_sell_div {
+    padding-bottom: 10px;
+}
+h3.lines {
+font-size: 1.1rem;
+text-align: center;
+overflow: hidden;
+color: #fff;
+}
+h3.lines span {
+	position: relative;
+    display: inline-block;
+}
+h3.lines span::before, h3.lines span::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    width: 999px;
+    background-color: #fff;
+    display: block;
+}
+h3.lines span::before {
+    right: 100%;
+    margin-right: .5em;
+}
+h3.lines span::after {
+    left: 100%;
+    margin-left: .5em;
+}
+.sold-out > * {
+	opacity: 0.4;
+}
+.sold-out::after {
+    content: 'SOLD OUT';
+    display: block;
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) rotate(-35deg);
+			transform: translate(-50%, -50%) rotate(-35deg);
+    text-shadow: 0 0 1px RGBA(0, 0, 0, 0.71);
+    border: 3px solid;
+    padding: 4px;
+}
+.sold-out.big:after {
+    font-size: 2em;
 }

@@ -287,4 +287,12 @@ var news = [{
         "RU": " - [Исправлено] Зависание игры Камень-Ножницы-Бумага<br> - [Исправлено] Не было ножей в монетке<br> - [Исправлено] Рандом в Монетке",
         "EN": " - [Fixed] RPS freezes<br> - [Fixed] No knives in Coinflip<br> - [Fixed] Random in Coinflip"
     }
+}, {
+    "day": 20,
+    "month": 9,
+    "year": 2016,
+    "update": {
+        "RU": " - [Новое] Можно продать полученный предмет сразу после открытия кейса",
+        "EN": " - [New] You can sell weapon right after you get it from the case"
+    }
 }, ];

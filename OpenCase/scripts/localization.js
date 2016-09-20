@@ -212,6 +212,11 @@ Localization.souvenir = {
             "EN": "Open case"
         }
     }, {
+        "selector": "#win_sell_text span",
+        "localization": {
+            "EN": "Sell"
+        }
+    }, {
         "selector": "#what-i-can-win-Button",
         "localization": {
             "EN": "What i can win?"

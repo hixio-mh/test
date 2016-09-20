@@ -388,7 +388,8 @@
 		}
 
 		function _setWeaponPriceID(id, price) {
-			inventory[id].price = price;
+			if (typeof inventory[id] != "undefined")
+				inventory[id].price = price;
 		}
 
 		$("select").change(function() {
