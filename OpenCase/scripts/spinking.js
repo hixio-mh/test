@@ -153,7 +153,6 @@ function getResult() {
         var weight = Spins[i].chance / sumChances;
         Spins[i].weight = weight;
     }
-
     var sumWeights = 0;
     for (var i = 0; i < Spins.length; i++)
         sumWeights += Spins[i].weight;

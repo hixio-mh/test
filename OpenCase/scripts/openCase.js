@@ -284,7 +284,7 @@ $(document).on("click", "#double_sell_button", function() {
             deleteWeapon(weapon.id);
         }
     } else {
-        inventory = inventory.splice(inventory.length - 1, 1);
+        inventory.splice(inventory.length - 1, 1);
         saveInventory();
     }
     var doublePoints = parseInt($("#double_sell_button").text());
