@@ -58,7 +58,7 @@ function fillCarusel() {
         var style = typeof arr[i].imgStyles != "undefined" ? "style='" + arr[i].imgStyles + "'" : "";
 
         carusel += "<div class='weapon spinking " + bg + " animated fadeInDown' data-id=" + arr[i].id + ">" +
-            "<div class='img-holder'><img src='" + img + "' " + style + "></div>" + (typeof arr[i].xCounter != "undefined" ? "<span class='xCounter'>x" + arr[i].xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + arr[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + arr[i].description[Settings.language] + "</span></div></div>";
+            "<div class='img-holder'><img src='" + img + "' " + style + "></div>" + (typeof arr[i].xCounter != "undefined" ? "<span class='xCounter'>" + arr[i].xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + arr[i].name[Settings.language] + "</span><span class='spinking-item-descr'>" + arr[i].description[Settings.language] + "</span></div></div>";
     })
 
     $(".casesCarusel").html(carusel);
