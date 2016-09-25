@@ -422,6 +422,12 @@ Localization.jackpot = [{
             "EN": "Fill up balance"
         }
     }, {
+        "selector": ".choseItems",
+        "localization": {
+            "RU": "Продать",
+            "EN": "Sell"
+        }
+    }, {
         "selector": "#balance-text",
         "localization": {
             "RU": "Баланс:",
