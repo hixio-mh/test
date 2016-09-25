@@ -215,7 +215,9 @@ $(document).on('click', '.add-to-bet', function() {
 });
 
 $(document).on('click', '.bet-to-color', function() {
-    bet = parseInt($('#bet').val());
+    var betStr = $('#bet').val();
+    betStr = betStr == "" ? "0" : betStr;
+    var bet = parseInt(betStr.match(/(\d+)/g).toString().replace(/\,/g, ''));
     if (gameStart) return false;
     if (bet <= 0) return false;
     if (Player.doubleBalance <= 0 || bet > Player.doubleBalance) {
