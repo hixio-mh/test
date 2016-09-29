@@ -243,7 +243,7 @@ function search(searchStr) {
         extraStyle = info[i].type.indexOf('★') != -1 ? 'knive' : extraStyle;
         extraStyle = info[i].type.match(/(?:Сувенир|Souvenir)/) != null ? 'souvenir' : extraStyle;
 
-        var data = "data-type='" + info[i].type + "' data-name='" + info[i].skinName + "' data-quality='" + info[i].quality + "' data-statTrak='" + info[i].statTrak + "' data-price='" + info[i].price + "' data-img='" + info[i].img + "'";
+        var data = "data-type='" + info[i].type + "' data-name=\"" + info[i].skinName + "\" data-quality='" + info[i].quality + "' data-statTrak='" + info[i].statTrak + "' data-price='" + info[i].price + "' data-img='" + info[i].img + "'";
 
         items += "<tr class='item' " + data + "><td><img src='" + getImgUrl(info[i].img) + "' class='" + extraStyle + "_border'></td><td class='item__name-group " + extraStyle + "_color'><span class='item__type'>" + st + info[i].type + "</span> | <span class='item__name'>" + info[i].skinName + "</span> (<span class='item__quality'>" + info[i].quality + "</span>)</td><td class='item__price' data-price-for='" + st + info[i].type + ' | ' + info[i].skinName + " (" + info[i].quality + ")'>$" + info[i].price + "</td></tr>";
     }
