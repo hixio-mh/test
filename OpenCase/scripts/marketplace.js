@@ -186,7 +186,7 @@ $(document).on('click', '#buy-double', function() {
         soldOut = true;
     }
     Sound("buy", "play");
-    Player.doubleBalance -= parseInt((weapon.price * 100).toFixed(0));
+    Player.doubleBalance -= parseInt((price).toFixed(0));
     saveStatistic('doubleBalance', Player.doubleBalance);
     $("#playerBalance").html(Player.doubleBalance + ' <i class="double-icon"></i>');
 
