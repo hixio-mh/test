@@ -23870,7 +23870,7 @@ var Prices = [{
     statTrak: true,
     name: 'Ghost Camo',
     quality: 'Well-Worn',
-    marketPrice: 111.05,
+    marketPrice: 1.05,
     avgPrice: 2.45
 }, {
     type: 'Nova',
