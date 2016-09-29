@@ -4,11 +4,13 @@
 	<meta charset="utf-8">
 	<title>Инвентарь</title>
 	<link rel="stylesheet" href="../css/navigationMenu.css">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/rarity.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/inventory.css">
 	<link rel="stylesheet" type="text/css" href="../css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="../css/loading.css">
+	<link rel="stylesheet" type="text/css" href="../css/buttons.css">
 	<link rel="stylesheet" href="../css/lobibox.min.css" />
 
 	<script src="../scripts/build/libs.js"></script>
@@ -25,7 +27,9 @@
 </head>
 
 <body data-localization="inventory" data-inventory='no-load'>
-	<div class="navigationBar" data-menu-EN="Inventory" data-menu-RU="Мой инвентарь"></div>
+	<div class="site-overlay"></div>
+	<div id="container">
+	<div class="navigationBar" data-menu-EN="Inventory" data-menu-RU="Мой инвентарь" style="box-shadow: none !important;"></div>
 	<div class="sort">
 		<span class="sort-money" id="sort-type"></span>
 		<div class="dropdown">
@@ -61,14 +65,15 @@
 				<tr>
 					<td>Цена</td>
 					<td id="weaponPrice"></td>
-					<td style='width:25px;padding-left: 7px;'><button class='update_price'><span></span></button></td>
+					<td style='width:25px;padding-left: 7px;'><button class='update_price'><i class="fa fa-refresh" aria-hidden="true"></i></button></td>
 				</tr>
 				<tr>
 					<td>Качество</td>
 					<td id="weaponQuality" colspan=2></td>
 				</tr>
 			</table>
-			<button class='button_startContract' style='margin-bottom: 7px;' id='startContract'>Контракт обмена</button>
+			<button class='button_black' id='startContract'>Контракт обмена</button>
+			<button class='button_black' id='sellWeapon'>Продать</button>
 			<span id='weaponRarity' style='display:none;'></span>
 		</div>
 	</div>
@@ -77,6 +82,7 @@
 		<button class='button_resetContract'>Закрыть контракт</button>
 		<button class='button_contract'>Обмен...</button>
 	</div>
+</div>
 	<div class="statistic">
 		<span class="stat"><span id="stat-sum-text">Сумма:</span> <span id="stat-sum">0$</span></span>
 		<span class="stat"><span id="stat-count-text">Предметов:</span> <span id="stat-count"></span></span>
@@ -162,6 +168,7 @@
 
 
 			$("#weaponInfoContainer").css("display", "block");
+			$(".fullWeaponInfo").slideDown();
 			$("#weaponImg").attr("src", getImgUrl(img, 1));
 			$("#weaponName").html(type + " " + getSkinName(name, Settings.language));
 			$("#weaponPrice").html(price + "$");
@@ -183,7 +190,9 @@
 
 		$(document).on("click", ".glassBlur, .fullWeaponInfo-close", function() {
 			if ($(".glassBlur").hasClass('js-price-loading')) return false;
-			$("#weaponInfoContainer").css("display", "none");
+			$(".fullWeaponInfo").slideUp("slow", function() {
+				$("#weaponInfoContainer").css("display", "none");
+			});
 			if ($(".glassBlur").hasClass("savePrice")) {
 				if ($("#weaponPrice").text() != "0$" && $("#weaponPrice").text() != "NaN$") {
 					var wp = {};
@@ -230,10 +239,37 @@
 			$(".glassBlur").addClass("savePrice");
 		});
 
-		$(document).scroll(function() {
-			$(".sort").css({
-				background: $(this).scrollTop() > 10 ? "RGBA(0, 0, 0, 0.73)" : "none"
-			});
+		$('#sellWeapon').on('click', function() {
+			var price = parseFloat($("#weaponPrice").text());
+			price *= 100;
+			price = parseInt(price.toFixed(0));
+			if (isNaN(price)) {
+				Lobibox.notify('error', {
+					pauseDelayOnHover: false,
+					continueDelayOnInactiveTab: false,
+					width: $(window).width(),
+					position: 'top center',
+					icon: false,
+					title: Localization.inventory2.contract_error_title[Settings.language],
+					size: 'mini',
+					showClass: 'fadeInDown',
+					hideClass: 'fadeOutUp',
+					msg: Localization.inventory2.sell_error[Settings.language]
+				});
+				return false;
+			}
+			var weaponId = parseInt($("#weaponInfoContainer").data("weaponId"));
+			if (isAndroid()) {
+				deleteWeapon(weaponId);
+			} else {
+				inventory.splice(weaponId, 1);
+				saveInventory();
+			}
+			$("#"+weaponId+"-inventoryItem").remove();
+			Sound("buy");
+			Player.doubleBalance += price;
+			$("#menu_doubleBalance").text(Player.doubleBalance);
+			$(".fullWeaponInfo-close").click();
 		});
 
 		$('#startContract').on('click', function() {

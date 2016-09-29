@@ -17,10 +17,6 @@
 
 <script src="../scripts/localization.js"></script>
 <style>
-#containter {
-	font-family: Lato;
-	padding-top: 45px;
-}
 .your-points {
     background: rgba(0, 0, 0, 0.6);
     position: fixed;
@@ -78,7 +74,8 @@
 </head>
 
 <body data-localization="ranks" data-inventory='no-load'>
-<div id="containter">
+	<div class="site-overlay"></div>
+<div id="container">
 <div class="navigationBar" data-menu-EN="Ranks" data-menu-RU="Ранги"></div>
 	<div class='your-points'><span id='locl-your-points'>Ваши очки</span><b id='points'></b></div>
 	<ul class='ranks-list'></ul>

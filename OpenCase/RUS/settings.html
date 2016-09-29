@@ -31,7 +31,6 @@ body {
 	margin: 0;
 }
 .settings {
-    margin: 40px auto 0 auto;
     padding: 1px;
 }
 .box {
@@ -60,17 +59,6 @@ body {
 }
 .inline > * {
 	display: inline-block;
-}
-input#nickname {
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    border-radius: 6px;
-    padding: 5px;
-    color: rgba(255, 255, 255, 0.34);
-    font-size: 0.9em;
-}
-input#nickname:focus {
-    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 div#avatar {
     margin-top: 10px;
@@ -225,6 +213,8 @@ div#avatar {
 </style>
 </head>
 <body data-localization='settings'>
+  <div class="site-overlay"></div>
+  <div id="container">
 <div class="navigationBar" data-menu-EN="Settings" data-menu-RU="Настройки"></div>
 <div class='settings'>
 <div id='code'>
@@ -271,6 +261,7 @@ div#avatar {
 <hr>
 <button id="submit" class="Button" value="Сохранить">Сохранить</button>
 </p>
+</div>
 </div>
 <script>
 var iconSelect;

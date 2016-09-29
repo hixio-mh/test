@@ -85,7 +85,7 @@ function spin() {
         easing: 'easeOutSine',
         start: function() {
             $("#spin").prop("disabled", true);
-
+            $("#bet").prop("disabled", true);
         },
         progress: function(e, t) {
             if (Settings.sounds) {
@@ -103,6 +103,7 @@ function spin() {
                 eval(win.code);
             $("#spin").attr("onclick", "spinking.buttonSpin(true);");
             $("#spin").prop("disabled", false);
+            $("#bet").prop("disabled", false);
             //$(".openCase").attr("disabled", null);
             //$(".weapons").scrollTop(185);
 
@@ -140,7 +141,7 @@ exports.buttonSpin = buttonSpin;
 function resultToHTML(result) {
     var style = typeof result.imgStyles != "undefined" ? "style='" + result.imgStyles + "'" : "";
     var html = "<div class='weapon spinking bg-" + result.rarity + "' data-id=" + result.id + ">" +
-        "<div class='img-holder'><img src='../images/spinking/icons/" + result.img + "' " + style + "></div>" + (typeof result.xCounter != "undefined" ? "<span class='xCounter'>x" + result.xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + result.name[Settings.language] + "</span><span class='spinking-item-descr'>" + result.description[Settings.language] + "</span></div></div>";
+        "<div class='img-holder'><img src='../images/spinking/icons/" + result.img + "' " + style + "></div>" + (typeof result.xCounter != "undefined" ? "<span class='xCounter'>" + result.xCounter + "</span>" : "") + "<div class='weaponInfo'><span class='spinking-item-name'>" + result.name[Settings.language] + "</span><span class='spinking-item-descr'>" + result.description[Settings.language] + "</span></div></div>";
     return html;
 }
 

@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
 <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="../css/marketplace.css">
+<link rel="stylesheet" type="text/css" href="../css/buttons.css">
 
 <!-- Скрипты -->
 <script src="../scripts/build/libs.js"></script>
@@ -32,7 +33,8 @@
 </style>>
 </head>
 <body data-localization="marketplace" data-inventory='no-load'>
-<div id="containter">
+	<div class="site-overlay"></div>
+<div id="container">
 <div class="navigationBar" data-menu-EN="Market" data-menu-RU="Магазин"></div>
 	<div id="search">
 		<input type="text" name="search_text" id="search_text" placeholder="Search"/>
@@ -48,6 +50,7 @@
 	<div id="weaponInfoContainer" style="display: none;">
 	<div class="glassBlur" style='width: 100%; height: 100%;'></div>
 	<div class="fullWeaponInfo" >
+		<span class="fullWeaponInfo-close">X</span>
 		<span id="weaponName"></span>
 		<img src="" id="weaponImg">
 		<div class='buy-animation'></div>
@@ -56,7 +59,8 @@
 		<tr><td>Качество</td><td id="weaponQuality"></td></tr>
 		</table>
 		<span id='buy-text'>Купить:</span>
-		<button class='button_startContract' style='margin-bottom: 7px;' id='buy-double'>Купить</button>
+		<button class="countChange" id="minus">-</button><input type="text" id="buy_count" placeholder="1"></input><button class="countChange" id="plus">+</button><br>
+		<button class="button_black with_icon double_icon" id="buy-double"></button>
 		<span id='weaponRarity' style='display:none;'></span>
 	</div>
 </div>

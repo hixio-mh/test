@@ -260,8 +260,8 @@ var news = [{
     "month": 9,
     "year": 2016,
     "update": {
-        "RU": " - [Дизайн] Новый дизайн для счетчика нового оружия в меню<br> - [Дизайн] Новый дизайн джекпота<br> - [Исправлено] Баг с нулевым количеством нового оружия<br> - [Исправлено] В инвентаре нет фона у сувенирного оружия, купленного в магазине",
-        "EN": " - [Design] New design for new weapons counter in menu<br> - [Design] New jackpot design<br> - [Fixed] Null new weapons<br> - [Fixed] Souvenir weapons has no background in inventory"
+        "RU": " - [Интерфейс] Новый дизайн для счетчика нового оружия в меню<br> - [Интерфейс] Новый дизайн джекпота<br> - [Исправлено] Баг с нулевым количеством нового оружия<br> - [Исправлено] В инвентаре нет фона у сувенирного оружия, купленного в магазине",
+        "EN": " - [UI] New design for new weapons counter in menu<br> - [UI] New jackpot design<br> - [Fixed] Null new weapons<br> - [Fixed] Souvenir weapons has no background in inventory"
     }
 }, {
     "day": 10,
@@ -294,5 +294,13 @@ var news = [{
     "update": {
         "RU": " - [Новое] Можно продать полученный предмет сразу после открытия кейса",
         "EN": " - [New] You can sell weapon right after you get it from the case"
+    }
+}, {
+    "day": 29,
+    "month": 9,
+    "year": 2016,
+    "update": {
+        "RU": " - [Новое] В магазине можно покупать за раз до 100 предметов<br> - [Новое] В боковом меню показывается баланс дабл очков<br> - [Новое] В инвентаре можно продать предмет<br> - [Изменено] Переписано боковое меню<br> - [Интерфейс] Изменён фон для всех разделов<br> - [Интерфейс] Изменён внешний вид окна с информацией об оружии<br> - [Интерфейс] Изменён внеший вид текстовых полей<br><br>Получилось довольно большое обновление, затрагивающее почти все разделы. Если заметите какие-нибудь ошибки - пишите на почту <b>kurtukovvlad@gmail.com</b>",
+        "EN": " - [New] In the Market you can buy up to 100 items at one time<br> - [New] In the left menu shows the balance of the double points<br> - [New] Now you can sell weapons from inventory<br> - [Changed] Left menu is written from scratch<br> - [UI] Changed the background for all pages<br> - [UI] Changed the appearance of a window with information about weapons<br> - [UI] Changed the appearance of text fields<br><br>It is pretty big update that affects almost all pages. If you notice any bugs - contact me via email <b>kurtukovvlad@gmail.com</b>"
     }
 }, ];

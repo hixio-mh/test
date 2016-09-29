@@ -464,10 +464,16 @@ Localization.jackpot = [{
             "EN": "Quality"
         }
     }, {
-        "selector": ".button_startContract",
+        "selector": "#startContract",
         "localization": {
             "RU": "Контракт обмена",
             "EN": "Trade up contract"
+        }
+    }, {
+        "selector": "#sellWeapon",
+        "localization": {
+            "RU": "Продать",
+            "EN": "Sell weapon"
         }
     }, {
         "selector": ".button_resetContract",
@@ -502,6 +508,10 @@ Localization.jackpot = [{
         'contract_error_title': {
             "EN": "Error",
             "RU": "Ошибка"
+        },
+        'sell_error': {
+            "EN": "Something wrong with weapon price",
+            "RU": "Что-то не так с ценой"
         },
     },
     Localization.marketplace = [{

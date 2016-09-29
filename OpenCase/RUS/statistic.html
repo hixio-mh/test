@@ -21,7 +21,6 @@ body {
 	color: #fff;
 }
 table {
-    margin-top: 45px;
     width: 100%;
     border-collapse: collapse;
     padding: 0 5px;
@@ -57,8 +56,9 @@ tr:nth-child(2n) {
 }
 </style>
 <body data-localization='statistic'>
+	<div class="site-overlay"></div>
+	<div id="container">
 <div class="navigationBar" data-menu-EN="Statistic" data-menu-RU="Статистика"></div>
-<div class="container">
 <table>
 <tr><td id="caseOpened-text">Количество открытых кейсов: </td><td id="caseOpened"></td></tr>
 <tr><td id="stattrak-text">StatTrak: </td><td id="stattrak"></td></tr>
@@ -94,7 +94,7 @@ $(function(){
 		if (typeof getStatistic('case-'+cases[i].name) != "undefined")
 			opened += parseInt(getStatistic('case-'+cases[i].name));
 	}
-	
+
 	$("#caseOpened").text(opened);
 
 	stat("white", getStatistic('weapon-consumer'));
@@ -117,7 +117,7 @@ $(function(){
 function stat(selector, text) {
 	if (typeof text == "undefined")	text = "undefined";
 	if (typeof text == 'string') text = text.replace(/undefined/gi, '0');
-	
+
 	document.getElementById(selector).textContent = text;
 }
 
@@ -128,7 +128,7 @@ function convertStatistic() {
 		if (typeof $.cookie('case-'+cases[i].name) != "undefined")
 			client.saveStatistic('case-'+cases[i].name, $.cookie('case-'+cases[i].name))
 	}
-	
+
 	client.saveStatistic("weapon-consumer", $.cookie('weapon-consumer', Number));
 	client.saveStatistic("weapon-industrial", $.cookie('weapon-industrial', Number));
 	client.saveStatistic("weapon-milspec", $.cookie('weapon-milspec', Number));

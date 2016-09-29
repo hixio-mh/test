@@ -9,7 +9,7 @@
 
 		<script src="../scripts/navigationMenu.js"></script>
 		<link rel="stylesheet" href="../css/navigationMenu.css" />
-		
+
 		<script src="../scripts/localization.js"></script>
 		<script src="../scripts/news.js"></script>
 
@@ -20,13 +20,8 @@
 		body {
 		color: #fff;
 		}
-		.container {
-		padding: 0 10px;
-		font-family: LatoRegular;
-		margin-top: 48px;
-		}
 		ul.history-list {
-		padding-left: 0;
+		padding: 0 10px;
 		list-style: none;
 		}
 		.history-list li {
@@ -49,8 +44,9 @@
 		}
 	</style>
 	<body data-localization='none'>
+		<div class="site-overlay"></div>
+		<div id='container'>
 		<div class="navigationBar" data-menu-EN="Updates" data-menu-RU="Обновления"></div>
-		<div class='container'>
 			<ul class='history-list'>
 			</ul>
 		</div>

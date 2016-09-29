@@ -5,7 +5,19 @@ var Sales = [],
     discount = 15;
 
 
-$(function() {});
+$(function() {
+    $("#buy_count").change(function() {
+        var count = $("#buy_count").val();
+        count = count == "" ? "1" : count;
+        count = parseInt(count.match(/(\d+)/g).toString().replace(/\,/g, ''));
+        count = count <= 0 ? 1 : count > 100 ? 100 : count;
+        $("#buy_count").val(count);
+        var newPrice = $("#weaponPrice").text();
+        newPrice = isNaN(parseInt(newPrice[0])) ? newPrice.substr(1, newPrice.length - 1) : newPrice;
+        newPrice = parseFloat(newPrice) * 100 * count;
+        $("#buy-double").html(newPrice);
+    });
+});
 
 $(document).ready(function() {
     $('.navigationBar').append('<sup class="beta"> beta</sup><span id="playerBalance">' + Player.doubleBalance + ' <i class="double-icon"></i></span>');
@@ -115,13 +127,31 @@ $(document).on('click', '.item, .sales-weapon', function() {
             price = parseFloat(price.substr(1));
     }
 
-    $('#buy-double').html((parseFloat(price) * 100).toFixed(0) + ' <i class="double-icon"></i>');
+    $("#buy_count").val(1);
+    $('#buy-double').html((parseFloat(price) * 100).toFixed(0));
 });
 
 //var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon.new);
 
+$(document).on('click', ".countChange", function() {
+    var count = parseInt($("#buy_count").val());
+    switch (this.id) {
+        case 'plus':
+            count++;
+            break
+        case 'minus':
+            count--;
+            break
+    }
+    count = count < 1 ? 1 : count > 100 ? 100 : count;
+    $("#buy_count").val(count);
+    $("#buy_count").trigger("change");
+})
+
 $(document).on('click', '#buy-double', function() {
     var rarity = getWeaponRarity($("#weaponInfoContainer").data('type'), $("#weaponInfoContainer").data('name'));
+    var price = parseInt($("#buy-double").text());
+    var count = parseInt($("#buy_count").val());
     var weapon = {
         type: $("#weaponInfoContainer").data('type'),
         skinName: $("#weaponInfoContainer").data('name'),
@@ -132,7 +162,7 @@ $(document).on('click', '#buy-double', function() {
         price: parseFloat($("#weaponInfoContainer").data('price').replace(/\$/, '')),
         'new': true,
     }
-    if (Player.doubleBalance < weapon.price * 100) {
+    if (Player.doubleBalance < price * count) {
         $('#weaponPrice').addClass('animated flash');
         setTimeout(function() {
             $('#weaponPrice').removeClass('animated flash')
@@ -140,9 +170,11 @@ $(document).on('click', '#buy-double', function() {
         return false;
     }
     if (isAndroid()) {
-        saveWeapon(weapon);
+        for (var i = 0; i < count; i++)
+            saveWeapon(weapon);
     } else {
-        inventory.push(weapon);
+        for (var i = 0; i < count; i++)
+            inventory.push(weapon);
         saveInventory();
     }
     var saleId = parseInt($("#weaponInfoContainer").data('sales-id'));
@@ -222,7 +254,7 @@ function search(searchStr) {
     $('#search_result').html(items);
 }
 
-$(document).on("click", ".glassBlur", function() {
+$(document).on("click", ".glassBlur, .fullWeaponInfo-close", function() {
     $("#weaponInfoContainer").css("display", "none");
 })
 

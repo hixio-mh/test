@@ -32,6 +32,7 @@ $(function() {
 
     $('#bet').val('0');
     $('#balance').text(Player.doubleBalance.toFixed(0));
+    $('#menu_doubleBalance').text(Player.doubleBalance.toFixed(0));
 
     $("#bet").keydown(function(e) {
         // Allow: backspace, delete, tab, escape, enter and .
@@ -130,6 +131,7 @@ function startGame() {
                             }
                             Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
                             $('#balance').text(Player.doubleBalance);
+                            $('#menu_doubleBalance').text(Player.doubleBalance);
                             statisticPlusOne('double-wins');
                             changePoints(2);
                         } else {
@@ -242,6 +244,7 @@ $(document).on('click', '.bet-to-color', function() {
     Player.doubleBalance -= bet;
     Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
     $('#balance').text(Player.doubleBalance);
+    $('#menu_doubleBalance').text(Player.doubleBalance);
     saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
 
     addBet(color, pl);
@@ -280,6 +283,7 @@ $(document).on("click", ".choseItems", function() {
             Player.doubleBalance += itemsCost * 100;
             Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
             $('#balance').text(Player.doubleBalance);
+            $('#menu_doubleBalance').text(Player.doubleBalance);
             saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
         }
 
