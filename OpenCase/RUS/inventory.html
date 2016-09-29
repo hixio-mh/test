@@ -269,6 +269,7 @@
 			Sound("buy");
 			Player.doubleBalance += price;
 			$("#menu_doubleBalance").text(Player.doubleBalance);
+			saveStatistic('doubleBalance', Player.doubleBalance);
 			$(".fullWeaponInfo-close").click();
 		});
 
