@@ -162,7 +162,7 @@ $(document).on('click', '#buy-double', function() {
         price: parseFloat($("#weaponInfoContainer").data('price').replace(/\$/, '')),
         'new': true,
     }
-    if (Player.doubleBalance < price * count) {
+    if (Player.doubleBalance < price) {
         $('#weaponPrice').addClass('animated flash');
         setTimeout(function() {
             $('#weaponPrice').removeClass('animated flash')
