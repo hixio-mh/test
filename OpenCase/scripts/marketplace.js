@@ -15,7 +15,7 @@ $(function() {
         var newPrice = $("#weaponPrice").text();
         newPrice = isNaN(parseInt(newPrice[0])) ? newPrice.substr(1, newPrice.length - 1) : newPrice;
         newPrice = parseFloat(newPrice) * 100 * count;
-        $("#buy-double").html(newPrice);
+        $("#buy-double").html(newPrice.toFixed(0));
     });
 });
 
