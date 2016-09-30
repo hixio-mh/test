@@ -237,6 +237,7 @@
 			if (price == 0) {
 				price = getPrice(type, name, quality, statTrak);
 				search = false;
+				$(".fullWeaponInfo button").prop("disabled", false);
 			}
 
 			if (search)
