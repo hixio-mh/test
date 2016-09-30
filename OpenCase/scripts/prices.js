@@ -80,7 +80,7 @@ function getPriceIfExists(type, name, quality, statTrak) {
 }
 
 function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) {
-    $(selector).html('<span class="current-price hide">' + $(selector).html() + '</span><span class="loading-animate"><i class="fa fa-refresh fa-spin" aria-hidden="true"></span>');
+    if (typeof selector == "string") $(selector).html('<span class="current-price hide">' + $(selector).html() + '</span><span class="loading-animate"><i class="fa fa-refresh fa-spin" aria-hidden="true"></span>');
     $('.glassBlur').addClass('js-price-loading');
     if (statTrak != 0 && statTrak != false) {
         type = "StatTrak™ " + type;
@@ -108,8 +108,10 @@ function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) 
                     pr = parseFloat(pr);
                     if (DEBUG)
                         console.log(pr);
-                    if (typeof selector != "undefined")
+                    if (typeof selector == "string")
                         $(selector).html(pr + "$");
+                    else if (typeof selector == "function")
+                        selector(pr);
                     $('.glassBlur').removeClass('js-price-loading');
                     return pr;
                 }
@@ -156,8 +158,10 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
                     price = 0;
                 if (DEBUG)
                     console.log('Other market: ' + price);
-                if (typeof selector != "undefined")
-                    $(selector).html(price + '$');
+                if (typeof selector == "string")
+                    $(selector).html(pr + "$");
+                else if (typeof selector == "function")
+                    selector.call(pr);
                 return price;
             }
         });
@@ -232,8 +236,10 @@ function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
                             continue;
                         if (spans[i + 1].content[0] == '$') {
                             var price = parseFloat(spans[i + 1].content.substr(1).replace(/,/gi, ''));
-                            if (typeof selector != 'undefined')
-                                $(selector).html(price + '$');
+                            if (typeof selector == "string")
+                                $(selector).html(price + "$");
+                            else if (typeof selector == "function")
+                                selector(price);
                             if (DEBUG)
                                 console.log('Quality: %c ' + quality + ' %c;StatTrak: ' + '%c ' + statTrak + ' %c Souvenir: ' + '%c ' + souvenir + ' %c; anyPrice: ' + '%c ' + anyPrice + ' %c; Price: %c ' + price + '$ ', 'background:#af7b05;color:#fff', '', 'background:#56af05;color:#fff', '', 'background:#0083a0;color:#fff', '', 'background:#c5c100;color:#fff', '', 'background:#b005b3;color:#fff')
                             break;
