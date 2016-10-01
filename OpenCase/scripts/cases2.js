@@ -4351,7 +4351,7 @@ var cases = [{
     "weapons": [{
         "type": "AWP",
         "skinName": "Солнце в знаке Льва",
-        "rarity": "milspec",
+        "rarity": "industrial",
         "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FA957OnHdTRD746JmImMn-O6ZezVlz4CvJYj2LqXpNmj0Vaw8kVvZG_7LNSScgJsZF_S-VO7w-e51Ij84srJoVgQJg"
     }, {
         "type": "AWP",
