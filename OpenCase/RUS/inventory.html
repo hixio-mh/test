@@ -170,7 +170,7 @@
 
 
 			$("#weaponInfoContainer").css("display", "block");
-			$(".fullWeaponInfo").slideDown();
+			$(".fullWeaponInfo").removeClass("info-closed");
 			$("#weaponImg").attr("src", getImgUrl(img, 1));
 			$("#weaponName").html(type + " " + getSkinName(name, Settings.language));
 			$("#weaponPrice").html(price + "$");
@@ -199,9 +199,10 @@
 
 		$(document).on("click", ".glassBlur, .fullWeaponInfo-close", function() {
 			if ($(".glassBlur").hasClass('js-price-loading')) return false;
-			$(".fullWeaponInfo").slideUp("slow", function() {
+			$(".fullWeaponInfo").addClass("info-closed");
+			setTimeout($.proxy(function() {
 				$("#weaponInfoContainer").css("display", "none");
-			});
+			}, this), 1000);
 			if ($(".glassBlur").hasClass("savePrice")) {
 				if ($("#weaponPrice").text() != "0$" && $("#weaponPrice").text() != "NaN$") {
 					var wp = {};
@@ -227,6 +228,7 @@
 					}
 				}
 				$(this).removeClass("savePrice");
+
 			}
 		});
 

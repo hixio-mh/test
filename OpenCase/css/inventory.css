@@ -142,6 +142,7 @@
     position: absolute;
     -webkit-transform: translate(-50%, -50%) translateY(20px);
     transform: translate(-50%, -50%) translateY(20px);
+    transition-duration: 1s;
     border-radius: 7px;
     overflow: auto;
     max-height: 100%;
@@ -150,6 +151,9 @@
     background: url(../images/Weapons/dot.png) no-repeat, url(../images/Weapons/dot.png) no-repeat, url(../images/Weapons/dot.png) no-repeat, url(../images/Weapons/dot.png) no-repeat,url(../images/Weapons/bottom.png) no-repeat, url(../images/Weapons/squares.png) no-repeat, url(../images/Weapons/squares.png) no-repeat, linear-gradient(to bottom, #fff, #E6E6E6);
     background-position: 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), bottom, 20px 0, calc(100% - 20px) 100%, 0;
     background-size: 7px, 7px, 7px, 7px, 60px, 19px 7px, 19px 7px, 100%;
+}
+.info-closed {
+  max-height: 0;
 }
 .fullWeaponInfo-close {
     width: 25px;
@@ -248,6 +252,7 @@
 		font-weight: Lighter;
 	}
 }
+
 .contractButtons {
     position: fixed;
     bottom: 25px;
