@@ -177,6 +177,8 @@ body {
 
 .bet-items {
     text-align: center;
+    transition-duration: 1s;
+    overflow: hidden;
 }
 
 .bet-items__item {
@@ -202,9 +204,11 @@ body {
     font-size: 0.9em;
     padding: 3px;
 }
+.show-items {
+    max-height: 580px;
+}
 .hide-items {
-    height: 185px;
-    overflow: hidden;
+    max-height: 185px;
     margin-bottom: 5px;
     position: relative;
 }

@@ -337,7 +337,7 @@ function itemsList(fromName, fromImg, tickets, itemsCost, weapons) {
 }
 
 $(document).on('click', '.hide-items, .show-items', function() {
-    $(this).toggleClass('hide-items show-items', 800);
+    $(this).toggleClass('hide-items show-items');
 })
 
 $(".choseItems").on("click", function() {
