@@ -179,6 +179,8 @@ body {
     text-align: center;
     transition-duration: 1s;
     overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .bet-items__item {
@@ -219,7 +221,7 @@ body {
     height: 50px;
     position: absolute;
     bottom: 0;
-    background: linear-gradient(to top, #19212B, RGBA(0, 0, 0, 0));
+    background: linear-gradient(to top, #232E3C, RGBA(0, 0, 0, 0));
     vertical-align: middle;
     line-height: 1em;
     font-size: 3em;
