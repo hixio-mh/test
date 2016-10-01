@@ -165,13 +165,18 @@
     -webkit-box-shadow: 0 0 3px RGBA(0, 0, 0, 0.41);
     box-shadow: 0 0 3px RGBA(0, 0, 0, 0.41);
 }
-#weaponImg {
+#weaponImg, #weaponLoadingImg {
     width: 100%;
     background: #5c5c5c;
     /*background: linear-gradient(45deg, #645981, #7074C9);
     background: linear-gradient(45deg, #FFEBCE, #D49F35);*/
     background: -webkit-radial-gradient(at top, #86AEF6, #284271);
     background: radial-gradient(at top, #86AEF6, #284271);
+}
+#weaponLoadingImg {
+    color: #fff;
+    font-size: 2em;
+    padding: 150px 0;
 }
 #weaponName {
     font-family: LatoBold;

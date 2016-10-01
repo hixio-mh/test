@@ -61,6 +61,7 @@
 			<span id="weaponName"></span>
 			<img src="../images/stattrak.png" id="statTrakImg">
 			<img src="" id="weaponImg">
+			<div id="weaponLoadingImg"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></div>
 			<table id="weaponInfoTable">
 				<tr>
 					<td>Цена</td>
@@ -175,6 +176,13 @@
 			$("#weaponPrice").html(price + "$");
 			$("#weaponQuality").html(quality);
 			$('#weaponRarity').text(rarity);
+
+			$("#weaponLoadingImg").show();
+			$("#weaponImg").hide();
+			$("#weaponImg").on('load', function() {
+				$("#weaponLoadingImg").hide();
+				$("#weaponImg").show();
+			})
 
 			if (parseFloat(price) == 0 || isNaN(price)) {
 				getMarketPrice(type, name, quality, statTrak, '#weaponPrice');

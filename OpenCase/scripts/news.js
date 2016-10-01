@@ -303,4 +303,12 @@ var news = [{
         "RU": " - [Новое] В магазине можно покупать за раз до 100 предметов<br> - [Новое] В боковом меню показывается баланс дабл очков<br> - [Новое] В инвентаре можно продать предмет<br> - [Изменено] Переписано боковое меню<br> - [Интерфейс] Изменён фон для всех разделов<br> - [Интерфейс] Изменён внешний вид окна с информацией об оружии<br> - [Интерфейс] Изменён внеший вид текстовых полей<br> - [Исправлено] Исправлена ошибка с AWP | Боец в магазине<br><br>Получилось довольно большое обновление, затрагивающее почти все разделы. Если заметите какие-нибудь ошибки - пишите на почту <b>kurtukovvlad@gmail.com</b>",
         "EN": " - [New] In the Market you can buy up to 100 items at one time<br> - [New] In the left menu shows the balance of the double points<br> - [New] Now you can sell weapons from inventory<br> - [Changed] Left menu is written from scratch<br> - [UI] Changed the background for all pages<br> - [UI] Changed the appearance of a window with information about weapons<br> - [UI] Changed the appearance of text fields<br> - [Fixed] Bug in market with AWP | Man-o'-war<br><br>It is pretty big update that affects almost all pages. If you notice any bugs - contact me via email <b>kurtukovvlad@gmail.com</b>"
     }
+}, {
+    "day": 1,
+    "month": 10,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] При открытии информации об оружии в инвентаре на несколько секунд зависала картинка от предыдущего оружия",
+        "EN": " - [Fixed] When open of the information about the weapon the picture is from a previous weapons for a few seconds"
+    }
 }, ];
