@@ -19,7 +19,7 @@ $(document).on("click", ".case", function() {
     if (cases[caseId].type == "Special") {
 
         if (parseInt(getStatistic('specialCases', 0)) >= cases[caseId].casesToOpen) {
-            window.location = "open.html?caseId=" + caseId + ((souvenir) ? "&souvenir=" + souvenir : '');
+            window.location.replace("open.html?caseId=" + caseId + ((souvenir) ? "&souvenir=" + souvenir : ''));
         } else {
             $('#special-popup').css('display', 'block');
             var needToOpen = cases[caseId].casesToOpen - parseInt(getStatistic('specialCases', 0));
@@ -28,7 +28,7 @@ $(document).on("click", ".case", function() {
             $('.js-secretField').text(caseId);
         }
     } else {
-        window.location = "open.html?caseId=" + caseId + ((souvenir) ? "&souvenir=" + souvenir : '');
+        window.location.replace("open.html?caseId=" + caseId + ((souvenir) ? "&souvenir=" + souvenir : ''));
     }
 });
 $(document).on('click', '#closePopup', function() {
@@ -294,11 +294,11 @@ $(document).on("click", "#double_sell_button", function() {
     $(".win").addClass("sold-out big");
     Sound("buy");
     if (isAndroid()) {
-        client.sendToAnalytics("Open case", "Selling weapon", "Player has sold weapon for " + doublePoints + " double points", "openCase.js");
+        client.sendToAnalytics("Open case", "Selling weapon", "Player has sold weapon for  double points", doublePoints + " double points");
     }
 })
 
 $(document).on("click", ".closeCase", function() {
-    window.location = "cases.html";
+    window.location.replace("cases.html");
     caseOpening = false;
 })
