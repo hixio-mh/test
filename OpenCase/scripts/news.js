@@ -317,6 +317,6 @@ var news = [{
     "year": 2016,
     "update": {
         "RU": " - [Исправлено] Зависание КНБ если не найдено подходящее оружие",
-        "EN": " - [Fixed] RPS freezes if can't find weapons for opponent."
+        "EN": " - [Fixed] RPS freezes when can't find weapons for opponent."
     }
 }, ];
