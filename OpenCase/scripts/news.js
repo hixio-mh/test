@@ -311,4 +311,12 @@ var news = [{
         "RU": " - [Исправлено] При открытии информации об оружии в инвентаре на несколько секунд зависала картинка от предыдущего оружия",
         "EN": " - [Fixed] When open of the information about the weapon the picture is from a previous weapons for a few seconds"
     }
+}, {
+    "day": 3,
+    "month": 10,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Зависание КНБ если не найдено подходящее оружие",
+        "EN": " - [Fixed] RPS freezes if can't find weapons for opponent."
+    }
 }, ];

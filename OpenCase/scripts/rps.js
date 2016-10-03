@@ -110,6 +110,7 @@ function botAddWeapon(itemsCost) {
     var canContinue = false;
     var weapons = [];
     wpLength = winItems.length;
+    var oldDate = new Date();
     while (!canContinue) {
         var rnd = Math.rand(0, Prices.length - 1)
         var weapon = Prices[rnd];
@@ -141,6 +142,11 @@ function botAddWeapon(itemsCost) {
                 }
                 if (br) break;
             }
+        }
+        if (new Date() - oldDate > 7000) {
+            weapons = winItems.slice();
+            canContinue = true;
+            break;
         }
     }
     winItems = winItems.concat(weapons);
