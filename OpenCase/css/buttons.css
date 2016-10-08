@@ -105,3 +105,29 @@ button.double_icon:before {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+.button_blue {
+    border: none;
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px 20px;
+    text-align: center;
+    font-family: Lato;
+    font-weight: Bold;
+    background: #00ACEF;
+    background: linear-gradient(to bottom, #00ACEF, #0E81AE);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.button_blue:hover {
+    background: #29C3FF;
+    background: linear-gradient(to bottom, #29C3FF, #1085B3);
+}
+.button_blue:active {
+    background: #0E81AE;
+    background: linear-gradient(to top, #00ACEF, #0E81AE);
+    box-shadow: 0 0 2px rgba(0,0,0,0.5) inset;
+}
+.button_blue:disabled {
+    opacity: 0.5;
+}

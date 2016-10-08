@@ -4,17 +4,16 @@
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/chat.css">
+<link rel="stylesheet" type="text/css" href="../css/buttons.css">
 
-<!-- <script src="../scripts/jquery.min.js"></script> -->
-<!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+ <script src="../scripts/jquery.min.js"></script>
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
 
 <!-- Firechat -->
-<link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" />
-<script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script>
+<!-- <link rel="stylesheet" href="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.css" /> -->
+<!-- <script src="https://cdn.firebase.com/libs/firechat/3.0.1/firechat.min.js"></script> -->
 
 <script src="../scripts/jquery.cookie.js"></script>
 <script src="../scripts/main.js"></script>
@@ -26,41 +25,127 @@
 <script src="../scripts/localization.js"></script>
 <title>Chat</title>
 </head>
-<body data-localization="marketplace" data-inventory='no-load'>
-<div id="containter">
+<body data-localization="chat" data-inventory='no-load'>
+	<div class="site-overlay"></div>
+<div class='container' id="container">
 <div class="navigationBar" data-menu-EN="Chat" data-menu-RU="Чат"></div>
 
  <script>
-      function login() {
-        // Log the user in via Twitter
-        var provider = new firebase.auth.TwitterAuthProvider();
-        firebase.auth().signInWithPopup(provider).catch(function(error) {
-          console.log("Error authenticating user:", error);
-        });
-      }
+ var config = {
+    apiKey: "AIzaSyBnT4uYoOgs0Gl6F5_AtzY-q9hhM8z__E4",
+    authDomain: "admob-app-id-8282025074.firebaseapp.com",
+    databaseURL: "https://admob-app-id-8282025074.firebaseio.com",
+    storageBucket: "admob-app-id-8282025074.appspot.com",
+    messagingSenderId: "917984410977"
+  };
+  firebase.initializeApp(config);
+  var testObject = {};
+  var chatRef = firebase.database().ref('globalChat');
+	  
+	  function register() {
+		var email = $("#email").val() || "";
+		var password = $("#password").val() || "";
+		if (email == "" || password == "") {
+			return false;
+		}
+		
+		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			
+			console.log("Error! ",error.message);
+		})
+	  }
+	  
+	chatRef.on('child_added', function(data) {
+		newMsg(data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text);
+	});
+	  
+	  function login() {
+		var email = $("#email").val() || "";
+		var password = $("#password").val() || "";
+		if (email == "" || password == "") {
+			return false;
+		}
+		
+		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+			var errorCode = error.code;
+			var errorMessage = error.message;
+			
+			console.log("Error! ",error.message);
+		});
+	  }
 
       firebase.auth().onAuthStateChanged(function(user) {
         // Once authenticated, instantiate Firechat with the logged in user
-        if (user) {
-          initChat(user);
-        }
       });
 
-      function initChat(user) {
-        // Get a Firebase Database ref
-        var chatRef = firebase.database().ref("chat");
-
-        // Create a Firechat instance
-        var chat = new FirechatUI(chatRef, document.getElementById("firechat-wrapper"));
-
-        // Set the Firechat user
-        chat.setUser(user.uid, user.displayName);
-      }
+      function sendChatMessage(userName, text, img) {
+		var time = new Date();
+		time = ""+time;
+		var uid = firebase.auth().currentUser.uid;
+		chatRef.push({
+			username: userName,
+			uid: uid,
+			text: text,
+			time: time,
+			img: img
+		});
+	  }
+	  
+	  function newMsg(uid, img, username, time, text) {
+			var time = new Date(time);
+			time = time.toLocaleString((Settings.language == 'RU') ? 'ru' : 'en-US', {hour: 'numeric', minute: 'numeric'});
+			var myMessage = false;
+			
+			if (uid == firebase.auth().currentUser.uid)
+				myMessage = true;
+			
+			var msg = "<li class='chat__message" + (myMessage ? " my_message" : "") + "' data-userID='"+uid+"'>" +
+					"<img src='"+img+"'>" +
+					"<div class='message__info'>" +
+					"<div class='message__info__from-time'>" +
+					"<span class='message__from'>"+username+"</span>" +
+					"<span class='message__time'>"+time+"</span>" +
+					"</div>"+
+					"<span class='message__text'>"+text+"</span>" +
+					"</div></li>";
+				$(".chat__messages").append(msg);
+	  }
+	  
+	  /*function initChat() {
+		return chatRef.once('value').then(function(snapshot) {
+			messages = snapshot.val();
+			for (key in messages) {
+				newMsg(messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text);
+			}
+		});
+	  }
+	  
+	  $(function() {
+		initChat();
+	  });*/
     </script>
 
     <div id="firechat-wrapper">
-      <button onclick="login('twitter');">Login with Twitter</button>
-    </div>
+		<div id="login">
+			<input type="text" placeholder="Email" id="email"></input>
+			<input type="password" placeholder="Password" id="password"></input>
+			<div id="login__buttons">
+				<button class="button_blue" onclick="login();">Sign in</button>
+				<button class="button_blue" onclick="register();">Register</button>
+			</div>
+		</div>
+	</div>
+	
+	<div id="chat">
+		<ul class="chat__messages">
+		</ul>
+		<div class="chat__write">
+			<input type="text" id="chat__new-message" />
+			<input class="button_blue" type="button" id="chat__send-new-message" value="Send" />
+		</div>
+	</div>
 </div>
 </body>
 </html>

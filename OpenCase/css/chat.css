@@ -1,0 +1,100 @@
+﻿input {
+    display: block;
+	margin: 3px;
+}
+#firechat-wrapper {
+    padding-top: 10px;
+}
+#login {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+#login__buttons > button {
+    margin: 0px 3px;
+}
+ul.chat__messages {
+    padding: 10px;
+    list-style: none;
+	background: #e6e6e6;
+}
+li.chat__message {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+li.chat__message img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.message__info {
+    position: relative;
+    background: #fff;
+    padding: 10px 15px;
+    margin-left: 26px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0, 0.2);
+    box-shadow: 0 0 5px rgba(0,0,0, 0.2);
+}
+.message__info::before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: -20px;
+    border-left: none;
+    border-top: 10px solid transparent;
+    border-right: 20px solid #fff;
+    border-bottom: 10px solid transparent;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.message__from {
+    color: #cb6a6a;
+    font-size: 14px;
+    font-weight: bold;
+}
+.message__time {
+    color: #c5c5c5;
+    font-size: 14px;
+    float: right;
+    margin-left: 15px;
+}
+.message__text {
+    color: #656565;
+}
+
+/* Если сообщение отправил текущий пользователь */
+.my_message {
+    flex-direction: row-reverse !important;
+}
+
+.my_message .message__info {
+    margin-left: 0;
+    margin-right: 26px;
+}
+
+.my_message .message__info::before {
+    right: -20px;
+    left: auto;
+    border-left: 20px solid #fff;
+    border-right: none;
+}
+
+.chat__write {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+#chat__new-message {
+    flex-grow: 2;
+	margin-bottom: 0;
+}
