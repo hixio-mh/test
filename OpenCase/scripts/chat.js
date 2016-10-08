@@ -8,10 +8,24 @@ $(function() {
     $("#chat__new-message").on('keydown paste', function(event) {
         if (event.keyCode == 13) {
             $("#chat__send-new-message").click();
+            event.preventDefault();
         }
         if (this.innerHTML.length >= this.getAttribute("max") && event.keyCode != 8) {
             event.preventDefault();
         }
+    });
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        // Once authenticated, instantiate Firechat with the logged in user
+        if (firebase.auth().currentUser != null) {
+            $("#login").hide();
+            $("#chat").show();
+            //initChat();
+        } else {
+            $("#chat").hide();
+            $("#login").show();
+        }
+
     });
 });
 
@@ -42,10 +56,12 @@ function register() {
 }
 
 chatRef.on('child_added', function(data) {
-    newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text);
-    $("html, body").animate({
-        scrollTop: $(document).height()
-    }, 200);
+    if ($("li[data-msgkey='" + data.key + "']").length == 0) {
+        newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text);
+        $("html, body").animate({
+            scrollTop: $(document).height()
+        }, 100);
+    }
 });
 
 chatRef.on('child_removed', function(data) {
@@ -67,20 +83,6 @@ function login() {
     });
 }
 
-firebase.auth().onAuthStateChanged(function(user) {
-    // Once authenticated, instantiate Firechat with the logged in user
-    if (firebase.auth().currentUser != null) {
-        $("#login").hide();
-        $("#chat").show();
-        //$(".chat__messages li").remove();
-        //initChat();
-    } else {
-        $("#chat").hide();
-        $("#login").show();
-    }
-
-});
-
 function sendChatMessage(userName, text, img) {
     var time = new Date();
     time = "" + time;
@@ -91,8 +93,6 @@ function sendChatMessage(userName, text, img) {
         text: text,
         time: time,
         img: img
-    }, function(err) {
-        console.log(err);
     });
 }
 
@@ -130,10 +130,11 @@ function removeMsg(key) {
 }
 
 function initChat() {
+    $(".chat__messages li").remove();
     return chatRef.once('value').then(function(snapshot) {
         messages = snapshot.val();
         for (key in messages) {
-            newMsg(messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text);
+            newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text);
         }
     });
 }
@@ -151,6 +152,7 @@ function XSSreplace(text) {
 
 $(document).on('click', '#chat__send-new-message', function() {
     var msg = $('#chat__new-message').text();
+    if (msg.length == 0) return false;
     sendChatMessage(Player.nickname, msg, '../images/ava/' + Player.avatar);
-    $('#chat__new-message').val('');
+    $('#chat__new-message').empty();
 });
