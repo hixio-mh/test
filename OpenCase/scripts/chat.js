@@ -20,7 +20,6 @@ $(function() {
         if (firebase.auth().currentUser != null) {
             $("#login").hide();
             $("#chat").show();
-            //initChat();
         } else {
             $("#chat").hide();
             $("#login").show();
@@ -81,6 +80,10 @@ function login() {
 
         console.log("Error! ", error.message);
     });
+    $(".chat__messages").append('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
+    setTimeout(function() {
+        initChat();
+    }, 2000);
 }
 
 function sendChatMessage(userName, text, img) {
@@ -108,6 +111,7 @@ function newMsg(key, uid, img, username, time, text) {
         myMessage = true;
 
     text = XSSreplace(text);
+    username = XSSreplace(username);
 
     var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + "' data-msgkey='" + key + "'>" +
         "<img src='" + img + "' data-userID='" + uid + "'>" +
