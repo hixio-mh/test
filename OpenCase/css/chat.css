@@ -1,5 +1,8 @@
-﻿input {
-    display: block;
+body {
+  background: #e6e6e6;
+}
+input, .input-text {
+  display: block;
 	margin: 3px;
 }
 #firechat-wrapper {
@@ -19,7 +22,8 @@
 ul.chat__messages {
     padding: 10px;
     list-style: none;
-	background: #e6e6e6;
+	  background: #e6e6e6;
+    margin-top: 0;
 }
 li.chat__message {
     margin: 15px 0;
@@ -42,6 +46,8 @@ li.chat__message img {
     border-radius: 8px;
     -webkit-box-shadow: 0 0 5px rgba(0,0,0, 0.2);
     box-shadow: 0 0 5px rgba(0,0,0, 0.2);
+    word-wrap: break-word;
+    max-width: calc(100% - 107px);
 }
 .message__info::before {
     content: '';
@@ -93,8 +99,14 @@ li.chat__message img {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 #chat__new-message {
     flex-grow: 2;
-	margin-bottom: 0;
+	  margin-bottom: 0;
+    height: auto;
+    word-break: break-all;
 }
