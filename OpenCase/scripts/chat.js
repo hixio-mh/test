@@ -26,33 +26,23 @@ $(function() {
         }
 
     });
+
+    $(document).on('click', '#login button', function() {
+        $(".chat__messages").append('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
+        setTimeout(function() {
+            initChat();
+        }, 2000);
+    });
+
+    $(document).on('click', '.chat__message img', function() {
+        var uid = $(this).data('userid');
+        if (typeof uid == 'undefined') return false;
+        window.location = 'profile.html?uid=' + uid;
+    })
 });
 
-var config = {
-    apiKey: "AIzaSyBnT4uYoOgs0Gl6F5_AtzY-q9hhM8z__E4",
-    authDomain: "admob-app-id-8282025074.firebaseapp.com",
-    databaseURL: "https://admob-app-id-8282025074.firebaseio.com",
-    storageBucket: "admob-app-id-8282025074.appspot.com",
-    messagingSenderId: "917984410977"
-};
-firebase.initializeApp(config);
-var testObject = {};
+
 var chatRef = firebase.database().ref('globalChat');
-
-function register() {
-    var email = $("#email").val() || "";
-    var password = $("#password").val() || "";
-    if (email == "" || password == "") {
-        return false;
-    }
-
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-
-        console.log("Error! ", error.message);
-    })
-}
 
 chatRef.on('child_added', function(data) {
     if ($("li[data-msgkey='" + data.key + "']").length == 0) {
@@ -66,25 +56,6 @@ chatRef.on('child_added', function(data) {
 chatRef.on('child_removed', function(data) {
     removeMsg(data.key);
 });
-
-function login() {
-    var email = $("#email").val() || "";
-    var password = $("#password").val() || "";
-    if (email == "" || password == "") {
-        return false;
-    }
-
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-
-        console.log("Error! ", error.message);
-    });
-    $(".chat__messages").append('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
-    setTimeout(function() {
-        initChat();
-    }, 2000);
-}
 
 function sendChatMessage(userName, text, img) {
     var time = new Date();
@@ -141,17 +112,6 @@ function initChat() {
             newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text);
         }
     });
-}
-
-function XSSreplace(text) {
-    text = text.replace(/&/g, '&amp;');
-    text = text.replace(/</g, '&lt;');
-    text = text.replace(/>/g, '&gt;');
-    text = text.replace(/"/g, '&quot;');
-    text = text.replace(/'/g, '&#x27;');
-    text = text.replace(/\//g, '&#x2F;');
-
-    return text;
 }
 
 $(document).on('click', '#chat__send-new-message', function() {

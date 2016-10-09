@@ -37,6 +37,7 @@ li.chat__message img {
     height: 50px;
     border-radius: 50%;
     vertical-align: middle;
+    cursor: pointer;
 }
 .message__info {
     position: relative;

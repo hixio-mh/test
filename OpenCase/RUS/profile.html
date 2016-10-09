@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Профиль</title>
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/buttons.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+
+<script src="../scripts/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<script src="../scripts/jquery.cookie.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/profile.js"></script>
+
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+<style>
+	body {
+		color: #fff;
+		background: #fff;
+	}
+	.top {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	}
+	.top__pm > *, .top__trade > *,	.top__profile > * {
+    margin: auto;
+	}
+	.top__pm, .top__trade {
+    width: 50px;
+    height: 50px;
+    background: #e64343;
+    display: flex;
+    border-radius: 50%;
+    font-size: 22px;
+    margin-top: 50px;
+		box-shadow: 0 0 5px rgba(0,0,0,0.3);
+		cursor: pointer;
+	}
+	.top__trade {
+    background: #8E53B3;
+	}
+	.top__profile {
+	    display: flex;
+	    padding: 5px;
+	    flex-direction: column;;
+	}
+	.profile__name {
+		margin: 0;
+		margin-left: 10px;
+		font-size: 1.2em;
+	}
+	.profile__status {
+    font-weight: lighter;
+    font-size: 1.1em;
+	}
+	.profile__img {
+		width: 100px;
+		height: 100px;
+		background:#fff;
+		border-radius: 50%;
+		border: 3px solid #fff;
+	}
+	.top__bg {
+    background: #5782da;
+    position: absolute;
+    top: 0;
+    height: 146px;
+    width: 100%;
+    z-index: -1;
+}
+</style>
+</head>
+<body data-localization='statistic'>
+	<div class="site-overlay"></div>
+	<div id="container">
+<div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
+<div class="top__bg"></div>
+	<div class="top">
+		<div class="top__pm"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+		<div class="top__profile">
+				<h1 class="profile__name"></h1>
+				<h3 class="profile__status">Test status</h3>
+				<img src="" class="profile__img">
+		</div>
+		<div class="top__trade"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+	</div>
+</div>
+<script>
+	$(function() {
+		var param = parseURLParams(window.location.href);
+		if(typeof param == "undefined") return false;
+		uid = param.uid[0];
+		if (typeof uid == 'undefined') return false;
+
+		showProfile(uid, function(userInfo) {
+			$(".profile__img").attr('src', userInfo.avatar);
+			$(".profile__name").text(userInfo.nickname);
+		})
+	})
+</script>
+</body>
+</html>
