@@ -95,17 +95,21 @@ function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) 
     var n = type + " | " + name + " (" + quality + ")";
     n = encodeURI(n);
 
-    $.getJSON("https://query.yahooapis.com/v1/public/yql", {
-            q: "select * from json where url=\"http://steamcommunity.com/market/priceoverview/?currency=3&appid=730&market_hash_name=" + n + "\"",
-            format: "json"
+    //$.getJSON("https://query.yahooapis.com/v1/public/yql", {
+	$.post("http://naiteki-kensei.zz.mu/crossDomain.php", {
+			address: "http://steamcommunity.com/market/priceoverview/?currency=1&appid=730&market_hash_name="+n,
+            //q: "select * from json where url=\"http://steamcommunity.com/market/priceoverview/?currency=1&appid=730&market_hash_name=" + n + "\"",
         },
         function(data) {
             try {
-                if (data.query.results.json.success == "true") {
-                    var pr = data.query.results.json.lowest_price;
+                if (data.indexOf('success":true') != -1) {
+					data = data.replace(/<(.*?)>/, '');
+					data = $.parseJSON(data);
+                    var pr = data.lowest_price;
                     pr = pr.replace(/,/ig, ".");
-                    pr = pr.substr(0, pr.length - 1);
+                    pr = pr.match(/(\d+([.]\d+)?)/)[0];
                     pr = parseFloat(pr);
+					
                     if (DEBUG)
                         console.log(pr);
                     if (typeof selector == "string")
