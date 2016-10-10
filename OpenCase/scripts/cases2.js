@@ -4799,4 +4799,81 @@ var cases = [{
         "rarity": "rare",
         "img": "Workshop2/Karambit-Scorpion.png"
     }, ]
+}, {
+    "name": "Steach case",
+    "img": "SteachCase.png",
+    "type": "Workshop",
+    "specialClass": "workshop",
+    "casesToOpen": 50,
+    "weapons": [{
+        "type": "Glock-18",
+        "skinName": "Candy Racer",
+        "rarity": "milspec",
+        "img": "SteachCase/Glock-18-Candy-Racer.png "
+    }, {
+        "type": "AWP",
+        "skinName": "Animal",
+        "rarity": "milspec",
+        "img": "SteachCase/AWP-Animal.png"
+    }, {
+        "type": "FAMAS",
+        "skinName": "Stinger",
+        "rarity": "milspec",
+        "img": "SteachCase/Famas-Stinger.png"
+    }, {
+        "type": "UMP-45",
+        "skinName": "AGGRESSOR",
+        "rarity": "restricted",
+        "img": "SteachCase/UMP-45-AGGRESSOR.png"
+    }, {
+        "type": "USP-S",
+        "skinName": "Banker",
+        "rarity": "restricted",
+        "img": "SteachCase/USP-S-Banker.png"
+    }, {
+        "type": "Deagle",
+        "skinName": "Crude",
+        "rarity": "restricted",
+        "img": "SteachCase/Deagle-Crude.png"
+    }, {
+        "type": "M4A4",
+        "skinName": "Shark's Prey",
+        "rarity": "classified",
+        "img": "SteachCase/M4A4-Sharks-Prey.png"
+    }, {
+        "type": "AK-47",
+        "skinName": "Fluentem",
+        "rarity": "classified",
+        "img": "SteachCase/AK-47-Fluentem.png"
+    }, {
+        "type": "P90",
+        "skinName": "Stone story",
+        "rarity": "classified",
+        "img": "SteachCase/P90-Stone-story.png"
+    }, {
+        "type": "USP-S",
+        "skinName": "Apis",
+        "rarity": "covert",
+        "img": "SteachCase/USP-S-Apis.png"
+    }, {
+        "type": "AK-47",
+        "skinName": "Lawbreaker",
+        "rarity": "covert",
+        "img": "SteachCase/AK-47-Lawbreaker.png"
+    }, {
+        "type": "M4A4",
+        "skinName": "Howl (REMOVED)",
+        "rarity": "covert",
+        "img": "SteachCase/M4A4-Howl-REMOVED.png"
+    }, {
+        "type": "★ M9 Bayonet",
+        "skinName": "RedBlade",
+        "rarity": "rare",
+        "img": "SteachCase/M9-Bayonet-RedBlade.png"
+    }, {
+        "type": "★ Karambit",
+        "skinName": "Cosplay",
+        "rarity": "rare",
+        "img": "SteachCase/Karambit-Cosplay.png"
+    }, ]
 }, ]

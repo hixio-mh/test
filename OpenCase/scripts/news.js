@@ -319,4 +319,12 @@ var news = [{
         "RU": " - [Исправлено] Зависание КНБ если не найдено подходящее оружие",
         "EN": " - [Fixed] RPS freezes when can't find weapons for opponent."
     }
+}, {
+    "day": 10,
+    "month": 10,
+    "year": 2016,
+    "update": {
+        "RU": " - [Добавлено] Новый кейс от Steach<br> - [Изменено] Немного изменен алгоритм поиска цены",
+        "EN": " - [New] New Steach case! Made by Steach<br> - [Changed] Search price algorithm was changed"
+    }
 }, ];

@@ -110,7 +110,7 @@ function weaponList() {
 			img = '../images/Weapons/rare.png';
 			rare = true;
 		}
-		var weaponInfo = "<img src='" + img + "'><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
+		var weaponInfo = "<img src=\"" + img + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
 		$(".weaponsList").append("<li class='weapon animated fadeInDown'>" + weaponInfo + "</li>");
 	}
 	$(".weaponsList").css("display", "block");

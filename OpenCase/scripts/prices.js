@@ -1,5 +1,4 @@
 var DEBUG = false;
-
 function getPrice(type, name, quality, statTrak) {
     quality = getQualityName(quality, "EN");
     name = getSkinName(name, "EN");
@@ -45,7 +44,6 @@ function getPrice(type, name, quality, statTrak) {
         }
     }
 }
-
 function getPriceIfExists(type, name, quality, statTrak) {
     quality = getQualityName(quality, "EN");
     name = getSkinName(name, "EN");
@@ -78,7 +76,6 @@ function getPriceIfExists(type, name, quality, statTrak) {
         }
     }
 }
-
 function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) {
     if (typeof selector == "string") $(selector).html('<span class="current-price hide">' + $(selector).html() + '</span><span class="loading-animate"><i class="fa fa-refresh fa-spin" aria-hidden="true"></span>');
     $('.glassBlur').addClass('js-price-loading');
@@ -94,7 +91,6 @@ function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) 
         type = type.replace("Сувенир", "Souvenir");
     var n = type + " | " + name + " (" + quality + ")";
     n = encodeURI(n);
-
     $.getJSON("https://query.yahooapis.com/v1/public/yql", {
             q: "select * from json where url=\"http://steamcommunity.com/market/priceoverview/?currency=3&appid=730&market_hash_name=" + n + "\"",
             format: "json"
@@ -121,12 +117,10 @@ function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) 
             }
         });
 }
-
 function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
     var n = type + '|' + name;
     n = n.replace(/ /gi, '_');
     n = encodeURI(n);
-
     $.getJSON("https://query.yahooapis.com/v1/public/yql", {
             q: "select * from html where url='http://csgoitems.pro/en/skin/" + n + "' and xpath='//ul[@class=\"no-bullet five-up\"]'",
             format: "json"
@@ -166,7 +160,6 @@ function getOtherMarketsPrice(type, name, quality, statTrak, selector) {
             }
         });
 }
-
 function csgoStashGetURL(type, name, quality, statTrak, selector, allowanyPrice) {
     var souvenir = false;
     var type2 = type.replace(/ /gi, '+');
@@ -198,7 +191,6 @@ function csgoStashGetURL(type, name, quality, statTrak, selector, allowanyPrice)
             }
         });
 }
-
 function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
     if (typeof allowanyPrice == 'undefined')
         allowanyPrice = true;
@@ -264,7 +256,6 @@ function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
             }
         });
 }
-
 var Prices = [{
     type: 'AK-47',
     name: 'Aquamarine Revenge',
@@ -36259,14 +36250,12 @@ var Prices = [{
     quality: 'Battle-Scarred',
     marketPrice: 9.96,
     avgPrice: 6.69
-
 }, { //WorkShop Case Prices
     type: 'Sawed-Off',
     name: 'Cutaway',
     quality: 'Battle-Scarred',
     marketPrice: 0.8,
     avgPrice: 0.8
-
 }, {
     type: 'Sawed-Off',
     name: 'Cutaway',
@@ -38146,4 +38135,796 @@ var Prices = [{
     quality: 'Factory New',
     marketPrice: 596.6,
     avgPrice: 397.6
+}, { //Steach Case
+    type: 'Glock-18',
+    name: 'Candy Racer',
+    quality: 'Well-Worn',
+    marketPrice: 0.23,
+    avgPrice: 0.23
+}, {
+    type: 'Glock-18',
+    name: 'Candy Racer',
+    quality: 'Field-Tested',
+    marketPrice: 0.1,
+    avgPrice: 0.1
+}, {
+    type: 'Glock-18',
+    name: 'Candy Racer',
+    quality: 'Minimal Wear',
+    marketPrice: 0.7,
+    avgPrice: 0.7
+}, {
+    type: 'Glock-18',
+    name: 'Candy Racer',
+    quality: 'Factory New',
+    marketPrice: 2,
+    avgPrice: 2
+}, {
+    type: 'Glock-18',
+    statTrak: true,
+    name: 'Candy Racer',
+    quality: 'Well-Worn',
+    marketPrice: 1,
+    avgPrice: 1
+}, {
+    type: 'Glock-18',
+    statTrak: true,
+    name: 'Candy Racer',
+    quality: 'Field-Tested',
+    marketPrice: 1.79,
+    avgPrice: 1.79
+}, {
+    type: 'Glock-18',
+    statTrak: true,
+    name: 'Candy Racer',
+    quality: 'Minimal Wear',
+    marketPrice: 1.2,
+    avgPrice: 1.2
+}, {
+    type: 'Glock-18',
+    statTrak: true,
+    name: 'Candy Racer',
+    quality: 'Factory New',
+    marketPrice: 4,
+    avgPrice: 4
+}, {
+    type: 'AWP',
+    name: 'Animal',
+    quality: 'Field-Tested',
+    marketPrice: 5,
+    avgPrice: 5
+}, {
+    type: 'AWP',
+    name: 'Animal',
+    quality: 'Minimal Wear',
+    marketPrice: 4,
+    avgPrice: 4
+}, {
+    type: 'AWP',
+    name: 'Animal',
+    quality: 'Factory New',
+    marketPrice: 12,
+    avgPrice: 12
+}, {
+    type: 'AWP',
+    statTrak: true,
+    name: 'Animal',
+    quality: 'Field-Tested',
+    marketPrice: 14,
+    avgPrice: 14
+}, {
+    type: 'AWP',
+    statTrak: true,
+    name: 'Animal',
+    quality: 'Minimal Wear',
+    marketPrice: 15,
+    avgPrice: 15
+}, {
+    type: 'AWP',
+    statTrak: true,
+    name: 'Animal',
+    quality: 'Minimal Wear',
+    marketPrice: 38,
+    avgPrice: 38
+}, {
+    type: 'FAMAS',
+    name: 'Stinger',
+    quality: 'Battle-Scarred',
+    marketPrice: 4,
+    avgPrice: 4
+}, {
+    type: 'FAMAS',
+    name: 'Stinger',
+    quality: 'Well-Worn',
+    marketPrice: 2,
+    avgPrice: 2
+}, {
+    type: 'FAMAS',
+    name: 'Stinger',
+    quality: 'Field-Tested',
+    marketPrice: 3,
+    avgPrice: 3
+}, {
+    type: 'FAMAS',
+    name: 'Stinger',
+    quality: 'Minimal Wear',
+    marketPrice: 7,
+    avgPrice: 7
+}, {
+    type: 'FAMAS',
+    name: 'Stinger',
+    quality: 'Factory New',
+    marketPrice: 6,
+    avgPrice: 6
+}, {
+    type: 'FAMAS',
+    statTrak: true,
+    name: 'Stinger',
+    quality: 'Battle-Scarred',
+    marketPrice: 9,
+    avgPrice: 9
+}, {
+    type: 'FAMAS',
+    statTrak: true,
+    name: 'Stinger',
+    quality: 'Well-Worn',
+    marketPrice: 5,
+    avgPrice: 5
+}, {
+    type: 'FAMAS',
+    statTrak: true,
+    name: 'Stinger',
+    quality: 'Field-Tested',
+    marketPrice: 2,
+    avgPrice: 2
+}, {
+    type: 'FAMAS',
+    statTrak: true,
+    name: 'Stinger',
+    quality: 'Minimal Wear',
+    marketPrice: 13,
+    avgPrice: 13
+}, {
+    type: 'FAMAS',
+    statTrak: true,
+    name: 'Stinger',
+    quality: 'Factory New',
+    marketPrice: 29,
+    avgPrice: 26
+}, {
+    type: 'UMP-45',
+    name: 'AGGRESSOR',
+    quality: 'Battle-Scarred',
+    marketPrice: 2,
+    avgPrice: 2
+}, {
+    type: 'UMP-45',
+    name: 'AGGRESSOR',
+    quality: 'Well-Worn',
+    marketPrice: 1.5,
+    avgPrice: 1.5
+}, {
+    type: 'UMP-45',
+    name: 'AGGRESSOR',
+    quality: 'Field-Tested',
+    marketPrice: 1,
+    avgPrice: 1
+}, {
+    type: 'UMP-45',
+    name: 'AGGRESSOR',
+    quality: 'Minimal Wear',
+    marketPrice: 3,
+    avgPrice: 3
+}, {
+    type: 'UMP-45',
+    name: 'AGGRESSOR',
+    quality: 'Factory New',
+    marketPrice: 5,
+    avgPrice: 5
+}, {
+    type: 'UMP-45',
+    statTrak: true,
+    name: 'AGGRESSOR',
+    quality: 'Battle-Scarred',
+    marketPrice: 4,
+    avgPrice: 4
+}, {
+    type: 'UMP-45',
+    statTrak: true,
+    name: 'AGGRESSOR',
+    quality: 'Well-Worn',
+    marketPrice: 3.94,
+    avgPrice: 3.94
+}, {
+    type: 'UMP-45',
+    statTrak: true,
+    name: 'AGGRESSOR',
+    quality: 'Field-Tested',
+    marketPrice: 4.3,
+    avgPrice: 4.3
+}, {
+    type: 'UMP-45',
+    statTrak: true,
+    name: 'AGGRESSOR',
+    quality: 'Minimal Wear',
+    marketPrice: 6,
+    avgPrice: 6
+}, {
+    type: 'UMP-45',
+    statTrak: true,
+    name: 'AGGRESSOR',
+    quality: 'Factory New',
+    marketPrice: 10,
+    avgPrice: 10
+}, {
+    type: 'USP-S',
+    name: 'Banker',
+    quality: 'Battle-Scarred',
+    marketPrice: 0.47,
+    avgPrice: 0.47
+}, {
+    type: 'USP-S',
+    name: 'Banker',
+    quality: 'Well-Worn',
+    marketPrice: 1,
+    avgPrice: 1
+}, {
+    type: 'USP-S',
+    name: 'Banker',
+    quality: 'Field-Tested',
+    marketPrice: 0.2,
+    avgPrice: 0.2
+}, {
+    type: 'USP-S',
+    name: 'Banker',
+    quality: 'Minimal Wear',
+    marketPrice: 2,
+    avgPrice: 2
+}, {
+    type: 'USP-S',
+    name: 'Banker',
+    quality: 'Factory New',
+    marketPrice: 3,
+    avgPrice: 3
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Banker',
+    quality: 'Battle-Scarred',
+    marketPrice: 1,
+    avgPrice: 1
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Banker',
+    quality: 'Well-Worn',
+    marketPrice: 2,
+    avgPrice: 2
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Banker',
+    quality: 'Field-Tested',
+    marketPrice: 1.1,
+    avgPrice: 1.1
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Banker',
+    quality: 'Minimal Wear',
+    marketPrice: 3,
+    avgPrice: 3
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Banker',
+    quality: 'Factory New',
+    marketPrice: 12,
+    avgPrice: 12
+}, {
+    type: 'Deagle',
+    name: 'Crude',
+    quality: 'Minimal Wear',
+    marketPrice: 75,
+    avgPrice: 75
+}, {
+    type: 'Deagle',
+    name: 'Crude',
+    quality: 'Factory New',
+    marketPrice: 77,
+    avgPrice: 77
+}, {
+    type: 'M4A4',
+    name: "Shark's Prey",
+    quality: 'Battle-Scarred',
+    marketPrice: 16,
+    avgPrice: 16
+}, {
+    type: 'M4A4',
+    name: "Shark's Prey",
+    quality: 'Well-Worn',
+    marketPrice: 15,
+    avgPrice: 15
+}, {
+    type: 'M4A4',
+    name: "Shark's Prey",
+    quality: 'Field-Tested',
+    marketPrice: 20,
+    avgPrice: 20
+}, {
+    type: 'M4A4',
+    name: "Shark's Prey",
+    quality: 'Minimal Wear',
+    marketPrice: 30,
+    avgPrice: 30
+}, {
+    type: 'M4A4',
+    name: "Shark's Prey",
+    quality: 'Factory New',
+    marketPrice: 45,
+    avgPrice: 45
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: "Shark's Prey",
+    quality: 'Battle-Scarred',
+    marketPrice: 28,
+    avgPrice: 28
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: "Shark's Prey",
+    quality: 'Well-Worn',
+    marketPrice: 36,
+    avgPrice: 36
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: "Shark's Prey",
+    quality: 'Field-Tested',
+    marketPrice: 48,
+    avgPrice: 48
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: "Shark's Prey",
+    quality: 'Minimal Wear',
+    marketPrice: 67,
+    avgPrice: 67
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: "Shark's Prey",
+    quality: 'Factory New',
+    marketPrice: 84,
+    avgPrice: 45
+}, {
+    type: 'AK-47',
+    name: 'Fluentem',
+    quality: 'Battle-Scarred',
+    marketPrice: 19,
+    avgPrice: 19
+}, {
+    type: 'AK-47',
+    name: 'Fluentem',
+    quality: 'Well-Worn',
+    marketPrice: 22,
+    avgPrice: 22
+}, {
+    type: 'AK-47',
+    name: 'Fluentem',
+    quality: 'Field-Tested',
+    marketPrice: 28,
+    avgPrice: 28
+}, {
+    type: 'AK-47',
+    name: 'Fluentem',
+    quality: 'Minimal Wear',
+    marketPrice: 37,
+    avgPrice: 37
+}, {
+    type: 'AK-47',
+    name: 'Fluentem',
+    quality: 'Factory New',
+    marketPrice: 73,
+    avgPrice: 45
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Fluentem',
+    quality: 'Battle-Scarred',
+    marketPrice: 34,
+    avgPrice: 28
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Fluentem',
+    quality: 'Well-Worn',
+    marketPrice: 53,
+    avgPrice: 36
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Fluentem',
+    quality: 'Field-Tested',
+    marketPrice: 74,
+    avgPrice: 48
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Fluentem',
+    quality: 'Minimal Wear',
+    marketPrice: 107,
+    avgPrice: 67
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Fluentem',
+    quality: 'Factory New',
+    marketPrice: 207,
+    avgPrice: 45
+}, {
+    type: 'P90',
+    name: 'Stone story',
+    quality: 'Battle-Scarred',
+    marketPrice: 4.07,
+    avgPrice: 5.18
+}, {
+    type: 'P90',
+    name: 'Stone story',
+    quality: 'Well-Worn',
+    marketPrice: 5.18,
+    avgPrice: 1
+}, {
+    type: 'P90',
+    name: 'Stone story',
+    quality: 'Field-Tested',
+    marketPrice: 4,
+    avgPrice: 28
+}, {
+    type: 'P90',
+    name: 'Stone story',
+    quality: 'Minimal Wear',
+    marketPrice: 8,
+    avgPrice: 37
+}, {
+    type: 'P90',
+    name: 'Stone story',
+    quality: 'Factory New',
+    marketPrice: 11,
+    avgPrice: 45
+}, {
+    type: 'P90',
+    statTrak: true,
+    name: 'Stone story',
+    quality: 'Battle-Scarred',
+    marketPrice: 19,
+    avgPrice: 28
+}, {
+    type: 'P90',
+    statTrak: true,
+    name: 'Stone story',
+    quality: 'Well-Worn',
+    marketPrice: 14.23,
+    avgPrice: 36
+}, {
+    type: 'P90',
+    statTrak: true,
+    name: 'Stone story',
+    quality: 'Field-Tested',
+    marketPrice: 14.63,
+    avgPrice: 48
+}, {
+    type: 'P90',
+    statTrak: true,
+    name: 'Stone story',
+    quality: 'Minimal Wear',
+    marketPrice: 23.7,
+    avgPrice: 67
+}, {
+    type: 'P90',
+    statTrak: true,
+    name: 'Stone story',
+    quality: 'Factory New',
+    marketPrice: 44,
+    avgPrice: 45
+}, {
+    type: 'USP-S',
+    name: 'Apis',
+    quality: 'Battle-Scarred',
+    marketPrice: 34,
+    avgPrice: 1
+}, {
+    type: 'USP-S',
+    name: 'Apis',
+    quality: 'Well-Worn',
+    marketPrice: 54,
+    avgPrice: 1
+}, {
+    type: 'USP-S',
+    name: 'Apis',
+    quality: 'Field-Tested',
+    marketPrice: 76,
+    avgPrice: 28
+}, {
+    type: 'USP-S',
+    name: 'Apis',
+    quality: 'Minimal Wear',
+    marketPrice: 89,
+    avgPrice: 37
+}, {
+    type: 'USP-S',
+    name: 'Apis',
+    quality: 'Factory New',
+    marketPrice: 113,
+    avgPrice: 45
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Apis',
+    quality: 'Battle-Scarred',
+    marketPrice: 45,
+    avgPrice: 28
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Apis',
+    quality: 'Well-Worn',
+    marketPrice: 59,
+    avgPrice: 36
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Apis',
+    quality: 'Field-Tested',
+    marketPrice: 84,
+    avgPrice: 48
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Apis',
+    quality: 'Minimal Wear',
+    marketPrice: 107,
+    avgPrice: 67
+}, {
+    type: 'USP-S',
+    statTrak: true,
+    name: 'Apis',
+    quality: 'Factory New',
+    marketPrice: 138,
+    avgPrice: 45
+}, {
+    type: 'AK-47',
+    name: 'Lawbreaker',
+    quality: 'Battle-Scarred',
+    marketPrice: 87,
+    avgPrice: 1
+}, {
+    type: 'AK-47',
+    name: 'Lawbreaker',
+    quality: 'Well-Worn',
+    marketPrice: 145,
+    avgPrice: 1
+}, {
+    type: 'AK-47',
+    name: 'Lawbreaker',
+    quality: 'Field-Tested',
+    marketPrice: 177,
+    avgPrice: 28
+}, {
+    type: 'AK-47',
+    name: 'Lawbreaker',
+    quality: 'Minimal Wear',
+    marketPrice: 230,
+    avgPrice: 37
+}, {
+    type: 'AK-47',
+    name: 'Lawbreaker',
+    quality: 'Factory New',
+    marketPrice: 228,
+    avgPrice: 45
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Lawbreaker',
+    quality: 'Battle-Scarred',
+    marketPrice: 320,
+    avgPrice: 28
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Lawbreaker',
+    quality: 'Well-Worn',
+    marketPrice: 430,
+    avgPrice: 36
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Lawbreaker',
+    quality: 'Field-Tested',
+    marketPrice: 655,
+    avgPrice: 48
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Lawbreaker',
+    quality: 'Minimal Wear',
+    marketPrice: 980,
+    avgPrice: 67
+}, {
+    type: 'AK-47',
+    statTrak: true,
+    name: 'Lawbreaker',
+    quality: 'Factory New',
+    marketPrice: 670,
+    avgPrice: 45
+}, {
+    type: 'M4A4',
+    name: 'Howl (REMOVED)',
+    quality: 'Field-Tested',
+    marketPrice: 830,
+    avgPrice: 28
+}, {
+    type: 'M4A4',
+    name: 'Howl (REMOVED)',
+    quality: 'Minimal Wear',
+    marketPrice: 1390,
+    avgPrice: 37
+}, {
+    type: 'M4A4',
+    name: 'Howl (REMOVED)',
+    quality: 'Factory New',
+    marketPrice: 2700,
+    avgPrice: 45
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: 'Howl (REMOVED)',
+    quality: 'Field-Tested',
+    marketPrice: 4100,
+    avgPrice: 48
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: 'Howl (REMOVED)',
+    quality: 'Minimal Wear',
+    marketPrice: 5500,
+    avgPrice: 67
+}, {
+    type: 'M4A4',
+    statTrak: true,
+    name: 'Howl (REMOVED)',
+    quality: 'Factory New',
+    marketPrice: 7000,
+    avgPrice: 45
+}, {
+    type: 'Karambit',
+    name: 'Cosplay',
+    quality: 'Battle-Scarred',
+    marketPrice: 100,
+    avgPrice: 1
+}, {
+    type: 'Karambit',
+    name: 'Cosplay',
+    quality: 'Well-Worn',
+    marketPrice: 130,
+    avgPrice: 1
+}, {
+    type: 'Karambit',
+    name: 'Cosplay',
+    quality: 'Field-Tested',
+    marketPrice: 200,
+    avgPrice: 28
+}, {
+    type: 'Karambit',
+    name: 'Cosplay',
+    quality: 'Minimal Wear',
+    marketPrice: 350,
+    avgPrice: 37
+}, {
+    type: 'Karambit',
+    name: 'Cosplay',
+    quality: 'Factory New',
+    marketPrice: 600,
+    avgPrice: 45
+}, {
+    type: 'Karambit',
+    statTrak: true,
+    name: 'Cosplay',
+    quality: 'Battle-Scarred',
+    marketPrice: 243,
+    avgPrice: 28
+}, {
+    type: 'Karambit',
+    statTrak: true,
+    name: 'Cosplay',
+    quality: 'Well-Worn',
+    marketPrice: 311,
+    avgPrice: 36
+}, {
+    type: 'Karambit',
+    statTrak: true,
+    name: 'Cosplay',
+    quality: 'Field-Tested',
+    marketPrice: 470,
+    avgPrice: 48
+}, {
+    type: 'Karambit',
+    statTrak: true,
+    name: 'Cosplay',
+    quality: 'Minimal Wear',
+    marketPrice: 620,
+    avgPrice: 67
+}, {
+    type: 'Karambit',
+    statTrak: true,
+    name: 'Cosplay',
+    quality: 'Factory New',
+    marketPrice: 933,
+    avgPrice: 45
+}, {
+    type: 'M9 Bayonet',
+    name: 'RedBlade',
+    quality: 'Battle-Scarred',
+    marketPrice: 135,
+    avgPrice: 1
+}, {
+    type: 'M9 Bayonet',
+    name: 'RedBlade',
+    quality: 'Well-Worn',
+    marketPrice: 185,
+    avgPrice: 1
+}, {
+    type: 'M9 Bayonet',
+    name: 'RedBlade',
+    quality: 'Field-Tested',
+    marketPrice: 299,
+    avgPrice: 28
+}, {
+    type: 'M9 Bayonet',
+    name: 'RedBlade',
+    quality: 'Minimal Wear',
+    marketPrice: 477,
+    avgPrice: 37
+}, {
+    type: 'M9 Bayonet',
+    name: 'RedBlade',
+    quality: 'Factory New',
+    marketPrice: 607,
+    avgPrice: 45
+}, {
+    type: 'M9 Bayonet',
+    statTrak: true,
+    name: 'RedBlade',
+    quality: 'Battle-Scarred',
+    marketPrice: 204,
+    avgPrice: 28
+}, {
+    type: 'M9 Bayonet',
+    statTrak: true,
+    name: 'RedBlade',
+    quality: 'Well-Worn',
+    marketPrice: 332,
+    avgPrice: 36
+}, {
+    type: 'M9 Bayonet',
+    statTrak: true,
+    name: 'RedBlade',
+    quality: 'Field-Tested',
+    marketPrice: 575,
+    avgPrice: 48
+}, {
+    type: 'M9 Bayonet',
+    statTrak: true,
+    name: 'RedBlade',
+    quality: 'Minimal Wear',
+    marketPrice: 602,
+    avgPrice: 67
+}, {
+    type: 'M9 Bayonet',
+    statTrak: true,
+    name: 'RedBlade',
+    quality: 'Factory New',
+    marketPrice: 725,
+    avgPrice: 45
 }, ]

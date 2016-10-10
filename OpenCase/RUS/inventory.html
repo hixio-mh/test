@@ -644,8 +644,8 @@
 				else
 					id = i;
 
-				var weaponInfo = "<i>$" + weapon.price + "</i><img src='" + img + "'><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
-				$(".inventory").append("<li class='weapon " + ((weapon.statTrak == 1) ? "wp-statTrak" : "") + " " + ((weapon.new == true) ? "new-weapon" : "") + "' data-type='" + type + "' data-name='" + name + "' data-img='" + weapon.img + "' data-rarity='" +
+				var weaponInfo = "<i>$" + weapon.price + "</i><img src=\"" + img + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
+				$(".inventory").append("<li class='weapon " + ((weapon.statTrak == 1) ? "wp-statTrak" : "") + " " + ((weapon.new == true) ? "new-weapon" : "") + "' data-type='" + type + "' data-name=\"" + name + "\" data-img=\"" + weapon.img + "\" data-rarity='" +
 					weapon.rarity + "' data-price='" + weapon.price + "' data-stattrak='" + weapon.statTrak + "' data-quality='" + weapon.quality + "' data-id='" + id + "' id='" + id + "-inventoryItem'>" + weaponInfo + "</li>");
 
 				if (weapon.new == true) {

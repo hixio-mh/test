@@ -157,15 +157,26 @@ $(document).on("click", ".openCase", function() {
             var price = getPrice(type, name, quality, statTrak);
 
             win.type = type;
-
-            var stopLoop = 0;
-            while (price == 0) {
-                quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
-                price = getPrice(type, name, quality, statTrak);
-                if (stopLoop == 15)
-                    break;
-                stopLoop++;
-            }
+			
+			if (price == 0) {
+				for (var i = 0; i < Quality.length; i++) {
+					quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+					quality = getQualityName(quality, Settings.language);
+					price = getPrice(type, name, quality, statTrak);
+					if (price != 0) break;
+				}
+			
+				if (price == 0) {
+					statTrak = !statTrak;
+			
+					for (var i = 0; i < Quality.length; i++) {
+						quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+						quality = getQualityName(quality, Settings.language);
+						price = getPrice(type, name, quality, statTrak);
+						if (price != 0) break;
+					}
+				}
+			}
 
             $(".win_price").html(price + "$");
 
