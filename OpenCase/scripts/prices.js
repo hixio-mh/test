@@ -38223,7 +38223,7 @@ var Prices = [{
     type: 'AWP',
     statTrak: true,
     name: 'Animal',
-    quality: 'Minimal Wear',
+    quality: 'Factory New',
     marketPrice: 38,
     avgPrice: 38
 }, {
@@ -38422,13 +38422,13 @@ var Prices = [{
     marketPrice: 12,
     avgPrice: 12
 }, {
-    type: 'Deagle',
+    type: 'Desert Eagle',
     name: 'Crude',
     quality: 'Minimal Wear',
     marketPrice: 75,
     avgPrice: 75
 }, {
-    type: 'Deagle',
+    type: 'Desert Eagle',
     name: 'Crude',
     quality: 'Factory New',
     marketPrice: 77,
@@ -38497,71 +38497,6 @@ var Prices = [{
     name: "Shark's Prey",
     quality: 'Factory New',
     marketPrice: 84,
-    avgPrice: 45
-}, {
-    type: 'AK-47',
-    name: 'Fluentem',
-    quality: 'Battle-Scarred',
-    marketPrice: 19,
-    avgPrice: 19
-}, {
-    type: 'AK-47',
-    name: 'Fluentem',
-    quality: 'Well-Worn',
-    marketPrice: 22,
-    avgPrice: 22
-}, {
-    type: 'AK-47',
-    name: 'Fluentem',
-    quality: 'Field-Tested',
-    marketPrice: 28,
-    avgPrice: 28
-}, {
-    type: 'AK-47',
-    name: 'Fluentem',
-    quality: 'Minimal Wear',
-    marketPrice: 37,
-    avgPrice: 37
-}, {
-    type: 'AK-47',
-    name: 'Fluentem',
-    quality: 'Factory New',
-    marketPrice: 73,
-    avgPrice: 45
-}, {
-    type: 'AK-47',
-    statTrak: true,
-    name: 'Fluentem',
-    quality: 'Battle-Scarred',
-    marketPrice: 34,
-    avgPrice: 28
-}, {
-    type: 'AK-47',
-    statTrak: true,
-    name: 'Fluentem',
-    quality: 'Well-Worn',
-    marketPrice: 53,
-    avgPrice: 36
-}, {
-    type: 'AK-47',
-    statTrak: true,
-    name: 'Fluentem',
-    quality: 'Field-Tested',
-    marketPrice: 74,
-    avgPrice: 48
-}, {
-    type: 'AK-47',
-    statTrak: true,
-    name: 'Fluentem',
-    quality: 'Minimal Wear',
-    marketPrice: 107,
-    avgPrice: 67
-}, {
-    type: 'AK-47',
-    statTrak: true,
-    name: 'Fluentem',
-    quality: 'Factory New',
-    marketPrice: 207,
     avgPrice: 45
 }, {
     type: 'P90',

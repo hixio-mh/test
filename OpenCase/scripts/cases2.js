@@ -4831,7 +4831,7 @@ var cases = [{
         "rarity": "restricted",
         "img": "SteachCase/USP-S-Banker.png"
     }, {
-        "type": "Deagle",
+        "type": "Desert Eagle",
         "skinName": "Crude",
         "rarity": "restricted",
         "img": "SteachCase/Deagle-Crude.png"
@@ -4841,15 +4841,15 @@ var cases = [{
         "rarity": "classified",
         "img": "SteachCase/M4A4-Sharks-Prey.png"
     }, {
-        "type": "AK-47",
-        "skinName": "Fluentem",
-        "rarity": "classified",
-        "img": "SteachCase/AK-47-Fluentem.png"
-    }, {
         "type": "P90",
         "skinName": "Stone story",
         "rarity": "classified",
         "img": "SteachCase/P90-Stone-story.png"
+    }, {
+        "type": "AK-47",
+        "skinName": "Fluentem",
+        "rarity": "covert",
+        "img": "SteachCase/AK-47-Fluentem.png"
     }, {
         "type": "USP-S",
         "skinName": "Apis",

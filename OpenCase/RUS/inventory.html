@@ -286,6 +286,12 @@
 			} else {
 				inventory.splice(weaponId, 1);
 				saveInventory();
+				var i = weaponId + 1;
+				while ($("#"+i+"-inventoryItem").length) {
+					$("#"+i+"-inventoryItem").data('id', (i-1));
+					$("#"+i+"-inventoryItem").attr('id', '#'+(i-1)+'-inventoryItem');
+					i++;
+				}
 			}
 			$("#"+weaponId+"-inventoryItem").remove();
 			Sound("buy");
