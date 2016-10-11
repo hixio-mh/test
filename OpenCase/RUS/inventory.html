@@ -364,7 +364,7 @@
 			}
 
 			newWeapon.quality = quality;
-			newWeapon.statTrak = $('#sort-special :selected').val() == "3" ? 1 : 0;
+			newWeapon.statTrak = $(weapon).data('stattrak');
 			newWeapon.skinName = getSkinName(newWeapon.skinName, Settings.language)
 			newWeapon.price = getPrice(newWeapon.type, newWeapon.skinName, newWeapon.quality, newWeapon.statTrak);
 			newWeapon.new = true;

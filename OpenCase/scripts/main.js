@@ -444,13 +444,13 @@ function getWeaponRarity(type, name) {
 function getImgUrl(img, big) {
     var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/"
     prefix = window.location.protocol == "http:" ? prefix.replace("https", "http") : prefix;
-    var postfix = "/125fx125f";
+    var postfix = "/124fx124f";
     var postfixBig = "/383fx383f";
 
     if (typeof img == 'undefined') return "../images/none.png";
     if (img.indexOf("images/") != -1)
         if (typeof big != "undefined") {
-            return img.replace("125fx125f", "383fx383f");
+            return img.replace(postfix, postfixBig);
         } else {
             return img;
         }
@@ -463,10 +463,14 @@ function getImgUrl(img, big) {
             return prefix + img + postfix;
     } else
     if (typeof big != "undefined") {
-        return img.replace("125fx125f", "383fx383f");
+        return img.replace(postfix, postfixBig);
     } else {
         return img;
     }
+}
+
+function getPriceWithNewQuality(weapon) {
+
 }
 
 function changeLocation(url) {
