@@ -235,8 +235,8 @@ ul.posts__user-posts {
 			$(".profile__img").attr('src', userInfo.avatar);
 			$(".post__header__img").attr('src', userInfo.avatar);
 			$(".profile__name").text(userInfo.nickname);
-			var rank = getRank(userInfo.point);
-			$(".stats__rank__rank").text(userInfo.point);
+			//var rank = getRank(userInfo.point);
+			$(".stats__rank__rank").text(userInfo.points);
 		});
 
 		loadPosts(uid, function(posts) {
