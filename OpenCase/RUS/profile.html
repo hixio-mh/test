@@ -232,6 +232,10 @@ ul.posts__user-posts {
 		if (typeof uid == 'undefined') return false;
 
 		showProfile(uid, function(userInfo) {
+			if (userInfo == null) {
+				userNotFound();
+				return false;
+			}
 			$(".profile__img").attr('src', userInfo.avatar);
 			$(".post__header__img").attr('src', userInfo.avatar);
 			$(".profile__name").text(userInfo.nickname);
@@ -239,21 +243,29 @@ ul.posts__user-posts {
 			$(".stats__rank__rank").text(userInfo.points);
 		});
 
-		loadPosts(uid, function(posts) {
+		function userNotFound(){
+			var avatarRef = firebase.storage().ref('user-not-found/no-user-avatar.png');
+			avatarRef.getDownloadURL().then(function(url) {
+				$(".profile__img").attr('src', url);
+				$(".profile__name").text('User not found');
+				//var rank = getRank(userInfo.point);
+				$(".stats__rank__rank").text('0');
+			})
+
+		}
+
+		/*loadPosts(uid, function(posts) {
 			for (var prop in posts) {
 				var post = posts[prop];
-				var date = timeSince(new Date(post.date));
-				var HTMLpost = "<li class='user-posts__post'>" +
-											 "<div class='post__header'>" +
-											 "<img src=\""+post.authorAvatar+"\" class='post__header__img' data-uid='"+post.uidFrom+"'>" +
-											 "<div class='post__header__meta'>" +
-											 "<span class='post__meta__author' data-uid='"+post.uidFrom+"'>"+post.author+"</span>" +
-											 "<span class='post__meta__date'>"+date+" ago</span>" +
-											 "</div></div>" +
-											 "<div class='post__text'>"+post.text+"</div></li>";
-				$(".posts__user-posts").prepend(HTMLpost);
+				addPostToWall(post);
 			}
-		})
+		})*/
+
+		firebase.database().ref('users/'+uid+'/posts').on('child_added', function(data) {
+		    if ($("li[data-msgkey='" + data.key + "']").length == 0) {
+		        addPostToWall(data.val());
+		    }
+		});
 
 		$(document).on('click', '#send-new-post', function() {
 			var text = $(".new-post__text").text();
@@ -266,6 +278,20 @@ ul.posts__user-posts {
 
 			sendPost(uid, uid, ""+date, text);
 		})
+
+		function addPostToWall(post) {
+			if (post == '' || post == null || typeof post == 'undefined') return false;
+			var date = timeSince(new Date(post.date));
+			var HTMLpost = "<li class='user-posts__post animated flipInX'>" +
+										 "<div class='post__header'>" +
+										 "<img src=\""+post.authorAvatar+"\" class='post__header__img' data-uid='"+post.uidFrom+"'>" +
+										 "<div class='post__header__meta'>" +
+										 "<span class='post__meta__author' data-uid='"+post.uidFrom+"'>"+post.author+"</span>" +
+										 "<span class='post__meta__date'>"+date+" ago</span>" +
+										 "</div></div>" +
+										 "<div class='post__text'>"+post.text+"</div></li>";
+			$(".posts__user-posts").prepend(HTMLpost);
+		}
 
 		function sendPost(uidFrom, uidTo, date, text) {
 			var userPostsRef = firebase.database().ref('users/'+uidTo+'/posts');
