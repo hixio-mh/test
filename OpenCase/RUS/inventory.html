@@ -252,7 +252,14 @@
 
 			if (search)
 					getMarketPrice(type, name, quality, statTrak, function(pr){
-						$('#weaponPrice').text(pr + '$');
+						if (pr == -1) {
+							$('.current-price').removeClass('hide');
+							$('.loading-animate').addClass('hide');
+							$('.glassBlur').removeClass('js-price-loading');
+						} else {
+							$('#weaponPrice').text(pr + '$');
+							$(".fullWeaponInfo button").prop("disabled", false);
+						}
 						$(".fullWeaponInfo button").prop("disabled", false);
 					});
 				else
@@ -367,6 +374,7 @@
 			newWeapon.statTrak = $(weapon).data('stattrak');
 			newWeapon.skinName = getSkinName(newWeapon.skinName, Settings.language)
 			newWeapon.price = getPrice(newWeapon.type, newWeapon.skinName, newWeapon.quality, newWeapon.statTrak);
+			//newWeapon = getPriceWithNewQuality(newWeapon);
 			newWeapon.new = true;
 			if (newWeapon.price == 0) getMarketPrice(newWeapon.type, newWeapon.skinName, newWeapon.quality, newWeapon.statTrak, "#weaponPrice");
 			$("#weaponInfoContainer").css("display", "block");

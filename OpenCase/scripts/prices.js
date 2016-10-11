@@ -92,7 +92,7 @@ function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) 
     var n = type + " | " + name + " (" + quality + ")";
     n = encodeURI(n);
     $.getJSON("https://query.yahooapis.com/v1/public/yql", {
-            q: "select * from json where url=\"http://steamcommunity.com/market/priceoverview/?currency=3&appid=730&market_hash_name=" + n + "\"",
+            q: "select * from json where url=\"http://steamcommunity.com/market/priceoverview/?currency=1&appid=730&market_hash_name=" + n + "\"",
             format: "json"
         },
         function(data) {
@@ -187,9 +187,24 @@ function csgoStashGetURL(type, name, quality, statTrak, selector, allowanyPrice)
                 var url = data.query.results.a.href;
                 csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice);
             } catch (err) {
-                //ERROR
+                if (typeof selector == 'function') {
+					selector(-1);
+				}else {
+					$('.current-price').removeClass('hide');
+					$('.loading-animate').addClass('hide');
+					$('.glassBlur').removeClass('js-price-loading');
+				}
             }
-        });
+        })
+		.fail(function() {
+			if (typeof selector == 'function') {
+				selector(-1);
+			}else {
+				$('.current-price').removeClass('hide');
+				$('.loading-animate').addClass('hide');
+				$('.glassBlur').removeClass('js-price-loading');
+			}
+		});
 }
 function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
     if (typeof allowanyPrice == 'undefined')
@@ -256,6 +271,55 @@ function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
             }
         });
 }
+
+function getPriceWithNewQuality(weapon, recurs) {
+    recurs = recurs || false;
+    var price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+    var quality = weapon.quality;
+
+    if (price == 0) {
+        for (var i = 0; i < Quality.length; i++) {
+            quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+            quality = getQualityName(quality, Settings.language);
+            price = getPrice(weapon.type, weapon.skinName, quality, weapon.statTrak);
+            if (price != 0) break;
+        }
+
+        if (price == 0 && !recurs) {
+            weapon.statTrak = !weapon.statTrak;
+            getPriceWithNewQuality(weapon, true);
+        } else if (price == 0 && recurs) {
+            weapon.statTrak = !weapon.statTrak;
+        }
+    }
+    weapon.price = price;
+    weapon.quality = quality;
+    return weapon;
+}
+
+function getMarketPriceWithNewQuality(weapon, callback, recurs) {
+    recurs = recurs || 0;
+	if (recurs == 10) callback(weapon);
+    getMarketPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak, function(pr) {
+		if (pr == -1 || pr == 0) {
+			var nextQuality = getNextQuality(weapon.quality);
+			if (weapon.quality == nextQuality && recurs < 5) {
+				nextQuality = getQualityName("Battle-Scarred", Settings.language);
+			} else if (recurs == 5) {
+				weapon.statTrak = !weapon.statTrak;
+			} else if (recurs == 10) {
+				weapon.statTrak = !weapon.statTrak;
+			}
+			
+			weapon.quality = nextQuality;
+			getMarketPriceWithNewQuality(weapon, callback, (recurs+1));
+		} else {
+			weapon.price = pr;
+			callback(weapon);
+		}
+	});
+}
+
 var Prices = [{
     type: 'AK-47',
     name: 'Aquamarine Revenge',
