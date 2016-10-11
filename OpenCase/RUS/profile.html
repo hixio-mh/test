@@ -28,11 +28,12 @@
 		background: #fff;
 	}
 	.top {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: space-around;
-		text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: space-around;
+	    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+	    padding-top: 50px;
 	}
 	.top__pm > *, .top__trade > *,	.top__profile > * {
     margin: auto;
@@ -44,25 +45,26 @@
     display: flex;
     border-radius: 50%;
     font-size: 22px;
-    margin-top: 50px;
-		box-shadow: 0 0 5px rgba(0,0,0,0.3);
-		cursor: pointer;
-	}
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
 	.top__trade {
     background: #8E53B3;
 	}
 	.top__profile {
 	    display: flex;
 	    padding: 5px;
-	    flex-direction: column;;
+	    flex-direction: column;
+	    text-align: center;
+			white-space: nowrap;
 	}
 	.profile__name {
 		margin: 0;
-		margin-left: 10px;
 		font-size: 1.2em;
 	}
 	.profile__status {
     font-weight: lighter;
+		margin: 0;
     font-size: 1.1em;
 	}
 	.profile__img {
@@ -72,13 +74,103 @@
 		border-radius: 50%;
 		border: 3px solid #fff;
 	}
+	.top_actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    width: 100%;
+}
 	.top__bg {
     background: #5782da;
     position: absolute;
     top: 0;
-    height: 146px;
+    height: 200px;
     width: 100%;
     z-index: -1;
+}
+.stats {
+    color: #000;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 10px 0;
+	align-items: stretch;
+}
+.stats__rank__rank img {
+    width: 70px;
+}
+.stats__line {
+    border-left: 1px solid RGBA(0, 0, 0, 0.1);
+}
+.stats__block {
+    width: 100px;
+}
+.stat__num {
+    font-size: 1.8em;
+    color: #1B1B1B;
+}
+.posts {
+    color: #000;
+		padding: 10px;
+}
+.posts__new-post {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+.new-post__text {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 5px;
+    flex-grow: 2;
+}
+.posts__new-post .button_blue {
+    margin-left: 10px;
+}
+[contenteditable=true]:empty:before {
+  content: attr(placeholder);
+	cursor: text;
+  display: block; /* For Firefox */
+	color: #9c9c9c;
+}
+ul.posts__user-posts {
+    padding: 0;
+    list-style: none;
+}
+.user-posts__post {
+    padding: 10px;
+    box-shadow: 0 0 2px RGBA(0, 0, 0, 0.1);
+    border-radius: 3px;
+    border: 1px solid RGBA(0, 0, 0, 0.19);
+		margin-bottom: 10px;
+}
+.post__header {
+    display: flex;
+	margin-bottom: 10px;
+}
+.post__header__img {
+    width: 50px;
+    border-radius: 50%;
+    align-items: center;
+}
+.post__header__meta {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: 0.95em;
+    justify-content: center;
+    margin-left: 10px;
+}
+.post__meta__author {
+    color: #cb6a6a;
+    font-weight: bold;
+}
+.post__meta__date {
+    font-size: 0.9em;
+    color: #8A8A8A;
 }
 </style>
 </head>
@@ -88,14 +180,48 @@
 <div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
 <div class="top__bg"></div>
 	<div class="top">
-		<div class="top__pm"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
 		<div class="top__profile">
-				<h1 class="profile__name"></h1>
-				<h3 class="profile__status">Test status</h3>
-				<img src="" class="profile__img">
+			<h1 class="profile__name"></h1>
+			<h3 class="profile__status">Test status</h3>
 		</div>
-		<div class="top__trade"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+		<div class="top_actions">
+			<div class="top__pm"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+			<img src="" class="profile__img">
+			<div class="top__trade"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+		</div>
 	</div>
+
+<div class="stats">
+	<div class="stats__rank stats__block">
+		<div class="stats__rank__rank stat__num"></div>
+		<div class="stats__rank__text">EXP</div>
+	</div>
+	<div class="stats__line"></div>
+	<div class="stats__inventory stats__block">
+		<div class="stats__inventory__count stat__num">150</div>
+		<div class="stats__inventory__text">Inventory</div>
+	</div>
+</div>
+
+<div class="posts">
+	<div class="posts__new-post">
+		<div class="new-post__text" contenteditable="true" placeholder="Есть чем поделиться?"></div>
+		<button class="button_blue" value="Send" id="send-new-post">Send</button>
+	</div>
+	<ul class="posts__user-posts">
+		<!--<li class="user-posts__post">
+			<div class="post__header">
+				<img src="" class="post__header__img" data-uid="blablabla">
+				<div class="post__header__meta">
+					<span class="post__meta__author" data-uid="blablabla">Vanushka2004</span>
+					<span class="post__meta__date">10 июл в 15:23</span>
+				</div>
+			</div>
+			<div class="post__text">Абсолютно нечем поделиться. Это просто текст.</div>
+		</li>-->
+	</ul>
+
+</div>
 </div>
 <script>
 	$(function() {
@@ -106,9 +232,54 @@
 
 		showProfile(uid, function(userInfo) {
 			$(".profile__img").attr('src', userInfo.avatar);
+			$(".post__header__img").attr('src', userInfo.avatar);
 			$(".profile__name").text(userInfo.nickname);
+			var rank = getRank(userInfo.point);
+			$(".stats__rank__rank").text(userInfo.point);
+		});
+
+		loadPosts(uid, function(posts) {
+			for (var prop in posts) {
+				var post = posts[prop];
+				var date = timeSince(new Date(post.date));
+				var HTMLpost = "<li class='user-posts__post'>" +
+											 "<div class='post__header'>" +
+											 "<img src=\""+post.authorAvatar+"\" class='post__header__img' data-uid='"+post.uidFrom+"'>" +
+											 "<div class='post__header__meta'>" +
+											 "<span class='post__meta__author' data-uid='"+post.uidFrom+"'>"+post.author+"</span>" +
+											 "<span class='post__meta__date'>"+date+" ago</span>" +
+											 "</div></div>" +
+											 "<div class='post__text'>"+post.text+"</div></li>";
+				$(".posts__user-posts").prepend(HTMLpost);
+			}
 		})
-	})
+
+		$(document).on('click', '#send-new-post', function() {
+			var text = $(".new-post__text").text();
+			if (text == "") return false;
+			var date = new Date();
+
+			$(".new-post__text").empty();
+
+			var uid = firebase.auth().currentUser.uid;
+
+			sendPost(uid, uid, ""+date, text);
+		})
+
+		function sendPost(uidFrom, uidTo, date, text) {
+			var userPostsRef = firebase.database().ref('users/'+uidTo+'/posts');
+			var author = firebase.auth().currentUser.displayName;
+			var authorAvatar = firebase.auth().currentUser.photoURL;
+			//if (uidFrom != firebase.auth().currentUser.uid) {}
+			userPostsRef.push({
+				uidFrom: uidFrom,
+				author: author,
+				authorAvatar: authorAvatar,
+				date: date,
+				text: text
+			});
+		}
+})
 </script>
 </body>
 </html>
