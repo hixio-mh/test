@@ -9,9 +9,8 @@
 <link rel="stylesheet" type="text/css" href="../css/loading.css">
 <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 
-<script src="../scripts/jquery.min.js"></script>
+<script src="../scripts/build/libs.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-<script src="../scripts/jquery.cookie.js"></script>
 <script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/cases2.js"></script>
@@ -230,6 +229,9 @@ ul.posts__user-posts {
 		if(typeof param == "undefined") return false;
 		uid = param.uid[0];
 		if (typeof uid == 'undefined') return false;
+		$(".posts__new-post").hide();
+
+		moment.locale(Settings.language);
 
 		showProfile(uid, function(userInfo) {
 			if (userInfo == null) {
@@ -241,6 +243,12 @@ ul.posts__user-posts {
 			$(".profile__name").text(userInfo.nickname);
 			//var rank = getRank(userInfo.point);
 			$(".stats__rank__rank").text(userInfo.points);
+
+			if (uid != firebase.auth().currentUser.uid) {
+				$(".posts__new-post").hide();
+			} else {
+				$(".posts__new-post").show();
+			}
 		});
 
 		function userNotFound(){
@@ -281,13 +289,13 @@ ul.posts__user-posts {
 
 		function addPostToWall(post) {
 			if (post == '' || post == null || typeof post == 'undefined') return false;
-			var date = timeSince(new Date(post.date));
+			var date = new Date(post.date);
 			var HTMLpost = "<li class='user-posts__post animated flipInX'>" +
 										 "<div class='post__header'>" +
 										 "<img src=\""+post.authorAvatar+"\" class='post__header__img' data-uid='"+post.uidFrom+"'>" +
 										 "<div class='post__header__meta'>" +
 										 "<span class='post__meta__author' data-uid='"+post.uidFrom+"'>"+post.author+"</span>" +
-										 "<span class='post__meta__date'>"+date+" ago</span>" +
+										 "<span class='post__meta__date'>"+moment(date).fromNow()+"</span>" +
 										 "</div></div>" +
 										 "<div class='post__text'>"+post.text+"</div></li>";
 			$(".posts__user-posts").prepend(HTMLpost);
