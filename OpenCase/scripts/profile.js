@@ -43,6 +43,8 @@ function register() {
                 publicRef.child('nickname').set(Player.nickname);
                 publicRef.child('avatar').set(ava);
 
+                var rateRef = userRef.child('outside');
+                rateRef.child('rate').set(0);
             }, function(error) {
                 console.log('Error! ' + error);
             });
@@ -56,6 +58,14 @@ function syncInventory() {
 
 function showProfile(uid, callback) {
     var userInfoRef = firebase.database().ref('users/' + uid + '/public');
+    userInfoRef.once('value').then(function(snapshot) {
+        var userInfo = snapshot.val();
+        callback(userInfo);
+    })
+}
+
+function showOutside(uid, callback) {
+    var userInfoRef = firebase.database().ref('users/' + uid + '/outside');
     userInfoRef.once('value').then(function(snapshot) {
         var userInfo = snapshot.val();
         callback(userInfo);

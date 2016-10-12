@@ -194,12 +194,17 @@ ul.posts__user-posts {
 <div class="stats">
 	<div class="stats__rank stats__block">
 		<div class="stats__rank__rank stat__num"></div>
-		<div class="stats__rank__text">EXP</div>
+		<div class="stats__rank__text stat__text">EXP</div>
 	</div>
 	<div class="stats__line"></div>
 	<div class="stats__inventory stats__block">
 		<div class="stats__inventory__count stat__num">150</div>
-		<div class="stats__inventory__text">Inventory</div>
+		<div class="stats__inventory__text stat__text">Inventory</div>
+	</div>
+	<div class="stats__line"></div>
+	<div class="stats__inventory stats__block">
+		<div class="stats__rate__count stat__num">0</div>
+		<div class="stats__rate__text stat__text">Rating</div>
 	</div>
 </div>
 
@@ -249,6 +254,13 @@ ul.posts__user-posts {
 			} else {
 				$(".posts__new-post").show();
 			}
+		});
+
+		showOutside(uid, function(outside) {
+			if (outside == null) {
+				return false;
+			}
+			$(".stats__rate__count").text(outside.rate);
 		});
 
 		function userNotFound(){
