@@ -1,4 +1,4 @@
-﻿
+
 var cases = [{
     "name": "Alpha",
     "img": "alpha.png",
@@ -4847,9 +4847,9 @@ var cases = [{
         "img": "SteachCase/P90-Stone-story.png"
     }, {
         "type": "AK-47",
-        "skinName": "Fluentem",
-        "rarity": "covert",
-        "img": "SteachCase/AK-47-Fluentem.png"
+        "skinName": "Wolf Attack",
+        "rarity": "classified",
+        "img": "SteachCase/AK-47-Wolf-Attack.png"
     }, {
         "type": "USP-S",
         "skinName": "Apis",

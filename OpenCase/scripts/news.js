@@ -1,4 +1,4 @@
-﻿
+
 var news = [{
     "day": 5,
     "month": 7,
@@ -326,5 +326,13 @@ var news = [{
     "update": {
         "RU": " - [Добавлено] Новый кейс от Steach<br> - [Изменено] Немного изменен алгоритм поиска цены",
         "EN": " - [New] New Steach case! Made by Steach<br> - [Changed] Search price algorithm was changed"
+    }
+}, {
+    "day": 13,
+    "month": 10,
+    "year": 2016,
+    "update": {
+        "RU": " - [Изменено] Заменен AK-47 Fluentem на AK-47 Wolf Attack в кейсе Steach",
+        "EN": " - [Changed] Replaced AK-47 Fluentem with AK-47 Wolf Attack in Steach case"
     }
 }, ];
