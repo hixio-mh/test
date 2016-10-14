@@ -49,7 +49,7 @@ chatRef.on('child_added', function(data) {
         newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text);
         $("html, body").animate({
             scrollTop: $(document).height()
-        }, 100);
+        }, 10);
     }
 });
 

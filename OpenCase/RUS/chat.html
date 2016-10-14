@@ -1,55 +1,47 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<link rel="stylesheet" type="text/css" href="../css/fonts.css">
-<link rel="stylesheet" type="text/css" href="../css/animate.css">
-<link rel="stylesheet" type="text/css" href="../css/chat.css">
-<link rel="stylesheet" type="text/css" href="../css/buttons.css">
-<link rel="stylesheet" type="text/css" href="../css/loading.css">
-
- <script src="../scripts/jquery.min.js"></script>
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-
-<script src="../scripts/jquery.cookie.js"></script>
-<script src="../scripts/main.js"></script>
-<script src="../scripts/profile.js"></script>
-<script src="../scripts/settings.js"></script>
-<script src="../scripts/skinNames.js"></script>
-<script src="../scripts/chat.js"></script>
-<script src="../scripts/cases2.js"></script>
-<script src="../scripts/weapons.js"></script>
-
-<script src="../scripts/navigationMenu.js"></script>
-<link rel="stylesheet" href="../css/navigationMenu.css">
-
-<script src="../scripts/localization.js"></script>
-<title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <script src="../scripts/jquery.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="../scripts/jquery.cookie.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/skinNames.js"></script>
+    <script src="../scripts/chat.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    <script src="../scripts/localization.js"></script>
+    <title>Chat</title>
 </head>
+
 <body data-localization="chat" data-inventory='no-load'>
-	<div class="site-overlay"></div>
-<div class='container' id="container">
-<div class="navigationBar" data-menu-EN="Chat" data-menu-RU="Чат"></div>
-
-    <div id="login" style='display: none;'>
-			<input type="text" placeholder="Email" id="email"></input>
-			<input type="password" placeholder="Password" id="password"></input>
-			<div id="login__buttons">
-				<button class="button_blue" onclick="login();">Sign in</button>
-				<button class="button_blue" onclick="register();">Register</button>
-			</div>
-		</div>
-
-	<div id="chat">
-		<ul class="chat__messages">
-		</ul>
-		<div class="chat__write">
-			<div class="input-text" contenteditable="true" id="chat__new-message" max="120"></div>
-			<input class="button_blue" type="button" id="chat__send-new-message" value="Send" />
-		</div>
-	</div>
-
-</div>
+    <div class="site-overlay"></div>
+    <div class='container' id="container">
+        <div class="navigationBar" data-menu-EN="Chat" data-menu-RU="Чат"></div>
+        <div id="login" style='display: none;'>
+            <input type="text" placeholder="Email" id="email"></input>
+            <input type="password" placeholder="Password" id="password"></input>
+            <div id="login__buttons">
+                <button class="button_blue" onclick="login();">Sign in</button>
+                <button class="button_blue" onclick="register();">Register</button>
+            </div>
+        </div>
+        <div id="chat">
+            <ul class="chat__messages"> </ul>
+            <div class="chat__write">
+                <div class="input-text" contenteditable="true" id="chat__new-message" max="120"></div>
+                <input class="button_blue" type="button" id="chat__send-new-message" value="Send" /> </div>
+        </div>
+    </div>
 </body>
+
 </html>

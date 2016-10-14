@@ -1,220 +1,248 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
+
 <head>
-<title>Профиль</title>
-<link rel="stylesheet" type="text/css" href="../css/fonts.css">
-<link rel="stylesheet" type="text/css" href="../css/main.css">
-<link rel="stylesheet" type="text/css" href="../css/animate.css">
-<link rel="stylesheet" type="text/css" href="../css/buttons.css">
-<link rel="stylesheet" type="text/css" href="../css/loading.css">
-<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
-
-<script src="../scripts/build/libs.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-<script src="../scripts/main.js"></script>
-<script src="../scripts/settings.js"></script>
-<script src="../scripts/cases2.js"></script>
-<script src="../scripts/profile.js"></script>
-
-
-<script src="../scripts/navigationMenu.js"></script>
-<link rel="stylesheet" href="../css/navigationMenu.css">
-
-<script src="../scripts/localization.js"></script>
-<style>
-	body {
-		color: #fff;
-		background: #fff;
-	}
-	.top {
-	    display: flex;
-	    flex-direction: column;
-	    align-items: center;
-	    justify-content: space-around;
-	    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-	    padding-top: 50px;
-	}
-	.top__pm > *, .top__trade > *,	.top__profile > * {
-    margin: auto;
-	}
-	.top__pm, .top__trade {
-    width: 50px;
-    height: 50px;
-    background: #e64343;
-    display: flex;
-    border-radius: 50%;
-    font-size: 22px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    cursor: pointer;
-}
-	.top__trade {
-    background: #8E53B3;
-	}
-	.top__profile {
-	    display: flex;
-	    padding: 5px;
-	    flex-direction: column;
-	    text-align: center;
-			white-space: nowrap;
-	}
-	.profile__name {
-		margin: 0;
-		font-size: 1.2em;
-	}
-	.profile__status {
-    font-weight: lighter;
-		margin: 0;
-    font-size: 1.1em;
-	}
-	.profile__img {
-		width: 100px;
-		height: 100px;
-		background:#fff;
-		border-radius: 50%;
-		border: 3px solid #fff;
-	}
-	.top_actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    width: 100%;
-}
-	.top__bg {
-    background: #5782da;
-    position: absolute;
-    top: 0;
-    height: 200px;
-    width: 100%;
-    z-index: -1;
-}
-.stats {
-    color: #000;
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    padding: 10px 0;
-	align-items: stretch;
-}
-.stats__rank__rank img {
-    width: 70px;
-}
-.stats__line {
-    border-left: 1px solid RGBA(0, 0, 0, 0.1);
-}
-.stats__block {
-    width: 100px;
-}
-.stat__num {
-    font-size: 1.8em;
-    color: #1B1B1B;
-}
-.posts {
-    color: #000;
-		padding: 10px;
-}
-.posts__new-post {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-around;
-}
-.new-post__text {
-    outline: none;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
-    padding: 5px;
-    flex-grow: 2;
-}
-.posts__new-post .button_blue {
-    margin-left: 10px;
-}
-[contenteditable=true]:empty:before {
-  content: attr(placeholder);
-	cursor: text;
-  display: block; /* For Firefox */
-	color: #9c9c9c;
-}
-ul.posts__user-posts {
-    padding: 0;
-    list-style: none;
-}
-.user-posts__post {
-    padding: 10px;
-    box-shadow: 0 0 2px RGBA(0, 0, 0, 0.1);
-    border-radius: 3px;
-    border: 1px solid RGBA(0, 0, 0, 0.19);
-		margin-bottom: 10px;
-}
-.post__header {
-    display: flex;
-	margin-bottom: 10px;
-}
-.post__header__img {
-    width: 50px;
-		height: 50px;
-    border-radius: 50%;
-    align-items: center;
-}
-.post__header__meta {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    font-size: 0.95em;
-    justify-content: center;
-    margin-left: 10px;
-}
-.post__meta__author {
-    color: #cb6a6a;
-    font-weight: bold;
-}
-.post__meta__date {
-    font-size: 0.9em;
-    color: #8A8A8A;
-}
-</style>
+    <title>Профиль</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <script src="../scripts/build/libs.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/fb-inventory.js"></script>
+    <script src="../scripts/skinNames.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/cases2.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    <script src="../scripts/localization.js"></script>
+    <style>
+        body {
+            color: #fff;
+            background: #fff;
+        }
+        
+        .top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            padding-top: 50px;
+        }
+        
+        .top__pm > *,
+        .top__trade > *,
+        .top__profile > * {
+            margin: auto;
+        }
+        
+        .top__pm,
+        .top__trade {
+            width: 50px;
+            height: 50px;
+            background: #e64343;
+            display: flex;
+            border-radius: 50%;
+            font-size: 22px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        
+        .top__trade {
+            background: #8E53B3;
+        }
+        
+        .top__profile {
+            display: flex;
+            padding: 5px;
+            flex-direction: column;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        .profile__name {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        
+        .profile__status {
+            font-weight: lighter;
+            margin: 0;
+            font-size: 1.1em;
+        }
+        
+        .profile__img {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        
+        .top_actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            width: 100%;
+        }
+        
+        .top__bg {
+            background: #5782da;
+            position: absolute;
+            top: 0;
+            height: 200px;
+            width: 100%;
+            z-index: -1;
+        }
+        
+        .stats {
+            color: #000;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding: 10px 0;
+            align-items: stretch;
+        }
+        
+        .stats__rank__rank img {
+            width: 70px;
+        }
+        
+        .stats__line {
+            border-left: 1px solid RGBA(0, 0, 0, 0.1);
+        }
+        
+        .stats__block {
+            width: 100px;
+        }
+        
+        .stat__num {
+            font-size: 1.8em;
+            color: #1B1B1B;
+        }
+        
+        .posts {
+            color: #000;
+            padding: 10px;
+        }
+        
+        .posts__new-post {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: space-around;
+        }
+        
+        .new-post__text {
+            outline: none;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            padding: 5px;
+            flex-grow: 2;
+        }
+        
+        .posts__new-post .button_blue {
+            margin-left: 10px;
+        }
+        
+        [contenteditable=true]:empty:before {
+            content: attr(placeholder);
+            cursor: text;
+            display: block;
+            /* For Firefox */
+            color: #9c9c9c;
+        }
+        
+        ul.posts__user-posts {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .user-posts__post {
+            padding: 10px;
+            box-shadow: 0 0 2px RGBA(0, 0, 0, 0.1);
+            border-radius: 3px;
+            border: 1px solid RGBA(0, 0, 0, 0.19);
+            margin-bottom: 10px;
+        }
+        
+        .post__header {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        
+        .post__header__img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            align-items: center;
+        }
+        
+        .post__header__meta {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            font-size: 0.95em;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        .post__meta__author {
+            color: #cb6a6a;
+            font-weight: bold;
+        }
+        
+        .post__meta__date {
+            font-size: 0.9em;
+            color: #8A8A8A;
+        }
+    </style>
 </head>
+
 <body data-localization='statistic'>
-	<div class="site-overlay"></div>
-	<div id="container">
-<div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
-<div class="top__bg"></div>
-	<div class="top">
-		<div class="top__profile">
-			<h1 class="profile__name"></h1>
-			<h3 class="profile__status">Test status</h3>
-		</div>
-		<div class="top_actions">
-			<div class="top__pm"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
-			<img src="" class="profile__img">
-			<div class="top__trade"><i class="fa fa-exchange" aria-hidden="true"></i></div>
-		</div>
-	</div>
-
-<div class="stats">
-	<div class="stats__rank stats__block">
-		<div class="stats__rank__rank stat__num"></div>
-		<div class="stats__rank__text stat__text">EXP</div>
-	</div>
-	<div class="stats__line"></div>
-	<div class="stats__inventory stats__block">
-		<div class="stats__inventory__count stat__num">150</div>
-		<div class="stats__inventory__text stat__text">Inventory</div>
-	</div>
-	<div class="stats__line"></div>
-	<div class="stats__inventory stats__block">
-		<div class="stats__rate__count stat__num">0</div>
-		<div class="stats__rate__text stat__text">Rating</div>
-	</div>
-</div>
-
-<div class="posts">
-	<div class="posts__new-post">
-		<div class="new-post__text" contenteditable="true" placeholder="Есть чем поделиться?"></div>
-		<button class="button_blue" value="Send" id="send-new-post">Send</button>
-	</div>
-	<ul class="posts__user-posts">
-		<!--<li class="user-posts__post">
+    <div class="site-overlay"></div>
+    <div id="container">
+        <div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
+        <div class="top__bg"></div>
+        <div class="top">
+            <div class="top__profile">
+                <h1 class="profile__name"></h1>
+                <h3 class="profile__status">Test status</h3> </div>
+            <div class="top_actions">
+                <div class="top__pm"><i class="fa fa-envelope-o" aria-hidden="true"></i></div> <img src="" class="profile__img">
+                <div class="top__trade"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stats__rank stats__block">
+                <div class="stats__rank__rank stat__num"></div>
+                <div class="stats__rank__text stat__text">EXP</div>
+            </div>
+            <div class="stats__line"></div>
+            <div class="stats__inventory stats__block">
+                <div class="stats__inventory__count stat__num">?</div>
+                <div class="stats__inventory__text stat__text">Inventory</div>
+            </div>
+            <div class="stats__line"></div>
+            <div class="stats__inventory stats__block">
+                <div class="stats__rate__count stat__num">0</div>
+                <div class="stats__rate__text stat__text">Rating</div>
+            </div>
+        </div>
+        <div class="posts">
+            <div class="posts__new-post">
+                <div class="new-post__text" contenteditable="true" placeholder="Есть чем поделиться?"></div>
+                <button class="button_blue" value="Send" id="send-new-post">Send</button>
+            </div>
+            <ul class="posts__user-posts">
+                <!--<li class="user-posts__post">
 			<div class="post__header">
 				<img src="" class="post__header__img" data-uid="blablabla">
 				<div class="post__header__meta">
@@ -224,109 +252,100 @@ ul.posts__user-posts {
 			</div>
 			<div class="post__text">Абсолютно нечем поделиться. Это просто текст.</div>
 		</li>-->
-	</ul>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var param = parseURLParams(window.location.href);
+            if (typeof param == "undefined") return false;
+            uid = param.uid[0];
+            if (typeof uid == 'undefined') return false;
+            $(".posts__new-post").hide();
+            moment.locale(Settings.language);
+            
+            showProfile(uid, function (userInfo) {
+                if (userInfo == null) {
+                    userNotFound();
+                    return false;
+                }
+                $(".profile__img").attr('src', userInfo.avatar);
+                $(".post__header__img").attr('src', userInfo.avatar);
+                $(".profile__name").text(userInfo.nickname);
+                //var rank = getRank(userInfo.point);
+                $(".stats__rank__rank").text(userInfo.points);
+                if (uid != firebase.auth().currentUser.uid) {
+                    $(".posts__new-post").hide();
+                }
+                else {
+                    $(".posts__new-post").show();
+                }
+            });
+            
+            showOutside(uid, function (outside) {
+                if (outside == null) {
+                    return false;
+                }
+                $(".stats__rate__count").text((outside.rate > 99999 ? '∞' : outside.rate));
+            });
+            
+            fbInventory.getInventoryCount(uid, function(count) {
+                if (typeof count != 'number') return false;
+                
+                $('.stats__inventory__count').text(count);
+            })
 
-</div>
-</div>
-<script>
-	$(function() {
-		var param = parseURLParams(window.location.href);
-		if(typeof param == "undefined") return false;
-		uid = param.uid[0];
-		if (typeof uid == 'undefined') return false;
-		$(".posts__new-post").hide();
+            function userNotFound() {
+                var avatarRef = firebase.storage().ref('user-not-found/no-user-avatar.png');
+                avatarRef.getDownloadURL().then(function (url) {
+                    $(".profile__img").attr('src', url);
+                    $(".profile__name").text('User not found');
+                    //var rank = getRank(userInfo.point);
+                    $(".stats__rank__rank").text('0');
+                })
+            }
+            /*loadPosts(uid, function(posts) {
+            	for (var prop in posts) {
+            		var post = posts[prop];
+            		addPostToWall(post);
+            	}
+            })*/
+            firebase.database().ref('users/' + uid + '/posts').on('child_added', function (data) {
+                if ($("li[data-msgkey='" + data.key + "']").length == 0) {
+                    addPostToWall(data.val());
+                }
+            });
+            $(document).on('click', '#send-new-post', function () {
+                var text = $(".new-post__text").text();
+                if (text == "") return false;
+                var date = new Date();
+                $(".new-post__text").empty();
+                var uid = firebase.auth().currentUser.uid;
+                sendPost(uid, uid, "" + date, text);
+            })
 
-		moment.locale(Settings.language);
+            function addPostToWall(post) {
+                if (post == '' || post == null || typeof post == 'undefined') return false;
+                var date = new Date(post.date);
+                var HTMLpost = "<li class='user-posts__post animated flipInX'>" + "<div class='post__header'>" + "<img src=\"" + post.authorAvatar + "\" class='post__header__img' data-uid='" + post.uidFrom + "'>" + "<div class='post__header__meta'>" + "<span class='post__meta__author' data-uid='" + post.uidFrom + "'>" + post.author + "</span>" + "<span class='post__meta__date'>" + moment(date).fromNow() + "</span>" + "</div></div>" + "<div class='post__text'>" + post.text + "</div></li>";
+                $(".posts__user-posts").prepend(HTMLpost);
+            }
 
-		showProfile(uid, function(userInfo) {
-			if (userInfo == null) {
-				userNotFound();
-				return false;
-			}
-			$(".profile__img").attr('src', userInfo.avatar);
-			$(".post__header__img").attr('src', userInfo.avatar);
-			$(".profile__name").text(userInfo.nickname);
-			//var rank = getRank(userInfo.point);
-			$(".stats__rank__rank").text(userInfo.points);
-
-			if (uid != firebase.auth().currentUser.uid) {
-				$(".posts__new-post").hide();
-			} else {
-				$(".posts__new-post").show();
-			}
-		});
-
-		showOutside(uid, function(outside) {
-			if (outside == null) {
-				return false;
-			}
-			$(".stats__rate__count").text(outside.rate);
-		});
-
-		function userNotFound(){
-			var avatarRef = firebase.storage().ref('user-not-found/no-user-avatar.png');
-			avatarRef.getDownloadURL().then(function(url) {
-				$(".profile__img").attr('src', url);
-				$(".profile__name").text('User not found');
-				//var rank = getRank(userInfo.point);
-				$(".stats__rank__rank").text('0');
-			})
-
-		}
-
-		/*loadPosts(uid, function(posts) {
-			for (var prop in posts) {
-				var post = posts[prop];
-				addPostToWall(post);
-			}
-		})*/
-
-		firebase.database().ref('users/'+uid+'/posts').on('child_added', function(data) {
-		    if ($("li[data-msgkey='" + data.key + "']").length == 0) {
-		        addPostToWall(data.val());
-		    }
-		});
-
-		$(document).on('click', '#send-new-post', function() {
-			var text = $(".new-post__text").text();
-			if (text == "") return false;
-			var date = new Date();
-
-			$(".new-post__text").empty();
-
-			var uid = firebase.auth().currentUser.uid;
-
-			sendPost(uid, uid, ""+date, text);
-		})
-
-		function addPostToWall(post) {
-			if (post == '' || post == null || typeof post == 'undefined') return false;
-			var date = new Date(post.date);
-			var HTMLpost = "<li class='user-posts__post animated flipInX'>" +
-										 "<div class='post__header'>" +
-										 "<img src=\""+post.authorAvatar+"\" class='post__header__img' data-uid='"+post.uidFrom+"'>" +
-										 "<div class='post__header__meta'>" +
-										 "<span class='post__meta__author' data-uid='"+post.uidFrom+"'>"+post.author+"</span>" +
-										 "<span class='post__meta__date'>"+moment(date).fromNow()+"</span>" +
-										 "</div></div>" +
-										 "<div class='post__text'>"+post.text+"</div></li>";
-			$(".posts__user-posts").prepend(HTMLpost);
-		}
-
-		function sendPost(uidFrom, uidTo, date, text) {
-			var userPostsRef = firebase.database().ref('users/'+uidTo+'/posts');
-			var author = firebase.auth().currentUser.displayName;
-			var authorAvatar = firebase.auth().currentUser.photoURL;
-			//if (uidFrom != firebase.auth().currentUser.uid) {}
-			userPostsRef.push({
-				uidFrom: uidFrom,
-				author: author,
-				authorAvatar: authorAvatar,
-				date: date,
-				text: text
-			});
-		}
-})
-</script>
+            function sendPost(uidFrom, uidTo, date, text) {
+                var userPostsRef = firebase.database().ref('users/' + uidTo + '/posts');
+                var author = firebase.auth().currentUser.displayName;
+                var authorAvatar = firebase.auth().currentUser.photoURL;
+                //if (uidFrom != firebase.auth().currentUser.uid) {}
+                userPostsRef.push({
+                    uidFrom: uidFrom
+                    , author: author
+                    , authorAvatar: authorAvatar
+                    , date: date
+                    , text: text
+                });
+            }
+        })
+    </script>
 </body>
+
 </html>
