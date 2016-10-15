@@ -8,7 +8,7 @@ $(function () {
             event.preventDefault();
         }
     });
-    history.replaceState("chat-rooms", null, "chat.html")
+    history.replaceState("chat-rooms", null, null);
     var rooms = "";
     for (var i = 0; i < fbChat.rooms.length; i++) {
         rooms += "<div class='chat__rooms__room" + (Settings.language == fbChat.rooms[i].code ? ' playerLang' : '') + "' data-room=\"" + fbChat.rooms[i].code + "\">";
@@ -51,16 +51,20 @@ $(function () {
 
 window.addEventListener('popstate', function(e) {
     var prev = e.state;
+    console.log(e);
     if (prev == 'chat-rooms') {
         $("#login").hide();
         $("#chat").hide();
         $(".chat__rooms").show();
-        history.pushState("chat-rooms", null, "chat.html");
     } else if (/chat-\w{2}/.test(prev)) {
         var room = prev.match(/chat-(\w{2})/)[1];
-        $(".chat__rooms__room[data-room='"+room+"']").click();
+        fbChat.setChatRef($(this).data('room'));
+        $("#login").hide();
+        $("#chat").show();
+        $(".chat__rooms").hide();
+        fbChat.initChat('.chat__messages');
     }
-});
+}, false);
 var fbChat = (function (module) {
     module.chatRef = firebase.database().ref('globalChat');
     module.chatRoomsRef = firebase.database().ref('chatRooms');
