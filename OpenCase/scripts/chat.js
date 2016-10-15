@@ -8,7 +8,15 @@ $(function () {
             event.preventDefault();
         }
     });
-    history.replaceState("chat-rooms", null, null);
+    
+    var goToChat = false;
+    
+    if (/chat-\w{2}/.test(history.state)) {
+        var goToChat = history.state.match(/chat-(\w{2})/)[1];
+    } else {
+        history.replaceState("chat-rooms", null, null);
+    }
+    
     var rooms = "";
     for (var i = 0; i < fbChat.rooms.length; i++) {
         rooms += "<div class='chat__rooms__room" + (Settings.language == fbChat.rooms[i].code ? ' playerLang' : '') + "' data-room=\"" + fbChat.rooms[i].code + "\">";
@@ -17,24 +25,30 @@ $(function () {
     $('.chat__rooms').html(rooms);
     firebase.auth().onAuthStateChanged(function (user) {
         // Once authenticated, instantiate Firechat with the logged in user
-        if (firebase.auth().currentUser != null) {
+        if (firebase.auth().currentUser != null && !goToChat) {
             $("#login").hide();
             $("#chat").hide();
             $(".chat__rooms").show();
-        }
-        else {
+        } else if (firebase.auth().currentUser != null && goToChat != false) {
+            fbChat.setChatRef(goToChat);
+            $("#login").hide();
+            $("#chat").show();
+            $(".chat__rooms").hide();
+            fbChat.initChat('.chat__messages');
+        } else {
             $("#chat").hide();
             $(".chat__rooms").hide();
             $("#login").show();
         }
     });
+    
     $(document).on('click', '.chat__rooms__room', function () {
         fbChat.setChatRef($(this).data('room'));
         $("#login").hide();
         $("#chat").show();
         $(".chat__rooms").hide();
         fbChat.initChat('.chat__messages');
-        history.pushState('chat-'+$(this).data('room'), "Chat Room", 'chat-'+$(this).data('room')+'.html')
+        history.pushState('chat-'+$(this).data('room'), "Chat Room", 'chat.html?room='+$(this).data('room'))
     })
     $(document).on('click', '#login button', function () {
         $(".chat__messages").append('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
@@ -51,7 +65,6 @@ $(function () {
 
 window.addEventListener('popstate', function(e) {
     var prev = e.state;
-    console.log(e);
     if (prev == 'chat-rooms') {
         $("#login").hide();
         $("#chat").hide();
@@ -66,7 +79,7 @@ window.addEventListener('popstate', function(e) {
     }
 }, false);
 var fbChat = (function (module) {
-    module.chatRef = firebase.database().ref('globalChat');
+    module.chatRef = '';
     module.chatRoomsRef = firebase.database().ref('chatRooms');
     module.rooms = [
         {
@@ -108,24 +121,33 @@ var fbChat = (function (module) {
         });
     }
     module.initChat = function (selector) {
+        var newItems = false;
         $(selector + " li").remove();
-        fbChat.chatRef.on('child_added', function (data) {
+        if (module.chatRef == '') return;
+        module.chatRef.limitToLast(1).on('child_added', function (data) {
+            if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
                 newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text);
                 $("html, body").animate({
                     scrollTop: $(document).height()
-                }, 10);
+                }, 200);
             }
         });
-        fbChat.chatRef.on('child_removed', function (data) {
-            removeMsg(data.key);
-        });
-        /*return module.chatRef.once('value').then(function (snapshot) {
+        
+        module.chatRef.limitToLast(20).once('value').then(function (snapshot) {
+            newItems = true;
             messages = snapshot.val();
             for (key in messages) {
                 newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text);
             }
-        });*/
+            $("html, body").animate({
+                    scrollTop: $(document).height()
+            }, 500);
+        })
+        
+        module.chatRef.on('child_removed', function (data) {
+            removeMsg(data.key);
+        });
     }
     return module;
 }(fbChat || {}));
