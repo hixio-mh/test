@@ -19,6 +19,33 @@ input, .input-text {
 #login__buttons > button {
     margin: 0px 3px;
 }
+.chat__rooms {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.chat__rooms__room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+    cursor: pointer;
+}
+.chat__rooms__room img {
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.chat__rooms__room span {
+    color: #7E7E7E;
+    font-size: 0.8em;
+}
+.playerLang span {
+    color: #454545;
+}
 ul.chat__messages {
     padding: 10px;
     list-style: none;
