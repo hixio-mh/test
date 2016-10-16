@@ -61,6 +61,10 @@ $(function () {
         if (typeof uid == 'undefined') return false;
         window.location = 'profile.html?uid=' + uid;
     })
+    
+    $(document).on('click', '#forgot-pass',function() {
+        forgotPassword($("#email").val());
+    })
 });
 
 window.addEventListener('popstate', function(e) {
