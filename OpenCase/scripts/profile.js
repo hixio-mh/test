@@ -23,7 +23,7 @@ $(document).on('click', '#registerButton', function () {
             $("#login-status").text(Localization.settings2.notValidNickname[Settings.language]);
             return false;
         }
-        register();
+        fbProfile.register();
     }
 });
 var fbProfile = (function (module) {
