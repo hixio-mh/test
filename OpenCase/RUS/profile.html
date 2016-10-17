@@ -337,7 +337,8 @@
                     $(".edit-profile-container").show();
                 }
                 if (userInfo.bigBG) {
-                    $('.top__bg').css('background-image', 'url("'+userInfo.bigBG+'")');
+                    $('.top__bg').attr('style', 'background:url("'+userInfo.bigBG+'"); background-size: cover;');
+                    //$('.top__bg').css('background-image', 'url("'+userInfo.bigBG+'")');
                 }
             });
             fbProfile.repVal(uid, function (rep, userRep) {
