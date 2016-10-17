@@ -35,6 +35,7 @@
             font-size: 1.3em;
             display: flex;
             flex-direction: column;
+            text-shadow: 0 0 2px RGBA(0, 0, 0, 0.5);
         }
         
         .edit-profile-container > * {
@@ -47,7 +48,7 @@
             align-items: center;
             justify-content: space-around;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            padding-top: 50px;
+            padding-top: 80px;
         }
         
         .top__pm > *,
@@ -118,10 +119,10 @@
             background: #5782da;
             position: absolute;
             top: 0;
-            /*height: 200px;*/
-            height: 177px;
+            height: 207px;
             width: 100%;
             z-index: -1;
+            background-size: cover;
         }
         
         .stats {
@@ -324,7 +325,6 @@
                 $(".profile__img").attr('src', userInfo.avatar);
                 $(".post__header__img").attr('src', userInfo.avatar);
                 $(".profile__name").text(userInfo.nickname);
-                //var rank = getRank(userInfo.point);
                 $(".stats__rank__rank").text(userInfo.points);
                 if (uid != firebase.auth().currentUser.uid) {
                     $(".posts__new-post").hide();
@@ -334,6 +334,9 @@
                     $(".posts__new-post").show();
                     $('.rep').hide();
                     $(".edit-profile-container").show();
+                }
+                if (userInfo.bigBG) {
+                    $('.top__bg').css('background-image', 'url('+userInfo.bigBG+')');
                 }
             });
             fbProfile.repVal(uid, function (rep, userRep) {
