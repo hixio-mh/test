@@ -11,7 +11,7 @@ $(function () {
     
     var goToChat = false;
     
-    if (/chat-\w{2}/.test(history.state)) {
+    if (/chat-\w{2}$/.test(history.state)) {
         var goToChat = history.state.match(/chat-(\w{2})/)[1];
     } else {
         history.replaceState("chat-rooms", null, null);

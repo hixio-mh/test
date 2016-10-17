@@ -9,10 +9,10 @@
     <link rel="stylesheet" type="text/css" href="../css/chat.css">
     <link rel="stylesheet" type="text/css" href="../css/buttons.css">
     <link rel="stylesheet" type="text/css" href="../css/loading.css">
-    <script src="../scripts/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/lobibox.min.css"/>
+    <script src="../scripts/build/libs.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-    <script src="../scripts/jquery.cookie.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/profile.js"></script>
     <script src="../scripts/settings.js"></script>
@@ -31,10 +31,11 @@
         <div id="login" style='display: none;'>
             <input type="text" placeholder="Email" id="email"></input>
             <input type="password" placeholder="Password" id="password"></input>
+            <input type="text" placeholder="Nickname" id="nickname" class="hide"></input>
             <span id="login-status"></span>
             <div id="login__buttons">
-                <button class="button_blue" onclick="login();">Sign in</button>
-                <button class="button_blue" onclick="register();">Register</button>
+                <button class="button_blue" onclick="login();" id="loginButton">Sign in</button>
+                <button class="button_blue empty" id="registerButton">Register</button>
                 <a href="#" id="forgot-pass">Forgot password?</a>
             </div>
         </div>

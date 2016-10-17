@@ -7,6 +7,24 @@ var config = {
 };
 firebase.initializeApp(config);
 
+$(document).on('click', '#registerButton', function() {
+    if ($(this).hasClass('empty')) {
+        $('#nickname').show();
+        $(this).removeClass('empty');
+        $('#loginButton').hide();
+        $('#nickname').val(Player.nickname);
+    } else {
+        var nick = $("#nickname").val();
+	   var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_-]+$/;
+	   if (nick != "" && validation.test(nick)) {
+		  saveStatistic("playerNickname", nick)
+	   } else {
+        $("#login-status").text(Localization.settings2.notValidNickname[Settings.language]);
+		return false;
+	   }
+        register();
+    }
+});
 
 function register() {
     var email = $("#email").val() || "";
@@ -45,7 +63,10 @@ function register() {
                 publicRef.child('avatar').set(ava);
 
                 var rateRef = userRef.child('outside');
-                rateRef.child('rate').set(0);
+                rateRef.child('rep').set(0);
+                
+                var inventoryRef = firebase.database().ref('inventories/'+firebase.auth().currentUser.uid);
+                inventoryRef.child('inventory_count').set(inventory.length);
             }, function(error) {
                 $("#login-status").text(error.message);
             });
@@ -71,12 +92,38 @@ function showProfile(uid, callback) {
     })
 }
 
-function showOutside(uid, callback) {
-    var userInfoRef = firebase.database().ref('users/' + uid + '/outside');
+function showRep(uid, callback) {
+    var userInfoRef = firebase.database().ref('users/' + uid + '/outside/rep');
     userInfoRef.once('value').then(function(snapshot) {
         var userInfo = snapshot.val();
         callback(userInfo);
     })
+}
+
+function repVal(uid, callback) {
+    var repRef = firebase.database().ref('users/' + uid + '/outside/rep');
+    repRef.once('value').then(function(snapshot) {
+        var rep = 0;
+        var userRep = '0';
+        var userUid = firebase.auth().currentUser.uid;
+        snapshot.forEach(function (childSnapshot) {
+            if (childSnapshot.val() == '+') {
+                rep++;
+                if (childSnapshot.key == userUid)
+                    userRep = '+';
+            } else if (childSnapshot.val() == '-') {
+                rep--;
+                if (childSnapshot.key == userUid)
+                    userRep = '-';
+            }
+        })
+        callback(rep, userRep);
+    })
+}
+
+function setRep(uid, uidFrom, val) {
+    var repRef = firebase.database().ref('users/' + uid + '/outside/rep');
+    repRef.child(uidFrom).set(val);
 }
 
 function loadPosts(uid, callback) {

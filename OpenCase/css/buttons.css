@@ -131,3 +131,9 @@ button.double_icon:before {
 .button_blue:disabled {
     opacity: 0.5;
 }
+.button_blue.empty {
+    background: transparent;
+    border: 1px solid #00ACEF;
+    color: #00ACEF;
+    box-shadow: none;
+}

@@ -128,6 +128,27 @@
             color: #1B1B1B;
         }
         
+        .rep-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .rep {
+            color: #959595;
+            padding: 5px;
+            cursor: pointer;
+            background: ;
+        }
+        
+        .rep-plus.active {
+            color: #0CB414;
+        }
+        
+        .rep-minus.active {
+            color: #BF0000;
+        }
+        
         .posts {
             color: #000;
             padding: 10px;
@@ -203,6 +224,10 @@
             font-size: 0.9em;
             color: #8A8A8A;
         }
+        
+        .disabled > * {
+            opacity: 0.6;
+        }
     </style>
 </head>
 
@@ -232,8 +257,12 @@
             </div>
             <div class="stats__line"></div>
             <div class="stats__inventory stats__block">
-                <div class="stats__rate__count stat__num">0</div>
-                <div class="stats__rate__text stat__text">Rating</div>
+                <div class="rep-container">
+                    <div class="rep rep-plus"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                    <div class="stats__rate__count stat__num">0</div>
+                    <div class="rep rep-minus"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                </div>
+                <div class="stats__rate__text stat__text">Reputation</div>
             </div>
         </div>
         <div class="posts">
@@ -241,18 +270,7 @@
                 <div class="new-post__text" contenteditable="true" placeholder="Есть чем поделиться?"></div>
                 <button class="button_blue" value="Send" id="send-new-post">Send</button>
             </div>
-            <ul class="posts__user-posts">
-                <!--<li class="user-posts__post">
-			<div class="post__header">
-				<img src="" class="post__header__img" data-uid="blablabla">
-				<div class="post__header__meta">
-					<span class="post__meta__author" data-uid="blablabla">Vanushka2004</span>
-					<span class="post__meta__date">10 июл в 15:23</span>
-				</div>
-			</div>
-			<div class="post__text">Абсолютно нечем поделиться. Это просто текст.</div>
-		</li>-->
-            </ul>
+            <ul class="posts__user-posts"> </ul>
         </div>
     </div>
     <script>
@@ -263,7 +281,6 @@
             if (typeof uid == 'undefined') return false;
             $(".posts__new-post").hide();
             moment.locale(Settings.language);
-            
             showProfile(uid, function (userInfo) {
                 if (userInfo == null) {
                     userNotFound();
@@ -276,22 +293,23 @@
                 $(".stats__rank__rank").text(userInfo.points);
                 if (uid != firebase.auth().currentUser.uid) {
                     $(".posts__new-post").hide();
+                    $('.rep').show();
                 }
                 else {
                     $(".posts__new-post").show();
+                    $('.rep').hide();
                 }
             });
-            
-            showOutside(uid, function (outside) {
-                if (outside == null) {
-                    return false;
+            repVal(uid, function (rep, userRep) {
+                $(".stats__rate__count").text((rep > 99999 ? '∞' : rep));
+                if (userRep == '-') {
+                    $('.rep-minus').addClass('active');
+                } else if (userRep == '+') {
+                    $('.rep-plus').addClass('active');
                 }
-                $(".stats__rate__count").text((outside.rate > 99999 ? '∞' : outside.rate));
             });
-            
-            fbInventory.getInventoryCount(uid, function(count) {
+            fbInventory.getInventoryCount(uid, function (count) {
                 if (typeof count != 'number') return false;
-                
                 $('.stats__inventory__count').text(count);
             })
 
@@ -310,6 +328,27 @@
             		addPostToWall(post);
             	}
             })*/
+            $(document).on('click', '.rep', function () {
+                var currRepRef = firebase.database().ref('users/' + uid + '/outside/rep');
+                var val = 0;
+                    if ($(this).hasClass('rep-plus')) {
+                        val = 1;
+                    }
+                    else if ($(this).hasClass('rep-minus')) {
+                        val = -1
+                    }
+                if ($('.active').length != 0) {
+                    $('.rep.active').removeClass('active');
+                    currRepRef.child(firebase.auth().currentUser.uid).remove();
+                } else {
+                    $(this).addClass('active');
+                    setRep(uid, firebase.auth().currentUser.uid, (val > 0 ? '+' : '-'));
+                }
+                    repVal(uid, function(rep, userRep) {
+                        var $active = $('.active');
+                        $(".stats__rate__count").text(rep);
+                    });
+            })
             firebase.database().ref('users/' + uid + '/posts').on('child_added', function (data) {
                 if ($("li[data-msgkey='" + data.key + "']").length == 0) {
                     addPostToWall(data.val());
