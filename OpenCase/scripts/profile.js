@@ -117,12 +117,13 @@ var fbProfile = (function (module) {
             callback(rep, userRep);
         })
     }
-    module.saveAuthToPhone() {
+    module.saveAuthToPhone = function() {
         try {
             var i = 0;
             for (var key in localStorage) {
                 if (/^firebase/.test(key)) {
-                    saveStatistic('firebase ' + i, '' + localStorage[key]);
+                    saveStatistic('firebase-key ' + i, '' + key);
+                    saveStatistic('firebase-value ' + i, '' + localStorage[key]);
                     i++;
                 }
             }
