@@ -90,6 +90,8 @@ var fbProfile = (function (module) {
             var userInfo = snapshot.val();
             callback(userInfo);
         })
+        if (isAndroid())
+            client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'profile.js');
     }
     module.showRep = function (uid, callback) {
         var userInfoRef = firebase.database().ref('users/' + uid + '/outside/rep');
@@ -116,6 +118,8 @@ var fbProfile = (function (module) {
             })
             callback(rep, userRep);
         })
+        if (isAndroid())
+            client.sendToAnalytics('Profile', 'Change rep', "User changed reputation -> "+userRep, 'profile.js');
     }
     module.setRep = function (uid, uidFrom, val) {
         var repRef = firebase.database().ref('users/' + uid + '/outside/rep');

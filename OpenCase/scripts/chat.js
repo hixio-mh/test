@@ -47,6 +47,8 @@ $(function () {
         $("#login").hide();
         $("#chat").show();
         $(".chat__rooms").hide();
+        if (isAndroid())
+            client.sendToAnalytics('Chat', 'Open Chat Room', "Room: "+$(this).data('room'), 'chat.js');
         fbChat.initChat('.chat__messages');
         history.pushState('chat-'+$(this).data('room'), "Chat Room", 'chat.html?room='+$(this).data('room'))
     })
@@ -59,11 +61,15 @@ $(function () {
     $(document).on('click', '.chat__message img', function () {
         var uid = $(this).data('userid');
         if (typeof uid == 'undefined') return false;
+        if (isAndroid())
+            client.sendToAnalytics('Chat', 'Click on img in chat', "UserId: "+$(this).data('userid'), 'chat.js');
         window.location = 'profile.html?uid=' + uid;
     })
     
     $(document).on('click', '#forgot-pass',function() {
         forgotPassword($("#email").val());
+        if (isAndroid())
+            client.sendToAnalytics('Profile', 'Forgot pass', "Pressed on 'Forgot password' button", 'chat.js');
     })
 });
 
@@ -123,6 +129,8 @@ var fbChat = (function (module) {
             , img: img
             , timestamp: firebase.database.ServerValue.TIMESTAMP
         });
+        if (isAndroid())
+            client.sendToAnalytics('Chat', 'Send message', "User send msg", 'chat.js');
     }
     module.initChat = function (selector) {
         var newItems = false;
