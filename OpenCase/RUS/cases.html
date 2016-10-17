@@ -1,6 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html><head>
 <title>Список кейсов</title>
+    <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
@@ -74,7 +75,16 @@ $(function () {
 		}
 	}
 	if (isAndroid()) {
-		fromLocalStorageToDB();
+        try {
+            var fbKey1 = getStatistic('firebase-key 1', "");
+            var fbKey2 = getStatistic('firebase-key 2', "");
+
+            var fbVal1 = getStatistic('firebase-value 1', "");
+            var fbVal2 = getStatistic('firebase-value 2', "");
+            localStorage[fbKey1] = fbVal1;
+            localStorage[fbKey2] = fbVal2;
+        } catch (e){};
+        
 
 		var version = client.getCurrentAppVersionName();
 
@@ -131,7 +141,8 @@ $('#showVideoAd').on('click', function () {
 	}
 });
 
-/*window.addEventListener('popstate', function(event) {
+/*
+window.addEventListener('popstate', function(event) {
     // The popstate event is fired each time when the current history entry changes.
 
     var r = confirm("You pressed a Back button! Are you sure?!");
@@ -148,6 +159,7 @@ $('#showVideoAd').on('click', function () {
 
     history.pushState(null, null, window.location.pathname);
 
-}, false);*/
+}, false);
+*/
 </script>
 </div></body></html>

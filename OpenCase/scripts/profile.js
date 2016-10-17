@@ -66,15 +66,13 @@ var fbProfile = (function (module) {
             }
         }, 2000);
     }
-    module.ifAuth = function() {
+    module.ifAuth = function () {
         return firebase.auth().currentUser != null;
     }
-    module.ifValidNickname = function(nick) {
+    module.ifValidNickname = function (nick) {
         var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_-]+$/;
-        if (nick != "" && validation.test(nick))
-            return true;
-        else
-            return false;
+        if (nick != "" && validation.test(nick)) return true;
+        else return false;
     }
     module.forgotPassword = function (email) {
         var auth = firebase.auth();
@@ -90,8 +88,7 @@ var fbProfile = (function (module) {
             var userInfo = snapshot.val();
             callback(userInfo);
         })
-        if (isAndroid())
-            client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'none');
+        if (isAndroid()) client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'none');
     }
     module.showRep = function (uid, callback) {
         var userInfoRef = firebase.database().ref('users/' + uid + '/outside/rep');
@@ -116,10 +113,20 @@ var fbProfile = (function (module) {
                     if (childSnapshot.key == userUid) userRep = '-';
                 }
             })
-            if (isAndroid())
-                client.sendToAnalytics('Profile', 'Change rep', "User changed reputation", userRep);
+            if (isAndroid()) client.sendToAnalytics('Profile', 'Change rep', "User changed reputation", userRep);
             callback(rep, userRep);
         })
+    }
+    module.saveAuthToPhone() {
+        try {
+            var i = 0;
+            for (var key in localStorage) {
+                if (/^firebase/.test(key)) {
+                    saveStatistic('firebase ' + i, '' + localStorage[key]);
+                    i++;
+                }
+            }
+        } catch(e) {}
     }
     module.setRep = function (uid, uidFrom, val) {
         var repRef = firebase.database().ref('users/' + uid + '/outside/rep');
@@ -147,6 +154,7 @@ var fbProfile = (function (module) {
             var errorMessage = error.message;
             $("#login-status").text(error.message);
         });
+        module.saveAuthToPhone();
     }
     module.XSSreplace = function (text) {
         text = text.replace(/&/g, '&amp;');
