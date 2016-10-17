@@ -164,8 +164,8 @@ function newMsg(key, uid, img, username, time, text) {
     });
     var myMessage = false;
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
-    text = XSSreplace(text);
-    username = XSSreplace(username);
+    text = fbProfile.XSSreplace(text);
+    username = fbProfile.XSSreplace(username);
     var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
