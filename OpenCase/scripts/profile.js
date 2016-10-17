@@ -116,10 +116,10 @@ var fbProfile = (function (module) {
                     if (childSnapshot.key == userUid) userRep = '-';
                 }
             })
+            if (isAndroid())
+                client.sendToAnalytics('Profile', 'Change rep', "User changed reputation -> "+userRep, 'profile.js');
             callback(rep, userRep);
         })
-        if (isAndroid())
-            client.sendToAnalytics('Profile', 'Change rep', "User changed reputation -> "+userRep, 'profile.js');
     }
     module.setRep = function (uid, uidFrom, val) {
         var repRef = firebase.database().ref('users/' + uid + '/outside/rep');
