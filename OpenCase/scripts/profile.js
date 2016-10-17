@@ -91,7 +91,7 @@ var fbProfile = (function (module) {
             callback(userInfo);
         })
         if (isAndroid())
-            client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'profile.js');
+            client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'none');
     }
     module.showRep = function (uid, callback) {
         var userInfoRef = firebase.database().ref('users/' + uid + '/outside/rep');
@@ -117,7 +117,7 @@ var fbProfile = (function (module) {
                 }
             })
             if (isAndroid())
-                client.sendToAnalytics('Profile', 'Change rep', "User changed reputation -> "+userRep, 'profile.js');
+                client.sendToAnalytics('Profile', 'Change rep', "User changed reputation", userRep);
             callback(rep, userRep);
         })
     }

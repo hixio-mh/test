@@ -48,7 +48,7 @@ $(function () {
         $("#chat").show();
         $(".chat__rooms").hide();
         if (isAndroid())
-            client.sendToAnalytics('Chat', 'Open Chat Room', "Room: "+$(this).data('room'), 'chat.js');
+            client.sendToAnalytics('Chat', 'Open Chat Room', 'Open Chat Room', "Room: "+$(this).data('room'));
         fbChat.initChat('.chat__messages');
         history.pushState('chat-'+$(this).data('room'), "Chat Room", 'chat.html?room='+$(this).data('room'))
     })
@@ -62,14 +62,14 @@ $(function () {
         var uid = $(this).data('userid');
         if (typeof uid == 'undefined') return false;
         if (isAndroid())
-            client.sendToAnalytics('Chat', 'Click on img in chat', "UserId: "+$(this).data('userid'), 'chat.js');
+            client.sendToAnalytics('Chat', 'Open profile', "Player clicked on img in chat", 'UserId: '+$(this).data('userid'));
         window.location = 'profile.html?uid=' + uid;
     })
     
     $(document).on('click', '#forgot-pass',function() {
         forgotPassword($("#email").val());
         if (isAndroid())
-            client.sendToAnalytics('Profile', 'Forgot pass', "Pressed on 'Forgot password' button", 'chat.js');
+            client.sendToAnalytics('Profile', 'Forgot pass', "Pressed on 'Forgot password' button", "none");
     })
 });
 
@@ -130,7 +130,7 @@ var fbChat = (function (module) {
             , timestamp: firebase.database.ServerValue.TIMESTAMP
         });
         if (isAndroid())
-            client.sendToAnalytics('Chat', 'Send message', "User send msg", 'chat.js');
+            client.sendToAnalytics('Chat', 'Send message', "User send msg", text);
     }
     module.initChat = function (selector) {
         var newItems = false;
