@@ -335,4 +335,12 @@ var news = [{
         "RU": " - [Изменено] Заменен AK-47 Fluentem на AK-47 Wolf Attack в кейсе Steach",
         "EN": " - [Changed] Replaced AK-47 Fluentem with AK-47 Wolf Attack in Steach case"
     }
+}, {
+    "day": 19,
+    "month": 10,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Клавиатура закрывала некоторые текстовые поля и не было видно, что там написанно. Скоро будет чат, а там это важно :)",
+        "EN": " - [Fixed] Textbox hidden below keyboard. This is need for chat that will be soon."
+    }
 }, ];
