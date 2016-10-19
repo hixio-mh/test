@@ -87,6 +87,11 @@ Localization.souvenir = {
             "EN": "Market<sup class='beta'> beta</sup>"
         }
     }, {
+        "selector": "#local-menu-chat",
+        "localization": {
+            "EN": "Chat <sup class='beta'>beta</sup"
+        }
+    }, {
         "selector": "#local-menu-stat",
         "localization": {
             "RU": "Статистика",
