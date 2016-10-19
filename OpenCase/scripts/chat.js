@@ -67,7 +67,7 @@ $(function () {
     })
     
     $(document).on('click', '#forgot-pass',function() {
-        forgotPassword($("#email").val());
+        fbProfile.forgotPassword($("#email").val());
         if (isAndroid())
             client.sendToAnalytics('Profile', 'Forgot pass', "Pressed on 'Forgot password' button", "none");
     })
