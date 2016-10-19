@@ -7,7 +7,7 @@ $(document).on('click', '#registerButton', function () {
     }
     else {
         var nick = $("#nickname").val();
-        if (nick != "" && validation.test(nick)) {
+        if (nick != "" && fbProfile.ifValidNickname(nick)) {
             saveStatistic("playerNickname", nick)
         }
         else {
