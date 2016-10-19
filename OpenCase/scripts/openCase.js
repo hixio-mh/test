@@ -1,4 +1,4 @@
-﻿
+
 var caseId = 0;
 var souvenirCase = false;
 var caseOpening = false;
@@ -155,17 +155,50 @@ $(document).on("click", ".openCase", function() {
             win.statTrak = statTrak;
             win.type = type;
             win.quality = quality;
+            
+            try {
+                win = getPriceWithNewQuality(win);
+                if (win.price == 0)
+                    getMarketPrice(type, name, quality, statTrak, ".win_price");
 
-            win = getPriceWithNewQuality(win);
+                if (win.statTrak) {
+                    win.type = "StatTrak™ " + win.type;
+                }
+                
+                
+            } catch (e) {
+                 type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
+
+                var price = getPrice(type, name, quality, statTrak);
+                
+                if (price == 0) {
+				for (var i = 0; i < Quality.length; i++) {
+					quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+					quality = getQualityName(quality, Settings.language);
+					price = getPrice(type, name, quality, statTrak);
+					if (price != 0) break;
+				}
+			
+				if (price == 0) {
+					statTrak = !statTrak;
+			
+					for (var i = 0; i < Quality.length; i++) {
+						quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+						quality = getQualityName(quality, Settings.language);
+						price = getPrice(type, name, quality, statTrak);
+						if (price != 0) break;
+					}
+				}
+			     }
+                if (price == 0)
+                    getMarketPrice(type, name, quality, statTrak, ".win_price");
+                win.statTrak = statTrak;
+                win.quality =  quality;
+                win.price = price;
+            }
 
             $(".win_price").html(win.price + "$");
-
-            if (win.price == 0)
-                getMarketPrice(type, name, quality, statTrak, ".win_price");
-
-            if (win.statTrak) {
-                win.type = "StatTrak™ " + win.type;
-            }
+            
             $(".win_name").html(win.type + " | " + win.skinName);
             $(".win_quality").html(win.quality);
             $(".win_img").attr("src", getImgUrl(win.img, 1));
