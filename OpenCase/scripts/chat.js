@@ -112,6 +112,10 @@ var fbChat = (function (module) {
             name: 'Français'
             , flag: 'FR.svg'
             , code: 'FR'
+        , }, {
+            name: 'Português'
+            , flag: 'PT.svg'
+            , code: 'PT'
         , }
     ];
     module.setChatRef = function(ref) {
