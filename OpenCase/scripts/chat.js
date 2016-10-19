@@ -146,7 +146,7 @@ var fbChat = (function (module) {
             }
         });
         
-        module.chatRef.limitToLast(20).once('value').then(function (snapshot) {
+        module.chatRef.limitToLast(40).once('value').then(function (snapshot) {
             newItems = true;
             messages = snapshot.val();
             for (key in messages) {
