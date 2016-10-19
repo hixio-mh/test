@@ -19,6 +19,29 @@ input, .input-text {
 #login__buttons > button {
     margin: 0px 3px;
 }
+#login__buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+}
+#login-buttons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    align-content: stretch;
+}
+#loginButton {
+    flex-grow: 2;
+    margin-right: 5px;
+}
+#registerButton {
+    flex-grow: 1;
+}
+.button_blue {
+    padding: 5px !important;
+}
 .chat__rooms {
     display: flex;
     justify-content: center;

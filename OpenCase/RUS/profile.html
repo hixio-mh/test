@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/lobibox.min.css" />
     <script src="../scripts/build/libs.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/fb-inventory.js"></script>
     <script src="../scripts/skinNames.js"></script>
@@ -28,17 +27,24 @@
             background: #fff;
         }
         
-        .edit-profile-container {
+        .left-side, .right-side {
             position: absolute;
             top: 45px;
-            right: 5px;
             font-size: 1.3em;
             display: flex;
             flex-direction: column;
             text-shadow: 0 0 2px RGBA(0, 0, 0, 0.5);
         }
         
-        .edit-profile-container > * {
+        .left-side {
+            left: 5px;
+        }
+        
+        .right-side {
+            right: 5px;
+        }
+        
+        .left-side, .right-side > * {
             cursor: pointer;
         }
         
@@ -266,12 +272,13 @@
     </style>
 </head>
 
-<body data-localization='statistic'>
+<body data-localization='profile'>
     <div class="site-overlay"></div>
     <div id="container">
         <div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
         <div class="top__bg"></div>
-        <div class="edit-profile-container" style="display:none;"> <i class="edit-profile fa fa-pencil-square-o" aria-hidden="true"></i> <i class="save-profile fa fa-floppy-o" aria-hidden="true" style="display:none"></i> </div>
+        <div class="left-side" style="display:none;"> <i class="edit-profile fa fa-pencil-square-o" aria-hidden="true"></i> <i class="save-profile fa fa-floppy-o" aria-hidden="true" style="display:none"></i> </div>
+        <div class="right-side" style="display:none;"><i class="sign-out fa fa-sign-out" aria-hidden="true"></i></div>
         <div class="top">
             <div class="top__profile">
                 <h1 class="profile__name">Loading...</h1>
@@ -334,9 +341,9 @@
                 else {
                     $(".posts__new-post").show();
                     $('.rep').hide();
-                    $(".edit-profile-container").show();
+                    $(".left-side, .right-side").show();
                 }
-                if (userInfo.bigBG) {
+                if (userInfo.bigBG && fbProfile.ifValidImg(userInfo.bigBG)) {
                     $('.top__bg').attr('style', 'background:url("'+userInfo.bigBG+'"); background-size: cover;');
                     //$('.top__bg').css('background-image', 'url("'+userInfo.bigBG+'")');
                 }
@@ -371,6 +378,11 @@
             		addPostToWall(post);
             	}
             })*/
+            
+            $(document).on('click', '.sign-out', function() {
+                firebase.auth().signOut();
+                window.location = 'chat.html';
+            })
             $(document).on('click', '.edit-profile', function () {
                 var editing = $('.save-profile').is(':visible');
                 $('.profile__name').attr('contenteditable', editing ? false : true);

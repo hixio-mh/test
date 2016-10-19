@@ -1,4 +1,4 @@
-﻿
+
 $(function() {
     var category = $(document.body).data('localization');
     try {
@@ -9,11 +9,21 @@ $(function() {
 })
 
 function localizate(category) {
-    if (category != 'none')
-        for (var i = 0; i < Localization[category].length; i++) {
-            if (typeof Localization[category][i].localization[Settings.language] != 'undefined')
-                $(Localization[category][i].selector).html(Localization[category][i].localization[Settings.language]);
+    var lng = Settings.language;
+    if (category != 'none') {
+        var currCat = Localization[category];
+        for (var i = 0; i < currCat.length; i++) {
+            var currItem = currCat[i];
+            for (var key in currItem) {
+                if(/^localization/i.test(key) && typeof currItem[key][lng] != 'undefined') {
+                    $(currItem.selector).html(currItem.localization[lng]);
+                } else if(/^attr\(.*?\)/i.test(key) && typeof currItem[key][lng] != 'undefined') {
+                    var attr = key.match(/attr\((.*?)\)/)[1];
+                    $(currItem.selector).attr(attr, (currItem[key][lng]));
+                }
+            }
         }
+    }
     for (var i = 0; i < Localization['menu'].length; i++) {
         if (typeof Localization['menu'][i].localization[Settings.language] != 'undefined')
             $(Localization['menu'][i].selector).html(Localization['menu'][i].localization[Settings.language]);
@@ -609,6 +619,58 @@ Localization.jackpot = [{
         "selector": ".button",
         "localization": {
             "EN": "Ranks"
+        }
+    }],
+    Localization.chat = [{
+        "selector": "#registerButton",
+        "localization": {
+            "EN": "Register",
+            "RU": "Регистрация"
+        }
+    }, {
+        "selector": "#loginButton",
+        "localization": {
+            "EN": "Sign in",
+            "RU": "Войти"
+        }
+    }, {
+        "selector": "#forgot-pass",
+        "localization": {
+            "EN": "Forgot password?",
+            "RU": "Забыли пароль?"
+        }
+    }, {
+        "selector": "#chat__send-new-message",
+        "localization":{},
+        "attr(value)": {
+            "EN": "Send",
+            "RU": "Отправить"
+        }
+    }],
+    Localization.profile = [{
+        "selector": ".stats__inventory__text",
+        "localization": {
+            "RU": "Инвентарь"
+        }
+    }, {
+        "selector": ".stats__rate__text",
+        "localization": {
+            "RU": "Репутация"
+        }
+    }, {
+        "selector": "#send-new-post",
+        "localization": {
+            "RU": "Отправить"
+        },
+        "attr(value)": {
+            "RU": "Отправить"
+        }
+    }, {
+        "selector": ".new-post__text",
+        "localization":{},
+        "attr(placeholder)": {
+            "EN": "Have something to share?",
+            "RU": "Есть чем поделиться?"
         }
     }],
     Localization.faq = [{

@@ -11,14 +11,12 @@
     <link rel="stylesheet" type="text/css" href="../css/loading.css">
     <link rel="stylesheet" type="text/css" href="../css/lobibox.min.css"/>
     <script src="../scripts/build/libs.js"></script>
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
     <script src="../scripts/profile.js"></script>
     <script src="../scripts/settings.js"></script>
     <script src="../scripts/skinNames.js"></script>
     <script src="../scripts/chat.js"></script>
-    <script src="../scripts/navigationMenu.js"></script>
     <link rel="stylesheet" href="../css/navigationMenu.css">
     <script src="../scripts/localization.js"></script>
     <title>Chat</title>
@@ -34,9 +32,12 @@
             <input type="text" placeholder="Nickname" id="nickname" class="hide"></input>
             <span id="login-status"></span>
             <div id="login__buttons">
-                <button class="button_blue" onclick="fbProfile.login();" id="loginButton">Sign in</button>
+                <div id='login-buttons-container'><button class="button_blue" onclick="fbProfile.login();" id="loginButton">Sign in</button>
                 <button class="button_blue empty" id="registerButton">Register</button>
-                <a href="#" id="forgot-pass">Forgot password?</a>
+                </div>
+                <div>
+                    <a href="#" id="forgot-pass">Forgot password?</a>
+                </div>
             </div>
         </div>
     
@@ -47,7 +48,8 @@
             <ul class="chat__messages"> </ul>
             <div class="chat__write">
                 <div class="input-text" contenteditable="true" id="chat__new-message" max="120"></div>
-                <input class="button_blue" type="button" id="chat__send-new-message" value="Send" /> </div>
+                <input class="button_blue" type="button" id="chat__send-new-message" value="Send"/>
+            </div>
         </div>
     </div>
 </body>

@@ -120,12 +120,15 @@
     border-bottom: 1px solid RGBA(255, 255, 255, 0.15);
     position: relative;
 }
-.left-menu a {
+.left-menu ul a {
     padding: 15px 10px;
     display: block;
     color: #fff;
     text-decoration: none;
     position: relative;
+}
+#menu_playerInfo_info_text a {
+    text-decoration: none;
 }
 .submenu ul {
     font-size: 0.9em !important;

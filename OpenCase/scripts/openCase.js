@@ -140,8 +140,8 @@ $(document).on("click", ".openCase", function() {
             Sound("open", "play", 5);
             var type = win.type;
             var name = getSkinName(win.skinName, Settings.language);
-            win.name = name;
-            var statTrak = ifStatTrak(type, win.name);
+            win.skinName = name;
+            var statTrak = ifStatTrak(type, win.skinName);
             var quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
             caseOpening = true;
 
@@ -152,48 +152,25 @@ $(document).on("click", ".openCase", function() {
             if (souvenirCase && !type.match(/(Сувенир|Souvenir)/))
                 type = Localization.souvenir[Settings.language] + ' ' + type;
 
-            type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
-
-            var price = getPrice(type, name, quality, statTrak);
-
+            win.statTrak = statTrak;
             win.type = type;
-			
-			if (price == 0) {
-				for (var i = 0; i < Quality.length; i++) {
-					quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
-					quality = getQualityName(quality, Settings.language);
-					price = getPrice(type, name, quality, statTrak);
-					if (price != 0) break;
-				}
-			
-				if (price == 0) {
-					statTrak = !statTrak;
-			
-					for (var i = 0; i < Quality.length; i++) {
-						quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
-						quality = getQualityName(quality, Settings.language);
-						price = getPrice(type, name, quality, statTrak);
-						if (price != 0) break;
-					}
-				}
-			}
+            win.quality = quality;
 
-            $(".win_price").html(price + "$");
+            win = getPriceWithNewQuality(win);
 
-            if (price == 0)
+            $(".win_price").html(win.price + "$");
+
+            if (win.price == 0)
                 getMarketPrice(type, name, quality, statTrak, ".win_price");
 
-            if (statTrak) {
-                type = "StatTrak™ " + type;
+            if (win.statTrak) {
+                win.type = "StatTrak™ " + win.type;
             }
-            $(".win_name").html(type + " | " + name);
-            $(".win_quality").html(quality);
+            $(".win_name").html(win.type + " | " + win.skinName);
+            $(".win_quality").html(win.quality);
             $(".win_img").attr("src", getImgUrl(win.img, 1));
             $(".openCase").attr("disabled", "disabled");
-            $("#double_sell_button").text((price * 100).toFixed(0));
-            win.statTrak = statTrak;
-            win.quality = quality;
-            win.price = price;
+            $("#double_sell_button").text((win.price * 100).toFixed(0));
             //getInventory();
 
         },

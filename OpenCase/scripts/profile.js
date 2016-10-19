@@ -1,11 +1,3 @@
-var config = {
-    apiKey: "AIzaSyBnT4uYoOgs0Gl6F5_AtzY-q9hhM8z__E4"
-    , authDomain: "admob-app-id-8282025074.firebaseapp.com"
-    , databaseURL: "https://admob-app-id-8282025074.firebaseio.com"
-    , storageBucket: "admob-app-id-8282025074.appspot.com"
-    , messagingSenderId: "917984410977"
-};
-firebase.initializeApp(config);
 $(document).on('click', '#registerButton', function () {
     if ($(this).hasClass('empty')) {
         $('#nickname').show();
@@ -15,7 +7,6 @@ $(document).on('click', '#registerButton', function () {
     }
     else {
         var nick = $("#nickname").val();
-        var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_-]+$/;
         if (nick != "" && validation.test(nick)) {
             saveStatistic("playerNickname", nick)
         }
@@ -70,9 +61,17 @@ var fbProfile = (function (module) {
         return firebase.auth().currentUser != null;
     }
     module.ifValidNickname = function (nick) {
-        var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_-]+$/;
-        if (nick != "" && validation.test(nick)) return true;
+        if(nick == "") return false;
+        var illicitNick = /((a|а|о|o)(d|д)(m|м)(i|\||и|n)(n|и|н))/ig;
+        var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_ -]+$/;
+        if (validation.test(nick) && !illicitNick.test(nick)) return true;
         else return false;
+    }
+    module.ifValidImg = function(url) {
+        if (url == '') return false
+        var validation = /(^[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif)$)/i;
+        return validation.test(url);
+        
     }
     module.forgotPassword = function (email) {
         var auth = firebase.auth();
@@ -150,11 +149,13 @@ var fbProfile = (function (module) {
         if (email == "" || password == "") {
             return false;
         }
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            $("#login-status").text(error.message);
-        });
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                $("#login-status").text(error.message);
+            });
+        
         module.saveAuthToPhone();
     }
     module.XSSreplace = function (text) {

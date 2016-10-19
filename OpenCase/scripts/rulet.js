@@ -276,23 +276,15 @@ function botAddItems() {
             var weapon = getRandomWeapon(1);
             weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
             weapon.statTrak = ifStatTrak(weapon.type, weapon.skinName);
-            var price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+            weapon = getPriceWithNewQuality(weapon);
+            var price = weapon.price;
             if (price > priceRange.min)
                 if (price < priceRange.max)
                     if (price != 0) {
-                        weapon.price = price;
                         botWeapons.push(weapon);
                     }
         }
         for (var i = 0; i < botWeapons.length; i++) {
-
-            var z = 0;
-            while (weapon.price == 0) {
-                botWeapons[i].quality = Quality[z].name[Settings.language == 'RU' ? 1 : 0];
-                botWeapons[i].price = getPrice(botWeapons[i].type, botWeapons[i].skinName, botWeapons[i].quality, botWeapons[i].statTrak);
-                if (z == 4) break;
-                z++
-            }
             itemsCost += +botWeapons[i].price;
         }
         Sound("additems", "play");
