@@ -75,7 +75,7 @@ $(function () {
 		}
 	}
 	if (isAndroid()) {
-        try {
+        /*try {
             var fbKey1 = getStatistic('firebase-key 1', "");
             var fbKey2 = getStatistic('firebase-key 2', "");
 
@@ -83,12 +83,12 @@ $(function () {
             var fbVal2 = getStatistic('firebase-value 2', "");
             localStorage[fbKey1] = fbVal1;
             localStorage[fbKey2] = fbVal2;
-        } catch (e){};
+        } catch (e){};*/
         
 
 		var version = client.getCurrentAppVersionName();
 
-		if (version != "1.4") {
+		if (version != "1.5") {
 			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
 		}
 	}
