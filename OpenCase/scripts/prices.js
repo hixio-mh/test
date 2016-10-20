@@ -38826,40 +38826,40 @@ var Prices = [{
     type: 'M4A4',
     name: 'Howl (REMOVED)',
     quality: 'Field-Tested',
-    marketPrice: 830,
+    marketPrice: 277,
     avgPrice: 28
 }, {
     type: 'M4A4',
     name: 'Howl (REMOVED)',
     quality: 'Minimal Wear',
-    marketPrice: 1390,
+    marketPrice: 357,
     avgPrice: 37
 }, {
     type: 'M4A4',
     name: 'Howl (REMOVED)',
     quality: 'Factory New',
-    marketPrice: 2700,
+    marketPrice: 415,
     avgPrice: 45
 }, {
     type: 'M4A4',
     statTrak: true,
     name: 'Howl (REMOVED)',
     quality: 'Field-Tested',
-    marketPrice: 4100,
+    marketPrice: 475,
     avgPrice: 48
 }, {
     type: 'M4A4',
     statTrak: true,
     name: 'Howl (REMOVED)',
     quality: 'Minimal Wear',
-    marketPrice: 5500,
+    marketPrice: 550,
     avgPrice: 67
 }, {
     type: 'M4A4',
     statTrak: true,
     name: 'Howl (REMOVED)',
     quality: 'Factory New',
-    marketPrice: 7000,
+    marketPrice: 650,
     avgPrice: 45
 }, {
     type: 'Karambit',
