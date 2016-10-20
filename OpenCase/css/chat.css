@@ -128,7 +128,19 @@ li.chat__message img {
 .message__text {
     color: #656565;
 }
-
+.group {
+    font-size: 0.65em;
+    margin-left: 4px;
+    color: #1D46AA;
+}
+.group::before {
+    content: '[';
+    margin-right: 2px;
+}
+.group::after {
+    content: ']';
+    margin-left: 2px;
+}
 /* Если сообщение отправил текущий пользователь */
 .my_message {
     flex-direction: row-reverse !important;

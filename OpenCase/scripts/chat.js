@@ -125,14 +125,18 @@ var fbChat = (function (module) {
         var time = new Date();
         time = "" + time;
         var uid = firebase.auth().currentUser.uid;
-        fbChat.chatRef.push({
-            username: userName
-            , uid: uid
-            , text: text
-            , time: time
-            , img: img
-            , timestamp: firebase.database.ServerValue.TIMESTAMP
-        });
+        firebase.database().ref('users/'+uid+'/moder/group').once('value', function(snapshot) {
+            var group = snapshot.val() ;
+            fbChat.chatRef.push({
+                username: userName
+                , uid: uid
+                , text: text
+                , time: time
+                , img: img
+                , group: group
+                , timestamp: firebase.database.ServerValue.TIMESTAMP
+            });
+        })
         if (isAndroid())
             client.sendToAnalytics('Chat', 'Send message', "User send msg", text);
     }
@@ -143,7 +147,7 @@ var fbChat = (function (module) {
         module.chatRef.limitToLast(1).on('child_added', function (data) {
             if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
-                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text);
+                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text, data.val().group);
                 $("html, body").animate({
                     scrollTop: $(document).height()
                 }, 200);
@@ -154,7 +158,7 @@ var fbChat = (function (module) {
             newItems = true;
             messages = snapshot.val();
             for (key in messages) {
-                newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text);
+                newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text, messages[key].group);
             }
             $("html, body").animate({
                     scrollTop: $(document).height()
@@ -168,7 +172,8 @@ var fbChat = (function (module) {
     return module;
 }(fbChat || {}));
 
-function newMsg(key, uid, img, username, time, text) {
+function newMsg(key, uid, img, username, time, text, group) {
+    group = group || "";
     var time = new Date(time);
     time = time.toLocaleString((Settings.language == 'RU') ? 'ru' : 'en-US', {
         hour: 'numeric'
@@ -178,7 +183,7 @@ function newMsg(key, uid, img, username, time, text) {
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
     text = fbProfile.XSSreplace(text);
     username = fbProfile.XSSreplace(username);
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 
