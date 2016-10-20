@@ -347,7 +347,7 @@
                     $('.top__bg').attr('style', 'background:'+userInfo.colorBG);
                 }
                 if (userInfo.bigBG && fbProfile.ifValidImg(userInfo.bigBG)) {
-                    $('.top__bg').attr('style', 'background:url('+userInfo.bigBG+'); background-size: cover;');
+                    $('.top__bg').attr('style', 'background-image:url('+userInfo.bigBG+'); background-size: cover;');
                     //$('.top__bg').css('background-image', 'url("'+userInfo.bigBG+'")');
                 }
             });
