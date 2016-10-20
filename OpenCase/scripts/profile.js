@@ -28,7 +28,7 @@ var fbProfile = (function (module) {
             var errorMessage = error.message;
             $("#login-status").text(error.message);
         })
-        setTimeout(function () {
+        .then(function () {
             if (firebase.auth().currentUser != null) {
                 var ava = Player.avatar;
                 if (/^\d+\.\w{3}$/.test(ava)) ava = "../images/ava/" + ava;
@@ -55,7 +55,7 @@ var fbProfile = (function (module) {
                     $("#login-status").text(error.message);
                 });
             }
-        }, 2000);
+        });
     }
     module.ifAuth = function () {
         return firebase.auth().currentUser != null;
@@ -157,6 +157,23 @@ var fbProfile = (function (module) {
             });
         
         module.saveAuthToPhone();
+    }
+    module.newTrade = function (uidTo, weapons, callback) {
+        if (!module.ifAuth) return false;
+        var currUserUid = firebase.auth().currentUser.uid;
+        
+        var thisUserTradeListRef = firebase.database().ref('tradeList/'+currUserUid);
+        var otherUserTradeListRef = firebase.database().ref('tradeList/'+uidTo);
+        
+        var tradeObject = {};
+        tradeObject[currUserUid] = weapons;
+        tradeObject[currUserUid+'-accepted'] = true;
+        tradeObject[ uidTo+'-accepted'] = false;
+        
+        var newTradeKey = firebase.database().ref('trades').push(tradeObject).key;
+        
+        thisUserTradeListRef.child(uidTo).push().set(newTradeKey);
+        otherUserTradeListRef.child(currUserUid).push().set(newTradeKey);
     }
     module.XSSreplace = function (text) {
         text = text.replace(/&/g, '&amp;');
