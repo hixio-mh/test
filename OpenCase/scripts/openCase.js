@@ -160,12 +160,7 @@ $(document).on("click", ".openCase", function() {
                 win = getPriceWithNewQuality(win);
                 if (win.price == 0)
                     getMarketPrice(type, name, quality, statTrak, ".win_price");
-
-                if (win.statTrak) {
-                    win.type = "StatTrak™ " + win.type;
-                }
-                
-                
+   
             } catch (e) {
                  type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
 
@@ -198,6 +193,10 @@ $(document).on("click", ".openCase", function() {
             }
 
             $(".win_price").html(win.price + "$");
+            
+            if (win.statTrak) {
+                win.type = win.type.indexOf('StatTrak' != -1) ? win.type : "StatTrak™ " + win.type;
+            }
             
             $(".win_name").html(win.type + " | " + win.skinName);
             $(".win_quality").html(win.quality);
