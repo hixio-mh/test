@@ -1,4 +1,4 @@
-﻿﻿<html>
+﻿<html>
 <head>
 <title>Настройки</title>
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
@@ -284,6 +284,12 @@ $(function() {
 
 	$("#avatar").on("changed", function() {
 		saveStatistic("playerAvatar", iconSelect.getSelectedValue());
+        try {
+            if (firebase.auth().currentUser != "") {
+                firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/avatar')
+                    .set('../images/ava/'+iconSelect.getSelectedValue());
+            }
+        }catch (e) {}
 		$('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
 	})
 
