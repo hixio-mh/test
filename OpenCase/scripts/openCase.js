@@ -194,11 +194,11 @@ $(document).on("click", ".openCase", function() {
 
             $(".win_price").html(win.price + "$");
             
-            if (win.statTrak) {
-                win.type = win.type.indexOf('StatTrak' != -1) ? win.type : "StatTrak™ " + win.type;
-            }
+            /*if (win.statTrak) {
+                win.type = win.type.indexOf('StatTrak' == -1) ? "StatTrak™ " + win.type : win.type;
+            }*/
             
-            $(".win_name").html(win.type + " | " + win.skinName);
+            $(".win_name").html((win.statTrak ? "StatTrak™ " : "")+ win.type + " | " + win.skinName);
             $(".win_quality").html(win.quality);
             $(".win_img").attr("src", getImgUrl(win.img, 1));
             $(".openCase").attr("disabled", "disabled");
