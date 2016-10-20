@@ -189,6 +189,7 @@
 				$(".glassBlur").addClass("savePrice");
 			}
 
+			$('#sellWeapon').show();
 			$('#startContract').css('display', 'none');
 			if ((rarity != 'rare') && (rarity != 'covert'))
 				if ((type.indexOf('Сувенир') == -1) && (type.indexOf('Souvenir') == -1))
@@ -384,6 +385,7 @@
 			$("#weaponQuality").html(newWeapon.quality);
 			$('#weaponRarity').text(newWeapon.rarity);
 			$('#startContract').css('display', 'none');
+			$('#sellWeapon').hide();
 
 			$(".inventoryItemSelected").each(function() {
 				if (isAndroid())
