@@ -109,13 +109,17 @@ var fbChat = (function (module) {
             , flag: 'DE.svg'
             , code: 'DE'
         , }, {
-            name: 'Français'
-            , flag: 'FR.svg'
-            , code: 'FR'
+            name: 'Türk'
+            , flag: 'TR.svg'
+            , code: 'TR'
         , }, {
             name: 'Português'
             , flag: 'PT.svg'
             , code: 'PT'
+        , }, {
+            name: 'Français'
+            , flag: 'FR.svg'
+            , code: 'FR'
         , }
     ];
     module.setChatRef = function(ref) {
@@ -139,6 +143,24 @@ var fbChat = (function (module) {
         })
         if (isAndroid())
             client.sendToAnalytics('Chat', 'Send message', "User send msg", text);
+    }
+    module.clearChat = function (ref) {
+        var chatRef = firebase.database().ref(ref);
+        (function(chatRef) {
+            chatRef.once('value', function(snapshot) {
+                if (snapshot.numChildren() > 40) {
+                    var needToDelete = snapshot.numChildren() - 40;
+                    console.log("Всего записей: "+snapshot.numChildren()+" | Нужно удалить: "+needToDelete);
+                    var i = 0;
+                    snapshot.forEach(function(childSnapshot) {
+                        if (i < needToDelete) {
+                            chatRef.child(childSnapshot.key).remove();
+                        }
+                        i++;
+                    })
+                }  
+            });
+        })(chatRef)
     }
     module.initChat = function (selector) {
         var newItems = false;
