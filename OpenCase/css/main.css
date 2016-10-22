@@ -538,3 +538,21 @@ i.double-icon {
 .input-text:focus, input[type="text"]:focus, input[type="password"]:focus {
   color:#fff;
 }
+
+a[href*='vk.com']:after {
+    content: "VK";
+    color:#fff;
+    font-size: 0.5em;
+    background: #507299;
+    border-radius: 2px;
+    padding: 3px;
+    padding-bottom: 2px;
+    text-align: center;
+    margin-left: 3px;
+}
+
+a[href*='vk.com'] {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+}

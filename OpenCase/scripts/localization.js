@@ -859,6 +859,11 @@ Localization.about = [{
             "EN": "Special Thanks"
         }
     }, {
+        "selector": "#other-links-container",
+        "localization": {
+            "EN": ""
+        }
+    }, {
         "selector": "#copyright",
         "localization": {
             "EN": "Copyright"
