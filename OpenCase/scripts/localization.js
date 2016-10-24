@@ -652,6 +652,17 @@ Localization.jackpot = [{
             "RU": "Отправить"
         }
     }],
+    Localization.chat2 = {
+        'delete_msg_title': {
+            "RU": "Удалить сообщение",
+            "EN": "Delete message"
+        },
+        'delete_msg' : {
+            "RU": "Вы действительно хотите удалить сообщение?",
+            "EN": "Are you sure that you want to delete this message?"
+        }
+    
+    },
     Localization.profile = [{
         "selector": ".stats__inventory__text",
         "localization": {
@@ -678,6 +689,16 @@ Localization.jackpot = [{
             "RU": "Есть чем поделиться?"
         }
     }],
+    Localization.profile2 = {
+        'trade_send': {
+            "EN": "Trade offer successful sended",
+            "RU": "Предложение обмена отправлено"
+        },
+        'trade_send_title': {
+            "EN": "Exchange",
+            "RU": "Обмен"
+        }
+    },
     Localization.faq = [{
         "selector": "#js-local-question-1",
         "localization": {
