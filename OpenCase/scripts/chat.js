@@ -123,6 +123,7 @@ var fbChat = (function (module) {
         , }
     ];
     module.setChatRef = function(ref) {
+        if (module.chatRef) module.chatRef.off('child_added');
         module.chatRef = firebase.database().ref('chat/'+ref);
     }
     module.sendMsg = function (userName, text, img) {
@@ -166,6 +167,7 @@ var fbChat = (function (module) {
         var newItems = false;
         $(selector + " li").remove();
         if (module.chatRef == '') return;
+        
         module.chatRef.limitToLast(1).on('child_added', function (data) {
             if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
