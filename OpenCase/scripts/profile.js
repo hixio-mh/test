@@ -60,6 +60,13 @@ var fbProfile = (function (module) {
     module.ifAuth = function () {
         return firebase.auth().currentUser != null;
     }
+    module.isModerator = function(uid, callback) {
+        uid = uid || firebase.auth().currentUser.uid;
+        ref = firebase.database().ref('users/'+uid+'/moder/group').once('value')
+        .then(function(snapshot) {
+            callback(/(admin|moder)/gi.test(snapshot.val()));
+        })
+    }
     module.ifValidNickname = function (nick) {
         if(nick == "") return false;
         var illicitNick = /((a|а|о|o)(d|д)(m|м)(i|\||и|n)(n|и|н))/ig;
@@ -158,8 +165,9 @@ var fbProfile = (function (module) {
         
         module.saveAuthToPhone();
     }
-    module.newTrade = function (uidTo, weapons, callback) {
+    module.newTrade = function (uidTo, weapons, accepted, callback) {
         if (!module.ifAuth) return false;
+        accepted = accepted || false;
         var currUserUid = firebase.auth().currentUser.uid;
         
         var thisUserTradeListRef = firebase.database().ref('tradeList/'+currUserUid);
@@ -167,13 +175,38 @@ var fbProfile = (function (module) {
         
         var tradeObject = {};
         tradeObject[currUserUid] = weapons;
-        tradeObject[currUserUid+'-accepted'] = true;
-        tradeObject[ uidTo+'-accepted'] = false;
+        tradeObject[currUserUid+'-accepted'] = accepted;
+        tradeObject[uidTo+'-accepted'] = false;
         
         var newTradeKey = firebase.database().ref('trades').push(tradeObject).key;
         
-        thisUserTradeListRef.child(uidTo).push().set(newTradeKey);
-        otherUserTradeListRef.child(currUserUid).push().set(newTradeKey);
+        thisUserTradeListRef.child(uidTo).push().set({
+            tradeID: newTradeKey,
+            watched: true
+        });
+        otherUserTradeListRef.child(currUserUid).push().set({
+            tradeID: newTradeKey,
+            watched: false
+        });
+        if (typeof callback == 'function') callback();
+    }
+    module.myTradeCount = function(unwatched, callback) {
+        unwatched = typeof unwatched == 'undefined' ? true : unwatched;
+        var tradeListRef = firebase.database().ref('tradeList/'+firebase.auth().currentUser.uid).once('value')
+        .then(function(snapshot) {
+            //var tradesList = snapshot.val();
+            var trCount = 0;
+            snapshot.forEach(function(childSnapshot) {
+                childSnapshot.forEach(function(childChildSnapshot){
+                    if ((unwatched && childChildSnapshot.val().watched == false) || !unwatched)
+                        trCount++;
+                })
+            })
+            callback(trCount);
+        })
+    }
+    module.showMyTrades = function() {
+        
     }
     module.XSSreplace = function (text) {
         text = text.replace(/&/g, '&amp;');
