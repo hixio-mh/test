@@ -4356,7 +4356,7 @@ var cases = [{
     }, {
         "type": "AWP",
         "skinName": "Африканская сетка",
-        "rarity": "milspec",
+        "rarity": "industrial",
         "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FBRw7P7NYjV9-N24q4iOluHtfemJxzkCv5V3ibCToN33igXj_hdqZTv6IIWWdwZoNQzT-1O7xO3tgJai_MOeifog2Vk"
     }, {
         "type": "AWP",

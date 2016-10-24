@@ -169,7 +169,7 @@ var fbChat = (function (module) {
         module.chatRef.limitToLast(1).on('child_added', function (data) {
             if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
-                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().time, data.val().text, data.val().group);
+                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().timestamp, data.val().text, data.val().group);
                 $("html, body").animate({
                     scrollTop: $(document).height()
                 }, 200);
@@ -180,7 +180,7 @@ var fbChat = (function (module) {
             newItems = true;
             messages = snapshot.val();
             for (key in messages) {
-                newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].time, messages[key].text, messages[key].group);
+                newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].timestamp, messages[key].text, messages[key].group);
             }
             $("html, body").animate({
                     scrollTop: $(document).height()
