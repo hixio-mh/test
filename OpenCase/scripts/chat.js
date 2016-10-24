@@ -30,12 +30,18 @@ $(function () {
             $("#login").hide();
             $("#chat").hide();
             $(".chat__rooms").show();
+            fbProfile.isModerator(null, function(isModerator) {
+                fbChat.isModerator = isModerator;
+            })
         } else if (firebase.auth().currentUser != null && goToChat != false) {
             fbChat.setChatRef(goToChat);
             $("#login").hide();
             $("#chat").show();
             $(".chat__rooms").hide();
             fbChat.initChat('.chat__messages');
+            fbProfile.isModerator(null, function(isModerator) {
+                fbChat.isModerator = isModerator;
+            })
         } else {
             $("#chat").hide();
             $(".chat__rooms").hide();
@@ -48,6 +54,24 @@ $(function () {
         var currentText = $('#chat__new-message').text();
         if (currentText.indexOf('@'+nickname) == -1 && currentText.length + nickname.length < MESSAGE_LIMIT)
             $('#chat__new-message').append('@'+nickname+', ');
+    })
+    
+    $(document).on('click', '.delete-message', function() {
+        var msgKey = $(this).closest('.chat__message').data('msgkey');
+        var msgText = $(this).parent().closest('.message__text').text();
+        Lobibox.confirm({
+            iconSource : 'fontAwesome',
+            title : Localization.chat2.delete_msg_title[Settings.language],
+            msg : Localization.chat2.delete_msg[Settings.language],
+            callback : function ($this, type, ev) {
+                if (type == 'yes') {
+                    fbChat.deleteMsg(msgKey);
+                    if (isAndroid()) {
+                        client.sendToAnalytics('Chat', 'Модератор', "Модератор удалил сообщение.", msgText+' | '+Player.nickname);
+                    }
+                }
+            }
+        });
     })
     
     $(document).on('click', '.chat__rooms__room', function () {
@@ -66,6 +90,7 @@ $(function () {
             fbChat.initChat('.chat__messages');
         }, 2000);
     });
+    
     $(document).on('click', '.chat__message img', function () {
         var uid = $(this).data('userid');
         if (typeof uid == 'undefined') return false;
@@ -98,6 +123,7 @@ window.addEventListener('popstate', function(e) {
 }, false);
 var fbChat = (function (module) {
     module.chatRef = '';
+    module.isModerator = false;
     module.chatRoomsRef = firebase.database().ref('chatRooms');
     module.rooms = [
         {
@@ -152,6 +178,9 @@ var fbChat = (function (module) {
         })
         if (isAndroid())
             client.sendToAnalytics('Chat', 'Send message', "User send msg", text);
+    }
+    module.deleteMsg = function (msgKey) {
+        module.chatRef.child(msgKey).remove();
     }
     module.clearChat = function (ref) {
         var chatRef = firebase.database().ref(ref);
@@ -231,13 +260,16 @@ function newMsg(key, uid, img, username, time, text, group) {
         hour: 'numeric'
         , minute: 'numeric'
     });
+    
+    var moderBlock = "<div class='message__moderator'><i aria-hidden='true' class='fa fa-times delete-message'></i></div>";
+    
     var myMessage = false;
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
     text = fbProfile.XSSreplace(text);
     username = fbProfile.XSSreplace(username);
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
     text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + (fbChat.isModerator ? moderBlock : "") + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 
