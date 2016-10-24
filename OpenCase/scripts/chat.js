@@ -236,7 +236,7 @@ function newMsg(key, uid, img, username, time, text, group) {
     text = fbProfile.XSSreplace(text);
     username = fbProfile.XSSreplace(username);
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
-    text = text.replace('@'+Player.nickname, '<b class="hey-player">@'+Player.nickname+'</b>');
+    text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
     var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
