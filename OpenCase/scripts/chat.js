@@ -1,4 +1,5 @@
 $(function () {
+    var MESSAGE_LIMIT = parseInt($("#chat__new-message").attr("max"));
     $("#chat__new-message").on('keydown paste', function (event) {
         if (event.keyCode == 13) {
             $("#chat__send-new-message").click();
@@ -41,6 +42,13 @@ $(function () {
             $("#login").show();
         }
     });
+    
+    $(document).on('click', '.message__info', function() {
+        var nickname = $($(this).find('.message__from')[0]).text();
+        var currentText = $('#chat__new-message').text();
+        if (currentText.indexOf('@'+nickname) == -1 && currentText.length + nickname.length < MESSAGE_LIMIT)
+            $('#chat__new-message').append('@'+nickname+', ');
+    })
     
     $(document).on('click', '.chat__rooms__room', function () {
         fbChat.setChatRef($(this).data('room'));
@@ -163,6 +171,26 @@ var fbChat = (function (module) {
             });
         })(chatRef)
     }
+    module.loadAllChat = function (ref) {
+        var chatRef = firebase.database().ref(ref);
+        chatRef.once('value', function(snapshot) {
+            messages = snapshot.val();
+            for (key in messages) {
+                var time = new Date(messages[key].timestamp);
+                time = time.toLocaleString((Settings.language == 'RU') ? 'ru' : 'en-US', {
+                    hour: 'numeric'
+                    , minute: 'numeric'
+                });
+                console.log('('+messages[key].uid+') ['+time+']'+messages[key].username+': '+messages[key].text);
+            }
+            /*for (key in messages) {
+                newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].timestamp, messages[key].text, messages[key].group);
+            }
+            $("html, body").animate({
+                    scrollTop: $(document).height()
+            }, 500);*/
+        });
+    }
     module.initChat = function (selector) {
         var newItems = false;
         $(selector + " li").remove();
@@ -207,7 +235,9 @@ function newMsg(key, uid, img, username, time, text, group) {
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
     text = fbProfile.XSSreplace(text);
     username = fbProfile.XSSreplace(username);
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
+    text = text.replace('@'+Player.nickname, '<b class="hey-player">@'+Player.nickname+'</b>');
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 
