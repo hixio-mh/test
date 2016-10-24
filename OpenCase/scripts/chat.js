@@ -58,7 +58,7 @@ $(function () {
     
     $(document).on('click', '.delete-message', function() {
         var msgKey = $(this).closest('.chat__message').data('msgkey');
-        var msgText = $(this).parent().closest('.message__text').text();
+        var msgText = $(this).closest('.message__info').children('.message__text').text();
         Lobibox.confirm({
             iconSource : 'fontAwesome',
             title : Localization.chat2.delete_msg_title[Settings.language],
