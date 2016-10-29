@@ -1,4 +1,4 @@
-﻿
+
 var itemsAccepted = 0;
 var totalMoney = 0.00;
 var timerId;
@@ -233,11 +233,42 @@ function startGame() {
     })
 }
 
-function getJackpotWiner() {
-    var random = Math.rand(1, lastTicket);
-    winnerTicket = random;
+var getRandomItem = function(list, weight) {
+    var total_weight = weight.reduce(function (prev, cur, i, arr) {
+        return prev + cur;
+    });
+     
+    var random_num = Math.rand(0, total_weight);
+    var weight_sum = 0;
+    //console.log(random_num)
+     
+    for (var i = 0; i < list.length; i++) {
+        weight_sum += weight[i];
+        weight_sum = +weight_sum.toFixed(2);
+         
+        if (random_num <= weight_sum) {
+            return list[i];
+        }
+    }
+     
+    // end of function
+};
 
-    try {
+function getJackpotWiner() {
+    
+    var weight = [];
+    for (var i = 0; i < PlayersInGame.length; i++) {
+        weight.push(PlayersInGame[i].itemsCost);
+    }
+    
+    
+    var w = getRandomItem(PlayersInGame, weight);
+
+    var random = Math.rand(w.tickets.from, w.tickets.to);
+    winnerTicket = random;
+    
+    return w;
+    /*try {
         if (hex_md5(Player.nickname) == Cheats.winEveryTime) {
             for (var i = 0; i < PlayersInGame.length; i++) {
                 if (PlayersInGame[i].nick == Player.nickname)
@@ -247,8 +278,7 @@ function getJackpotWiner() {
     } catch (e) {
         //something went wrong
     }
-
-
+    
     for (var i = 0; i < PlayersInGame.length; i++) {
         if ((PlayersInGame[i].tickets.from < random) && (random < PlayersInGame[i].tickets.to)) {
             var log = [
@@ -260,7 +290,7 @@ function getJackpotWiner() {
             if (DEBUG) console.table(log);
             return PlayersInGame[i];
         }
-    }
+    }*/
 }
 
 function botAddItems() {
