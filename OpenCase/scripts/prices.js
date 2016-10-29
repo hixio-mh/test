@@ -208,7 +208,7 @@ function csgoStashGetURL(type, name, quality, statTrak, selector, allowanyPrice)
 }
 function csgoStash(url, quality, statTrak, souvenir, selector, allowanyPrice) {
     if (typeof allowanyPrice == 'undefined')
-        allowanyPrice = true;
+        allowanyPrice = false;
     var anyPrice = false;
     $.getJSON("https://query.yahooapis.com/v1/public/yql", {
             q: "select * from html where url='" + url + "' and xpath='//a[contains(@class, \"btn-sm\") and not(contains(@class, \"price-tab-keys-button\"))]/span'",
