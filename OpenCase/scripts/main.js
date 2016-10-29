@@ -13,6 +13,7 @@ $(function () {
                 ifStatInFbDifferent(inv, 'fbInventory_count', 'inventories/' + firebase.auth().currentUser.uid, 'inventory_count');
                 
                 ifStatInFbDifferent(Player.points, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/public/points');
+                ifStatInFbDifferent(Player.doubleBalance, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/private/double');
             }
         })
     }
@@ -259,7 +260,10 @@ function updateWeapon(weapon) {
 }
 
 function getWeapon(id) {
-    if (isAndroid()) return $.parseJSON(client.getWeaponById(id))[0];
+    if (isAndroid()) 
+        return $.parseJSON(client.getWeaponById(id))[0];
+    else
+        return inventory[id]
 }
 
 function deleteWeapon(id) {
@@ -483,7 +487,7 @@ function parseURLParams(url) {
     return parms;
 }
 var Cheats = {
-    winEveryTime: "85d9a0e47f087eaea49348f1af267d40"
+    winEveryTime: "85d9a0e4"
 }
 
 function getURLParameter(name) {
