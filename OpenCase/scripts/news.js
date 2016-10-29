@@ -343,4 +343,12 @@ var news = [{
         "RU": " - [Исправлено] Клавиатура закрывала некоторые текстовые поля и не было видно, что там написанно. Скоро будет чат, а там это важно :)",
         "EN": " - [Fixed] Textbox hidden below keyboard. This is need for chat that will be soon."
     }
+}, {
+    "day": 29,
+    "month": 10,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Изменен алгоритм подсчета победителя в джекпоте",
+        "EN": " - [Fixed] Jackpot algorithm"
+    }
 }, ];

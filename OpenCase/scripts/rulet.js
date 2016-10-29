@@ -261,7 +261,6 @@ function getJackpotWiner() {
         weight.push(PlayersInGame[i].itemsCost);
     }
     
-    
     var w = getRandomItem(PlayersInGame, weight);
 
     var random = Math.rand(w.tickets.from, w.tickets.to);
@@ -277,19 +276,6 @@ function getJackpotWiner() {
         }
     } catch (e) {
         //something went wrong
-    }
-    
-    for (var i = 0; i < PlayersInGame.length; i++) {
-        if ((PlayersInGame[i].tickets.from < random) && (random < PlayersInGame[i].tickets.to)) {
-            var log = [
-                ["Победил", PlayersInGame[i].nick],
-                ["Билеты от", PlayersInGame[i].tickets.from],
-                ["Билеты до", PlayersInGame[i].tickets.to],
-                ["Случайное число", random]
-            ];
-            if (DEBUG) console.table(log);
-            return PlayersInGame[i];
-        }
     }*/
 }
 
