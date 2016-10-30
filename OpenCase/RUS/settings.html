@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
 <title>Настройки</title>
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
@@ -288,6 +288,9 @@ $(function() {
             if (firebase.auth().currentUser != "") {
                 firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/avatar')
                     .set('../images/ava/'+iconSelect.getSelectedValue());
+                firebase.auth().currentUser.updateProfile({
+                    photoURL: '../images/ava/'+iconSelect.getSelectedValue()
+                })
             }
         }catch (e) {}
 		$('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
@@ -311,7 +314,8 @@ $(function() {
 $("#submit").on("click", function() {
 	var nick = $("#nickname").val();
 	var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_-]+$/;
-	if (nick != "" && validation.test(nick)) {
+    var illicitNick = /((a|а|о|o)(d|д)(m|м)(i|\||и|n)(n|и|н)|(VL(A|а)D(O|о)(S|c|с)(?:776)?))/ig;
+	if (nick != "" && validation.test(nick) && !illicitNick.test(nick)) {
 		saveStatistic("playerNickname", nick)
 	} else {
 		Lobibox.notify('error', {

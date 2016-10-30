@@ -1,24 +1,47 @@
-﻿
+
 var Quality = [{
     "name": ["Battle-Scarred", "Закалённое в боях"],
+    "names": {
+        "EN": "Battle-Scarred",
+        "RU": "Закалённое в боях",
+    },
     "chance": 50
 }, {
     "name": ["Well-Worn", "Поношенное"],
+    "names": {
+        "EN": "Well-Worn",
+        "RU": "Поношенное",
+    },
     "chance": 40
 }, {
     "name": ["Field-Tested", "После полевых испытаний"],
+    "names": {
+        "EN": "Field-Tested",
+        "RU": "После полевых испытаний",
+    },
     "chance": 30
 }, {
     "name": ["Minimal Wear", "Немного поношенное"],
+    "names": {
+        "EN": "Minimal Wear",
+        "RU": "Немного поношенное",
+    },
     "chance": 20
 }, {
     "name": ["Factory New", "Прямо с завода"],
+    "names": {
+        "EN": "Factory New",
+        "RU": "Прямо с завода",
+    },
     "chance": 10
 }];
 
 function getQualityName(fil, lang) {
     var num = 0;
-    if (typeof lang == 'undefined') lang = 'EN'
+    if (typeof lang == 'undefined') lang = Settings.language;
+    if (typeof fil == 'number' && fil < Quality.length) {
+        return Quality[fil].names[Settings.language];
+    }
     if (lang == 'RU') num = 1
     var qua = Quality.filter(function(obj) {
         return obj.name.indexOf(fil) != -1;

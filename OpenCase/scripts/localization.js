@@ -697,7 +697,22 @@ Localization.jackpot = [{
         'trade_send_title': {
             "EN": "Exchange",
             "RU": "Обмен"
+        },
+        'exchange_offers': {
+            "EN": "Exchange offers: ",
+            "RU": "Предложения обмена: "
         }
+    },
+    Localization.trades2 = {
+        'otherReady': {
+            "RU": "Готов",
+            "EN": "Ready"
+        },
+        'otherNotReady' : {
+            "RU": "Не готов",
+            "EN": "Not ready"
+        }
+    
     },
     Localization.faq = [{
         "selector": "#js-local-question-1",

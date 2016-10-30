@@ -27,8 +27,7 @@ var fbProfile = (function (module) {
             var errorCode = error.code;
             var errorMessage = error.message;
             $("#login-status").text(error.message);
-        })
-        .then(function () {
+        }).then(function () {
             if (firebase.auth().currentUser != null) {
                 var ava = Player.avatar;
                 if (/^\d+\.\w{3}$/.test(ava)) ava = "../images/ava/" + ava;
@@ -60,25 +59,26 @@ var fbProfile = (function (module) {
     module.ifAuth = function () {
         return firebase.auth().currentUser != null;
     }
-    module.isModerator = function(uid, callback) {
+    function currUid() {
+        return firebase.auth().currentUser.uid;
+    }
+    module.isModerator = function (uid, callback) {
         uid = uid || firebase.auth().currentUser.uid;
-        ref = firebase.database().ref('users/'+uid+'/moder/group').once('value')
-        .then(function(snapshot) {
+        ref = firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
             callback(/(admin|moder)/gi.test(snapshot.val()));
         })
     }
     module.ifValidNickname = function (nick) {
-        if(nick == "") return false;
-        var illicitNick = /((a|а|о|o)(d|д)(m|м)(i|\||и|n)(n|и|н))/ig;
+        if (nick == "") return false;
+        var illicitNick = /((a|а|о|o)(d|д)(m|м)(i|\||и|n)(n|и|н)|(VL(A|а)D(O|о)(S|c|с)(?:776)?))/ig;
         var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_ -]+$/;
         if (validation.test(nick) && !illicitNick.test(nick)) return true;
         else return false;
     }
-    module.ifValidImg = function(url) {
+    module.ifValidImg = function (url) {
         if (url == '') return false
         var validation = /(^[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif)$)/i;
         return validation.test(url);
-        
     }
     module.forgotPassword = function (email) {
         var auth = firebase.auth();
@@ -92,6 +92,7 @@ var fbProfile = (function (module) {
         var userInfoRef = firebase.database().ref('users/' + uid + '/public');
         userInfoRef.once('value').then(function (snapshot) {
             var userInfo = snapshot.val();
+            userInfo.uid = uid;
             callback(userInfo);
         })
         if (isAndroid()) client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'none');
@@ -123,7 +124,7 @@ var fbProfile = (function (module) {
             callback(rep, userRep);
         })
     }
-    module.saveAuthToPhone = function() {
+    module.saveAuthToPhone = function () {
         try {
             var i = 0;
             for (var key in localStorage) {
@@ -133,7 +134,8 @@ var fbProfile = (function (module) {
                     i++;
                 }
             }
-        } catch(e) {}
+        }
+        catch (e) {}
     }
     module.setRep = function (uid, uidFrom, val) {
         var repRef = firebase.database().ref('users/' + uid + '/outside/rep');
@@ -156,66 +158,156 @@ var fbProfile = (function (module) {
         if (email == "" || password == "") {
             return false;
         }
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                $("#login-status").text(error.message);
-            });
-        
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            $("#login-status").text(error.message);
+        });
         module.saveAuthToPhone();
     }
     module.newTrade = function (uidTo, weapons, accepted, callback) {
         if (!module.ifAuth) return false;
         accepted = accepted || false;
         var currUserUid = firebase.auth().currentUser.uid;
-        
-        var thisUserTradeListRef = firebase.database().ref('tradeList/'+currUserUid);
-        var otherUserTradeListRef = firebase.database().ref('tradeList/'+uidTo);
-        
+        var thisUserTradeListRef = firebase.database().ref('tradeList/' + currUserUid);
+        var otherUserTradeListRef = firebase.database().ref('tradeList/' + uidTo);
         var tradeObject = {};
         tradeObject[currUserUid] = weapons;
-        tradeObject[currUserUid+'-accepted'] = accepted;
-        tradeObject[uidTo+'-accepted'] = false;
-        
+        tradeObject[currUserUid + '-accepted'] = accepted;
+        tradeObject[uidTo + '-accepted'] = false;
         var newTradeKey = firebase.database().ref('trades').push(tradeObject).key;
-        
         thisUserTradeListRef.child(uidTo).push().set({
-            tradeID: newTradeKey,
-            watched: true
+            tradeID: newTradeKey
+            , watched: true
         });
         otherUserTradeListRef.child(currUserUid).push().set({
-            tradeID: newTradeKey,
-            watched: false
+            tradeID: newTradeKey
+            , watched: false
         });
         if (typeof callback == 'function') callback();
     }
-    module.myTradeCount = function(unwatched, callback) {
+    module.myTradeCount = function (unwatched, callback) {
         unwatched = typeof unwatched == 'undefined' ? true : unwatched;
-        var tradeListRef = firebase.database().ref('tradeList/'+firebase.auth().currentUser.uid).once('value')
-        .then(function(snapshot) {
+        var tradeListRef = firebase.database().ref('tradeList/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {
             //var tradesList = snapshot.val();
             var trCount = 0;
-            snapshot.forEach(function(childSnapshot) {
-                childSnapshot.forEach(function(childChildSnapshot){
-                    if ((unwatched && childChildSnapshot.val().watched == false) || !unwatched)
-                        trCount++;
+            snapshot.forEach(function (childSnapshot) {
+                childSnapshot.forEach(function (childChildSnapshot) {
+                    if ((unwatched && childChildSnapshot.val().watched == false) || !unwatched) trCount++;
                 })
             })
             callback(trCount);
         })
     }
-    module.showMyTrades = function() {
-        
+    module.getMyTrades = function (callback) {
+        var currUid = firebase.auth().currentUser.uid;
+        var myTrades = [];
+        var tradeListRef = firebase.database().ref('tradeList/' + currUid).once('value').then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var currentUserTrade = {
+                    tradeWith: {
+                        uid: childSnapshot.key
+                    , }
+                    , trades: []
+                };
+                childSnapshot.forEach(function (trade) {
+                    var tr = trade.val();
+                    tr.key = trade.key;
+                    currentUserTrade.trades.push(tr);
+                })
+                myTrades.push(currentUserTrade);
+            });
+        }).then(function () {
+            callback(myTrades)
+        })
+    }
+    module.tradeInfo = function (tradeID, callback) {
+        var currentUid = currUid();
+        var trade = firebase.database().ref('trades/' + tradeID).once('value').then(function (snapshot) {
+            var tradeInfo = snapshot.val();
+            //tradeInfo.otherPlayer = Object.keys(tradeInfo)[0];
+            for (var key in tradeInfo) {
+                if (/((\w|\d)+)(?:-accepted)?/gi.test(key) && key.indexOf(currentUid) == -1) {
+                    tradeInfo.otherPlayer = key.replace('-accepted', '');
+                    break;
+                }
+            }
+            tradeInfo.player = currentUid;
+            //var currentUid = currUid();
+            if (typeof tradeInfo[tradeInfo.otherPlayer] == 'undefined') {
+                tradeInfo[tradeInfo.otherPlayer] = [];
+            }
+            if (typeof tradeInfo[currentUid] == 'undefined') {
+                tradeInfo[currentUid] = [];
+            }
+            tradeInfo.tradeID = tradeID;
+            callback(tradeInfo);
+        })
+    }
+    module.updateTradeOffer = function(tradeID, weapons, callback) {
+        firebase.database().ref('trades/'+tradeID+'/'+currUid()).set(weapons);
+        callback();
+    }
+    module.tradeStatus = function(tradeID, callback) {
+        firebase.database().ref('trades/'+tradeID+'/status').once('value')
+        .then(function(snapshot) {
+            var stat = snapshot.val();
+            if (stat == null) stat = 'not ready';
+            callback(stat);
+        })
+    }
+    module.setTradeStatus = function(tradeID, status) {
+        firebase.database().ref('trades/'+tradeID+'/status').set(status);
+    }
+    module.setTradeGetWeaponsStatus = function(tradeID, status) {
+        if (status == true) status = firebase.database.ServerValue.TIMESTAMP;
+        firebase.database().ref('trades/'+tradeID+'/'+firebase.auth().currentUser.uid+'-getWeapons').set(status);
+    }
+    module.getChangeOfferTime = function(tradeID, uid, callback) {
+        firebase.database().ref('trades/'+tradeID+'/'+uid+'-changeOffer').once('value')
+        .then(function(snapshot) {
+            callback(snapshot.val());
+        }) ;
+    }
+    module.setChangeOfferTime = function(tradeID) {
+        var uid = firebase.auth().currentUser.uid;
+        firebase.database().ref('trades/'+tradeID+'/'+uid+'-changeOffer').set(firebase.database.ServerValue.TIMESTAMP);
     }
     module.XSSreplace = function (text) {
+        var allowedTags = ["<br>", "<i>", "<b>", "<s>"];
+        //allowed html tags
+        text = text.replace(/&lt;/g, '<');
+        text = text.replace(/&gt;/g, '>');
+        text = text.replace(/&amp;/g, '&');
+        for (var i = 0; i < allowedTags.length; i++) {
+            text = rpls(text, allowedTags[i]);
+        }
+        //XSS replace
         text = text.replace(/&/g, '&amp;');
         text = text.replace(/</g, '&lt;');
         text = text.replace(/>/g, '&gt;');
         text = text.replace(/"/g, '&quot;');
         text = text.replace(/'/g, '&#x27;');
-        text = text.replace(/\//g, '&#x2F;');
+        //text = text.replace(/\//g, '&#x2F;');
+        //allowed html tags
+        for (var i = 0; i < allowedTags.length; i++) {
+            text = rpls(text, allowedTags[i], true);
+        }
         return text;
+
+        function rpls(text, tag, revert) {
+            revert = revert || false;
+            var inTag = tag.replace(/(<|>)/g, '');
+            if (!revert) {
+                var reg = new RegExp('<([/])?' + inTag + '>', 'gi');
+                text = text.replace(reg, '!!$1' + inTag + '!!');
+            }
+            else {
+                var reg = new RegExp('!!([/])?' + inTag + '!!', 'gi');
+                text = text.replace(reg, '<$1' + inTag + '>');
+            }
+            return text;
+        }
     }
     return module;
 }(fbProfile || {}))
