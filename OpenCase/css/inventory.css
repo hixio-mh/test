@@ -258,7 +258,7 @@
 		max-width: calc(100% - 20px);
 		padding: 0;
         max-height: calc(100% - 90px);
-        padding-bottom: 2px;
+        padding-bottom: 10px;
         -webkit-transform: translate(-50%, -50%) translateY(0px);
         transform: translate(-50%, -50%) translateY(0px);
 	}
