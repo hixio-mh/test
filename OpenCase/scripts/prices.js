@@ -2424,6 +2424,12 @@ var Prices = [{
 }, {
     type: 'Souvenir AWP',
     name: 'Dragon Lore',
+    quality: 'Factory New',
+    marketPrice: 15000,
+    avgPrice: 15000
+}, {
+    type: 'Souvenir AWP',
+    name: 'Dragon Lore',
     quality: 'Field-Tested',
     marketPrice: 0,
     avgPrice: 3703.75
