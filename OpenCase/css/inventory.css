@@ -253,6 +253,36 @@
 	}
 }
 
+@media (max-width: 320px) and (max-height: 555px) {
+    .fullWeaponInfo {
+		max-width: calc(100% - 20px);
+		padding: 0;
+        max-height: calc(100% - 90px);
+        padding-bottom: 2px;
+        -webkit-transform: translate(-50%, -50%) translateY(0px);
+        transform: translate(-50%, -50%) translateY(0px);
+	}
+	#weaponImg {
+		width: 100%;
+		float: none;
+		margin: 0;
+	}
+	#weaponInfoTable {
+		width: 100%;
+		margin-top: 0;
+	}
+	#weaponInfoTable tr td:nth-child(2n) {
+		padding-left: 15px;
+	}
+	#statTrakImg {
+		width: 55px;
+		position: absolute;
+		right: 0;
+		left: 7px;
+		bottom: 7px;
+	}
+}
+
 .contractButtons {
     position: fixed;
     bottom: 25px;
