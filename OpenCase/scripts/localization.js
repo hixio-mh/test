@@ -6,7 +6,7 @@ $(function() {
     } catch (e) {
         console.error('No localization');
     }
-})
+}) 
 
 function localizate(category) {
     var lng = Settings.language;
