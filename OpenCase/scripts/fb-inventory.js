@@ -13,7 +13,7 @@ function Weapon(item_id, quality, stattrak, souvenir) {
     
     this.toLi = function() {
         var weapon = fbInventory.reverseConvert(this);
-        var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
+        var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>"+(this.stattrak == true ? "StatTrak™ " : "") + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
         return wp;
     }
     
