@@ -183,7 +183,7 @@ var fbChat = (function (module) {
         module.chatRef.child(msgKey).remove();
     }
     module.clearChat = function (ref) {
-        var chatRef = firebase.database().ref(ref);
+        var chatRef = firebase.database().ref('chat/'+ref);
         (function(chatRef) {
             chatRef.once('value', function(snapshot) {
                 if (snapshot.numChildren() > 40) {

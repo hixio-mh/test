@@ -83,13 +83,13 @@ Localization.souvenir = {
     }, {
         "selector": "#local-menu-market",
         "localization": {
-            "RU": "Магазин<sup class='beta'> beta</sup>",
-            "EN": "Market<sup class='beta'> beta</sup>"
+            "RU": "Магазин",
+            "EN": "Market"
         }
     }, {
         "selector": "#local-menu-chat",
         "localization": {
-            "EN": "Chat <sup class='beta'>beta</sup"
+            "EN": "Chat"
         }
     }, {
         "selector": "#local-menu-stat",
@@ -688,6 +688,106 @@ Localization.jackpot = [{
             "EN": "Have something to share?",
             "RU": "Есть чем поделиться?"
         }
+    }, {
+        "selector": ".trade__header__title",
+        "localization":{
+            "RU": "Обмен"
+        }
+    }, {
+        "selector": ".you-offer-text",
+        "localization":{
+            "RU": "Ваши предметы"
+        }
+    }, {
+        "selector": ".you-offer-info",
+        "localization":{
+            "RU": "Эти предметы вы утратите после обмена"
+        }
+    }, {
+        "selector": "#locale-ready-to-trade",
+        "localization":{
+            "RU": "Отметьте, когда будете готовы к обмену."
+        }
+    }, {
+        "selector": ".other-offer-text",
+        "localization":{
+            "RU": "Предметы другого игрока"
+        }
+    }, {
+        "selector": ".other-offer-info",
+        "localization":{
+            "RU": "Эти предметы вы получите после обмена"
+        }
+    }, {
+        "selector": "#change-weapons-trade",
+        "localization":{
+            "RU": "Добавить своих предметов"
+        }
+    }, {
+        "selector": "#cancel-trade",
+        "localization":{
+            "RU": "Отменить обмен"
+        }
+    }, {
+        "selector": "#make-trade",
+        "localization":{
+            "RU": "Совершить обмен"
+        }
+    }, {
+        "selector": "#locale-back",
+        "localization":{
+            "RU": "Назад"
+        }
+    }, {
+        "selector": "#add-weapons",
+        "localization":{
+            "RU": "Добавить предметы"
+        }
+    }, {
+        "selector": "#trade-menu-your-items",
+        "localization":{
+            "RU": "Ваш инвентарь"
+        }
+    }, {
+        "selector": "#trade-menu-player-items",
+        "localization":{
+            "RU": "Его инвентарь"
+        }
+    }, {
+        "selector": "#trade-menu-summ",
+        "localization":{
+            "RU": "Итого"
+        }
+    }, {
+        "selector": ".locale-other-inventory-WIP",
+        "localization":{
+            "RU": "Просмотр чужого инвентаря в разработке. Отправьте предложение обмена и подождите, пока другой игрок добавит свои предметы."
+        }
+    }, {
+        "selector": "#locale-gift",
+        "localization":{
+            "RU": "Это подарок"
+        }
+    }, {
+        "selector": ".not-ready",
+        "localization":{
+            "RU": "Не готов"
+        }
+    }, {
+        "selector": "#back-step",
+        "localization":{
+            "RU": "Назад"
+        }
+    }, {
+        "selector": "#next-step",
+        "localization":{
+            "RU": "Вперед"
+        }
+    }, {
+        "selector": "#send-trade",
+        "localization":{
+            "RU": "Отправить обмен"
+        }
     }],
     Localization.profile2 = {
         'trade_send': {
@@ -711,8 +811,15 @@ Localization.jackpot = [{
         'otherNotReady' : {
             "RU": "Не готов",
             "EN": "Not ready"
+        },
+        'toManyItemsTitle': {
+            "RU": "Ограничение",
+            "EN": "Limitation"
+        },
+        'toManyItems' : {
+            "RU": "Максимальное число предметов: 50.",
+            "EN": "The maximum number of items: 50"
         }
-    
     },
     Localization.faq = [{
         "selector": "#js-local-question-1",

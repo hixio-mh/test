@@ -62,6 +62,7 @@ var fbProfile = (function (module) {
     function currUid() {
         return firebase.auth().currentUser.uid;
     }
+    module.currentTrade = {};
     module.isModerator = function (uid, callback) {
         uid = uid || firebase.auth().currentUser.uid;
         ref = firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
@@ -172,10 +173,14 @@ var fbProfile = (function (module) {
         var thisUserTradeListRef = firebase.database().ref('tradeList/' + currUserUid);
         var otherUserTradeListRef = firebase.database().ref('tradeList/' + uidTo);
         var tradeObject = {};
-        tradeObject[currUserUid] = weapons;
-        tradeObject[currUserUid + '-accepted'] = accepted;
-        tradeObject[uidTo + '-accepted'] = false;
-        var newTradeKey = firebase.database().ref('trades').push(tradeObject).key;
+        tradeObject.weapons = weapons;
+        tradeObject.accepted = accepted;
+        var newTradeKey = firebase.database().ref('trades').push().key;
+        firebase.database().ref('trades/'+newTradeKey).child(currUserUid).set(tradeObject);
+        firebase.database().ref('trades/'+newTradeKey+'/tradeInfo').set({
+            "Player1" : currUserUid,
+            "Player2" : uidTo
+        });
         thisUserTradeListRef.child(uidTo).push().set({
             tradeID: newTradeKey
             , watched: true
@@ -226,30 +231,34 @@ var fbProfile = (function (module) {
         var trade = firebase.database().ref('trades/' + tradeID).once('value').then(function (snapshot) {
             var tradeInfo = snapshot.val();
             //tradeInfo.otherPlayer = Object.keys(tradeInfo)[0];
-            for (var key in tradeInfo) {
-                if (/((\w|\d)+)(?:-accepted)?/gi.test(key) && key.indexOf(currentUid) == -1) {
-                    tradeInfo.otherPlayer = key.replace('-accepted', '');
-                    break;
-                }
-            }
-            tradeInfo.player = currentUid;
+            tradeInfo.otherPlayer = tradeInfo.tradeInfo.Player1 == currentUid ? tradeInfo.tradeInfo.Player2 : tradeInfo.tradeInfo.Player1;
+            tradeInfo.player = tradeInfo.tradeInfo.Player1 == currentUid ? tradeInfo.tradeInfo.Player1 : tradeInfo.tradeInfo.Player2;
             //var currentUid = currUid();
             if (typeof tradeInfo[tradeInfo.otherPlayer] == 'undefined') {
-                tradeInfo[tradeInfo.otherPlayer] = [];
+                tradeInfo[tradeInfo.otherPlayer] = {};
+            }
+            if (typeof tradeInfo[tradeInfo.otherPlayer].weapons == 'undefined') {
+                tradeInfo[tradeInfo.otherPlayer].weapons = [];
             }
             if (typeof tradeInfo[currentUid] == 'undefined') {
-                tradeInfo[currentUid] = [];
+                tradeInfo[currentUid] = {};
+            }
+            if (typeof tradeInfo[currentUid].weapons == 'undefined') {
+                tradeInfo[currentUid].weapons = [];
+            }
+            if (typeof tradeInfo.tradeInfo.status != 'undefined') {
+                tradeInfo.status = tradeInfo.tradeInfo.status;
             }
             tradeInfo.tradeID = tradeID;
             callback(tradeInfo);
         })
     }
     module.updateTradeOffer = function(tradeID, weapons, callback) {
-        firebase.database().ref('trades/'+tradeID+'/'+currUid()).set(weapons);
+        firebase.database().ref('trades/'+tradeID+'/'+currUid()+'/weapons').set(weapons);
         callback();
     }
     module.tradeStatus = function(tradeID, callback) {
-        firebase.database().ref('trades/'+tradeID+'/status').once('value')
+        firebase.database().ref('trades/'+tradeID+'/tradeInfo/status').once('value')
         .then(function(snapshot) {
             var stat = snapshot.val();
             if (stat == null) stat = 'not ready';
@@ -257,21 +266,21 @@ var fbProfile = (function (module) {
         })
     }
     module.setTradeStatus = function(tradeID, status) {
-        firebase.database().ref('trades/'+tradeID+'/status').set(status);
+        firebase.database().ref('trades/'+tradeID+'/tradeInfo/status').set(status);
     }
     module.setTradeGetWeaponsStatus = function(tradeID, status) {
         if (status == true) status = firebase.database.ServerValue.TIMESTAMP;
-        firebase.database().ref('trades/'+tradeID+'/'+firebase.auth().currentUser.uid+'-getWeapons').set(status);
+        firebase.database().ref('trades/'+tradeID+'/'+firebase.auth().currentUser.uid+'/getWeapons').set(status);
     }
     module.getChangeOfferTime = function(tradeID, uid, callback) {
-        firebase.database().ref('trades/'+tradeID+'/'+uid+'-changeOffer').once('value')
+        firebase.database().ref('trades/'+tradeID+'/'+uid+'/changeOffer').once('value')
         .then(function(snapshot) {
             callback(snapshot.val());
         }) ;
     }
     module.setChangeOfferTime = function(tradeID) {
         var uid = firebase.auth().currentUser.uid;
-        firebase.database().ref('trades/'+tradeID+'/'+uid+'-changeOffer').set(firebase.database.ServerValue.TIMESTAMP);
+        firebase.database().ref('trades/'+tradeID+'/'+uid+'/changeOffer').set(firebase.database.ServerValue.TIMESTAMP);
     }
     module.XSSreplace = function (text) {
         var allowedTags = ["<br>", "<i>", "<b>", "<s>"];

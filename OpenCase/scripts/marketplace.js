@@ -1,4 +1,4 @@
-﻿
+
 var Sales = [],
     weaponsOnSale = 6,
     minPriceForSale = 15,
@@ -20,7 +20,7 @@ $(function() {
 });
 
 $(document).ready(function() {
-    $('.navigationBar').append('<sup class="beta"> beta</sup><span id="playerBalance">' + Player.doubleBalance + ' <i class="double-icon"></i></span>');
+    $('.navigationBar').append('<span id="playerBalance">' + Player.doubleBalance + ' <i class="double-icon"></i></span>');
 
     var autocompleteTags = [];
     for (var i = 0; i < cases.length; i++)

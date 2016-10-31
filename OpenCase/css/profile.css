@@ -365,6 +365,10 @@ ul.posts__user-posts {
     padding: 2px 5px;
     display: block;
     background: linear-gradient(to top, #003263, #498cce);
+    font-size: 0.9em;
+}
+.checkbox-trade-ready input {
+    vertical-align: middle;
 }
 .other-player-ready {
     position: absolute;

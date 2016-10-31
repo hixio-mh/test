@@ -33,7 +33,7 @@ $(function () {
         '</ul></li>' + 
         '<li class="pushy-link"><a href="inventory.html"><span class="icon icon-list"></span><span id="local-menu-inventory">Мой инвентарь</span></a></li>' + 
         '<li class="pushy-link"><a href="market.html"><span class="icon icon-cart"></span><span id="local-menu-market">Магазин</span></a></li>' + 
-        '<li class="pushy-link"><a href="chat.html"><span class="icon icon-stats-bars"></span><span id="local-menu-chat">Чат<sup class="beta"> beta</sup</span></a></li>' + 
+        '<li class="pushy-link"><a href="chat.html"><span class="icon icon-stats-bars"></span><span id="local-menu-chat">Чат</span></a></li>' + 
         '<li class="pushy-link"><a href="statistic.html"><span class="icon icon-stats-bars"></span><span id="local-menu-stat">Статистика</span></a></li>' + 
         '<li class="pushy-link"><a href="faq.html"><span class="icon icon-question"></span><span>FAQ</span></a></li>' + 
         '<li class="pushy-link"><a href="news.html"><span class="icon icon-bullhorn"></span><span id="local-menu-news">Обновления</span></a></li>' + 

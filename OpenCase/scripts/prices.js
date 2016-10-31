@@ -100,7 +100,7 @@ function getMarketPrice(type, name, quality, statTrak, selector, allowanyPrice) 
                 if (data.query.results.json.success == "true") {
                     var pr = data.query.results.json.lowest_price;
                     pr = pr.replace(/,/ig, ".");
-                    pr = pr.substr(0, pr.length - 1);
+                    pr = pr.replace(/\$/ig, '');
                     pr = parseFloat(pr);
                     if (DEBUG)
                         console.log(pr);
@@ -19418,16 +19418,29 @@ var Prices = [{
 }, {
     type: 'M9 Bayonet',
     name: 'Gamma Doppler',
+    quality: 'Minimal Wear',
+    marketPrice: 0,
+    avgPrice: 280.00
+}, {
+    type: 'M9 Bayonet',
+    name: 'Gamma Doppler',
     quality: 'Factory New',
     marketPrice: 0,
-    avgPrice: 4287.50
+    avgPrice: 360.50
+}, {
+    type: 'M9 Bayonet',
+    statTrak: true,
+    name: 'Gamma Doppler',
+    quality: 'Minimal Wear',
+    marketPrice: 0,
+    avgPrice: 461.50
 }, {
     type: 'M9 Bayonet',
     statTrak: true,
     name: 'Gamma Doppler',
     quality: 'Factory New',
     marketPrice: 0,
-    avgPrice: 872.50
+    avgPrice: 520.50
 }, {
     type: 'M9 Bayonet',
     name: 'Lore',
