@@ -17,7 +17,7 @@ $(function () {
                 link = "profile.html?uid=" + firebase.auth().currentUser.uid;
                 $("a[data-profileLink='true']").each(function () {
                     $(this).attr('href', link)
-                });
+                }); 
             }
         });
     }

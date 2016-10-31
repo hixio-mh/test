@@ -374,7 +374,7 @@ var maxItems = 50;
                             $('#make-trade').prop('disabled', false);
                         } else {
                             $('#make-trade').prop('disabled', true);
-                        }
+                        } 
                     } else if (data.key == 'weapons') {
                         //Если другой пользователь именил своё предложение
                         var weapons = data.val();

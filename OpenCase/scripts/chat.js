@@ -48,7 +48,7 @@ $(function () {
             $("#login").show();
         }
     });
-    
+     
     $(document).on('click', '.message__info', function() {
         var nickname = $($(this).find('.message__from')[0]).text();
         var currentText = $('#chat__new-message').text();

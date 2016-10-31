@@ -267,7 +267,7 @@ var fbProfile = (function (module) {
     }
     module.setTradeStatus = function(tradeID, status) {
         firebase.database().ref('trades/'+tradeID+'/tradeInfo/status').set(status);
-    }
+    } 
     module.setTradeGetWeaponsStatus = function(tradeID, status) {
         if (status == true) status = firebase.database.ServerValue.TIMESTAMP;
         firebase.database().ref('trades/'+tradeID+'/'+firebase.auth().currentUser.uid+'/getWeapons').set(status);

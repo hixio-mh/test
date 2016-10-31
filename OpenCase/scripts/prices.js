@@ -31,7 +31,7 @@ function getPrice(type, name, quality, statTrak) {
         }
         if (typeof item[0] == "undefined") {
             var st = (statTrak == 1) ? "StatTrak™ " : "";
-            if (DEBUG)
+            if (DEBUG) 
                 console.warn("Предмет не найден! " + st + type + " | " + name + " (" + quality + ")");
             return 0
         }

@@ -1,6 +1,6 @@
 
 var cases = [{
-    "name": "Alpha",
+    "name": "Alpha", 
     "img": "alpha.png",
     "type": "Collection",
     "weapons": [{

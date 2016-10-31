@@ -17,7 +17,7 @@ $(function() {
         newPrice = parseFloat(newPrice) * 100 * count;
         $("#buy-double").html(newPrice.toFixed(0));
     });
-});
+}); 
 
 $(document).ready(function() {
     $('.navigationBar').append('<span id="playerBalance">' + Player.doubleBalance + ' <i class="double-icon"></i></span>');
