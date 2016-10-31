@@ -232,6 +232,15 @@ div#avatar {
 	</div>
 </div>
 <div class='option-block'>
+	<span class='option-block__name' id='local-beta'>Эксперементальные функции</span>
+	<div class='option inline'><span id='local-beta_trade'>Обмен оружием с игроками</span>
+		<label class='switch-label'>
+			<input type="checkbox" name='trades' class='hide' />
+			<div class='switch' data-target='switch-trades'></div>
+		</label>
+	</div>
+</div>
+<div class='option-block'>
 	<span class='option-block__name' id='local-local'>Интерфейс</span>
 	<div class='option'>
 		<span id='local-language'>Язык</span>
@@ -310,6 +319,23 @@ $(function() {
 		$('input[name="drop"]').prop('checked', true);
 		$('.switch[data-target="switch-drop"]').addClass('switchOn');
 	}
+    
+    firebase.auth().onAuthStateChanged(function (user) {
+        // Once authenticated, instantiate Firechat with the logged in user
+        if (firebase.auth().currentUser != null) {
+            var uid = firebase.auth().currentUser.uid;
+            firebase.database().ref('users/'+uid+'/public').once('value', function(data) {
+                try{
+                    if (data.val().betaTrade) {
+                        $('input[name="trades"]').prop('checked', true);
+                        $('.switch[data-target="switch-trades"]').addClass('switchOn');
+                    } else {
+                        $('input[name="trades"]').prop('checked', false);
+                    }
+                } catch(e) {}     
+            })
+        }
+    })
 });
 
 $("#submit").on("click", function() {
@@ -338,6 +364,10 @@ $("#submit").on("click", function() {
 		saveStatistic('settings_language', lang);
 	saveStatistic('settings_sounds', $('input[name="sounds"]').prop('checked'));
 	saveStatistic('settings_drop', $('input[name="drop"]').prop('checked'));
+    
+    try {
+	   firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').set( $('input[name="trades"]').prop('checked'));
+    } catch(e) {}
 
 	Settings.language = lang;
 	localizate('settings');
