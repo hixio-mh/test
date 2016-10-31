@@ -176,6 +176,8 @@ var maxItems = 50;
                         , hideClass: 'fadeOutUp'
                         , msg: Localization.profile2.trade_send[Settings.language]
                     });
+                    if (isAndroid())
+                        client.sendToAnalytics('Profile', 'Trades', 'Send trade', "To: "+uid+" Weapons: "+convertedWeapons.length);
                 })
             })
             
@@ -539,6 +541,8 @@ var maxItems = 50;
                         $($parent).append("<li class='weapon' data-weapon_obj='"+weaponJSON+"'>"+weapon.toLi()+"</li>");
                     }
                     fbProfile.setChangeOfferTime($('#you-ready-to-trade').data('tradeid'));
+                    if (isAndroid())
+                        client.sendToAnalytics('Profile', 'Trades', 'Trade changed', "Player changed trade. tradeID: "+$('#you-ready-to-trade').data('tradeid'));
                 })
                 
                 $('[data-tradeid="'+$('#you-ready-to-trade').data('tradeid')+'"]').data('otherAccepted', false);
@@ -571,6 +575,8 @@ var maxItems = 50;
                             checkInventoryForNotification();
                             $('.trades-with-user__trade[data-tradeid="'+tradeInfo.tradeID+'"]').addClass('canceled');
                             $('.trade-back').click();
+                            if (isAndroid())
+                                client.sendToAnalytics('Profile', 'Trades', 'Trade complete', "Trade canceled! tradeID: "+tradeID);
                         });
                     }
                 })
@@ -602,6 +608,8 @@ var maxItems = 50;
                         checkInventoryForNotification();
                         $('.trades-with-user__trade[data-tradeid="'+tradeInfo.tradeID+'"]').addClass('done');
                         $('.trade-back').click();
+                        if (isAndroid())
+                            client.sendToAnalytics('Profile', 'Trades', 'Trade complete', "Trade done! tradeID: "+tradeID);
                     } else if (tradeInfo[tradeInfo.player].getWeapons && tradeInfo[tradeInfo.otherPlayer].getWeapons && tradeInfo.status != 'done') {
                         fbProfile.setTradeStatus(tradeID, 'done');
                     }
