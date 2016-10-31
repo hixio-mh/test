@@ -906,6 +906,16 @@ Localization.jackpot = [{
             "EN": "Avatar"
         }
     }, {
+        "selector": "#local-beta",
+        "localization": {
+            "EN": "Beta"
+        }
+    }, {
+        "selector": "#local-beta_trade",
+        "localization": {
+            "EN": "Exchange"
+        }
+    }, {
         "selector": "#local-local",
         "localization": {
             "EN": "Interface"
