@@ -141,6 +141,7 @@ var fbInventory = (function (module) {
         convertedWeapon['stattrak'] = weapon.statTrak == true ? true : weapon.statTrak == 1 ? true : false;
         convertedWeapon['souvenir'] = convertedWeapon['stattrak'] == true ? false : testSouvenir.test(weapon.type) ? true : false;
         weapon.type = weapon.type.replace(testSouvenir, '');
+        weapon.type = weapon.type.replace(/^(stattrak™ )/gi, '');
         convertedWeapon['item_id'] = module.getWeaponId(weapon.type, weapon.skinName);
         convertedWeapon['custom_name'] = null;
         convertedWeapon['stickers'] = null;
