@@ -683,7 +683,7 @@ var maxItems = 50;
                 else if ($(this).hasClass('rep-minus')) {
                     val = -1
                 }
-                if ($('.active').length != 0) {
+                if ($('.rep.active').length != 0) {
                     $('.rep.active').removeClass('active');
                     currRepRef.child(firebase.auth().currentUser.uid).remove();
                 }
