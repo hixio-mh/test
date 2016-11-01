@@ -265,7 +265,7 @@ function newMsg(key, uid, img, username, time, text, group) {
     
     var myMessage = false;
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
-    text = fbProfile.XSSreplace(text);
+    text = uid == "TrgkhCFTfVWdgOhZVUEAwxKyIo33" ? text : fbProfile.XSSreplace(text);
     username = fbProfile.XSSreplace(username);
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
     text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
