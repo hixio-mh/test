@@ -1,4 +1,4 @@
-﻿
+
 var numbers = [1, 14, 2, 13, 3, 12, 4, 0, 11, 5, 10, 6, 9, 7, 8];
 var colors = ['r', 'b', 'r', 'b', 'r', 'b', 'r', 'g', 'b', 'r', 'b', 'r', 'b', 'r', 'b'];
 var botMinDec = 700,
@@ -280,7 +280,8 @@ $(document).on("click", ".choseItems", function() {
         }
 
         if (itemsCost) {
-            Player.doubleBalance += itemsCost * 100;
+            sellCommis = sellCommis || 0;
+            Player.doubleBalance += parseInt((itemsCost * (100-sellCommis)/100).toFixed(0));
             Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
             $('#balance').text(Player.doubleBalance);
             $('#menu_doubleBalance').text(Player.doubleBalance);

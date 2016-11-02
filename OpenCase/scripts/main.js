@@ -1,5 +1,6 @@
 var win;
 var winNumber = 35;
+var sellCommis = 15;
 var inventory = [];
 var inventory_length = 0;
 var inventory_step = 50

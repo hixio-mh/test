@@ -270,8 +270,12 @@
 		});
 
 		$('#sellWeapon').on('click', function() {
+            $(this).hide();
 			var price = parseFloat($("#weaponPrice").text());
 			price *= 100;
+            if (typeof sellCommis != 'undefined') {
+                price = parseInt((price*(100-sellCommis)/100).toFixed(0));
+            }
 			price = parseInt(price.toFixed(0));
 			if (isNaN(price)) {
 				Lobibox.notify('error', {
@@ -303,7 +307,6 @@
 			}
 			$("#"+weaponId+"-inventoryItem").remove();
 			Sound("buy");
-            $(this).hide();
 			Player.doubleBalance += price;
 			$("#menu_doubleBalance").text(Player.doubleBalance);
 			saveStatistic('doubleBalance', Player.doubleBalance);
