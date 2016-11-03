@@ -34,12 +34,12 @@ var maxItems = 50;
                 if(typeof userInfo.betaTrade != "undefined" && userInfo.betaTrade == true) {
                    
                    //Трейды выключены на ремонт
-                    /*firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').once('value', function(snapshot) {
+                    firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').once('value', function(snapshot) {
                         try{
                             if (snapshot.val() == true)
                                 $(".top__trade").removeClass("disabled");
                         }catch(e){}
-                    })*/
+                    })
                 }
             });
             fbProfile.repVal(uid, function (rep, userRep) {
@@ -58,13 +58,11 @@ var maxItems = 50;
             })
 
             function userNotFound() {
-                var avatarRef = firebase.storage().ref('user-not-found/no-user-avatar.png');
-                avatarRef.getDownloadURL().then(function (url) {
-                    $(".profile__img").attr('src', url);
-                    $(".profile__name").text('User not found');
-                    //var rank = getRank(userInfo.point);
-                    $(".stats__rank__rank").text('0');
-                })
+                
+                $(".profile__img").attr('src', '../images/ava/no-user-avatar.png');
+                $(".profile__name").text('User not found');
+                //var rank = getRank(userInfo.point);
+                $(".stats__rank__rank").text('0');
             }
             /*loadPosts(uid, function(posts) {
             	for (var prop in posts) {
@@ -241,60 +239,30 @@ var maxItems = 50;
                         firebase.database().ref('tradeList/'+firebase.auth().currentUser.uid+'/'+$(this).data('uid')+'/'+trades[i].key+'/watched').set(true);
                     }
                     
-                    fbProfile.tradeInfo(trades[i].tradeID, function(tradeInfo) {
+                    fbProfile.tradeInfoShort(trades[i].tradeID, function(tradeInfo) {
                         var $parent = $('.trades-with-user__trade[data-tradeid="'+tradeInfo.tradeID+'"]');
-                        $($parent).find('.give-to-you').text(Object.keys(tradeInfo[tradeInfo.otherPlayer].weapons).length);
+                        
+                        $($parent).find('.give-to-you').text(tradeInfo.otherPlayer.weapons);
                         
                         if (tradeInfo.status == 'canceled') {
                             $($parent).addClass('canceled');
                         } else if (tradeInfo.status == 'done') {
                             $($parent).addClass('done');
-                        } else if (tradeInfo[tradeInfo.otherPlayer].changeOffer > tradeInfo[tradeInfo.player].accepted) {
+                        } else if (tradeInfo.otherPlayer.changeOffer > tradeInfo.player.accepted) {
                             $($parent).addClass('changed');
                         }
                         
-                        if ((tradeInfo.status == 'canceled' || tradeInfo.status == 'done') && typeof tradeInfo[tradeInfo.player].getWeapons == 'undefined') {
-                            var weapons = tradeInfo.status == 'done' ? tradeInfo[tradeInfo.otherPlayer].weapons : tradeInfo[tradeInfo.player].weapons;
-                            for (var i = 0; i < weapons.length; i++) {
-                                var wp = fbInventory.reverseConvert(weapons[i]);
-                                wp.new = true;
-                                if (isAndroid())
-                                    saveWeapon(wp);
-                                else
-                                    inventory.push(wp);
-                            }
-                            if (!isAndroid())
-                                saveInventory();
-                            fbProfile.setTradeGetWeaponsStatus(tradeInfo.tradeID, true);
-                            checkInventoryForNotification();
-                        } else {
-                            $($parent).data('getWeapons', true);
+                        if ((tradeInfo.status == 'canceled' || tradeInfo.status == 'done') && typeof tradeInfo.player.getWeapons == 'undefined') {
+                            fbProfile.getTradeWeapons(tradeInfo.tradeID, tradeInfo.status == 'done' ? tradeInfo.otherPlayer.id : tradeInfo.player.id)
                         }
                         
-                        var accepted = tradeInfo[tradeInfo.otherPlayer].changeOffer > tradeInfo[tradeInfo.otherPlayer].accepted ? false : tradeInfo[tradeInfo.otherPlayer].accepted;
+                        var accepted = tradeInfo.otherPlayer.changeOffer > tradeInfo.player.accepted ? false : tradeInfo.otherPlayer.accepted;
                         
-                        $($parent).data('youAccepted', tradeInfo[tradeInfo.player].accepted);
+                        $($parent).data('youAccepted', tradeInfo.player.accepted);
                         $($parent).data('otherAccepted', accepted);
-                        $($parent).data('otherUid', tradeInfo.otherPlayer);
+                        $($parent).data('otherUid', tradeInfo.otherPlayer.id);
                         
-                        for (var i = 0; i < tradeInfo[tradeInfo.otherPlayer].weapons.length; i++) {
-                            var weapon = tradeInfo[tradeInfo.otherPlayer].weapons[i];
-                            if (typeof weapon == 'undefined') continue;
-                            weapon = new Weapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir);
-                            
-                            $($parent).find(".trade__info__weapons.to-you").append("<li class='weapon'>"+weapon.toLi()+"</li>");
-                        }
-                        
-                        for (var i = 0; i < tradeInfo[tradeInfo.player].weapons.length; i++) {
-                            var weapon = tradeInfo[tradeInfo.player].weapons[i];
-                            if (typeof weapon == 'undefined') continue;
-                            weapon = new Weapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir);
-                            var weaponJSON = JSON.stringify(weapon).replace(/'/g, "\\'");
-                            
-                            $($parent).find(".trade__info__weapons.your").append("<li class='weapon' data-weapon_obj='"+weaponJSON+"'>"+weapon.toLi()+"</li>");
-                        }
-                        
-                        $($parent).find('.you-give').text(Object.keys(tradeInfo[tradeInfo.player].weapons).length);
+                        $($parent).find('.you-give').text(tradeInfo.player.weapons);
                         
                     })
                 }
@@ -351,7 +319,7 @@ var maxItems = 50;
                     $("#change-weapons-trade").show();
                 }
                 if ($(this).hasClass('unwatched')) {
-                    firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/'+firebase.auth().currentUser.uid+'/accepted').set(false);
+                    firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/tradeInfo/'+firebase.auth().currentUser.uid+'/accepted').set(false);
                     $(this).removeClass('unwatched');
                 }
                 
@@ -359,10 +327,36 @@ var maxItems = 50;
                 $($(this).find('.to-you')[0]).clone().appendTo('#my-trades__other-offer');
                 
                 //Если что-то изменилось
-                var tradeRef = firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/'+fbProfile.currentTrade.otherUid);
-                tradeRef.on('child_changed', changed);
-                tradeRef.on('child_added', changed);
+                /*var tradeRef = firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/'+fbProfile.currentTrade.otherUid);*/
+                var tradeInfoRef = firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/tradeInfo/'+fbProfile.currentTrade.otherUid);
+                //tradeRef.on('child_changed', changed);
+                //tradeRef.on('child_added', changed);
+                
+                firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/'+firebase.auth().currentUser.uid).once('value')
+                .then(function (myWeaponsSnapshot) {
+                    var myWeapons = myWeaponsSnapshot.val();
+                    /*for (var i = 0; i < trade.otherPlayer.weapons.length; i++) {
+                        var weapon = trade.otherPlayer.weapons[i];
+                        if (typeof weapon == 'undefined') continue;
+                        weapon = new Weapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir);
+                        var weaponJSON = JSON.stringify(weapon).replace(/'/g, "\\'");
+
+                        $('#my-trades__other-offer').find(".trade__info__weapons.to-you").append("<li class='weapon' data-weapon_obj='"+weaponJSON+"'>"+weapon.toLi()+"</li>");
+                    }*/
+                    for (var i = 0; i < myWeapons.length; i++) {
+                        var weapon = myWeapons[i];
+                        if (typeof weapon == 'undefined') continue;
+                        weapon = new Weapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir);
+                        var weaponJSON = JSON.stringify(weapon).replace(/'/g, "\\'");
+                        
+                        $('#my-trades__your-offer').find(".trade__info__weapons.your").append("<li class='weapon' data-weapon_obj='"+weaponJSON+"'>"+weapon.toLi()+"</li>");
+                    }
+                })
+                
+                tradeInfoRef.on('child_changed', changed);
+                tradeInfoRef.on('child_added', changed);
                 function changed (data) {
+                    console.log('changed');
                     if (data.key == 'accepted') {
                         console.log('Other player Ready!');
                         //Если другой пользователь нажал на галочку "Готов трейдиться"
@@ -381,36 +375,24 @@ var maxItems = 50;
                         } 
                     } else if (data.key == 'weapons') {
                         //Если другой пользователь именил своё предложение
-                        var weapons = data.val();
-                        var $parent = $('li[data-tradeid="'+fbProfile.currentTrade.id+'"] .trade__info__hidden .trade__info__weapons.to-you');
-                        $($parent).empty();
-                        $('#my-trades__other-offer').find(".trade__info__weapons.to-you").empty();
-                        for (var i = 0; i < weapons.length; i++) {
-                            var weapon = weapons[i];
-                            if (typeof weapon == 'undefined') continue;
-                            weapon = new Weapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir);
-
-                            $('#my-trades__other-offer').find(".trade__info__weapons.to-you").append("<li class='weapon'>"+weapon.toLi()+"</li>");
-                            $($parent).append("<li class='weapon'>"+weapon.toLi()+"</li>");
-                        }
-                        $('#my-trades__other-offer').effect('highlight');
-                        $('li[data-tradeid="'+fbProfile.currentTrade.id+'"] .trade__other .give-to-you').text(weapons.length);
-                    } else if (data.key == 'getWeapons') {
-                        fbProfile.tradeInfo(fbProfile.currentTrade.id, function(tradeInfo) {
-                            if (typeof tradeInfo[tradeInfo.player].getWeapons != 'undefined') return;
-                            var weapons = tradeInfo.tradeInfo.status == 'done' ? tradeInfo[tradeInfo.otherPlayer].weapons : tradeInfo[tradeInfo.player].weapons;
+                        firebase.database().ref('trades/'+fbProfile.currentTrade.id+'/'+fbProfile.currentTrade.otherUid).once('value')
+                            .then(function(data) {
+                            var weapons = data.val();
+                            $('#my-trades__other-offer').find(".trade__info__weapons.to-you").empty();
                             for (var i = 0; i < weapons.length; i++) {
-                                var wp = fbInventory.reverseConvert(weapons[i]);
-                                wp.new = true;
-                                if (isAndroid())
-                                    saveWeapon(wp);
-                                else
-                                    inventory.push(wp);
+                                var weapon = weapons[i];
+                                if (typeof weapon == 'undefined') continue;
+                                weapon = new Weapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir);
+
+                                $('#my-trades__other-offer').find(".trade__info__weapons.to-you").append("<li class='weapon'>"+weapon.toLi()+"</li>");
                             }
-                            if (!isAndroid())
-                                saveInventory();
-                            fbProfile.setTradeGetWeaponsStatus(tradeInfo.tradeID, true);
-                            checkInventoryForNotification();
+                            $('#my-trades__other-offer').effect('highlight');
+                            $('li[data-tradeid="'+fbProfile.currentTrade.id+'"] .trade__other .give-to-you').text(weapons.length);
+                        });
+                    } else if (data.key == 'getWeapons') {
+                        fbProfile.tradeInfoShort(fbProfile.currentTrade.id, function(tradeInfo) {
+                            if (typeof tradeInfo.player.getWeapons != 'undefined') return;
+                            fbProfile.getTradeWeapons(tradeInfo.tradeID, tradeInfo.status == 'done' ? tradeInfo.otherPlayer.id : tradeInfo.player.id)
                             
                             $('.trade-back').click();
                             $('li[data-tradeid="'+tradeInfo.tradeID+'"]').addClass(tradeInfo.status);
@@ -423,7 +405,7 @@ var maxItems = 50;
                 var tradeID = $(this).data('tradeid');
                 var status = $('#you-ready-to-trade').is(':checked');
                 if (status == true) status = firebase.database.ServerValue.TIMESTAMP;
-                firebase.database().ref('trades/'+tradeID+'/'+firebase.auth().currentUser.uid+'/accepted').set(status);
+                firebase.database().ref('trades/'+tradeID+'/tradeInfo/'+firebase.auth().currentUser.uid+'/accepted').set(status);
                 
                 fbProfile.currentTrade.youAccepted = $('#you-ready-to-trade').is(':checked');
                 
@@ -557,7 +539,7 @@ var maxItems = 50;
                     if (status != 'done' && status != 'canceled') {
                         fbProfile.setTradeStatus(tradeID, 'canceled');
                         fbProfile.tradeInfo(tradeID, function(tradeInfo) {
-                            var weapons = tradeInfo[firebase.auth().currentUser.uid].weapons;
+                            var weapons = tradeInfo.player.weapons;
                             var convertedWeapons = [];
                             for (var i = 0; i < weapons.length; i++) {
                                 var wp = fbInventory.reverseConvert(weapons[i]);
@@ -588,9 +570,9 @@ var maxItems = 50;
                 var tradeID = $(this).data('tradeid');
                 
                 fbProfile.tradeInfo(tradeID, function(tradeInfo) {
-                    if (tradeInfo[tradeInfo.otherPlayer].accepted && tradeInfo[tradeInfo.player].accepted && !tradeInfo[tradeInfo.player].getWeapons && tradeInfo.status != 'done' && tradeInfo.status != 'canceled') {
+                    if (tradeInfo.otherPlayer.accepted && tradeInfo.player.accepted && !tradeInfo.player.getWeapons && tradeInfo.status != 'done' && tradeInfo.status != 'canceled') {
                         fbProfile.setTradeStatus(tradeID, 'done');
-                        var weapons = tradeInfo[tradeInfo.otherPlayer].weapons;
+                        var weapons = tradeInfo.otherPlayer.weapons;
                         var convertedWeapons = [];
                         for (var i = 0; i < weapons.length; i++) {
                             var wp = fbInventory.reverseConvert(weapons[i]);
@@ -612,7 +594,7 @@ var maxItems = 50;
                         $('.trade-back').click();
                         if (isAndroid())
                             client.sendToAnalytics('Profile', 'Trades', 'Trade complete', "Trade done! tradeID: "+tradeID);
-                    } else if (tradeInfo[tradeInfo.player].getWeapons && tradeInfo[tradeInfo.otherPlayer].getWeapons && tradeInfo.status != 'done') {
+                    } else if (tradeInfo.player.getWeapons && tradeInfo.otherPlayer.getWeapons && tradeInfo.status != 'done') {
                         fbProfile.setTradeStatus(tradeID, 'done');
                     }
                 })

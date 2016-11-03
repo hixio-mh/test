@@ -172,15 +172,18 @@ var fbProfile = (function (module) {
         var currUserUid = firebase.auth().currentUser.uid;
         var thisUserTradeListRef = firebase.database().ref('tradeList/' + currUserUid);
         var otherUserTradeListRef = firebase.database().ref('tradeList/' + uidTo);
-        var tradeObject = {};
-        tradeObject.weapons = weapons;
-        tradeObject.accepted = accepted;
         var newTradeKey = firebase.database().ref('trades').push().key;
-        firebase.database().ref('trades/'+newTradeKey).child(currUserUid).set(tradeObject);
-        firebase.database().ref('trades/'+newTradeKey+'/tradeInfo').set({
-            "Player1" : currUserUid,
-            "Player2" : uidTo
-        });
+        firebase.database().ref('trades/'+newTradeKey).child(currUserUid).set(weapons);
+        var tradeInfoObject = {
+            Player1 : currUserUid,
+            Player2 : uidTo,
+        }
+        tradeInfoObject[currUserUid] = {
+            weapons: weapons.length,
+            accepted: accepted
+        }
+        firebase.database().ref('trades/'+newTradeKey+'/tradeInfo').set(tradeInfoObject);
+        
         thisUserTradeListRef.child(uidTo).push().set({
             tradeID: newTradeKey
             , watched: true
@@ -226,35 +229,55 @@ var fbProfile = (function (module) {
             callback(myTrades)
         })
     }
+    module.tradeInfoShort = function (tradeID, callback) {
+        var currentUid = currUid();
+        var trade = firebase.database().ref('trades/' + tradeID+'/tradeInfo').once('value').then(function (snapshot) {
+            var tradeInfo = snapshot.val();
+            //tradeInfo.otherPlayer = Object.keys(tradeInfo)[0];
+            if (tradeInfo.Player1 == currentUid) {
+                tradeInfo.otherPlayer = tradeInfo[tradeInfo.Player2] || {};
+                tradeInfo.player = tradeInfo[tradeInfo.Player1] || {};
+                tradeInfo.otherPlayer.id = tradeInfo.Player2;
+                tradeInfo.player.id = tradeInfo.Player1;
+            } else {
+                tradeInfo.otherPlayer = tradeInfo[tradeInfo.Player1] || {};
+                tradeInfo.player = tradeInfo[tradeInfo.Player2] || {};
+                tradeInfo.otherPlayer.id = tradeInfo.Player1;
+                tradeInfo.player.id = tradeInfo.Player2;
+            }
+            tradeInfo.otherPlayer.weapons = tradeInfo.otherPlayer.weapons || 0;
+            tradeInfo.player.weapons = tradeInfo.player.weapons || 0;
+            //var currentUid = currUid();
+            tradeInfo.tradeID = tradeID;
+            callback(tradeInfo);
+        })
+    }
     module.tradeInfo = function (tradeID, callback) {
         var currentUid = currUid();
         var trade = firebase.database().ref('trades/' + tradeID).once('value').then(function (snapshot) {
             var tradeInfo = snapshot.val();
-            //tradeInfo.otherPlayer = Object.keys(tradeInfo)[0];
-            tradeInfo.otherPlayer = tradeInfo.tradeInfo.Player1 == currentUid ? tradeInfo.tradeInfo.Player2 : tradeInfo.tradeInfo.Player1;
-            tradeInfo.player = tradeInfo.tradeInfo.Player1 == currentUid ? tradeInfo.tradeInfo.Player1 : tradeInfo.tradeInfo.Player2;
-            //var currentUid = currUid();
-            if (typeof tradeInfo[tradeInfo.otherPlayer] == 'undefined') {
-                tradeInfo[tradeInfo.otherPlayer] = {};
-            }
-            if (typeof tradeInfo[tradeInfo.otherPlayer].weapons == 'undefined') {
-                tradeInfo[tradeInfo.otherPlayer].weapons = [];
-            }
-            if (typeof tradeInfo[currentUid] == 'undefined') {
-                tradeInfo[currentUid] = {};
-            }
-            if (typeof tradeInfo[currentUid].weapons == 'undefined') {
-                tradeInfo[currentUid].weapons = [];
-            }
-            if (typeof tradeInfo.tradeInfo.status != 'undefined') {
-                tradeInfo.status = tradeInfo.tradeInfo.status;
+            if (tradeInfo.tradeInfo.Player1 == currentUid) {
+                tradeInfo.otherPlayer = tradeInfo.tradeInfo[tradeInfo.tradeInfo.Player2] || {};
+                tradeInfo.otherPlayer.weapons = tradeInfo[tradeInfo.tradeInfo.Player2] || [];
+                tradeInfo.otherPlayer.id = tradeInfo.tradeInfo.Player2;
+                tradeInfo.player = tradeInfo.tradeInfo[tradeInfo.tradeInfo.Player1] || {};
+                tradeInfo.player.weapons = tradeInfo[tradeInfo.tradeInfo.Player1] || [];
+                tradeInfo.player.id = tradeInfo.tradeInfo.Player1;
+            } else {
+                tradeInfo.otherPlayer = tradeInfo.tradeInfo[tradeInfo.tradeInfo.Player1] || {};
+                tradeInfo.otherPlayer.weapons = tradeInfo[tradeInfo.tradeInfo.Player1] || [];
+                tradeInfo.otherPlayer.id = tradeInfo.tradeInfo.Player1;
+                tradeInfo.player = tradeInfo.tradeInfo[tradeInfo.tradeInfo.Player2] || {};
+                tradeInfo.player.weapons = tradeInfo[tradeInfo.tradeInfo.Player2] || [];
+                tradeInfo.player.id = tradeInfo.tradeInfo.Player2;
             }
             tradeInfo.tradeID = tradeID;
             callback(tradeInfo);
         })
     }
     module.updateTradeOffer = function(tradeID, weapons, callback) {
-        firebase.database().ref('trades/'+tradeID+'/'+currUid()+'/weapons').set(weapons);
+        firebase.database().ref('trades/'+tradeID+'/'+currUid()).set(weapons);
+        firebase.database().ref('trades/'+tradeID+'/tradeInfo/'+currUid()+'/weapons').set(weapons.length);
         callback();
     }
     module.tradeStatus = function(tradeID, callback) {
@@ -270,17 +293,34 @@ var fbProfile = (function (module) {
     } 
     module.setTradeGetWeaponsStatus = function(tradeID, status) {
         if (status == true) status = firebase.database.ServerValue.TIMESTAMP;
-        firebase.database().ref('trades/'+tradeID+'/'+firebase.auth().currentUser.uid+'/getWeapons').set(status);
+        firebase.database().ref('trades/'+tradeID+'/tradeInfo/'+firebase.auth().currentUser.uid+'/getWeapons').set(status);
     }
     module.getChangeOfferTime = function(tradeID, uid, callback) {
-        firebase.database().ref('trades/'+tradeID+'/'+uid+'/changeOffer').once('value')
+        firebase.database().ref('trades/'+tradeID+'/tradeInfo/'+uid+'/changeOffer').once('value')
         .then(function(snapshot) {
             callback(snapshot.val());
         }) ;
     }
     module.setChangeOfferTime = function(tradeID) {
         var uid = firebase.auth().currentUser.uid;
-        firebase.database().ref('trades/'+tradeID+'/'+uid+'/changeOffer').set(firebase.database.ServerValue.TIMESTAMP);
+        firebase.database().ref('trades/'+tradeID+'/tradeInfo/'+uid+'/changeOffer').set(firebase.database.ServerValue.TIMESTAMP);
+    }
+    module.getTradeWeapons = function(tradeID, weaponsID) {
+        firebase.database().ref('trades/'+tradeID+'/'+weaponsID).once('value').then(function(data) {
+            var weapons = data.val();
+            for (var i = 0; i < weapons.length; i++) {
+                var wp = fbInventory.reverseConvert(weapons[i]);
+                wp.new = true;
+                if (isAndroid())
+                    saveWeapon(wp);
+                else
+                    inventory.push(wp);
+            }
+            if (!isAndroid())
+                saveInventory();
+            module.setTradeGetWeaponsStatus(tradeID, true);
+            checkInventoryForNotification();
+        })
     }
     module.XSSreplace = function (text) {
         var allowedTags = ["<br>", "<i>", "<b>", "<s>"];
