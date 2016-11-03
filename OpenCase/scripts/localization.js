@@ -788,6 +788,11 @@ Localization.jackpot = [{
         "localization":{
             "RU": "Отправить обмен"
         }
+    }, {
+        "selector": "#local-trades-off",
+        "localization":{
+            "EN": "Trades are currently disabled for technical reason.<br>Will be enabled in few hours."
+        }
     }],
     Localization.profile2 = {
         'trade_send': {

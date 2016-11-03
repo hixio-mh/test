@@ -32,12 +32,14 @@ var maxItems = 50;
                     $('.top__bg').attr('style', 'background:'+userInfo.colorBG);
                 }
                 if(typeof userInfo.betaTrade != "undefined" && userInfo.betaTrade == true) {
-                    firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').once('value', function(snapshot) {
+                   
+                   //Трейды выключены на ремонт
+                    /*firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').once('value', function(snapshot) {
                         try{
                             if (snapshot.val() == true)
                                 $(".top__trade").removeClass("disabled");
                         }catch(e){}
-                    })
+                    })*/
                 }
             });
             fbProfile.repVal(uid, function (rep, userRep) {
