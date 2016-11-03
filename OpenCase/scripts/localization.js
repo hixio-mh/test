@@ -506,7 +506,7 @@ Localization.jackpot = [{
         "selector": "#stat-sum-text",
         "localization": {
             "RU": "Сумма:",
-            "EN": "Cost:"
+            "EN": "Worth:"
         }
     }, {
         "selector": "#stat-count-text",
@@ -845,6 +845,16 @@ Localization.jackpot = [{
         "selector": "#js-local-answer-2",
         "localization": {
             "EN": "Weapons prices are taken from the database. If there are no prices for current weapon, then price is taken from the Steam Market. If there is no price as well, it counts as $0. <br> When the weapon appears in market, open the weapon info in inventory, wait until the price is loaded, reopen inventory."
+        }
+    }, {
+        "selector": "#js-local-question-trade",
+        "localization": {
+            "EN": "How to exchange?"
+        }
+    }, {
+        "selector": "#js-local-answer-trade",
+        "localization": {
+            "EN": "First of all enable \"Exchange\" in settings.<br><b>How to send the trade offer</b><br><ol><li>Open another player's profile</li><li>Press on the exchange icon (<i class=\"fa fa-exchange\" aria-hidden=\"true\"></i>)</li><li>Select the weapons that you want to send and press on the \"Next\" button</li><li><s>Select the weapons that you want to get from player</s> (WIP)</li><li>If you want to send weapons as a gift then check \"It's a gift\" checkbox</li><li>Press on the \"Send trade\" button</li></ol><b>How to get weapons</b><ol><li>Open your profile</li><li>Press on the exchange icon (<i class=\"fa fa-exchange\" aria-hidden=\"true\"></i>)</li><li>Select the player that send the offer to you</li><li>Select the offer</li><li>Change your offer if you want</li><li>Check the \"Check this box when ready to trade.\" checkbox</li><li>Wait until another player check this checkbox too and press on the \"Make trade\" button. Or another player can press it</li></ol>If another player pressed the \"Make trade\" button when you was offline then open this trade to get your weapons."
         }
     }, {
         "selector": "#js-local-question-rank",
