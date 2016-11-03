@@ -281,7 +281,7 @@ $(document).on("click", ".choseItems", function() {
 
         if (itemsCost) {
             sellCommis = sellCommis || 0;
-            Player.doubleBalance += parseInt((itemsCost * (100-sellCommis)/100).toFixed(0));
+            Player.doubleBalance += parseInt((itemsCost * (100-sellCommis)/100).toFixed(0))*100;
             Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
             $('#balance').text(Player.doubleBalance);
             $('#menu_doubleBalance').text(Player.doubleBalance);
