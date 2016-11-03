@@ -14,7 +14,7 @@ $(function () {
                 ifStatInFbDifferent(inv, 'fbInventory_count', 'inventories/' + firebase.auth().currentUser.uid, 'inventory_count');
                 
                 ifStatInFbDifferent(Player.points, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/public/points');
-                ifStatInFbDifferent(Player.doubleBalance, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/private/double');
+                //ifStatInFbDifferent(Player.doubleBalance, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/private/double');
             }
         })
     }
