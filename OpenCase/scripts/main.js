@@ -11,9 +11,9 @@ $(function () {
         firebase.auth().onAuthStateChanged(function (user) {
             if (firebase.auth().currentUser != null) {
                 var inv = (isAndroid() ? client.getInventoryLength('') : inventory.length);
-                ifStatInFbDifferent(inv, 'fbInventory_count', 'inventories/' + firebase.auth().currentUser.uid, 'inventory_count');
+                //ifStatInFbDifferent(inv, 'fbInventory_count', 'inventories/' + firebase.auth().currentUser.uid, 'inventory_count');
                 
-                ifStatInFbDifferent(Player.points, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/public/points');
+                //ifStatInFbDifferent(Player.points, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/public/points');
                 //ifStatInFbDifferent(Player.doubleBalance, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/private/double');
             }
         })
