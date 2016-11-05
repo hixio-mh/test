@@ -33,7 +33,6 @@ var maxItems = 50;
                 }
                 if(typeof userInfo.betaTrade != "undefined" && userInfo.betaTrade == true) {
                    
-                   //Трейды выключены на ремонт
                     firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').once('value', function(snapshot) {
                         try{
                             if (snapshot.val() == true)
@@ -41,6 +40,27 @@ var maxItems = 50;
                         }catch(e){}
                     })
                 }
+                firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/moder').once('value')
+                .then(function(snapshot) {
+                    var data = snapshot.val();
+                    if (data == null) return;
+                    if (data.group == 'moder' || data.group == 'admin') {
+                        $(".moder-menu").show();
+                        
+                        firebase.database().ref('users/'+uid+'/moder').once('value')
+                        .then(function(snapshot) {
+                            var data = snapshot.val();
+                            if (typeof data.tradeban != 'undefined') {
+                                $('#block-trade').data('action', 'unblock');
+                                $('#block-trade-reason').text(data.tradeban);
+                            }
+                            if (typeof data.chatban != 'undefined') {
+                                $('#block-chat').data('action', 'unblock');
+                                $('#block-chat-reason').text(data.chatban);
+                            }
+                        })
+                    }
+                })
             });
             fbProfile.repVal(uid, function (rep, userRep) {
                 $(".stats__rate__count").text((rep > 99999 ? '∞' : rep));
@@ -64,12 +84,57 @@ var maxItems = 50;
                 //var rank = getRank(userInfo.point);
                 $(".stats__rank__rank").text('0');
             }
-            /*loadPosts(uid, function(posts) {
-            	for (var prop in posts) {
-            		var post = posts[prop];
-            		addPostToWall(post);
-            	}
-            })*/
+            
+            // === Moder menu ===
+            $(document).on('click', "#block-chat", function() {
+                if($(this).data('action') == 'block') {
+                    Lobibox.prompt('text', {
+                        title: 'Please enter reason',
+                        attrs: {
+                            placeholder: "Reason/Причина"
+                        },
+                        callback : function ($this, type, ev) {
+                            console.log($this);
+                            console.log(ev);
+                            if (type == 'ok') {
+                                firebase.database().ref('users/'+uid+'/moder/chatban').set($this.getValue());
+                                $('#block-chat-reason').text($this.getValue());
+                                $('#block-chat').data('action', 'unblock');
+                            }
+                        }
+                    });
+                } else {
+                    firebase.database().ref('users/'+uid+'/moder/chatban').remove();
+                    $('#block-chat-reason').text("Chat doesn't block");
+                    $('#block-chat').data('action', 'block');
+                }
+            })
+            
+            $(document).on('click', "#block-trade", function() {
+                if($(this).data('action') == 'block') {
+                    Lobibox.prompt('text', {
+                        title: 'Please enter reason',
+                        attrs: {
+                            placeholder: "Reason/Причина"
+                        },
+                        callback : function ($this, type, ev) {
+                            console.log($this);
+                            console.log(ev);
+                            if (type == 'ok') {
+                                firebase.database().ref('users/'+uid+'/moder/tradeban').set($this.getValue());
+                                $('#block-trade-reason').text($this.getValue());
+                                $('#block-trade').data('action', 'unblock');
+                            }
+                        }
+                    });
+                } else {
+                    firebase.database().ref('users/'+uid+'/moder/tradeban').remove();
+                    $('#block-trade-reason').text("Trades doesn't block");
+                    $('#block-trade').data('action', 'block');
+                }
+            })
+            
+            // == End Moder menu ===
             
             $(document).on('click', '.top__trade', function() {
                 if ($('.trade-window').is(":visible") || $(this).hasClass('disabled')) return;

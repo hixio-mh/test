@@ -185,20 +185,14 @@ var fbChat = (function (module) {
     module.clearChat = function (ref) {
         var chatRef = firebase.database().ref('chat/'+ref);
         (function(chatRef) {
-            chatRef.once('value', function(snapshot) {
-                if (snapshot.numChildren() > 40) {
-                    var needToDelete = snapshot.numChildren() - 40;
-                    console.log("Всего записей: "+snapshot.numChildren()+" | Нужно удалить: "+needToDelete);
-                    var i = 0;
-                    snapshot.forEach(function(childSnapshot) {
-                        if (i < needToDelete) {
-                            chatRef.child(childSnapshot.key).remove();
-                        }
-                        i++;
-                    })
-                }  
+            chatRef.limitToLast(40).once('value', function(snapshot) {
+                chatRef.set(snapshot.val());
             });
         })(chatRef)
+    }
+    module.clearChatFull = function(ref) {
+        var chatRef = firebase.database().ref('chat/'+ref);
+        chatRef.remove();
     }
     module.loadAllChat = function (ref) {
         var chatRef = firebase.database().ref(ref);
