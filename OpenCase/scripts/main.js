@@ -56,6 +56,9 @@ window.onerror = function (msg, url, line, col, error) {
         client.sendToAnalytics('Error', 'Error', action, url);
     }
     $(document.body).append('<div class="error-log">' + action + '</div>');
+    setTimeout(function(){
+        $('.error-log').remove();
+    }, 5000);
 };
 if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()) < 1.3)) {
     var openSound = new Audio();
@@ -515,8 +518,8 @@ Array.prototype.mul = function (k) {
     return res
 }
 Math.rand = function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
     /*Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
