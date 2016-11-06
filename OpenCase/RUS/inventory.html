@@ -300,12 +300,12 @@
 				saveInventory();
 				var i = weaponId + 1;
 				while ($("#"+i+"-inventoryItem").length) {
-					$("#"+i+"-inventoryItem").data('id', (i-1));
 					$("#"+i+"-inventoryItem").attr('id', '#'+(i-1)+'-inventoryItem');
 					i++;
 				}
 			}
-			$("#"+weaponId+"-inventoryItem").remove();
+			//$("#"+weaponId+"-inventoryItem").remove();
+            $('[data-id="'+weaponId+'"]').remove();
 			Sound("buy");
 			Player.doubleBalance += price;
 			$("#menu_doubleBalance").text(Player.doubleBalance);
