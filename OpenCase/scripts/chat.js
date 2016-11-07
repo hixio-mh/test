@@ -147,6 +147,14 @@ var fbChat = (function (module) {
             , flag: 'TR.svg'
             , code: 'TR'
         , }, {
+            name: 'Românesc'
+            , flag: 'RO.svg'
+            , code: 'RO'
+        , }, {
+            name: 'Suomalainen'
+            , flag: 'FI.svg'
+            , code: 'FI'
+        , }, {
             name: 'Português'
             , flag: 'PT.svg'
             , code: 'PT'
