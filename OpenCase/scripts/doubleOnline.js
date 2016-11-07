@@ -23,7 +23,7 @@ caseScrollAudio.volume = 0.2;
 
 $(function() {
     //var lastGames = getLastGames(10);
-    var socket = new WebSocket("ws://doubleserver.herokuapp.com/");
+    var socket = new WebSocket("wss://doubleserver.herokuapp.com/");
     
     socket.onmessage = function(event) {
         var message = JSON.parse(event.data);
