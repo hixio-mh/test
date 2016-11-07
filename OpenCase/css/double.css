@@ -1,4 +1,4 @@
-﻿#container {
+#container {
     width: 100%;
     position: absolute;
     top: 0;
@@ -194,4 +194,22 @@ table.bets-tables > tbody > tr > td {
 	.the-bet {
 		font-size:0.6em;
 	}
+}
+
+.onlineCount {
+    position: fixed;
+    top: 5px;
+    right: 15px;
+    z-index: 30;
+    padding: 5px;
+}
+.onlineCount:before {
+    content: '';
+    background: green;
+    border-radius: 50%;
+    position: inherit;
+    right: 5px;
+    top: 13px;
+    width: 10px;
+    height: 10px;
 }
