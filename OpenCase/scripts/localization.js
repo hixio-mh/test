@@ -6,7 +6,7 @@ $(function() {
     } catch (e) {
         console.error('No localization');
     }
-}) 
+})
 
 function localizate(category) {
     var lng = Settings.language;
@@ -71,6 +71,16 @@ Localization.souvenir = {
         }
     }, {
         "selector": "#local-menu-double",
+        "localization": {
+            "EN": "Double"
+        }
+    }, {
+        "selector": "#local-menu-online-games",
+        "localization": {
+            "EN": "Online games"
+        }
+    }, {
+        "selector": "[data-local='Double']",
         "localization": {
             "EN": "Double"
         }
