@@ -27,17 +27,14 @@ $(function() {
     
     socket.onmessage = function(event) {
         var message = JSON.parse(event.data);
-        console.log(message);
         switch (message.type) {
             case "first-connect":
                 firstConnect(message);
                 break;
             case 'win-number':
-                console.log(message.number);
                 startGame(message.number);
                 break;
             case 'new-game':
-                console.log('New game!');
                 if (waitForRolling) {
                     waitForRolling = false;
                     //fillCarusel(message.lastNumer);
@@ -83,7 +80,7 @@ $(function() {
     
     $(".chat__new-message__textbox").on('keydown paste', function (event) {
         if (event.keyCode == 13) {
-            $("#chat__send-new-message").click();
+            $("#chat-send-msg").click();
             event.preventDefault();
         }
         if (this.innerHTML.length >= this.getAttribute("max") && event.keyCode != 8) {
@@ -311,7 +308,6 @@ function numToOffset(num) {
     var lineOnNum = $.inArray(parseInt($($('.block')[2]).text()), numbers);
     var offset = numbers.length - lineOnNum + inArr+2;
         offset += numbers.length;
-    console.log('offset: '+offset);
     return offset;
 }
 
