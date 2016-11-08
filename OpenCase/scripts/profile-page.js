@@ -98,6 +98,7 @@ var maxItems = 50;
                             console.log(ev);
                             if (type == 'ok') {
                                 firebase.database().ref('users/'+uid+'/moder/chatban').set($this.getValue());
+                                firebase.database().ref('bans/'+uid+'/chatban').set($this.getValue());
                                 $('#block-chat-reason').text($this.getValue());
                                 $('#block-chat').data('action', 'unblock');
                             }
@@ -105,6 +106,7 @@ var maxItems = 50;
                     });
                 } else {
                     firebase.database().ref('users/'+uid+'/moder/chatban').remove();
+                    firebase.database().ref('bans/'+uid+'/chatban').remove();
                     $('#block-chat-reason').text("Chat doesn't block");
                     $('#block-chat').data('action', 'block');
                 }
@@ -122,6 +124,7 @@ var maxItems = 50;
                             console.log(ev);
                             if (type == 'ok') {
                                 firebase.database().ref('users/'+uid+'/moder/tradeban').set($this.getValue());
+                                firebase.database().ref('bans/'+uid+'/tradeban').set($this.getValue());
                                 $('#block-trade-reason').text($this.getValue());
                                 $('#block-trade').data('action', 'unblock');
                             }
@@ -129,6 +132,7 @@ var maxItems = 50;
                     });
                 } else {
                     firebase.database().ref('users/'+uid+'/moder/tradeban').remove();
+                    firebase.database().ref('bans/'+uid+'/tradeban').remove();
                     $('#block-trade-reason').text("Trades doesn't block");
                     $('#block-trade').data('action', 'block');
                 }
