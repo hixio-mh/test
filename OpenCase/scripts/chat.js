@@ -29,7 +29,7 @@ $(function () {
         if (firebase.auth().currentUser != null && !goToChat) {
             $("#login").hide();
             $("#chat").hide();
-            $(".chat__rooms").show();
+            $(".chat__rooms-container").show();
             fbProfile.isModerator(null, function(isModerator) {
                 fbChat.isModerator = isModerator;
             })
@@ -37,14 +37,14 @@ $(function () {
             fbChat.setChatRef(goToChat);
             $("#login").hide();
             $("#chat").show();
-            $(".chat__rooms").hide();
+            $(".chat__rooms-container").hide();
             fbChat.initChat('.chat__messages');
             fbProfile.isModerator(null, function(isModerator) {
                 fbChat.isModerator = isModerator;
             })
         } else {
             $("#chat").hide();
-            $(".chat__rooms").hide();
+            $(".chat__rooms-container").hide();
             $("#login").show();
         }
     });
@@ -78,7 +78,7 @@ $(function () {
         fbChat.setChatRef($(this).data('room'));
         $("#login").hide();
         $("#chat").show();
-        $(".chat__rooms").hide();
+        $(".chat__rooms-container").hide();
         if (isAndroid())
             client.sendToAnalytics('Chat', 'Open Chat Room', 'Open Chat Room', "Room: "+$(this).data('room'));
         fbChat.initChat('.chat__messages');
@@ -111,13 +111,13 @@ window.addEventListener('popstate', function(e) {
     if (prev == 'chat-rooms') {
         $("#login").hide();
         $("#chat").hide();
-        $(".chat__rooms").show();
+        $(".chat__rooms-container").show();
     } else if (/chat-\w{2}/.test(prev)) {
         var room = prev.match(/chat-(\w{2})/)[1];
         fbChat.setChatRef($(this).data('room'));
         $("#login").hide();
         $("#chat").show();
-        $(".chat__rooms").hide();
+        $(".chat__rooms-container").hide();
         fbChat.initChat('.chat__messages');
     }
 }, false);

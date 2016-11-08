@@ -210,3 +210,17 @@ li.chat__message img {
     margin-top: 10px;
     display: inline-block;
 }
+.chat__rooms__info a {
+    color:gray;
+}
+
+.chat__rooms__info {
+    padding:5px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    text-align: center;
+    margin-top:320px;
+}
+
+
+
+
