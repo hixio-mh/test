@@ -24,8 +24,8 @@ caseScrollAudio.volume = 0.2;
 
 
 $(function() {
-    var socket = new WebSocket("ws://localhost:8000/");
-    //var socket = new WebSocket("wss://doubleserver.herokuapp.com/");
+    //var socket = new WebSocket("ws://localhost:8000/");
+    var socket = new WebSocket("wss://doubleserver.herokuapp.com/");
     
     var PING = {type:'ping'};
     
