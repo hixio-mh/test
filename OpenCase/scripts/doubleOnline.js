@@ -12,7 +12,9 @@ var intervalCountdown,
     nextRollIn = 0,
     playerBet = [];
 var maxItems = 30;
-var waitForRolling = false;
+var waitForRolling = false,
+    reconnectTimer = 0,
+    reconnectDelay = 5000;
 
 var PING_PONG_INTERVAL = 50000;
 
@@ -24,45 +26,92 @@ caseScrollAudio.volume = 0.2;
 
 
 $(function() {
-    //var socket = new WebSocket("ws://localhost:8000/");
-    var socket = new WebSocket("wss://doubleserver.herokuapp.com/");
     
-    var PING = {type:'ping'};
+    var socket = null;
     
-    socket.onmessage = function(event) {
-        var message = JSON.parse(event.data);
-        switch (message.type) {
-            case "first-connect":
-                firstConnect(message);
-                setTimeout(function pingpong() {
-                    socket.send(JSON.stringify(PING));
-                    setTimeout(pingpong, PING_PONG_INTERVAL);
-                }, PING_PONG_INTERVAL);
-                break;
-            case "pong":
-                break;
-            case 'win-number':
-                startGame(message.number);
-                break;
-            case 'new-game':
-                if (waitForRolling) {
-                    waitForRolling = false;
-                    //fillCarusel(message.lastNumer);
-                    newGame();
-                }
-                break;
-            case 'bet':
-                addBet(message.color, message);
-                break;
-            case 'online':
-                onlineCount(message.online);
-                break;
-            case 'message':
-                chatMessage(message);
-                break;
+    function connectToServer() {
+        socket = null;
+        //socket = new WebSocket("ws://localhost:8000/");
+        socket = new WebSocket("wss://doubleserver.herokuapp.com/");
+
+        var PING = {type:'ping'};
+
+        socket.onmessage = function(event) {
+            var message = JSON.parse(event.data);
+            switch (message.type) {
+                case "first-connect":
+                    firstConnect(message);
+                    setTimeout(function pingpong() {
+                        if (!reconnectTimer) socket.send(JSON.stringify(PING));
+                        setTimeout(pingpong, PING_PONG_INTERVAL);
+                    }, PING_PONG_INTERVAL);
+                    break;
+                case "pong":
+                    break;
+                case 'win-number':
+                    startGame(message.number);
+                    break;
+                case 'new-game':
+                    if (waitForRolling) {
+                        waitForRolling = false;
+                        //fillCarusel(message.lastNumer);
+                        newGame();
+                    }
+                    break;
+                case 'bet':
+                    addBet(message.color, message);
+                    break;
+                case 'online':
+                    onlineCount(message.online);
+                    break;
+                case 'message':
+                    chatMessage(message);
+                    break;
+            }
+        }
+        
+        socket.onopen = function(event) {
+            if(reconnectTimer) {
+                clearInterval(reconnectTimer);
+                reconnectTimer = 0;
+            }
+        }
+
+        socket.onclose = function(event) {
+            console.log("Connection lost...");
+            if (!reconnectTimer) {
+                reconnectTimer = setInterval(function(){checkConnection()}, reconnectDelay);
+            }
+            
+            clearTimeout(intervalCountdown);
+            $('.bet-to-color').prop('disabled', true);
+            $('.big-progress span').html(Localization.double2.connectionLost[Settings.language]);
+            $('.the-bet').fadeOut(300, function() {$(this).remove();});
+            
+            if (playerBet.length) {
+                for (var i = 0; i < playerBet.length; i++)
+                    Player.doubleBalance += playerBet[i].bet;
+
+                Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
+
+                $('#menu_doubleBalance').text(Player.doubleBalance);
+                $('#balance').text(Player.doubleBalance);
+                saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
+
+                playerBet = [];
+                
+                $('#balance').addClass('animated flash');
+                setTimeout(function() {
+                    $('#balance').removeClass('animated flash')
+                }, 1000);
+            }
         }
     }
     
+    
+    function checkConnection() {
+        if(!socket || socket.readyState == 3) connectToServer();
+    }
 
     $('#bet').val('0');
     $('#balance').text(Player.doubleBalance.toFixed(0));
@@ -174,6 +223,8 @@ $(function() {
         $('.chat').toggleClass('opened closed');
         $('.chat__toggle__new-messages').text(0);
     })
+    
+    connectToServer();
 });
 
 function firstConnect(message) {

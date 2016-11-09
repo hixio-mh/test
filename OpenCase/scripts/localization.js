@@ -468,6 +468,10 @@ Localization.jackpot = [{
             "EN": "ROLLING",
             "RU": "Идет розыгрыш"
         },
+        connectionLost: {
+            RU: "<div class='loading-dots' style='text-align: left;margin-left: 10px;'>Соединение потеряно</div>",
+            EN: "<div class='loading-dots' style='text-align: left;margin-left: 10px;'>Connection lost</div>"
+        }
     },
     Localization.spinking = [{
         "selector": "#ssst",
