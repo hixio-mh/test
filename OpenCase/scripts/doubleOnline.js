@@ -14,6 +14,8 @@ var intervalCountdown,
 var maxItems = 30;
 var waitForRolling = false;
 
+var PING_PONG_INTERVAL = 50000;
+
 var caseScrollAudio = new Audio();
 caseScrollAudio.src = "../sound/scroll.wav";
 //caseScrollAudio.loop = true;
@@ -22,14 +24,22 @@ caseScrollAudio.volume = 0.2;
 
 
 $(function() {
-    //var lastGames = getLastGames(10);
-    var socket = new WebSocket("wss://doubleserver.herokuapp.com/");
+    var socket = new WebSocket("ws://localhost:8000/");
+    //var socket = new WebSocket("wss://doubleserver.herokuapp.com/");
+    
+    var PING = {type:'ping'};
     
     socket.onmessage = function(event) {
         var message = JSON.parse(event.data);
         switch (message.type) {
             case "first-connect":
                 firstConnect(message);
+                setTimeout(function pingpong() {
+                    socket.send(JSON.stringify(PING));
+                    setTimeout(pingpong, PING_PONG_INTERVAL);
+                }, PING_PONG_INTERVAL);
+                break;
+            case "pong":
                 break;
             case 'win-number':
                 startGame(message.number);
@@ -188,8 +198,8 @@ function firstConnect(message) {
 
     fillCarusel(parseInt($(".ball:first-child").text()));
 
-    countdownTimer = message.rollTime - Date.now(); 
-    nextRollIn = message.rollTime;
+    countdownTimer = message.rollTime; 
+    nextRollIn = Date.now() + message.rollTime;
     $('.the-bet').fadeOut(300, function() {
         $(this).remove();
     });
@@ -200,7 +210,11 @@ function firstConnect(message) {
         waitForRolling = true;
         $('.bet-to-color').prop('disabled', true);
         gameStart = true;
-    } else{        
+        $('.ball')[0].remove();
+        fillCarusel(parseInt($(".ball:first-child").text()));
+        $('.big-progress span').text(Localization.double2.rolling[Settings.language]);
+        startGame(message.lastGames[i], message.rollTime-800);
+    } else{
         countDown();
     }
 }
@@ -238,7 +252,8 @@ function countDown() {
         intervalCountdown = setTimeout(countDown, 100);
 }
 
-function startGame(win) {
+function startGame(win, duration) {
+    duration = duration || 9000;
     gameStart = true;
     //winNum = Math.rand(winNumber - 3, winNumber + 5);
     winNum = numToOffset(win);
@@ -250,7 +265,7 @@ function startGame(win) {
     $(".casesCarusel").animate({
             marginLeft: -1 * Math.rand(a - 40, a + 40)
         }, {
-            duration: 9000,
+            duration: duration,
             easing: 'easeInOutCubic',
             start: function() {
                 $('.bet-to-color').prop('disabled', true);
