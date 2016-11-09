@@ -18,13 +18,6 @@ var waitForRolling = false,
 
 var PING_PONG_INTERVAL = 50000;
 
-var caseScrollAudio = new Audio();
-caseScrollAudio.src = "../sound/scroll.wav";
-//caseScrollAudio.loop = true;
-caseScrollAudio.playbackRate = 1;
-caseScrollAudio.volume = 0.2;
-
-
 $(function() {
     
     var socket = null;
@@ -463,8 +456,25 @@ $(document).on("click", ".choseItems", function() {
 
 function addBet(tableColor, player) {
     tableColor = tableColor || 'red';
+    if (player.bet >= 1000 && player.bet < 1000000)
+        player.bet = rounded((player.bet / 1000))+'k';
+    else if (player.bet >= 1000000 && player.bet < 1000000000)
+        player.bet = rounded((player.bet / 1000000))+'kk';
+    
     $('.bets-' + tableColor + '-table').append('<tr class="the-bet"><td class="the-bet__player"><img src="../images/ava/' + player.img + '">' + player.name + '</td><td class="the-bet__bet">' + player.bet + '</td></tr>');
     
+}
+
+function rounded(num) {
+    var num = Number(num);
+    
+    if(isNaN(num))
+        return 0;
+    
+    if(String(num).split('.').length == 2 && String(num).split('.')[1].length > 1)
+        num = num.toFixed(1);
+    
+    return num;
 }
 
 function fillCarusel(lastNumber) {

@@ -473,6 +473,13 @@ Localization.jackpot = [{
             EN: "<div class='loading-dots' style='text-align: left;margin-left: 10px;'>Connection lost</div>"
         }
     },
+    Localization.crash = [{
+        "selector": "#ssst",
+        "localization": {
+            "RU": "Баланс:",
+            "EN": "Balance:"
+        }
+    }, ],
     Localization.spinking = [{
         "selector": "#ssst",
         "localization": {
