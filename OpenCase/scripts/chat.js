@@ -114,7 +114,7 @@ window.addEventListener('popstate', function(e) {
         $(".chat__rooms-container").show();
     } else if (/chat-\w{2}/.test(prev)) {
         var room = prev.match(/chat-(\w{2})/)[1];
-        fbChat.setChatRef($(this).data('room'));
+        fbChat.setChatRef(room);
         $("#login").hide();
         $("#chat").show();
         $(".chat__rooms-container").hide();
