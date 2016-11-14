@@ -91,13 +91,13 @@ $(function () {
         }, 2000);
     });
     
-    $(document).on('click', '.chat__message img', function () {
+    /*$(document).on('click', '.chat__message img', function () {
         var uid = $(this).data('userid');
         if (typeof uid == 'undefined') return false;
         if (isAndroid())
             client.sendToAnalytics('Chat', 'Open profile', "Player clicked on img in chat", 'UserId: '+$(this).data('userid'));
         window.location = 'profile.html?uid=' + uid;
-    })
+    })*/
     
     $(document).on('click', '#forgot-pass',function() {
         fbProfile.forgotPassword($("#email").val());
@@ -271,7 +271,7 @@ function newMsg(key, uid, img, username, time, text, group) {
     username = fbProfile.XSSreplace(username);
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
     text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + "' data-msgkey='" + key + "'>" + "<img src='" + img + "' data-userID='" + uid + "'>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + (fbChat.isModerator ? moderBlock : "") + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + (fbChat.isModerator ? moderBlock : "") + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 

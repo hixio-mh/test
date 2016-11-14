@@ -16,11 +16,10 @@ var waitForRolling = false,
     reconnectTimer = 0,
     reconnectDelay = 5000;
 
-var PING_PONG_INTERVAL = 50000;
+var PING_PONG_INTERVAL = 50000,
+    socket = null;
 
 $(function() {
-    
-    var socket = null;
     
     function connectToServer() {
         socket = null;
@@ -55,10 +54,10 @@ $(function() {
                     addBet(message.color, message);
                     break;
                 case 'online':
-                    onlineCount(message.online);
+                    onlineGames.onlineCount(message.online);
                     break;
                 case 'message':
-                    chatMessage(message);
+                    onlineGames.chatMessage(message);
                     break;
             }
         }
@@ -140,23 +139,6 @@ $(function() {
         }
     });
     
-    $(document).on('click', '#chat-send-msg', function() {
-        var message = $('.chat__new-message__textbox').text();
-        
-        if (message.length == 0) return null;
-        if (message.length > $('.chat__new-message__textbox').attr("max"))
-            message = message.substring(0, $('.chat__new-message__textbox').attr("max"));
-        $('.chat__new-message__textbox').empty();
-        
-        var msgObj = {
-            type: 'message',
-            from: Player.nickname,
-            message: message
-        }
-        
-        socket.send(JSON.stringify(msgObj));
-    })
-    
     $(document).on('click', '.bet-to-color', function() {
         var betStr = $('#bet').val();
         betStr = betStr == "" ? "0" : betStr;
@@ -196,26 +178,7 @@ $(function() {
         //addBet(color, pl);
     });
     
-    function onlineCount(online) {
-        $('.onlineCount').text(online);
-    }
     
-    function chatMessage(message) {
-        message.from = fbProfile.XSSreplace(message.from);
-        message.message = fbProfile.XSSreplace(message.message);
-        $('.chat__messages').append('<li class="chat__message__message"><span class="message__name">'+message.from+'</span>: <span class="message__text">'+message.message+'</span></li>');
-        
-        $('.chat__messages').scrollTop($('.chat__messages')[0].scrollHeight);
-        
-        if ($('.chat').hasClass('closed')) {
-            $('.chat__toggle__new-messages').text(parseInt($('.chat__toggle__new-messages').text())+1);
-        }
-    }
-    
-    $(document).on('click', '.chat__toggle', function() {
-        $('.chat').toggleClass('opened closed');
-        $('.chat__toggle__new-messages').text(0);
-    })
     
     connectToServer();
 });
