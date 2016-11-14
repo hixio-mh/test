@@ -124,7 +124,6 @@ tr.crashed, .crashed-color {
 
 .tabs {
   min-width: 320px;
-  max-width: 800px;
   padding: 0px;
   margin: 0 5px;
   flex-grow: 1;
