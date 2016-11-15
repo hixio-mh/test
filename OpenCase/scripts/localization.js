@@ -474,12 +474,60 @@ Localization.jackpot = [{
         }
     },
     Localization.crash = [{
-        "selector": "#ssst",
+        "selector": "#balance-text",
         "localization": {
             "RU": "Баланс:",
-            "EN": "Balance:"
         }
-    }, ],
+    }, {
+        "selector": ".crash__next-round-timer",
+        "localization": {
+            "RU": "Следующий раунд через <span></span> сек",
+        }
+    }, {
+        "selector": "#place-bet",
+        "localization": {
+            "RU": "Сделать ставку",
+        }
+    }, {
+        "selector": "#local-bets",
+        "localization": {
+            "RU": "Ставки",
+        }
+    }, {
+        "selector": "#local-history",
+        "localization": {
+            "RU": "История",
+        }
+    }, {
+        "selector": ".bet-list tr:nth-child(1) th:nth-child(1)",
+        "localization": {
+            "RU": "Ник",
+        }
+    }, {
+        "selector": ".bet-list tr:nth-child(1) th:nth-child(3)",
+        "localization": {
+            "RU": "Ставка",
+        }
+    }, {
+        "selector": ".bet-list tr:nth-child(1) th:nth-child(4)",
+        "localization": {
+            "RU": "Выгода",
+        }
+    }],
+    Localization.crash2 = {
+        place_bet: {
+            "EN": "Place bet",
+            "RU": "Сделать ставку"
+        },
+        cash_out: {
+            "EN": "Cash Out<br>@ $s <i class=\"double-icon\"></i>",
+            "RU": "Забрать<br>@ $s <i class=\"double-icon\"></i>"
+        },
+        betting: {
+            "EN": "Betting...",
+            "RU": "Ставим..."
+        },
+    },
     Localization.spinking = [{
         "selector": "#ssst",
         "localization": {

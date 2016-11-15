@@ -177,7 +177,7 @@ $(function() {
         odometer.update(message.number/100);
         setTimeout(function() {
             $('.crash__multiply').addClass('crashed');
-            $('#place-bet').html('Place bet');
+            $('#place-bet').html(Localization.crash2.place_bet[Settings.language]);
             $('#place-bet').prop('disabled', true);
             playerInfo.bet = 0;
             gameStartStatus = false;
@@ -198,7 +198,7 @@ $(function() {
         currentMultiply = message.number;
         odometer.update(currentMultiply/100);
         if (playerInfo.bet) {
-            $('#place-bet').html('Cash out<br>@ ' + Math.round(currentMultiply/100 * playerInfo.bet) + ' coins');
+            $('#place-bet').html(Localization.crash2.cash_out[Settings.language].replace('$s', parseInt((currentMultiply/100 * playerInfo.bet))));
         }
         backgroundSpeed = backgroundSpeed < 100 ? 100 : backgroundSpeed-4;
     }
@@ -213,11 +213,11 @@ $(function() {
         var $tableRow = $('tr[data-playerID="'+message.id+'"]');
         $($tableRow).addClass('cashOut');
         $($tableRow).find(".bet__multiply").text(message.multiply);
-        $($tableRow).find(".bet__profit").text(message.profit);
+        $($tableRow).find(".bet__profit").text(message.profit);  
         
         if (message.id == playerInfo.id) {
             //console.log('This player cash out!');
-            $('#place-bet').html('Place bet');
+            $('#place-bet').html(Localization.crash2.place_bet[Settings.language]);
             $('#place-bet').prop('disabled', true);
             Player.doubleBalance += (playerInfo.bet + message.profit);
             playerInfo.bet = 0;
@@ -317,7 +317,7 @@ $(function() {
             Player.doubleBalance -= playerInfo.bet;
             saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
             
-            $("#place-bet").text('Betting...');
+            $("#place-bet").text(Localization.crash2.betting[Settings.language]);
             $('#place-bet').prop('disabled', true);
             
             $('#balance').text(Player.doubleBalance);
