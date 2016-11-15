@@ -47,6 +47,10 @@
     color:lightsteelblue;
 }
 
+.chat__message__message.warning {
+    color:lightcoral;
+}
+
 .message__name {
     color:antiquewhite
 }

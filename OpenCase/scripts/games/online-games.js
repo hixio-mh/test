@@ -5,9 +5,10 @@ var onlineGames = (function(module) {
     }
 
     module.chatMessage = function(message) {
+        var msgType = typeof message.specialType != 'undefined' ? message.specialType : ''; 
         message.from = fbProfile.XSSreplace(message.from);
         message.message = fbProfile.XSSreplace(message.message);
-        $('.chat__messages').append('<li class="chat__message__message"><span class="message__name">'+message.from+'</span>: <span class="message__text">'+message.message+'</span></li>');
+        $('.chat__messages').append('<li class="chat__message__message '+msgType+'"><span class="message__name">'+message.from+'</span>: <span class="message__text">'+message.message+'</span></li>');
 
         $('.chat__messages').scrollTop($('.chat__messages')[0].scrollHeight);
 

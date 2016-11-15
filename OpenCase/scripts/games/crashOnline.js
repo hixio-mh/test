@@ -10,7 +10,8 @@ $(function() {
         betLimit = 500000,
         gameStartStatus = false,
         history = [],
-        backgroundSpeed = 1000;
+        backgroundSpeed = 1000,
+        PING_PONG_INTERVAL = 50000;
     
     var playerInfo = {};
     connectToServer();
@@ -42,7 +43,8 @@ $(function() {
                 reconnectTimer = setInterval(function(){checkConnection()}, reconnectDelay);
             }
             
-            $('.big-progress span').html(Localization.double2.connectionLost[Settings.language]);
+            //$('.connection-status').html(Localization.double2.connectionLost[Settings.language]);
+            onlineGames.chatMessage({from:'', message: 'Connection lost. Trying to reconnect...', specialType: 'warning'});
            
             if (playerInfo.bet) {
                 Player.doubleBalance += playerInfo.bet;
@@ -72,6 +74,8 @@ $(function() {
         if(!socket || socket.readyState == 3) connectToServer();
     }
     
+    var PING = {type:'ping'};
+    
     function getMessage(message) {
         //console.log(message);
         
@@ -90,6 +94,10 @@ $(function() {
                 break;
             case 'first-connect':
                 firstConnect(message);
+                setTimeout(function pingpong() {
+                    if (!reconnectTimer) socket.send(JSON.stringify(PING));
+                    setTimeout(pingpong, PING_PONG_INTERVAL);
+                }, PING_PONG_INTERVAL);
                 break;
             case 'addBet':
                 newBet(message);
