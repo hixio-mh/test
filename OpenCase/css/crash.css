@@ -136,6 +136,7 @@ section {
     padding: 15px;
     background: #151515;
     border:1px solid #787878;
+    padding-bottom: 20px;
 }
 .tabs input {
     display: none;
