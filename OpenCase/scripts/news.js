@@ -359,4 +359,20 @@ var news = [{
         "RU": " - [Добавлено] Трейды",
         "EN": " - [New] Exchange"
     }
+}, {
+    "day": 9,
+    "month": 11,
+    "year": 2016,
+    "update": {
+        "RU": " - [Добавлено] Дабл онлайн",
+        "EN": " - [New] Double online"
+    }
+}, {
+    "day": 17,
+    "month": 11,
+    "year": 2016,
+    "update": {
+        "RU": " - [Добавлено] Краш онлайн",
+        "EN": " - [New] Crash online"
+    }
 }, ];

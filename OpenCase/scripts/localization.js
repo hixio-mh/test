@@ -85,6 +85,11 @@ Localization.souvenir = {
             "EN": "Double"
         }
     }, {
+        "selector": "[data-local='Crash']",
+        "localization": {
+            "EN": "Crash"
+        }
+    }, {
         "selector": "#local-menu-inventory",
         "localization": {
             "RU": "Мой инвентарь",

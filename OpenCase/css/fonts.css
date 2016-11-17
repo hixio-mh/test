@@ -118,6 +118,9 @@
 .icon-cog:before {
   content: "\e994";
 }
+.icon-stats-dots:before {
+  content: "\e99b";
+}
 .icon-stats-bars:before {
   content: "\e99c";
 }
