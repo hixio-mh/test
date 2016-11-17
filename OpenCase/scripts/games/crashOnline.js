@@ -94,10 +94,10 @@ $(function() {
                 break;
             case 'first-connect':
                 firstConnect(message);
-                setTimeout(function pingpong() {
+                /*setTimeout(function pingpong() {
                     if (!reconnectTimer) socket.send(JSON.stringify(PING));
                     setTimeout(pingpong, PING_PONG_INTERVAL);
-                }, PING_PONG_INTERVAL);
+                }, PING_PONG_INTERVAL);*/
                 break;
             case 'addBet':
                 newBet(message);
