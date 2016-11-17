@@ -259,14 +259,18 @@ $(function() {
         regular.sort(function(a, b){
             if (parseInt(a.cells[2].innerText) > parseInt(b.cells[2].innerText))
                 return -1;
-            else
+            else if (parseInt(a.cells[2].innerText) < parseInt(b.cells[2].innerText))
                 return 1
+            else 
+                return 0
         });
         cashOut.sort(function(a, b){
             if (parseInt(a.cells[3].innerText) > parseInt(b.cells[3].innerText))
                 return -1;
-            else
+            else if (parseInt(a.cells[3].innerText) < parseInt(b.cells[3].innerText))
                 return 1
+            else
+                return 0
         })
         
         $('.bet-list').find('tr:gt(0)').remove();
