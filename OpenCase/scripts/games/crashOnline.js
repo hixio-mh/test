@@ -142,8 +142,7 @@ $(function() {
         $('.crash__next-round-timer').show();
         var timer = Math.round(message.time/1000 - 1);
         $(".crash__next-round-timer span").text(timer);
-        
-        
+
         newGameCountdown(timer);
     }
     
@@ -173,6 +172,15 @@ $(function() {
     function endGame(message) {
         currentMultiply = 0;
         odometer.update(message.number/100);
+        if (message.cashOuts) {
+            for (var key in message.cashOuts) {
+                cashOut({
+                    id: key,
+                    profit: message.cashOuts[key],
+                    multiply: (message.number/100)
+                })
+            }
+        }
         setTimeout(function() {
             $('.crash__multiply').addClass('crashed');
             $('#place-bet').html(Localization.crash2.place_bet[Settings.language]);
