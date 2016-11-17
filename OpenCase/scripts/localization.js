@@ -87,7 +87,7 @@ Localization.souvenir = {
     }, {
         "selector": "[data-local='Crash']",
         "localization": {
-            "EN": "Crash"
+            "EN": "Crash <i>WIP</i>"
         }
     }, {
         "selector": "#local-menu-inventory",
