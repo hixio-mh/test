@@ -200,6 +200,14 @@ $(function() {
         if (playerInfo.bet) {
             $('#place-bet').html(Localization.crash2.cash_out[Settings.language].replace('$s', parseInt((currentMultiply/100 * playerInfo.bet))));
         }
+        
+        for (var key in message.cashOuts) {
+            cashOut({
+                id: key,
+                profit: message.cashOuts[key],
+                multiply: (currentMultiply/100)
+            })
+        }
         backgroundSpeed = backgroundSpeed < 100 ? 100 : backgroundSpeed-4;
     }
     
