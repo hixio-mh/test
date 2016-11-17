@@ -34,7 +34,7 @@ $(function () {
         '<li class="submenu closed"><a href="#"><i class="icon icon-pacman"></i><span id="local-menu-online-games" data-local="Online games">Онлайн игры</span></a>' + 
         '<ul>' + 
         '<li class="pushy-link"><a href="double-Online.html"><span class="icon icon-make-group"></span><span data-local="Double">Дабл</span><sup class="beta">beta</sup></a></li>' + 
-        '<li class="pushy-link"><a href="crash-Online.html"><span class="icon icon-stats-dots"></span><span data-local="Crash">Краш</span></a><sup class="beta">beta</sup></a></li>' + 
+        '<li class="pushy-link"><a href="crash-Online.html"><span class="icon icon-stats-dots"></span><span data-local="Crash">Краш</span><sup class="beta">beta</sup></a></li>' + 
         '</ul></li>' + 
         '<li class="pushy-link"><a href="inventory.html"><span class="icon icon-list"></span><span id="local-menu-inventory" data-local="My inventory">Мой инвентарь</span></a></li>' + 
         '<li class="pushy-link"><a href="market.html"><span class="icon icon-cart"></span><span id="local-menu-market" data-local="Market">Магазин</span></a></li>' + 
