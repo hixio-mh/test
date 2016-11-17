@@ -226,18 +226,9 @@ var fbChat = (function (module) {
         var newItems = false;
         $(selector + " li").remove();
         if (module.chatRef == '') return;
+        var chatRef = module.chatRef;
         
-        module.chatRef.limitToLast(1).on('child_added', function (data) {
-            if (!newItems) return;
-            if ($("li[data-msgkey='" + data.key + "']").length == 0) {
-                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().timestamp, data.val().text, data.val().group);
-                $("html, body").animate({
-                    scrollTop: $(document).height()
-                }, 200);
-            }
-        });
-        
-        module.chatRef.limitToLast(40).once('value').then(function (snapshot) {
+        chatRef.limitToLast(40).once('value').then(function (snapshot) {
             newItems = true;
             messages = snapshot.val();
             for (key in messages) {
@@ -248,7 +239,17 @@ var fbChat = (function (module) {
             }, 500);
         })
         
-        module.chatRef.on('child_removed', function (data) {
+        chatRef.limitToLast(1).on('child_added', function (data) {
+            if (!newItems) return;
+            if ($("li[data-msgkey='" + data.key + "']").length == 0) {
+                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().timestamp, data.val().text, data.val().group);
+                $("html, body").animate({
+                    scrollTop: $(document).height()
+                }, 200);
+            }
+        });
+        
+        chatRef.limitToLast(40).on('child_removed', function (data) {
             removeMsg(data.key);
         });
     }

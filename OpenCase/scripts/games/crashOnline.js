@@ -10,7 +10,6 @@ $(function() {
         betLimit = 500000,
         gameStartStatus = false,
         history = [],
-        backgroundSpeed = 1000,
         PING_PONG_INTERVAL = 50000;
     
     var playerInfo = {};
@@ -143,7 +142,6 @@ $(function() {
         $('.crash__next-round-timer').show();
         var timer = Math.round(message.time/1000 - 1);
         $(".crash__next-round-timer span").text(timer);
-        backgroundSpeed = 1000;
         
         
         newGameCountdown(timer);
@@ -201,14 +199,15 @@ $(function() {
             $('#place-bet').html(Localization.crash2.cash_out[Settings.language].replace('$s', parseInt((currentMultiply/100 * playerInfo.bet))));
         }
         
-        for (var key in message.cashOuts) {
-            cashOut({
-                id: key,
-                profit: message.cashOuts[key],
-                multiply: (currentMultiply/100)
-            })
+        if (message.cashOuts) {
+            for (var key in message.cashOuts) {
+                cashOut({
+                    id: key,
+                    profit: message.cashOuts[key],
+                    multiply: (currentMultiply/100)
+                })
+            }
         }
-        backgroundSpeed = backgroundSpeed < 100 ? 100 : backgroundSpeed-4;
     }
     
     function newBet(message) {
