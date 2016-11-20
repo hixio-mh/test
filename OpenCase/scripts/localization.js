@@ -1117,3 +1117,9 @@ Localization.about = [{
         }
     }, ],
     Localization.apps = []
+Localization.ban = {
+    wrong_ban: {
+        RU: "Если вы считаете, что получили бан по ошибке, напишите на почту kurtukovvlad@gmail.com",
+        EN: "If you were banned by a mistake, write to email kurtukovvlad@gmail.com"
+    }
+}
