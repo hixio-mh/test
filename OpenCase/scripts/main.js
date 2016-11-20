@@ -17,12 +17,16 @@ $(function () {
                 ifStatInFbDifferent(Player.doubleBalance, 'fbDouble', 'users/' + firebase.auth().currentUser.uid+'/private/double');
             }
         })
+        if (isAndroid()) {
+            var androidID = client.getAndroidID();
+            //androidID = "Ttt";
             firebase.database().ref('androidIDBans/'+androidID+'/fullBan').once('value').then(function(snapshot) {
                 var banReason = snapshot.val()
                 if(banReason != null) {
                     $('body').append("<div class='permanent-ban'><h1>BAN</h1><span>"+banReason+"</span><i>"+Localization.ban.wrong_ban[Settings.language]+"</i></div>");
                 }
             })
+       }
     }
     catch (e) {}
 });
