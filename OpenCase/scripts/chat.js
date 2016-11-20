@@ -79,8 +79,14 @@ $(function () {
         $("#login").hide();
         $("#chat").show();
         $(".chat__rooms-container").hide();
-        if (isAndroid())
+        if (isAndroid()) {
             client.sendToAnalytics('Chat', 'Open Chat Room', 'Open Chat Room', "Room: "+$(this).data('room'));
+            fbProfile.getAndroidID(function(androidID){
+                if (!androidID || androidID == "") {
+                    fbProfile.setAndroidID();
+                }
+            })
+        }
         fbChat.initChat('.chat__messages');
         history.pushState('chat-'+$(this).data('room'), "Chat Room", 'chat.html?room='+$(this).data('room'))
     })

@@ -42,6 +42,8 @@ var fbProfile = (function (module) {
                     userSettingsRef.child('drop').set(Settings.drop);
                     var privateRef = userRef.child('private');
                     privateRef.child('double').set(Player.doubleBalance);
+                    if(isAndroid())
+                        privateRef.child('androidID').set(client.getAndroidID());
                     var publicRef = userRef.child('public');
                     publicRef.child('points').set(Player.points);
                     publicRef.child('nickname').set(Player.nickname);
@@ -49,7 +51,8 @@ var fbProfile = (function (module) {
                     var rateRef = userRef.child('outside');
                     rateRef.child('rep').set(0);
                     var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
-                    inventoryRef.child('inventory_count').set(inventory.length);
+                    var invLenght = isAndroid() ? client.getInventoryLength() : inventory.length;
+                    inventoryRef.child('inventory_count').set(invLenght);
                 }, function (error) {
                     $("#login-status").text(error.message);
                 });
@@ -68,6 +71,20 @@ var fbProfile = (function (module) {
         ref = firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
             callback(/(admin|moder)/gi.test(snapshot.val()));
         })
+    }
+    module.getAndroidID = function (uid, callback) {
+        if (typeof uid == 'function') {
+            callback = uid;
+            uid = currUid();
+        }
+        firebase.database().ref('users/'+uid+'/private/androidID').once('value').then(function(snapshot) {
+            callback(snapshot.val());
+        })        
+    }
+    module.setAndroidID = function() {
+        if (isAndroid() && module.ifAuth) {
+            firebase.database().ref('users/'+currUid()+'/private/androidID').set(client.getAndroidID());
+        }
     }
     module.ifValidNickname = function (nick) {
         if (nick == "") return false;
