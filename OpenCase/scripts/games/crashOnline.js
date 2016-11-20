@@ -324,6 +324,7 @@ $(function() {
                 type: 'cashOut',
                 id: playerInfo.id
             }))
+            $('#place-bet').prop('disabled', true);
         } else {
             playerInfo.bet = parseInt($('#bet').val());
             if (playerInfo.bet <= 0 || playerInfo.bet > Player.doubleBalance || isNaN(playerInfo.bet)) return;
