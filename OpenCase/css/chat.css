@@ -106,7 +106,7 @@ li.chat__message img {
     position: absolute;
     width: 0px;
     height: 0px;
-    left: -20px;
+    left: -19px;
     border-left: none;
     border-top: 10px solid transparent;
     border-right: 20px solid #fff;
@@ -221,6 +221,49 @@ li.chat__message img {
     margin-top:320px;
 }
 
-
-
-
+/* === VIP === */
+.vip a:nth-child(1)::before {
+    display: block;
+    content: '';
+    background: url(../images/chat/crown.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    position: absolute;
+    margin-top: -22px;
+    left: -10px;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+.vip.my_message a:nth-child(1)::before {
+    right: -10px;
+    left: auto;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.vip .message__info::before {
+    border-right: 20px solid #202020;
+}
+.vip.my_message .message__info::before {
+    border-left: 20px solid #202020;
+    border-right: none;
+}
+.vip .message__info {
+    background: #202020;
+}
+.vip .message__info .message__info__from-time .message__from {
+    color: gold;
+}
+.vip .message__info .message__info__from-time .group {
+    color: #dbdbdb;
+}
+.vip .message__info .message__info__from-time .message__time {
+    color: #515151;
+}
+.vip .message__info .message__info__from-time .message__moderator {
+    background: #202020;
+    color: #fff;
+}
+.vip .message__info .message__text {
+    color: #dbdbdb;
+}
