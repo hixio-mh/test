@@ -15,9 +15,10 @@ $(function () {
                 
                 ifStatInFbDifferent(Player.points, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/public/points');
                 firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/private/doubleAbsolute').once('value').then(function(snap) {
-                    if (snap.val() != null);
-                    Player.doubleBalance = parseInt(snap.val());
-                    saveStatistic('doubleBalance', Player.doubleBalance);
+                    if (snap.val() != null && snap.val != Player.doubleBalance) {
+                        Player.doubleBalance = parseInt(snap.val());
+                        saveStatistic('doubleBalance', Player.doubleBalance);
+                    }
                 })
                 
                 ifStatInFbDifferent(Player.doubleBalance, 'fbDouble', 'users/' + firebase.auth().currentUser.uid+'/private/double');
