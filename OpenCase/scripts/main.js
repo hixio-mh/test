@@ -14,12 +14,18 @@ $(function () {
                 ifStatInFbDifferent(inv, 'fbInventory_count', 'inventories/' + firebase.auth().currentUser.uid, 'inventory_count');
                 
                 ifStatInFbDifferent(Player.points, 'fbEXP', 'users/' + firebase.auth().currentUser.uid+'/public/points');
+                firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/private/doubleAbsolute').once('value').then(function(snap) {
+                    if (snap.val() != null);
+                    Player.doubleBalance = parseInt(snap.val());
+                    saveStatistic('doubleBalance', Player.doubleBalance);
+                })
+                
                 ifStatInFbDifferent(Player.doubleBalance, 'fbDouble', 'users/' + firebase.auth().currentUser.uid+'/private/double');
+                
             }
         })
         if (isAndroid()) {
             var androidID = client.getAndroidID();
-            //androidID = "Ttt";
             firebase.database().ref('androidIDBans/'+androidID+'/fullBan').once('value').then(function(snapshot) {
                 var banReason = snapshot.val()
                 if(banReason != null) {
