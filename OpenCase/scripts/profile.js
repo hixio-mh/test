@@ -68,7 +68,7 @@ var fbProfile = (function (module) {
     module.currentTrade = {};
     module.isModerator = function (uid, callback) {
         uid = uid || firebase.auth().currentUser.uid;
-        ref = firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
+        firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
             callback(/(admin|moder)/gi.test(snapshot.val()));
         })
     }

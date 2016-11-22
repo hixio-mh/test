@@ -101,6 +101,9 @@ var maxItems = 50;
                                 firebase.database().ref('bans/'+uid+'/chatban').set($this.getValue());
                                 $('#block-chat-reason').text($this.getValue());
                                 $('#block-chat').data('action', 'unblock');
+                                
+                                if(isAndroid()) 
+                                    client.sendToAnalytics('Profile', 'Модератор', "Модератор заблокировал чат", Player.nickname+' заблокировал чат ' + $(".profile__name").text());
                             }
                         }
                     });
@@ -109,6 +112,9 @@ var maxItems = 50;
                     firebase.database().ref('bans/'+uid+'/chatban').remove();
                     $('#block-chat-reason').text("Chat doesn't block");
                     $('#block-chat').data('action', 'block');
+                    
+                    if(isAndroid()) 
+                         client.sendToAnalytics('Profile', 'Модератор', "Модератор разблокировал чат", Player.nickname+' разблокировал чат ' + $(".profile__name").text());
                 }
             })
             
@@ -127,6 +133,9 @@ var maxItems = 50;
                                 firebase.database().ref('bans/'+uid+'/tradeban').set($this.getValue());
                                 $('#block-trade-reason').text($this.getValue());
                                 $('#block-trade').data('action', 'unblock');
+                                
+                                if(isAndroid()) 
+                                    client.sendToAnalytics('Profile', 'Модератор', "Модератор заблокировал трейды", Player.nickname+' заблокировал трейды ' + $(".profile__name").text());
                             }
                         }
                     });
@@ -135,6 +144,9 @@ var maxItems = 50;
                     firebase.database().ref('bans/'+uid+'/tradeban').remove();
                     $('#block-trade-reason').text("Trades doesn't block");
                     $('#block-trade').data('action', 'block');
+                    
+                    if(isAndroid()) 
+                        client.sendToAnalytics('Profile', 'Модератор', "Модератор разблокировал трейды", Player.nickname+' разблокировал трейды ' + $(".profile__name").text());
                 }
             })
             
