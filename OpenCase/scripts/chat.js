@@ -12,6 +12,11 @@ $(function () {
     
     var goToChat = false;
     
+    //User location
+    $.get("http://ipinfo.io", function(response) {
+        Player.country = response.country.toLowerCase();
+    }, "jsonp");
+    
     if (/chat-\w{2}$/.test(history.state)) {
         var goToChat = history.state.match(/chat-(\w{2})/)[1];
     } else {
@@ -174,7 +179,8 @@ var fbChat = (function (module) {
         if (module.chatRef) module.chatRef.off('child_added');
         module.chatRef = firebase.database().ref('chat/'+ref);
     }
-    module.sendMsg = function (userName, text, img) {
+    module.sendMsg = function (userName, text, img, country) {
+        country = country || null;
         var time = new Date();
         time = "" + time;
         var uid = firebase.auth().currentUser.uid;
@@ -187,6 +193,7 @@ var fbChat = (function (module) {
                 , time: time
                 , img: img
                 , group: group
+                , country: country
                 , timestamp: firebase.database.ServerValue.TIMESTAMP
             });
         })
@@ -238,7 +245,7 @@ var fbChat = (function (module) {
             newItems = true;
             messages = snapshot.val();
             for (key in messages) {
-                newMsg(key, messages[key].uid, messages[key].img, messages[key].username, messages[key].timestamp, messages[key].text, messages[key].group);
+                newMsg(key, messages[key]);
             }
             $("html, body").animate({
                     scrollTop: $(document).height()
@@ -248,7 +255,7 @@ var fbChat = (function (module) {
         chatRef.limitToLast(1).on('child_added', function (data) {
             if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
-                newMsg(data.key, data.val().uid, data.val().img, data.val().username, data.val().timestamp, data.val().text, data.val().group);
+                newMsg(data.key, data.val());
                 $("html, body").animate({
                     scrollTop: $(document).height()
                 }, 200);
@@ -262,8 +269,18 @@ var fbChat = (function (module) {
     return module;
 }(fbChat || {}));
 
-function newMsg(key, uid, img, username, time, text, group) {
-    group = group || "";
+function newMsg(key, message) {
+    var uid = message.uid,
+        img = message.img,
+        username = message.username,
+        time = message.timestamp,
+        text = message.text,
+        group = message.group || "",
+        country = message.country || "";
+    
+    var flag = "";
+    if (country)
+        flag = '<img src="../images/none.png" class="flag flag-'+country.toLowerCase()+'"/>';        
     var time = new Date(time);
     time = time.toLocaleString((Settings.language == 'RU') ? 'ru' : 'en-US', {
         hour: 'numeric'
@@ -278,7 +295,7 @@ function newMsg(key, uid, img, username, time, text, group) {
     username = fbProfile.XSSreplace(username);
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
     text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + " " + (group == 'vip' ? 'vip' : '')+ "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>"+ (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + (fbChat.isModerator ? moderBlock : "") + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + " " + (group == 'vip' ? 'vip' : '')+ "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'>" + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + flag + (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + (fbChat.isModerator ? moderBlock : "") + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 
@@ -295,6 +312,6 @@ function removeMsg(key) {
 $(document).on('click', '#chat__send-new-message', function () {
     var msg = $('#chat__new-message').text();
     if (msg.length == 0) return false;
-    fbChat.sendMsg(Player.nickname, msg, '../images/ava/' + Player.avatar);
+    fbChat.sendMsg(Player.nickname, msg, '../images/ava/' + Player.avatar, Player.country);
     $('#chat__new-message').empty();
 });

@@ -82,7 +82,7 @@ li.chat__message {
     align-items: center;
     position: relative;
 }
-li.chat__message img {
+li.chat__message img:nth-child(1) {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -123,6 +123,9 @@ li.chat__message img {
 .player-nickname {
     color: #cb6a6a;
     font-weight: normal;
+}
+.flag {
+    margin: 0 3px;
 }
 .message__time {
     color: #c5c5c5;
