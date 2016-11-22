@@ -13,7 +13,7 @@ $(function () {
     var goToChat = false;
     
     //User location
-    $.get("http://ipinfo.io", function(response) {
+    $.get("https://ipinfo.io", function(response) {
         Player.country = response.country.toLowerCase();
     }, "jsonp");
     
