@@ -306,22 +306,36 @@ $(function() {
         return num;
     }
     
+    function unRoundK(number) {
+        var num = parseInt(number.replace('k',''));
+        
+        if(isNaN(num))
+            return 0;
+        
+        if (number.indexOf('kk') != -1)
+            return num * 1000000;
+        else if (number.indexOf('k') != -1)
+            return num * 1000;
+        else
+            return num;
+    }
+    
     function sortBetTable() {
         var regular = $('.bet-list tr:not(.cashOut):gt(0)');
         var cashOut = $('.bet-list tr.cashOut');
         
         regular.sort(function(a, b){
-            if (parseInt(a.cells[2].innerText) > parseInt(b.cells[2].innerText))
+            if (unRoundK(a.cells[2].innerText) > unRoundK(b.cells[2].innerText))
                 return -1;
-            else if (parseInt(a.cells[2].innerText) < parseInt(b.cells[2].innerText))
+            else if (unRoundK(a.cells[2].innerText) < unRoundK(b.cells[2].innerText))
                 return 1
             else 
                 return 0
         });
         cashOut.sort(function(a, b){
-            if (parseInt(a.cells[3].innerText) > parseInt(b.cells[3].innerText))
+            if (unRoundK(a.cells[3].innerText) > unRoundK(b.cells[3].innerText))
                 return -1;
-            else if (parseInt(a.cells[3].innerText) < parseInt(b.cells[3].innerText))
+            else if (unRoundK(a.cells[3].innerText) < unRoundK(b.cells[3].innerText))
                 return 1
             else
                 return 0
