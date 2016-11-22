@@ -504,17 +504,22 @@ Localization.jackpot = [{
             "RU": "История",
         }
     }, {
-        "selector": ".bet-list tr:nth-child(1) th:nth-child(1)",
+        "selector": "#local-top",
+        "localization": {
+            "RU": "Топ",
+        }
+    }, {
+        "selector": ".bet-list tr:nth-child(1) th:nth-child(1), .top tr:nth-child(1) th:nth-child(2)",
         "localization": {
             "RU": "Ник",
         }
     }, {
-        "selector": ".bet-list tr:nth-child(1) th:nth-child(3)",
+        "selector": ".bet-list tr:nth-child(1) th:nth-child(3), .top tr:nth-child(1) th:nth-child(4)",
         "localization": {
             "RU": "Ставка",
         }
     }, {
-        "selector": ".bet-list tr:nth-child(1) th:nth-child(4)",
+        "selector": ".bet-list tr:nth-child(1) th:nth-child(4), .top tr:nth-child(1) th:nth-child(5)",
         "localization": {
             "RU": "Выгода",
         }

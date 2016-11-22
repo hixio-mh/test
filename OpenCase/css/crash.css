@@ -72,13 +72,13 @@
     opacity: 0.5;
 }
 
-.bet-list {
+.bet-list, .top {
     width:calc(100% - 10px);
     margin: 5px;
     color: #fff;
     border-collapse: collapse;
 }
-.bet-list th {
+.bet-list th, .top th {
     text-align: left;
     background: rgba(237, 237, 237, 0.3);
     padding: 4px;
@@ -163,6 +163,10 @@ section {
     background: #151515;
 }
 #tab1:checked ~ #bets,
-#tab2:checked ~ #history {
+#tab2:checked ~ #history,
+#tab3:checked ~ #top {
     display: block;
+}
+.top_3 td:nth-child(1) {
+    color: gold;
 }

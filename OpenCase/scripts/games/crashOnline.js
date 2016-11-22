@@ -10,7 +10,8 @@ $(function() {
         betLimit = 500000,
         gameStartStatus = false,
         history = [],
-        PING_PONG_INTERVAL = 50000;
+        PING_PONG_INTERVAL = 50000,
+        top = {};
     
     var playerInfo = {};
     connectToServer();
@@ -23,6 +24,8 @@ $(function() {
     odometer.render();
     newGameTimer = new Odometer({el: $(".crash__next-round-timer span")[0], value: 5, theme: 'default', duration: 1000, format: '(ddd).d'});
     newGameTimer.render();
+    
+    getTop();
     
     function connectToServer() {
         //socket = new WebSocket('ws://localhost:8000');
@@ -221,14 +224,14 @@ $(function() {
     function newBet(message) {
         if (message.status == 'crashed' || message.status == 'cashOut')
             var status = message.status;
-        $('.bet-list').append('<tr data-playerID="'+message.id+'" class="'+status+'"><td class="bet__nickname">'+message.player+'</td><td class="bet__multiply">-</td><td class="bet__bet">'+message.bet+'</td><td class="bet__profit">-</td></tr>')
+        $('.bet-list').append('<tr data-playerID="'+message.id+'" class="'+status+'"><td class="bet__nickname">'+message.player+'</td><td class="bet__multiply">-</td><td class="bet__bet">'+roundK(message.bet)+'</td><td class="bet__profit">-</td></tr>')
     }
     
     function cashOut(message) {
         var $tableRow = $('tr[data-playerID="'+message.id+'"]');
         $($tableRow).addClass('cashOut');
         $($tableRow).find(".bet__multiply").text(message.multiply);
-        $($tableRow).find(".bet__profit").text(message.profit);  
+        $($tableRow).find(".bet__profit").text(roundK(message.profit));  
         
         if (message.id == playerInfo.id) {
             //console.log('This player cash out!');
@@ -244,12 +247,63 @@ $(function() {
         sortBetTable();
     }
     
+    function getTop() {
+        var topRef = firebase.database().ref('top/crash/oneGame');
+        topRef.once('value').then(function(snap) {
+            top = snap.val();
+            updateTop();
+        })
+        
+        firebase.database().ref('top/crash').on('child_changed', function(data) {
+            top = data.val();
+            updateTop();
+        })
+    }
+    
+    function updateTop() {
+        $('.top').find('tr:gt(0)').remove();
+        for (var i = 0; i < top.length; i++) {
+            if (typeof top[i] == 'undefined') continue;
+            var bet = parseInt(top[i].bet);
+            var multiply = parseInt(top[i].multiply)/100;
+            var profit = Math.round((bet * multiply) - bet);
+            bet = roundK(bet);
+            profit = roundK(profit);
+            
+            $('.top').append('<tr'+ (i < 3 ? ' class="top_3"' : '')+' data-playerUID="'+top[i].uid+'"><td>'+(i+1)+'</td><td>'+top[i].player+'</td><td>'+multiply+'</td><td>'+bet+'</td><td>'+profit+'</td></tr>');
+        }
+    }
+    
     function updateHistory() {
         $('.history').empty();
         for (var i = 0; i < history.length; i++) {
             var color = history[i] >= 200 ? 'cashOut-color' : 'crashed-color';
             $('.history').prepend('<li class="'+color+'">' + (history[i]/100) + 'x</i>');
         }
+    }
+    
+    function rounded(num) {
+        var num = Number(num);
+
+        if(isNaN(num))
+            return 0;
+
+        if(String(num).split('.').length == 2 && String(num).split('.')[1].length > 1)
+            num = num.toFixed(1);
+
+        return num;
+    }
+    
+    function roundK(num) {
+        var num = Number(num);
+        if(isNaN(num))
+            return 0;
+        
+        if (num >= 1000 && num < 1000000)
+            num = rounded((num / 1000))+'k';
+        else if (num >= 1000000 && num < 1000000000)
+            num = rounded((num / 1000000))+'kk';
+        return num;
     }
     
     function sortBetTable() {
@@ -320,19 +374,26 @@ $(function() {
     
     $(document).on('click', '#place-bet', function() {
         if (playerInfo.bet && gameStartStatus) {
+            var uid = "";
+            try {
+                uid = firebase.auth().currentUser.uid;
+            } catch(e) {};
+            
             socket.send(JSON.stringify({
                 type: 'cashOut',
-                id: playerInfo.id
+                id: playerInfo.id,
+                uid: uid
             }))
             $('#place-bet').prop('disabled', true);
         } else {
             playerInfo.bet = parseInt($('#bet').val());
             if (playerInfo.bet <= 0 || playerInfo.bet > Player.doubleBalance || isNaN(playerInfo.bet)) return;
+            
             socket.send(JSON.stringify({
                 type: 'addBet',
                 player: Player.nickname,
                 bet: playerInfo.bet,
-                id: playerInfo.id
+                id: playerInfo.id,
             }))
             Player.doubleBalance -= playerInfo.bet;
             saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
