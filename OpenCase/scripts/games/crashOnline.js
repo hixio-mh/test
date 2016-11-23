@@ -269,8 +269,11 @@ $(function() {
             var profit = Math.round((bet * multiply) - bet);
             bet = roundK(bet);
             profit = roundK(profit);
+            var playerNick = top[i].player;
+            if (playerNick.length > 11)
+                playerNick = playerNick.substr(0, 11)+'...';
             
-            $('.top').append('<tr'+ (i < 3 ? ' class="top_3"' : '')+' data-playerUID="'+top[i].uid+'"><td>'+(i+1)+'</td><td>'+top[i].player+'</td><td>'+multiply+'</td><td>'+bet+'</td><td>'+profit+'</td></tr>');
+            $('.top').append('<tr'+ (i < 3 ? ' class="top_3"' : '')+' data-playerUID="'+top[i].uid+'"><td>'+(i+1)+'</td><td>'+playerNick+'</td><td>'+multiply+'</td><td>'+bet+'</td><td>'+profit+'</td></tr>');
         }
     }
     
