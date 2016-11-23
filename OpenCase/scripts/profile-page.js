@@ -44,7 +44,7 @@ var maxItems = 50;
                 .then(function(snapshot) {
                     var data = snapshot.val();
                     if (data == null) return;
-                    if (data.group == 'moder' || data.group == 'admin') {
+                    if (data.group.match(/(moder|admin)/)) {
                         $(".moder-menu").show();
                         
                         firebase.database().ref('users/'+uid+'/moder').once('value')
