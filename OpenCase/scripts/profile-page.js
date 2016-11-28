@@ -15,7 +15,7 @@ var maxItems = 50;
                 $(".other-user-profile-img").attr('src', userInfo.avatar);
                 $(".post__header__img").attr('src', userInfo.avatar);
                 $(".profile__name").text(userInfo.nickname);
-                $(".stats__rank__rank").text(userInfo.points);
+                $(".stats__rank__rank").text(Level.calcLvl(userInfo.points));
                 if (uid != firebase.auth().currentUser.uid) {
                     $(".posts__new-post").hide();
                     $('.rep').show();

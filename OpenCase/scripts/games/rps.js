@@ -225,12 +225,11 @@ function endGame(playerWin) {
                 saveWeapon(winItems[i]);
         }
         if (!isAndroid()) saveInventory();
-        changePoints(2);
+        Level.addEXP(2);
         statisticPlusOne('rps-wins');
     } else {
         $('.status').text(Localization.rps2.lostGame[Settings.language]);
         statisticPlusOne('rps-loose');
-        changePoints(-1);
     }
 
     winItems = [];

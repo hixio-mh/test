@@ -237,7 +237,7 @@ $(document).on("click", ".openCase", function() {
             $(".weapons").scrollTop(185);
 
             //Statistic
-            changePoints(1);
+            Level.addEXP(1);
 
             var caseId = $("#youCanWin span").text();
             statisticPlusOne('case-' + caseId);

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -78,13 +78,16 @@
 <div id="container">
 <div class="navigationBar" data-menu-EN="Ranks" data-menu-RU="Ранги"></div>
 	<div class='your-points'><span id='locl-your-points'>Ваши очки</span><b id='points'></b></div>
-	<ul class='ranks-list'></ul>
+	<ul class='ranks-list' style='display:none'></ul>
+	<ul class='level-list'></ul>
 </div>
 
 <script>
 	$(function() {
 		$("#points").text(Player.points);
-		var list = "";
+		
+        // === Ranks ===
+        var list = "";
 		var cl='';
 		for(var i = 0; i < Ranks.length; i++) {
 			cl = (getRank().name == Ranks[i].name) ? ' selected' : '';

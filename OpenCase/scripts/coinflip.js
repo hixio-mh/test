@@ -1,4 +1,4 @@
-﻿
+
 var Games = [];
 var PlayerBet = {};
 var maxWeapons = 15;
@@ -85,7 +85,6 @@ function coinStoped() {
     if (winner == 'CT') {
         $('.game__bot__img').addClass('winner-img');
         statisticPlusOne('coinflip-loose');
-        changePoints(-1);
     } else {
         $('.game__player__img').addClass('winner-img');
         if (isAndroid()) {
@@ -108,7 +107,7 @@ function coinStoped() {
             }
             saveInventory();
         }
-        changePoints(2);
+        Level.addEXP(2);
         statisticPlusOne('coinflip-wins');
 
         var a = getStatistic('coinflip-max-win', 0);

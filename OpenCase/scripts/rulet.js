@@ -197,7 +197,7 @@ function startGame() {
 
                 //Statistic
                 statisticPlusOne('rulet-wins');
-                changePoints(2);
+                Level.addEXP(2);
 
                 var a = getStatistic('rulet-max-win');
 
@@ -210,7 +210,6 @@ function startGame() {
             } else {
                 if (PlayerInGame) {
                     statisticPlusOne('rulet-loose');
-                    changePoints(-1);
                 }
             }
         },

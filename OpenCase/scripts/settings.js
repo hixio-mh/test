@@ -182,3 +182,92 @@ function changePoints(val) {
         }
     }
 }
+
+
+
+var Level = (function(module) {
+    module = module || {};
+    
+    module.lvlEXP = function(lvl) {
+        if (lvl <= 1) 
+            return 0;
+        else 
+            return module.lvlEXP(lvl-1) + lvl*2;
+    }
+    
+    module.calcLvl = function(exp) {
+        exp = exp || Player.points;
+        var i = 1;
+        while (true) {
+            if (exp < module.lvlEXP(i))
+                return i-1;
+            i++;
+          }
+    }
+    
+    module.myLvl = function () {
+        return module.calcLvl();
+    }
+    
+    module.nextLvl = function(exp) {
+        return module.calcLvl(exp) + 1;
+    }
+    
+    module.myEXP = function() {
+        return Player.points;
+    }
+    module.nextLvlEXP = function(exp) {
+        return module.lvlEXP(module.myLvl() + 1);
+    }
+    
+    module.progress = function() {
+        var all = module.nextLvlEXP() - module.lvlEXP(module.myLvl());
+        var my  = module.myEXP() - module.lvlEXP(module.myLvl());
+        return Math.floor(my * 100 / all);
+    }
+    
+    module.doubleBonus = function(lvl) {
+        lvl = lvl || module.myLvl();
+        return lvl * 100 > 10000 ? 10000 : lvl * 100;
+    }
+    
+    module.levelUP = function() {
+        if (Lobibox) {
+            Lobibox.notify('info', {
+                pauseDelayOnHover: false,
+                width: $(window).width(),
+                position: 'top center',
+                icon: false,
+                title: 'Levels',
+                size: 'mini',
+                delay: 3000,
+                msg: 'Level up!'
+            })
+        }
+        
+        if (isAndroid())
+            client.sendToAnalytics("Rank", "Rank", "Player ranked up", getRank().name);
+    }
+    
+    module.levelDown = function() {
+        if (isAndroid())
+            client.sendToAnalytics("Rank", "Rank", "Player ranked down", getRank().name);
+    }
+    
+    module.addEXP = function(exp) {
+        if (typeof exp != 'number') return;
+        var currentLvl = module.myLvl();
+        Player.points += exp;
+        Player.points = (Player.points < 0) ? 0 : Player.points;
+        saveStatistic('playerPoints', Player.points);
+        
+        var newLvl = module.myLvl();
+        if (newLvl > currentLvl)
+            module.levelUP();
+        else if (newLvl < currentLvl)
+            module.levelDown();
+        
+        $(document).trigger('expchanged')
+    }
+    return module;
+})(Level || {})

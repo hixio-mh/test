@@ -13,6 +13,7 @@
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/skinNames.js"></script>
 <script src="../scripts/cases2.js"></script>
+<script src="../scripts/weapons.js"></script>
 <script src="../scripts/openCase.js"></script>
 
 <script src="../scripts/navigationMenu.js"></script>
@@ -104,7 +105,7 @@ $(function () {
 		console.log(lastReward);
 		console.log(today);
 		// вчера или раньше
-		changePoints(DAILY_REWARD_POINTS);
+		Level.addEXP(DAILY_REWARD_POINTS);
 		Player.doubleBalance += getRank(Player.points).doubleBonus;
 		Lobibox.notify('info', {
 			pauseDelayOnHover : false,

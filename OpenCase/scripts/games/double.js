@@ -133,9 +133,8 @@ function startGame() {
                             $('#balance').text(Player.doubleBalance);
                             $('#menu_doubleBalance').text(Player.doubleBalance);
                             statisticPlusOne('double-wins');
-                            changePoints(2);
+                            Level.addEXP(2);
                         } else {
-                            changePoints(-1);
                             statisticPlusOne('double-loose');
                         }
 

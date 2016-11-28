@@ -743,6 +743,11 @@ Localization.jackpot = [{
     
     },
     Localization.profile = [{
+        "selector": ".stats__rank__text",
+        "localization": {
+            "RU": "Уровень"
+        }
+    }, {
         "selector": ".stats__inventory__text",
         "localization": {
             "RU": "Инвентарь"
