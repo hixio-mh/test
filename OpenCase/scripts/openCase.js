@@ -187,7 +187,7 @@ $(document).on("click", ".openCase", function() {
                     }
                 }
                 if (price == 0) {
-                    getMarketPrice(win.type, win.name, win.quality, win.statTrak, ".win_price");
+                    getMarketPrice(win.type, win.skinName, win.quality, win.statTrak, ".win_price");
                 } else {
                     win.statTrak = statTrak;
                     win.quality =  quality;
