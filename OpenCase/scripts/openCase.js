@@ -156,6 +156,8 @@ $(document).on("click", ".openCase", function() {
             win.type = type;
             win.quality = quality;
             
+            win.price = 0;
+            
             //try {
                 /*win.price = getPrice(win.type, win.skinName, win.quality, win.statTrak);
                 
