@@ -168,29 +168,31 @@ $(document).on("click", ".openCase", function() {
                 var price = getPrice(type, name, quality, statTrak);
                 
                 if (price == 0) {
-				for (var i = 0; i < Quality.length; i++) {
-					quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
-					quality = getQualityName(quality, Settings.language);
-					price = getPrice(type, name, quality, statTrak);
-					if (price != 0) break;
-				}
-			
-				if (price == 0) {
-					statTrak = !statTrak;
-			
-					for (var i = 0; i < Quality.length; i++) {
-						quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
-						quality = getQualityName(quality, Settings.language);
-						price = getPrice(type, name, quality, statTrak);
-						if (price != 0) break;
-					}
-				}
-			     }
-                if (price == 0)
-                    getMarketPrice(type, name, quality, statTrak, ".win_price");
-                win.statTrak = statTrak;
-                win.quality =  quality;
-                win.price = price;
+                    for (var i = 0; i < Quality.length; i++) {
+                        quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+                        quality = getQualityName(quality, Settings.language);
+                        price = getPrice(type, name, quality, statTrak);
+                        if (price != 0) break;
+                    }
+
+                    if (price == 0) {
+                        statTrak = !statTrak;
+
+                        for (var i = 0; i < Quality.length; i++) {
+                            quality = Quality[i].name[Settings.language == 'RU' ? 1 : 0];
+                            quality = getQualityName(quality, Settings.language);
+                            price = getPrice(type, name, quality, statTrak);
+                            if (price != 0) break;
+                        }
+                    }
+                }
+                if (price == 0) {
+                    getMarketPrice(win.type, win.name, win.quality, win.statTrak, ".win_price");
+                } else {
+                    win.statTrak = statTrak;
+                    win.quality =  quality;
+                    win.price = price;
+                }
             //}
 
             $(".win_price").html(win.price + "$");
