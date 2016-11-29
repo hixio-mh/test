@@ -156,12 +156,13 @@ $(document).on("click", ".openCase", function() {
             win.type = type;
             win.quality = quality;
             
-            try {
-                win = getPriceWithNewQuality(win);
+            //try {
+                /*win.price = getPrice(win.type, win.skinName, win.quality, win.statTrak);
+                
                 if (win.price == 0)
-                    getMarketPrice(type, name, quality, statTrak, ".win_price");
+                    getMarketPrice(type, name, quality, statTrak, ".win_price");*/
    
-            } catch (e) {
+            //} catch (e) {
                  type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
 
                 var price = getPrice(type, name, quality, statTrak);
@@ -190,7 +191,7 @@ $(document).on("click", ".openCase", function() {
                 win.statTrak = statTrak;
                 win.quality =  quality;
                 win.price = price;
-            }
+            //}
 
             $(".win_price").html(win.price + "$");
             

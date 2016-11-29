@@ -1,25 +1,22 @@
 var weapon_proto = {
-    item_id: 0,
-    quality: 0,
-    souvenir: false,
-    stattrak: false
-    
+    item_id: 0
+    , quality: 0
+    , souvenir: false
+    , stattrak: false
 }
+
 function Weapon(item_id, quality, stattrak, souvenir) {
     if (item_id) this.item_id = item_id;
     if (quality) this.quality = quality;
     if (stattrak) this.stattrak = stattrak;
     if (souvenir) this.souvenir = souvenir;
-    
-    this.toLi = function() {
+    this.toLi = function () {
         var weapon = fbInventory.reverseConvert(this);
-        var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>"+(this.stattrak == true ? "StatTrak™ " : "") + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
+        var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + (this.stattrak == true ? "StatTrak™ " : "") + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
         return wp;
     }
-    
     this.__proto__ = weapon_proto;
 }
-
 var fbInventory = (function (module) {
     'use strict';
     module = module || {};
@@ -41,7 +38,6 @@ var fbInventory = (function (module) {
         }
         return convertedInventory;
     };
-    
 
     function getQualityNum(quality) {
         var num = 0;
@@ -147,19 +143,15 @@ var fbInventory = (function (module) {
         convertedWeapon['stickers'] = null;
         convertedWeapon['quality'] = getQualityNum(weapon.quality);
         return convertedWeapon;
-        
         if (typeof convertedWeapon.item_id == 'undefined') convertedWeapon.item_id = 0;
         if (typeof convertedWeapon.stattrak == 'undefined') convertedWeapon.stattrak = false;
         if (typeof convertedWeapon.quality == 'undefined') convertedWeapon.quality = 0;
     };
-    module.checkForTradesWeapons = function() {
+    module.checkForTradesWeapons = function () {
         var uid = firebase.auth().currentUser.uid;
-        firebase.database().ref('tradeList/'+uid).once('value')
-        .then(function(snapshot) {
-            snapshot.forEach(function(childSnapshot) {
-                childSnapshot.forEach(function() {
-                    
-                })
+        firebase.database().ref('tradeList/' + uid).once('value').then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                childSnapshot.forEach(function () {})
             })
         })
     }
@@ -169,12 +161,13 @@ var fbInventory = (function (module) {
         weapon.quality = weapon.quality || 0;
         convertedWeapon.statTrak = weapon.stattrak || false;
         convertedWeapon.souvenir = weapon.souvenir || false;
-        convertedWeapon.quality  = getQualityName(weapon.quality);
-        if (weapon.souvenir) convertedWeapon.type = Localization.souvenir[Settings.language]+' '+convertedWeapon.type;
+        convertedWeapon.quality = getQualityName(weapon.quality);
+        if (weapon.souvenir) convertedWeapon.type = Localization.souvenir[Settings.language] + ' ' + convertedWeapon.type;
         try {
             convertedWeapon.skinName = getSkinName(convertedWeapon.skinName, Settings.language);
             convertedWeapon.price = getPrice(convertedWeapon.type, convertedWeapon.skinName, convertedWeapon.quality, convertedWeapon.stattrek);
-        } catch(e){}
+        }
+        catch (e) {}
         return convertedWeapon;
     }
     var weapons = [{
@@ -5091,6 +5084,108 @@ var fbInventory = (function (module) {
         , skinName: "Cosplay"
         , rarity: "rare"
         , img: "SteachCase/Karambit-Cosplay.png"
+    }, { // Glove case
+        id: 819
+        , type: "P2000"
+        , skinName: "Turf"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zPYgJSvozmxM2Yh_jmJ4Tdn2xZ_Iso3OjFrI6i3gXn-xA5MmD2cdWXJAdsMl7RrwS6w-a6g8e1tZWYyntrpGB8suGATXim"
+    }, {
+        id: 820
+        , type: "MAG-7"
+        , skinName: "Sonar"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou7uifDhh3szFcDoV09G3mIaEhfrLP7LWnn8fsMQp3eqYrNmg2FXgrUVsajz0J4OSIFQ6N17TrADtl-bph5G17cuamGwj5HefKFtC5g"
+    }, {
+        id: 821
+        , type: "MP9"
+        , skinName: "Sand Scale"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6r8FAZh7PvBdTgP4czvq4yCkP_gfeyGlG4B65V0jrGTotqm0Ae3_RJuN23xLIKXJlA9YFjYqAPqle_ohsSi_MOeHdPXcDU"
+    }, {
+        id: 822
+        , type: "Galil AR"
+        , skinName: "Black Sand"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbupIgthwczLZAJF7dC_mL-Khbr3MrbeqWdY781lxO-Y9Nun3FLh_UdrMTqicYWWJAA8MFmF8lXvwu67hMO6usvJm3tmuiE8pSGKxhAV22c"
+    }, {
+        id: 823
+        , type: "MP7"
+        , skinName: "Cirrus"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFABz7PXBfzxO08y5m4yPkvbwJenummJW4NE_37rEodvxjAXh-kdrN2qlJdORcQRrY1_TrgToxOa5g569vcvIyyEwsz5iuygvT6vVAA"
+    }, {
+        id: 824
+        , type: "Glock-18"
+        , skinName: "Ironwork"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3djFN79eJkIGZnLryMrfdqWdY781lxOiZ9omjjQDgqEE-NWz2cILHe1NrNFCErFPtlObvhZ656MmdynJm6CU8pSGKEgKyG1g"
+    }, {
+        id: 825
+        , type: "CZ75-Auto"
+        , skinName: "Polymer"
+        , rarity: "milspec"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpotaDyfgZf0v73cidUvuO7kr-HnvD8J_XUzzJV7MAj07rEoNrz3gWw_ERlY2GhLIWXdFI8MFDZ-1S7wubmgp6_ot2Xnh9O--Qm"
+    }, {
+        id: 826
+        , type: "USP-S"
+        , skinName: "Cyrex"
+        , rarity: "restricted"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh8j3KqnUjlRd4cJ5nqeXp4j3jVbn_BBpa2j0JteSJ1U8ZFHQ_lC5wbzmg8W4uZXMzyNg7yBx-z-DyCP_0gqK"
+    }, {
+        id: 827
+        , type: "Nova"
+        , skinName: "Gila"
+        , rarity: "restricted"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpouLWzKjhh3szGfitD08-3moS0m_7zO6-fxm9S6pV3ibmXoNii31Hk-hI6Nzj7cdXHIQ49Y1jY_1S_kOu5h8O1u4OJlyXObzUKtw"
+    }, {
+        id: 828
+        , type: "M4A1-S"
+        , skinName: "Flashback"
+        , rarity: "restricted"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhz2v_Nfz5H_uO1gb-Gw_alDL3dl3hZ6sRygdbN_Iv9nBrhrkU_YT32LITBcQU-YV7U-FTsx--71pbpvMjBmnBr73N2tHaLlxC0n1gSOTTnAQeD"
+    }, {
+        id: 829
+        , type: "G3SG1"
+        , skinName: "Stinger"
+        , rarity: "restricted"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposem2LFZf1OD3dm5R642JgombkuXLKr7dmmRG18l4jeHVu9n03wO3_ko-azrxLYPBcFM_YQ7S_QO2wunt1Je4usjAznE37nZw53rD30vgmcE2eQU"
+    }, {
+        id: 830
+        , type: "Dual Berettas"
+        , skinName: "Royal Consorts"
+        , rarity: "restricted"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3dShD4OO0kZKOg-P1IITWmWdV7ctOnOzP_I_wt1i9rBsofTz6dobDJwY7MFHX-FHslbjr05fovZ_Kz3JjuSh053ePyhe_iRFJaeNxxavJF_MOyuI"
+    }, {
+        id: 831
+        , type: "Sawed-Off"
+        , skinName: "Wasteland Princess"
+        , rarity: "classified"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopbuyLgNv1fX3cih9-8yJh4GckvP7Nb3ummJW4NE_3-qS89uki1bt-Uo5Zj3xLYSXIAQ7Ml_W_lXqwbi5hJ-0vcnAyyQyuj5iuyhoSspqEg"
+    }, {
+        id: 832
+        , type: "P90"
+        , skinName: "Shallow Grave"
+        , rarity: "classified"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopuP1FABz7OORIQJR5N26mI-cqPDmMq3UqWdY781lxLCVrdyk0VLhrRU-ZG-hd9WXdlVoNAyF-1jtyOft08Duv5mcyicw63Y8pSGKeWe5Vcs"
+    }, {
+        id: 833
+        , type: "FAMAS"
+        , skinName: "Mecha Industries"
+        , rarity: "classified"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposLuoKhRf1OD3dzxP7c-JmYWIn_bLP7LWnn8f65cnjrrH9o_22QHirRZuZTuiJ4WXd1NqZluC-Fi-yOy9hsO9tJ3Aymwj5Hdve0dwuA"
+    }, {
+        id: 834
+        , type: "M4A4"
+        , skinName: "Buzz Kill"
+        , rarity: "covert"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou-6kejhnwMzFJTwW08-zl5SEhcj4OrzZgiUAu5wh27GV9tyj3ADg8kc-YzjxJ9XBdg86N17Z-wO_k-nng5Lp7svA1zI97UBmtSOi"
+    }, {
+        id: 835
+        , type: "SSG 08"
+        , skinName: "Dragonfire"
+        , rarity: "covert"
+        , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0Ob3Yi5FvISJkJKKkPj6NbLDk1RC68phj9bN_Iv9nBqy_Eo4YjiiIYKRIFNtYA3Y-lnrkO7ngsDqv8zAzic3sykn4ynVyhK1n1gSOe-IjDmz"
     }];
     return module;
 }(fbInventory || {}))
