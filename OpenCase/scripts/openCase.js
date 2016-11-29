@@ -55,7 +55,7 @@ function fillCarusel(caseId) {
         return weapon.rarity == 'covert'
     }).mul(1).shuffle();
     var a5 = cases[caseId].weapons.filter(function(weapon) {
-        return weapon.rarity == 'rare'
+        return (weapon.rarity == 'rare' || weapon.rarity == 'extraordinary')
     }).mul(1).shuffle();
 
     if ((Math.rand(0, 10) > 7) && (a5.length + a4.length + a2.length + a1.length != 0)) {
@@ -68,14 +68,14 @@ function fillCarusel(caseId) {
         a5 = [];
     }
 
-    if (c0 == undefined) {
+    if (typeof c0 == 'undefined') {
         var arr = a0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
     } else {
         var arr = c0.concat(a0, a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
     }
     var el = '';
     while (arr.length <= (winNumber + 3)) {
-        arr = arr.concat(a1, a2, a3, a4).shuffle().shuffle();
+        arr = arr.concat(a1, a2, a3, a4, a5).shuffle().shuffle();
     }
 
     if (arr.length > winNumber + 3)
@@ -83,28 +83,23 @@ function fillCarusel(caseId) {
     arr.forEach(function(item, index) {
         var img = getImgUrl(item.img);
         var type = item.type;
-        if (type.indexOf("|") != -1) {
-            type = type.split("|")[1]
-        }
+        var rarity = item.rarity;
 
         type = $.trim(type.replace(/(Сувенир|Souvenir)/gi, ''));
         if (souvenirCase && !type.match(/(Сувенир|Souvenir)/))
             type = Localization.souvenir[Settings.language] + ' ' + type;
-
-        type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
-
-        if (item.rarity == 'rare') {
+        
+        if (rarity == 'rare' || rarity == 'extraordinary') {
             type = '★ Rare Special Item ★';
             name = '&nbsp;';
             img = '../images/Weapons/rare.png';
+            rarity = 'rare'
         } else {
             var name = getSkinName(item.skinName, Settings.language);
         }
-        if (item.rarity == 'rare')
-            img = '../images/Weapons/rare.png';
         el += '<div class="weapon">' +
             '<img src="' + img + '" />' +
-            '<div class="weaponInfo ' + item.rarity + '"><span class="type">' + type + '<br>' + name + '</span></div>' +
+            '<div class="weaponInfo ' + rarity + '"><span class="type">' + type + '<br>' + name + '</span></div>' +
             '</div>'
     })
 

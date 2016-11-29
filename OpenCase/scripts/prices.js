@@ -39010,4 +39010,40 @@ var Prices = [{
     quality: 'Factory New',
     marketPrice: 725,
     avgPrice: 45
+}, {
+    type: 'Hand Wraps',
+    name: 'Spruce DDPAT',
+    quality: 'Field-Tested',
+    marketPrice: 407.18,
+    avgPrice: 45
+}, {
+    type: 'Hand Wraps',
+    name: 'Leather',
+    quality: 'Field-Tested',
+    marketPrice: 316.74,
+    avgPrice: 45
+}, {
+    type: 'Specialist Gloves',
+    name: 'Forest DDPAT',
+    quality: 'Field-Tested',
+    marketPrice: 230,
+    avgPrice: 45
+}, {
+    type: 'Driver Gloves',
+    name: 'Lunar Weave',
+    quality: 'Minimal Wear',
+    marketPrice: 380.08,
+    avgPrice: 45
+}, {
+    type: 'Moto Gloves',
+    name: 'Cool Mint',
+    quality: 'Field-Tested',
+    marketPrice: 380.08,
+    avgPrice: 45
+}, {
+    type: 'Sport Gloves',
+    name: 'Pandora\'s Box',
+    quality: 'Field-Tested',
+    marketPrice: 394.81,
+    avgPrice: 45
 }, ]

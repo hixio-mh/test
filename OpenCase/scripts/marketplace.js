@@ -4,7 +4,6 @@ var Sales = [],
     minPriceForSale = 15,
     discount = 15;
 
-
 $(function() {
     $("#buy_count").change(function() {
         var count = $("#buy_count").val();
@@ -17,7 +16,7 @@ $(function() {
         newPrice = parseFloat(newPrice) * 100 * count;
         $("#buy-double").html(newPrice.toFixed(0));
     });
-}); 
+});
 
 $(document).ready(function() {
     $('.navigationBar').append('<span id="playerBalance">' + Player.doubleBalance + ' <i class="double-icon"></i></span>');
@@ -27,7 +26,8 @@ $(document).ready(function() {
         for (var z = 0; z < cases[i].weapons.length; z++) {
             var tp = cases[i].weapons[z].type;
             var name = getSkinName(cases[i].weapons[z].skinName, Settings.language);
-            if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1) autocompleteTags.push(tp + ' | ' + name);
+			var canBuy = typeof cases[i].weapons[z].canBuy == 'undefined' ? true : cases[i].weapons[z].canBuy;
+            if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1 && canBuy) autocompleteTags.push(tp + ' | ' + name);
         }
 
     $("#search_text").autocomplete({

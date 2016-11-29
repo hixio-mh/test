@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>Открытие кейса</title>
+<meta charset="utf-8">
 <script src="../scripts/build/libs.js"></script>
 <script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
@@ -89,28 +90,24 @@ function weaponList() {
 	var rare = false;
 	for (var i = 0; i < cases[caseId].weapons.length; i++) {
 		var weapon = cases[caseId].weapons[i];
-		if (weapon.rarity == 'rare' && rare == true)
+		if (weapon.rarity == 'rare' || weapon.rarity == 'extraordinary' && rare == true)
 			continue;
+		var type = weapon.type;
+		var name = weapon.skinName;
+        var rarity = weapon.rarity;
 		var img = getImgUrl(weapon.img);
 
-		var type = weapon.type;
-		if (type.indexOf("|") != -1) {
-			type = type.split("|")[1]
-		}
 		type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 
-		var name = weapon.skinName;
-		if (name.indexOf("|") != -1) {
-			name = name.split("|")[1]
-		}
 		name = getSkinName(name, Settings.language);
-		if (weapon.rarity == 'rare') {
+		if (rarity == 'rare' || rarity == 'extraordinary') {
 			type = '★ Rare Special Item ★';
 			name = '&nbsp;';
 			img = '../images/Weapons/rare.png';
+            rarity = 'rare';
 			rare = true;
 		}
-		var weaponInfo = "<img src=\"" + img + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
+		var weaponInfo = "<img src=\"" + img + "\"><div class='weaponInfo " + rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
 		$(".weaponsList").append("<li class='weapon animated fadeInDown'>" + weaponInfo + "</li>");
 	}
 	$(".weaponsList").css("display", "block");

@@ -1677,40 +1677,41 @@ var cases = [{
         "rarity": "covert",
         "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0Ob3Yi5FvISJkJKKkPj6NbLDk1RC68phj9bN_Iv9nBqy_Eo4YjiiIYKRIFNtYA3Y-lnrkO7ngsDqv8zAzic3sykn4ynVyhK1n1gSOe-IjDmz"
     }, {
-        "type": "★ Karambit",
-        "skinName": "Autotronic",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJk5O0nPbmMrbul35F59FjhefI9rP9jVWisiwwMiukcZiccQBtZVyF_lW7kLzvg8Xvup7Lz3Qx6CUj5iqLnBzhhxkZabBshKaaVxzAUIJQ4Np6"
+        "type": "★ Sport Gloves",
+        "skinName": "Pandora's Box",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1JmMR1osbaqPQJz7ODYfi9W9eOmgZKbm_LLPr7Vn35cppIp2uvA896kiQW1-hdvMT30I9fHIAA9MFqDrlntkLru1J67v5nBmHp9-n51oZE8XSM"
     }, {
-        "type": "★ Karambit",
-        "skinName": "Lore",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJl5W0nPbmMrbummRD7fp9g-7J4bP5iUazrl1rY2DzddPEdwFsYgnSqwPqyey6hZ_qvM6dm3pnunFx4n2LmxTj1x9PcKUx0uHhTF2B"
+        "type": "★ Driver Gloves",
+        "skinName": "Lunar Weave",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAX1R3LjtQurWzLhRfwP_BcjZ97tC3l4u0m_7zO6-fx2oCsMAk07-Z9tmh0VDg8hZramigcoOQIFU6N1DZ-FK8lO_m0JS66oOJlyXrKxYjaQ"
     }, {
-        "type": "★ Karambit",
-        "skinName": "Gamma Doppler",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf2PLacDBA5ciJlY20kvrxIbrdklRc6ddzhuzI74nxt1i9rBsoDDWiZtHAbFBoMgyGrlLsw-_ohsXv6JvMz3Ix6yF2t3mLnBDm1R4faLdvhvyYTVmAR_seWA9jz4E"
+        "type": "★ Hand Wraps",
+        "skinName": "Spruce DDPAT",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DfVlxgLQFFibKkJQN3wfLYYgJK7dKyg5KKh8j3MrbeqWxD7dxOh-zF_Jn4xlCyrktsZmvxINLBdw9vNA7T_Fbrx73vjJPptJucnHdqvCJwsSyImBypwUYblwFxuLY"
     }, {
-        "type": "★ M9 Bayonet",
-        "skinName": "Autotronic",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-MhMj5aoTTl3Ju6dBlhf3T-oL8i2u4ohQ0JwavdcTCJxhoaVmG_Fnoxua9hcS4vJrIznRjuHZx7XeLmRflhUxLP7NsgfPNTV-eGeUXSwZKyJQd"
+        "type": "★ Hand Wraps",
+        "skinName": "Leather",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DfVlxgLQFFibKkJQN3wfLYYgJK7dKyg5KKh8j4NrrFnm5D8fp8j-3I4IG7jgSy8xZpa2HyINXEdgZtMg7Q-gW5kObs15G9vZXIzyRiu3Zx4X3Zywv3308JRzw8kw"
     }, {
-        "type": "★ M9 Bayonet",
-        "skinName": "Lore",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Igsj5aoTTl3Ju5Mpjj9bJ8I3jkWu4qgE7NnfyIoDGdg4_YwrYqAS8xrvthcK6vMyfyXBnsiFzti2Pyxe0g0tKbeFrm7XAHjZ37Nzu"
+        "type": "★ Specialist Gloves",
+        "skinName": "Forest DDPAT",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDL_VhmpF18Jjj-zPyo_0hVuLphY4OiyuOoTDdgFoMArYrAS7l7_rg5W-7pzOmnRq7yUnty7YyRSzhUpEZ7Ft1_2ACQLJ0i7bxGA"
     }, {
-        "type": "★ M9 Bayonet",
-        "skinName": "Freehand",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-Kmsj5Mqnak29u_dVO07n--InxgUG5lB89IT6mOtXAIwE4YlnW8lW7yebp05Tpv5rJmCQ26Scl7HfanBfjhkkaZrNph_GACQLJ_Utp8Mc"
-    }, {
-        "type": "★ M9 Bayonet",
-        "skinName": "Gamma Doppler",
-        "rarity": "rare",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-KmsjxPr7Dl2dV18hwmOvN8IXvjVCLpxo7Oy2ceNfXJVMgZAyB_lDqlL--15G97Z7AyyZividw5i6MyUeygBpEPLM90PDPHArKBrsJQvdXl_RMjw"
+        "type": "★ Moto Gloves",
+        "skinName": "Cool Mint",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDK_Dn2pf78l0tevN4InKhVGwogYxfWj1II6cdFQ9YgqBqAO7wry51Je8tZSawHc3vChw7S7byhK20hxLOuBxxavJFO0HS7A"
     }, ]
 }, {
     "name": "Gamma 2",
