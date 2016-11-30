@@ -2,15 +2,16 @@
 <html>
 <head>
 <title>Открытие кейса</title>
-<meta charset="utf-8">
+    <meta charset="utf-8">
 <script src="../scripts/build/libs.js"></script>
 <script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/quality.js"></script>
 <script src="../scripts/skinNames.js"></script>
-<script src="../scripts/prices.js"></script>
+<script src="../scripts/prices2.js"></script>
 <script src="../scripts/openCase.js"></script>
+<script src="../scripts/weapons.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -88,26 +89,29 @@ $(function(){
 $('#what-i-can-win-Button').on('click', function(){weaponList()});
 function weaponList() {
 	var rare = false;
-	for (var i = 0; i < cases[caseId].weapons.length; i++) {
-		var weapon = cases[caseId].weapons[i];
-		if ((weapon.rarity == 'rare' || weapon.rarity == 'extraordinary') && rare == true)
+    var weaponsArray = [];
+    if (cases[caseId].weapons)
+        weaponsArray = getWeaponsById(cases[caseId].weapons);
+    if (cases[caseId].knives)
+        weaponsArray = weaponsArray.concat(getWeaponsById(cases[caseId].knives));
+	for (var i = 0; i < weaponsArray.length; i++) {
+		var weapon = weaponsArray[i];
+		if (weapon.rarity == 'rare' && rare == true)
 			continue;
-		var type = weapon.type;
-		var name = weapon.skinName;
-        var rarity = weapon.rarity;
 		var img = getImgUrl(weapon.img);
+
+		var type = weapon.type;
 
 		type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 
-		name = getSkinName(name, Settings.language);
-		if (rarity == 'rare' || rarity == 'extraordinary') {
+		var name = getSkinName(weaponsArray[i].skinName, Settings.language);
+		if (weapon.rarity == 'rare') {
 			type = '★ Rare Special Item ★';
 			name = '&nbsp;';
 			img = '../images/Weapons/rare.png';
-            rarity = 'rare';
 			rare = true;
 		}
-		var weaponInfo = "<img src=\"" + img + "\"><div class='weaponInfo " + rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
+		var weaponInfo = "<img src=\"" + img + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
 		$(".weaponsList").append("<li class='weapon animated fadeInDown'>" + weaponInfo + "</li>");
 	}
 	$(".weaponsList").css("display", "block");
