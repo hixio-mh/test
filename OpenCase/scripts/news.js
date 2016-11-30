@@ -404,7 +404,7 @@ var news = [{
     "month": 11,
     "year": 2016,
     "update": {
-        "RU": " - [Исправлено] Баганные скриншоты скинов из Glove кейса.<br> - [Исправлено] Баг с исчезновением ножей кейсов.",
-        "EN": " - [New] The Glove Case! You can't buy gloves in market. You can get it only from case/trade."
+        "RU": " - [Исправлено] Баганные скриншоты скинов из Glove кейса.<br> - [Исправлено] Баг с исчезновением ножей кейсов.<br> - [Добавлено] 2 новых скина перчаток.",
+        "EN": " - [Fixed] Wrong skins screenshots in the Glove case.<br> - [Fixed] No knives in cases.<br> - [New] 2 new glove skins."
     }
 }, ];
