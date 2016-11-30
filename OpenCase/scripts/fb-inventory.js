@@ -5205,23 +5205,35 @@ var fbInventory = (function (module) {
         , rarity: "extraordinary"
         , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DfVlxgLQFFibKkJQN3wfLYYgJK7dKyg5KKh8j3MrbeqWxD7dxOh-zF_Jn4xlCyrktsZmvxINLBdw9vNA7T_Fbrx73vjJPptJucnHdqvCJwsSyImBypwUYblwFxuLY"
     }, {
-        id: 838
+        id: 839
         , type: "★ Hand Wraps"
         , skinName: "Leather"
         , rarity: "extraordinary"
         , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DfVlxgLQFFibKkJQN3wfLYYgJK7dKyg5KKh8j4NrrFnm5D8fp8j-3I4IG7jgSy8xZpa2HyINXEdgZtMg7Q-gW5kObs15G9vZXIzyRiu3Zx4X3Zywv3308JRzw8kw"
     }, {
-        id: 838
+        id: 840
         , type: "★ Specialist Gloves"
         , skinName: "Forest DDPAT"
         , rarity: "extraordinary"
         , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDL_VhmpF18Jjj-zPyo_0hVuLphY4OiyuOoTDdgFoMArYrAS7l7_rg5W-7pzOmnRq7yUnty7YyRSzhUpEZ7Ft1_2ACQLJ0i7bxGA"
     }, {
-        id: 838
+        id: 841
         , type: "★ Moto Gloves"
         , skinName: "Cool Mint"
         , rarity: "extraordinary"
         , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDK_Dn2pf78l0tevN4InKhVGwogYxfWj1II6cdFQ9YgqBqAO7wry51Je8tZSawHc3vChw7S7byhK20hxLOuBxxavJFO0HS7A"
+    }, {
+		id: 842,
+        type: "★ Moto Gloves",
+        skinName: "Eclipse",
+        rarity: "extraordinary",
+        img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDLnQhWJS18d9i-rKyoTwiUKt5RI4NWimIdLBcAFraVyE_Ae8kOjv1MW7uZTBmCNkvygh5XbYzkO0gklSLrs49Bcipm8"
+    }, {
+		id: 843,
+        type: "★ Specialist Gloves",
+        skinName: "Foundation",
+        rarity: "extraordinary",
+        img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDLTDl2VW7fpmguDV8LP4jVC9vh5yYWqldoSXcFM5ZlrRqATtwersh57tvMzAmiY2vyF0t3rYyRy3hRxPavsv26Lj6N29Hg"
     }];
     return module;
 }(fbInventory || {}))

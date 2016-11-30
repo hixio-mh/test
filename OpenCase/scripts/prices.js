@@ -39029,6 +39029,12 @@ var Prices = [{
     marketPrice: 230,
     avgPrice: 45
 }, {
+    type: 'Specialist Gloves',
+    name: 'Foundation',
+    quality: 'Field-Tested',
+    marketPrice: 352.22,
+    avgPrice: 45
+}, {
     type: 'Driver Gloves',
     name: 'Lunar Weave',
     quality: 'Minimal Wear',
@@ -39039,6 +39045,12 @@ var Prices = [{
     name: 'Cool Mint',
     quality: 'Field-Tested',
     marketPrice: 380.08,
+    avgPrice: 45
+}, {
+    type: 'Moto Gloves',
+    name: 'Eclipse',
+    quality: 'Battle-Scarred',
+    marketPrice: 190.99,
     avgPrice: 45
 }, {
     type: 'Sport Gloves',

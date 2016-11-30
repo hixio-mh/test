@@ -399,4 +399,12 @@ var news = [{
         "RU": " - [Добавлено] Новый Glove кейс. Перчатки нельзя купить в магазине, только выбить из кейса.",
         "EN": " - [New] The Glove Case! You can't buy gloves in market. You can get it only from case/trade."
     }
+}, {
+    "day": 30,
+    "month": 11,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Баганные скриншоты скинов из Glove кейса.<br> - [Исправлено] Баг с исчезновением ножей кейсов.",
+        "EN": " - [New] The Glove Case! You can't buy gloves in market. You can get it only from case/trade."
+    }
 }, ];

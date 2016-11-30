@@ -1615,12 +1615,12 @@ var cases = [{
         "type": "MP7",
         "skinName": "Cirrus",
         "rarity": "milspec",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFABz7PXBfzxO08y5m4yPkvbwJenummJW4NE_37rEodvxjAXh-kdrN2qlJdORcQRrY1_TrgToxOa5g569vcvIyyEwsz5iuygvT6vVAA"
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFABz7PXBfzxO08y5m4yPkvbwJenummJW4NE_2bnE9N720Fft-Ec-Z2CldYbEd1M8M1CD_1HrkubnhcW9vMjLn3Bqvz5iuyjHksjlGg"
     }, {
         "type": "Glock-18",
         "skinName": "Ironwork",
         "rarity": "milspec",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3djFN79eJkIGZnLryMrfdqWdY781lxOiZ9omjjQDgqEE-NWz2cILHe1NrNFCErFPtlObvhZ656MmdynJm6CU8pSGKEgKyG1g"
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3djFN79eJkIGZnLryMrfdqWdY781lxOjCptn22ga2qEZsZW_zd46cJ1VoNF_W_1XrlOfs18S16p3JmyZl7CQ8pSGKL8GUOzY"
     }, {
         "type": "CZ75-Auto",
         "skinName": "Polymer",
@@ -1630,7 +1630,7 @@ var cases = [{
         "type": "USP-S",
         "skinName": "Cyrex",
         "rarity": "restricted",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh8j3KqnUjlRd4cJ5nqeXp4j3jVbn_BBpa2j0JteSJ1U8ZFHQ_lC5wbzmg8W4uZXMzyNg7yBx-z-DyCP_0gqK"
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh8j3KqnUjlRd4cJ5nqfC9Inz3VHtrRJrNmj6d4XEdlBqZw7R-VTqxr-6hJS-uJjAm3FnsnQi-z-DyGAd0sdD"
     }, {
         "type": "Nova",
         "skinName": "Gila",
@@ -1650,7 +1650,7 @@ var cases = [{
         "type": "Dual Berettas",
         "skinName": "Royal Consorts",
         "rarity": "restricted",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3dShD4OO0kZKOg-P1IITWmWdV7ctOnOzP_I_wt1i9rBsofTz6dobDJwY7MFHX-FHslbjr05fovZ_Kz3JjuSh053ePyhe_iRFJaeNxxavJF_MOyuI"
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3dShD4OO0kZKOg-P1IITWmWdV7ctOnOzP_I_wt1i9rBsofWvwcIGWJlQ4Mg7SqFPvxr-5h5C4vZmdy3RgvSMj4n6Jyxbl1BhKPORxxavJR7JVvdI"
     }, {
         "type": "Sawed-Off",
         "skinName": "Wasteland Princess",
@@ -1675,7 +1675,7 @@ var cases = [{
         "type": "SSG 08",
         "skinName": "Dragonfire",
         "rarity": "covert",
-        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0Ob3Yi5FvISJkJKKkPj6NbLDk1RC68phj9bN_Iv9nBqy_Eo4YjiiIYKRIFNtYA3Y-lnrkO7ngsDqv8zAzic3sykn4ynVyhK1n1gSOe-IjDmz"
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0Ob3Yi5FvISJkJKKkPj6NbLDk1RC68phj9bN_Iv9nBrg80FkZmGgLdKVeg46ZFyC_lPrxO25hZTotZ_OmHphuiNx43aJyUa1n1gSOaKu3f6c"
     }, {
         "type": "★ Sport Gloves",
         "skinName": "Pandora's Box",
@@ -1712,6 +1712,18 @@ var cases = [{
         "rarity": "extraordinary",
         canBuy: false,
         "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDK_Dn2pf78l0tevN4InKhVGwogYxfWj1II6cdFQ9YgqBqAO7wry51Je8tZSawHc3vChw7S7byhK20hxLOuBxxavJFO0HS7A"
+    }, {
+        "type": "★ Moto Gloves",
+        "skinName": "Eclipse",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDLnQhWJS18d9i-rKyoTwiUKt5RI4NWimIdLBcAFraVyE_Ae8kOjv1MW7uZTBmCNkvygh5XbYzkO0gklSLrs49Bcipm8"
+    }, {
+        "type": "★ Specialist Gloves",
+        "skinName": "Foundation",
+        "rarity": "extraordinary",
+        canBuy: false,
+        "img": "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDLTDl2VW7fpmguDV8LP4jVC9vh5yYWqldoSXcFM5ZlrRqATtwersh57tvMzAmiY2vyF0t3rYyRy3hRxPavsv26Lj6N29Hg"
     }, ]
 }, {
     "name": "Gamma 2",

@@ -90,7 +90,7 @@ function weaponList() {
 	var rare = false;
 	for (var i = 0; i < cases[caseId].weapons.length; i++) {
 		var weapon = cases[caseId].weapons[i];
-		if (weapon.rarity == 'rare' || weapon.rarity == 'extraordinary' && rare == true)
+		if ((weapon.rarity == 'rare' || weapon.rarity == 'extraordinary') && rare == true)
 			continue;
 		var type = weapon.type;
 		var name = weapon.skinName;
