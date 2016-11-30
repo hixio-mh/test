@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FAQ</title>
+        <meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+
+		<script src="../scripts/jquery.min.js"></script>
+		<script src="../scripts/jquery.cookie.js"></script>
+		<script src="../scripts/main.js"></script>
+		<script src="../scripts/settings.js"></script>
+		<script src="../scripts/cases2.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+
+		<script src="../scripts/navigationMenu.js"></script>
+		<link rel="stylesheet" href="../css/navigationMenu.css" />
+
+		<script src="../scripts/localization.js"></script>
+
+	<style>
+		body {
+		color: #fff;
+		}
+		ul.faq-list {
+		padding: 0 10px;
+		list-style: none;
+		}
+		.faq-list li {
+		margin: 15px 0;
+		}
+		.question {
+		text-transform: uppercase;
+		background: #688798;
+		display: inline-block;
+		padding: 5px 8px;
+		border-radius: 5px 5px 0 0;
+		text-shadow: 0px 0px 2px RGBA(0, 0, 0, 0.27);
+		}
+		.answer {
+		background: #ededed;
+		display: block;
+		padding: 9px;
+		border-radius: 0 5px 5px 5px;
+		color: #000;
+		}
+		.answer li {
+			margin: 5px 0;
+		}
+	</style>
+	</head>
+	<body data-localization='faq'>
+		<div class="site-overlay"></div>
+		<div id='container'>
+		<div class="navigationBar" data-menu-EN="FAQ" data-menu-RU="FAQ"></div>
+			<ul class='faq-list'>
+				<li>
+					<span class='question' id='js-local-question-1'>Как играть в рулетку?</span>
+					<span class='answer' id='js-local-answer-1'>Максимальное число предметов, которые можно добавить: 15.<br> Максимальная стоимость - неограничена.<br>Игра начинается как только набирается 50 предметов.<br>Если вы добавили предметы и вышли из рулетки - предметы пропадают.</span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-2'>Почему цена предмета $0?</span>
+					<span class='answer' id='js-local-answer-2'>Цена предмета берется из базы. Если в базе нет цены, берётся с Торговой площадки стима. Если и там нет, тогда $0.<br>Если в стиме появился этот предмет, а у вас в инвентаре до сих пор цена $0 - откройте описание предмета, подождите пока загрузиться цена, закройте описание предмета и перезайдите в инвентарь.</span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-trade'>Как обмениваться предметами?</span>
+					<span class='answer' id='js-local-answer-trade'>Для начала необходимо включить обмен в настройках.<br><b>Как отправить предложение обмена</b><br>
+                        <ol>
+                            <li>Откройте профиль другого игрока (он тоже должен включить обмен в настройках)</li>
+                            <li>Нажмите на значок обмена (<i class="fa fa-exchange" aria-hidden="true"></i>)</li>
+                            <li>Выберите оружие, которое хотите отправить игроку и нажмите "Далее"</li>
+                            <li><s>Выберите оружие, которое хотите получить от игрока и нажмите "Далее"</s> (На данный момен просмотр инвентаря другого игрока невозможен)</li>
+                            <li>Если вы хотите подарить эти предметы (и ничего не получить взамен), поставьте галочку напротив строки "Это подарок".</li>
+                            <li>Нажмите кнопку "Отправить обмен"</li>
+                        </ol>
+                        <b>Как получить предметы</b>
+                        <ol>
+                            <li>Откройте свой профиль</li>
+                            <li>Нажмите на значок обмена (<i class="fa fa-exchange" aria-hidden="true"></i>)</li>
+                            <li>Из списка выберите игрока, с которым хотите обменяться предметами (если нажать на его аватарку, можно открыть его профиль)</li>
+                            <li>Выберите нужный трейд</li>
+                            <li>Добавьте свои предметы</li>
+                            <li>Когда будете готовы, поставьте галочку напротив поля "Отметьте, когда будете готовы к обмену"</li>
+                            <li>Подождите пока другой игрок тоже поставит галочку и нажмите кнопку "Совершить обмен". Или её может нажать другой игрок.</li>
+                        </ol>
+                        Если другой игрок нажал кнопку "Совершить обмен", когда вы были не в окне обмена, откройте этот трейд, чтобы получить предметы.
+                    </span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-rank'>Как поднять ранг?</span>
+					<span class='answer' id='js-local-answer-rank'>Чтобы повысить ранг, нужно заработать очки. Очки, даются за следующие действия:<ul><li>Открыть приложение — <i class='js-var' data-var='DAILY_REWARD_POINTS'></i> очков (награда даётся раз в день)</li><li>Открыть кейс — <i class='js-var' data-var='OPEN_CASE_REWARD_POINTS'></i> очко</li><li>Победить в мини-игре — <i class='js-var' data-var='GAME_WIN_REWARD_POINTS'></i> очка</li></ul></span>
+				</li>
+				<li>
+					<span class='question' id='js-local-question-3'>Я нашел ошибку, что делать?</span>
+					<span class='answer' id='js-local-answer-3'>Срочно пишите на почту: <b>kurtukovvlad@gmail.com</b></span>
+				</li>
+			</ul>
+		</div>
+		<script>
+		</script>
+	</body>
+</html>

@@ -1,0 +1,139 @@
+.corner_holder {
+  position: relative;
+  display: inline-block;
+  transition-duration: 0.5s;
+}
+.corner_left:before,.corner_left:after, .corner_right:before,.corner_right:after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  display: block;
+  position: absolute;
+  border-color: #04AADC;
+  color: #04AADC;
+}
+.corner_left:before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+.corner_left:after {
+  bottom: 0;
+  left: 0;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+}
+.corner_right:before {
+  top: 0;
+  right: 0;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+.corner_right:after {
+  right: 0;
+  bottom: 0;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+button.button_glass {
+    font-size: 1.1em;
+    background: rgba(0, 0, 0, 0.1);
+    border: 2px solid #23699a;
+    color: #fff;
+    box-shadow: 0 0px 10px rgba(24, 135, 177, 0.53) inset;
+    padding: 5px;
+    position: relative;
+    min-width: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+}
+button.button_glass:hover {
+    box-shadow: 0 0px 10px rgb(24, 135, 177) inset;
+}
+button.button_glass:active {
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5) inset;
+}
+.button_glass:disabled {
+    -webkit-filter: grayscale(1);
+    opacity: 0.5;
+}
+.button_black {
+    position: relative;
+    border: none;
+    background: #3E3E3E;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 2px;
+    padding: 6px;
+    box-shadow: 0 0 10px #000 inset;
+    margin: 3px 3px 5px 3px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+}
+.button_black:hover {
+    color: #0ACEFE;
+}
+.button_black:active {
+    box-shadow: 0 0 20px #000 inset;
+    color: #00A4CC;
+}
+.button_black:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+button.with_icon {
+  padding-left: calc(1em + 10px);
+}
+button.double_icon:before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: url(../images/double/coin-white.png);
+    background-size: cover;
+    vertical-align: middle;
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.button_blue {
+    border: none;
+    color: #fff;
+    border-radius: 2px;
+    padding: 5px 20px;
+    text-align: center;
+    font-family: Lato;
+    font-weight: Bold;
+    background: #00ACEF;
+    background: linear-gradient(to bottom, #00ACEF, #0E81AE);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.button_blue:hover {
+    background: #29C3FF;
+    background: linear-gradient(to bottom, #29C3FF, #1085B3);
+}
+.button_blue:active {
+    background: #0E81AE;
+    background: linear-gradient(to top, #00ACEF, #0E81AE);
+    box-shadow: 0 0 2px rgba(0,0,0,0.5) inset;
+}
+.button_blue:disabled {
+    opacity: 0.5;
+}
+.button_blue.empty {
+    background: transparent;
+    border: 1px solid #00ACEF;
+    color: #00ACEF;
+    box-shadow: none;
+}

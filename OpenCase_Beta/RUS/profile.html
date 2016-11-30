@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Профиль</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/rarity.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
+    <link rel="stylesheet" type="text/css" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/lobibox.min.css" />
+    <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/fb-inventory.js"></script>
+    <script src="../scripts/weapons.js"></script>
+    <script src="../scripts/skinNames.js"></script>
+    <script src="../scripts/prices.js"></script>
+    <script src="../scripts/quality.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/cases2.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/profile-page.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    <script src="../scripts/localization.js"></script>
+    <script src="../scripts/inventory.js"></script>
+</head>
+
+<body data-localization='profile'>
+    <div class="site-overlay"></div>
+    <div id="container">
+        <div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
+        <div class="top__bg"></div>
+        <div class="left-side" style="display:none;"> <i class="edit-profile fa fa-pencil-square-o" aria-hidden="true"></i> <i class="save-profile fa fa-floppy-o" aria-hidden="true" style="display:none"></i> </div>
+        <div class="right-side" style="display:none;"><i class="sign-out fa fa-sign-out" aria-hidden="true"></i></div>
+        <div class="top">
+            <div class="top__profile">
+                <h1 class="profile__name">Loading...</h1>
+                <!--<h3 class="profile__status">Test status</h3> --></div>
+            <div class="top_actions">
+                <div class="top__pm disabled"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+                <img src="" class="profile__img">
+                <div class="top__trade disabled" disabled="true"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stats__rank stats__block">
+                <div class="stats__rank__rank stat__num"></div>
+                <div class="stats__rank__text stat__text">Level</div>
+            </div>
+            <div class="stats__line"></div>
+            <div class="stats__inventory stats__block">
+                <div class="stats__inventory__count stat__num">?</div>
+                <div class="stats__inventory__text stat__text">Inventory</div>
+            </div>
+            <div class="stats__line"></div>
+            <div class="stats__inventory stats__block">
+                <div class="rep-container">
+                    <div class="rep rep-plus"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                    <div class="stats__rate__count stat__num">0</div>
+                    <div class="rep rep-minus"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                </div>
+                <div class="stats__rate__text stat__text">Reputation</div>
+            </div>
+        </div>
+        <div class="moder-menu" style="display: none">
+            <div class='block-container'><button class="button_blue" id='block-chat' data-action="block">Chat ban</button><div class='block-reason' id='block-chat-reason'>Chat doesn't banned</div></div>
+            <div class='block-container'><button class="button_blue" id='block-trade' data-action="block">Trade ban</button><div class='block-reason' id='block-trade-reason'>Trades doesn't banned</div></div>
+        </div>
+        <div class="posts">
+            <div class="posts__new-post">
+                <div class="new-post__text" contenteditable="true" placeholder="Есть чем поделиться?"></div>
+                <button class="button_blue" value="Send" id="send-new-post">Send</button>
+            </div>
+            <ul class="posts__user-posts"> </ul>
+        </div>
+        
+        
+        <div class='trade-window' style='display: none;'>
+            <div class='trade__header'>
+                <div class='trade-back' style="display: none"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                <span class='trade__header__title'>Trade</span>
+                <div class='closeCase' id='close-trade-window'></div>
+            </div>
+            <div class='my-trades'>
+                <ul class='my-trades-list'></ul>
+                <ul class='my-trades__trades-with-user'></ul>
+                <div class='trade__weapons__summ'>
+                    <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <img src='' class='trade-user-img user-profile-img'>
+                                <div>
+                                    <span class='you-offer-text'>Your offerings:</span>
+                                    <span class='you-offer-info'>These are the items you will lose in the trade.</span>
+                                </div>
+                            </div>
+                            <div id='my-trades__your-offer'></div>
+                        </div>
+                        <div class='checkbox-trade-ready'><input type='checkbox' id='you-ready-to-trade'></input><label for='you-ready-to-trade' id='locale-ready-to-trade'>Check this box when ready to trade.</label></div>
+                        <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <span class='other-player-ready not-ready'>Not ready</span>
+                                <img src='' class='trade-user-img other-user-profile-img'>
+                                <div>
+                                    <span class='other-offer-text'>Other player offerings:</span>
+                                    <span class='other-offer-info'>These are the items you will receive in the trade.</span>
+                                </div>
+                            </div>
+                            <div id='my-trades__other-offer'></div>
+                        </div>
+                        <div class='trade__button-container column'>
+                            <button class='trade__button button_blue empty' id='change-weapons-trade'>Change your offer</button>
+                            <div class='trade__button-container'>
+                                <button class='trade__button button_blue empty' id='cancel-trade'>Cancel trade</button>
+                                <button class='trade__button button_blue' id='make-trade'>Make trade</button>
+                            </div>
+                        </div> 
+                </div>
+            <div class='trade__weapons__chang-your-weapons' style='display: none'>
+                <ul class='inventory inv-price-counter inventoryList' id='change-your-weapons'>
+                </ul>
+                <div class='trade__button-container'>
+                    <button class='trade__button button_blue empty' onclick='$(".trade-back").click()' id='locale-back'>Back</button>
+                    <button class='trade__button button_blue' id='add-weapons'>Add items</button>
+                </div>
+            </div> 
+            </div>
+            <div class='send-trade-window'>
+                <div class='trade__menu'>
+                    <span class='trade__menu__item active' id='trade-menu-your-items'>Your inventory</span>
+                    <span class='trade__menu__item' id='trade-menu-player-items'>Their inventory</span>
+                    <span class='trade__menu__item' id='trade-menu-summ'>Summary</span>
+                </div>
+                <div class='trade__weapons inventoryList'>
+                    <ul class='trade__weapons__player1 inventory inv-price-counter no_delete'></ul>
+                    <ul class='trade__weapons__player2'>
+                        <li class="locale-other-inventory-WIP">WIP. Send trade and wait for other player add something.</li>
+                    </ul>
+                    <div class='trade__weapons__summ'>
+                        <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <img src='' class='trade-user-img user-profile-img'>
+                                <div>
+                                    <span class='you-offer-text'>Your offerings:</span>
+                                    <span class='you-offer-info'>These are the items you will lose in the trade.</span>
+                                </div>
+                            </div>
+                            <ul class='port-inventory inv-no-select summ-inventory summ-your-offer' id='summ-your-offer'>
+                            </ul>
+                        </div>
+                        <div class='checkbox-trade-ready'><input type='checkbox' id='trade-its-gift'></input><label for='trade-its-gift' id='locale-gift'>It's a gift.</label></div>
+                        <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <span class='other-player-ready not-ready'>Not ready</span>
+                                <img src='' class='trade-user-img other-user-profile-img'>
+                                <div>
+                                    <span class='other-offer-text'>Other player offerings:</span>
+                                    <span class='other-offer-info'>These are the items you will receive in the trade.</span>
+                                </div>
+                            </div>
+                            <ul class='port-inventory inv-no-select summ-inventory' id='summ-other-offer'>
+                                <li class="locale-other-inventory-WIP">Send trade and wait for other player add something.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='trade__button-container'>
+                    <button class='trade__button button_blue empty' id='back-step'>Back</button>
+                    <button class='trade__button button_blue empty' id='next-step'>Next</button>
+                    <button class='trade__button button_blue' id='send-trade'>Send trade</button>
+                </div>
+            </div>
+        </div>
+        
+    <!--<div style='position: fixed;bottom: 0;background: #a41919;padding: 5px;width: 100%;text-align: center;' id='local-trades-off'>Трейды выключены для исправления.<br>Сегодня будут включены обратно.</div>-->
+    </div>
+</body>
+
+</html>

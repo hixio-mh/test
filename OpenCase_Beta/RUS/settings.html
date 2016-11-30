@@ -1,0 +1,498 @@
+<html>
+<head>
+<title>Настройки</title>
+    <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/inventory.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/lobibox.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/iconselect/iconselect.css">
+
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/jackpotBots.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+<!--IconSelect-->
+<script src="../scripts/iconselect/iconselect.js"></script>
+<script src="../scripts/iconselect/iscroll.js"></script>
+
+<style>
+body {
+    color: #fff;
+	font-family: LatoRegular;
+	background: #19212b;
+	margin: 0;
+}
+.settings {
+    padding: 1px;
+}
+.box {
+	z-index:5;
+}
+.option-block {
+    font-size: 1em;
+}
+.option-block__name {
+    color: #f1ff8a;
+	margin: 15px 0 5px 15px;
+    display: block;
+}
+.option {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+}
+.option > * {
+    display: block;
+    margin-left: 15px;
+    margin-top: 10px;
+	margin-right: 15px;
+}
+.option > *:nth-child(1) {
+    margin-top: 0;
+}
+.inline > * {
+	display: inline-block;
+}
+div#avatar {
+    margin-top: 10px;
+}
+.Button {
+   border: 1px solid #ffffff;
+   background: #589c3e;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65d68c), to(#589c3e));
+   background: -webkit-linear-gradient(top, #65d68c, #589c3e);
+   background: -moz-linear-gradient(top, #65d68c, #589c3e);
+   background: -ms-linear-gradient(top, #65d68c, #589c3e);
+   background: -o-linear-gradient(top, #65d68c, #589c3e);
+   padding: 8px 16px;
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+   border-radius: 6px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   text-shadow: #000000 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: helvetica, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   margin: 0 auto;
+	display: block;
+}
+.Button:hover {
+   border: 1px solid #ffffff;
+   text-shadow: #000000 0 1px 0;
+   background: #589c3e;
+   background: -webkit-gradient(linear, left top, left bottom, from(#93f0b2), to(#589c3e));
+   background: -webkit-linear-gradient(top, #93f0b2, #589c3e);
+   background: -moz-linear-gradient(top, #93f0b2, #589c3e);
+   background: -ms-linear-gradient(top, #93f0b2, #589c3e);
+   background: -o-linear-gradient(top, #93f0b2, #589c3e);
+   color: #fff;
+}
+.Button:active {
+   text-shadow: #000000 0 1px 0;
+   border: 1px solid #ffffff;
+   background: #65d68c;
+   background: -webkit-gradient(linear, left top, left bottom, from(#589c3e), to(#589c3e));
+   background: -webkit-linear-gradient(top, #589c3e, #65d68c);
+   background: -moz-linear-gradient(top, #589c3e, #65d68c);
+   background: -ms-linear-gradient(top, #589c3e, #65d68c);
+   background: -o-linear-gradient(top, #589c3e, #65d68c);
+   color: #fff;
+}
+#reset {
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a2d6), to(#3e5d9c));
+   background: -webkit-linear-gradient(top, #65a2d6, #3e5d9c);
+   background: -moz-linear-gradient(top, #65a2d6, #3e5d9c);
+   background: -ms-linear-gradient(top, #65a2d6, #3e5d9c);
+   background: -o-linear-gradient(top, #65a2d6, #3e5d9c);
+}
+#reset:hover, reset:active {
+   background: -webkit-gradient(linear, left top, left bottom, from(#92c5f0), to(#50699e));
+   background: -webkit-linear-gradient(top, #92c5f0, #50699e);
+   background: -moz-linear-gradient(top, #92c5f0, #50699e);
+   background: -ms-linear-gradient(top, #92c5f0, #50699e);
+   background: -o-linear-gradient(top, #92c5f0, #50699e);
+}
+.switch {
+    width: 2.67em;
+    height: 1.35em;
+    background: #e5e5e5;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+}
+.switch:before {
+    content: ' ';
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 2.59em;
+    height: 1.31em;
+    background: #fff;
+    z-index: 1;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+}
+.switch:after {
+    content: ' ';
+    height: 1.24em;
+    width: 1.24em;
+    border-radius: 28px;
+    background: #fff;
+    position: absolute;
+    z-index: 2;
+    top: 1px;
+    left: 1px;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-box-shadow: 0 2px 5px #999999;
+    box-shadow: 0 2px 5px #999999;
+}
+.switchOn, .switchOn:before {
+	background: #4cd964 !important;
+}
+.switchOn:after {
+    left: 1.36em !important;
+}
+.switch-label {
+	float: right;
+	margin-top: 0;
+}
+.lobibox-body-text {
+	color: #000;
+}
+#code {
+    display: none;
+}
+#code-input {
+    max-width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    background: #2D3035;
+    color: #b6b6b6;
+    margin: 3px 5px;
+    width: calc(100% - 10px);
+    font-family: Lato;
+    font-weight: 900;
+    border: 1px solid RGBA(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 1px 1px 3px RGBA(0, 0, 0, 0.53) inset;
+    border-radius: 5px;
+	margin-right: 0;
+}
+#code-confirm {
+    background: #c5e1ef;
+    border: 1px solid RGBA(0, 0, 0, 0.4);
+    height: 30px;
+    font-family: Lato;
+    font-weight: Bolder;
+    color: #1a8198;
+    border-radius: 0 5px 5px 0;
+    position: absolute;
+    right: 8px;
+    top: 44px;
+}
+</style>
+</head>
+<body data-localization='settings'>
+  <div class="site-overlay"></div>
+  <div id="container">
+<div class="navigationBar" data-menu-EN="Settings" data-menu-RU="Настройки"></div>
+<div class='settings'>
+<div id='code'>
+	<input type='text' id='code-input' placeholder='Code...'><button id='code-confirm'>Activate</button>
+</div>
+<div class='option-block'>
+	<span class='option-block__name' id='local-profile'>Профиль</span>
+	<div class='option'><span id='local-name'>Ваше имя</span>
+		<input type="text" id="nickname" size="20" />
+	</div>
+	<div class='option'><span id='local-avatar'>Аватарка:</span>
+		<div id="avatar">
+		</div >
+	</div>
+</div>
+<div class='option-block'>
+	<span class='option-block__name' id='local-beta'>Экспериментальные функции</span>
+	<div class='option inline'><span id='local-beta_trade'>Обмен оружием с игроками</span>
+		<label class='switch-label'>
+			<input type="checkbox" name='trades' class='hide' />
+			<div class='switch' data-target='switch-trades'></div>
+		</label>
+	</div>
+</div>
+<div class='option-block'>
+	<span class='option-block__name' id='local-local'>Интерфейс</span>
+	<div class='option'>
+		<span id='local-language'>Язык</span>
+		<div class="dropdown">
+			<select class="dropdown-select" id="language">
+				<option value="EN">English</option>
+				<option value="RU">Русский</option>
+			</select>
+		</div>
+	</div>
+	<div class='option inline'>
+		<span id='local-sounds'>Звуки</span>
+		<label class='switch-label'>
+			<input type="checkbox" name='sounds' class='hide' />
+			<div class='switch' data-target='switch-sound'></div>
+		</label>
+	</div>
+	<div class='option inline'>
+		<span id='local-drop'>Быстрый дроп с кейсов</span>
+		<label class='switch-label'>
+			<input type="checkbox" name='drop' class='hide' />
+			<div class='switch' data-target='switch-drop'></div>
+		</label>
+	</div>
+</div>
+<p>
+<button id='reset' class='Button' value='Reset'>Полный сброс</button>
+<hr>
+<button id="submit" class="Button" value="Сохранить">Сохранить</button>
+</p>
+</div>
+</div>
+<script>
+var iconSelect;
+
+$(function() {
+	/*Ava*/
+	iconSelect = new IconSelect("avatar", {
+		"selectedIconWidth":80,
+		"selectedIconHeight":80,
+		"iconsWidth": 50,
+		"iconsHeight": 50,
+	});
+	var icons = [];
+
+	var i = Bot.images.length;
+	while (i--) {
+		icons.push({"iconFilePath":"../images/ava/"+Bot.images[i], "iconValue": Bot.images[i]});
+	}
+	iconSelect.refresh(icons);
+
+	$("#avatar").on("changed", function() {
+		saveStatistic("playerAvatar", iconSelect.getSelectedValue());
+        try {
+            if (firebase.auth().currentUser != "") {
+                firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/avatar')
+                    .set('../images/ava/'+iconSelect.getSelectedValue());
+                firebase.auth().currentUser.updateProfile({
+                    photoURL: '../images/ava/'+iconSelect.getSelectedValue()
+                })
+            }
+        }catch (e) {}
+		$('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
+	})
+
+	$("#nickname").val(Player.nickname);
+	iconSelect.setSelectedIndex(Bot.images.length-parseInt(Player.avatar)-1);
+
+	$('select option[value='+Settings.language+']').attr('selected', 'true');
+
+	if (Settings.sounds == true) {
+		$('input[name="sounds"]').prop('checked', true);
+		$('.switch[data-target="switch-sound"]').addClass('switchOn');
+	}
+	if (Settings.drop == true) {
+		$('input[name="drop"]').prop('checked', true);
+		$('.switch[data-target="switch-drop"]').addClass('switchOn');
+	}
+    
+    firebase.auth().onAuthStateChanged(function (user) {
+        // Once authenticated, instantiate Firechat with the logged in user
+        if (firebase.auth().currentUser != null) {
+            var uid = firebase.auth().currentUser.uid;
+            firebase.database().ref('users/'+uid+'/public').once('value', function(data) {
+                try{
+                    if (data.val().betaTrade) {
+                        $('input[name="trades"]').prop('checked', true);
+                        $('.switch[data-target="switch-trades"]').addClass('switchOn');
+                    } else {
+                        $('input[name="trades"]').prop('checked', false);
+                    }
+                } catch(e) {}     
+            })
+        }
+    })
+});
+
+$("#submit").on("click", function() {
+	var nick = $("#nickname").val();
+	var validation = /^[a-zA-Zа-яёА-ЯЁ0-9_-]+$/;
+    var illicitNick = /((a|а|о|o)(d|д)(m|м)(i|\||и|n)(n|и|н)|(VL(A|а)D(O|о)(S|c|с)(?:776)?))/ig;
+	if (nick != "" && validation.test(nick) && !illicitNick.test(nick)) {
+		saveStatistic("playerNickname", nick)
+	} else {
+		Lobibox.notify('error', {
+			pauseDelayOnHover: false,
+			continueDelayOnInactiveTab: false,
+			width: $(window).width(),
+			position: 'top center',
+			icon: false,
+			title: Localization.settings2.notValidNicknameTitle[Settings.language],
+			delay: 4000,
+			size: 'mini',
+			showClass: 'fadeInDown',
+			hideClass: 'fadeOutUp',
+			msg: Localization.settings2.notValidNickname[Settings.language]
+		});
+		return false;
+	}
+	var lang = $('#language option:selected').val();
+		saveStatistic('settings_language', lang);
+	saveStatistic('settings_sounds', $('input[name="sounds"]').prop('checked'));
+	saveStatistic('settings_drop', $('input[name="drop"]').prop('checked'));
+    
+    try {
+	   firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').set( $('input[name="trades"]').prop('checked'));
+    } catch(e) {}
+
+	Settings.language = lang;
+	localizate('settings');
+
+	Lobibox.notify('info', {
+			pauseDelayOnHover: false,
+			continueDelayOnInactiveTab: false,
+			width: $(window).width(),
+			position: 'top center',
+			icon: false,
+			title: Localization.settings2.notificationTitle[Settings.language],
+			delay: 2000,
+			size: 'mini',
+			showClass: 'fadeInDown',
+			hideClass: 'fadeOutUp',
+			msg: Localization.settings2.saved[Settings.language]
+		});
+});
+
+$('#reset').on('click', function () {
+	Lobibox.confirm({
+		iconSource : 'fontAwesome',
+		title : Localization.settings2.resetQuestionTitle[Settings.language],
+		msg : Localization.settings2.resetQuestion[Settings.language],
+		callback : function ($tihs, type, ev) {
+			if (type == 'yes') {
+				if (isAndroid()) {
+					client.deleteAllInventory();
+					deleteAllCookies();
+				} else {
+					localStorage.clear();
+					deleteAllCookies();
+				}
+				Lobibox.notify('info', {
+					pauseDelayOnHover : false,
+					continueDelayOnInactiveTab : false,
+					width : $(window).width(),
+					position : 'top center',
+					icon : false,
+					title : Localization.settings2.resetQuestionTitle[Settings.language],
+					delay : 2000,
+					size : 'mini',
+					showClass : 'fadeInDown',
+					hideClass : 'fadeOutUp',
+					msg : Localization.settings2.resetDone[Settings.language]
+				});
+			}
+		}
+	});
+})
+
+ $('.switch').click(function () {
+	$(this).toggleClass("switchOn");
+});
+
+function deleteAllCookies() {
+	var cookies = document.cookie.split(";");
+
+	for (var i = 0; i < cookies.length; i++) {
+		var cookie = cookies[i];
+		var eqPos = cookie.indexOf("=");
+		var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+		document.cookie = name + "=;";
+	}
+}
+
+$(document).on('click', '#local-local', function() {
+	$('#code').toggle('slow');
+})
+
+$(document).on('click', '#code-confirm', function() {
+	var codesList = [{
+		code: 'f8d6dd190baff0de491c8fae6399cd64',
+    multiply: false,
+		action: 'saveStatistic("doubleBalance", Player.doubleBalance+=183875)',
+		description: '+183875 double credits'
+	}, {
+    code: 'fe63765176c7bd5b069d4e6c7eee3d34',
+    multiply: false,
+    action: 'saveStatistic("doubleBalance", Player.doubleBalance+=50000)',
+    description: '+50000 double credits'
+  }, {
+    simpleCode: 'localServer',
+    code: '',
+    multiply: true,
+    action: 'location="http://192.168.1.205:8080"',
+    description: 'Go to local web server.'
+  }
+	];
+	var code = $('#code-input').val();
+
+	if (code == "") {
+		$("#code-input").addClass("animated shake");
+		setTimeout(function() {
+			$("#code-input").removeClass("animated shake");
+		}, 1000);
+		return false
+	}
+
+	codeHex = hex_md5(code);
+	var msg = "";
+	for (var i = 0; i < codesList.length; i++)
+		if (codesList[i].code == codeHex || (typeof codesList[i].simpleCode !="undefined" && codesList[i].simpleCode == code))
+			if (getStatistic('code-'+code, 'none') == 'none' || codesList[i].multiply) {
+				eval(codesList[i].action);
+				saveStatistic('code-'+code, 'activated');
+				msg = codesList[i].description;
+			} else {
+				msg = 'Code already activated.';
+			}
+				Lobibox.notify('info', {
+					pauseDelayOnHover : false,
+					continueDelayOnInactiveTab : false,
+					width : $(window).width(),
+					position : 'top center',
+					icon : false,
+					title : "Code activation",
+					delay : 2000,
+					size : 'mini',
+					showClass : 'fadeInDown',
+					hideClass : 'fadeOutUp',
+					msg : msg
+				});
+})
+
+</script>
+</body>
+</html>

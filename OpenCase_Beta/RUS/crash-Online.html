@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crash Online</title>
+    <meta charset="utf-8">
+    <!-- Стили -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/crash.css">
+    <link rel="stylesheet" type="text/css" href="../css/odometer-theme-default.css">
+    <link rel="stylesheet" type="text/css" href="../css/online-games.css">
+    <!-- Скрипты -->
+    <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <script src="../scripts/odometer.min.js"></script>
+    
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    <script src="../scripts/localization.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    
+    <script src="../scripts/games/crashOnline.js"></script>
+    <script src="../scripts/games/online-games.js"></script>
+</head>
+
+<body data-localization="crash" data-inventory='no-load'>
+    <div class="site-overlay"></div>
+    <div id="container">
+        <div class="navigationBar" data-menu-EN="Crash Online" data-menu-RU="Краш Онлайн"></div>
+        <div class='onlineCount'></div>
+    
+        <div id="crash-container">
+            <div class="crash__next-round-timer" style='display:none'>Next round in <span></span> s</div>
+            <div class="crash__multiply"><span id='odometer'>1.00</span>x</div>
+        </div>
+        
+        <div><span id='balance-text' class='margin-left-body'>Balance:</span> <span id='balance'>0</span></div>
+        <div class="bets"> <span class='add-to-bet' data-bet='clear'>0</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span> </div>
+        <input type="text" id="bet" maxlength='6' pattern="^[0-9]+$" />
+        
+        <button id='place-bet'>Place bet</button>
+        
+        <div class="tabs">
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1" title="Bets" id='local-bets'>Bets</label>
+
+            <input id="tab2" type="radio" name="tabs">
+            <label for="tab2" title="History" id='local-history'>History</label>
+
+            <input id="tab3" type="radio" name="tabs">
+            <label for="tab3" title="Top" id='local-top'>Top</label>
+            
+            <section id='bets'>
+                <table class="bet-list" id='bet-list'>
+                    <tr><th>Nickname</th><th>@</th><th>Bet</th><th>Profit</th></tr>
+                </table>
+            </section>
+            
+            <section id="history">
+                <ul class="history"></ul>
+            </section>
+            
+            <section id="top">
+                <table class="top">
+                    <tr><th>#</th><th>Nickname</th><th>@</th><th>Bet</th><th>Profit</th></tr>
+                </table>
+            </section>
+            
+        </div>
+        
+        <div class='chat closed'>
+            <div class='chat__toggle'>Chat (<span class='chat__toggle__new-messages'>0</span>)</div>
+            <ul class='chat__messages'>
+                <li class='chat__message__message info'>Welcome to chat!</li>
+            </ul>
+            <div class='chat__new-message'>
+                <div class="chat__new-message__textbox input-text light" contenteditable="true" placeholder="Send message" max="100"></div>
+                <button class="button_blue" id='chat-send-msg'>Send</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

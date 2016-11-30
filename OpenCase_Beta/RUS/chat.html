@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset = "utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat.css">
+    <link rel="stylesheet" type="text/css" href="../css/chat-flags.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/lobibox.min.css"/>
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    
+    <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/skinNames.js"></script>
+    <script src="../scripts/chat.js"></script>
+    <script src="../scripts/localization.js"></script>
+    
+    <!-- Upload images in chat -->
+    <script src="../scripts/chatImages/jquery.ui.widget.js"></script>
+    <script src="../scripts/chatImages/jquery.iframe-transport.js"></script>
+    <script src="../scripts/chatImages/jquery.fileupload.js"></script>
+    <script src="../scripts/chatImages/jquery.cloudinary.js"></script>
+    
+    <title>Chat</title>
+</head>
+
+<body data-localization="chat" data-inventory='no-load'>
+    <div class="site-overlay"></div>
+    <div class='container' id="container">
+        <div class="navigationBar" data-menu-EN="Chat" data-menu-RU="Чат"></div>
+        <div id="login" style='display: none;'>
+            <input type="text" placeholder="Email" id="email"></input>
+            <input type="password" placeholder="Password" id="password"></input>
+            <input type="text" placeholder="Nickname" id="nickname" class="hide"></input>
+            <span id="login-status"></span>
+            <div id="login__buttons">
+                <div id='login-buttons-container'><button class="button_blue" onclick="fbProfile.login();" id="loginButton">Sign in</button>
+                <button class="button_blue empty" id="registerButton">Register</button>
+                </div>
+                <div>
+                    <a href="#" id="forgot-pass">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat__rooms-container">
+            <div class="chat__rooms"></div>
+            <div class="chat__rooms__info"><a href="banlist.html" id="local-banlist">Banlist</a></div>
+        </div>
+    
+        <div id="chat">
+            <ul class="chat__messages"> </ul>
+            <div class="chat__write">
+                <div class="input-text" contenteditable="true" id="chat__new-message" max="120"></div>
+                <!--<input name="file" type="file" class="cloudinary-fileupload"></input>-->
+                <input class="button_blue" type="button" id="chat__send-new-message" value="Send"/>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

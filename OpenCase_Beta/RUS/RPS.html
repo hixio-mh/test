@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+<title>Камень-ножницы-бумага</title>
+    <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/rulet.css">
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/rps.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/inventory.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+</head>
+<body data-localization='rps'>
+<div class="site-overlay"></div>
+<div id='container' class="container">
+<div class="navigationBar" data-menu-EN="RPS Battle" data-menu-RU="Камень-ножницы-бумага"></div>
+	<div class='battle-field'>
+		<div class='round-count'></div>
+		<div class='hand left' id='js-left-hand'><img src='../images/rps/rock.png' id='js-player-img'></div>
+		<div class='hand right' id='js-right-hand'><img src='../images/rps/rock.png' id='js-comp-img'></div>
+		<div class='status'>Внесите оружие, чтобы начать игру.</div>
+	</div>
+	<div class='count'>
+		<div class='your-score'>Вы <span>0</span></div>
+		<div class='comp-score'>Противник <span>0</span></div>
+	</div>
+	<div class='choice' style='display: none'>
+		<span>Выберите камень, ножницы или бумагу</span>
+		<button class='choice__hand' data-choice='rock'><div class='hand rock'></div></button>
+		<button class='choice__hand' data-choice='scissors'><div class='hand scissors'></div></button>
+		<button class='choice__hand' data-choice='paper'><div class='hand paper'></div></button>
+	</div>
+	<button class='add-item'>Внести оружие</button>
+
+	<ul class='winItems'></ul>
+
+	<!-- Инвентарь -->
+	<div class="inventoryList" style="display: none;">
+		<span id="intentory-Player"></span>
+		<div class="closeInventory"></div>
+		<ul class="inventory"><li></li></ul>
+		<button class="choseItems">Внести</button>
+	</div>
+
+</div>
+<script src="../scripts/games/rps.js"></script>
+</body>
+</html>
