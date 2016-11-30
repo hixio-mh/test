@@ -4930,7 +4930,7 @@ var weapons = [{
     , skinName: "RedBlade"
     , rarity: "rare"
     , img: "SteachCase/M9-Bayonet-RedBlade.png"
-    }, {
+    }, { 
     id: 818
     , type: "★ Karambit"
     , skinName: "Cosplay"

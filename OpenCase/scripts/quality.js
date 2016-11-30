@@ -18,7 +18,7 @@ var Quality = [{
     "names": {
         "EN": "Field-Tested",
         "RU": "После полевых испытаний",
-    },
+    }, 
     "chance": 30
 }, {
     "name": ["Minimal Wear", "Немного поношенное"],
