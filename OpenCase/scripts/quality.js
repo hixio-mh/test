@@ -99,9 +99,11 @@ function getItemQuality() {
 function ifStatTrak(type, name) {
     type = type || "";
     name = name || "";
+    var glovesMatch = new RegExp('★.*?(Gloves|Hand Wraps)');
     if (type != "") {
         if (type.indexOf("Сувенир") != -1) return false;
         if (type.indexOf("Souvenir") != -1) return false;
+        if (glovesMatch.test(type)) return false;
     }
     if (type != "" && name != "") {
         col = getCollection(type, name);
