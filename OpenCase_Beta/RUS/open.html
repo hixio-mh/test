@@ -9,7 +9,7 @@
 <script src="../scripts/cases2.js"></script>
 <script src="../scripts/quality.js"></script>
 <script src="../scripts/skinNames.js"></script>
-<script src="../scripts/prices2.js"></script>
+<script src="../scripts/prices.js"></script>
 <script src="../scripts/openCase.js"></script>
 <script src="../scripts/weapons.js"></script>
 
@@ -94,6 +94,18 @@ function weaponList() {
         weaponsArray = getWeaponsById(cases[caseId].weapons);
     if (cases[caseId].knives)
         weaponsArray = weaponsArray.concat(getWeaponsById(cases[caseId].knives));
+    if (weaponsArray.length == 0) {
+        if (cases[caseId].regExp) {
+            var rg = cases[caseId].regExp;
+            for (var i = 0; i < weapons.length; i++) {
+                var weapon = getWeaponById(weapons[i].id);
+                if (RegExp(rg.reg).test(weapon[rg.param]))
+                    weaponsArray.push(weapon);
+            }
+        } else {
+            return null;
+        }
+    }
 	for (var i = 0; i < weaponsArray.length; i++) {
 		var weapon = weaponsArray[i];
 		if (weapon.rarity == 'rare' && rare == true)

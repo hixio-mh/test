@@ -41,6 +41,19 @@ function fillCarusel(caseId) {
         weaponsArray = getWeaponsById(cases[caseId].weapons);
     if (cases[caseId].knives)
         weaponsArray = weaponsArray.concat(getWeaponsById(cases[caseId].knives));
+    
+    if (weaponsArray.length == 0) {
+        if (cases[caseId].regExp) {
+            var rg = cases[caseId].regExp;
+            for (var i = 0; i < weapons.length; i++) {
+                var weapon = getWeaponById(weapons[i].id);
+                if (RegExp(rg.reg).test(weapon[rg.param]))
+                    weaponsArray.push(weapon);
+            }
+        } else {
+            return null;
+        }
+    }
     var c0 = weaponsArray.filter(function(weapon) {
         return weapon.rarity == 'consumer'
     }).mul(7).shuffle();
