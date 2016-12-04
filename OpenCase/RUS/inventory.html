@@ -104,8 +104,8 @@
 			"EN": ["All types", "New", "StatTrak", "Not StatTrak", "Souvenir", "Not Souvenir", "Normal"]
 		}
 		var sortWeapon = {
-			"RU": ["Все оружия", "Пистолеты", "Винтовки", "Снайперские винтовки", "SMG", "Дробовики", "Пулеметы", "Ножи"],
-			"EN": ["All weapons", "Pistols", "Rifles", "Sniper rifles", "SMGs", "Shotguns", "Machineguns", "Knives"]
+			"RU": ["Все оружия", "Пистолеты", "Винтовки", "Снайперские винтовки", "SMG", "Дробовики", "Пулеметы", "Ножи", "Перчатки"],
+			"EN": ["All weapons", "Pistols", "Rifles", "Sniper rifles", "SMGs", "Shotguns", "Machineguns", "Knives", "Gloves"]
 		}
 		var sortQuality = {
 			"RU": ["Все качества", "Белое", "Светло-синее", "Синее", "Фиолетовое", "Розовое", "Красное", "Золотое"],
@@ -118,7 +118,7 @@
 			"milspec",
 			"restricted",
 			"classified",
-			"covert",
+			"(covert|extraordinary)",
 			"rare"
 		];
 
@@ -191,7 +191,7 @@
 
 			$('#sellWeapon').show();
 			$('#startContract').css('display', 'none');
-			if ((rarity != 'rare') && (rarity != 'covert'))
+			if ((rarity != 'rare') && (rarity != 'covert') && rarity != 'extraordinary')
 				if ((type.indexOf('Сувенир') == -1) && (type.indexOf('Souvenir') == -1))
 					$('#startContract').css('display', 'inline-block');
 
@@ -318,7 +318,7 @@
 			var statTrak = ($('#statTrakImg').css('display') == 'block') ? true : false;
 
 			for (var i = 1; i < qualitySort.length; i++) {
-				if (rarity == qualitySort[i])
+				if (RegExp(qualitySort[i]).text(rarity))
 					$('#sort-quality :nth-child(' + (i + 1) + ')').prop('selected', 'true').change();
 			}
 			var spec = (statTrak ? 3 : 7);
@@ -486,7 +486,8 @@
 				".*MAC|MP7|UMP|PP|P90|MP9.*",
 				".*Nova|XM1|Sawed|MAG.*",
 				".*M249|Negev.*",
-				".*★|(н|Н)ож.*"
+				"^★.*(Karambit|Bayonet|Knife).*",
+                "^★.*(Gloves|Hand Wraps).*"
 			]
 
 
@@ -530,7 +531,7 @@
 					sortedInventory = sortInventory(sortedInventory, "type", RegExp(weaponsSort[parseInt(weapon)]))
 				}
 				if (parseInt(quality) != 0) {
-					sortedInventory = sortInventory(sortedInventory, "rarity", qualitySort[parseInt(quality)])
+					sortedInventory = sortInventory(sortedInventory, "rarity", new RegExp(qualitySort[parseInt(quality)]))
 				}
 			}
 			$(".inventory li").remove();
@@ -551,8 +552,19 @@
 				"type LIKE 'MAC' OR type LIKE 'MP7' OR type LIKE 'UMP' OR type LIKE 'PP' OR type LIKE 'P90' OR type LIKE 'MP9'",
 				"type LIKE 'Nova' OR type LIKE 'XM1' OR type LIKE 'Sawed' OR type LIKE 'MAG'",
 				"type LIKE 'M249' OR type LIKE 'Negev'",
-				"rarity LIKE 'rare'"
+				"rarity LIKE 'rare'",
+                "rarity LIKE 'extraordinary'"
 			]
+            var qualitySortSQL = [
+                "",
+                "rarity = 'consumer'",
+                "rarity = 'industrial'",
+                "rarity = 'milspec'",
+                "rarity = 'restricted'",
+                "rarity = 'classified'",
+                "rarity = 'covert' OR rarity = 'extraordinary'",
+                "rarity = 'rare"
+            ]
 
 			switch (parseInt(special)) {
 				case 1:
@@ -585,9 +597,9 @@
 			}
 			if (parseInt(quality) != 0) {
 				if (specialSQL == "")
-					specialSQL = "WHERE rarity = '" + qualitySort[parseInt(quality)] + "'";
+					specialSQL = "WHERE (" + qualitySortSQL[parseInt(quality)] + ")";
 				else
-					specialSQL += " AND rarity = '" + qualitySort[parseInt(quality)] + "'";
+					specialSQL += " AND (" + qualitySortSQL[parseInt(quality)] + ")";
 			}
 			//getInventory(wp_from, wp_from + inventory_step, specialSQL);
 			//sortedInventory = inventory;
@@ -620,8 +632,7 @@
 			var appendInventory = getInventory(wp_from, wp_from + inventory_step - 1, special);
 			fillInventory(appendInventory, getInventoryCost(special));
 			inventory = inventory.concat(appendInventory);
-		}
-
+		} 
 		function checkForLoadMore() {
 			if ($(window).scrollTop() + $(window).height() > $(document).height() - 80 && $('#js-loading-inventory').length) {
 				var wp_from = parseInt($('#js-loading-inventory').data('from'));
