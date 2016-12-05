@@ -318,7 +318,7 @@
 			var statTrak = ($('#statTrakImg').css('display') == 'block') ? true : false;
 
 			for (var i = 1; i < qualitySort.length; i++) {
-				if (RegExp(qualitySort[i]).text(rarity))
+				if (RegExp(qualitySort[i]).test(rarity))
 					$('#sort-quality :nth-child(' + (i + 1) + ')').prop('selected', 'true').change();
 			}
 			var spec = (statTrak ? 3 : 7);
