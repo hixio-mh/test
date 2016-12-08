@@ -185,15 +185,7 @@ function startGame() {
             $(".win").html("<img src='../images/ava/" + win.avatar + "'><span class='win__title'>" + Localization.jackpot2.winner[Settings.language] + "</span><span class='win__nick'>" + win.nick + "</span><span class='win__chance'>" + win.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(winnerTicket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
 
             if (win.nick == Player.nickname) {
-                for (var i = 0; i < ItemsInGame.length; i++) {
-                    if (isAndroid())
-                        saveWeapon(ItemsInGame[i]);
-                    else
-                        inventory.push(ItemsInGame[i]);
-
-                }
-                if (!isAndroid())
-                    saveInventory();
+                saveWeapons(ItemsInGame);
 
                 //Statistic
                 statisticPlusOne('rulet-wins');
@@ -340,50 +332,39 @@ $(document).on('click', '.hide-items, .show-items', function() {
 $(".choseItems").on("click", function() {
     var itemsCount = $(".inventoryItemSelected").length;
     var playerWeapons = [];
-    var ids = [];
     var itemsCost = 0;
-    if (itemsCount != 0) {
-
-        if (isAndroid()) {
-            $(".inventoryItemSelected").each(function() {
-                playerWeapons.push(getWeapon(parseInt($(this).data('id'))));
-                itemsCost += getWeapon(parseInt($(this).data('id'))).price;
-                //ids.push(parseInt(this.id));
-                deleteWeapon($(this).data('id'));
-            })
-        } else {
-            $(".inventoryItemSelected").each(function() {
-                playerWeapons.push(inventory[parseInt(this.id)]);
-                itemsCost += inventory[parseInt(this.id)].price;
-                ids.push(parseInt(this.id));
-            })
-        }
-        PlayersInGame.push({
-            "nick": Player.nickname,
-            "avatar": Player.avatar,
-            "chance": "0",
-            "itemsCost": itemsCost,
-            "tickets": {
-                "from": lastTicket + 1,
-                "to": (itemsCost * 100) + lastTicket + 1
-            }
-        });
-        lastTicket += (itemsCost * 100);
-        if (!isAndroid()) {
+    if (itemsCount > 0) {
+        var ids = [];
+        $(".inventoryItemSelected").each(function() {
+            ids.push(parseInt($(this).data('id')));
+        })
+        getWeapons(ids).then(function(playerWeapons) {
+            var itemsCost = playerWeapons.reduce(function(summ, current) {
+                return summ + current.price;
+            }, 0)
+            PlayersInGame.push({
+                "nick": Player.nickname,
+                "avatar": Player.avatar,
+                "chance": "0",
+                "itemsCost": itemsCost,
+                "tickets": {
+                    "from": lastTicket + 1,
+                    "to": (itemsCost * 100) + lastTicket + 1
+                }
+            });
+            lastTicket += (itemsCost * 100);
             for (var i = 0; i < ids.length; i++) {
-                var d = ids[ids.length - i - 1];
-                inventory.splice(d, 1);
+                deleteWeapon(ids[i]);
             }
-            saveInventory();
-        }
-
-        itemsList(Player.nickname, Player.avatar, PlayersInGame[PlayersInGame.length - 1].tickets, itemsCost, playerWeapons);
-        Sound("additems", "play");
-        addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
-        $("#addItems").prop("disabled", true);
-        $('#diffuculty').prop('disabled', true);
-        $(".closeInventory").click();
-        PlayerInGame = true;
+            
+            itemsList(Player.nickname, Player.avatar, PlayersInGame[PlayersInGame.length - 1].tickets, itemsCost, playerWeapons);
+            Sound("additems", "play");
+            addItems(Player.nickname, Player.avatar, itemsCount, itemsCost);
+            $("#addItems").prop("disabled", true);
+            $('#diffuculty').prop('disabled', true);
+            $(".closeInventory").click();
+            PlayerInGame = true;
+        })
     }
 })
 

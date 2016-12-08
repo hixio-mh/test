@@ -8,7 +8,7 @@ body {
 }
 #container {
     padding-top:40px;
-    font-family: Lato;
+    font-family: LatoRegular;
     overflow-x: hidden;
     width:100%;
     position: absolute;
@@ -432,7 +432,7 @@ button#what-i-can-win-Button {
     z-index: 1000;
     background: rgb(121, 0, 0);
     color: #fff;
-    font-family: Lato;
+    font-family: LatoRegular;
     text-align: center;
     padding: 8px 0;
 }
@@ -461,7 +461,7 @@ span#new-version__update {
     padding: 4px;
     color: #fff;
     background: #480000;
-    font-family: Lato;
+    font-family: LatoRegular;
 }
 .win_sell_div {
     padding-bottom: 10px;

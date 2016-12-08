@@ -6,20 +6,21 @@ function Item() {
     }
 }
 
-function Weapon(item_id, quality, stattrak, souvenir) {
+function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     //Получаем свойства от Item
     Item.apply(this);
     if (typeof item_id == 'object') {
         quality = item_id.quality || 0;
         stattrak = item_id.stattrak || item_id.statTrak || false;
         souvenir = item_id.souvenir || false;
+        isNew = item_id.new || false;
         item_id = item_id.item_id || item_id.id;
     }
     this.item_id = item_id || 0;
     this.quality = quality || 0;
     this.stattrak = stattrak || false;
     this.souvenir = souvenir || false;
-    this.new = false;
+    this.new = isNew || false;
     this.old = getWeaponById(this.item_id);
     this.type = this.old.type;
     this.nameOrig = this.old.skinName;

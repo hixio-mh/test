@@ -42,39 +42,38 @@ $(".choseItems").on("click", function() {
     //var playerWeapons = [];
     var ids = [];
     var itemsCost = 0;
+    
+    $(".inventoryItemSelected").each(function() {
+        ids.push(parseInt($(this).data('id')));
+    })
+    
+    getWeapons(ids).then(function(playerWeapons) {
+        winItems = playerWeapons
+        var itemsCost = winItems.reduce(function(summ, current) {
+            return summ + current.price;
+        }, 0)
+        
+        $(".add-item").css("display", 'none');
+        $(".closeInventory").click();
 
-    if (isAndroid()) {
-        $(".inventoryItemSelected").each(function() {
-            winItems.push(getWeapon(parseInt($(this).data('id'))));
-            itemsCost += getWeapon(parseInt($(this).data('id'))).price;
-            deleteWeapon($(this).data('id'));
-        })
-    } else {
-        $(".inventoryItemSelected").each(function() {
-            winItems.push(inventory[parseInt(this.id)]);
-            itemsCost += inventory[parseInt(this.id)].price;
-            ids.push(parseInt(this.id));
-        })
-        for (var i = 0; i < ids.length; i++) {
-            var d = ids[ids.length - i - 1];
-            inventory.splice(d, 1);
+        $('.winItems').append('<li id="whoBet">' + Localization.rps2.youAdd[Settings.language] + '</li>');
+
+        for (var i = 0; i < winItems.length; i++) {
+            $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<i class="currency dollar">' + winItems[i].price + '</i>)<b class=' + winItems[i].rarity + '></b>');
         }
-        saveInventory();
-    }
-    $(".add-item").css("display", 'none');
-    $(".closeInventory").click();
+        $('.status').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
+        
+        for (var i = 0; i < ids.length; i++) {
+            deleteWeapon(ids[i]);
+        }
+        
+        setTimeout(function() {
+            botAddWeapon(itemsCost / winItems.length);
+            $('.choice').css('display', 'block');
+            $('.status').text('...');
+        }, 200);
+    })
 
-    $('.winItems').append('<li id="whoBet">' + Localization.rps2.youAdd[Settings.language] + '</li>');
-
-    for (var i = 0; i < winItems.length; i++) {
-        $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].skinName + ' ($' + winItems[i].price + ')<b class=' + winItems[i].rarity + '></b>');
-    }
-    $('.status').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
-    setTimeout(function() {
-        botAddWeapon(itemsCost / winItems.length);
-        $('.choice').css('display', 'block');
-        $('.status').text('...');
-    }, 200);
 
 })
 
@@ -108,51 +107,42 @@ function botAddWeapon(itemsCost) {
     }
 
     var canContinue = false;
-    var weapons = [];
+    var botWeapons = [];
     wpLength = winItems.length;
     var oldDate = new Date();
     while (!canContinue) {
-        var rnd = Math.rand(0, Prices.length - 1)
-        var weapon = Prices[rnd];
-        var price = weapon.marketPrice == 0 ? weapon.avgPrice : weapon.marketPrice;
+        var weapon = null;
+        
+        while (typeof weapon == 'undefined' || weapon == null) {
+            var rnd = Math.rand(0, Object.keys(Prices).length - 1);
+            weapon = Prices[rnd];
+        }
+        
+        console.log(weapon);
+        
+        var price = 0;
+        for (var i = 0; i < 4; i++) {
+            if (price != 0) break;
+            
+            if (weapon.prices.default[i])
+                price = weapon.prices.default[i].market != -1 ? weapon.prices.default[i].market : weapon.prices.default[i].analyst != -1 ? weapon.prices.default[i].analyst : weapon.prices.default[i].opskins;
+        }
 
         if (price >= minPrice && price <= maxPrice) {
-            var type = weapon.type;
-            var name = getSkinName(weapon.name);
-            var quality = getQualityName(weapon.quality, Settings.language);
-            var br = false;
-            type = type.replace(/(Souvenir |Сувенир )/gi, '');
-            for (var i = 0; i < cases.length; i++) {
-                for (var z = 0; z < cases[i].weapons.length - 1; z++) {
-                    if ((cases[i].weapons[z].type.replace(/★ /, '') == type) && (getSkinName(cases[i].weapons[z].skinName) == name)) {
-
-                        var wp = {}
-                        for (var key in cases[i].weapons[z])
-                            wp[key] = cases[i].weapons[z][key];
-
-                        wp.skinName = getSkinName(name, Settings.language);
-                        wp.price = price;
-                        wp.statTrak = (typeof weapon.statTrak == 'undefined') ? false : true;
-                        wp.quality = quality;
-                        weapons.push(wp);
-                        if (wpLength == weapons.length) canContinue = true;
-                        br = true;
-                        break;
-                    }
-                }
-                if (br) break;
-            }
+            weapon = new Weapon(weapon.item_id, i);
+            botWeapons.push(weapon);
+            if (wpLength == botWeapons.length) canContinue = true;
         }
         if (new Date() - oldDate > 7000) {
-            weapons = winItems.slice();
+            botWeapons = winItems.slice();
             canContinue = true;
             break;
         }
     }
-    winItems = winItems.concat(weapons);
+    winItems = winItems.concat(botWeapons);
     $('.winItems').append('<li id="whoBet">' + Localization.rps2.opponentAdd[Settings.language] + '</li>');
     for (var i = wpLength; i < winItems.length; i++)
-        $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].skinName + ' ($' + winItems[i].price + ')<b class=' + winItems[i].rarity + '></b>');
+        $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<i class="currency dollar">' + winItems[i].price + '</i>)<b class=' + winItems[i].rarity + '></b>');
 }
 
 $('.choice__hand').on('click', function() {
@@ -219,12 +209,8 @@ function endGame(playerWin) {
         $('.status').text(Localization.rps2.winGame[Settings.language]);
         for (var i = 0; i < winItems.length; i++) {
             winItems[i]['new'] = true;
-            if (!isAndroid())
-                inventory.push(winItems[i]);
-            else
-                saveWeapon(winItems[i]);
         }
-        if (!isAndroid()) saveInventory();
+        saveWeapons(winItems);
         Level.addEXP(2);
         statisticPlusOne('rps-wins');
     } else {

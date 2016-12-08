@@ -359,7 +359,9 @@ function updateWeapon(weapon) {
                 var store = tx.objectStore('weapons');
 
                 if (typeof weapon.item_id != 'undefined' && typeof weapon.id != 'undefined') {
-                    store.put(weapon.saveObject());
+                    var saveObj = weapon.saveObject();
+                    saveObj.id = weapon.id;
+                    store.put(saveObj);
                     resolver(true);
                 }
             })
@@ -391,13 +393,28 @@ function getWeapon(id) {
 
 function getWeapons(ids) {
     return new Promise(function(resolver, reject) {
-        if (isAndroid()) {
+        var wpns = [];
+        recurs(0);
+        
+        function recurs(count) {
+            if (count == ids.length) {
+                resolver(wpns);
+            } else {
+                getWeapon(ids[count]).then(function(weapon) {
+                    wpns.push(weapon);
+                    recurs(count+1);
+                })
+            }
+        }
+    })
+        
+        /*if (isAndroid()) {
             var wpns = [];
             for (var i = 0; i < ids.length; i++) {
                 var wp = $.parseJSON(client.getWeaponById(ids[i]))[0];
                 wpns.push(new Weapon(wp));
             }
-            resolver();
+            resolver(wpns);
         } else {
              connectDB(function(db) {
                 var tx = db.transaction('weapons', 'readonly');
@@ -412,13 +429,14 @@ function getWeapons(ids) {
                     request.onsuccess = function(event) {
                         var weapon = new Weapon(request.result.item_id, request.result.quality, request.result.stattrak, request.result.souvenir);
                         weapon.id = id;
-                        wpns.push(weapon);   
+                        wpns.push(weapon);
+                        
                     }
                 }
-                resolver(weapon);
+                resolver(wpns);
             })
         }
-    })
+    })*/
 }
 
 function deleteWeapon(id) {

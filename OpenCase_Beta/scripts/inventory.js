@@ -27,6 +27,10 @@ function fillInventory(selector) {
 	var wp_from = parseInt($('.js-loading-inventory').data('from'));
 	wp_from = wp_from || 1;
 	getInventory(wp_from, wp_from+inventory_step-1).then(function(inventory) {
+        inventory = inventory.sort(function(a, b) {
+            return b.price - a.price;
+        });
+        
         $(".js-loading-inventory").remove();
         var need_save = false;
 
@@ -36,7 +40,7 @@ function fillInventory(selector) {
             var weaponInfo = "<img src='"+getImgUrl(weapon.img)+"'> \
             <div class='weaponInfo "+weapon.rarity+"'> \
                 <span class='type'>"+weapon.specialText()+weapon.type+"<br>" + weapon.name + "</span> \
-            </div><i>"+weapon.price+"$</i>";
+            </div><i class='currency dollar'>"+weapon.price+"</i>";
             $(selector).append("<li class='weapon "+ (weapon.statTrak ? "wp-statTrak" : "") +" "+((weapon['new'] == true) ? "new-weapon" : "")+"' data-id='"+weapon.id+"'>"+weaponInfo+"</li>");
 
             if (weapon['new'] == true) {
