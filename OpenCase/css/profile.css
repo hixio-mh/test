@@ -100,7 +100,7 @@ body {
 }
 
 .top__bg {
-    background: #5782da;
+    background: url(../images/winter/profile/background.jpg) #5782da;
     position: absolute;
     top: 0;
     height: 207px;
