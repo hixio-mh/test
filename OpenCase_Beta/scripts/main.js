@@ -11,7 +11,7 @@ var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 
 $(function () {
-    if (!isAndroid()) inventory = getInventory();
+    //if (!isAndroid()) inventory = getInventory();
     try {
         firebase.auth().onAuthStateChanged(function (user) {
             if (firebase.auth().currentUser != null) {
@@ -288,7 +288,7 @@ function saveWeapon(weapon) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
             var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
-            resolver(true);
+            resolver(rowID);
         } else {
             connectDB(function (db) {
                 var tx = db.transaction('weapons', 'readwrite');
@@ -311,10 +311,47 @@ function saveWeapon(weapon) {
     })
 }
 
+function saveWeapons(weapons) {
+    return new Promise(function(resolver, reject) {
+        if (isAndroid()) {
+            var rows = [];
+            for (var i = 0; i < weapons.length; i++) {
+                var weapon = weapons[i];
+                var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
+                rows.push(rowID);
+            }
+            resolver(rows);
+        } else {
+            connectDB(function (db) {
+                var tx = db.transaction('weapons', 'readwrite');
+                var store = tx.objectStore('weapons');
+                
+                var results = [];
+                for (var i = 0; i < weapons.length; i++) {
+                    var weapon = weapons[i];
+                    if (typeof weapon.item_id == 'undefined') {
+                        var item_id = getWeaponId(weapon.type, weapon.skinName);
+                        weapon = new Weapon(item_id, weapon.quality, weapon.statTrak, /(souvenir|сувенир)/.test(weapon.type));
+                    }
+                    var request = store.add(weapon.saveObject());
+                    request.onsuccess = function (e) {
+                        results.push(e.target.result);
+
+                    }
+                    request.onerror = function (e) {
+                        reject(e);
+                    }
+                }
+                resolver(results);
+            })
+        }
+    })
+}
+
 function updateWeapon(weapon) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
-            var rowID = client.updateWeapon(weapon.id, weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
+            var rowID = client.updateWeapon(weapon.id, weapon.type, weapon.name, weapon.img, weapon.quality, weapon.stattrak, weapon.rarity, weapon.price, weapon['new']);
             resolver(true);
         } else {
             connectDB(function(db) {
@@ -333,15 +370,51 @@ function updateWeapon(weapon) {
 function getWeapon(id) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
-            resolver($.parseJSON(client.getWeaponById(id))[0]);
+            var wp = $.parseJSON(client.getWeaponById(id))[0];
+            
+            resolver(new Weapon(wp));
         } else {
              connectDB(function(db) {
                 var tx = db.transaction('weapons', 'readonly');
                 var store = tx.objectStore('weapons');
 
-                var wp = store.get(id);
-                var weapon = new Weapon(wp.item_id, wp.quality, wp.stattrak, wp.souvenir);
-                weapon.id = id;
+                var request = store.get(id);
+                request.onsuccess = function(event) {
+                    var weapon = new Weapon(request.result.item_id, request.result.quality, request.result.stattrak, request.result.souvenir);
+                    weapon.id = id;
+                    resolver(weapon);
+                }
+            })
+        }
+    })
+}
+
+function getWeapons(ids) {
+    return new Promise(function(resolver, reject) {
+        if (isAndroid()) {
+            var wpns = [];
+            for (var i = 0; i < ids.length; i++) {
+                var wp = $.parseJSON(client.getWeaponById(ids[i]))[0];
+                wpns.push(new Weapon(wp));
+            }
+            resolver();
+        } else {
+             connectDB(function(db) {
+                var tx = db.transaction('weapons', 'readonly');
+                var store = tx.objectStore('weapons');
+                
+                var wpns = [];
+                
+                for (var i = 0; i < ids.length; i++) {
+                    var id = ids[i];
+                    
+                    var request = store.get(id);
+                    request.onsuccess = function(event) {
+                        var weapon = new Weapon(request.result.item_id, request.result.quality, request.result.stattrak, request.result.souvenir);
+                        weapon.id = id;
+                        wpns.push(weapon);   
+                    }
+                }
                 resolver(weapon);
             })
         }

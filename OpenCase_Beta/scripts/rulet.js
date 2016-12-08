@@ -289,15 +289,9 @@ function botAddItems() {
 
         while (botWeapons.length < rand) {
             var weapon = getRandomWeapon(1);
-            weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
-            weapon.statTrak = ifStatTrak(weapon.type, weapon.skinName);
-            weapon = getPriceWithNewQuality(weapon);
             var price = weapon.price;
-            if (price > priceRange.min)
-                if (price < priceRange.max)
-                    if (price != 0) {
-                        botWeapons.push(weapon);
-                    }
+            if (price > priceRange.min && price < priceRange.max && price != 0 && weapon.can.bot)
+                botWeapons.push(weapon);
         }
         for (var i = 0; i < botWeapons.length; i++) {
             itemsCost += +botWeapons[i].price;
@@ -319,17 +313,13 @@ function botAddItems() {
     }
 };
 
-function itemsList(fromName, fromImg, tickets, itemsCost, weapons) {
-    if (typeof weapons == 'undefined' || weapons.length == 0) return false;
+function itemsList(fromName, fromImg, tickets, itemsCost, weaponsList) {
+    if (typeof weaponsList == 'undefined' || weaponsList.length == 0) return false;
     var bet = "<li class='game-bet animated zoomIn'><div class='game-bet__info'><div class='game-bet__player'><img src='../images/ava/" + fromImg + "'>" + fromName + "</div><div class='game-bet__tickets'><span class='game-bet__tickets__price'>$" + itemsCost.toFixed(2) + "</span><i class='fa fa-ticket'></i> " + ('' + parseInt(tickets.from)).replace(ticketsRegExp, '$1&#8198;') + " - " + ('' + parseInt(tickets.to)).replace(ticketsRegExp, '$1&#8198;') + "</div></div></div>" +
-        "<div class='bet-items " + (weapons.length > 4 ? "hide-items" : "") + "'><div colspan=2>";
-    for (var i = 0; i < weapons.length; i++) {
-        var weapon = weapons[i];
-        var statTrak = (weapon.statTrak == true) ? "StatTrak™ " : "";
-        weapon.skinName = getSkinName(weapon.skinName);
+        "<div class='bet-items " + (weaponsList.length > 4 ? "hide-items" : "") + "'><div colspan=2>";
+    for (var i = 0; i < weaponsList.length; i++) {
+        var weapon = weaponsList[i];
         var img = getImgUrl(weapon.img);
-
-        if (weapon.price == 0) weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
 
         var newItem = "<div class='bet-items__item'><img src='" + img + "'><div class='bet-items__item__rarity " + weapon.rarity + "'></div><span class='bet-items__item__price'>$" + weapon.price + "</span></div>";
         bet += newItem;

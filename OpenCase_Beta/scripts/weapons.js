@@ -1,4 +1,4 @@
-﻿function Item() {
+function Item() {
     this.can = {
         buy: true
         , sold: true
@@ -10,10 +10,10 @@ function Weapon(item_id, quality, stattrak, souvenir) {
     //Получаем свойства от Item
     Item.apply(this);
     if (typeof item_id == 'object') {
-        quality = item_id.quality;
-        stattrak = item_id.stattrak;
-        souvenir = item_id.souvenir;
-        item_id = item_id.item_id;
+        quality = item_id.quality || 0;
+        stattrak = item_id.stattrak || item_id.statTrak || false;
+        souvenir = item_id.souvenir || false;
+        item_id = item_id.item_id || item_id.id;
     }
     this.item_id = item_id || 0;
     this.quality = quality || 0;
@@ -25,17 +25,22 @@ function Weapon(item_id, quality, stattrak, souvenir) {
     this.nameOrig = this.old.skinName;
     this.name = getSkinName(this.nameOrig, Settings.language);
     this.img = this.old.img;
-    this.rarity = this.old.rarity;
-    this.can.contract = true;
-    this.can.bot = true;
+    
+    //this.can.inCase - 
     //Для оружия, которое удалили из коллекции. Например Howl в Huntsman.
-    this.can.inCase = true;
-    if (typeof this.old.sell != 'undefined') this.can.sell = this.old.sell;
-    if (typeof this.old.buy != 'undefined') this.can.buy = this.old.buy;
-    if (typeof this.old.trade != 'undefined') this.can.trade = this.old.trade;
-    if (typeof this.old.contract != 'undefined') this.can.contract = this.old.contract;
-    if (typeof this.old.bot != 'undefined') this.can.bot = this.old.bot;
-    if (typeof this.old.inCase != 'undefined') this.can.inCase = this.old.inCase;
+    
+    this.rarity = this.old.rarity;
+    this.can.sell = this.old.sell || this.can.sell;
+    this.can.buy = this.old.buy || this.can.buy;
+    this.can.trade = this.old.trade || this.can.trade;
+    this.can.contract = this.old.contract || true;
+    this.can.bot = this.old.bot || true;
+    this.can.inCase = this.old.inCase || true;
+    this.can.stattrak = this.old.stattrak || true;
+    this.can.souvenir = this.old.souvenir || false;
+    
+    if (this.souvenir || this.rarity == 'rare' || this.rarity == 'covert' || this.rarity == 'extraordinary')
+        this.can.contract = false;
     this.collection = function () {
         if (this.type.indexOf('★') == -1) {
             for (var i = 0; i < cases.length; i++) {
@@ -80,6 +85,7 @@ function Weapon(item_id, quality, stattrak, souvenir) {
             , souvenir: this.souvenir
         })
     }
+    this.price = this.getPrice();
     this.stattrakRandom = function () {
         if (this.type.souvenir) {
             this.stattrak = false;
@@ -116,6 +122,7 @@ function Weapon(item_id, quality, stattrak, souvenir) {
             cursor += Quality[i].weight / sumWeights;
             if (cursor >= random) {
                 this.quality = i;
+                this.price = this.getPrice();
                 return i;
             }
         }
@@ -123,6 +130,35 @@ function Weapon(item_id, quality, stattrak, souvenir) {
     this.qualityText = function () {
         return Quality[this.quality].names[Settings.language];
     }
+    this.specialText = function() {
+        if (this.stattrak)
+            return 'StatTrak™ '
+        else if (this.souvenir)
+            return Localization.souvenir[Settings.language] + ' ';
+        else
+            return ''
+    }
+}
+
+function getRandomWeapon(opt) {
+    opt = opt || {};
+    item_id = Math.rand(0, weapons.length-1);
+    quality = opt.quality || Math.rand(0, 4);
+    stattrak = opt.stattrak || false;
+    souvenir = opt.souvenir || false;
+    
+    opt = {quality: quality, stattrak: stattrak, souvenir: souvenir};
+    
+    var weapon = new Weapon(item_id, quality, stattrak, souvenir);
+    if (weapon.price === 0) {
+        var newPrice = getPriceWithNewQuality(item_id, opt);
+        if (newPrice.price != 0) {
+            weapon.price = newPrice.price;
+            weapon.quality = newPrice.quality;
+        }
+    }
+    
+    return weapon;
 }
 
 function getWeaponById(id) {
@@ -883,7 +919,7 @@ var weapons = [{
     , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovrG1eVcwg8zJcAJE7dizq42Og_b4P7LSqWZU7Mxkh6fErN_22VbkqRBrZmn3cIOTewdqZAqE8lm_xO7ngsW_vM6YzndjuSEm-z-DyNwC_Q0C"
 }, {
     id: 120
-    , type: "R8"
+    , type: "R8 Revolver"
     , skinName: "Amber Fade"
     , rarity: "classified"
     , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopL-zJAt21uH3cDx96t2ykb-GkuP1P7fYlVRD7dN-hv_E57P5gVO8vywwMiukcZjBdwBraVmG_1nsk-nug8fvus6YyHFj6HQm5HfdnUfliRFKbLE7habIVxzAUNH92sAX"
@@ -4685,13 +4721,13 @@ var weapons = [{
     , type: "MP7"
     , skinName: "Cirrus"
     , rarity: "milspec"
-    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFABz7PXBfzxO08y5m4yPkvbwJenummJW4NE_37rEodvxjAXh-kdrN2qlJdORcQRrY1_TrgToxOa5g569vcvIyyEwsz5iuygvT6vVAA"
+    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpou6ryFABz7PXBfzxO08y5m4yPkvbwJenummJW4NE_2bnE9N720Fft-Ec-Z2CldYbEd1M8M1CD_1HrkubnhcW9vMjLn3Bqvz5iuyjHksjlGg"
 }, {
     id: 754
     , type: "Glock-18"
     , skinName: "Ironwork"
     , rarity: "milspec"
-    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3djFN79eJkIGZnLryMrfdqWdY781lxOiZ9omjjQDgqEE-NWz2cILHe1NrNFCErFPtlObvhZ656MmdynJm6CU8pSGKEgKyG1g"
+    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposbaqKAxf0uL3djFN79eJkIGZnLryMrfdqWdY781lxOjCptn22ga2qEZsZW_zd46cJ1VoNF_W_1XrlOfs18S16p3JmyZl7CQ8pSGKL8GUOzY"
 }, {
     id: 755
     , type: "CZ75-Auto"
@@ -4703,7 +4739,7 @@ var weapons = [{
     , type: "USP-S"
     , skinName: "Cyrex"
     , rarity: "restricted"
-    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh8j3KqnUjlRd4cJ5nqeXp4j3jVbn_BBpa2j0JteSJ1U8ZFHQ_lC5wbzmg8W4uZXMzyNg7yBx-z-DyCP_0gqK"
+    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpoo6m1FBRp3_bGcjhQ09-jq5WYh8j3KqnUjlRd4cJ5nqfC9Inz3VHtrRJrNmj6d4XEdlBqZw7R-VTqxr-6hJS-uJjAm3FnsnQi-z-DyGAd0sdD"
 }, {
     id: 757
     , type: "Nova"
@@ -4727,7 +4763,7 @@ var weapons = [{
     , type: "Dual Berettas"
     , skinName: "Royal Consorts"
     , rarity: "restricted"
-    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3dShD4OO0kZKOg-P1IITWmWdV7ctOnOzP_I_wt1i9rBsofTz6dobDJwY7MFHX-FHslbjr05fovZ_Kz3JjuSh053ePyhe_iRFJaeNxxavJF_MOyuI"
+    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJf1OD3dShD4OO0kZKOg-P1IITWmWdV7ctOnOzP_I_wt1i9rBsofWvwcIGWJlQ4Mg7SqFPvxr-5h5C4vZmdy3RgvSMj4n6Jyxbl1BhKPORxxavJR7JVvdI"
 }, {
     id: 761
     , type: "Sawed-Off"
@@ -4757,7 +4793,7 @@ var weapons = [{
     , type: "SSG 08"
     , skinName: "Dragonfire"
     , rarity: "covert"
-    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0Ob3Yi5FvISJkJKKkPj6NbLDk1RC68phj9bN_Iv9nBqy_Eo4YjiiIYKRIFNtYA3Y-lnrkO7ngsDqv8zAzic3sykn4ynVyhK1n1gSOe-IjDmz"
+    , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpopamie19f0Ob3Yi5FvISJkJKKkPj6NbLDk1RC68phj9bN_Iv9nBrg80FkZmGgLdKVeg46ZFyC_lPrxO25hZTotZ_OmHphuiNx43aJyUa1n1gSOaKu3f6c"
     }, {
     id: 766
     , type: "★ Sport Gloves"

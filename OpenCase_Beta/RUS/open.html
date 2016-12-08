@@ -18,9 +18,11 @@
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+<link rel="stylesheet" type="text/css" href="../css/winter.css">
+<link rel="stylesheet" href="../css/lobibox.min.css" />
 </head>
 <body data-localization="openCase" data-inventory="no-load">
-
+<div class="snow"></div>
 <div class="weapons">
 <div class="closeCase"></div>
 
@@ -29,6 +31,7 @@
 	<div id="aCanvas">
 		<div class="casesCarusel">
 		</div>
+        <div class='js_sound_element' style='display:none;'></div>
 	</div>
 </div>
 
@@ -50,6 +53,7 @@
 </div>
 
 <button class="openCase">Открыть кейс</button>
+<button class="rand">Random Weapon</button>
 
 <div><span id="opened-text">Открыто: </span><span id="opened">0</span></div>
 
@@ -108,7 +112,7 @@ function weaponList() {
     }
 	for (var i = 0; i < weaponsArray.length; i++) {
 		var weapon = weaponsArray[i];
-		if (weapon.rarity == 'rare' && rare == true)
+		if (rareItemsRegExp.test(weapon.rarity) && rare == true)
 			continue;
 		var img = getImgUrl(weapon.img);
 
@@ -117,7 +121,7 @@ function weaponList() {
 		type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
 
 		var name = getSkinName(weaponsArray[i].skinName, Settings.language);
-		if (weapon.rarity == 'rare') {
+		if (rareItemsRegExp.test(weapon.rarity)) {
 			type = '★ Rare Special Item ★';
 			name = '&nbsp;';
 			img = '../images/Weapons/rare.png';
@@ -130,15 +134,27 @@ function weaponList() {
 	$("#youCanWin").css("display", "block");
 	$('#what-i-can-win-Button').css('display', 'none');
 }
+    
+$(document).on('click', '.rand', function() {
+    Lobibox.prompt('text', {
+        title: 'Random weapon',
+        attrs: {
+            placeholder: "Count"
+        },
+        callback : function ($this, type, ev) {
+            if (type == 'ok') {
+                count = parseInt($this.getValue());
+                var wpns = [];
+                for (var i = 0; i < count; i++) {
+                    wp = getRandomWeapon();
 
-function isAndroid() {
-	try {
-		var a = client.isAndroid();
-		return true;
-	} catch (e) {
-		return false;
-	}
-}
+                    wpns.push(wp);
+                }
+                saveWeapons(wpns);
+            }
+        }
+    });
+})
 </script>
 </body>
 </html>

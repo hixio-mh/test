@@ -1,7 +1,7 @@
-
 var caseId = 0;
 var souvenirCase = false;
 var caseOpening = false;
+var rareItemsRegExp = new RegExp('(rare|extraordinary)' ,'i');
 
 $(".openCase").attr("disabled", null);
 
@@ -111,7 +111,7 @@ function fillCarusel(caseId) {
 
         type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
 
-        if (item.rarity == 'rare') {
+        if (rareItemsRegExp.test(item.rarity)) {
             type = '★ Rare Special Item ★';
             name = '&nbsp;';
             img = '../images/Weapons/rare.png';

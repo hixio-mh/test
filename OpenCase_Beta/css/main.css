@@ -147,8 +147,9 @@ body {
     left: 0;
 	overflow: auto;
 	overflow-x: hidden;
-	background: #105868;
+	/*background: #105868;*/
 	height: 100%;
+    z-index: 2;
 }
 .weaponsList {
     position: relative;
@@ -373,7 +374,7 @@ button#what-i-can-win-Button {
 }
 /*WEAPONS_END*/
 .win {
-    background: #003440;
+    background: rgba(0,0,0,0.5);
     padding-top: 15px;
 	font-family: LatoRegular;
 	-webkit-transform: translate3d(0, 0, 0);
@@ -562,6 +563,14 @@ a[href*='vk.com'] {
     align-content: center;
 }
 
+/* === Currency === */
+.currency.dollar:before {
+    content: '$';
+}
+.currency.ruble:after {
+    content: '₽';
+}
+
 /* === Permanent-ban === */
 .permanent-ban {
     width: 100%;
@@ -586,3 +595,5 @@ a[href*='vk.com'] {
     bottom: 5px;
     color: #626262;
 }
+
+

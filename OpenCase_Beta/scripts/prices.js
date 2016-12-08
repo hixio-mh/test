@@ -10,11 +10,15 @@ function getPrice(item_id, opt) {
     var cat = stattrak == true ? 'stattrak' : souvenir == true ? 'souvenir' : 'default';
     var item = Prices[item_id];
     if (typeof item == 'undefined') {
-        for (var key in Prices) {
-            if (Prices[key].item_id == item_id || (Prices[key].type == type && Prices[key].skinName == name)) {
-                item = Prices[key]
-                break;
+        if (type != '' && name != '') {
+            for (var key in Prices) {
+                if (Prices[key].item_id == item_id || (Prices[key].type == type && Prices[key].skinName == name)) {
+                    item = Prices[key]
+                    break;
+                }
             }
+        } else {
+            return 0;
         }
     }
     var prices = item.prices[cat][quality];
@@ -26,8 +30,8 @@ function getPrice(item_id, opt) {
     return price;
 }
 
-function getPriceWithNewQuality(item_id, opt, recurs) {
-    recurs = recurs || false;
+function getPriceWithNewQuality(item_id, opt) {
+    opt = opt || {};
     var price = getPrice(item_id, opt);
     if (price == 0 || price == -1) {
         for (var i = 0; i < Quality.length; i++) {
@@ -37004,6 +37008,154 @@ var Prices = {
                     , "opskins": -1
                 }
             }
+            , "souvenir": {}
+        }
+    }
+    , "766": {
+        "item_id": 766
+        , "type": "★ Sport Gloves"
+        , "skinName": "Pandora's Box"
+        , "prices": {
+            "default": {
+                "2": {
+                    "market": 394
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "767": {
+        "item_id": 767
+        , "type": "★ Driver Gloves"
+        , "skinName": "Lunar Weave"
+        , "prices": {
+            "default": {
+                "3": {
+                    "market": 380
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "768": {
+        "item_id": 768
+        , "type": "★ Hand Wraps"
+        , "skinName": "Spruce DDPAT"
+        , "prices": {
+            "default": {
+                "1": {
+                    "market": 200
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+                , "2": {
+                    "market": 205.74
+                    , "analyst": 385.41
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "769": {
+        "item_id": 769
+        , "type": "★ Hand Wraps"
+        , "skinName": "Leather"
+        , "prices": {
+            "default": {
+                "2": {
+                    "market": -1
+                    , "analyst": 482.19
+                    , "opskins": -1
+                }
+                , 0: {
+                    "market": 143
+                    , "analyst": 287.82
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "770": {
+        "item_id": 770
+        , "type": "★ Specialist Gloves"
+        , "skinName": "Forest DDPAT"
+        , "prices": {
+            "default": {
+                "3": {
+                    "market": 230
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "771": {
+        "item_id": 771
+        , "type": "★ Moto Gloves"
+        , "skinName": "Cool Mint"
+        , "prices": {
+            "default": {
+                "2": {
+                    "market": 211.19
+                    , "analyst": 446.36
+                    , "opskins": -1
+                }
+                , "3": {
+                    "market": -1
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "772": {
+        "item_id": 772
+        , "type": "★ Moto Gloves"
+        , "skinName": "Eclipse"
+        , "prices": {
+            "default": {
+                "3": {
+                    "market": 235.36
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "773": {
+        "item_id": 773
+        , "type": "★ Specialist Gloves"
+        , "skinName": "Foundation"
+        , "prices": {
+            "default": {
+                "3": {
+                    "market": -1
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+                , 0: {
+                    "market": -1
+                    , "analyst": -1
+                    , "opskins": -1
+                }
+            }
+            , "stattrak": {}
             , "souvenir": {}
         }
     }

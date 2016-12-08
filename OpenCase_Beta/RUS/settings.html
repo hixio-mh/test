@@ -399,6 +399,7 @@ $('#reset').on('click', function () {
 					deleteAllCookies();
 				} else {
 					localStorage.clear();
+                    window.indexedDB.deleteDatabase('Inventory');
 					deleteAllCookies();
 				}
 				Lobibox.notify('info', {
@@ -440,23 +441,28 @@ $(document).on('click', '#local-local', function() {
 
 $(document).on('click', '#code-confirm', function() {
 	var codesList = [{
-		code: 'f8d6dd190baff0de491c8fae6399cd64',
-    multiply: false,
-		action: 'saveStatistic("doubleBalance", Player.doubleBalance+=183875)',
-		description: '+183875 double credits'
-	}, {
-    code: 'fe63765176c7bd5b069d4e6c7eee3d34',
-    multiply: false,
-    action: 'saveStatistic("doubleBalance", Player.doubleBalance+=50000)',
-    description: '+50000 double credits'
-  }, {
-    simpleCode: 'localServer',
-    code: '',
-    multiply: true,
-    action: 'location="http://192.168.1.205:8080"',
-    description: 'Go to local web server.'
-  }
-	];
+        code: 'f8d6dd190baff0de491c8fae6399cd64',
+        multiply: false,
+        action: 'saveStatistic("doubleBalance", Player.doubleBalance+=183875)',
+        description: '+183875 double credits'
+    }, {
+        code: 'fe63765176c7bd5b069d4e6c7eee3d34',
+        multiply: false,
+        action: 'saveStatistic("doubleBalance", Player.doubleBalance+=50000)',
+        description: '+50000 double credits'
+    }, {
+        simpleCode: 'localServer',
+        code: '',
+        multiply: true,
+        action: 'location="http://192.168.1.205:8080"',
+        description: 'Go to local web server.'
+    }, {
+        simpleCode: 'Beta',
+        code: '',
+        multiply: true,
+        action: 'location="https://vlados776.github.io/OpenCase_Beta/RUS/cases.html"',
+        description: 'Redirect to beta server.'
+    }];
 	var code = $('#code-input').val();
 
 	if (code == "") {
