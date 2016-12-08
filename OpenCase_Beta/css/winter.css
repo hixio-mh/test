@@ -1,13 +1,13 @@
 /* === Chat === */
-.message__info__from-time:before {
+.winter_snow {
     content: '';
     display: block;
     position: absolute;
-    background: url(../images/winter/chat/snow1.png), url(../images/winter/chat/snow2.png), url(../images/winter/chat/snow3.png);
+    background: url(../images/winter/chat/snow_left1.png), url(../images/winter/chat/snow_mid1.png), url(../images/winter/chat/snow_right1.png);
     width: calc(100% + 8px);
-    height: 20px;
+    height: 25px;
     background-repeat: no-repeat;
-    top: -7px;
-    background-position: center, 0, right;
+    top: -6px;
+    background-position: 0, center, right;
     left: -4px;
 }
