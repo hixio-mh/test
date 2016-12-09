@@ -46,11 +46,12 @@ $(document).ready(function() {
     if (parseInt(getStatistic("market-sales-count")) == 0 || lastSalesUpdate < today) {
         for (var i = 0; i < weaponsOnSale; i++) {
             var weapon = getRandomWeapon(1);
+            var canBuy = typeof weapon.canBuy == 'undefined' ? true : weapon.canBuy;
             weapon.statTrak = ifStatTrak(weapon.type, weapon.name);
             weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
             weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
             weapon.price = parseFloat(weapon.price * (100 - discount) / 100).toFixed(2);
-            if (weapon.price > minPriceForSale)
+            if (weapon.price > minPriceForSale && canBuy)
                 Sales.push(weapon);
             else
                 i--;
