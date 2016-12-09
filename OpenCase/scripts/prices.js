@@ -1479,7 +1479,7 @@ var Prices = [{
     name: 'Akihabara Accept',
     quality: 'Factory New',
     marketPrice: 0,
-    avgPrice: 2055.00
+    avgPrice: 533.00
 }, {
     type: 'AUG',
     name: 'Akihabara Accept',
