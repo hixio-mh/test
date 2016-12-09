@@ -258,16 +258,6 @@ function getJackpotWiner() {
     winnerTicket = random;
     
     return w;
-    /*try {
-        if (hex_md5(Player.nickname) == Cheats.winEveryTime) {
-            for (var i = 0; i < PlayersInGame.length; i++) {
-                if (PlayersInGame[i].nick == Player.nickname)
-                    return PlayersInGame[i];
-            }
-        }
-    } catch (e) {
-        //something went wrong
-    }*/
 }
 
 function botAddItems() {

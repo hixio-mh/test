@@ -1,8 +1,9 @@
 
 var Games = [];
 var PlayerBet = {};
-var maxWeapons = 15;
-var maxItems = maxWeapons,
+var maxWeapons = 30;
+var maxItemsDefault = 15,
+    maxItems = maxItemsDefault,
     PlayerInGame = false;
 var priceRange = {
     low: {
@@ -18,7 +19,7 @@ var priceRange = {
         max: 350
     },
     legendary: {
-        min: 350,
+        min: 400,
         max: 999999
     }
 };
@@ -29,7 +30,7 @@ $(window).load(function() {
     anim.addEventListener("animationend", coinStoped, false);
     anim.addEventListener("webkitAnimationEnd", coinStoped, false);
 
-    var games_order = ['low', 'low', 'normal', 'normal', 'hight', 'hight', 'legendary', 'legendary'];
+    var games_order = ['low', 'low', 'normal', 'normal', 'hight', 'hight', 'legendary', 'legendary', 'legendary', 'legendary'];
     var list = '';
     for (var i = 0; i < games_order.length; i++) {
         var game = botAddGame(games_order[i]);
@@ -87,26 +88,12 @@ function coinStoped() {
         statisticPlusOne('coinflip-loose');
     } else {
         $('.game__player__img').addClass('winner-img');
-        if (isAndroid()) {
-            for (var i = 0; i < PlayerBet.weapons.length; i++) {
-                PlayerBet.weapons[i]['new'] = true;
-                saveWeapon(PlayerBet.weapons[i]);
-            }
-            for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
-                Games[PlayerInGame].bot.weapons[i]['new'] = true;
-                saveWeapon(Games[PlayerInGame].bot.weapons[i]);
-            }
-        } else {
-            for (var i = 0; i < PlayerBet.weapons.length; i++) {
-                PlayerBet.weapons[i]['new'] = true;
-                inventory.push(PlayerBet.weapons[i]);
-            }
-            for (var i = 0; i < Games[PlayerInGame].bot.weapons.length; i++) {
-                Games[PlayerInGame].bot.weapons[i]['new'] = true;
-                inventory.push(Games[PlayerInGame].bot.weapons[i]);
-            }
-            saveInventory();
+        var allWP = PlayerBet.weapons.concat(Games[PlayerInGame].bot.weapons);
+        for (var i = 0; i < PlayerBet.weapons.length; i++) {
+            allWP[i].new = true;
         }
+
+        saveWeapons(allWP);
         Level.addEXP(2);
         statisticPlusOne('coinflip-wins');
 
@@ -152,12 +139,6 @@ var getRandomItem = function(list, weight) {
     var total_weight = 0;
     for (var i = 0; i < weight.length; i++)
         total_weight += weight[i] * 100;
-
-    try {
-        if (hex_md5(Player.nickname) == Cheats.winEveryTime) {
-            return list[1];
-        }
-    } catch (e) {}
 
     var random_num = Math.rand(0, total_weight);
     var weight_sum = 0;
@@ -206,7 +187,7 @@ function showGame(game_id) {
     for (var i = 0; i < bot_inventory.length; i++) {
         var weapon = bot_inventory[i];
 
-        var weaponInfo = "<tr><td class='" + weapon.rarity + "-color inv_rarity'></td><td><span class='inv_type'>" + weapon.type + "</span><span class='inv_name'>" + weapon.skinName + "</span></td><td class='inv_price'>$" + weapon.price + "</td></tr>";
+        var weaponInfo = "<tr><td class='" + weapon.rarity + "-color inv_rarity'></td><td><span class='inv_type'>" + weapon.type + "</span><span class='inv_name'>" + weapon.name + "</span></td><td class='inv_price currency dollar'>" + weapon.price + "</td></tr>";
         $('.bot-inventory').append(weaponInfo);
     }
     if (PlayerInGame === false && typeof Games[game_id].winner == 'undefined') {
@@ -220,13 +201,13 @@ function showGame(game_id) {
             var weapon = PlayerBet.weapons[i];
 
 
-            var weaponInfo = "<tr><td class='inv_price'>$" + weapon.price + "</td><td><span class='inv_type'>" + weapon.type + "</span><span class='inv_name'>" + weapon.skinName + "</span></td><td class='" + weapon.rarity + "-color inv_rarity'></td></tr>";
+            var weaponInfo = "<tr><td class='inv_price currency dollar'>" + weapon.price + "</td><td><span class='inv_type'>" + weapon.type + "</span><span class='inv_name'>" + weapon.name + "</span></td><td class='" + weapon.rarity + "-color inv_rarity'></td></tr>";
             $('.player-inventory').append(weaponInfo);
         }
         $('.game__start').css('display', 'block');
 
         if (PlayerBet.weapons.length < maxWeapons) {
-            maxItems = maxWeapons - PlayerBet.weapons.length;
+            maxItems = maxItemsDefault - PlayerBet.weapons.length;
             $('.player-inventory').append('<tr><td colspan="3" class="addWeapons" data-game-id="' + game_id + '">' + Localization.coinflip2.add_weapons[Settings.language] + '</td></tr>');
         }
 
@@ -253,7 +234,7 @@ function showGame(game_id) {
         for (var i = 0; i < Games[game_id].player.weapons.length; i++) {
             var weapon = Games[game_id].player.weapons[i];
 
-            var weaponInfo = "<tr><td class='inv_price'>$" + weapon.price + "</td><td><span class='inv_type'>" + weapon.type + "</span><span class='inv_name'>" + weapon.skinName + "</span></td><td class='" + weapon.rarity + "-color inv_rarity'></td></tr>";
+            var weaponInfo = "<tr><td class='inv_price currency dollar'>" + weapon.price + "</td><td><span class='inv_type'>" + weapon.type + "</span><span class='inv_name'>" + weapon.name + "</span></td><td class='" + weapon.rarity + "-color inv_rarity'></td></tr>";
             $('.player-inventory').append(weaponInfo);
         }
     }
@@ -284,31 +265,26 @@ $(document).on("click", ".choseItems", function() {
             };
             PlayerBet.weapons = [];
         }
-        if (isAndroid()) {
-            $(".inventoryItemSelected").each(function() {
-                PlayerBet.weapons.push(getWeapon(parseInt($(this).data('id'))));
-                PlayerBet.items_cost += getWeapon(parseInt($(this).data('id'))).price;
-                deleteWeapon($(this).data('id'));
-            })
-            $('#js-loading-inventory').remove();
-        } else {
-            $(".inventoryItemSelected").each(function() {
-                PlayerBet.weapons.push(inventory[parseInt(this.id)]);
-                PlayerBet.items_cost += inventory[parseInt(this.id)].price;
-                ids.push(parseInt(this.id));
-            })
+        $(".inventoryItemSelected").each(function() {
+            ids.push(parseInt($(this).data('id')));
+        })
+        
+        getWeapons(ids).then(function(playerWeapons) {
+            PlayerBet.weapons = playerWeapons;
+            PlayerBet.items_cost = playerWeapons.reduce(function(summ, current) {
+                return summ + current.price;
+            }, 0)
+            
             for (var i = 0; i < ids.length; i++) {
-                var d = ids[ids.length - i - 1];
-                inventory.splice(d, 1);
+                deleteWeapon(ids[i]);
             }
-            saveInventory();
-        }
-
-        $(".inventoryList").css("display", "none");
-        $("#inventorySum").remove();
-        showGame(PlayerInGame);
+            $(".inventoryList").css("display", "none");
+            $("#inventorySum").remove();
+            showGame(PlayerInGame);
+        });
     }
 });
+
 $(document).on('click', ".closeInventory", function() {
     if (typeof PlayerBet.items_cost == 'undefined') PlayerInGame = false;
     Sound("click", "play");
@@ -322,38 +298,28 @@ function botAddGame(difficulty) {
     bot.items_cost = 0.0;
     var weaponCount = Math.rand(3, maxWeapons);
     for (var q = 0; q < weaponCount; q++) {
-        var rnd = Math.rand(0, Prices.length - 1)
-        var weapon = Prices[rnd];
-        var price = weapon.marketPrice == 0 ? weapon.avgPrice : weapon.marketPrice;
+        var weapon = null;
+        
+        while (typeof weapon == 'undefined' || weapon == null) {
+            var rnd = Math.rand(0, Object.keys(Prices).length - 1);
+            weapon = Prices[rnd];
+        }
+        
+        var price = 0;
+        for (var i = 4; i > 0; i--) {
+            if (price != 0 && (price > priceRange[difficulty].min && price < priceRange[difficulty].max)) {
+                weapon.quality = i;
+                break;
+            }
+            
+            if (weapon.prices.default[i])
+                price = weapon.prices.default[i].market != -1 ? weapon.prices.default[i].market : weapon.prices.default[i].analyst != -1 ? weapon.prices.default[i].analyst : weapon.prices.default[i].opskins;
+        }
 
         if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
-            var type = weapon.type;
-            var name = getSkinName(weapon.name);
-            var quality = getQualityName(weapon.quality, Settings.language);
-
-            var brk = false;
-            type = type.replace(/(Souvenir |Сувенир )/gi, '');
-            for (var i = 0; i < cases.length; i++) {
-                for (var z = 0; z < cases[i].weapons.length; z++) {
-                    if ((cases[i].weapons[z].type.replace(/★ /, '') == type) && (getSkinName(cases[i].weapons[z].skinName) == name)) {
-                        var wp = {}
-                        for (var key in cases[i].weapons[z])
-                            wp[key] = cases[i].weapons[z][key];
-                        wp.skinName = getSkinName(name, Settings.language);
-                        wp.price = price;
-                        wp.statTrak = (typeof weapon.statTrak == 'undefined') ? false : true;
-                        wp.quality = quality;
-
-                        bot.weapons.push(wp);
-                        bot.items_cost += price;
-
-                        brk = true;
-                        break;
-                    }
-                }
-                if (brk) break;
-            }
-            if (!brk) weaponCount++;
+            weapon = new Weapon(weapon);
+            bot.weapons.push(weapon);
+            bot.items_cost += price;
         } else {
             weaponCount++;
         }

@@ -381,34 +381,28 @@ $(document).on("click", ".choseItems", function() {
     var ids = [];
     var itemsCost = 0;
     if (itemsCount != 0) {
-
-        if (isAndroid()) {
-            $(".inventoryItemSelected").each(function() {
-                itemsCost += getWeapon(parseInt($(this).data('id'))).price;
-                deleteWeapon($(this).data('id'));
-            })
-        } else {
-            $(".inventoryItemSelected").each(function() {
-                itemsCost += inventory[parseInt(this.id)].price;
-                ids.push(parseInt(this.id));
-            })
-        }
-        if (!isAndroid()) {
-            for (var i = 0; i < ids.length; i++) {
-                var d = ids[ids.length - i - 1];
-                inventory.splice(d, 1);
+        $(".inventoryItemSelected").each(function() {
+            ids.push(parseInt($(this).data('id')));
+        })
+        
+        getWeapons(ids).then(function(selectedWeapons) {
+            itemsCost = selectedWeapons.reduce(function(summ, current) {
+                return summ + current.price;
+            }, 0)
+            if (itemsCost > 0) {
+                sellCommis = sellCommis || 0;
+                Player.doubleBalance += parseInt((itemsCost * (100-sellCommis)).toFixed(0));
+                Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
+                $('#balance').text(Player.doubleBalance);
+                $('#menu_doubleBalance').text(Player.doubleBalance);
+                saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
             }
-            saveInventory();
-        }
+            
+            for (var i = 0; i < ids.length; i++) {
+                deleteWeapon(ids[i]);
+            }
+        })
 
-        if (itemsCost) {
-            sellCommis = sellCommis || 0;
-            Player.doubleBalance += parseInt((itemsCost * (100-sellCommis)/100).toFixed(0))*100;
-            Player.doubleBalance = parseInt(Player.doubleBalance.toFixed(0));
-            $('#balance').text(Player.doubleBalance);
-            $('#menu_doubleBalance').text(Player.doubleBalance);
-            saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
-        }
 
         //if (Settings.sounds) newItemsSound.play();
         $(".closeInventory").click();

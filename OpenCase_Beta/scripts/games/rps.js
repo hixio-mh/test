@@ -118,8 +118,6 @@ function botAddWeapon(itemsCost) {
             weapon = Prices[rnd];
         }
         
-        console.log(weapon);
-        
         var price = 0;
         for (var i = 0; i < 4; i++) {
             if (price != 0) break;

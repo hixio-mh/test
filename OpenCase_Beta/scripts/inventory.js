@@ -5,7 +5,7 @@ $(function() {
 	
 		$('.inventoryList').on('scroll', function() {
 			if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80) {
-				if (!inventory_loading && client.getInventoryLength("") > $(this).find('.weapon').length)
+				if (isAndroid() && !inventory_loading && client.getInventoryLength("") > $(this).find('.weapon').length)
 					fillInventory();
 			}
 		});
