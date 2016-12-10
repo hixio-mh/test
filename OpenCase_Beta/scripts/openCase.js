@@ -195,7 +195,8 @@ $(document).on("click", ".openCase", function() {
             $("#double_sell_button").prop("disabled", false);
             win['new'] = true;
             saveWeapon(win).then(function(result) {
-                console.log(result)
+                console.log(result);
+                $("#double_sell_button").data('id', result);
             });
             Sound("close", "play", 5);
             $(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
@@ -264,17 +265,9 @@ function backToZero() {
 }
 
 $(document).on("click", "#double_sell_button", function() {
-    if (isAndroid()) {
-        var special = "where ID=(select max(ID) from Inventory)";
-        var weapon = getInventory(1, 1, special)[0];
-        console.log("weapon: " + weapon);
-        if (typeof weapon != undefined) {
-            deleteWeapon(weapon.id);
-        }
-    } else {
-        inventory.splice(inventory.length - 1, 1);
-        saveInventory();
-    }
+    var id = $("#double_sell_button").data('id');
+    deleteWeapon(id);
+    
     var doublePoints = parseInt($("#double_sell_button").text());
     Player.doubleBalance += doublePoints;
     saveStatistic('doubleBalance', Player.doubleBalance);
