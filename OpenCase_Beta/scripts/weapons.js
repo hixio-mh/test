@@ -42,104 +42,135 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     
     if (this.souvenir || this.rarity == 'rare' || this.rarity == 'covert' || this.rarity == 'extraordinary')
         this.can.contract = false;
-    this.collection = function () {
-        if (this.type.indexOf('★') == -1) {
-            for (var i = 0; i < cases.length; i++) {
-                if (cases[i].type != 'Special' && $.inArray(this.item_id, cases[i].weapons) != -1) return cases[i]
-            }
-        }
-        else {
-            for (var i = 0; i < cases.length; i++) {
-                if (cases[i].type != 'Special' && $.inArray(this.item_id, cases[i].knives) != -1) return cases[i]
-            }
-        }
-        return -1;
-    }
-    this.saveObject = function () {
-        return {
-            item_id: this.item_id
-            , quality: this.quality
-            , stattrak: this.stattrak
-            , souvenir: this.souvenir
-            , new: this.new
-        }
-    }
-    this.toOldObject = function (isNew) {
-        isNew = isNew || false;
-        var tp = this.souvenir ? Localization.souvenir[Settings.language] + ' ' + this.type : this.type;
-        var oldObj = {
-            type: tp
-            , skinName: this.name
-            , rarity: this.rarity
-            , quality: getQualityName(this.quality)
-            , statTrak: this.stattrak
-            , price: this.getPrice()
-            , img: this.img
-            , new: isNew
-        , };
-        return oldObj;
-    }
-    this.getPrice = function () {
+    /*this.getPrice = function () {
         return getPrice(this.item_id, {
             quality: this.quality
             , stattrak: this.stattrak
             , souvenir: this.souvenir
         })
-    }
+    }*/
     this.price = this.getPrice();
-    this.stattrakRandom = function () {
-        if (this.type.souvenir) {
-            this.stattrak = false;
-            return false;
-        }
-        col = this.collection();
-        if (col != "" && col.type == 'Collection') {
-            this.stattrak = false;
-            return false;
-        }
-        if (typeof col.canBeStatTrak != 'undefined' && col.canBeStatTrak == false) {
-            this.stattrak = false;
-            return false;
-        }
-        this.stattrak = Math.random() > 0.8 ? true : false;
-        return this.stattrak;
-    }
-    this.qualityRandom = function () {
-        var sumChanses = 0;
-        var sumWeights = 0;
-        var random = Math.random();
-        for (var i = 0; i < Quality.length; i++) {
-            sumChanses += Quality[i].chance;
-        }
-        for (var i = 0; i < Quality.length; i++) {
-            var weight = Quality[i].chance / sumChanses;
-            Quality[i].weight = weight;
-        }
-        for (var i = 0; i < Quality.length; i++) {
-            sumWeights += Quality[i].weight;
-        }
-        var cursor = 0;
-        for (var i = 0; i < Quality.length; i++) {
-            cursor += Quality[i].weight / sumWeights;
-            if (cursor >= random) {
-                this.quality = i;
-                this.price = this.getPrice();
-                return i;
-            }
+}
+
+// === Prototypes ===
+
+Weapon.prototype.collection = function() {
+    if (this.type.indexOf('★') == -1) {
+        for (var i = 0; i < cases.length; i++) {
+            if (cases[i].type != 'Special' && $.inArray(this.item_id, cases[i].weapons) != -1) return cases[i]
         }
     }
-    this.qualityText = function () {
-        return Quality[this.quality].names[Settings.language];
+    else {
+        for (var i = 0; i < cases.length; i++) {
+            if (cases[i].type != 'Special' && $.inArray(this.item_id, cases[i].knives) != -1) return cases[i]
+        }
     }
-    this.specialText = function() {
-        if (this.stattrak)
-            return 'StatTrak™ '
-        else if (this.souvenir)
-            return Localization.souvenir[Settings.language] + ' ';
-        else
-            return ''
+    return -1;
+}
+
+Weapon.prototype.saveObject = function() {
+    return {
+        item_id: this.item_id
+        , quality: this.quality
+        , stattrak: this.stattrak
+        , souvenir: this.souvenir
+        , new: this.new
     }
 }
+
+Weapon.prototype.tradeObject = function() {
+    var trObj = {
+        item_id: this.item_id,
+        quality: this.quality
+    };
+    if (this.stattrak) trObj.stattrak = this.stattrak;
+    if (this.souvenir) trObj.souvenir = this.souvenir;
+
+    return trObj;
+}
+
+Weapon.prototype.toOldObject = function(isNew) {
+    isNew = isNew || false;
+    var tp = this.souvenir ? Localization.getString('other.souvenir') + ' ' + this.type : this.type;
+    var oldObj = {
+        type: tp
+        , skinName: this.name
+        , rarity: this.rarity
+        , quality: getQualityName(this.quality)
+        , statTrak: this.stattrak
+        , price: this.getPrice()
+        , img: this.img
+        , new: isNew
+    , };
+    return oldObj;
+}
+
+Weapon.prototype.getPrice = function() {
+    return getPrice(this.item_id, {
+        quality: this.quality
+        , stattrak: this.stattrak
+        , souvenir: this.souvenir
+    })
+}
+
+Weapon.prototype.stattrakRandom = function() {
+    if (this.type.souvenir) {
+        this.stattrak = false;
+        return false;
+    }
+    col = this.collection();
+    if (col != "" && col.type == 'Collection') {
+        this.stattrak = false;
+        return false;
+    }
+    if (typeof col.canBeStatTrak != 'undefined' && col.canBeStatTrak == false) {
+        this.stattrak = false;
+        return false;
+    }
+    this.stattrak = Math.random() > 0.8 ? true : false;
+    return this.stattrak;
+}
+
+Weapon.prototype.qualityRandom = function() {
+    var sumChanses = 0;
+    var sumWeights = 0;
+    var random = Math.random();
+    for (var i = 0; i < Quality.length; i++) {
+        sumChanses += Quality[i].chance;
+    }
+    for (var i = 0; i < Quality.length; i++) {
+        var weight = Quality[i].chance / sumChanses;
+        Quality[i].weight = weight;
+    }
+    for (var i = 0; i < Quality.length; i++) {
+        sumWeights += Quality[i].weight;
+    }
+    var cursor = 0;
+    for (var i = 0; i < Quality.length; i++) {
+        cursor += Quality[i].weight / sumWeights;
+        if (cursor >= random) {
+            this.quality = i;
+            this.price = this.getPrice();
+            return i;
+        }
+    }
+}
+
+Weapon.prototype.qualityText = function() {
+    var lang = Localization.supportedLanguages.quality.regExp.test(Settings.language) ? Settings.language : 'EN';
+    return Quality[this.quality].names[lang];
+}
+
+Weapon.prototype.specialText = function() {
+    if (this.stattrak)
+        return 'StatTrak™ '
+    else if (this.souvenir)
+        return Localization.getString('other.souvenir') + ' ';
+    else
+        return ''
+}
+
+// === Functions ===
 
 function getRandomWeapon(opt) {
     opt = opt || {};
@@ -198,6 +229,9 @@ function getWeaponId(type, name) {
         }
     }
 };
+
+// === Weapons ===
+
 var weapons = [{
     id: 0
     , type: "M249"

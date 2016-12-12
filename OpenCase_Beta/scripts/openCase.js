@@ -10,10 +10,9 @@ $(document).on("click", ".case", function() {
     $('#special-popup').css('display', 'none');
     caseId = $(this).data('case-id');
     souvenir = $(this).data('souvenir');
-    if (typeof cases[caseId].minRank != 'undefined' && getRank().id < getRankByName(cases[caseId].minRank).id) {
-        needRank = getRankByName(cases[caseId].minRank);
+    if (typeof cases[caseId].minLvl != 'undefined' && Level.myLvl() < cases[caseId].minLvl) {
         $("#rank-popup").css('display', 'block');
-        $("#rank").html('<img src="' + needRank.img + '" style="width: 50px;">');
+        $("[data-loc='low_level'] i").html(cases[caseId].minLvl);
         return false;
     }
     if (cases[caseId].type == "Special") {
@@ -23,7 +22,7 @@ $(document).on("click", ".case", function() {
         } else {
             $('#special-popup').css('display', 'block');
             var needToOpen = cases[caseId].casesToOpen - parseInt(getStatistic('specialCases', 0));
-            $('#special').text(needToOpen);
+            $('[data-loc="need_more_cases"] i').text(needToOpen);
             $('#showVideoAd').data();
             $('.js-secretField').text(caseId);
         }
@@ -101,15 +100,6 @@ function fillCarusel(caseId) {
     arr.forEach(function(item, index) {
         var img = getImgUrl(item.img);
         var type = item.type;
-        if (type.indexOf("|") != -1) {
-            type = type.split("|")[1]
-        }
-
-        type = $.trim(type.replace(/(Сувенир|Souvenir)/gi, ''));
-        if (souvenirCase && !type.match(/(Сувенир|Souvenir)/))
-            type = Localization.souvenir[Settings.language] + ' ' + type;
-
-        type = type.replace(/(Сувенир |Souvenir ){2,}/, Localization.souvenir[Settings.language] + ' ')
 
         if (rareItemsRegExp.test(item.rarity)) {
             type = '★ Rare Special Item ★';
@@ -133,15 +123,15 @@ function fillCarusel(caseId) {
 
 $(document).on("click", ".openCase", function() {
     $(".weapons").scrollTop(0);
-    if (caseOpening || $(".openCase").text() == Localization.openCase2.opening[Settings.language]) {
+    if (caseOpening || $(".openCase").text() == Localization.getString('open_case.opening')) {
         return false
     };
     $(".win").removeClass("sold-out");
     $(".win").slideUp("slow");
-    if ($(".openCase").text() == Localization.openCase2.tryAgain[Settings.language]) {
+    if ($(".openCase").text() == Localization.getString('open_case.try_again')) {
         backToZero()
     }
-    $(".openCase").text(Localization.openCase2.opening[Settings.language]);
+    $(".openCase").text(Localization.getString('open_case.opening'));
     $(".openCase").attr("disabled", "disabled");
     //var a = 1431 + 16*24;
     var a = 127 * winNumber;
@@ -199,7 +189,7 @@ $(document).on("click", ".openCase", function() {
                 $("#double_sell_button").data('id', result);
             });
             Sound("close", "play", 5);
-            $(".openCase").text(Localization.openCase2.tryAgain[Settings.language]);
+            $(".openCase").text(Localization.getString('open_case.try_again'));
             $(".win").slideDown("fast");
             caseOpening = false;
             $(".openCase").attr("disabled", null);

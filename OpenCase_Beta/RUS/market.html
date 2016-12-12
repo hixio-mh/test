@@ -49,7 +49,7 @@
 	<div class="sales">
 	</div>
 
-	<div id="weaponInfoContainer" style="display: none;">
+	<div id="weaponInfoContainer" style="display: none;" data-loc-group="weapon_info">
 	<div class="glassBlur" style='width: 100%; height: 100%;'></div>
 	<div class="fullWeaponInfo" >
 		<span class="fullWeaponInfo-close">X</span>
@@ -57,10 +57,10 @@
 		<img src="" id="weaponImg">
 		<div class='buy-animation'></div>
 		<table id="weaponInfoTable">
-		<tr><td>Цена</td><td id="weaponPrice" class="currency dollar"></td></tr>
-		<tr><td>Качество</td><td id="weaponQuality"></td></tr>
+		<tr><td data-loc="price">Price</td><td id="weaponPrice" class="currency dollar"></td></tr>
+		<tr><td data-loc="quality">Quality</td><td id="weaponQuality"></td></tr>
 		</table>
-		<span id='buy-text'>Купить:</span>
+		<span id='buy-text' data-loc="buy">Buy:</span>
 		<button class="countChange" id="minus">-</button><input type="text" id="buy_count" placeholder="1"></input><button class="countChange" id="plus">+</button><br>
 		<button class="button_black with_icon double_icon" id="buy-double"></button>
 		<span id='weaponRarity' style='display:none;'></span>

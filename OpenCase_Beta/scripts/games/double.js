@@ -83,12 +83,13 @@ function countDown() {
     countdownTimer -= 100;
     val = (countdownTimer * 100) / countdownTime;
     $('#progress-countdown').css('width', val + '%');
-    $('.big-progress span').text(Localization.double2.rollingIn[Settings.language] + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
+    if (Localization.isLoaded)
+        $('.big-progress span').text(Localization.getString('double.rolling_in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
 
     if (val > 0) {
         intervalCountdown = setTimeout(countDown, 100);
     } else {
-        $('.big-progress span').text(Localization.double2.rolling[Settings.language]);
+        $('.big-progress span').text(Localization.getString('double.rolling'));
         startGame();
     }
 }

@@ -56,7 +56,7 @@ $(".choseItems").on("click", function() {
         $(".add-item").css("display", 'none');
         $(".closeInventory").click();
 
-        $('.winItems').append('<li id="whoBet">' + Localization.rps2.youAdd[Settings.language] + '</li>');
+        $('.winItems').append('<li id="whoBet">' + Localization.getString('rps.you_add') + '</li>');
 
         for (var i = 0; i < winItems.length; i++) {
             $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<i class="currency dollar">' + winItems[i].price + '</i>)<b class=' + winItems[i].rarity + '></b>');
@@ -138,7 +138,7 @@ function botAddWeapon(itemsCost) {
         }
     }
     winItems = winItems.concat(botWeapons);
-    $('.winItems').append('<li id="whoBet">' + Localization.rps2.opponentAdd[Settings.language] + '</li>');
+    $('.winItems').append('<li id="whoBet">' + Localization.getString('rps.comp_add') + '</li>');
     for (var i = wpLength; i < winItems.length; i++)
         $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<i class="currency dollar">' + winItems[i].price + '</i>)<b class=' + winItems[i].rarity + '></b>');
 }
@@ -165,14 +165,14 @@ function listener(e) {
         yourScore++;
         round++;
         $('.your-score span').text(yourScore);
-        $('.status').text(Localization.rps2.youWinRound[Settings.language]);
+        $('.status').text(Localization.getString('rps.status.round_win'));
     } else if (whoWin == 'comp') {
         enemyScore++;
         round++;
         $('.comp-score span').text(enemyScore);
-        $('.status').text(Localization.rps2.youLostRound[Settings.language]);
+        $('.status').text(Localization.getString('rps.status.round_lost'));
     } else {
-        $('.status').text(Localization.rps2.tie[Settings.language]);
+        $('.status').text(Localization.getString('rps.status.round_tie'));
     }
 
 
@@ -204,7 +204,7 @@ function newGame() {
 
 function endGame(playerWin) {
     if (playerWin) {
-        $('.status').text(Localization.rps2.winGame[Settings.language]);
+        $('.status').text(Localization.getString('rps.status.win'));
         for (var i = 0; i < winItems.length; i++) {
             winItems[i]['new'] = true;
         }
@@ -212,7 +212,7 @@ function endGame(playerWin) {
         Level.addEXP(2);
         statisticPlusOne('rps-wins');
     } else {
-        $('.status').text(Localization.rps2.lostGame[Settings.language]);
+        $('.status').text(Localization.getString('rps.status.lost'));
         statisticPlusOne('rps-loose');
     }
 

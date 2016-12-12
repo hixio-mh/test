@@ -53,7 +53,7 @@ $(document).ready(function() {
         }
     } else {
         for (var i = 0; i < parseInt(getStatistic("market-sales-count")); i++) {
-            Sales.push(JSON.parse(getStatistic("market-sales-weapon-" + i)));
+            Sales.push(new Weapon(JSON.parse(getStatistic("market-sales-weapon-" + i))));
         }
     }
 

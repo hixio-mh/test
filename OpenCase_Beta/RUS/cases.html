@@ -11,6 +11,7 @@
 
 <script src="../scripts/build/libs.js"></script>
 <script src="../scripts/main.js"></script>
+<script src="../scripts/localization.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/skinNames.js"></script>
 <script src="../scripts/cases2.js"></script>
@@ -20,31 +21,30 @@
 <script src="../scripts/navigationMenu.js"></script>
 <link rel="stylesheet" href="../css/navigationMenu.css">
 
-<script src="../scripts/localization.js"></script>
 </head>
 <body data-localization="cases" data-inventory="no-load">
 	<div class="site-overlay"></div>
 	<div id="container" class="sosulki" style="background-position: 0 39px;">
-<div class="navigationBar" data-menu-EN="Open Cases" data-menu-RU="Открыть кейсы"></div>
+<div class="navigationBar"></div>
 
-<div class="popup" id="special-popup">
+<div class="popup" id="special-popup" data-loc-group="special_popup">
 <span id='closePopup'></span>
-<span id='js-local-special-text'>Чтобы открыть специальный кейс, откройте ещё</span> <span id='special'>?</span> <span id='js-local-special-text2'>кейсов.</span><br><span id='js-local-special-text3'>Или посмотрите рекламу.</span>
+<span data-loc='need_more_cases'></span>
 <button id='showVideoAd'>Посмотреть рекламу</button>
 <span class='js-secretField' style='display: none'></span>
 </div>
 
-<div class="popup" id="rank-popup">
+<div class="popup" id="rank-popup" data-loc-group="special_popup">
 <span id='closePopup'></span>
-<span id='js-local-rank-text'>Только игроки с рангом</span> <span id='rank'>?</span> <span id='js-local-rank-text2'> и выше могут открыть этот кейс.</span><br><a href="faq.html#js-local-question-rank" class="inline-link"><span id='js-local-rank-text3'>Как поднять ранг?</span></a>
+<span data-loc="low_level"></span><br><a href="faq.html#js-local-question-rank" class="inline-link"><span data-loc="lvl_up">Как поднять ранг?</span></a>
 </div>
 <div class="cases">
-<div id="Default" class="casesBlock opened"><h1>Кейсы</h1></div>
-<div id="eSports" class="casesBlock closed"><h1>eSports</h1></div>
-<div id="Collection" class="casesBlock closed"><h1>Коллекции</h1></div>
-<div id="Souvenir" class="casesBlock closed"><h1>Сувенирные коллекции</h1></div>
-<div id="Workshop" class="casesBlock closed"><h1>Мастерская</h1></div>
-<div id="Special" class="casesBlock closed"><h1>Особые</h1></div>
+<div id="Default" class="casesBlock opened"><h1 data-loc="cases">Кейсы</h1></div>
+<div id="eSports" class="casesBlock closed"><h1 data-loc="esports">eSports</h1></div>
+<div id="Collection" class="casesBlock closed"><h1 data-loc="collections">Коллекции</h1></div>
+<div id="Souvenir" class="casesBlock closed"><h1 data-loc="souvenir">Сувенирные коллекции</h1></div>
+<div id="Workshop" class="casesBlock closed"><h1 data-loc="workshop">Мастерская</h1></div>
+<div id="Special" class="casesBlock closed"><h1 data-loc="special">Особые</h1></div>
 </div>
 <script>
 
@@ -77,53 +77,53 @@ $(function () {
 		}
 	}
 	if (isAndroid()) {
-        /*try {
-            var fbKey1 = getStatistic('firebase-key 1', "");
-            var fbKey2 = getStatistic('firebase-key 2', "");
-
-            var fbVal1 = getStatistic('firebase-value 1', "");
-            var fbVal2 = getStatistic('firebase-value 2', "");
-            localStorage[fbKey1] = fbVal1;
-            localStorage[fbKey2] = fbVal2;
-        } catch (e){};*/
-
-		var version = client.getCurrentAppVersionName();
+        var version = client.getCurrentAppVersionName();
 
 		if (parseFloat(version) < 1.6) {
-			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
+			$('body').append('<div class="new-version"><b>' + Localization.getString('other.new_version.new_version') + '</b><span class="new-version__button" id="new-version__later">' + Localization.getString('other.new_version.later') + '</span><span class="new-version__button" id="new-version__update">' + Localization.getString('other.new_version.update') + '</span></div>');
 		}
 	}
 
-	var lastReward = getStatistic('lastPointReward', 0);
-	var now = new Date();
-	if (lastReward == 0)
-		lastReward = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
-	else
-		lastReward = new Date(lastReward);
+    $(document).on('localizationloaded', function() {
+        checkReward();
+    })
+    
+    function checkReward() {
+        var lastReward = getStatistic('lastPointReward', 0);
+        var now = new Date();
+        if (lastReward == 0)
+            lastReward = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+        else
+            lastReward = new Date(lastReward);
 
-	var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-	if (lastReward < today) { // 24*60*60*1000
-		console.log(lastReward);
-		console.log(today);
-		// вчера или раньше
-		Level.addEXP(DAILY_REWARD_POINTS);
-		Player.doubleBalance += getRank(Player.points).doubleBonus;
-		Lobibox.notify('info', {
-			pauseDelayOnHover : false,
-			continueDelayOnInactiveTab : false,
-			width : $(window).width(),
-			position : 'top center',
-			icon : false,
-			title : Localization.cases2.daily_reward_title[Settings.language],
-			size : 'mini',
-			showClass : 'fadeInDown',
-			hideClass : 'fadeOutUp',
-			msg : Localization.cases2.daily_reward_msg[Settings.language]
-		});
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        if (lastReward < today) { // 24*60*60*1000
+            console.log(lastReward);
+            console.log(today);
+            // вчера или раньше
+            Level.addEXP(DAILY_REWARD_POINTS);
+            Player.doubleBalance += Level.doubleBonus();
 
-		saveStatistic('lastPointReward', '' + today);
-		saveStatistic('doubleBalance', Player.doubleBalance);
-	}
+            var msg = Localization.getString('other.daily_reward.message');
+            msg = msg.replace('${1}', DAILY_REWARD_POINTS);
+            msg = msg.replace('${2}', Level.doubleBonus());
+            Lobibox.notify('info', {
+                pauseDelayOnHover : false,
+                continueDelayOnInactiveTab : false,
+                width : $(window).width(),
+                position : 'top center',
+                icon : false,
+                title : Localization.getString('other.daily_reward.title'),
+                size : 'mini',
+                showClass : 'fadeInDown',
+                hideClass : 'fadeOutUp',
+                msg : msg
+            });
+
+            saveStatistic('lastPointReward', '' + today);
+            saveStatistic('doubleBalance', Player.doubleBalance);
+        }
+    }
 });
 
 $(document).on('click', '#new-version__update', function () {

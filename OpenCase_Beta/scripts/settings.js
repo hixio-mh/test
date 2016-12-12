@@ -15,7 +15,6 @@ var Settings = {
         "sounds": true,
         "drop": false
     }
-    //if (isAndroid()) fromCookieToAndroid();
 
 Player.nickname = getStatistic("playerNickname", 'Player');
 Player.avatar = getStatistic("playerAvatar", '0.jpg');
@@ -26,21 +25,6 @@ if (isNaN(Player.doubleBalance)) Player.doubleBalance = 10000;
 Settings.language = getStatistic("settings_language", 'EN');
 Settings.sounds = getStatistic("settings_sounds", 'true') === 'true';
 Settings.drop = getStatistic("settings_drop", 'false') === 'true';
-
-
-/*function fromCookieToAndroid() {
-    cookieList = ["playerNickname", "playerAvatar", "settings_language", "settings_sounds", "settings_drop"];
-
-    if (isAndroid())
-        for (var i = 0; i < cookieList.length; i++) {
-            cookie = $.cookie(cookieList[i]);
-            if (cookie) {
-                saveStatistic(cookieList[i], cookie);
-                $.removeCookie(cookieList[i]);
-            }
-        }
-
-}*/
 
 // ===== RANKS =====
 var Ranks = [{

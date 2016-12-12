@@ -12,8 +12,9 @@ $(function() {
 	}
 })
 
-function fillInventory(selector) {
+function fillInventory(selector, action) {
     selector = selector || ".inventory";
+    action = action || "";
 	if ($('.js-loading-inventory').length == 0){
         if ($(selector+' .weapon').length != 0) {
             $(selector+" .weapon").remove();
@@ -36,12 +37,15 @@ function fillInventory(selector) {
 
         for(var i = 0; i < inventory.length; i++) {
             var weapon = inventory[i];
+            
+            if (action != "" && typeof weapon.can[action] != 'undefined' && weapon.can[action] == false) continue
 
             var weaponInfo = "<img src='"+getImgUrl(weapon.img)+"'> \
             <div class='weaponInfo "+weapon.rarity+"'> \
                 <span class='type'>"+weapon.specialText()+weapon.type+"<br>" + weapon.name + "</span> \
             </div><i class='currency dollar'>"+weapon.price+"</i>";
-            $(selector).append("<li class='weapon "+ (weapon.statTrak ? "wp-statTrak" : "") +" "+((weapon['new'] == true) ? "new-weapon" : "")+"' data-id='"+weapon.id+"'>"+weaponInfo+"</li>");
+            
+            $(selector).append("<li class='weapon "+ (weapon.statTrak ? "wp-statTrak" : "") +" "+((weapon['new'] == true) ? "new-weapon" : "")+"' data-id='"+weapon.id+"' data-weapon_obj='"+JSON.stringify(weapon.saveObject())+"' data-weapon_can='"+JSON.stringify(weapon.can)+"'>"+weaponInfo+"</li>");
 
             if (weapon['new'] == true) {
                 inventory[i]['new'] = false;
@@ -49,7 +53,7 @@ function fillInventory(selector) {
             }
         }
         if (inventory.length == 0) {
-            $(selector).html("<li>"+Localization.jackpot2.emptyInventory[Settings.language]+"</li>");
+            $(selector).html("<li>"+Localization.getString('other.empty_inventory')+"</li>");
         }
 
         if ((wp_from+inventory_step) < inventory_length) {
@@ -77,7 +81,7 @@ $(document).on("click", ".weapon", function(){
 	
 	if ($(parent).hasClass('inv-price-counter')) {
 		if ($("li").is(".inventoryItemSelected")) {
-			var sumText = Localization.jackpot2.sumText[Settings.language];
+			var sumText = Localization.getString('other.sum_text');
 			if ($("div").is(".inventorySum")) {
 				var sumPr = 0.0;
 				$(".inventoryItemSelected").each(function () {

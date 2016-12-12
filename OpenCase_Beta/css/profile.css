@@ -513,12 +513,12 @@ ul.posts__user-posts {
 .tradeWith__controls {
     margin-left: auto;
     margin-bottom: auto;
-    padding-right: 3px;
     color: #838383;
     display: none;
 }
 .tradeWith__controls > * {
     cursor: pointer;
+    padding: 5px;
 }
 
 .trade__weapons__chang-your-weapons {

@@ -1,14 +1,142 @@
 
 $(function() {
     var category = $(document.body).data('localization');
-    try {
+    /*try {
         localizate(category);
     } catch (e) {
         console.error('No localization');
-    }
+    }*/
+    
+    //$.ajaxSetup({cache: true});
+    
+    $.getScript("../scripts/localization/" + Settings.language + ".js", function(translation, status) {
+        console.log('Script loading status:', status);
+        Localization.isLoaded = true;
+        $(document).trigger('localizationloaded');
+        Localization.localizate(category);
+    })
 })
+var Localization = (function (module) {
+    'use strict';
+    
+    module = module || {};
+    module.isLoaded = false;
+    
+    module.supportedLanguages = {
+        names: {
+            short: ['RU', 'EN', 'FR'],
+            full: ['Русский', 'English', 'Français']
+        },
+        skinNames: {
+            arr: ['RU', 'EN'],
+            regExp: /(ru|en)/i
+        },
+        quality: {
+            arr: ['RU', 'EN'],
+            regExp: /(ru|en)/i
+        },
+        updates: {
+            arr: ['RU', 'EN'],
+            regExp: /(ru|en)/i
+        }
+    }
+    
+    module.isSupport = function(cat) {
+        var category = module.supportedLanguages[cat];
+        if (!category) return undefined;
+        
+        if (category.regExp) {
+            return category.regExp.test(Settings.language);
+        }
+        
+    }
+    
+    module.changeLanguage = function(lang) {
+        lang = lang || 'EN';
+        var category = $(document.body).data('localization');
+        $.getScript("../scripts/localization/" + lang + ".js", function(translation, status) {
+            Localization.isLoaded = true;
+            $(document).trigger('localizationloaded');
+            Localization.localizate(category);
+        })
+    }
+    
+    module.localizate = function(page) {
+        var alwaysLoc = ['menu'];
+        console.log('Start localization');
+        
+        for(var i = 0; i < alwaysLoc.length; i++) {
+            _localization_start(Translation.translation[alwaysLoc[i]]);
+        }
+        
+        var loc = Translation.translation[page];
 
-function localizate(category) {
+        if (!loc) {
+            console.log('No localization');
+        } else {
+            _localization_start(loc);
+        }
+
+    }
+
+    function _localization_start(sectionTr) {
+        locBlock(sectionTr);    
+
+        function locBlock(block, parent) {
+            parent = parent || document;
+            if (!block) return false;
+            var keys = Object.keys(block);
+
+            for(var i = 0; i < keys.length; i++) {
+                if (block[keys[i]].text) {
+                    var $element = $(parent).find('[data-loc="' + keys[i] + '"]');
+                    if (!$element || $element.length === 0) continue;
+                    for (var z = 0; z < $element.length; z++)
+                        locElement($element[z], block[keys[i]].text);
+                } else {
+                    var $parent = $('[data-loc-group="' + keys[i] + '"]');
+                    if ($parent && $parent.length)
+                        for (var z = 0; z < $parent.length; z++)
+                            locBlock(block[keys[i]], $($parent)[z]);
+                }
+            }
+        }
+
+        function locElement($element, tr) {
+            var varTest = /\$\{\d+\}/gi;
+            if (varTest.test(tr) && $($element).data('loc-var')) {
+                var vars = $($element).data('loc-var');
+                for (var i = 1; i < Object.keys(vars).length+1; i++) {
+                    var rg = new RegExp('(\\$\\{' + i + '\\})', 'g');
+                    tr = tr.replace(rg, vars[i]);
+                }
+            }
+            $($element).html(tr);
+        }
+    }
+    
+    module.getString = function(path, original) {
+        original = original || false;
+        var paths = path.split('.'),
+            current = Translation.translation,
+            i;
+        for (i = 0; i < paths.length; ++i) {
+            if (current[paths[i]] == undefined) {
+                return undefined;
+            } else {
+                current = current[paths[i]];
+            }
+        }
+        if (typeof current == 'object' && current.text)
+            current = original ? current.en : current.text
+        return current;
+    }
+    
+    return module;
+}(Localization || {}));
+
+
+function localizate_old(category) {
     var lng = Settings.language;
     if (category != 'none') {
         var currCat = Localization[category];
@@ -39,104 +167,11 @@ function localizate(category) {
             $(this).html(eval(vr));
         });
 }
-var Localization = [];
-Localization.souvenir = {
+/*var Localization = [];
+    Localization.souvenir = {
         "RU": "Сувенир",
         "EN": "Souvenir"
     },
-    Localization.menu = [{
-        "selector": "#local-menu-case",
-        "localization": {
-            "EN": "Open case"
-        }
-    }, {
-        "selector": "#local-menu-games",
-        "localization": {
-            "EN": "Games"
-        }
-    }, {
-        "selector": "#local-menu-rulet",
-        "localization": {
-            "EN": "Jackpot"
-        }
-    }, {
-        "selector": "#local-menu-rps",
-        "localization": {
-            "EN": "Rock-Paper-Scissors"
-        }
-    }, {
-        "selector": "#local-menu-coinflip",
-        "localization": {
-            "EN": "CoinFlip"
-        }
-    }, {
-        "selector": "#local-menu-double",
-        "localization": {
-            "EN": "Double"
-        }
-    }, {
-        "selector": "#local-menu-online-games",
-        "localization": {
-            "EN": "Online games"
-        }
-    }, {
-        "selector": "[data-local='Double']",
-        "localization": {
-            "EN": "Double"
-        }
-    }, {
-        "selector": "[data-local='Crash']",
-        "localization": {
-            "EN": "Crash"
-        }
-    }, {
-        "selector": "#local-menu-inventory",
-        "localization": {
-            "RU": "Мой инвентарь",
-            "EN": "My inventory"
-        }
-    }, {
-        "selector": "#local-menu-market",
-        "localization": {
-            "RU": "Магазин",
-            "EN": "Market"
-        }
-    }, {
-        "selector": "#local-menu-chat",
-        "localization": {
-            "EN": "Chat"
-        }
-    }, {
-        "selector": "#local-menu-stat",
-        "localization": {
-            "RU": "Статистика",
-            "EN": "Statistic"
-        }
-    }, {
-        "selector": "#local-menu-news",
-        "localization": {
-            "RU": "Обновления",
-            "EN": "Updates"
-        }
-    }, {
-        "selector": "#local-menu-settings",
-        "localization": {
-            "RU": "Настройки",
-            "EN": "Settings"
-        }
-    }, {
-        "selector": "#local-menu-about",
-        "localization": {
-            "RU": "О программе",
-            "EN": "About"
-        }
-    }, {
-        "selector": "#local-menu-apps",
-        "localization": {
-            "RU": "Другие приложения",
-            "EN": "Other apps"
-        }
-    }],
     Localization.cases = [{
         "selector": "#Default h1",
         "localization": {
@@ -1132,4 +1167,4 @@ Localization.ban = {
         RU: "Если вы считаете, что получили бан по ошибке, напишите на почту kurtukovvlad@gmail.com",
         EN: "If you were banned by a mistake, write to email kurtukovvlad@gmail.com"
     }
-}
+}*/

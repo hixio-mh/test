@@ -45,10 +45,10 @@
 		color: #000;
 		}
 	</style>
-	<body data-localization='none'>
+	<body data-localization='updates'>
 		<div class="site-overlay"></div>
 		<div id='container'>
-		<div class="navigationBar" data-menu-EN="Updates" data-menu-RU="Обновления"></div>
+		<div class="navigationBar"></div>
 			<ul class='history-list'>
 			</ul>
 		</div>
@@ -59,7 +59,10 @@
 				while(i--) {
 					var date = new Date(news[i].year, news[i].month-1, news[i].day);
 					var currUpdate = "<li><span class='date'>"+date.toLocaleString((Settings.language == 'RU') ? 'ru' : 'en-US', options)+"</span>";
-					currUpdate += "<span class='new'>"+news[i].update[Settings.language]+"</span>";
+                    
+                    var currentNews = news[i].update;
+                    currentNews = currentNews[Settings.language] ? currentNews[Settings.language] : currentNews['EN'];
+					currUpdate += "<span class='new'>"+currentNews+"</span>";
 					$('.history-list').append(currUpdate);
 				}
 			});

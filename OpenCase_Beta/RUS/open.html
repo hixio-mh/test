@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="../css/lobibox.min.css" />
 <link rel="stylesheet" type="text/css" href="../css/winter.css">
 </head>
-<body data-localization="openCase" data-inventory="no-load">
+<body data-localization="open_case" data-inventory="no-load">
 
 <div class="weapons">
 <div class="closeCase"></div>
@@ -36,26 +36,26 @@
 </div>
 
 <div class="win" style="display: none;">
-<span id='win_youWon'>Вы выиграли</span>
+<span id='win_youWon' data-loc="you_won">You won</span>
 
 <span class="win_name"></span>
 <span class="win_quality"></span>
 <span class="win_price"></span>
 <img src="" class="win_img">
 <div class="win_sell_div">
-	<h3 id="win_sell_text" class="lines"><span>Продать</span></h3>
+	<h3 id="win_sell_text" class="lines" data-loc="sell"><span>Sell</span></h3>
     <button class="button_glass" id="double_sell_button"></button>
 </div>
 </div>
 
-<button class="openCase">Открыть кейс</button>
+<button class="openCase" data-loc="open_case">Open Case</button>
 <!--<button class="rand">Random Weapon</button>-->
 
-<div><span id="opened-text">Открыто: </span><span id="opened">0</span></div>
+<div><span id="opened-text" data-loc="opened">Opened:</span> <span id="opened">0</span></div>
 
-<button id='what-i-can-win-Button'>Что я могу выиграть?</button>
+<button id='what-i-can-win-Button' data-loc="what_in_case">What's in the case?</button>
 
-<div id="youCanWin" style='display:none'><font id="local-youCanWin">Вы можете выиграть один из данных предметов из коллекции</font> <span></span></div>
+<div id="youCanWin" style='display:none' data-loc="you_can_win">You can win one of those items from collection</div>
 <ul class="weaponsList" style='display:none'>
 </ul>
 </div>
@@ -72,7 +72,7 @@ $(function(){
 			souvenirCase = param.souvenir[0] == 'true';
 		} catch(e) {}
 		$("#caseID").text(caseId);
-		$("#youCanWin span").text(cases[caseId].name)
+		$("#youCanWin").data('loc-var', {1: cases[caseId].name})
 		var opened = 0;
 		if (isAndroid())
 			opened = parseInt(client.getStatistic("case-"+cases[caseId].name));

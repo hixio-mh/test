@@ -22,7 +22,7 @@ $(function() {
     
     odometer = new Odometer({el: $("#odometer")[0], value: 1.00, theme: 'default', duration: 500, format: '(ddd).dd'});
     odometer.render();
-    newGameTimer = new Odometer({el: $(".crash__next-round-timer span")[0], value: 5, theme: 'default', duration: 1000, format: '(ddd).d'});
+    newGameTimer = new Odometer({el: $("#odometer_next_round")[0], value: 5, theme: 'default', duration: 1000, format: '(ddd).d'});
     newGameTimer.render();
     
     getTop();
@@ -144,7 +144,7 @@ $(function() {
         currentMultiply = 0;
         $('.crash__next-round-timer').show();
         var timer = Math.round(message.time/1000 - 1);
-        $(".crash__next-round-timer span").text(timer);
+        $("#odometer_next_round").text(timer);
 
         newGameCountdown(timer);
     }
@@ -186,7 +186,7 @@ $(function() {
         }
         setTimeout(function() {
             $('.crash__multiply').addClass('crashed');
-            $('#place-bet').html(Localization.crash2.place_bet[Settings.language]);
+            $('#place-bet').html(Localization.getString('crash.bet.place'));
             $('#place-bet').prop('disabled', true);
             playerInfo.bet = 0;
             gameStartStatus = false;
@@ -207,7 +207,7 @@ $(function() {
         currentMultiply = message.number;
         odometer.update(currentMultiply/100);
         if (playerInfo.bet) {
-            $('#place-bet').html(Localization.crash2.cash_out[Settings.language].replace('$s', parseInt((currentMultiply/100 * playerInfo.bet))));
+            $('#place-bet').html(Localization.getString('crash.bet.cash_out').replace('${1}', parseInt((currentMultiply/100 * playerInfo.bet))));
         }
         
         if (message.cashOuts) {
@@ -235,7 +235,7 @@ $(function() {
         
         if (message.id == playerInfo.id) {
             //console.log('This player cash out!');
-            $('#place-bet').html(Localization.crash2.place_bet[Settings.language]);
+            $('#place-bet').html(Localization.getString('crash.bet.place'));
             $('#place-bet').prop('disabled', true);
             Player.doubleBalance += (playerInfo.bet + message.profit);
             playerInfo.bet = 0;
@@ -415,7 +415,7 @@ $(function() {
             Player.doubleBalance -= playerInfo.bet;
             saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
             
-            $("#place-bet").text(Localization.crash2.betting[Settings.language]);
+            $("#place-bet").text(Localization.getString('crash.bet.betting'));
             $('#place-bet').prop('disabled', true);
             
             $('#balance').text(Player.doubleBalance);

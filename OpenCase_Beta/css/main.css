@@ -108,6 +108,9 @@ body {
     border-radius: 24px;
     background-position: -1px;
 }
+.popup i {
+    font-style: normal;
+}
 .inline-link {
     display: inline-block;
     position: relative;

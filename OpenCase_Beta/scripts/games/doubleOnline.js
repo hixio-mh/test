@@ -77,7 +77,7 @@ $(function() {
             
             clearTimeout(intervalCountdown);
             $('.bet-to-color').prop('disabled', true);
-            $('.big-progress span').html(Localization.double2.connectionLost[Settings.language]);
+            $('.big-progress span').html(Localization.getString('double.connection_lost'));
             $('.the-bet').fadeOut(300, function() {$(this).remove();});
             
             if (playerBet.length) {
@@ -219,7 +219,7 @@ function firstConnect(message) {
         gameStart = true;
         $('.ball')[0].remove();
         fillCarusel(parseInt($(".ball:first-child").text()));
-        $('.big-progress span').text(Localization.double2.rolling[Settings.language]);
+        $('.big-progress span').text(Localization.getString('double.rolling_in'));
         startGame(message.lastGames[i], message.rollTime-800);
     } else{
         countDown();
@@ -253,7 +253,8 @@ function countDown() {
     //countdownTimer -= 100;
     val = (countdownTimer * 100) / countdownTime;
     $('#progress-countdown').css('width', val + '%');
-    $('.big-progress span').text(Localization.double2.rollingIn[Settings.language] + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
+    if (Localization.isLoaded)
+        $('.big-progress span').text(Localization.getString('double.rolling_in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
 
     if (val > 0) 
         intervalCountdown = setTimeout(countDown, 100);
@@ -277,7 +278,7 @@ function startGame(win, duration) {
             start: function() {
                 $('.bet-to-color').prop('disabled', true);
                 clearTimeout(intervalCountdown);
-                $('.big-progress span').text(Localization.double2.rolling[Settings.language]);
+                $('.big-progress span').text(Localization.getString('double.rolling'));
             },
             complete: function() {
                 if (playerBet.length) {

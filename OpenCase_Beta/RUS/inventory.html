@@ -56,7 +56,7 @@
 		</ul>
 	</div>
 
-	<div id="weaponInfoContainer" style="display: none">
+	<div id="weaponInfoContainer" style="display: none" data-loc-group="weapon_info">
 		<div class="glassBlur" style='width: 100%; height: 100%'></div>
 		<div class="fullWeaponInfo">
 			<span class="fullWeaponInfo-close">X</span>
@@ -66,28 +66,28 @@
 			<div id="weaponLoadingImg"><i class="fa fa-refresh fa-spin" aria-hidden="true"></i></div>
 			<table id="weaponInfoTable">
 				<tr>
-					<td>Цена</td>
+					<td data-loc="price">Price</td>
 					<td id="weaponPrice" class='currency dollar'></td>
 				</tr>
 				<tr>
-					<td>Качество</td>
+					<td data-loc="quality">Quality</td>
 					<td id="weaponQuality" colspan=2></td>
 				</tr>
 			</table>
-			<button class='button_black' id='startContract'>Контракт обмена</button>
-			<button class='button_black' id='sellWeapon'>Продать</button>
+			<button class='button_black' id='startContract' data-loc="trade_up_contract">Trade Up Contract</button>
+			<button class='button_black' id='sellWeapon' data-loc="sell">Продать</button>
 			<span id='weaponRarity' style='display:none;'></span>
 		</div>
 	</div>
 
-	<div class='contractButtons' style='display: none'>
-		<button class='button_resetContract'>Закрыть контракт</button>
-		<button class='button_contract'>Обмен...</button>
+	<div class='contractButtons' style='display: none' data-loc-group="trade_up_contract">
+		<button class='button_resetContract' data-loc="close">Close contract</button>
+		<button class='button_contract' data-loc="proceed">Proceed...</button>
 	</div>
 </div>
-	<div class="statistic">
-		<span class="stat"><span id="stat-sum-text">Сумма:</span> <span id="stat-sum" class='currency dollar'>0$</span></span>
-		<span class="stat"><span id="stat-count-text">Предметов:</span> <span id="stat-count"></span></span>
+	<div class="statistic" data-loc-group="statistic">
+		<span class="stat"><span data-loc="worth">Worth:</span> <span id="stat-sum" class='currency dollar'>0$</span></span>
+		<span class="stat"><span data-loc="count">Count:</span> <span id="stat-count"></span></span>
 	</div>
 
 	<script>
@@ -100,43 +100,37 @@
 		$(window).scroll(function() {
 			checkForLoadMore();
 		});
-		var sortSpecial = {
-			"RU": ["Все типы", "Новое", "StatTrak", "Не StatTrak", "Сувениры", "Не сувениры", "Обычное"],
-			"EN": ["All types", "New", "StatTrak", "Not StatTrak", "Souvenir", "Not Souvenir", "Normal"]
-		}
-		var sortWeapon = {
-			"RU": ["Все оружия", "Пистолеты", "Винтовки", "Снайперские винтовки", "SMG", "Дробовики", "Пулеметы", "Ножи", "Перчатки"],
-			"EN": ["All weapons", "Pistols", "Rifles", "Sniper rifles", "SMGs", "Shotguns", "Machineguns", "Knives", "Gloves"]
-		}
-		var sortQuality = {
-			"RU": ["Все качества", "Белое", "Светло-синее", "Синее", "Фиолетовое", "Розовое", "Красное", "Золотое"],
-			"EN": ["All qualities", "White", "Light-blue", "Blue", "Purple", "Pink", "Red", "Gold"]
-		}
-		var qualitySort = [
-			" ",
-			"consumer",
-			"industrial",
-			"milspec",
-			"restricted",
-			"classified",
-			"(covert|extraordinary)",
-			"rare"
-		];
 
-		$('#sort-special').prop('disabled', false);
-		$('#sort-quality').prop('disabled', false);
+        $(document).on('localizationloaded', function() {
+            var sortSpecial = Localization.getString('inventory.sort.special');
+            var sortWeapon = Localization.getString('inventory.sort.types');
+            var sortQuality = Localization.getString('inventory.sort.quality');
 
-		var contractMode = false;
+            $('#sort-special').prop('disabled', false);
+            $('#sort-quality').prop('disabled', false);
 
-		for (var i = 0; i < sortSpecial[Settings.language].length; i++) {
-			$("#sort-special").append("<option value='" + i + "'>" + sortSpecial[Settings.language][i] + "</option>");
-		}
-		for (var i = 0; i < sortWeapon[Settings.language].length; i++) {
-			$("#sort-weapon").append("<option value='" + i + "'>" + sortWeapon[Settings.language][i] + "</option>");
-		}
-		for (var i = 0; i < sortQuality[Settings.language].length; i++) {
-			$("#sort-quality").append("<option value='" + i + "'>" + sortQuality[Settings.language][i] + "</option>");
-		}
+            for (var i = 0; i < sortSpecial.length; i++) {
+                $("#sort-special").append("<option value='" + i + "'>" + sortSpecial[i] + "</option>");
+            }
+            for (var i = 0; i < sortWeapon.length; i++) {
+                $("#sort-weapon").append("<option value='" + i + "'>" + sortWeapon[i] + "</option>");
+            }
+            for (var i = 0; i < sortQuality.length; i++) {
+                $("#sort-quality").append("<option value='" + i + "'>" + sortQuality[i] + "</option>");
+            }
+        })
+        
+        var qualitySort = [
+            " ",
+            "consumer",
+            "industrial",
+            "milspec",
+            "restricted",
+            "classified",
+            "(covert|extraordinary)",
+            "rare"
+        ];
+        var contractMode = false;
 
 
 		$(document).on("click", ".weapon", function() {
@@ -205,11 +199,11 @@
 					width: $(window).width(),
 					position: 'top center',
 					icon: false,
-					title: Localization.inventory2.contract_error_title[Settings.language],
+					title: Localization.getString('inventory.trade_up_contract.contract_error.title'),
 					size: 'mini',
 					showClass: 'fadeInDown',
 					hideClass: 'fadeOutUp',
-					msg: Localization.inventory2.sell_error[Settings.language]
+					msg: Localization.getString('inventory.sell_error')
 				});
 				return false;
 			}
@@ -277,11 +271,11 @@
                         width: $(window).width(),
                         position: 'top center',
                         icon: false,
-                        title: Localization.inventory2.contract_error_title[Settings.language],
+                        title: Localization.getString('inventory.trade_up_contract.contract_error.title'),
                         size: 'mini',
                         showClass: 'fadeInDown',
                         hideClass: 'fadeOutUp',
-                        msg: Localization.inventory2.contract_error[Settings.language]
+                        msg: Localization.getString('inventory.trade_up_contract.contract_error.message')
                     });
                     return false;
                 }
@@ -521,7 +515,7 @@
 			inventory_loading = false;
 
 			if (currInventory.length == 0) {
-				$(".inventory").append("<li>" + Localization.jackpot2.emptyInventory[Settings.language] + "</li>");
+				$(".inventory").append("<li>" + Localization.getString('other.empty_inventory') + "</li>");
 				return false;
 			}
 			if ((wp_from + inventory_step) < inventory_length) {

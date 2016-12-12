@@ -325,16 +325,18 @@ var fbProfile = (function (module) {
     module.getTradeWeapons = function(tradeID, weaponsID) {
         firebase.database().ref('trades/'+tradeID+'/'+weaponsID).once('value').then(function(data) {
             var weapons = data.val();
-            for (var i = 0; i < weapons.length; i++) {
-                var wp = fbInventory.reverseConvert(weapons[i]);
-                wp.new = true;
-                if (isAndroid())
-                    saveWeapon(wp);
-                else
-                    inventory.push(wp);
+            if (weapons != null) {
+                for (var i = 0; i < weapons.length; i++) {
+                    var wp = fbInventory.reverseConvert(weapons[i]);
+                    wp.new = true;
+                    if (isAndroid())
+                        saveWeapon(wp);
+                    else
+                        inventory.push(wp);
+                }
+                if (!isAndroid())
+                    saveInventory();
             }
-            if (!isAndroid())
-                saveInventory();
             module.setTradeGetWeaponsStatus(tradeID, true);
             checkInventoryForNotification();
         })

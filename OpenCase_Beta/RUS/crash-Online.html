@@ -36,29 +36,29 @@
         <div class='onlineCount'></div>
     
         <div id="crash-container">
-            <div class="crash__next-round-timer" style='display:none'>Next round in <span></span> s</div>
+            <div class="crash__next-round-timer" style='display:none'><span data-loc="next_round_in">Next round in</span> <span id='odometer_next_round'></span> <span data-loc="seconds"></span></div>
             <div class="crash__multiply"><span id='odometer'>1.00</span>x</div>
         </div>
         
-        <div><span id='balance-text' class='margin-left-body'>Balance:</span> <span id='balance'>0</span></div>
+        <div><span id='balance-text' class='margin-left-body' data-loc="balance">Balance:</span> <span id='balance'>0</span></div>
         <div class="bets"> <span class='add-to-bet' data-bet='clear'>0</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span> </div>
         <input type="text" id="bet" maxlength='6' pattern="^[0-9]+$" />
         
-        <button id='place-bet'>Place bet</button>
+        <button id='place-bet' data-loc-group="bet"><span data-loc="place">Place bet</span></button>
         
-        <div class="tabs">
+        <div class="tabs" data-loc-group="tabs">
             <input id="tab1" type="radio" name="tabs" checked>
-            <label for="tab1" title="Bets" id='local-bets'>Bets</label>
+            <label for="tab1" title="Bets" data-loc="bets">Bets</label>
 
             <input id="tab2" type="radio" name="tabs">
-            <label for="tab2" title="History" id='local-history'>History</label>
+            <label for="tab2" title="History" data-loc="history">History</label>
 
             <input id="tab3" type="radio" name="tabs">
-            <label for="tab3" title="Top" id='local-top'>Top</label>
+            <label for="tab3" title="Top" data-loc="top">Top</label>
             
             <section id='bets'>
-                <table class="bet-list" id='bet-list'>
-                    <tr><th>Nickname</th><th>@</th><th>Bet</th><th>Profit</th></tr>
+                <table class="bet-list" id='bet-list' data-loc-group="table">
+                    <tr><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
                 </table>
             </section>
             
@@ -67,21 +67,21 @@
             </section>
             
             <section id="top">
-                <table class="top">
-                    <tr><th>#</th><th>Nickname</th><th>@</th><th>Bet</th><th>Profit</th></tr>
+                <table class="top" data-loc-group="table">
+                    <tr><th>#</th><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
                 </table>
             </section>
             
         </div>
         
-        <div class='chat closed'>
-            <div class='chat__toggle'>Chat (<span class='chat__toggle__new-messages'>0</span>)</div>
+        <div class='chat closed' data-loc-group="chat">
+            <div class='chat__toggle'><span data-loc="top">Chat</span> (<span class='chat__toggle__new-messages'>0</span>)</div>
             <ul class='chat__messages'>
-                <li class='chat__message__message info'>Welcome to chat!</li>
+                <li class='chat__message__message info' data-loc="welcome">Welcome to chat!</li>
             </ul>
             <div class='chat__new-message'>
                 <div class="chat__new-message__textbox input-text light" contenteditable="true" placeholder="Send message" max="100"></div>
-                <button class="button_blue" id='chat-send-msg'>Send</button>
+                <button class="button_blue" id='chat-send-msg' data-loc="send">Send</button>
             </div>
         </div>
     </div>

@@ -19,10 +19,16 @@ function Weapon_FB(item_id, quality, stattrak, souvenir) {
     this.__proto__ = weapon_proto_FB;
 }
 
+Weapon.prototype.toLi = function() {
+    var weapon = fbInventory.reverseConvert(this);
+    var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>"+(this.stattrak == true ? "StatTrak™ " : "") + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
+    return wp;
+}
+
 var fbInventory = (function (module) {
     'use strict';
     module = module || {};
-    module.convertInventory = function (inventory) {
+    /*module.convertInventory = function (inventory) {
         var convertedInventory = [];
         for (var i = 0; i < inventory.length; i++) {
             if (/^(?:deagle)$/i.test(inventory[i].type)) inventory[i].type = inventory[i].type.replace(/(deagle)/i, 'Desert Eagle')
@@ -39,17 +45,17 @@ var fbInventory = (function (module) {
             if (typeof convertedInventory[i].quality == 'undefined') convertedInventory[i].quality = 0;
         }
         return convertedInventory;
-    };
+    };*/
     
 
-    function getQualityNum(quality) {
+    /*function getQualityNum(quality) {
         var num = 0;
         if (/(factory|прямо)/i.test(quality)) num = 4;
         else if (/(minimal|немного)/i.test(quality)) num = 3;
         else if (/(field|после)/i.test(quality)) num = 2;
         else if (/(Well|Поношенное)/.test(quality)) num = 1;
         return num;
-    }
+    }*/
     module.setInventory = function (uid, inventory, callback) {
         callback = callback || false;
         try {
@@ -169,7 +175,7 @@ var fbInventory = (function (module) {
         convertedWeapon.statTrak = weapon.stattrak || false;
         convertedWeapon.souvenir = weapon.souvenir || false;
         convertedWeapon.quality  = getQualityName(weapon.quality);
-        if (weapon.souvenir) convertedWeapon.type = Localization.souvenir[Settings.language]+' '+convertedWeapon.type;
+        if (weapon.souvenir) convertedWeapon.type = Localization.getString('other.souvenir')+' '+convertedWeapon.type;
         try {
             convertedWeapon.skinName = getSkinName(convertedWeapon.skinName, Settings.language);
             convertedWeapon.price = getPrice(convertedWeapon.type, convertedWeapon.skinName, convertedWeapon.quality, convertedWeapon.stattrek);

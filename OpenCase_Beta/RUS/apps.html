@@ -55,10 +55,12 @@
 		<script>
 			var list = '';
 			for (var i = 0; i < appList.length; i++) {
-					if (appList[i].enable == true && typeof appList[i].name[Settings.language] != 'undefined')
-					list += '<li style="background: url(\'../../android/' + appList[i].img + '\') left"><a href="' + appList[i].url + '">' + appList[i].name[Settings.language] + '</a></li>';
-					}
-					$('.apps').html(list);
+                var app = appList[i];
+                var app_name = appList[i].name[Settings.language] ? appList[i].name[Settings.language] : appList[i].name['EN']
+                if (appList[i].enable == true && typeof app_name != 'undefined')
+                list += '<li style="background: url(\'../../android/' + appList[i].img + '\') left"><a href="' + appList[i].url + '">' + app_name+ '</a></li>';
+            }
+            $('.apps').html(list);
 				</script>
 			</body>
 		</html>

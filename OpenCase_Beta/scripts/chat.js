@@ -1,5 +1,10 @@
 $(function () {
     var MESSAGE_LIMIT = parseInt($("#chat__new-message").attr("max"));
+    
+    $(document).on('localizationloaded', function() {
+        $('#chat__send-new-message').attr('value', Localization.getString('chat.send_message'))
+    });
+    
     $("#chat__new-message").on('keydown paste', function (event) {
         if (event.keyCode == 13) {
             $("#chat__send-new-message").click();
@@ -69,8 +74,8 @@ $(function () {
         var msgText = $(this).closest('.message__info').children('.message__text').text();
         Lobibox.confirm({
             iconSource : 'fontAwesome',
-            title : Localization.chat2.delete_msg_title[Settings.language],
-            msg : Localization.chat2.delete_msg[Settings.language],
+            title : Localization.getString('chat.moderator.delete_msg.title'),
+            msg : Localization.getString('chat.moderator.delete_msg.message'),
             callback : function ($this, type, ev) {
                 if (type == 'yes') {
                     fbChat.deleteMsg(msgKey);
