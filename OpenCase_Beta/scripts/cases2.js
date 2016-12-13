@@ -364,4 +364,12 @@ var cases = [{
     "casesToOpen": 50,
     weapons: [735,736,737,738,739,740,741,742,743,744,745,746],
     knives: [747,748]
+}, {
+    "name": "Christmas",
+    "img": "SteachCase.png",
+    "type": "Workshop",
+    "specialClass": "workshop",
+    "casesToOpen": 50,
+    weapons: [775,774],
+    knives: [747,748]
 }, ]

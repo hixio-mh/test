@@ -4885,4 +4885,18 @@ var weapons = [{
     , rarity: "extraordinary"
     , buy: false
     , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDLTDl2VW7fpmguDV8LP4jVC9vh5yYWqldoSXcFM5ZlrRqATtwersh57tvMzAmiY2vyF0t3rYyRy3hRxPavsv26Lj6N29Hg"
+    }, {
+    id: 774
+    , type: "AK-47"
+    , skinName: "Shark's Reef"
+    , rarity: "covert"
+    , buy: true
+    , img: "Christmas/AK-47-Shark's-Reef.png"
+    }, {
+    id: 775
+    , type: "P90"
+    , skinName: "Green Hunter"
+    , rarity: "restricted"
+    , buy: true
+    , img: "Christmas/P90-Green-Hunter.png"
 }]

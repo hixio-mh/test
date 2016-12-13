@@ -37159,4 +37159,21 @@ var Prices = {
             , "souvenir": {}
         }
     }
+    , "774": {
+        "item_id": 774
+        , "type": "AK-47"
+        , "skinName": "Shark's Reef"
+        , "prices": {
+            "default": {
+                3: {
+                    market: 28
+                }
+                , 0: {
+                    market: 10
+                }
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
 }
