@@ -370,6 +370,6 @@ var cases = [{
     "type": "Workshop",
     "specialClass": "workshop",
     "casesToOpen": 50,
-    weapons: [775,774],
+    weapons: [779,783,784,785,775,776,780,777,778,782,774,781],
     knives: [747,748]
 }, ]

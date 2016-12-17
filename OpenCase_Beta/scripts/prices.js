@@ -37165,14 +37165,33 @@ var Prices = {
         , "skinName": "Shark's Reef"
         , "prices": {
             "default": {
+                0: {
+                    market: 4
+                },
+                2: {
+                    market: 16.2
+                },
                 3: {
                     market: 28
-                }
-                , 0: {
-                    market: 10
+                },
+                4: {
+                    market: 39.41
                 }
             }
-            , "stattrak": {}
+            , "stattrak": {
+                0: {
+                    market: 5.89
+                },
+                2: {
+                    market: 21.72
+                },
+                3: {
+                    market: 34.66
+                },
+                4: {
+                    market: 53.76
+                }
+            }
             , "souvenir": {}
         }
     }

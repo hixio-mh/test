@@ -4899,4 +4899,74 @@ var weapons = [{
     , rarity: "restricted"
     , buy: true
     , img: "Christmas/P90-Green-Hunter.png"
+    }, {
+    id: 776
+    , type: "AWP"
+    , skinName: "Kyoto Craftsman"
+    , rarity: "restricted"
+    , buy: true
+    , img: "Christmas/AWP-Kyoto-Craftsman.png"
+    }, {
+    id: 777
+    , type: "AK-47"
+    , skinName: "Toucan"
+    , rarity: "classified"
+    , buy: true
+    , img: "Christmas/AK-47-Toucan.png"
+    }, {
+    id: 778
+    , type: "M4A4"
+    , skinName: "Vengeful Power"
+    , rarity: "classified"
+    , buy: true
+    , img: "Christmas/M4A4-Vengeful-Power.png"
+    }, {
+    id: 779
+    , type: "Five-SeveN"
+    , skinName: "Dragon Force"
+    , rarity: "milspec"
+    , buy: true
+    , img: "Christmas/Five-SeveN-Dragon-Force.png"
+    }, {
+    id: 780
+    , type: "M4A4"
+    , skinName: "WildStyle"
+    , rarity: "restricted"
+    , buy: true
+    , img: "Christmas/M4A4-WildStyle.png"
+    }, {
+    id: 781
+    , type: "USP-S"
+    , skinName: "Desolate Space"
+    , rarity: "covert"
+    , buy: true
+    , img: "Christmas/USP-S-Desolate-Space.png"
+    }, {
+    id: 782
+    , type: "AWP"
+    , skinName: "Revenge of the Martian"
+    , rarity: "classified"
+    , buy: true
+    , img: "Christmas/AWP-Revenge-of-the-Martian.png"
+    }, {
+    id: 783
+    , type: "Tec-9"
+    , skinName: "Tiger"
+    , rarity: "milspec"
+    , buy: true
+    , img: "Christmas/Tec-9-Tiger.png"
+    }, {
+    id: 784
+    , type: "P250"
+    , skinName: "Pearl"
+    , rarity: "milspec"
+    , buy: true
+    , img: "Christmas/P250-Pearl.png"
+    }, {
+    id: 785
+    , type: "P2000"
+    , skinName: "Discord"
+    , rarity: "milspec"
+    , buy: true
+    , img: "Christmas/P2000-Discord.png"
 }]
