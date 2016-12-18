@@ -37166,30 +37166,429 @@ var Prices = {
         , "prices": {
             "default": {
                 0: {
-                    market: 4
+                    market: 21
+                },
+                1: {
+                    market: 34
                 },
                 2: {
-                    market: 16.2
+                    market: 66.5
                 },
                 3: {
-                    market: 28
+                    market: 97.11
                 },
                 4: {
-                    market: 39.41
+                    market: 144.54
                 }
             }
             , "stattrak": {
                 0: {
-                    market: 5.89
+                    market: 67
+                },
+                1: {
+                    market: 85.52
                 },
                 2: {
-                    market: 21.72
+                    market: 102.42
                 },
                 3: {
-                    market: 34.66
+                    market: 131.43
                 },
                 4: {
-                    market: 53.76
+                    market: 195
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "775": {
+        "item_id": 775
+        , "type": "P90"
+        , "skinName": "Green Hunter"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 0.56
+                },
+                1: {
+                    market: 0.87
+                },
+                2: {
+                    market: 0.99
+                },
+                3: {
+                    market: 1.12
+                },
+                4: {
+                    market: 2.1
+                }
+            }
+            , "stattrak": {
+                0: {
+                    market: 1.67
+                },
+                1: {
+                    market: 2.01
+                },
+                2: {
+                    market: 2.75
+                },
+                3: {
+                    market: 3.66
+                },
+                4: {
+                    market: 5.21
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "776": {
+        "item_id": 776
+        , "type": "AWP"
+        , "skinName": "Kyoto Craftsman"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 0.87
+                },
+                1: {
+                    market: 1.22
+                },
+                2: {
+                    market: 1.25
+                },
+                3: {
+                    market: 2.17
+                },
+                4: {
+                    market: 3.54
+                }
+            }
+            , "stattrak": {
+                0: {
+                    market: 4.33
+                },
+                1: {
+                    market: 5.21
+                },
+                2: {
+                    market: 5.99
+                },
+                3: {
+                    market: 6.22
+                },
+                4: {
+                    market: 8.33
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "777": {
+        "item_id": 777
+        , "type": "AK-47"
+        , "skinName": "Toucan"
+        , "prices": {
+            "default": {
+                2: {
+                    market: 10.3
+                },
+                3: {
+                    market: 15.23
+                },
+                4: {
+                    market: 26.21
+                }
+            }
+            , "stattrak": {
+                2: {
+                    market: 23.41
+                },
+                3: {
+                    market: 32.12
+                },
+                4: {
+                    market: 61.2
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "778": {
+        "item_id": 778
+        , "type": "M4A4"
+        , "skinName": "Vengeful Power"
+        , "prices": {
+            "default": {
+                1: {
+                    market: 5.02
+                },
+                2: {
+                    market: 2.96
+                },
+                3: {
+                    market: 4.99
+                },
+                4: {
+                    market: 8.65
+                }
+            }
+            , "stattrak": {
+                1: {
+                    market: 14.2
+                },
+                2: {
+                    market: 8.21
+                },
+                3: {
+                    market: 16.3
+                },
+                4: {
+                    market: 28
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "779": {
+        "item_id": 779
+        , "type": "Five-SeveN"
+        , "skinName": "Dragon Force"
+        , "prices": {
+            "default": {
+                2: {
+                    market: 0.35
+                },
+                3: {
+                    market: 0.4
+                },
+                4: {
+                    market: 0.49
+                }
+            }
+            , "stattrak": {
+                2: {
+                    market: 1.03
+                },
+                3: {
+                    market: 1.42
+                },
+                4: {
+                    market: 2.02
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "780": {
+        "item_id": 780
+        , "type": "M4A4"
+        , "skinName": "WildStyle"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 0.89
+                },
+                1: {
+                    market: 0.99
+                },
+                2: {
+                    market: 1.12
+                },
+                3: {
+                    market: 1.84
+                },
+                4: {
+                    market: 2.57
+                }
+            }
+            , "stattrak": {
+                0: {
+                    market: 4.12
+                },
+                1: {
+                    market: 4.47
+                },
+                2: {
+                    market: 4.5
+                },
+                3: {
+                    market: 6.2
+                },
+                4: {
+                    market: 10.34
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "781": {
+        "item_id": 781
+        , "type": "USP-S"
+        , "skinName": "Desolate Space"
+        , "prices": {
+            "default": {
+                2: {
+                    market: 17.78
+                },
+                3: {
+                    market: 19.61
+                },
+                4: {
+                    market: 69.41
+                }
+            }
+            , "stattrak": {
+                2: {
+                    market: 60.33
+                },
+                3: {
+                    market: 68.12
+                },
+                4: {
+                    market: 275.11
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "782": {
+        "item_id": 782
+        , "type": "AWP"
+        , "skinName": "Revenge of the Martian"
+        , "prices": {
+            "default": {
+                2: {
+                    market: 16
+                },
+                3: {
+                    market: 18.12
+                },
+                4: {
+                    market: 85
+                }
+            }
+            , "stattrak": {
+                2: {
+                    market: 47.48
+                },
+                3: {
+                    market: 64.12
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "783": {
+        "item_id": 783
+        , "type": "Tec-9"
+        , "skinName": "Tiger"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 0.21
+                },
+                1: {
+                    market: 0.31
+                },
+                2: {
+                    market: 0.34
+                },
+                3: {
+                    market: 0.88
+                },
+                4: {
+                    market: 2.43
+                }
+            }
+            , "stattrak": {
+                0: {
+                    market: 0.75
+                },
+                1: {
+                    market: 0.79
+                },
+                2: {
+                    market: 0.8
+                },
+                3: {
+                    market: 1.89
+                },
+                4: {
+                    market: 9.88
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "784": {
+        "item_id": 784
+        , "type": "P250"
+        , "skinName": "Pearl"
+        , "prices": {
+            "default": {
+                2: {
+                    market: 0.41
+                },
+                3: {
+                    market: 0.45
+                },
+                4: {
+                    market: 0.54
+                }
+            }
+            , "stattrak": {
+                2: {
+                    market: 0.92
+                },
+                3: {
+                    market: 1.01
+                },
+                4: {
+                    market: 1.38
+                }
+            }
+            , "souvenir": {}
+        }
+    }
+    , "785": {
+        "item_id": 785
+        , "type": "P2000"
+        , "skinName": "Discord"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 0.15
+                },
+                1: {
+                    market: 0.17
+                },
+                2: {
+                    market: 0.18
+                },
+                3: {
+                    market: 0.21
+                },
+                4: {
+                    market: 0.38
+                }
+            }
+            , "stattrak": {
+                0: {
+                    market: 0.4
+                },
+                1: {
+                    market: 0.47
+                },
+                2: {
+                    market: 0.58
+                },
+                3: {
+                    market: 0.62
+                },
+                4: {
+                    market: 1.82
                 }
             }
             , "souvenir": {}

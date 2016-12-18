@@ -34,3 +34,22 @@
 .fullWeaponInfo #weaponImg {
     background: url(../images/winter/Weapon_snow.gif), radial-gradient(at top, #86AEF6, #284271);
 }
+
+/* === Christmas case === */
+img[src="../images/Cases/cases/none.png"] {
+    width: 115px;
+    background-image: url(../images/Cases/cases/christmas/spritesheet.png);
+    background-repeat: no-repeat;
+    background-position: 2px 4px;
+    background-size: 1000px;
+    animation: chr 8s steps(8) infinite;
+    -webkit-animation: chr 8s steps(8) infinite;
+}
+
+@keyframes chr {
+    100% {   background-position: -998px 4px;}
+}
+
+@-webkit-keyframes chr {
+    100% {   background-position: -998px 4px;}
+}

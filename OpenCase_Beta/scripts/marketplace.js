@@ -60,7 +60,7 @@ $(document).ready(function() {
     if (Sales.length) {
         var SalesHTML = "";
         for (var i = 0; i < Sales.length; i++) {
-            SalesHTML += "<div class='sales-weapon animated zoomIn " + (Sales[i].soldOut ? "sold-out" : "") + "' data-weapon-info-json='" + JSON.stringify(Sales[i].saveObject()) + "' data-sales-id='" + i + "' data-discount='" + discount + "'><span class='sales-discount'>" + discount + "%</span><img src='" + getImgUrl(Sales[i].img, 1) + "'><span class='sales-weapon-name'>" + Sales[i].type + " | " + Sales[i].name + "</span><div class='prices'><span class='prices_old-price currency dollar'>" + (Sales[i].price * (100 + discount) / 100).toFixed(2) + "</span> <span class='prices_new-price currency dollar'>" + Sales[i].price + "</span></div></div>";
+            SalesHTML += "<div class='sales-weapon animated zoomIn " + (Sales[i].soldOut ? "sold-out" : "") + "' data-weapon-info-json='" + JSON.stringify(Sales[i].saveObject()) + "' data-sales-id='" + i + "' data-discount='" + discount + "'><span class='sales-discount'>" + discount + "%</span><img src=\"" + getImgUrl(Sales[i].img, 1) + "\"><span class='sales-weapon-name'>" + Sales[i].type + " | " + Sales[i].name + "</span><div class='prices'><span class='prices_old-price currency dollar'>" + (Sales[i].price * (100 + discount) / 100).toFixed(2) + "</span> <span class='prices_new-price currency dollar'>" + Sales[i].price + "</span></div></div>";
             saveStatistic("market-sales-weapon-" + i, JSON.stringify(Sales[i].saveObject()));
         }
         saveStatistic("lastSalesUpdate", '' + today);
@@ -221,7 +221,7 @@ function search(searchStr) {
 
         var data = "data-weapon-info-json='" + JSON.stringify(info[i].saveObject()) + "'";
 
-        items += "<tr class='item' " + data + "><td><img src='" + getImgUrl(info[i].img) + "' class='" + extraStyle + "_border'></td><td class='item__name-group " + extraStyle + "_color'><span class='item__type'>" + info[i].specialText() + info[i].type + "</span> | <span class='item__name'>" + info[i].name + "</span> (<span class='item__quality'>" + info[i].qualityText() + "</span>)</td><td class='item__price currency dollar'>" + info[i].price + "</td></tr>";
+        items += "<tr class='item' " + data + "><td><img src=\"" + getImgUrl(info[i].img) + "\" class='" + extraStyle + "_border'></td><td class='item__name-group " + extraStyle + "_color'><span class='item__type'>" + info[i].specialText() + info[i].type + "</span> | <span class='item__name'>" + info[i].name + "</span> (<span class='item__quality'>" + info[i].qualityText() + "</span>)</td><td class='item__price currency dollar'>" + info[i].price + "</td></tr>";
     }
     $('#search_result').addClass("animated fadeInDown");
     setTimeout(function() {

@@ -1,5 +1,12 @@
 
 var cases = [{
+    "name": "Christmas",
+    "img": "none.png",
+    "type": "Default",
+    "specialClass": "workshop christmas",
+    "casesToOpen": 50,
+    weapons: [779,783,784,785,775,776,780,777,778,782,774,781]
+}, {
     "name": "Alpha", 
     "img": "alpha.png",
     "type": "Collection",
@@ -363,13 +370,5 @@ var cases = [{
     "specialClass": "workshop",
     "casesToOpen": 50,
     weapons: [735,736,737,738,739,740,741,742,743,744,745,746],
-    knives: [747,748]
-}, {
-    "name": "Christmas",
-    "img": "SteachCase.png",
-    "type": "Workshop",
-    "specialClass": "workshop",
-    "casesToOpen": 50,
-    weapons: [779,783,784,785,775,776,780,777,778,782,774,781],
     knives: [747,748]
 }, ]
