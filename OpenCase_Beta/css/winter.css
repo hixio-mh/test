@@ -29,12 +29,6 @@
     background-position: 0, center, right;
     left: -4px;
 }
-
-/* === Weapon Info === */
-.fullWeaponInfo #weaponImg {
-    background: url(../images/winter/Weapon_snow.gif), radial-gradient(at top, #86AEF6, #284271);
-}
-
 /* === Christmas case === */
 img[src="../images/Cases/cases/none.png"] {
     width: 115px;

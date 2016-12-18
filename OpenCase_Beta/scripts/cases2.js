@@ -5,6 +5,8 @@ var cases = [{
     "type": "Default",
     "specialClass": "workshop christmas",
     "casesToOpen": 50,
+    //deadline: '2016-12-18',
+    deadline: '2017-01-08',
     weapons: [779,783,784,785,775,776,780,777,778,782,774,781]
 }, {
     "name": "Alpha", 
