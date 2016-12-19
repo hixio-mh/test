@@ -235,6 +235,7 @@ function search(searchStr) {
             }
         }
     }
+    if (!info) return false;
     $(".sales").css('display', 'none');
     var items = "";
     for (var i = 0; i < info.length; i++) {
@@ -267,12 +268,20 @@ function getAllWeaponInfo(type, name, loadPrices) {
         souvenir = false,
         statTrak = false,
         count = 2;
-    var collect = getCollection(type, getSkinName(name))
+    var nameEN = getSkinName(name);
+    var collect = getCollection(type, nameEN)
     count = collect.type == 'Collection' ? 1 : count;
     if (typeof collect.canBeSouvenir != 'undefined' && collect.canBeSouvenir) {
         canBeSouvenir = true;
         count = 2;
     }
+    
+    if (collect)
+        for (var i = 0; i < collect.weapons.length; i++) {
+            if (type == collect.weapons[i].type && nameEN == collect.weapons[i].skinName)
+                if (typeof collect.weapons[i].canBuy != 'undefined' && collect.weapons[i].canBuy == false)
+                    return false;
+        }
 
     var img = getWeaponImg(type, name);
     for (var z = 0; z < count; z++) {
