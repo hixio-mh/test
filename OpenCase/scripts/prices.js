@@ -39058,4 +39058,537 @@ var Prices = [{
     quality: 'Field-Tested',
     marketPrice: 394.81,
     avgPrice: 45
-}, ]
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Battle-Scarred",
+	marketPrice: 21
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Well-Worn",
+	marketPrice: 34
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Field-Tested",
+	marketPrice: 66.5
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Minimal Wear",
+	marketPrice: 97.11
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Factory New",
+	marketPrice: 144.54
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Battle-Scarred",
+	statTrak: true,
+	marketPrice: 67
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 85.52
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 102.42
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 131.43
+}, {
+	type: "AK-47",
+	name: "Shark's Reef",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 195
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Battle-Scarred",
+	marketPrice: 0.56
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Well-Worn",
+	marketPrice: 0.87
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Field-Tested",
+	marketPrice: 0.99
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Minimal Wear",
+	marketPrice: 1.12
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Factory New",
+	marketPrice: 2.1
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Battle-Scarred",
+	statTrak: true,
+	marketPrice: 1.67
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 2.01
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 2.75
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 3.66
+}, {
+	type: "P90",
+	name: "Green Hunter",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 5.21
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Battle-Scarred",
+	marketPrice: 0.87
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Well-Worn",
+	marketPrice: 1.22
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Field-Tested",
+	marketPrice: 1.25
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Minimal Wear",
+	marketPrice: 2.17
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Factory New",
+	marketPrice: 3.54
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Battle-Scarred",
+	statTrak: true,
+	marketPrice: 4.33
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 5.21
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 5.99
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 6.22
+}, {
+	type: "AWP",
+	name: "Kyoto Craftsman",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 8.33
+}, {
+	type: "AK-47",
+	name: "Toucan",
+	quality: "Field-Tested",
+	marketPrice: 10.3
+}, {
+	type: "AK-47",
+	name: "Toucan",
+	quality: "Minimal Wear",
+	marketPrice: 15.23
+}, {
+	type: "AK-47",
+	name: "Toucan",
+	quality: "Factory New",
+	marketPrice: 26.21
+}, {
+	type: "AK-47",
+	name: "Toucan",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 23.41
+}, {
+	type: "AK-47",
+	name: "Toucan",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 32.12
+}, {
+	type: "AK-47",
+	name: "Toucan",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 61.2
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Well-Worn",
+	marketPrice: 5.02
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Field-Tested",
+	marketPrice: 2.96
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Minimal Wear",
+	marketPrice: 4.99
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Factory New",
+	marketPrice: 8.65
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 14.2
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 8.21
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 16.3
+}, {
+	type: "M4A4",
+	name: "Vengeful Power",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 28
+}, {
+	type: "Five-SeveN",
+	name: "Dragon Force",
+	quality: "Field-Tested",
+	marketPrice: 0.35
+}, {
+	type: "Five-SeveN",
+	name: "Dragon Force",
+	quality: "Minimal Wear",
+	marketPrice: 0.4
+}, {
+	type: "Five-SeveN",
+	name: "Dragon Force",
+	quality: "Factory New",
+	marketPrice: 0.49
+}, {
+	type: "Five-SeveN",
+	name: "Dragon Force",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 1.03
+}, {
+	type: "Five-SeveN",
+	name: "Dragon Force",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 1.42
+}, {
+	type: "Five-SeveN",
+	name: "Dragon Force",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 2.02
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Battle-Scarred",
+	marketPrice: 0.89
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Well-Worn",
+	marketPrice: 0.99
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Field-Tested",
+	marketPrice: 1.12
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Minimal Wear",
+	marketPrice: 1.84
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Factory New",
+	marketPrice: 2.57
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Battle-Scarred",
+	statTrak: true,
+	marketPrice: 4.12
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 4.47
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 4.5
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 6.2
+}, {
+	type: "M4A4",
+	name: "WildStyle",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 10.34
+}, {
+	type: "USP-S",
+	name: "Desolate Space",
+	quality: "Field-Tested",
+	marketPrice: 17.78
+}, {
+	type: "USP-S",
+	name: "Desolate Space",
+	quality: "Minimal Wear",
+	marketPrice: 19.61
+}, {
+	type: "USP-S",
+	name: "Desolate Space",
+	quality: "Factory New",
+	marketPrice: 69.41
+}, {
+	type: "USP-S",
+	name: "Desolate Space",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 60.33
+}, {
+	type: "USP-S",
+	name: "Desolate Space",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 68.12
+}, {
+	type: "USP-S",
+	name: "Desolate Space",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 275.11
+}, {
+	type: "AWP",
+	name: "Revenge of the Martian",
+	quality: "Field-Tested",
+	marketPrice: 16
+}, {
+	type: "AWP",
+	name: "Revenge of the Martian",
+	quality: "Minimal Wear",
+	marketPrice: 18.12
+}, {
+	type: "AWP",
+	name: "Revenge of the Martian",
+	quality: "Factory New",
+	marketPrice: 85
+}, {
+	type: "AWP",
+	name: "Revenge of the Martian",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 47.48
+}, {
+	type: "AWP",
+	name: "Revenge of the Martian",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 64.12
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Battle-Scarred",
+	marketPrice: 0.21
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Well-Worn",
+	marketPrice: 0.31
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Field-Tested",
+	marketPrice: 0.34
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Minimal Wear",
+	marketPrice: 0.88
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Factory New",
+	marketPrice: 2.43
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Battle-Scarred",
+	statTrak: true,
+	marketPrice: 0.75
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 0.79
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 0.8
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 1.89
+}, {
+	type: "Tec-9",
+	name: "Tiger",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 9.88
+}, {
+	type: "P250",
+	name: "Pearl",
+	quality: "Field-Tested",
+	marketPrice: 0.41
+}, {
+	type: "P250",
+	name: "Pearl",
+	quality: "Minimal Wear",
+	marketPrice: 0.45
+}, {
+	type: "P250",
+	name: "Pearl",
+	quality: "Factory New",
+	marketPrice: 0.54
+}, {
+	type: "P250",
+	name: "Pearl",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 0.92
+}, {
+	type: "P250",
+	name: "Pearl",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 1.01
+}, {
+	type: "P250",
+	name: "Pearl",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 1.38
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Battle-Scarred",
+	marketPrice: 0.15
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Well-Worn",
+	marketPrice: 0.17
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Field-Tested",
+	marketPrice: 0.18
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Minimal Wear",
+	marketPrice: 0.21
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Factory New",
+	marketPrice: 0.38
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Battle-Scarred",
+	statTrak: true,
+	marketPrice: 0.4
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Well-Worn",
+	statTrak: true,
+	marketPrice: 0.47
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Field-Tested",
+	statTrak: true,
+	marketPrice: 0.58
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Minimal Wear",
+	statTrak: true,
+	marketPrice: 0.62
+}, {
+	type: "P2000",
+	name: "Discord",
+	quality: "Factory New",
+	statTrak: true,
+	marketPrice: 1.82
+}]

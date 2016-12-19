@@ -5234,6 +5234,78 @@ var fbInventory = (function (module) {
         skinName: "Foundation",
         rarity: "extraordinary",
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDLTDl2VW7fpmguDV8LP4jVC9vh5yYWqldoSXcFM5ZlrRqATtwersh57tvMzAmiY2vyF0t3rYyRy3hRxPavsv26Lj6N29Hg"
+    }, {
+        id: 844,
+        "type": "Five-SeveN",
+        "skinName": "Dragon Force",
+        "rarity": "milspec",
+        "img": "Christmas/Five-SeveN-Dragon-Force.png"
+    }, {
+        id: 845,
+        "type": "Tec-9",
+        "skinName": "Tiger",
+        "rarity": "milspec",
+        "img": "Christmas/Tec-9-Tiger.png"
+    }, {
+        id: 846,
+        "type": "P250",
+        "skinName": "Pearl",
+        "rarity": "milspec",
+        "img": "Christmas/P250-Pearl.png"
+    }, {
+        id: 847,
+        "type": "P2000",
+        "skinName": "Discord",
+        "rarity": "milspec",
+        "img": "Christmas/P2000-Discord.png"
+    }, {
+        id: 848,
+        "type": "P90",
+        "skinName": "Green Hunter",
+        "rarity": "restricted",
+        "img": "Christmas/P90-Green-Hunter.png"
+    }, {
+        id: 849,
+        "type": "AWP",
+        "skinName": "Kyoto Craftsman",
+        "rarity": "restricted",
+        "img": "Christmas/AWP-Kyoto-Craftsman.png"
+    }, {
+        id: 850,
+        "type": "M4A4",
+        "skinName": "WildStyle",
+        "rarity": "restricted",
+        "img": "Christmas/M4A4-WildStyle.png"
+    }, {
+        id: 851,
+        "type": "AK-47",
+        "skinName": "Toucan",
+        "rarity": "classified",
+        "img": "Christmas/AK-47-Toucan.png"
+    }, {
+        id: 852,
+        "type": "M4A4",
+        "skinName": "Vengeful Power",
+        "rarity": "classified",
+        "img": "Christmas/M4A4-Vengeful-Power.png"
+    }, {
+        id: 853,
+        "type": "AWP",
+        "skinName": "Revenge of the Martian",
+        "rarity": "classified",
+        "img": "Christmas/AWP-Revenge-of-the-Martian.png"
+    }, {
+        id: 854,
+        "type": "AK-47",
+        "skinName": "Shark's Reef",
+        "rarity": "covert",
+        "img": "Christmas/AK-47-Shark's-Reef.png"
+    }, {
+        id: 855,
+        "type": "USP-S",
+        "skinName": "Desolate Space",
+        "rarity": "covert",
+        "img": "Christmas/USP-S-Desolate-Space.png"
     }];
     return module;
 }(fbInventory || {}))

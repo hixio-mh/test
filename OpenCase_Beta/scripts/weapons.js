@@ -38,14 +38,15 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     //Для оружия, которое удалили из коллекции. Например Howl в Huntsman.
     
     this.rarity = this.old.rarity;
-    this.can.sell = typeof this.old.sell != 'undefined' ? this.old.sell : this.can.sell;
-    this.can.buy = typeof this.old.buy != 'undefined' ? this.old.buy : this.can.buy;
-    this.can.trade = typeof this.old.trade != 'undefined' ? this.old.trade : this.can.trade;
-    this.can.contract = typeof this.old.contract != 'undefined' ? this.old.contract : true;
-    this.can.bot = typeof this.old.bot != 'undefined' ? this.old.bot : true;
-    this.can.inCase = typeof this.old.inCase != 'undefined' ? this.old.inCase : true;
-    this.can.stattrak = typeof this.old.stattrak != 'undefined' ? this.old.stattrak : true;
-    this.can.souvenir = typeof this.old.souvenir != 'undefined' ? this.old.souvenir : false;
+    this.old.can = this.old.can || {};
+    this.can.sell = typeof this.old.can.sell != 'undefined' ? this.old.can.sell : this.can.sell;
+    this.can.buy = typeof this.old.can.buy != 'undefined' ? this.old.can.buy : this.can.buy;
+    this.can.trade = typeof this.old.can.trade != 'undefined' ? this.old.can.trade : this.can.trade;
+    this.can.contract = typeof this.old.can.contract != 'undefined' ? this.old.can.contract : true;
+    this.can.bot = typeof this.old.can.bot != 'undefined' ? this.old.can.bot : true;
+    this.can.inCase = typeof this.old.can.inCase != 'undefined' ? this.old.can.inCase : true;
+    this.can.stattrak = typeof this.old.can.stattrak != 'undefined' ? this.old.can.stattrak : true;
+    this.can.souvenir = typeof this.old.can.souvenir != 'undefined' ? this.old.can.souvenir : false;
     
     if (this.souvenir || this.rarity == 'rare' || this.rarity == 'covert' || this.rarity == 'extraordinary')
         this.can.contract = false;
@@ -120,7 +121,7 @@ Weapon.prototype.getPrice = function() {
 }
 
 Weapon.prototype.stattrakRandom = function() {
-    if (this.type.souvenir) {
+    if (this.type.souvenir || this.can.stattrak == false) {
         this.stattrak = false;
         return false;
     }
@@ -134,6 +135,9 @@ Weapon.prototype.stattrakRandom = function() {
         return false;
     }
     this.stattrak = Math.random() > 0.8 ? true : false;
+    this.price = this.getPrice();
+    if (this.price == 0 || this.price == -1)
+        this.stattrak = false;
     return this.stattrak;
 }
 
@@ -4418,7 +4422,9 @@ var weapons = [{
     , skinName: "Dragon Lore"
     , rarity: "covert"
     , img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAR17P7NdTRH-t26q4SZlvD7PYTQgXtu5cB1g_zMu9zw3g2yrkVtZ2r6IoSVdAU-ZVrY_lS6lb_ogsDqu57NmCQ27iJx53nD30vgUTXWscs"
-    , "buy": false
+    , can: {
+        buy: false
+    }
 }, {
     id: 696
     , type: "M4A1-S"
@@ -4902,6 +4908,11 @@ var weapons = [{
     , rarity: "covert"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/AK-47-Shark's-Reef.png"
     }, {
     id: 775
@@ -4910,6 +4921,11 @@ var weapons = [{
     , rarity: "restricted"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/P90-Green-Hunter.png"
     }, {
     id: 776
@@ -4918,6 +4934,11 @@ var weapons = [{
     , rarity: "restricted"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/AWP-Kyoto-Craftsman.png"
     }, {
     id: 777
@@ -4926,6 +4947,11 @@ var weapons = [{
     , rarity: "classified"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/AK-47-Toucan.png"
     }, {
     id: 778
@@ -4934,6 +4960,11 @@ var weapons = [{
     , rarity: "classified"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/M4A4-Vengeful-Power.png"
     }, {
     id: 779
@@ -4942,6 +4973,11 @@ var weapons = [{
     , rarity: "milspec"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/Five-SeveN-Dragon-Force.png"
     }, {
     id: 780
@@ -4950,6 +4986,11 @@ var weapons = [{
     , rarity: "restricted"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/M4A4-WildStyle.png"
     }, {
     id: 781
@@ -4958,6 +4999,11 @@ var weapons = [{
     , rarity: "covert"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/USP-S-Desolate-Space.png"
     }, {
     id: 782
@@ -4966,6 +5012,11 @@ var weapons = [{
     , rarity: "classified"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/AWP-Revenge-of-the-Martian.png"
     }, {
     id: 783
@@ -4974,6 +5025,11 @@ var weapons = [{
     , rarity: "milspec"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/Tec-9-Tiger.png"
     }, {
     id: 784
@@ -4982,6 +5038,11 @@ var weapons = [{
     , rarity: "milspec"
     , buy: false
     , bot: false
+    , can: { 
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/P250-Pearl.png"
     }, {
     id: 785
@@ -4990,5 +5051,10 @@ var weapons = [{
     , rarity: "milspec"
     , buy: false
     , bot: false
+    , can: {
+        buy: false,
+        bot: false,
+        specialCase: false
+    }
     , img: "Christmas/P2000-Discord.png"
 }]

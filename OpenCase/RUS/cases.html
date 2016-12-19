@@ -53,29 +53,51 @@ $(function () {
 		var specialClass = (typeof cases[i].specialClass == "undefined") ? "" : cases[i].specialClass;
 		var collection = (cases[i].type == "Souvenir") ? "souvenir" : (cases[i].type == "Collection") ? "collection" : "";
 		//var collection = (cases[i].type == "Collection") ? "collection" : "";
-		var curCase = "<div class='case " + collection + "' data-case-id=" + i + " data-souvenir='false'><img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
+		var curCase = "<div class='case " + collection + "' data-case-id=" + i + " data-souvenir='false'>" + (cases[i].deadline ? "<span class='countdown' data-deadline='" + cases[i].deadline + "'></span>" : "") + "<img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
+        
+        if (cases[i].deadline) {
+            var t = getTimeRemaining(cases[i].deadline);
+            if (t.total < 0) continue;
+        }
+        
 		switch (cases[i].type) {
-		case "Default":
-			$("#Default").append(curCase);
-			break;
-		case "eSports":
-			$("#eSports").append(curCase);
-			break;
-		case "Special":
-			$("#Special").append(curCase);
-			break;
-		case "Collection":
-			$("#Collection").append(curCase);
-			break;
-		case "Workshop":
-			$("#Workshop").append(curCase);
-			break;
+            case "Default":
+                $("#Default").append(curCase);
+                break;
+            case "eSports":
+                $("#eSports").append(curCase);
+                break;
+            case "Special":
+                $("#Special").append(curCase);
+                break;
+            case "Collection":
+                $("#Collection").append(curCase);
+                break;
+            case "Workshop":
+                $("#Workshop").append(curCase);
+                break;
 		}
 		if (typeof cases[i].canBeSouvenir != 'undefined' && cases[i].canBeSouvenir == true) {
 			curCase = curCase.replace("data-souvenir='false'", "data-souvenir='true'");
 			$("#Souvenir").append(curCase);
 		}
 	}
+    
+    if ($('.countdown').length != 0) {
+        var clockInterval = setInterval(function() {
+            $('.countdown').each(function(){
+                var deadline = $(this).data('deadline');
+                var t = getTimeRemaining(deadline);
+                if (t.total < 0) {
+                    $(this).parent('.case').remove();
+                }
+                if (t.days == 0 && !$(this).hasClass('lastDay'))
+                    $(this).addClass('lastDay');
+                $(this).text(t.days + ':' + t.hours + ':' + t.minutes + ':' + t.seconds);
+            })
+        }, 1000)
+    }
+    
 	if (isAndroid()) {
         /*try {
             var fbKey1 = getStatistic('firebase-key 1', "");
@@ -93,6 +115,21 @@ $(function () {
 			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
 		}
 	}
+    
+    function getTimeRemaining(endtime){
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor( (t/1000) % 60 );
+        var minutes = Math.floor( (t/1000/60) % 60 );
+        var hours = Math.floor( (t/(1000*60*60)) % 24 );
+        var days = Math.floor( t/(1000*60*60*24) );
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
 
 	var lastReward = getStatistic('lastPointReward', 0);
 	var now = new Date();

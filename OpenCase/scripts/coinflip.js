@@ -343,11 +343,14 @@ function botAddGame(difficulty) {
                         wp.price = price;
                         wp.statTrak = (typeof weapon.statTrak == 'undefined') ? false : true;
                         wp.quality = quality;
+                        
+                        if (typeof wp.canBot != 'undefined' && wp.canBot == false) {
+                        } else {
+                            bot.weapons.push(wp);
+                            bot.items_cost += price;
 
-                        bot.weapons.push(wp);
-                        bot.items_cost += price;
-
-                        brk = true;
+                            brk = true;
+                        }
                         break;
                     }
                 }

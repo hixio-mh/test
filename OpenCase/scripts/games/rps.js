@@ -134,9 +134,12 @@ function botAddWeapon(itemsCost) {
                         wp.price = price;
                         wp.statTrak = (typeof weapon.statTrak == 'undefined') ? false : true;
                         wp.quality = quality;
-                        weapons.push(wp);
-                        if (wpLength == weapons.length) canContinue = true;
-                        br = true;
+                        if (typeof wp.canBot != 'undefined' && wp.canBot == false) {
+                        } else {
+                            weapons.push(wp);
+                            if (wpLength == weapons.length) canContinue = true;
+                            br = true;
+                        }
                         break;
                     }
                 }

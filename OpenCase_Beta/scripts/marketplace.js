@@ -25,7 +25,8 @@ $(document).ready(function() {
     for (var i = 0; i < weapons.length; i++) {
         var tp = weapons[i].type;
         var name = getSkinName(weapons[i].skinName, Settings.language);
-        var canBuy = typeof weapons[i].buy == 'undefined' ? true : weapons[i].buy;
+        weapons[i].can = weapons[i].can || {};
+        var canBuy = typeof weapons[i].can.buy == 'undefined' ? true : weapons[i].buy;
         if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1 && canBuy) autocompleteTags.push(tp + ' | ' + name);
     }
 

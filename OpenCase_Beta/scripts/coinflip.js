@@ -318,8 +318,12 @@ function botAddGame(difficulty) {
 
         if (price > priceRange[difficulty].min && price < priceRange[difficulty].max) {
             weapon = new Weapon(weapon);
-            bot.weapons.push(weapon);
-            bot.items_cost += price;
+            if (weapon.can.bot) {
+                bot.weapons.push(weapon);
+                bot.items_cost += price;
+            } else {
+                weaponCount++;
+            }
         } else {
             weaponCount++;
         }

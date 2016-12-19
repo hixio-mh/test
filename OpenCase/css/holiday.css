@@ -29,3 +29,41 @@
     background-position: 0, center, right;
     left: -4px;
 }
+/* === Christmas case === */
+img[src="../images/Cases/cases/none.png"] {
+    width: 115px;
+    background-image: url(../images/Cases/cases/christmas/spritesheet.png);
+    background-repeat: no-repeat;
+    background-position: 2px 4px;
+    background-size: 1000px;
+    animation: chr 8s steps(8) infinite;
+    -webkit-animation: chr 8s steps(8) infinite;
+}
+
+@media (max-width: 433px) {
+   img[src="../images/Cases/cases/none.png"] {
+        width: 70px;
+        background-image: url(../images/Cases/cases/christmas/spritesheet.png);
+        background-repeat: no-repeat;
+        background-position: 4px 4px;
+        background-size: 600px;
+        animation: chrLow 8s steps(8) infinite;
+        -webkit-animation: chrLow 8s steps(8) infinite;
+    } 
+}
+
+@keyframes chr {
+    100% {   background-position: -998px 4px;}
+}
+
+@-webkit-keyframes chr {
+    100% {   background-position: -998px 4px;}
+}
+
+@keyframes chrLow {
+    100% {   background-position: -596px 4px;}
+}
+
+@-webkit-keyframes chrLow {
+    100% {   background-position: -596px 4px;}
+}

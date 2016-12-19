@@ -1588,6 +1588,98 @@ var cases = [{
         'img': '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpos7asPwJfwPz3ZTxM69mknY6OqPrxN7LEmyUJ7JUmi-zFrNys3ATiqUduZGymdYTGJldoMFzX_Va3lebshZa_uMzO1zI97ULd0Egc'
     }, ]
 }, {
+	"name": "Christmas",
+	"img": "none.png",
+	"type": "Default",
+	"specialClass": "workshop christmas",
+	"deadline": "2017-01-08",
+	"weapons": [{
+			"type": "Five-SeveN",
+			"skinName": "Dragon Force",
+			"rarity": "milspec",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/Five-SeveN-Dragon-Force.png"
+		}, {
+			"type": "Tec-9",
+			"skinName": "Tiger",
+			"rarity": "milspec",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/Tec-9-Tiger.png"
+		}, {
+			"type": "P250",
+			"skinName": "Pearl",
+			"rarity": "milspec",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/P250-Pearl.png"
+		}, {
+			"type": "P2000",
+			"skinName": "Discord",
+			"rarity": "milspec",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/P2000-Discord.png"
+		}, {
+			"type": "P90",
+			"skinName": "Green Hunter",
+			"rarity": "restricted",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/P90-Green-Hunter.png"
+		}, {
+			"type": "AWP",
+			"skinName": "Kyoto Craftsman",
+			"rarity": "restricted",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/AWP-Kyoto-Craftsman.png"
+		}, {
+			"type": "M4A4",
+			"skinName": "WildStyle",
+			"rarity": "restricted",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/M4A4-WildStyle.png"
+		}, {
+			"type": "AK-47",
+			"skinName": "Toucan",
+			"rarity": "classified",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/AK-47-Toucan.png"
+		}, {
+			"type": "M4A4",
+			"skinName": "Vengeful Power",
+			"rarity": "classified",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/M4A4-Vengeful-Power.png"
+		}, {
+			"type": "AWP",
+			"skinName": "Revenge of the Martian",
+			"rarity": "classified",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/AWP-Revenge-of-the-Martian.png"
+		}, {
+			"type": "AK-47",
+			"skinName": "Shark's Reef",
+			"rarity": "covert",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/AK-47-Shark's-Reef.png"
+		}, {
+			"type": "USP-S",
+			"skinName": "Desolate Space",
+			"rarity": "covert",
+			canBuy: false,
+			canBot: false,
+			"img": "Christmas/USP-S-Desolate-Space.png"
+		}
+	]
+}, {
     "name": "Glove",
     "img": "glove.png",
     "type": "Default",

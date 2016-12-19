@@ -288,7 +288,7 @@ function botAddItems() {
         var rand = Math.rand(1, maxItems);
 
         while (botWeapons.length < rand) {
-            var weapon = getRandomWeapon(1);
+            var weapon = getRandomWeapon(1, 'canBot');
             weapon.quality = getItemQuality()[Settings.language == 'RU' ? 1 : 0];
             weapon.statTrak = ifStatTrak(weapon.type, weapon.skinName);
             weapon = getPriceWithNewQuality(weapon);

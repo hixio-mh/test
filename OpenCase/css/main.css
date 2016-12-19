@@ -8,7 +8,7 @@ body {
 }
 #container {
     padding-top:40px;
-    font-family: Lato;
+    font-family: LatoRegular;
     overflow-x: hidden;
     width:100%;
     position: absolute;
@@ -33,6 +33,17 @@ body {
 	background: linear-gradient(to top, #A8A8A8, #474747);
     box-shadow: 0px 0px 7px #000;
     position: relative;
+}
+.case .countdown {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 0;
+    top: 0;
+    font-size: 0.7em;
+    color: #fff;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    width: 100%;
 }
 #showVideoAd {
     border: 1px solid #055400;
@@ -431,7 +442,7 @@ button#what-i-can-win-Button {
     z-index: 1000;
     background: rgb(121, 0, 0);
     color: #fff;
-    font-family: Lato;
+    font-family: LatoRegular;
     text-align: center;
     padding: 8px 0;
 }
@@ -460,7 +471,7 @@ span#new-version__update {
     padding: 4px;
     color: #fff;
     background: #480000;
-    font-family: Lato;
+    font-family: LatoRegular;
 }
 .win_sell_div {
     padding-bottom: 10px;

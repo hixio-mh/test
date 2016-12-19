@@ -12,7 +12,7 @@ $(function() {
 	}
 })
 
-function getRandomWeapon(specialClass) {
+function getRandomWeapon(specialClass, canCheck) {
 	if (typeof specialClass == 'undefined') specialClass = 0;
 	var randomCaseId = Math.rand(0, cases.length-1);
 	
@@ -23,7 +23,11 @@ function getRandomWeapon(specialClass) {
 		}
 	}
 	var randomWeaponId = Math.rand(0, cases[randomCaseId].weapons.length-1);
-	var wp = cases[randomCaseId].weapons[randomWeaponId]
+	var wp = cases[randomCaseId].weapons[randomWeaponId];
+    
+    if (canCheck && typeof wp[canCheck] != 'undefined' && wp[canCheck] == false) {
+        return getRandomWeapon(specialClass, canCheck);
+    }
 	
 	if (typeof cases[randomCaseId].canBeSouvenir != 'undefined' && cases[randomCaseId].canBeSouvenir)
 		wp.type = (Math.rand(0, 10) > 7) ? Localization.souvenir[Settings.language]+' '+wp.type : wp.type;

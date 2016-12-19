@@ -1,4 +1,4 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
 }
@@ -68,7 +68,7 @@
     background: RGBA(0, 0, 0, 0.26);
     color: #fff;
     overflow: hidden;
-    font-family: Lato;
+    font-family: LatoRegular;
     font-weight: 400;
 	border-bottom: 8px solid #19212B;
 	cursor: pointer;
@@ -165,7 +165,7 @@ i.double-icon {
     margin: 8px;
     text-align: center;
     padding: 20px;
-	font-family: Lato;
+	font-family: LatoRegular;
 	max-width: 150px;
 	display: inline-block;
 	box-shadow: 0 0 3px RGBA(0, 0, 0, 0.4);
