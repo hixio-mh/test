@@ -259,7 +259,7 @@
                     var collectionWeapons = getWeaponsById(weapon.collection().weapons);
                     
                     for (var i = 0; i < collectionWeapons.length; i++)
-                        if (collectionWeapons[i].rarity == nextRarity)
+                        if (new RegExp(nextRarity).test(collectionWeapons[i].rarity))
                             nextRarityWeapons.push(collectionWeapons[i]);
                     var newWeapon = nextRarityWeapons[Math.rand(0, nextRarityWeapons.length - 1)];
                 }

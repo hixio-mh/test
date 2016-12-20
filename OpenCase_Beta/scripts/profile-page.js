@@ -52,6 +52,7 @@ $(function () {
                 $(".moder-menu").show();
                 firebase.database().ref('users/' + uid + '/moder').once('value').then(function (snapshot) {
                     var data = snapshot.val();
+                    if (data == null) return;
                     if (typeof data.tradeban != 'undefined') {
                         $('#block-trade').data('action', 'unblock');
                         $('#block-trade-reason').text(data.tradeban);
@@ -60,6 +61,10 @@ $(function () {
                         $('#block-chat').data('action', 'unblock');
                         $('#block-chat-reason').text(data.chatban);
                     }
+                }).then(function() {
+                    firebase.database().ref('users/' + uid + '/private').once('value').then(function(snapshot) {
+                        window.user_androidID = snapshot.val().androidID ? snapshot.val().androidID : false;
+                    })
                 })
             }
         })
@@ -94,11 +99,12 @@ $(function () {
                     placeholder: "Reason/Причина"
                 }
                 , callback: function ($this, type, ev) {
-                    console.log($this);
-                    console.log(ev);
                     if (type == 'ok') {
                         firebase.database().ref('users/' + uid + '/moder/chatban').set($this.getValue());
                         firebase.database().ref('bans/' + uid + '/chatban').set($this.getValue());
+                        if (user_androidID)
+                            firebase.database().ref('androidIDBans/' + user_androidID + '/chatban').set($this.getValue());
+                            
                         $('#block-chat-reason').text($this.getValue());
                         $('#block-chat').data('action', 'unblock');
                         if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор заблокировал чат", Player.nickname + ' заблокировал чат ' + $(".profile__name").text());
@@ -109,7 +115,9 @@ $(function () {
         else {
             firebase.database().ref('users/' + uid + '/moder/chatban').remove();
             firebase.database().ref('bans/' + uid + '/chatban').remove();
-            $('#block-chat-reason').text("Chat doesn't block");
+            if (user_androidID)
+                firebase.database().ref('androidIDBans/' + user_androidID + '/chatban').remove();
+            $('#block-chat-reason').text("Chat doesn't banned");
             $('#block-chat').data('action', 'block');
             if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор разблокировал чат", Player.nickname + ' разблокировал чат ' + $(".profile__name").text());
         }
@@ -127,6 +135,9 @@ $(function () {
                         if (type == 'ok') {
                             firebase.database().ref('users/' + uid + '/moder/tradeban').set($this.getValue());
                             firebase.database().ref('bans/' + uid + '/tradeban').set($this.getValue());
+                            if (user_androidID)
+                                firebase.database().ref('androidIDBans/' + user_androidID + '/tradeban').set($this.getValue());
+                            
                             $('#block-trade-reason').text($this.getValue());
                             $('#block-trade').data('action', 'unblock');
                             if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор заблокировал трейды", Player.nickname + ' заблокировал трейды ' + $(".profile__name").text());
@@ -137,6 +148,8 @@ $(function () {
             else {
                 firebase.database().ref('users/' + uid + '/moder/tradeban').remove();
                 firebase.database().ref('bans/' + uid + '/tradeban').remove();
+                if (user_androidID)
+                    firebase.database().ref('androidIDBans/' + user_androidID + '/tradeban').remove();
                 $('#block-trade-reason').text("Trades doesn't block");
                 $('#block-trade').data('action', 'block');
                 if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор разблокировал трейды", Player.nickname + ' разблокировал трейды ' + $(".profile__name").text());

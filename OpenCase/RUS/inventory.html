@@ -355,7 +355,7 @@
 				var nextQuality = qualitySort[qualitySort.indexOf(weapon.getAttribute('data-rarity')) + 1];
 				var nextQualityWeapons = [];
 				for (var i = 0; i < collection.weapons.length; i++)
-					if (collection.weapons[i].rarity == nextQuality)
+					if (new RegExp(nextQuality).test(collection.weapons[i].rarity))
 						nextQualityWeapons.push(collection.weapons[i]);
 				var newWeapon = nextQualityWeapons[Math.rand(0, nextQualityWeapons.length - 1)];
 			}
@@ -564,7 +564,7 @@
                 "rarity = 'restricted'",
                 "rarity = 'classified'",
                 "rarity = 'covert' OR rarity = 'extraordinary'",
-                "rarity = 'rare"
+                "rarity = 'rare'"
             ]
 
 			switch (parseInt(special)) {
