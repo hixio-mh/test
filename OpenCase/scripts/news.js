@@ -444,7 +444,15 @@ var news = [{
     "month": 12,
     "year": 2016,
     "update": {
-        "RU": " - [Добавлено] Новогодний кейс",
-        "EN": " - [New] Christmas Case."
+        "RU": " - [Добавлено] Новогодний кейс.<br> - [Плохие новости] AWP | История о драконе теперь нельзя купить в Магазине (╯°□°)╯︵ ┻━┻",
+        "EN": " - [New] Christmas Case.<br> - [Bad news] AWP | Dragon Lore disappeared from the Market (╯°□°)╯︵ ┻━┻"
+    }
+}, {
+    "day": 20,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Сортировка в инвентаре по 'Золотое'",
+        "EN": " - [Fixed] Christmas Case."
     }
 }, ];
