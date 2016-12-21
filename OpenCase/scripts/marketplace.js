@@ -261,6 +261,7 @@ $(document).on("click", ".glassBlur, .fullWeaponInfo-close", function() {
 })
 
 function getAllWeaponInfo(type, name, loadPrices) {
+    type = type.replace(/(Сувенир |Souvenir )/, '');
     loadPrices = loadPrices || false;
     var info = [];
     var canBeStatTrak = false,
@@ -282,6 +283,8 @@ function getAllWeaponInfo(type, name, loadPrices) {
                 if (typeof collect.weapons[i].canBuy != 'undefined' && collect.weapons[i].canBuy == false)
                     return false;
         }
+    else
+        return false
 
     var img = getWeaponImg(type, name);
     for (var z = 0; z < count; z++) {
