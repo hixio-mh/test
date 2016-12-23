@@ -37594,4 +37594,236 @@ var Prices = {
             , "souvenir": {}
         }
     }
+    , "786": {
+        "item_id": 786
+        , "type": "★ Moto Gloves"
+        , "skinName": "Spearmint"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 135.87
+                },
+                2: {
+                    market: 257.32
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "787": {
+        "item_id": 787
+        , "type": "★ Hand Wraps"
+        , "skinName": "Slaughter"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 149
+                },
+                1: {
+                    market: 191.75
+                },
+                2: {
+                    market: 239.7
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "788": {
+        "item_id": 788
+        , "type": "★ Driver Gloves"
+        , "skinName": "Crimson Weave"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 236.57
+                },
+                1: {
+                    market: 254
+                },
+                2: {
+                    market: 224.08
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "789": {
+        "item_id": 789
+        , "type": "★ Specialist Gloves"
+        , "skinName": "Emerald Web"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 174.49
+                },
+                1: {
+                    market: 203.73
+                },
+                2: {
+                    market: 185
+                },
+                3: {
+                    market: 359.54
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "790": {
+        "item_id": 790
+        , "type": "★ Hand Wraps"
+        , "skinName": "Badlands"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 116.84
+                },
+                1: {
+                    market: 143.33
+                },
+                2: {
+                    market: 171.97
+                },
+                3: {
+                    market: 238.63
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "791": {
+        "item_id": 791
+        , "type": "★ Sport Gloves"
+        , "skinName": "Hedge Maze"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 139.75
+                },
+                1: {
+                    market: 192.67
+                },
+                2: {
+                    market: 207
+                },
+                3: {
+                    market: 353.3
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "792": {
+        "item_id": 792
+        , "type": "★ Driver Gloves"
+        , "skinName": "Diamondback"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 128.99
+                },
+                1: {
+                    market: 140
+                },
+                2: {
+                    market: 127.99
+                },
+                3: {
+                    market: 170.94
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "793": {
+        "item_id": 793
+        , "type": "★ Sport Gloves"
+        , "skinName": "Arid"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 94.3
+                },
+                1: {
+                    market: 171.97
+                },
+                2: {
+                    market: 105.07
+                },
+                3: {
+                    market: 199.8
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "794": {
+        "item_id": 794
+        , "type": "★ Driver Gloves"
+        , "skinName": "Convoy"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 100.87
+                },
+                1: {
+                    market: 99.01
+                },
+                2: {
+                    market: 99.63
+                },
+                3: {
+                    market: 182.39
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "795": {
+        "item_id": 795
+        , "type": "★ Moto Gloves"
+        , "skinName": "Boom!"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 120.59
+                },
+                1: {
+                    market: 145.91
+                },
+                2: {
+                    market: 179.99
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
+    , "796": {
+        "item_id": 796
+        , "type": "★ Sport Gloves"
+        , "skinName": "Superconductor"
+        , "prices": {
+            "default": {
+                0: {
+                    market: 150
+                },
+                2: {
+                    market: 169.11
+                },
+            }
+            , "stattrak": {}
+            , "souvenir": {}
+        }
+    }
 }

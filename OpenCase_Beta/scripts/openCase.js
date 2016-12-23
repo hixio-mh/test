@@ -72,7 +72,7 @@ function fillCarusel(caseId) {
         return weapon.rarity == 'covert'
     }).mul(1).shuffle();
     var a5 = weaponsArray.filter(function(weapon) {
-        return weapon.rarity == 'rare'
+        return (weapon.rarity == 'rare' || weapon.rarity == 'extraordinary')
     }).mul(1).shuffle();
 
     if ((Math.rand(0, 10) > 7) && (a5.length + a4.length + a2.length + a1.length != 0)) {
