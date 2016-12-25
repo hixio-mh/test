@@ -29,8 +29,8 @@ $(function() {
     
     function connectToServer() {
         //socket = new WebSocket('ws://localhost:8000');
-        socket = new WebSocket('wss://91.228.154.72:8000');
-        //socket = new WebSocket('wss://crashserver.herokuapp.com/');
+        //socket = new WebSocket('ws://91.228.154.72:8000');
+        socket = new WebSocket('wss://crashserver.herokuapp.com/');
         
         socket.onopen = function(event) {
             if(reconnectTimer) {
