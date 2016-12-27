@@ -485,6 +485,7 @@
 		}
 
 		function fillInventory(currInventory, sumPr) {
+            if (currInventory.length == 0) return false;
 			sumPr = sumPr || 0.0;
 			var need_save = false;
 			var wp_from = parseInt($('#js-loading-inventory').data('from'));
