@@ -490,6 +490,8 @@
 			var need_save = false;
 			var wp_from = parseInt($('#js-loading-inventory').data('from'));
 			$('#js-loading-inventory').remove();
+            
+            console.log(JSON.stringify(currInventory));
 
 			currInventory = currInventory.sort(function(a, b) {
 				return b.price - a.price;

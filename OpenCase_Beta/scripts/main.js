@@ -504,7 +504,7 @@ function _getInventoryAndroid(count_from, count_to, special) {
             inventoryJSON[i].souvenir = inventoryJSON[i].souvenir == 'true';
             inventoryJSON[i].new = inventoryJSON[i].new == 'true';
             inventoryJSON[i].extra = $.parseJSON(inventoryJSON[i].extra);
-            console.log(JSON.stringify(inventoryJSON[i]));
+            //console.log(JSON.stringify(inventoryJSON[i]));
             weaponsArr.push(new Weapon(inventoryJSON[i]));
             weaponsArr[i].id = parseInt(inventoryJSON[i].id);
         }
