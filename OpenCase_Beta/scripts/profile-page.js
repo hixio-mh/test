@@ -413,17 +413,17 @@ $(function () {
             else if (data.key == 'weapons') {
                 //Если другой пользователь именил своё предложение
                 firebase.database().ref('trades/' + fbProfile.currentTrade.id + '/' + fbProfile.currentTrade.otherUid).once('value').then(function (data) {
-                    var weapons = data.val();
-                    if (weapons == null) weapons = [];
+                    var Trade_weapons = data.val();
+                    if (Trade_weapons == null) Trade_weapons = [];
                     $('#my-trades__other-offer').find(".trade__info__weapons.to-you").empty();
-                    for (var i = 0; i < weapons.length; i++) {
-                        var weapon = weapons[i];
+                    for (var i = 0; i < Trade_weapons.length; i++) {
+                        var weapon = Trade_weapons[i];
                         if (typeof weapon == 'undefined') continue;
                         weapon = new Weapon(weapon);
                         $('#my-trades__other-offer').find(".trade__info__weapons.to-you").append("<li class='weapon'>" + weapon.toLi() + "</li>");
                     }
                     $('#my-trades__other-offer').effect('highlight');
-                    $('li[data-tradeid="' + fbProfile.currentTrade.id + '"] .trade__other .give-to-you').text(weapons.length);
+                    $('li[data-tradeid="' + fbProfile.currentTrade.id + '"] .trade__other .give-to-you').text(Trade_weapons.length);
                 });
             }
             else if (data.key == 'getWeapons') {
@@ -530,7 +530,7 @@ $(function () {
             var $parent = $('li[data-tradeid="' + $('#you-ready-to-trade').data('tradeid') + '"] .trade__info__hidden .trade__info__weapons.your');
             $($parent).empty();
             for (var i = 0; i < convertedWeapons.length; i++) {
-                var weapon = convertedWeapons[i];
+                var weapon = new Weapon(convertedWeapons[i]);
                 var weaponJSON = JSON.stringify(weapon.tradeObject()).replace(/'/g, "\\'");
                 $($parent).append("<li class='weapon' data-weapon_obj='" + weaponJSON + "'>" + weapon.toLi() + "</li>");
             }
@@ -546,10 +546,11 @@ $(function () {
             if (status != 'done' && status != 'canceled') {
                 fbProfile.setTradeStatus(tradeID, 'canceled');
                 fbProfile.tradeInfo(tradeID, function (tradeInfo) {
-                    var weapons = tradeInfo.player.weapons;
+                    var Trade_weapons = tradeInfo.player.weapons;
                     var convertedWeapons = [];
-                    for (var i = 0; i < weapons.length; i++) {
-                        var wp = fbInventory.reverseConvert(weapons[i]);
+                    for (var i = 0; i < Trade_weapons.length; i++) {
+                        //var wp = fbInventory.reverseConvert(weapons[i]);
+                        wp = new Weapons(Trade_weapons[i]);
                         wp.new = true;
                         convertedWeapons.push(wp);
                     }
@@ -572,18 +573,17 @@ $(function () {
         fbProfile.tradeInfo(tradeID, function (tradeInfo) {
             if (tradeInfo.otherPlayer.accepted && tradeInfo.player.accepted && !tradeInfo.player.getWeapons && tradeInfo.status != 'done' && tradeInfo.status != 'canceled') {
                 fbProfile.setTradeStatus(tradeID, 'done');
-                var weapons = tradeInfo.otherPlayer.weapons;
+                var Trade_weapons = tradeInfo.otherPlayer.weapons;
                 var convertedWeapons = [];
-                for (var i = 0; i < weapons.length; i++) {
-                    var wp = fbInventory.reverseConvert(weapons[i]);
+                for (var i = 0; i < Trade_weapons.length; i++) {
+                    //var wp = fbInventory.reverseConvert(weapons[i]);
+                    wp = new Weapon(Trade_weapons[i]);
                     wp.new = true;
                     convertedWeapons.push(wp);
                 }
                 for (var i = 0; i < convertedWeapons.length; i++) {
-                    if (isAndroid()) saveWeapon(convertedWeapons[i]);
-                    else inventory.push(convertedWeapons[i]);
+                    saveWeapon(convertedWeapons[i]);
                 }
-                if (!isAndroid()) saveInventory();
                 fbProfile.setTradeGetWeaponsStatus(tradeID, true);
                 checkInventoryForNotification();
                 $('.trades-with-user__trade[data-tradeid="' + tradeInfo.tradeID + '"]').addClass('done');

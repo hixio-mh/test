@@ -25,7 +25,6 @@ $(function() {
         socket = null;
         //socket = new WebSocket("ws://localhost:8000/");
         socket = new WebSocket("wss://kvmde40-10035.fornex.org/double");
-        //socket = new WebSocket("wss://doubleserver.herokuapp.com/");
 
         var PING = {type:'ping'};
 

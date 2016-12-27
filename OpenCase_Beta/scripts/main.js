@@ -287,7 +287,7 @@ function saveInventory() {
 function saveWeapon(weapon) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
-            var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
+            var rowID = client.saveWeapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir, weapon['new'], "{}");
             resolver(rowID);
         } else {
             connectDB(function (db) {
@@ -317,7 +317,7 @@ function saveWeapons(weapons) {
             var rows = [];
             for (var i = 0; i < weapons.length; i++) {
                 var weapon = weapons[i];
-                var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon['new']);
+                var rowID = client.saveWeapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir, weapon['new'], "{}");
                 rows.push(rowID);
             }
             resolver(rows);
@@ -351,7 +351,7 @@ function saveWeapons(weapons) {
 function updateWeapon(weapon) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
-            var rowID = client.updateWeapon(weapon.id, weapon.type, weapon.name, weapon.img, weapon.quality, weapon.stattrak, weapon.rarity, weapon.price, weapon['new']);
+            var rowID = client.updateWeapon(weapon.id, weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir, weapon['new'], "{}");
             resolver(true);
         } else {
             connectDB(function(db) {
@@ -372,9 +372,14 @@ function updateWeapon(weapon) {
 function getWeapon(id) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
-            var wp = $.parseJSON(client.getWeaponById(id))[0];
-            
-            resolver(new Weapon(wp));
+            var wp = client.getWeaponById(id);
+            console.log(wp);
+            wp = $.parseJSON(wp);
+            console.log(JSON.stringify(wp))
+            wp = new Weapon(wp);
+            wp.id = id;
+            console.log(JSON.stringify(wp))
+            resolver(wp);
         } else {
              connectDB(function(db) {
                 var tx = db.transaction('weapons', 'readonly');
@@ -479,7 +484,8 @@ function getInventory(count_from, count_to, special) {
 
 function _getInventoryAndroid(count_from, count_to, special) {
     return new Promise(function(resolver,reject) {    
-        var inventoryJSON = client.getInventory(count_from, count_to, special);
+        var inventoryJSON = client.SQLiteQuery("SELECT * FROM inventory " + special);
+        console.log(inventoryJSON);
         try {
             inventoryJSON = $.parseJSON(inventoryJSON);
         }
@@ -490,7 +496,20 @@ function _getInventoryAndroid(count_from, count_to, special) {
         if (inventoryJSON.length == 0) return false;
         inventory_length = client.getInventoryLength(special);
         if (typeof inventoryJSON[0].error != 'undefined') return [];
-        resolver(inventoryJSON);
+        
+        var weaponsArr = [];
+        for (var i = 0; i < inventoryJSON.length; i++) {
+            inventoryJSON[i].item_id = parseInt(inventoryJSON[i].item_id);
+            inventoryJSON[i].stattrak = inventoryJSON[i].stattrak == 'true';
+            inventoryJSON[i].souvenir = inventoryJSON[i].souvenir == 'true';
+            inventoryJSON[i].new = inventoryJSON[i].new == 'true';
+            inventoryJSON[i].extra = $.parseJSON(inventoryJSON[i].extra);
+            console.log(JSON.stringify(inventoryJSON[i]));
+            weaponsArr.push(new Weapon(inventoryJSON[i]));
+            weaponsArr[i].id = parseInt(inventoryJSON[i].id);
+        }
+        
+        resolver(weaponsArr);
     })
 }
 
@@ -569,14 +588,15 @@ function _getInventoryIndexedDB() {
 
 function getInventoryCost(special) {
     special = special || '';
-    if (isAndroid()) return client.getInventoryCost(special);
-    else return 0;
+    return 0;
+    //if (isAndroid()) return client.getInventoryCost(special);
+    //else return 0;
 }
 
 function checkInventoryForNotification() {
     var new_weapon_count = 0;
     if (isAndroid()) {
-        new_weapon_count = client.getInventoryLength("WHERE isNew = 'true'");
+        new_weapon_count = client.getInventoryLength("WHERE new = 'true'");
     }
     else {
         if (typeof localStorage == 'undefined') return false;

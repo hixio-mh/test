@@ -172,9 +172,9 @@ var fbInventory = (function (module) {
         weapon.item_id = weapon.item_id || 0;
         var convertedWeapon = module.getWeaponById(weapon.item_id);
         weapon.quality = weapon.quality || 0;
-        convertedWeapon.statTrak = weapon.stattrak || false;
+        convertedWeapon.stattrak = weapon.stattrak || false;
         convertedWeapon.souvenir = weapon.souvenir || false;
-        convertedWeapon.quality  = getQualityName(weapon.quality);
+        convertedWeapon.quality  = parseInt(weapon.quality);
         if (weapon.souvenir) convertedWeapon.type = Localization.getString('other.souvenir')+' '+convertedWeapon.type;
         try {
             convertedWeapon.skinName = getSkinName(convertedWeapon.skinName, Settings.language);

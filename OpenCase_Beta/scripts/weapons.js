@@ -30,6 +30,9 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     this.name = getSkinName(this.nameOrig, Settings.language);
     this.img = this.old.img;
     this.price = this.getPrice();
+    
+    this.item_id = parseInt(this.item_id);
+    this.quality = parseInt(this.quality);
 
     if ((this.price == 0 || this.price == -1) && qualityNotSet)
         this.qualityRandom();

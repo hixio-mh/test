@@ -30,6 +30,7 @@ $(function() {
     function connectToServer() {
         //socket = new WebSocket('ws://localhost:8000');
         socket = new WebSocket('wss://kvmde40-10035.fornex.org/crash');
+        //socket = new WebSocket('wss://crashserver.herokuapp.com/');
         
         socket.onopen = function(event) {
             if(reconnectTimer) {
