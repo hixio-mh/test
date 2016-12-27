@@ -33,6 +33,9 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     
     this.item_id = parseInt(this.item_id);
     this.quality = parseInt(this.quality);
+    
+    if (isNaN(this.item_id)) this.item_id = 0;
+    if (isNaN(this.quality)) this.quality = 0;
 
     if ((this.price == 0 || this.price == -1) && qualityNotSet)
         this.qualityRandom();
