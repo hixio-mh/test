@@ -349,6 +349,7 @@ $(document).on('click', '.hide-items, .show-items', function() {
 
 $(".choseItems").on("click", function() {
     var itemsCount = $(".inventoryItemSelected").length;
+    if (PlayerInGame) return false;
     var playerWeapons = [];
     var ids = [];
     var itemsCost = 0;
@@ -400,22 +401,8 @@ $(".choseItems").on("click", function() {
 function FillMyInventoryWithRandomWeapon(count) {
     while (count--) {
         var weapon = getRandomWeapon(1)
-        weapon.quality = getItemQuality()[1];
-        weapon.statTrak = ifStatTrak(weapon.type, weapon.name);
-        weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
         weapon['new'] = true;
 
-        var z = 0;
-        while (weapon.price == 0) {
-            weapon.quality = Quality[z].name[1];
-            weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
-            if (z == 4) break;
-            z++
-        }
-        if (isAndroid())
-            saveWeapon(weapon);
-        else
-            inventory.push(weapon);
+        saveWeapon(weapon);
     }
-    if (!isAndroid()) saveInventory();
 }
