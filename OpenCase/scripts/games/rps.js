@@ -9,7 +9,8 @@ var yourScore = 0,
     round = 1,
     maxItems = 5;
 
-var winItems = [];
+var winItems = [],
+    playerBet = false;
 
 var addItemsSound = new Audio();
 addItemsSound.src = "../sound/interface/menuClick.wav";
@@ -28,21 +29,21 @@ $(function() {
 });
 
 $('.add-item').on('click', function() {
-    newGame();
-
     fillInventory();
 });
 
 $(".choseItems").on("click", function() {
     var itemsCount = $(".inventoryItemSelected").length;
-    if (itemsCount == 0) {
+    if (itemsCount == 0 || playerBet) {
         $(".closeInventory").click();
         return false;
     }
     //var playerWeapons = [];
+    newGame();
     var ids = [];
     var itemsCost = 0;
-
+    
+    playerBet = true;
     if (isAndroid()) {
         $(".inventoryItemSelected").each(function() {
             winItems.push(getWeapon(parseInt($(this).data('id'))));
@@ -236,6 +237,7 @@ function endGame(playerWin) {
     }
 
     winItems = [];
+    playerBet = false;
 
     round = 1;
     yourScore = 0;
