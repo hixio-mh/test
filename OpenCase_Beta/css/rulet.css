@@ -393,3 +393,34 @@ td i {
     bottom: 0;
     width: 100%;
 }
+
+.room-select-modal__title {
+    text-align: center;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+.room-select-modal {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(at top, rgb(107, 133, 193), #101423);
+    z-index: 3;
+}
+ul.room-select-modal__rooms {
+    list-style: none;
+    padding-left: 0;
+}
+li.jackpot-room {
+    display: flex;
+    padding: 10px;
+    background: radial-gradient(at top, #484848, #232323);
+    color: #efefef;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 10px auto;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
+}

@@ -6,6 +6,11 @@ var inventory = [],
     inventory_length = 0,
     inventory_step = 50,
     inventory_loading = false;
+var INVENTORY = {
+    weapons: [],
+    special: "",
+    worth: 0
+};
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
@@ -41,6 +46,16 @@ $(function () {
        }
     }
     catch (e) {}
+    
+    if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "192.168.1.205") {
+        var reload_btn = document.createElement('button');
+        reload_btn.style = "z-index:99999; position:fixed; bottom:10px; right:10px;";
+        reload_btn.appendChild(document.createTextNode("Refresh"));
+        reload_btn.onclick = function() {
+            location.reload();
+        }
+        document.body.appendChild(reload_btn);
+    }
 });
 try {
     var config = {
@@ -82,6 +97,7 @@ window.onerror = function (msg, url, line, col, error) {
         $('.error-log').remove();
     }, 5000);
 };
+
 if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()) < 1.3)) {
     var openSound = new Audio();
     openSound.src = "../sound/open.wav";
@@ -470,21 +486,70 @@ function deleteAllInventory() {
 }
 
 function getInventory(count_from, count_to, special) {
-        count_from = count_from || 1;
-        special = special || "";
-        if (typeof count_to == 'undefined' && isAndroid()) 
-            count_to = client.getInventoryLength("");
-        if (count_to <= 0) return false;
+    if (special && special != INVENTORY.special) {
+        INVENTORY.weapons = [];
+        INVENTORY.special = special;
+    }
+    
+    if (typeof count_to == 'undefined' && isAndroid()) 
+        count_to = client.getInventoryLength("");
+    
+    count_from = count_from || 1;
+    count_to = count_to || INVENTORY.weapons.length;
+    special = special || "";
+    
+    if (INVENTORY.weapons.length >= count_to) {
+        var ret = [];
+        for (var i = (count_from - 1); i < count_to; i++) {
+            ret.push(INVENTORY.weapons[i]);
+        }
         
-        if (isAndroid()) 
-            return _getInventoryAndroid(count_from, count_to, special);
-        else
-            return _getInventoryIndexedDB();
+        return new Promise(function(resolver,reject) {
+            resolver({
+                weapons: ret,
+                worth: INVENTORY.worth,
+                count: INVENTORY.weapons.length
+            });
+        })
+    } else if (INVENTORY.weapons.length > count_from && INVENTORY.weapons.length < count_to) {
+        var ret = [];
+        for(var i = (count_from - 1); i < INVENTORY.weapons.length; i++) {
+            ret.push(INVENTORY.weapons[i]);
+        }
+        return new Promise(function(resolver,reject) {
+            resolver({
+                weapons: ret,
+                worth: INVENTORY.worth,
+                count: INVENTORY.weapons.length
+            });
+        })
+    } else if (INVENTORY.weapons.length == 0) {
+        return window[(isAndroid() ? "_getInventoryAndroid" : "_getInventoryIndexedDB")](special).then(function(inv) {
+            INVENTORY.weapons = inv.sort(function(a,b) {
+                return b.price - a.price;
+            });
+            INVENTORY.worth = INVENTORY.weapons.reduce(function(sum, curr) {
+                return sum + curr.price;
+            }, 0)
+            return new Promise(function(resolver,reject) {
+                var ret = [];
+                for (var i = 0; i < count_to; i++) {
+                    if (typeof INVENTORY.weapons[i] == 'undefined') break;
+                    ret.push(INVENTORY.weapons[i])
+                }
+                resolver({
+                    worth: INVENTORY.worth,
+                    count: INVENTORY.weapons.length,
+                    weapons:ret});
+            })
+        })
+    }
 }
 
-function _getInventoryAndroid(count_from, count_to, special) {
-    return new Promise(function(resolver,reject) {    
-        var inventoryJSON = client.SQLiteQuery("SELECT * FROM inventory " + special);
+function _getInventoryAndroid(special) {
+    return new Promise(function(resolver,reject) {
+        var inventoryJSON;
+        inventoryJSON = client.SQLiteQuery("SELECT * FROM inventory " + special);
         console.log(inventoryJSON);
         try {
             inventoryJSON = $.parseJSON(inventoryJSON);

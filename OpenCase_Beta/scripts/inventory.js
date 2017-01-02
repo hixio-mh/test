@@ -4,15 +4,15 @@ $(function() {
 		$('.inventory').html('<li class="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
 	
 		$('.inventoryList').on('scroll', function() {
-			if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80) {
-				if (isAndroid() && !inventory_loading && client.getInventoryLength("") > $(this).find('.weapon').length)
-					fillInventory();
-			}
-		});
+            if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80 && $('.js-loading-inventory').length) {
+                fillInventory(".inventory", "bet");
+            }
+        });
 	}
 })
 
 function fillInventory(selector, action) {
+	inventory_loading = true;
     selector = selector || ".inventory";
     action = action || "";
 	if ($('.js-loading-inventory').length == 0){
@@ -20,17 +20,15 @@ function fillInventory(selector, action) {
             $(selector+" .weapon").remove();
             $(selector).append('<li class="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
         } else if ($('.inventoryItemSelected').length != 0) {
+            inventory_loading = false;
             return false;
         }
 	}
 	
-	inventory_loading = true;
 	var wp_from = parseInt($('.js-loading-inventory').data('from'));
 	wp_from = wp_from || 1;
-	getInventory(wp_from, wp_from+inventory_step-1).then(function(inventory) {
-        inventory = inventory.sort(function(a, b) {
-            return b.price - a.price;
-        });
+	getInventory(wp_from, wp_from+inventory_step-1).then(function(result) {
+        var inventory = result.weapons;
         
         $(".js-loading-inventory").remove();
         var need_save = false;
@@ -56,7 +54,7 @@ function fillInventory(selector, action) {
             $(selector).html("<li>"+Localization.getString('other.empty_inventory')+"</li>");
         }
 
-        if ((wp_from+inventory_step) < inventory_length) {
+        if ((wp_from+inventory_step) < result.count) {
             $(selector).append('<li class="js-loading-inventory" data-from="'+(wp_from+inventory_step)+'"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
         }
         $(".inventoryList").css("display", "block");

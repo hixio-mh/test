@@ -93,8 +93,8 @@
 	<script>
 		$(window).load(function() {
 			getInventory(1, 50)
-            .then(function(inventory) {
-                fillInventory(inventory, getInventoryCost());
+            .then(function(result) {
+                fillInventory(result.weapons, result.worth, result.count);
             })
 		});
 		$(window).scroll(function() {
@@ -343,51 +343,55 @@
 			var sortedInventory = {};
 
             $(document.body).scrollTop(0);
-			/*if (isAndroid()) {
-				$('.inventory li').remove();
-				$('.inventory').append('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
-				inventoryLoadMore(1);
-			} else {*/
-                getInventory().then(function(inventory) {
-                    switch (parseInt(special)) {
-                        case 0:
-                            sortedInventory = inventory;
-                            break
-                        case 1:
-                            sortedInventory = sortInventory(inventory, "new", true);
-                            break
-                        case 2:
-                            sortedInventory = sortInventory(inventory, "stattrak", true);
-                            break
-                        case 3:
-                            sortedInventory = sortInventory(inventory, "stattrak", false);
-                            break
-                        case 4:
-                            sortedInventory = sortInventory(inventory, "souvenir", true);
-                            break
-                        case 5:
-                            sortedInventory = sortInventory(inventory, "souvenir", false);
-                            break
-                        case 6:
-                            sortedInventory = sortInventory(inventory, "souvenir", false);
-                            sortedInventory = sortInventory(inventory, "stattrak", false);
-                            break
-                        default:
-                            sortedInventory = inventory
-                            break
-                    }
-                    if (parseInt(weapon) != 0) {
-                        sortedInventory = sortInventory(sortedInventory, "type", RegExp(weaponsSort[parseInt(weapon)]))
-                    }
-                    if (parseInt(quality) != 0) {
-                        sortedInventory = sortInventory(sortedInventory, "rarity", qualitySort[parseInt(quality)])
-                    }
-                    return sortedInventory;
-                }).then(function(sortedInventory) {
-                    $(".inventory li").remove();
-                    fillInventory(sortedInventory, 0);
-                })
-			//}
+            getInventory().then(function(result) {
+                var inventory = result.weapons;
+                switch (parseInt(special)) {
+                    case 0:
+                        sortedInventory = inventory;
+                        break
+                    case 1:
+                        sortedInventory = sortInventory(inventory, "new", true);
+                        break
+                    case 2:
+                        sortedInventory = sortInventory(inventory, "stattrak", true);
+                        break
+                    case 3:
+                        sortedInventory = sortInventory(inventory, "stattrak", false);
+                        break
+                    case 4:
+                        sortedInventory = sortInventory(inventory, "souvenir", true);
+                        break
+                    case 5:
+                        sortedInventory = sortInventory(inventory, "souvenir", false);
+                        break
+                    case 6:
+                        sortedInventory = sortInventory(inventory, "souvenir", false);
+                        sortedInventory = sortInventory(inventory, "stattrak", false);
+                        break
+                    default:
+                        sortedInventory = inventory
+                        break
+                }
+                if (parseInt(weapon) != 0) {
+                    sortedInventory = sortInventory(sortedInventory, "type", RegExp(weaponsSort[parseInt(weapon)]))
+                }
+                if (parseInt(quality) != 0) {
+                    sortedInventory = sortInventory(sortedInventory, "rarity", qualitySort[parseInt(quality)])
+                }
+                return {
+                    weapons: sortedInventory,
+                    count: sortedInventory.length,
+                    worth: sortedInventory.reduce(function(sum, cur) {
+                        return sum + cur.price;
+                    }, 0)
+                }
+            }).then(function(result) {
+                $(".inventory li").remove();
+                return fillInventory(result.weapons, result.worth, result.count);
+            }).then(function() {
+                if ($('#empty-inventory').length > 0)
+                    $("#empty-inventory").remove();
+            })
 		});
 
 		function getSpecialSQL() {
@@ -471,61 +475,53 @@
 			if (special.indexOf("isNew = 'true'") != -1)
 				wp_from = 1;
 
-			var appendInventory = getInventory(wp_from, wp_from + inventory_step - 1, special);
-			fillInventory(appendInventory, getInventoryCost(special));
-			inventory = inventory.concat(appendInventory);
+			getInventory(wp_from, wp_from + inventory_step - 1, special).then(function(result) {
+                fillInventory(result.weapons, result.worth, result.count);
+            });
 		} 
 		function checkForLoadMore() {
 			if ($(window).scrollTop() + $(window).height() > $(document).height() - 80 && $('#js-loading-inventory').length) {
 				var wp_from = parseInt($('#js-loading-inventory').data('from'));
 				if (isNaN(wp_from)) wp_from = 1;
-				if (!inventory_loading && isAndroid())
+				if (!inventory_loading)
 					inventoryLoadMore(wp_from);
 			}
 		}
 
-		function fillInventory(currInventory, sumPr) {
-            if (currInventory.length == 0) return false;
-			sumPr = sumPr || 0.0;
-			var need_save = false;
+		function fillInventory(currInventory, sumPr, count) {
 			var wp_from = parseInt($('#js-loading-inventory').data('from'));
-			$('#js-loading-inventory').remove();
-            
-            console.log(JSON.stringify(currInventory));
+            $('#js-loading-inventory').remove();
+            if (!Array.isArray(currInventory)) return false;
 
-			currInventory = currInventory.sort(function(a, b) {
-				return b.price - a.price;
-			});
+            console.log(JSON.stringify(currInventory));
 
 			for (var i = 0; i < currInventory.length; i++) {
 				var weapon = currInventory[i];
 				var img = getImgUrl(weapon.img);
-
-				sumPr += weapon.price;
-
+                
 				var weaponInfo = "<i class='currency dollar'>" + weapon.price + "</i><img src=\"" + img + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + weapon.specialText() + weapon.type + "<br>" + weapon.name + "</span></div>";
 				$(".inventory").append("<li class='weapon " + (weapon.stattrak ? "wp-statTrak" : "") + " " + (weapon.new ? "new-weapon" : "") + "' data-id='" + weapon.id + "'>" + weaponInfo + "</li>");
 
 				if (weapon.new == true) {
 					currInventory[i].new = false;
 					updateWeapon(currInventory[i]);
-					need_save = true;
 				}
 			}
 
 			$("#stat-sum").html(sumPr.toFixed(2));
-			$("#stat-count").html(currInventory.length);
+			$("#stat-count").html(count);
 			inventory_loading = false;
 
 			if (currInventory.length == 0) {
-				$(".inventory").append("<li>" + Localization.getString('other.empty_inventory') + "</li>");
+				$(".inventory").append("<li id='empty-inventory'>" + Localization.getString('other.empty_inventory') + "</li>");
 				return false;
 			}
-			if ((wp_from + inventory_step) < inventory_length) {
+			if ((wp_from + inventory_step) < count) {
 				$('.inventory').append('<li id="js-loading-inventory" data-from="' + (wp_from + inventory_step) + '"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
+                
+                if($(window).scrollTop() + $(window).height() >= $(document).height() - 80)
+                    checkForLoadMore();
 			}
-
-			if (need_save && !isAndroid()) saveInventory();
 		}
 	</script>
 </body>
