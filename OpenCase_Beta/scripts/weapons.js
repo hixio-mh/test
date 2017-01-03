@@ -31,6 +31,9 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     this.img = this.old.img;
     this.price = this.getPrice();
     
+    //Fix conversion star to emoji
+    this.type = this.type.replace('★', '&#x2605;&#xFE0E;');
+    
     this.item_id = parseInt(this.item_id);
     this.quality = parseInt(this.quality);
     
