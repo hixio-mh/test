@@ -550,7 +550,6 @@ var Translation = {
                     text: 'У вас есть бан. Вы не можете создать новый аккаунт',
                     en: 'You have ban. You can\'t create new account.'
                 }
-            }
             },
             banlist: {
                 text: 'Баны',
