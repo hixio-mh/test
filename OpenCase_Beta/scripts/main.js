@@ -40,7 +40,7 @@ $(function () {
             firebase.database().ref('androidIDBans/'+androidID+'/fullBan').once('value').then(function(snapshot) {
                 var banReason = snapshot.val()
                 if(banReason != null) {
-                    $('body').append("<div class='permanent-ban'><h1>BAN</h1><span>"+banReason+"</span><i>"+Localization.ban.wrong_ban[Settings.language]+"</i></div>");
+                    $('body').append("<div class='permanent-ban'><h1>BAN</h1><span>"+banReason+"</span><i>"+Localization.getString('ban.wrong_ban')+"</i></div>");
                 }
             })
        }

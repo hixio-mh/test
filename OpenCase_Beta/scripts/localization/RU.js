@@ -545,7 +545,12 @@ var Translation = {
                 forgot_pass: {
                     text: 'Забыли пароль?',
                     en: 'Forgot password?'
+                },
+                have_ban: {
+                    text: 'У вас есть бан. Вы не можете создать новый аккаунт',
+                    en: 'You have ban. You can\'t create new account.'
                 }
+            }
             },
             banlist: {
                 text: 'Баны',

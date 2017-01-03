@@ -545,6 +545,10 @@ var Translation = {
                 forgot_pass: {
                     en: 'Forgot password?',
                     text: 'Mot de passe oublié?'
+                },
+                have_ban: {
+                    en: 'You have ban. You can\'t create new account.',
+                    text: 'You have ban. You can\'t create new account.'
                 }
             },
             banlist: {

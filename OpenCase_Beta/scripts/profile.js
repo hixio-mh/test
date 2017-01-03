@@ -11,7 +11,7 @@ $(document).on('click', '#registerButton', function () {
             saveStatistic("playerNickname", nick)
         }
         else {
-            $("#login-status").text(Localization.settings2.notValidNickname[Settings.language]);
+            $("#login-status").text(Localization.getString('settings.notification.invalid_nick'));
             return false;
         }
         fbProfile.register();
@@ -23,41 +23,64 @@ var fbProfile = (function (module) {
     module.register = function () {
         var email = $("#email").val() || "";
         var password = $("#password").val() || "";
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            $("#login-status").text(error.message);
-        }).then(function () {
-            if (firebase.auth().currentUser != null) {
-                var ava = Player.avatar;
-                if (/^\d+\.\w{3}$/.test(ava)) ava = "../images/ava/" + ava;
-                firebase.auth().currentUser.updateProfile({
-                    displayName: Player.nickname
-                    , photoURL: ava
-                }).then(function () {
-                    var userRef = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
-                    var userSettingsRef = userRef.child('settings');
-                    userSettingsRef.child('language').set(Settings.language);
-                    userSettingsRef.child('sounds').set(Settings.sounds);
-                    userSettingsRef.child('drop').set(Settings.drop);
-                    var privateRef = userRef.child('private');
-                    privateRef.child('double').set(Player.doubleBalance);
-                    if(isAndroid())
-                        privateRef.child('androidID').set(client.getAndroidID());
-                    var publicRef = userRef.child('public');
-                    publicRef.child('points').set(Player.points);
-                    publicRef.child('nickname').set(Player.nickname);
-                    publicRef.child('avatar').set(ava);
-                    var rateRef = userRef.child('outside');
-                    rateRef.child('rep').set(0);
-                    var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
-                    var invLenght = isAndroid() ? client.getInventoryLength() : inventory.length;
-                    inventoryRef.child('inventory_count').set(invLenght);
-                }, function (error) {
-                    $("#login-status").text(error.message);
-                });
+        
+        var androidID = "nope";
+        if (isAndroid())
+            androidID = client.getAndroidID();
+        
+        firebase.database().ref('androidIDBans/'+androidID).once('value')
+        .then(function(snapshot) {
+            var haveBan = snapshot.val();
+            if(haveBan != null) {
+                $("#login-status").text(Localization.getString('chat.login.have_ban'));
+                throw new Error('have_ban');
             }
-        });
+            return true;
+        }).then(function() {
+            firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                $("#login-status").text(error.message);
+            }).then(function () {
+                if (firebase.auth().currentUser != null) {
+                    var ava = Player.avatar;
+                    if (/^\d+\.\w{3}$/.test(ava)) ava = "../images/ava/" + ava;
+                    firebase.auth().currentUser.updateProfile({
+                        displayName: Player.nickname
+                        , photoURL: ava
+                    }).then(function () {
+                        var userRef = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
+                        var userSettingsRef = userRef.child('settings');
+                        userSettingsRef.child('language').set(Settings.language);
+                        userSettingsRef.child('sounds').set(Settings.sounds);
+                        userSettingsRef.child('drop').set(Settings.drop);
+                        var privateRef = userRef.child('private');
+                        privateRef.child('double').set(Player.doubleBalance);
+                        if(isAndroid())
+                            privateRef.child('androidID').set(client.getAndroidID());
+                        var publicRef = userRef.child('public');
+                        publicRef.child('points').set(Player.points);
+                        publicRef.child('nickname').set(Player.nickname);
+                        publicRef.child('avatar').set(ava);
+                        var rateRef = userRef.child('outside');
+                        rateRef.child('rep').set(0);
+                        var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
+                        var invLenght = isAndroid() ? client.getInventoryLength() : inventory.length;
+                        inventoryRef.child('inventory_count').set(invLenght);
+                    }, function (error) {
+                        $("#login-status").text(error.message);
+                    });
+                }
+            });
+        })
+        .catch(function(err) {
+            if (err.message == 'have_ban') {
+                
+            } else {
+                throw err;
+            }
+        })
+        
     }
     module.ifAuth = function () {
         return firebase.auth().currentUser != null;

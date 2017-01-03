@@ -1,12 +1,7 @@
 
 $(function() {
     var category = $(document.body).data('localization');
-    /*try {
-        localizate(category);
-    } catch (e) {
-        console.error('No localization');
-    }*/
-    
+
     //$.ajaxSetup({cache: true});
     
     $.getScript("../scripts/localization/" + Settings.language + ".js", function(translation, status) {

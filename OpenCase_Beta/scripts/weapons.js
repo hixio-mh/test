@@ -168,7 +168,7 @@ Weapon.prototype.qualityRandom = function (count) {
             this.quality = i;
             this.price = this.getPrice();
             if ((this.price == 0 || this.price == -1) && count < 5)
-                this.qualityRandom(count++);
+                this.qualityRandom(++count);
             else
                 return i;
         }
