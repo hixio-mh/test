@@ -36,7 +36,7 @@
 
 <div class="popup" id="rank-popup">
 <span id='closePopup'></span>
-<span id='js-local-rank-text'>Только игроки с рангом</span> <span id='rank'>?</span> <span id='js-local-rank-text2'> и выше могут открыть этот кейс.</span><br><a href="faq.html#js-local-question-rank" class="inline-link"><span id='js-local-rank-text3'>Как поднять ранг?</span></a>
+<span id='js-local-rank-text'>Только игроки с уровнем</span> <span id='rank'>?</span> <span id='js-local-rank-text2'> и выше могут открыть этот кейс.</span><br><a href="faq.html#js-local-question-rank" class="inline-link"><span id='js-local-rank-text3'>Как поднять уровень?</span></a>
 </div>
 <div class="cases">
 <div id="Default" class="casesBlock opened"><h1>Кейсы</h1></div>
@@ -181,26 +181,5 @@ $('#showVideoAd').on('click', function () {
 		//window.location = "open.html?caseId=" + $('.js-secretField').text() + '&fromAd=1';
 	}
 });
-
-/*
-window.addEventListener('popstate', function(event) {
-    // The popstate event is fired each time when the current history entry changes.
-
-    var r = confirm("You pressed a Back button! Are you sure?!");
-
-    if (r == true) {
-        // Call Back button programmatically as per user confirmation.
-        history.back();
-        // Uncomment below line to redirect to the previous page instead.
-        // window.location = document.referrer
-    } else {
-        // Stay on the current page.
-        history.pushState(null, null, window.location.pathname);
-    }
-
-    history.pushState(null, null, window.location.pathname);
-
-}, false);
-*/
 </script>
 </div></body></html>

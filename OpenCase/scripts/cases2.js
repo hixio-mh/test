@@ -3812,7 +3812,7 @@ var cases = [{
     "name": "Knife Case",
     "img": "knife.png",
     "type": "Special",
-    "minRank": "Legendary Eagle Master",
+    "minLvl": 30,
     "specialClass": "rare",
     "casesToOpen": 200,
     "weapons": [{
@@ -4350,7 +4350,7 @@ var cases = [{
     "name": "Covert Case",
     "img": "tainoe.png",
     "type": "Special",
-    "minRank": "Master Guardian Elite",
+    "minLvl": 25,
     "specialClass": "covert",
     "casesToOpen": 170,
     "weapons": [{
@@ -4479,7 +4479,7 @@ var cases = [{
     "name": "Classified Case",
     "img": "secret.png",
     "type": "Special",
-    "minRank": "Gold Nova III",
+    "minLvl": 20,
     "specialClass": "classified",
     "casesToOpen": 125,
     "weapons": [{
@@ -4577,7 +4577,7 @@ var cases = [{
     "name": "AWP Case",
     "img": "awp.png",
     "type": "Special",
-    "minRank": "Silver Elite Master",
+    "minLvl": 15,
     "specialClass": "AWP",
     "casesToOpen": 100,
     "weapons": [{
@@ -4671,7 +4671,7 @@ var cases = [{
     "name": "M4A1-S Case",
     "img": "m4a1-s.png",
     "type": "Special",
-    "minRank": "Silver III",
+    "minLvl": 10,
     "specialClass": "M4A1-S",
     "casesToOpen": 75,
     "weapons": [{
@@ -4759,7 +4759,7 @@ var cases = [{
     "name": "AK-47 Case",
     "img": "ak47.png",
     "type": "Special",
-    "minRank": "Silver II",
+    "minLvl": 5,
     "specialClass": "AK-47",
     "casesToOpen": 50,
     "weapons": [{

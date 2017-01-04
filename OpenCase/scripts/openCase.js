@@ -10,10 +10,9 @@ $(document).on("click", ".case", function() {
     $('#special-popup').css('display', 'none');
     caseId = $(this).data('case-id');
     souvenir = $(this).data('souvenir');
-    if (typeof cases[caseId].minRank != 'undefined' && getRank().id < getRankByName(cases[caseId].minRank).id) {
-        needRank = getRankByName(cases[caseId].minRank);
+    if (typeof cases[caseId].minLvl != 'undefined' && Level.calcLvl() < cases[caseId].minLvl) {
         $("#rank-popup").css('display', 'block');
-        $("#rank").html('<img src="' + needRank.img + '" style="width: 50px;">');
+        $("#rank").html(cases[caseId].minLvl);
         return false;
     }
     if (cases[caseId].type == "Special") {
