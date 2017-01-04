@@ -30,6 +30,7 @@ body {
 	width: 125px;
 	height: 138px;
     text-align: center;
+    background: #737373;
 	background: linear-gradient(to top, #A8A8A8, #474747);
     box-shadow: 0px 0px 7px #000;
     position: relative;
@@ -60,6 +61,7 @@ body {
 .name {
     display: block;
     position: absolute;
+    background: #677382;
     background: linear-gradient(to right, #828F9E, #474C52);
     color: #fff;
     height: 33px;
