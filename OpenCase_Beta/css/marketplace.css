@@ -1,4 +1,4 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
 }
@@ -165,12 +165,13 @@ i.double-icon {
     margin: 8px;
     text-align: center;
     padding: 20px;
-	font-family: Lato;
-	max-width: 150px;
-	display: inline-block;
-	box-shadow: 0 0 3px RGBA(0, 0, 0, 0.4);
-	cursor: pointer;
-	position: relative;
+    font-family: Lato;
+    display: inline-block;
+    box-shadow: 0 0 3px RGBA(0, 0, 0, 0.4);
+    cursor: pointer;
+    position: relative;
+    width: 150px;
+    height: 175px;
 }
 .sales-discount {
     position: absolute;
@@ -198,9 +199,10 @@ i.double-icon {
     border-right: 6px solid transparent;
 }
 .sales-weapon img {
-    max-width: calc(100% - 50px);
     display: block;
     margin: 0 auto;
+    width: 140px;
+    height: 140px;
 }
 .sales-weapon-name {
     display: block;
@@ -209,6 +211,7 @@ i.double-icon {
     max-width: 100%;
     text-overflow: ellipsis;
 	font-size: 0.8em;
+    height: 18px;
 	color: #565656;
 }
 .prices_old-price {
