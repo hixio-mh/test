@@ -31,9 +31,6 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     this.img = this.old.img;
     this.price = this.getPrice();
     
-    //Fix conversion star to emoji
-    this.type = this.type.replace('★', '&#x2605;&#xFE0E;');
-    
     this.item_id = parseInt(this.item_id);
     this.quality = parseInt(this.quality);
     
@@ -190,6 +187,34 @@ Weapon.prototype.specialText = function () {
         return Localization.getString('other.souvenir') + ' ';
     else
         return ''
+}
+
+Weapon.prototype.getImgUrl = function(big) {
+    var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/";
+    prefix = window.location.protocol == "http:" ? prefix.replace("https", "http") : prefix;
+    var postfix = "/124fx124f";
+    var postfixBig = "/383fx383f";
+    if (typeof this.img == 'undefined') return "../images/none.png";
+    if (this.img.indexOf("images/") != -1)
+        if (typeof big != "undefined") {
+            return this.img.replace(postfix, postfixBig);
+        }
+        else {
+            return this.img;
+        }
+    else if (this.img.indexOf(".png") != -1) return "../images/Weapons/" + this.img;
+    else if (this.img.indexOf("steamcommunity") == -1) {
+        if (typeof big != "undefined") return prefix + this.img + postfixBig;
+        else return prefix + this.img + postfix;
+    }
+    else
+    if (typeof big != "undefined") {
+        return this.img.replace(postfix, postfixBig);
+    }
+    else {
+        return this.img;
+    }
+
 }
 
 // === Functions ===

@@ -40,10 +40,35 @@ $(function () {
             firebase.database().ref('androidIDBans/'+androidID+'/fullBan').once('value').then(function(snapshot) {
                 var banReason = snapshot.val()
                 if(banReason != null) {
-                    $('body').append("<div class='permanent-ban'><h1>BAN</h1><span>"+banReason+"</span><i>"+Localization.getString('ban.wrong_ban')+"</i></div>");
+                    $('body').append("<div class='permanent-ban'><h1>BAN</h1><span>"+banReason+"</span><i>"+Localization.getString('other.ban.wrong_ban')+"</i></div>");
                 }
             })
        }
+        if (((Level.calcLvl() < 7 && Player.doubleBalance > 100000000) || Player.doubleBalance > 70000000000) && !$('.permanent-ban').length) {
+            $(document.body).append("<div class='permanent-ban'><h1>BAN</h1><span>Hacker</span><i>Loading...</i></div>");
+            if (isAndroid()) {
+                var androidID = client.getAndroidID();
+                
+                try {
+                    var uid = firebase.database().currentUser.uid;
+                } catch(e) {
+                    var uid = "none";
+                }
+                try {
+                    firebase.database().ref('chat/autoban').push({
+                        username: Player.nickname
+                        , uid: uid
+                        , text: androidID
+                        , img: '../images/ava/' + Player.avatar
+                        , timestamp: firebase.database.ServerValue.TIMESTAMP
+                    });
+                } catch (e) {}
+            }
+            
+            $(document).on('localizationloaded', function() {
+                $('.permanent-ban i').text(Localization.getString('other.ban.wrong_ban'));
+            })
+        }
     }
     catch (e) {}
     
@@ -495,7 +520,7 @@ function getInventory(count_from, count_to, special) {
         count_to = client.getInventoryLength("");
     
     count_from = count_from || 1;
-    count_to = count_to || INVENTORY.weapons.length;
+    count_to = count_to || INVENTORY.weapons.length || 1000;
     special = special || "";
     
     if (INVENTORY.weapons.length >= count_to) {

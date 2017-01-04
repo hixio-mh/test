@@ -10,7 +10,6 @@
 <script src="../scripts/quality.js"></script>
 <script src="../scripts/skinNames.js"></script>
 <script src="../scripts/prices.js"></script>
-<script src="../scripts/openCase.js"></script>
 <script src="../scripts/weapons.js"></script>
 
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
@@ -29,7 +28,7 @@
 <div class="scrollerContainer">
 	<div id="caruselOver"><div id="caruselLine"></div></div>
 	<div id="aCanvas">
-		<div class="casesCarusel">
+		<div class="casesCarusel" id='casesCarusel'>
 		</div>
         <div class='js_sound_element' style='display:none;'></div>
 	</div>
@@ -40,7 +39,7 @@
 
 <span class="win_name"></span>
 <span class="win_quality"></span>
-<span class="win_price"></span>
+<span class="win_price currency dollar"></span>
 <img src="" class="win_img">
 <div class="win_sell_div">
 	<h3 id="win_sell_text" class="lines"><span data-loc="sell">Sell</span></h3>
@@ -62,76 +61,12 @@
 <div id="caseID" style="display:none;"></div>
 <script src="../scripts/main.js"></script>
 <script src="../scripts/localization.js"></script>
+<script src="../scripts/openCase.js"></script>
 <script>
-if (typeof souvenirCase == 'undefined') var souvenirCase = false;
-$(function(){
-	var param = parseURLParams(window.location.href);
-	if(typeof param != "undefined") {
-		caseId = param.caseId[0];
-		try {
-			souvenirCase = param.souvenir[0] == 'true';
-		} catch(e) {}
-		$("#caseID").text(caseId);
-		$("#youCanWin").data('loc-var', {1: cases[caseId].name})
-		var opened = 0;
-		if (isAndroid())
-			opened = parseInt(client.getStatistic("case-"+cases[caseId].name));
-		else
-			opened = $.cookie("case-"+cases[caseId].name, Number)
-
-		$("#opened").text(opened);
-
-		document.title = "Открытие кейса — "+cases[caseId].name;
-
-		fillCarusel(caseId);
-	}
-});
-$('#what-i-can-win-Button').on('click', function(){weaponList()});
-function weaponList() {
-	var rare = false;
-    var weaponsArray = [];
-    if (cases[caseId].weapons)
-        weaponsArray = getWeaponsById(cases[caseId].weapons);
-    if (cases[caseId].knives)
-        weaponsArray = weaponsArray.concat(getWeaponsById(cases[caseId].knives));
-    if (weaponsArray.length == 0) {
-        if (cases[caseId].regExp) {
-            var rg = cases[caseId].regExp;
-            for (var i = 0; i < weapons.length; i++) {
-                var weapon = getWeaponById(weapons[i].id);
-                if (RegExp(rg.reg).test(weapon[rg.param]))
-                    weaponsArray.push(weapon);
-            }
-        } else {
-            return null;
-        }
-    }
-	for (var i = 0; i < weaponsArray.length; i++) {
-		var weapon = weaponsArray[i];
-		if (rareItemsRegExp.test(weapon.rarity) && rare == true)
-			continue;
-		var img = getImgUrl(weapon.img);
-
-		var type = weapon.type;
-
-		type = souvenirCase ? Localization.souvenir[Settings.language]+' '+type : type;
-
-		var name = getSkinName(weaponsArray[i].skinName, Settings.language);
-		if (rareItemsRegExp.test(weapon.rarity)) {
-			type = '★ Rare Special Item ★';
-			name = '&nbsp;';
-			img = '../images/Weapons/rare.png';
-			rare = true;
-		}
-		var weaponInfo = "<img src=\"" + img + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>" + type + "<br>" + name + "</span></div>";
-		$(".weaponsList").append("<li class='weapon animated fadeInDown'>" + weaponInfo + "</li>");
-	}
-	$(".weaponsList").css("display", "block");
-	$("#youCanWin").css("display", "block");
-	$('#what-i-can-win-Button').css('display', 'none');
-}
-    
-$(document).on('click', '.rand', function() {
+    $(function() {
+        openCase.init();
+    })
+/*$(document).on('click', '.rand', function() {
     Lobibox.prompt('text', {
         title: 'Random weapon',
         attrs: {
@@ -150,7 +85,7 @@ $(document).on('click', '.rand', function() {
             }
         }
     });
-})
+})*/
 </script>
 </body>
 </html>

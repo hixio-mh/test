@@ -143,7 +143,6 @@ window.addEventListener('popstate', function(e) {
 var fbChat = (function (module) {
     module.chatRef = '';
     module.isModerator = false;
-    module.chatRoomsRef = firebase.database().ref('chatRooms');
     module.rooms = [
         {
             name: "Русский"

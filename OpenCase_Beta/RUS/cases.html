@@ -161,6 +161,14 @@ $(function () {
             saveStatistic('doubleBalance', Player.doubleBalance);
         }
     }
+    
+    $(document).on('click', '.case', function() {
+        openCase.goToCase($(this).data('case-id'), $(this).data('souvenir'))
+    })
+    
+    $(document).on('click', '#closePopup', function() {
+        $('.popup').css('display', 'none');
+    });
 });
 
 $(document).on('click', '#new-version__update', function () {
