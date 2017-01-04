@@ -19,7 +19,6 @@ var openCase = {
                 try {
                     openCase.souvenir = param.souvenir[0] == 'true';
                 } catch(e) {}
-                $("#caseID").text(openCase.caseId);
                 $("#youCanWin").data('loc-var', {1: cases[openCase.caseId].name})
  
                 var opened = getStatistic("case-"+cases[openCase.caseId].name, 0);
@@ -256,15 +255,13 @@ var openCase = {
         //Statistic
         Level.addEXP(1);
 
-        var caseId = $("#youCanWin span").text();
-        statisticPlusOne('case-' + openCase.caseId);
+        statisticPlusOne('case-' + cases[openCase.caseId].name);
         statisticPlusOne('weapon-' + openCase.win.rarity);
         if (openCase.win.stattrak)
             statisticPlusOne('statTrak');
 
         var param = parseURLParams(window.location.href);
         if (typeof param != "undefined") {
-            openCase.caseId = param.caseId[0];
             var fromAd = 0;
             try {
                 fromAd = parseInt(param.fromAd[0]);
