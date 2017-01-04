@@ -213,8 +213,8 @@ var openCase = {
         openCase.scrollSound(marginLeft, (duration*1000));
         
         var type = openCase.win.type;
-        var statTrak = openCase.souvenir ? false : openCase.win.stattrakRandom();
-        openCase.win.souvenir = openCase.souvenir ? true : false;
+        //var statTrak = openCase.souvenir ? false : openCase.win.stattrakRandom();
+        //openCase.win.souvenir = openCase.souvenir ? true : false;
         var quality = openCase.win.qualityRandom();
         openCase.caseOpening = true;
 
