@@ -72,6 +72,12 @@ var fbProfile = (function (module) {
             callback(/(admin|moder)/gi.test(snapshot.val()));
         })
     }
+    module.isVip = function(uid, callback) {
+        uid = uid || firebase.auth().currentUser.uid;
+        firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
+            callback(/(vip)/gi.test(snapshot.val()));
+        })
+    }
     module.getAndroidID = function (uid, callback) {
         if (typeof uid == 'function') {
             callback = uid;

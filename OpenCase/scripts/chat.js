@@ -38,6 +38,9 @@ $(function () {
             fbProfile.isModerator(null, function(isModerator) {
                 fbChat.isModerator = isModerator;
             })
+            fbProfile.isVip(null, function(isVip) {
+                fbChat.isVip = isVip;
+            })
         } else if (firebase.auth().currentUser != null && goToChat != false) {
             fbChat.setChatRef(goToChat);
             $("#login").hide();
@@ -46,6 +49,9 @@ $(function () {
             fbChat.initChat('.chat__messages');
             fbProfile.isModerator(null, function(isModerator) {
                 fbChat.isModerator = isModerator;
+            })
+            fbProfile.isVip(null, function(isVip) {
+                fbChat.isVip = isVip;
             })
         } else {
             $("#chat").hide();
@@ -135,6 +141,7 @@ window.addEventListener('popstate', function(e) {
 var fbChat = (function (module) {
     module.chatRef = '';
     module.isModerator = false;
+    module.isVip = false;
     module.chatRoomsRef = firebase.database().ref('chatRooms');
     module.rooms = [
         {
@@ -287,8 +294,6 @@ function newMsg(key, message) {
         , minute: 'numeric'
     });
     
-    var moderBlock = "<div class='message__moderator'><i aria-hidden='true' class='fa fa-times delete-message'></i></div>";
-    
     var myMessage = false;
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
     text = uid == "TrgkhCFTfVWdgOhZVUEAwxKyIo33" ? text : fbProfile.XSSreplace(text);
@@ -300,7 +305,13 @@ function newMsg(key, message) {
     
     var winter_snow = "<div class='winter_snow' style='" + Winter.chatRandomSnow() + "'></div>";
     
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + " " + group + "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'>" + winter_snow + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + flag + (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + (fbChat.isModerator ? moderBlock : "") + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var moderBlock = "";
+    
+    if (fbChat.isModerator || (fbChat.isVip && myMessage)) {
+        moderBlock = "<div class='message__moderator'><i aria-hidden='true' class='fa fa-times delete-message'></i></div>";
+    }
+    
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + " " + group + "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'>" + winter_snow + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + flag + (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + moderBlock + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 
