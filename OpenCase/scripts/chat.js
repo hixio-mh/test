@@ -263,9 +263,10 @@ var fbChat = (function (module) {
             if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
                 newMsg(data.key, data.val());
-                $("html, body").animate({
-                    scrollTop: $(document).height()
-                }, 200);
+                if ($(window).scrollTop() + $(window).height() > $(document).height() - 150)
+                    $("html, body").animate({
+                        scrollTop: $(document).height()
+                    }, 200);
             }
         });
         

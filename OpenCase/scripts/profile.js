@@ -117,7 +117,18 @@ var fbProfile = (function (module) {
         userInfoRef.once('value').then(function (snapshot) {
             var userInfo = snapshot.val();
             userInfo.uid = uid;
+            return userInfo;
+        }).then(function(userInfo) {
+            return firebase.database().ref('users/' + uid + '/moder').once('value').then(function(snapshot) {
+                var info = snapshot.val();
+                userInfo.moder = info || {};
+                return userInfo;
+            })
+        }).then(function(userInfo) {
             callback(userInfo);
+        }).catch(function(err) {
+            console.log(err);
+            callback(null);
         })
         if (isAndroid()) client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'none');
     }
