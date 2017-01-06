@@ -285,6 +285,10 @@ function newMsg(key, message) {
         group = message.group || "",
         country = message.country || "";
     
+    var imgRegExp = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/igm,
+        youtubeRegExp = /(?:https?\:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/)?([a-zA-Z0-9?=]+)/igm;
+        //vkRegExp = /(https?:\/\/vk\.com\/(.*))?/ig;
+    
     var flag = "";
     if (country)
         flag = '<img src="../images/none.png" class="flag flag-'+country.toLowerCase()+'"/>';        
@@ -296,7 +300,15 @@ function newMsg(key, message) {
     
     var myMessage = false;
     if (uid == firebase.auth().currentUser.uid) myMessage = true;
+    
     text = uid == "TrgkhCFTfVWdgOhZVUEAwxKyIo33" ? text : fbProfile.XSSreplace(text);
+    
+    //text = text.replace(vkRegExp, '<a href="$1" target="_blank">$2</a>');    
+    if (/vip/.test(group)) {
+        text = text.replace(imgRegExp, '<img src="$1" style="max-width:100%">');
+        text = text.replace(youtubeRegExp, '<iframe width="100%" height="auto" src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
+    }
+    
     username = fbProfile.XSSreplace(username);
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
     text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
@@ -325,6 +337,7 @@ function removeMsg(key) {
     }
     catch (e) {}
 }
+
 $(document).on('click', '#chat__send-new-message', function () {
     var msg = $('#chat__new-message').text();
     if (msg.length == 0) return false;
