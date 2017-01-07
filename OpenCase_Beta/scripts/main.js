@@ -13,6 +13,8 @@ var INVENTORY = {
     changed: false
 };
 
+var DEBUG = true;
+
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 
@@ -118,10 +120,17 @@ window.onerror = function (msg, url, line, col, error) {
     if (isAndroid()) {
         client.sendToAnalytics('Error', 'Error', action, url);
     }
-    $(document.body).append('<div class="error-log">' + action + '</div>');
-    setTimeout(function(){
-        $('.error-log').remove();
-    }, 5000);
+    var bottom = 0;
+    if ($('.error-log').length > 0) {
+        $('.error-log').each(function(){
+            bottom += $(this).height();
+        })
+    }
+    $(document.body).append('<div class="error-log" style="bottom:'+bottom+'px">' + action + '</div>');
+    if (!DEBUG)
+        setTimeout(function(){
+            $('.error-log').remove();
+        }, 5000);
 };
 
 if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()) < 1.3)) {
@@ -156,6 +165,9 @@ if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()
     coinFlipSound.volume = 1;
     coinFlipSound.loop = true;
 }
+$(function() {
+    
+})
 
 function ifStatInFbDifferent(currStat, savedStat, fbPath, child) {
     child = child || "";
