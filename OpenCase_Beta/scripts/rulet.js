@@ -76,10 +76,8 @@ function newGame() {
 }
 
 $("#addItems").on("click", function() {
-    inventory = inventory.sort(function(a, b) {
-        return b.price - a.price;
-    });
     Sound("additems", "play");
+    $('.js-loading-inventory').remove();
     fillInventory();
 });
 

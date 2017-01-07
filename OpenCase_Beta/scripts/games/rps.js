@@ -29,6 +29,8 @@ $(function() {
 
 $('.add-item').on('click', function() {
     newGame();
+    
+    $('.js-loading-inventory').remove();
 
     fillInventory();
 });

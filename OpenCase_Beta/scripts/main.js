@@ -9,7 +9,8 @@ var inventory = [],
 var INVENTORY = {
     weapons: [],
     special: "",
-    worth: 0
+    worth: 0,
+    changed: false
 };
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -327,6 +328,7 @@ function saveInventory() {
 
 function saveWeapon(weapon) {
     return new Promise(function(resolver, reject) {
+        INVENTORY.changed = true;
         if (isAndroid()) {
             var rowID = client.saveWeapon(weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir, weapon['new'], "{}");
             resolver(rowID);
@@ -354,6 +356,7 @@ function saveWeapon(weapon) {
 
 function saveWeapons(weapons) {
     return new Promise(function(resolver, reject) {
+        INVENTORY.changed = true;
         if (isAndroid()) {
             var rows = [];
             for (var i = 0; i < weapons.length; i++) {
@@ -391,6 +394,7 @@ function saveWeapons(weapons) {
 
 function updateWeapon(weapon) {
     return new Promise(function(resolver, reject) {
+        INVENTORY.changed = true;
         if (isAndroid()) {
             var rowID = client.updateWeapon(weapon.id, weapon.item_id, weapon.quality, weapon.stattrak, weapon.souvenir, weapon['new'], "{}");
             resolver(true);
@@ -487,8 +491,21 @@ function getWeapons(ids) {
 
 function deleteWeapon(id) {
     return new Promise(function(resolver, reject) {
+        INVENTORY.changed = true;
+        
+        try {
+            for (var i = 0; i < INVENTORY.weapons.length; i++) {
+                if (INVENTORY.weapons[i].id === id) {
+                    INVENTORY.weapons.splice(i, 1);
+                    break;
+                }
+            }
+        }catch(e) {
+            console.log(e);
+        }
+        
         if (isAndroid()) {
-            client.deleteWeapon(id)
+            client.deleteWeapon(id);
             resolver(true);
         } else {
             connectDB(function(db) {
@@ -503,6 +520,7 @@ function deleteWeapon(id) {
 }
 
 function deleteAllInventory() {
+    INVENTORY.changed = true;
     if (isAndroid()) {
         client.deleteAllInventory();
     } else {
@@ -511,17 +529,17 @@ function deleteAllInventory() {
 }
 
 function getInventory(count_from, count_to, special) {
-    if (special && special != INVENTORY.special) {
+    count_from = count_from || 1;
+    count_to = count_to || INVENTORY.weapons.length || 1000;
+    special = special || "";
+    
+    if (special != INVENTORY.special || INVENTORY.changed) {
         INVENTORY.weapons = [];
         INVENTORY.special = special;
     }
     
     if (typeof count_to == 'undefined' && isAndroid()) 
         count_to = client.getInventoryLength("");
-    
-    count_from = count_from || 1;
-    count_to = count_to || INVENTORY.weapons.length || 1000;
-    special = special || "";
     
     if (INVENTORY.weapons.length >= count_to) {
         var ret = [];
@@ -550,6 +568,7 @@ function getInventory(count_from, count_to, special) {
         })
     } else if (INVENTORY.weapons.length == 0) {
         return window[(isAndroid() ? "_getInventoryAndroid" : "_getInventoryIndexedDB")](special).then(function(inv) {
+            INVENTORY.changed = false;
             INVENTORY.weapons = inv.sort(function(a,b) {
                 return b.price - a.price;
             });
