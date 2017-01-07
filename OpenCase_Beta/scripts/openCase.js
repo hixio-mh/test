@@ -288,8 +288,8 @@ var openCase = {
         $('.casesCarusel').css({
             'transition': 'all 0.9s cubic-bezier(0.07, 0.49, 0.39, 1)',
             'margin-left': '0px'
-        })
-        openCase.sleep(1000).then(() => {
+        });
+        openCase.sleep(1000).then(function(){
             $(".casesCarusel").empty();
             openCase.fillCarusel();
             openCase.startScroll();

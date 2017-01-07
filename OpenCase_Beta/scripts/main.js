@@ -123,7 +123,7 @@ window.onerror = function (msg, url, line, col, error) {
     var bottom = 0;
     if ($('.error-log').length > 0) {
         $('.error-log').each(function(){
-            bottom += $(this).height();
+            bottom += $(this).height() + 10;
         })
     }
     $(document.body).append('<div class="error-log" style="bottom:'+bottom+'px">' + action + '</div>');
@@ -165,9 +165,6 @@ if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()
     coinFlipSound.volume = 1;
     coinFlipSound.loop = true;
 }
-$(function() {
-    
-})
 
 function ifStatInFbDifferent(currStat, savedStat, fbPath, child) {
     child = child || "";
