@@ -365,6 +365,8 @@ var openCase = {
         $('#what-i-can-win-Button').css('display', 'none');
     },
     sleep: function(time) {
-        return new Promise((resolve) => setTimeout(resolve, time));
+        return new Promise(function(resolve) {
+            setTimeout(resolve, time)
+        });
     }
 }
