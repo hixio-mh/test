@@ -102,62 +102,98 @@ var openCase = {
                 return null;
             }
         }
-        var c0 = weaponsArray.filter(function(weapon) {
+        
+        var caseWeapons = {
+            win: {},
+            weight: {
+                rare:       5,
+                covert:     15,
+                classified: 25,
+                restricted: 35,
+                milspec:    50,
+                industrial: 60,
+                consumer:   70
+            }
+        };
+        caseWeapons.consumer = weaponsArray.filter(function(weapon) {
             return weapon.rarity == 'consumer'
         }).mul(7).shuffle();
-        var a0 = weaponsArray.filter(function(weapon) {
+        caseWeapons.industrial = weaponsArray.filter(function(weapon) {
             return weapon.rarity == 'industrial'
         }).mul(7).shuffle();
-        var a1 = weaponsArray.filter(function(weapon) {
+        caseWeapons.milspec = weaponsArray.filter(function(weapon) {
             return weapon.rarity == 'milspec'
         }).mul(5).shuffle();
-        var a2 = weaponsArray.filter(function(weapon) {
+        caseWeapons.restricted = weaponsArray.filter(function(weapon) {
             return weapon.rarity == 'restricted'
         }).mul(5).shuffle();
-        var a3 = weaponsArray.filter(function(weapon) {
+        caseWeapons.classified = weaponsArray.filter(function(weapon) {
             return weapon.rarity == 'classified'
         }).mul(4).shuffle();
-        var a4 = weaponsArray.filter(function(weapon) {
+        caseWeapons.covert = weaponsArray.filter(function(weapon) {
             return weapon.rarity == 'covert'
         }).mul(1).shuffle();
-        var a5 = weaponsArray.filter(function(weapon) {
+        
+        caseWeapons.rare = weaponsArray.filter(function(weapon) {
             return (weapon.rarity == 'rare' || weapon.rarity == 'extraordinary')
         }).mul(1).shuffle();
-
-        if ((Math.rand(0, 10) > 7) && (a5.length + a4.length + a2.length + a1.length != 0)) {
-            a3 = [];
-        }
-        if ((Math.rand(0, 10) > 5) && (a5.length + a3.length + a2.length + a1.length != 0)) {
-            a4 = [];
-        }
-        if ((Math.rand(0, 10) > 1) && (a4.length + a3.length + a2.length + a1.length != 0)) {
-            a5 = [];
-        }
-
-        if (c0 == undefined) {
-            var arr = a0.concat(a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
+        
+        if (caseWeapons.consumer.length + caseWeapons.industrial.length + caseWeapons.milspec.length + caseWeapons.restricted.length + caseWeapons.classified.length + caseWeapons.covert.length == 0 && caseWeapons.rare.length > 0) {
+            caseWeapons.all = caseWeapons.rare;
         } else {
-            var arr = c0.concat(a0, a1, a2, a3, a4, a5).shuffle().shuffle().shuffle();
+            caseWeapons.all = caseWeapons.consumer.concat(caseWeapons.industrial, caseWeapons.milspec, caseWeapons.restricted, caseWeapons.classified, caseWeapons.covert);
         }
-        var el = '';
-        while (arr.length <= (winNumber + 3)) {
-            arr = arr.concat(a1, a2, a3, a4).shuffle().shuffle();
-        }
+        
+        /* === Select the rarity of the win item === */
+        
+        var total_weights = (function(weight){
+            var a = 0;
+            for (key in weight) {
+                a += Number(weight[key]);
+            }
+            return a;
+        })(caseWeapons.weight);
+        
+        while (typeof caseWeapons.win == 'undefined' || typeof caseWeapons.win.id == 'undefined') {
+            var rnd = Math.rand(0, total_weights);
+            var weight_sum = 0;
 
-        if (arr.length > winNumber + 3)
-            arr.splice(winNumber + 3, arr.length - (winNumber + 3));
-        for(var i = 0; i < arr.length; i++) {
-            arr[i] = new Weapon(arr[i].id);
-            if (!openCase.souvenir) {
-                arr[i].stattrakRandom();
-            } else {
-                arr[i].stattrak = false;
-                arr[i].souvenir = true;
+            for (var i = 0; i < Object.keys(caseWeapons.weight).length; i++) {
+                weight_sum += caseWeapons.weight[Object.keys(caseWeapons.weight)[i]];
+                weight_sum = +weight_sum.toFixed(2);
+
+                if (rnd <= weight_sum) {
+                    caseWeapons.win = caseWeapons[Object.keys(caseWeapons.weight)[i]];
+                    caseWeapons.win = caseWeapons.win[Math.floor(Math.random()*caseWeapons.win.length)];
+                    break;
+                }
             }
         }
         
-        arr.forEach(function(weapon, index) {
-            
+        caseWeapons.all = caseWeapons.all.shuffle().shuffle();
+    
+        while (caseWeapons.all.length <= (winNumber + 3)) {
+            caseWeapons.all = caseWeapons.all.concat(caseWeapons.all).shuffle().shuffle();
+        }
+
+        if (caseWeapons.all.length > winNumber + 3)
+            caseWeapons.all.splice(winNumber + 3, caseWeapons.all.length - (winNumber + 3));
+        
+        
+        caseWeapons.all[winNumber] = caseWeapons.win;
+        
+        for(var i = 0; i < caseWeapons.all.length; i++) {
+            caseWeapons.all[i] = new Weapon(caseWeapons.all[i].id);
+            if (!openCase.souvenir) {
+                caseWeapons.all[i].stattrakRandom();
+            } else {
+                caseWeapons.all[i].stattrak = false;
+                caseWeapons.all[i].souvenir = true;
+            }
+        }
+        
+        var el = '';
+        caseWeapons.all.forEach(function(weapon, index) {
             var img = weapon.getImgUrl();
             var type = weapon.specialText() + weapon.type;
             var name = weapon.name;
@@ -175,7 +211,7 @@ var openCase = {
                 '</div>'
         })
 
-        openCase.win = arr[winNumber];
+        openCase.win = caseWeapons.all[winNumber];
         $(".casesCarusel").html(el);
         $(".casesCarusel").css("margin-left", "0px");
     },
