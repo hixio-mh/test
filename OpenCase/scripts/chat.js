@@ -287,7 +287,7 @@ function newMsg(key, message) {
         country = message.country || "";
     
     var imgRegExp = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/igm,
-        youtubeRegExp = /(?:https?\:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/)?([a-zA-Z0-9?=]+)/igm;
+        youtubeRegExp = /(?:https?\:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.?be)\/(?:watch\?v=|embed\/)?([a-zA-Z0-9?=-]+)/igm;
         //vkRegExp = /(https?:\/\/vk\.com\/(.*))?/ig;
     
     var flag = "";
