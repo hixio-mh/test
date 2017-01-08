@@ -4,6 +4,7 @@ var cases = [{
     "img": "none.png",
     "type": "Default",
     "specialClass": "workshop christmas",
+    show: false,
     deadline: '2017-01-08',
     weapons: [779,783,784,785,775,776,780,777,778,782,774,781]
 }, {
