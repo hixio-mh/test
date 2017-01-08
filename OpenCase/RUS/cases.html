@@ -55,10 +55,14 @@ $(function () {
 		//var collection = (cases[i].type == "Collection") ? "collection" : "";
 		var curCase = "<div class='case " + collection + "' data-case-id=" + i + " data-souvenir='false'>" + (cases[i].deadline ? "<span class='countdown' data-deadline='" + cases[i].deadline + "'></span>" : "") + "<img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
         
+        if (typeof cases[i].show != 'undefined' && cases[i].show === false)
+            continue;
+        
         if (cases[i].deadline) {
             var t = getTimeRemaining(cases[i].deadline);
             if (t.total < 0) continue;
         }
+        
         
 		switch (cases[i].type) {
             case "Default":

@@ -1593,6 +1593,7 @@ var cases = [{
 	"img": "none.png",
 	"type": "Default",
 	"specialClass": "workshop christmas",
+    show: false,
 	"deadline": "2017-01-08",
 	"weapons": [{
 			"type": "Five-SeveN",
