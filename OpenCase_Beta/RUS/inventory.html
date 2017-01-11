@@ -87,13 +87,12 @@
 	</div>
 </div>
 	<div class="statistic" data-loc-group="statistic">
-		<span class="stat"><span data-loc="worth">Worth:</span> <span id="stat-sum" class='currency dollar'>0$</span></span>
+		<span class="stat"><span data-loc="worth">Worth:</span> <span id="stat-sum" class='currency dollar'>0</span></span>
 		<span class="stat"><span data-loc="count">Count:</span> <span id="stat-count"></span></span>
 	</div>
 
 	<script>
-        checkInventoryForUpdate();
-		$(window).load(function() {
+		$(document).on('localizationloaded', function() {
 			getInventory(1, 50)
             .then(function(result) {
                 fillInventory(result.weapons, result.worth, result.count);
@@ -123,7 +122,7 @@
         })
         
         var qualitySort = [
-            "*",
+            ".*",
             "consumer",
             "industrial",
             "milspec",
@@ -245,16 +244,19 @@
 		})
 
 		$('.button_contract').on('click', function() {
-            //Не проверялось
 			var rnd = $('.inventoryItemSelected')[Math.rand(0, 9)];
 			getWeapon($(rnd).data('id')).then(function(weapon) {
 
                 if (weapon.collection() != -1) {
-                    //Придумать как брать следующее качество
-                    var nextRarity = qualitySort.filter(function(rar, i) {
-                        return new RegExp(qualitySort[i-1]).test(weapon.rarity) ? true : false;
-                    })[1]
-                    if (typeof nextRarity == 'undefined')
+                    var nextRarity = "";
+                    for (var i = qualitySort.length - 1; i > 0; --i) {
+                        if (new RegExp(qualitySort[i]).test(weapon.rarity) && i + 1 < qualitySort.length - 1) {
+                            nextRarity = qualitySort[i+1];
+                            break;
+                        }
+                    }
+                    
+                    if (nextRarity == '')
                         return false;
                         
                     var nextRarityWeapons = [];
@@ -495,8 +497,6 @@
             $('#js-loading-inventory').remove();
             if (!Array.isArray(currInventory)) return false;
 
-            console.log(JSON.stringify(currInventory));
-
 			for (var i = 0; i < currInventory.length; i++) {
 				var weapon = currInventory[i];
 				var img = getImgUrl(weapon.img);
@@ -525,20 +525,6 @@
                     checkForLoadMore();
 			}
 		}
-        
-        function checkInventoryForUpdate() {
-            //if (!isAndroid()) return false;
-            debugger;
-            getInventory()
-            .then(function(result) {
-                var wpns = result.weapons;
-                for (var i = 0; i < wpns.length; i++) {
-                    if (wpns[i].item_id == "" && wpns[i].quality == "" && wpns[i].extra != "") {
-                        console.log('feff')
-                    }
-                }
-            })
-        }
 	</script>
 </body>
 </html>

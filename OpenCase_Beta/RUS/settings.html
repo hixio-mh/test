@@ -401,12 +401,13 @@ $('#reset').on('click', function () {
 			if (type == 'yes') {
 				if (isAndroid()) {
 					client.deleteAllInventory();
-					deleteAllCookies();
 				} else {
 					localStorage.clear();
                     window.indexedDB.deleteDatabase('Inventory');
-					deleteAllCookies();
 				}
+                deleteAllCookies();
+                saveStatistic('doubleBalance', 0);
+                saveStatistic('playerPoints', 0);
 				Lobibox.notify('info', {
 					pauseDelayOnHover : false,
 					continueDelayOnInactiveTab : false,

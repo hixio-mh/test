@@ -1038,7 +1038,7 @@ var Translation = {
                 en: 'Worth: '
             },
             empty_inventory: {
-                text: 'Инвентарь пуст. Чтобы пополнить его, <a href=""cases.html">откройте пару кейсов.</a>',
+                text: 'Инвентарь пуст. Чтобы пополнить его, <a href="cases.html">откройте пару кейсов.</a>',
                 en: 'Inventory is empty. <a href="cases.html">Open some cases to fill it.</a>'
             },
             ban: {

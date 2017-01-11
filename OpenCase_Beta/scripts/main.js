@@ -8,9 +8,8 @@ var inventory = [],
     inventory_loading = false;
 var INVENTORY = {
     weapons: [],
-    special: "",
-    worth: 0,
-    changed: false
+    opt: {},
+    worth: 0
 };
 
 var DEBUG = true;
@@ -273,7 +272,6 @@ function saveStatistic(key, value, type, crypt) {
     if (crypt == true) {
         value = CryptoJS.AES.encrypt(value.toString(), key).toString();
     }
-    console.log('Save stat ' + key + ': ' + value + ' type: ' + type);
     if (isAndroid()) {
         client.saveStatistic(key, '' + value);
     }
@@ -427,12 +425,9 @@ function getWeapon(id) {
     return new Promise(function(resolver, reject) {
         if (isAndroid()) {
             var wp = client.getWeaponById(id);
-            console.log(wp);
             wp = $.parseJSON(wp);
-            console.log(JSON.stringify(wp))
             wp = new Weapon(wp);
             wp.id = id;
-            console.log(JSON.stringify(wp))
             resolver(wp);
         } else {
              connectDB(function(db) {
@@ -537,18 +532,10 @@ function deleteAllInventory() {
     }
 }
 
-function getInventory(count_from, count_to, special) {
+function getInventory(count_from, count_to, opt) {
     count_from = count_from || 1;
-    count_to = count_to || INVENTORY.weapons.length || 1000;
-    special = special || "";
-    
-    if (special != INVENTORY.special || INVENTORY.changed) {
-        INVENTORY.weapons = [];
-        INVENTORY.special = special;
-    }
-    
-    if (typeof count_to == 'undefined' && isAndroid()) 
-        count_to = client.getInventoryLength("");
+    count_to = count_to || INVENTORY.weapons.length || 10000;
+    opt = opt || {};
     
     if (INVENTORY.weapons.length >= count_to) {
         var ret = [];
@@ -563,7 +550,7 @@ function getInventory(count_from, count_to, special) {
                 count: INVENTORY.weapons.length
             });
         })
-    } else if (INVENTORY.weapons.length > count_from && INVENTORY.weapons.length < count_to) {
+    } else if (INVENTORY.weapons.length > count_from - 1 && INVENTORY.weapons.length < count_to) {
         var ret = [];
         for(var i = (count_from - 1); i < INVENTORY.weapons.length; i++) {
             ret.push(INVENTORY.weapons[i]);
@@ -576,34 +563,40 @@ function getInventory(count_from, count_to, special) {
             });
         })
     } else if (INVENTORY.weapons.length == 0) {
-        return window[(isAndroid() ? "_getInventoryAndroid" : "_getInventoryIndexedDB")](special).then(function(inv) {
-            INVENTORY.changed = false;
+        return window[(isAndroid() ? "_getInventoryAndroid" : "_getInventoryIndexedDB")](opt).then(function(inv) {
+            if (inv.length == 0) {
+                return {
+                    worth:0,
+                    count:0,
+                    weapons:[]
+                }
+            }
+            
             INVENTORY.weapons = inv.sort(function(a,b) {
                 return b.price - a.price;
             });
             INVENTORY.worth = INVENTORY.weapons.reduce(function(sum, curr) {
                 return sum + curr.price;
             }, 0)
-            return new Promise(function(resolver,reject) {
-                var ret = [];
-                for (var i = 0; i < count_to; i++) {
-                    if (typeof INVENTORY.weapons[i] == 'undefined') break;
-                    ret.push(INVENTORY.weapons[i])
-                }
-                resolver({
-                    worth: INVENTORY.worth,
-                    count: INVENTORY.weapons.length,
-                    weapons:ret});
-            })
+            
+            var ret = [];
+            for (var i = 0; i < count_to; i++) {
+                if (typeof INVENTORY.weapons[i] == 'undefined') break;
+                ret.push(INVENTORY.weapons[i])
+            }
+            return {
+                worth: INVENTORY.worth,
+                count: INVENTORY.weapons.length,
+                weapons:ret
+            };
         })
     }
 }
 
-function _getInventoryAndroid(special) {
+function _getInventoryAndroid(opt) {
     return new Promise(function(resolver,reject) {
         var inventoryJSON;
-        inventoryJSON = client.SQLiteQuery("SELECT * FROM inventory " + special);
-        console.log(inventoryJSON);
+        inventoryJSON = client.SQLiteQuery("SELECT * FROM inventory");
         try {
             inventoryJSON = $.parseJSON(inventoryJSON);
         }
@@ -611,22 +604,32 @@ function _getInventoryAndroid(special) {
             client.deleteAllInventory();
             reject({err: 'Error', errCode: 1, text: 'Something went wrong. All inventory deleted'});
         }
-        if (inventoryJSON.length == 0) return false;
-        inventory_length = client.getInventoryLength(special);
-        if (typeof inventoryJSON[0].error != 'undefined') return [];
+        if (inventoryJSON.length == 0) resolver([]);
+        //inventory_length = client.getInventoryLength(special);
+        if (typeof inventoryJSON[0].error != 'undefined') resolver([]);
         
         var weaponsArr = [];
         for (var i = 0; i < inventoryJSON.length; i++) {
-            inventoryJSON[i].item_id = parseInt(inventoryJSON[i].item_id);
-            inventoryJSON[i].stattrak = inventoryJSON[i].stattrak == 'true';
-            inventoryJSON[i].souvenir = inventoryJSON[i].souvenir == 'true';
-            inventoryJSON[i].new = inventoryJSON[i].new == 'true';
-            inventoryJSON[i].extra = $.parseJSON(inventoryJSON[i].extra);
-            //console.log(JSON.stringify(inventoryJSON[i]));
+            if (inventoryJSON[i].item_id == "" && inventoryJSON[i].quality == "" && inventoryJSON[i].extra != "{}") {
+                var extra = JSON.parse(inventoryJSON[i].extra);
+                var id = getWeaponId(extra.type.replace(/(Souvenir |Сувенир )/, ""), extra.skinName);
+                inventoryJSON[i].item_id = id;
+                inventoryJSON[i].stattrak = extra.statTrak == 'true';
+                inventoryJSON[i].souvenir = extra.type.match(/(Souvenir |Сувенир )/) != null;
+                inventoryJSON[i].new = extra.isNew == 'true';
+                inventoryJSON[i].quality = getQualityNum(extra.quality);
+            } else {
+                inventoryJSON[i].item_id = parseInt(inventoryJSON[i].item_id);
+                inventoryJSON[i].quality = parseInt(inventoryJSON[i].quality);
+                inventoryJSON[i].stattrak = inventoryJSON[i].stattrak == 'true';
+                inventoryJSON[i].souvenir = inventoryJSON[i].souvenir == 'true';
+                inventoryJSON[i].new = inventoryJSON[i].new == 'true';
+                inventoryJSON[i].extra = $.parseJSON(inventoryJSON[i].extra);
+            }
+
             weaponsArr.push(new Weapon(inventoryJSON[i]));
             weaponsArr[i].id = parseInt(inventoryJSON[i].id);
         }
-        
         resolver(weaponsArr);
     })
 }
@@ -839,7 +842,6 @@ function connectDB(f) {
     
     var request = indexedDB.open("Inventory", 1);
     request.onerror = function(event) {
-        console.log(event);
         alert("Something went wrong with dabase.");
     };
     request.onsuccess = function() {

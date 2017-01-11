@@ -55,6 +55,9 @@ $(function () {
         
 		var curCase = "<div class='case " + collection + "' data-case-id=" + i + " data-souvenir='false'>" + (cases[i].deadline ? "<span class='countdown' data-deadline='" + cases[i].deadline + "'></span>" : "") + "<img src='../images/Cases/cases/" + cases[i].img + "'><span class='name " + specialClass + "'>" + cases[i].name + "</span>";
         
+        if (typeof cases[i].show != 'undefined' && cases[i].show === false)
+            continue;
+        
         if (cases[i].deadline) {
             var t = getTimeRemaining(cases[i].deadline);
             if (t.total < 0) continue;
@@ -187,25 +190,5 @@ $('#showVideoAd').on('click', function () {
 	}
 });
 
-/*
-window.addEventListener('popstate', function(event) {
-    // The popstate event is fired each time when the current history entry changes.
-
-    var r = confirm("You pressed a Back button! Are you sure?!");
-
-    if (r == true) {
-        // Call Back button programmatically as per user confirmation.
-        history.back();
-        // Uncomment below line to redirect to the previous page instead.
-        // window.location = document.referrer
-    } else {
-        // Stay on the current page.
-        history.pushState(null, null, window.location.pathname);
-    }
-
-    history.pushState(null, null, window.location.pathname);
-
-}, false);
-*/
 </script>
 </div></body></html>

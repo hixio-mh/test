@@ -280,6 +280,26 @@ function getWeaponId(type, name) {
     }
 };
 
+function getQualityNum(quality) {
+    var Quality = [{
+        "name": ["Battle-Scarred", "Закалённое в боях"],
+    }, {
+        "name": ["Well-Worn", "Поношенное"],
+    }, {
+        "name": ["Field-Tested", "После полевых испытаний"],
+    }, {
+        "name": ["Minimal Wear", "Немного поношенное"],
+    }, {
+        "name": ["Factory New", "Прямо с завода"],
+    }];
+    
+    for (var i = 0; i < Quality.length; i++) {
+        if (quality == Quality[i].name[0] || quality == Quality[i].name[1])
+            return i;
+    }
+    return 0;
+}
+
 // === Weapons ===
 
 var weapons = [{

@@ -482,6 +482,7 @@ span#new-version__update {
     color: #fff;
     background: #480000;
     font-family: LatoRegular;
+    left: 0;
 }
 .win_sell_div {
     padding-bottom: 10px;
