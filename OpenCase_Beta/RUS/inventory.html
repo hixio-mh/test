@@ -382,15 +382,22 @@
                 if (parseInt(quality) != 0) {
                     sortedInventory = sortInventory(sortedInventory, "rarity", RegExp(qualitySort[parseInt(quality)]))
                 }
+                INVENTORY.weapons = sortedInventory;
+                INVENTORY.count = sortedInventory.length;
+                INVENTORY.worth = sortedInventory.reduce(function(sum, cur) {
+                    return sum + cur.price;
+                }, 0)
+                
+                if (sortedInventory.length > 50)
+                    sortedInventory = sortedInventory.slice(0, 50);
                 return {
                     weapons: sortedInventory,
-                    count: sortedInventory.length,
-                    worth: sortedInventory.reduce(function(sum, cur) {
-                        return sum + cur.price;
-                    }, 0)
+                    count: INVENTORY.count,
+                    worth: INVENTORY.worth
                 }
             }).then(function(result) {
                 $(".inventory li").remove();
+                $('.inventory').append('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
                 return fillInventory(result.weapons, result.worth, result.count);
             }).then(function() {
                 if ($('#empty-inventory').length > 0)
@@ -398,7 +405,7 @@
             })
 		});
 
-		function getSpecialSQL() {
+		/*function getSpecialSQL() {
 			var specialSQL = "";
 			var special = $("#sort-special :selected").val();
 			var weapon = $("#sort-weapon :selected").val();
@@ -454,7 +461,7 @@
 			//getInventory(wp_from, wp_from + inventory_step, specialSQL);
 			//sortedInventory = inventory;
 			return specialSQL;
-		}
+		}*/
 
 		function sortInventory(currInventory, attr, value) {
 			var sorted = [];
@@ -474,12 +481,7 @@
 		function inventoryLoadMore(wp_from) {
 			inventory_loading = true;
 
-			var special = getSpecialSQL();
-
-			if (special.indexOf("isNew = 'true'") != -1)
-				wp_from = 1;
-
-			getInventory(wp_from, wp_from + inventory_step - 1, special).then(function(result) {
+			getInventory(wp_from, wp_from + inventory_step - 1, {loadMore: true}).then(function(result) {
                 fillInventory(result.weapons, result.worth, result.count);
             });
 		} 

@@ -5,16 +5,17 @@ $(function() {
 	
 		$('.inventoryList').on('scroll', function() {
             if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight-80 && $('.js-loading-inventory').length) {
-                fillInventory(".inventory", "bet");
+                fillInventory(".inventory", "bet", {loadMore: true});
             }
         });
 	}
 })
 
-function fillInventory(selector, action) {
+function fillInventory(selector, action, opt) {
 	inventory_loading = true;
     selector = selector || ".inventory";
     action = action || "";
+    opt = opt || {};
 	if ($('.js-loading-inventory').length == 0){
         if ($(selector+' .weapon').length != 0) {
             $(selector+" .weapon").remove();
@@ -27,7 +28,8 @@ function fillInventory(selector, action) {
 	
 	var wp_from = parseInt($('.js-loading-inventory').data('from'));
 	wp_from = wp_from || 1;
-	getInventory(wp_from, wp_from+inventory_step-1).then(function(result) {
+    $(".inventoryList").css("display", "block");
+	getInventory(wp_from, wp_from+inventory_step-1, opt).then(function(result) {
         var inventory = result.weapons;
         
         $(".js-loading-inventory").remove();
@@ -57,7 +59,6 @@ function fillInventory(selector, action) {
         if ((wp_from+inventory_step) < result.count) {
             $(selector).append('<li class="js-loading-inventory" data-from="'+(wp_from+inventory_step)+'"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
         }
-        $(".inventoryList").css("display", "block");
         inventory_loading = false;
     });
 }
@@ -94,15 +95,6 @@ $(document).on("click", ".weapon", function(){
 		}
 	}
 });
-
-function checkForLoadMore() {
-	if($(window).scrollTop() + $(window).height() > $(document).height() - 80 && $('.js-loading-inventory').length) {
-		var wp_from = parseInt($('.js-loading-inventory').data('from'));
-		if (isNaN(wp_from)) wp_from = 1;
-		if (!inventory_loading && isAndroid())
-			inventoryLoadMore(wp_from);
-	}
-}
 
 $(document).on("click", '.closeInventory', function(){
 	$(".inventoryList").css("display", "none");

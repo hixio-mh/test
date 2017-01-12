@@ -534,10 +534,10 @@ function deleteAllInventory() {
 
 function getInventory(count_from, count_to, opt) {
     count_from = count_from || 1;
-    count_to = count_to || INVENTORY.weapons.length || 10000;
+    count_to = count_to || 10000;
     opt = opt || {};
     
-    if (INVENTORY.weapons.length >= count_to) {
+    if (INVENTORY.weapons.length >= count_to && opt.loadMore) {
         var ret = [];
         for (var i = (count_from - 1); i < count_to; i++) {
             ret.push(INVENTORY.weapons[i]);
@@ -550,7 +550,7 @@ function getInventory(count_from, count_to, opt) {
                 count: INVENTORY.weapons.length
             });
         })
-    } else if (INVENTORY.weapons.length > count_from - 1 && INVENTORY.weapons.length < count_to) {
+    } else if (INVENTORY.weapons.length > count_from - 1 && INVENTORY.weapons.length < count_to && opt.loadMore) {
         var ret = [];
         for(var i = (count_from - 1); i < INVENTORY.weapons.length; i++) {
             ret.push(INVENTORY.weapons[i]);
@@ -562,7 +562,7 @@ function getInventory(count_from, count_to, opt) {
                 count: INVENTORY.weapons.length
             });
         })
-    } else if (INVENTORY.weapons.length == 0) {
+    } else {
         return window[(isAndroid() ? "_getInventoryAndroid" : "_getInventoryIndexedDB")](opt).then(function(inv) {
             if (inv.length == 0) {
                 return {
