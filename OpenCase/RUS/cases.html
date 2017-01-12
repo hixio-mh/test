@@ -118,7 +118,7 @@ $(function () {
 		if (parseFloat(version) < 1.6) {
 			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
 		}
-        if (parseFloat(version) == 1.7) {
+        if (parseFloat(version) > 1.6) {
 			window.location.replace('http://vlados776.github.io/OpenCase_Beta/RUS/cases.html');
 		}
 	}
