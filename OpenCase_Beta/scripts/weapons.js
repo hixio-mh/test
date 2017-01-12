@@ -14,7 +14,7 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
         stattrak = item_id.stattrak || item_id.statTrak || false;
         souvenir = item_id.souvenir || false;
         isNew = item_id.new || false;
-        item_id = item_id.item_id || item_id.id;
+        item_id = item_id.item_id || 0;
     }
     var qualityNotSet = false;
     if (typeof quality == 'undefined')
@@ -25,6 +25,8 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     this.souvenir = souvenir || false;
     this.new = isNew || false;
     this.old = getWeaponById(this.item_id);
+    if (this.old == null)
+        console.log('Can\'t find weapon by ID: ' + this.item_id);
     this.type = this.old.type;
     this.nameOrig = this.old.skinName;
     this.name = getSkinName(this.nameOrig, Settings.language);

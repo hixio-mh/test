@@ -239,7 +239,6 @@ var getRandomItem = function(list, weight) {
             return list[i];
         }
     }
-     
     // end of function
 };
 
@@ -358,10 +357,8 @@ $(".choseItems").on("click", function() {
 
 function FillMyInventoryWithRandomWeapon(count) {
     while (count--) {
-        var weapon = getRandomWeapon(1)
-        weapon.quality = getItemQuality()[1];
-        weapon.statTrak = ifStatTrak(weapon.type, weapon.name);
-        weapon.price = getPrice(weapon.type, weapon.skinName, weapon.quality, weapon.statTrak);
+        var weapon = getRandomWeapon(1);
+        weapon.statеrakRandom();
         weapon['new'] = true;
 
         var z = 0;
@@ -371,10 +368,6 @@ function FillMyInventoryWithRandomWeapon(count) {
             if (z == 4) break;
             z++
         }
-        if (isAndroid())
-            saveWeapon(weapon);
-        else
-            inventory.push(weapon);
+        saveWeapon(weapon);
     }
-    if (!isAndroid()) saveInventory();
 }

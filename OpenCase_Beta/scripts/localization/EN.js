@@ -1033,7 +1033,7 @@ var Translation = {
                     text: 'You get daily reward!<br>+${1} EXP | +${2} double points.'
                 }
             },
-            sum_rus: {
+            sum_text: {
                 rus: 'Сумма: ',
                 text: 'Worth: '
             },
