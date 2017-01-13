@@ -95,6 +95,12 @@ var fbProfile = (function (module) {
             callback(/(admin|moder)/gi.test(snapshot.val()));
         })
     }
+    module.isVip = function(uid, callback) {
+        uid = uid || firebase.auth().currentUser.uid;
+        firebase.database().ref('users/' + uid + '/moder/group').once('value').then(function (snapshot) {
+            callback(/(vip)/gi.test(snapshot.val()));
+        })
+    }
     module.getAndroidID = function (uid, callback) {
         if (typeof uid == 'function') {
             callback = uid;
@@ -134,7 +140,18 @@ var fbProfile = (function (module) {
         userInfoRef.once('value').then(function (snapshot) {
             var userInfo = snapshot.val();
             userInfo.uid = uid;
+            return userInfo;
+        }).then(function(userInfo) {
+            return firebase.database().ref('users/' + uid + '/moder').once('value').then(function(snapshot) {
+                var info = snapshot.val();
+                userInfo.moder = info || {};
+                return userInfo;
+            })
+        }).then(function(userInfo) {
             callback(userInfo);
+        }).catch(function(err) {
+            console.log(err);
+            callback(null);
         })
         if (isAndroid()) client.sendToAnalytics('Profile', 'Show profile', "User open profile", 'none');
     }

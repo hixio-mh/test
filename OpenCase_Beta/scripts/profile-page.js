@@ -37,6 +37,11 @@ $(function () {
         else if (userInfo.colorBG) {
             $('.top__bg').attr('style', 'background:' + userInfo.colorBG);
         }
+        
+        // Меняем профиль в зависимости от группы пользователя
+        if (userInfo.moder.group)
+            $('#container').addClass(userInfo.moder.group);
+        
         if (typeof userInfo.betaTrade != "undefined" && userInfo.betaTrade == true) {
             firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/public/betaTrade').once('value', function (snapshot) {
                 try {

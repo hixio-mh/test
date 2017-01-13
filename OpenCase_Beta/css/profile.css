@@ -559,3 +559,15 @@ ul.posts__user-posts {
 .lobibox-input {
     color: #000 !important;
 }
+
+/* == VIP === */
+.vip .profile__name {
+  text-shadow: 1px 1px 1px #000, 2px 2px 2px RGBA(0, 0, 0, 0.6), 3px 3px 3px RGBA(0, 0, 0, 0.4);
+}
+.vip .top__bg {
+  background: #333;
+  background: radial-gradient(circle at bottom, #5F5F5F, #000);
+  background: url(../images/chat/crown.png), radial-gradient(circle at bottom, #5F5F5F, #000);
+  background-position: center, top;
+  background-repeat: no-repeat;
+}
