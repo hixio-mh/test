@@ -460,7 +460,7 @@ var news = [{
     "month": 1,
     "year": 2017,
     "update": {
-        "RU": "Приложение обновлено до версии 1.8<br><br> - [Добавлено] Анимация загрузки приложения и переходов между страницами.<br> - [Изменено] Новая система предметов.<br> - [Изменено] Переделано открытие кейсов. Более плавная анимация.<br> - [Изменено] Теперь значок редкого предмета показывается только если этот редкий предмет выпадет вам.<br> - [Изменено] Переделана мини-игра Монетка.<br> - [Исправлено] Улучшена поддержка старых версий андроида. - [Добавлено] Добавлен перевод на французский язык. (Спасибо Maxime Gdin)<br><br>И множество другий мелких улучшений.",
+        "RU": "Приложение обновлено до версии 1.8<br><br> - [Добавлено] Анимация загрузки приложения и переходов между страницами.<br> - [Изменено] Новая система предметов.<br> - [Изменено] Переделано открытие кейсов. Более плавная анимация.<br> - [Изменено] Теперь значок редкого предмета показывается только если этот редкий предмет выпадет вам.<br> - [Изменено] Переделана мини-игра Монетка.<br> - [Исправлено] Улучшена поддержка старых версий андроида.<br> - [Добавлено] Добавлен перевод на французский язык. (Спасибо Maxime Gdin)<br><br>И множество другий мелких улучшений.",
         "EN": "The app has been updated to version 1.8<br><br> - [New] Show loading animation while the app is starting.<br> - [Changed] The new Items system.<br> - [Changed] Remade case opening. Animation become more smoother.<br> - [Changed] Now the rare item icon is displayed only if this rare item will drop to you.<br> - [Changed] Remade mini-game Coinflip.<br> - [Fixed] Improved support for old versions of android.<br> - [New] Added French translation. (Thanks to Maxime Gdin)<br><br>And many other small improvements."
     }
 }, ];
