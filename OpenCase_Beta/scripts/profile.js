@@ -32,7 +32,7 @@ var fbProfile = (function (module) {
         .then(function(snapshot) {
             var haveBan = snapshot.val();
             if(haveBan != null) {
-                $("#login-status").text(Localization.getString('chat.login.have_ban'));
+                $("#login-status").text(Localization.getString('chat.login.have_ban', 'You have ban. You can\'t create new account.'));
                 throw new Error('have_ban');
             }
             return true;

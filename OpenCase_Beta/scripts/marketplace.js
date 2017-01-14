@@ -8,6 +8,7 @@ $(function() {
     $("#buy_count").change(function() {
         var count = $("#buy_count").val();
         count = count == "" ? "1" : count;
+        if (!count.match(/(\d+)/g)) return false;
         count = parseInt(count.match(/(\d+)/g).toString().replace(/\,/g, ''));
         count = count <= 0 ? 1 : count > 100 ? 100 : count;
         $("#buy_count").val(count);

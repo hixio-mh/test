@@ -180,7 +180,7 @@ function startGame() {
             //caseOpening = true;
             $(".closeInventory").click();
 
-            $(".win").html("<img src='../images/ava/" + win.avatar + "'><span class='win__title'>" + Localization.getString('jackpot.winner') + "</span><span class='win__nick'>" + win.nick + "</span><span class='win__chance'>" + win.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(winnerTicket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
+            $(".win").html("<img src='../images/ava/" + win.avatar + "'><span class='win__title'>" + Localization.getString('jackpot.winner', 'The winner') + "</span><span class='win__nick'>" + win.nick + "</span><span class='win__chance'>" + win.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(winnerTicket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
 
             if (win.nick == Player.nickname) {
                 saveWeapons(ItemsInGame);

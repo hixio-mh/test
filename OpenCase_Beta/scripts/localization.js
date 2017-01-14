@@ -110,21 +110,27 @@ var Localization = (function (module) {
         }
     }
     
-    module.getString = function(path, original) {
+    module.getString = function(path, defaultText, original) {
+        defaultText = defaultText || null;
         original = original || false;
-        var paths = path.split('.'),
-            current = Translation.translation,
-            i;
-        for (i = 0; i < paths.length; ++i) {
-            if (current[paths[i]] == undefined) {
-                return undefined;
-            } else {
-                current = current[paths[i]];
+        try{
+            var paths = path.split('.'),
+                current = Translation.translation,
+                i;
+            for (i = 0; i < paths.length; ++i) {
+                if (current[paths[i]] == undefined) {
+                    return undefined;
+                } else {
+                    current = current[paths[i]];
+                }
             }
+            if (typeof current == 'object' && current.text)
+                current = original ? current.en : current.text
+            return current;
+        } catch (e) {
+            if (defaultText)
+                return defaultText
         }
-        if (typeof current == 'object' && current.text)
-            current = original ? current.en : current.text
-        return current;
     }
     
     return module;

@@ -218,16 +218,16 @@ var openCase = {
         $(".casesCarusel").css("margin-left", "0px");
     },
     openCase: function() {
-        if (openCase.caseOpening || $(".openCase").text() == Localization.getString('open_case.opening')) {
+        if (openCase.caseOpening || $(".openCase").text() == Localization.getString('open_case.opening', 'Opening...')) {
             return false
         };
         $(".win").removeClass("sold-out");
         $(".win").slideUp("slow");
-        if ($(".openCase").text() == Localization.getString('open_case.try_again')) {
+        if ($(".openCase").text() == Localization.getString('open_case.try_again', 'Open again')) {
             openCase.backToZero();
             return false;
         }
-        $(".openCase").text(Localization.getString('open_case.opening'));
+        $(".openCase").text(Localization.getString('open_case.opening', 'Opening...'));
         $(".openCase").attr("disabled", "disabled");
         //var a = 1431 + 16*24;
         openCase.startScroll();
@@ -281,7 +281,7 @@ var openCase = {
             $("#double_sell_button").data('id', result);
         });
         Sound("close", "play", 5);
-        $(".openCase").text(Localization.getString('open_case.try_again'));
+        $(".openCase").text(Localization.getString('open_case.try_again', 'Open again'));
         //$(".win").slideDown("fast");
         $('.win').show();
         openCase.caseOpening = false;

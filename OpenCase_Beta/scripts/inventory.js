@@ -80,7 +80,7 @@ $(document).on("click", ".weapon", function(){
 	
 	if ($(parent).hasClass('inv-price-counter')) {
 		if ($("li").is(".inventoryItemSelected")) {
-			var sumText = Localization.getString('other.sum_text');
+			var sumText = Localization.getString('other.sum_text', "Worth: ");
 			if ($("div").is(".inventorySum")) {
 				var sumPr = 0.0;
 				$(".inventoryItemSelected").each(function () {

@@ -221,7 +221,7 @@ function firstConnect(message) {
         gameStart = true;
         $('.ball')[0].remove();
         fillCarusel(parseInt($(".ball:first-child").text()));
-        $('.big-progress span').text(Localization.getString('double.rolling_in'));
+        $('.big-progress span').text(Localization.getString('double.rolling_in', 'Rolling in'));
         startGame(message.lastGames[i], message.rollTime-800);
     } else{
         countDown();
@@ -255,8 +255,7 @@ function countDown() {
     //countdownTimer -= 100;
     val = (countdownTimer * 100) / countdownTime;
     $('#progress-countdown').css('width', val + '%');
-    if (Localization.isLoaded)
-        $('.big-progress span').text(Localization.getString('double.rolling_in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
+    $('.big-progress span').text(Localization.getString('double.rolling_in', 'Rolling in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
 
     if (val > 0) 
         intervalCountdown = setTimeout(countDown, 100);
@@ -280,7 +279,7 @@ function startGame(win, duration) {
             start: function() {
                 $('.bet-to-color').prop('disabled', true);
                 clearTimeout(intervalCountdown);
-                $('.big-progress span').text(Localization.getString('double.rolling'));
+                $('.big-progress span').text(Localization.getString('double.rolling', 'Rolling'));
             },
             complete: function() {
                 if (playerBet.length) {
