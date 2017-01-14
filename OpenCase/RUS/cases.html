@@ -11,6 +11,11 @@
     
 <script src="../scripts/build/libs.js"></script>
 <script src="../scripts/main.js"></script>
+<script>
+if (isAndroid() && parseFloat(client.getCurrentAppVersionName()) > 1.6) {
+    window.location.replace('http://vlados776.github.io/OpenCase_Beta/RUS/cases.html');
+}
+</script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/skinNames.js"></script>
 <script src="../scripts/cases2.js"></script>
@@ -117,9 +122,6 @@ $(function () {
 
 		if (parseFloat(version) < 1.6) {
 			$('body').append('<div class="new-version"><b>' + Localization.cases2['new_version'][Settings.language] + '</b><span class="new-version__button" id="new-version__later">' + Localization.cases2['new_version_button_later'][Settings.language] + '</span><span class="new-version__button" id="new-version__update">' + Localization.cases2['new_version_button_update'][Settings.language] + '</span></div>');
-		}
-        if (parseFloat(version) > 1.6) {
-			window.location.replace('http://vlados776.github.io/OpenCase_Beta/RUS/cases.html');
 		}
 	}
     
