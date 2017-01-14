@@ -12,7 +12,7 @@ var INVENTORY = {
     worth: 0
 };
 
-var DEBUG = true;
+var DEBUG = false;
 
 var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 var IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
