@@ -9,7 +9,8 @@ var openCase = {
     rareItemsRegExp: new RegExp('(rare|extraordinary)' ,'i'),
     init: function() {
         $(function() {
-            $(".openCase").attr("disabled", null);
+            //$(".openCase").attr("disabled", null);
+            $('.openCase').prop('disabled', true);
             
             openCase.casesCarusel = document.getElementById('casesCarusel');
             
@@ -27,6 +28,7 @@ var openCase = {
                 document.title = "Открытие кейса — " + cases[openCase.caseId].name;
 
                 $(document).on('localizationloaded', function() {
+                    $('.openCase').prop('disabled', false);
                     openCase.fillCarusel();
                 });
             }
