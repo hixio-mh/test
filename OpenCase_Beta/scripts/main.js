@@ -46,7 +46,7 @@ $(function () {
                 }
             })
        }
-        if (((Level.calcLvl() < 7 && Player.doubleBalance > 100000000) || Player.doubleBalance > 70000000000) && !$('.permanent-ban').length) {
+        /*if (((Level.calcLvl() < 7 && Player.doubleBalance > 100000000) || Player.doubleBalance > 70000000000) && !$('.permanent-ban').length) {
             $(document.body).append("<div class='permanent-ban'><h1>BAN</h1><span>Hacker</span><i>Loading...</i></div>");
             if (isAndroid()) {
                 var androidID = client.getAndroidID();
@@ -70,7 +70,7 @@ $(function () {
             $(document).on('localizationloaded', function() {
                 $('.permanent-ban i').text(Localization.getString('other.ban.wrong_ban'));
             })
-        }
+        }*/
     }
     catch (e) {}
     

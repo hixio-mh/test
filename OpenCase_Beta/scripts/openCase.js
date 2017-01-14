@@ -108,8 +108,8 @@ var openCase = {
             weight: {
                 rare:       5,
                 covert:     15,
-                classified: 25,
-                restricted: 35,
+                classified: 20,
+                restricted: 25,
                 milspec:    50,
                 industrial: 60,
                 consumer:   70
