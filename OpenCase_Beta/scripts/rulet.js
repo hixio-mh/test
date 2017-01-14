@@ -250,6 +250,8 @@ function getJackpotWiner() {
     }
     
     var w = getRandomItem(PlayersInGame, weight);
+    if (typeof w == 'undefined')
+        getRandomItem(PlayersInGame, weight);
 
     var random = Math.rand(w.tickets.from, w.tickets.to);
     winnerTicket = random;
