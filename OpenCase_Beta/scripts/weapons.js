@@ -16,6 +16,8 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
         isNew = item_id.new || false;
         item_id = item_id.item_id || 0;
     }
+    if (this.item_id > weapons.length)
+        this.item_id = 0;
     var qualityNotSet = false;
     if (typeof quality == 'undefined')
         qualityNotSet = true;
