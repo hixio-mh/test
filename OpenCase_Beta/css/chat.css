@@ -270,3 +270,12 @@ li.chat__message a img[data-userid] {
 .vip .message__info .message__text {
     color: #dbdbdb;
 }
+
+.vip-blur .message__text, .vip-blur .message__from {
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+}
+.vip-blur {
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
