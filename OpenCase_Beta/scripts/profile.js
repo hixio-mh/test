@@ -65,8 +65,9 @@ var fbProfile = (function (module) {
                         var rateRef = userRef.child('outside');
                         rateRef.child('rep').set(0);
                         var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
-                        var invLenght = isAndroid() ? client.getInventoryLength() : inventory.length;
-                        inventoryRef.child('inventory_count').set(invLenght);
+                        getInventory().then(function(result) {
+                            inventoryRef.child('inventory_count').set(result.count);
+                        })
                     }, function (error) {
                         $("#login-status").text(error.message);
                     });

@@ -29,6 +29,10 @@ $(function () {
             $(".posts__new-post").show();
             $('.rep').hide();
             $(".left-side, .right-side").show();
+            
+            getInventory().then(function(result) {
+                inventoryRef.child('inventory_count').set(result.count);
+            })
         }
         if (userInfo.bigBG && fbProfile.ifValidImg(userInfo.bigBG)) {
             //$('.top__bg').attr('style', 'background-image:url('+userInfo.bigBG+'); background-size: cover;');
