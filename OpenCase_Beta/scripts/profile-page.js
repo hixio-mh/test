@@ -31,6 +31,7 @@ $(function () {
             $(".left-side, .right-side").show();
             
             getInventory().then(function(result) {
+                var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
                 inventoryRef.child('inventory_count').set(result.count);
             })
         }

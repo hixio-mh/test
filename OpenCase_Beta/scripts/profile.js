@@ -51,21 +51,26 @@ var fbProfile = (function (module) {
                     }).then(function () {
                         var userRef = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
                         var userSettingsRef = userRef.child('settings');
+                        
                         userSettingsRef.child('language').set(Settings.language);
                         userSettingsRef.child('sounds').set(Settings.sounds);
                         userSettingsRef.child('drop').set(Settings.drop);
+                        
                         var privateRef = userRef.child('private');
                         privateRef.child('double').set(Player.doubleBalance);
                         if(isAndroid())
                             privateRef.child('androidID').set(client.getAndroidID());
+                        
                         var publicRef = userRef.child('public');
                         publicRef.child('points').set(Player.points);
                         publicRef.child('nickname').set(Player.nickname);
                         publicRef.child('avatar').set(ava);
+                        
                         var rateRef = userRef.child('outside');
                         rateRef.child('rep').set(0);
-                        var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
+                        
                         getInventory().then(function(result) {
+                            var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
                             inventoryRef.child('inventory_count').set(result.count);
                         })
                     }, function (error) {
