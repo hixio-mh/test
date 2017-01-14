@@ -24,6 +24,7 @@ $(function() {
     function connectToServer() {
         socket = null;
         //socket = new WebSocket("ws://localhost:8000/");
+        
         socket = new WebSocket("wss://kvmde40-10035.fornex.org/double");
 
         var PING = {type:'ping'};
@@ -162,7 +163,8 @@ $(function() {
             color: color
         };
         
-        socket.send(JSON.stringify(pl));
+        if (socket && socket.readyState == 1)
+            socket.send(JSON.stringify(pl));
         
         playerBet.push({
             color: color,

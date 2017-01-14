@@ -117,7 +117,10 @@ window.onerror = function (msg, url, line, col, error) {
     extra += !col ? '' : ':' + col;
     var action = msg + ' | ' + errorFile + extra + screen;
     if (isAndroid()) {
-        client.sendToAnalytics('Error', 'Error', action, url);
+        var stack = "";
+        if (error && error.stack)
+            stack = error.stack;
+        client.sendToAnalytics('Error', 'Error', action, stack);
     }
     var bottom = 0;
     if ($('.error-log').length > 0) {
@@ -126,6 +129,7 @@ window.onerror = function (msg, url, line, col, error) {
         })
     }
     $(document.body).append('<div class="error-log" style="bottom:'+bottom+'px">' + action + '</div>');
+    console.log(stack);
     if (!DEBUG)
         setTimeout(function(){
             $('.error-log').remove();

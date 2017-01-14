@@ -14,7 +14,9 @@ $(function() {
         top = {};
     
     var playerInfo = {};
-    connectToServer();
+    $(document).on('localizationloaded', function() {
+        connectToServer();
+    })
     
     window.odometerOptions = {
         auto: false,
@@ -407,12 +409,15 @@ $(function() {
             playerInfo.bet = parseInt($('#bet').val());
             if (playerInfo.bet <= 0 || playerInfo.bet > Player.doubleBalance || isNaN(playerInfo.bet)) return;
             
-            socket.send(JSON.stringify({
-                type: 'addBet',
-                player: Player.nickname,
-                bet: playerInfo.bet,
-                id: playerInfo.id,
-            }))
+            if (socket && socket.readyState == 1)
+                socket.send(JSON.stringify({
+                    type: 'addBet',
+                    player: Player.nickname,
+                    bet: playerInfo.bet,
+                    id: playerInfo.id,
+                }))
+            else
+                return false;
             Player.doubleBalance -= playerInfo.bet;
             saveStatistic('doubleBalance', Player.doubleBalance, 'Number');
             

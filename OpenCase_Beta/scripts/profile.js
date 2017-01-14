@@ -86,7 +86,10 @@ var fbProfile = (function (module) {
         return firebase.auth().currentUser != null;
     }
     function currUid() {
-        return firebase.auth().currentUser.uid;
+        if (firebase.auth().currentUser)
+            return firebase.auth().currentUser.uid;
+        else
+            return null;
     }
     module.currentTrade = {};
     module.isModerator = function (uid, callback) {
