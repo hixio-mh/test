@@ -407,4 +407,52 @@ var news = [{
         "RU": " - [Исправлено] Баганные скриншоты скинов из Glove кейса.<br> - [Исправлено] Баг с исчезновением ножей кейсов.<br> - [Добавлено] 2 новых скина перчаток.",
         "EN": " - [Fixed] Wrong skins screenshots in the Glove case.<br> - [Fixed] No knives in cases.<br> - [New] 2 new glove skins."
     }
+}, {
+    "day": 2,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] StatTrak перчатки",
+        "EN": " - [Fixed] StatTrak gloves."
+    }
+}, {
+    "day": 5,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Добавлено] Сортировка перчаток в инвентаре<br> - [Исправлено] Не работали контракты обмена",
+        "EN": " - [New] Gloves sort in inventory<br> - [Fixed] Trade up contracts don't work"
+    }
+}, {
+    "day": 8,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Добавлено] Снег в чате и картинка в профиле",
+        "EN": " - [New] Snow in chat and background in profile."
+    }
+}, {
+    "day": 9,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Цена на AUG Акихабара",
+        "EN": " - [Fixed] AUG | Akihabara price."
+    }
+}, {
+    "day": 19,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Добавлено] Новогодний кейс.<br> - [Плохие новости] AWP | История о драконе теперь нельзя купить в Магазине (╯°□°)╯︵ ┻━┻",
+        "EN": " - [New] Christmas Case.<br> - [Bad news] AWP | Dragon Lore disappeared from the Market (╯°□°)╯︵ ┻━┻"
+    }
+}, {
+    "day": 20,
+    "month": 12,
+    "year": 2016,
+    "update": {
+        "RU": " - [Исправлено] Сортировка в инвентаре по 'Золотое'",
+        "EN": " - [Fixed] Christmas Case."
+    }
 }, ];
