@@ -337,10 +337,12 @@ var openCase = {
             count: 0
         };
         
-        if (openCase.status == 'scrolling') {
-            window.requestAnimationFrame(playScrollSound);
-        }
-        
+        try{
+            if (openCase.status == 'scrolling') {
+                window.requestAnimationFrame(playScrollSound);
+            }
+        } catch(e){}
+
         function playScrollSound() {
             var left = openCase.casesCarusel.getBoundingClientRect().left;
             left -= openCase.scrollSoundOpt.start;
