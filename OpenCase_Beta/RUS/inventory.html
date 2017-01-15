@@ -286,8 +286,13 @@
                 
                 newWeapon.quality = weapon.quality;
                 newWeapon.stattrak = weapon.stattrak;
+                newWeapon.item_id = newWeapon.id;
                 
                 newWeapon = new Weapon(newWeapon);
+                
+                if (newWeapon.price == 0)
+                    newWeapon.qualityRandom();
+                
                 newWeapon.new = true;
 
                 $("#weaponInfoContainer").css("display", "block");
