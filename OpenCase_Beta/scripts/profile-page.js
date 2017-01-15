@@ -21,6 +21,7 @@ $(function () {
         $(".post__header__img").attr('src', userInfo.avatar);
         $(".profile__name").text(userInfo.nickname);
         $(".stats__rank__rank").text(Level.calcLvl(userInfo.points));
+        $('.user_uid').text(uid);
         
         if (uid != firebase.auth().currentUser.uid) {
             $(".posts__new-post").hide();
