@@ -109,8 +109,8 @@ var openCase = {
             win: {},
             weight: {
                 rare:       5,
-                covert:     15,
-                classified: 20,
+                covert:     10,
+                classified: 15,
                 restricted: 25,
                 milspec:    50,
                 industrial: 60,

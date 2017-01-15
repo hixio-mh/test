@@ -8,6 +8,8 @@ body {
     position: absolute;
     top: 45px;
     font-size: 1.3em;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     text-shadow: 0 0 2px RGBA(0, 0, 0, 0.5);
@@ -27,6 +29,8 @@ body {
 }
 
 .top {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,6 +50,8 @@ body {
     width: 50px;
     height: 50px;
     background: #e64343;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     border-radius: 50%;
     font-size: 22px;
@@ -58,6 +64,8 @@ body {
 }
 
 .top__profile {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     padding: 5px;
     flex-direction: column;
@@ -92,6 +100,8 @@ body {
 }
 
 .top_actions {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -100,17 +110,31 @@ body {
 }
 
 .top__bg {
-    background: url(../images/winter/profile/background.jpg) #5782da;
+    background: #5782da;
     position: absolute;
     top: 0;
     height: 207px;
     width: 100%;
     z-index: -1;
     background-size: cover;
+    overflow: hidden;
+}
+
+.blured_img img {
+    width: 108%;
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+    background: #000;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    margin-left: -14px;
 }
 
 .stats {
     color: #000;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-around;
     text-align: center;
@@ -136,6 +160,8 @@ body {
 }
 
 .rep-container {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -166,6 +192,8 @@ body {
 }
 
 .posts__new-post {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -206,6 +234,8 @@ ul.posts__user-posts {
 }
 
 .post__header {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     margin-bottom: 10px;
 }
@@ -218,6 +248,8 @@ ul.posts__user-posts {
 }
 
 .post__header__meta {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -271,6 +303,8 @@ ul.posts__user-posts {
 }
 
 .trade__header {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     align-content: center;
@@ -280,6 +314,8 @@ ul.posts__user-posts {
 }
 
 .trade__menu {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-around;
 }
@@ -312,6 +348,8 @@ ul.posts__user-posts {
 }
 
 .trade__button-container {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-around;
     margin-top: 2px;
@@ -323,6 +361,8 @@ ul.posts__user-posts {
 }
 
 .your-offer__header {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -405,11 +445,15 @@ ul.posts__user-posts {
 }
 
 .trades-with-user__trade {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     margin-bottom: 10px;
 }
 
 .trade__li {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     flex-grow: 1;
@@ -480,6 +524,8 @@ ul.posts__user-posts {
 }
 
 .my-trades-list__tradeWith {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     background: #dbdada;
     color: #000;
@@ -490,6 +536,8 @@ ul.posts__user-posts {
 }
 .tradeWith__img-container {
     text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     margin-right: 10px;
 }
@@ -499,6 +547,8 @@ ul.posts__user-posts {
     height: 100%;
 }
 .tradeWith__text-container {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
 }
@@ -534,6 +584,8 @@ ul.posts__user-posts {
     opacity: 0.5;
 }
 .moder-menu {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -561,6 +613,9 @@ ul.posts__user-posts {
 }
 
 /* == VIP === */
+.vip .blured_img {
+    display: none;
+}
 .vip .profile__name {
   text-shadow: 1px 1px 1px #000, 2px 2px 2px RGBA(0, 0, 0, 0.6), 3px 3px 3px RGBA(0, 0, 0, 0.4);
 }

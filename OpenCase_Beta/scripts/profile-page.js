@@ -21,6 +21,7 @@ $(function () {
         $(".post__header__img").attr('src', userInfo.avatar);
         $(".profile__name").text(userInfo.nickname);
         $(".stats__rank__rank").text(Level.calcLvl(userInfo.points));
+        
         if (uid != firebase.auth().currentUser.uid) {
             $(".posts__new-post").hide();
             $('.rep').show();
@@ -33,6 +34,7 @@ $(function () {
             getInventory().then(function(result) {
                 var inventoryRef = firebase.database().ref('inventories/' + firebase.auth().currentUser.uid);
                 inventoryRef.child('inventory_count').set(result.count);
+                
             })
         }
         if (userInfo.bigBG && fbProfile.ifValidImg(userInfo.bigBG)) {
