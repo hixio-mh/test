@@ -26,8 +26,8 @@ $(document).ready(function() {
     for (var i = 0; i < Items.weapons.length; i++) {
         var tp = Items.weapons[i].type;
         var name = getSkinName(Items.weapons[i].skinName, Settings.language);
-        weapons[i].can = weapons[i].can || {};
-        var canBuy = typeof weapons[i].can.buy == 'undefined' ? true : weapons[i].buy;
+        Items.weapons[i].can = Items.weapons[i].can || {};
+        var canBuy = typeof Items.weapons[i].can.buy == 'undefined' ? true : Items.weapons[i].buy;
         if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1 && canBuy) autocompleteTags.push(tp + ' | ' + name);
     }
 
