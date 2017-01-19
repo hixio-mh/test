@@ -6,6 +6,8 @@ var openCase = {
     status: 'init',
     casesCarusel: null,
     scrollSoundOpt: null,
+    weapons: [],
+    special: false,
     rareItemsRegExp: new RegExp('(rare|extraordinary)' ,'i'),
     init: function() {
         $(function() {
@@ -18,6 +20,7 @@ var openCase = {
             if(typeof param != "undefined") {
                 openCase.caseId = param.caseId[0];
                 try {
+                    openCase.special = cases[openCase.caseId].type == "Special";
                     openCase.souvenir = param.souvenir[0] == 'true';
                 } catch(e) {}
                 $("#youCanWin").data('loc-var', {1: cases[openCase.caseId].name})
@@ -29,6 +32,27 @@ var openCase = {
 
                 $(document).on('localizationloaded', function() {
                     $('.openCase').prop('disabled', false);
+                    
+                    var weaponsArray = [];
+                    if (cases[openCase.caseId].weapons)
+                        weaponsArray = getWeaponsById(cases[openCase.caseId].weapons);
+                    if (cases[openCase.caseId].knives)
+                        weaponsArray = weaponsArray.concat(getWeaponsById(cases[openCase.caseId].knives));
+
+                    if (weaponsArray.length == 0) {
+                        if (cases[openCase.caseId].regExp) {
+                            var rg = cases[openCase.caseId].regExp;
+                            for (var i = 0; i < Items.weapons.length; i++) {
+                                var weapon = getWeaponById(Items.weapons[i].id);
+                                if (RegExp(rg.reg).test(weapon[rg.param])) {
+                                    if (!openCase.special || (openCase.special && (!weapon.can || weapon.can.specialCase)))
+                                        weaponsArray.push(weapon);
+                                }
+                            }
+                        }
+                    }
+                    
+                    openCase.weapons = weaponsArray;
                     openCase.fillCarusel();
                 });
             }
@@ -86,24 +110,7 @@ var openCase = {
     },
     fillCarusel: function(caseId) {
         caseId = caseId || openCase.caseId;
-        var weaponsArray = [];
-        if (cases[caseId].weapons)
-            weaponsArray = getWeaponsById(cases[caseId].weapons);
-        if (cases[caseId].knives)
-            weaponsArray = weaponsArray.concat(getWeaponsById(cases[caseId].knives));
-
-        if (weaponsArray.length == 0) {
-            if (cases[caseId].regExp) {
-                var rg = cases[caseId].regExp;
-                for (var i = 0; i < weapons.length; i++) {
-                    var weapon = getWeaponById(weapons[i].id);
-                    if (RegExp(rg.reg).test(weapon[rg.param]))
-                        weaponsArray.push(weapon);
-                }
-            } else {
-                return null;
-            }
-        }
+        var weaponsArray = openCase.weapons;
         
         var caseWeapons = {
             win: {},
@@ -305,7 +312,7 @@ var openCase = {
                 fromAd = parseInt(param.fromAd[0]);
             } catch (e) {}
 
-            if (cases[openCase.caseId].type == 'Special') {
+            if (openCase.special) {
                 if (!fromAd) {
                     var need = getStatistic('specialCases', 0) - cases[openCase.caseId].casesToOpen;
                     need = (need < 0) ? 0 : need;
@@ -363,23 +370,7 @@ var openCase = {
     whatInCase: function(caseId) {
         caseId = caseId || openCase.caseId;
         var rare = false;
-        var weaponsArray = [];
-        if (cases[caseId].weapons)
-            weaponsArray = getWeaponsById(cases[caseId].weapons);
-        if (cases[caseId].knives)
-            weaponsArray = weaponsArray.concat(getWeaponsById(cases[caseId].knives));
-        if (weaponsArray.length == 0) {
-            if (cases[caseId].regExp) {
-                var rg = cases[caseId].regExp;
-                for (var i = 0; i < weapons.length; i++) {
-                    var weapon = getWeaponById(weapons[i].id);
-                    if (RegExp(rg.reg).test(weapon[rg.param]))
-                        weaponsArray.push(weapon);
-                }
-            } else {
-                return null;
-            }
-        }
+        var weaponsArray = openCase.weapons;
         
         for (var i = 0; i < weaponsArray.length; i++) {
             var weapon = new Weapon(weaponsArray[i].id);

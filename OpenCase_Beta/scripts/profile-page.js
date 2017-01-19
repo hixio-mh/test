@@ -563,13 +563,12 @@ $(function () {
                     var convertedWeapons = [];
                     for (var i = 0; i < Trade_weapons.length; i++) {
                         //var wp = fbInventory.reverseConvert(weapons[i]);
-                        wp = new Weapons(Trade_weapons[i]);
+                        wp = new Weapon(Trade_weapons[i]);
                         wp.new = true;
                         convertedWeapons.push(wp);
                     }
                     for (var i = 0; i < convertedWeapons.length; i++) {
-                        if (isAndroid()) saveWeapon(convertedWeapons[i]);
-                        else inventory.push(convertedWeapons[i]);
+                        saveWeapon(convertedWeapons[i]);
                     }
                     if (!isAndroid()) saveInventory();
                     fbProfile.setTradeGetWeaponsStatus(tradeID, true);

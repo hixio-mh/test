@@ -378,13 +378,8 @@ var fbProfile = (function (module) {
                 for (var i = 0; i < weapons.length; i++) {
                     var wp = fbInventory.reverseConvert(weapons[i]);
                     wp.new = true;
-                    if (isAndroid())
-                        saveWeapon(wp);
-                    else
-                        inventory.push(wp);
+                    saveWeapon(wp);
                 }
-                if (!isAndroid())
-                    saveInventory();
             }
             module.setTradeGetWeaponsStatus(tradeID, true);
             checkInventoryForNotification();
