@@ -121,11 +121,11 @@ var fbInventory = (function (module) {
         }
     };
     module.getWeaponById = function (id) {
-        var wp = $.extend({}, weapons[id]);
+        var wp = $.extend({}, Items.weapons[id]);
         if (wp.id != id) {
-            for (var i = 0; i < weapons.length; i++)
-                if (weapons[i].id === id) {
-                    wp = weapons[i];
+            for (var i = 0; i < Items.weapons.length; i++)
+                if (Items.weapons[i].id === id) {
+                    wp = Item.weapons[i];
                     break;
                 }
         }
