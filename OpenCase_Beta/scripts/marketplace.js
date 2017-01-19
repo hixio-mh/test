@@ -23,9 +23,9 @@ $(document).ready(function() {
     $('.navigationBar').append('<span id="playerBalance">' + Player.doubleBalance + ' <i class="double-icon"></i></span>');
 
     var autocompleteTags = [];
-    for (var i = 0; i < weapons.length; i++) {
-        var tp = weapons[i].type;
-        var name = getSkinName(weapons[i].skinName, Settings.language);
+    for (var i = 0; i < Items.weapons.length; i++) {
+        var tp = Items.weapons[i].type;
+        var name = getSkinName(Items.weapons[i].skinName, Settings.language);
         weapons[i].can = weapons[i].can || {};
         var canBuy = typeof weapons[i].can.buy == 'undefined' ? true : weapons[i].buy;
         if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1 && canBuy) autocompleteTags.push(tp + ' | ' + name);
