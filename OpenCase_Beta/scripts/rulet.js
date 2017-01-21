@@ -49,7 +49,7 @@ function newGame() {
     ifCarusel = false;
     $(".win").slideUp("slow");
     bar.animate(0);
-    bar.setText("0/" + itemsLimit + "<hr><s>$0</s>");
+    bar.setText("0/" + itemsLimit + "<hr><s class='currency dollar'>0</s>");
     $("#addItems").prop("disabled", false);
     itemsAccepted = 0;
     totalMoney = 0;
@@ -101,7 +101,7 @@ function addItems(fromName, fromImg, itemCount, itemsCost) {
     }
     totalMoney += +Math.round(parseFloat(itemsCost) * 100) / 100;
     totalMoney = +Math.round(parseFloat(totalMoney) * 100) / 100;
-    bar.setText(itemsAccepted + '/' + itemsLimit + '<hr><s>$' + totalMoney + '</s>');
+    bar.setText(itemsAccepted + '/' + itemsLimit + '<hr><s class="currency dollar">' + totalMoney + '</s>');
     bar.animate(step);
 
     if (itemCount > 5) value = 4;

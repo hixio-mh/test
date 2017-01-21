@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Dice</title>
+    <meta charset="utf-8">
+<!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<link rel="stylesheet" type="text/css" href="../css/winter.css">
+<link rel="stylesheet" type="text/css" href="../css/dice.css">
+<link rel="stylesheet" type="text/css" href="../css/odometer-theme-default.css">
+    
+<!-- Скрипты -->
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/odometer.min.js"></script>
+<script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+
+</head>
+<body data-localization="dice" data-inventory='no-load'>
+	<div class="site-overlay"></div>
+<div id="container">
+    <div class="navigationBar" data-menu-EN="Dice" data-menu-RU="Dice"></div>
+    <div class="panel panel-default">
+        <div class="panel-heading"><span data-loc='roll_dice'>Dice</span>
+            <button id="hot-to-play" class="btn btn-xs btn-info pull-right" data-toggle="modal" data-target="#how-to-play-modal" data-loc='how_to_play'>How to play</button>
+        </div>
+        <div class="panel-body" data-loc-group="game">
+            <div class='row game'>
+                <div class="game-buttons">
+                    <div class="col-xs-4 col-sm-4 col-lg-4">
+                        <span data-loc="to_win_roll">To Win Roll</span>
+                        <button id="oddsOverUnder" class="btn btn-primary btn-block">> 4999</button>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-lg-4">
+                        <span data-loc="payout">Payout</span>
+                        <div class="btn btn-primary btn-block" id='oddsPayout'>1.95x</div>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-lg-4">
+                        <span data-loc="win_chance">Win Chance</span>
+                        <div class="btn btn-primary btn-block" id='oddsWinChance'>50%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="game__body__bet">
+                <h5 data-loc="bet" class="text-center">Bet</h5>
+                <div class="btn-group bets">
+                    <button type="button" class="btn" data-bet='clear'>0</button>
+                    <button type="button" class="btn" data-bet='10'>+10</button>
+                    <button type="button" class="btn" data-bet='100'>+100</button>
+                    <button type="button" class="btn" data-bet='1000'>+1000</button>
+                    <button type="button" class="btn" data-bet='1/2'>1/2</button>
+                    <button type="button" class="btn" data-bet='x2'>x2</button>
+                    <button type="button" class="btn" data-bet='max'>Max</button>
+                </div>
+                <div class="input-group mb-5">
+                    <input id="bet" type="text" class="form-control" name="bet" placeholder="Bet Amount" pattern="[0-9]*">
+                    <span class='input-group-addon'>/ <span id='balance'></span> <i class='double-icon'></i></span>
+                </div>
+            </div>
+            <button class="btn btn-success btn-block" data-loc='roll_dice' id='start_roll'>Roll dice</button>
+        </div>
+    </div>
+    
+    <div class="panel panel-default" data-loc-group='history'>
+        <div class="panel-heading" data-loc='history_title'>History</div>
+        <div class='panel-body'>
+            <table class="table table-bordered" id='my_history'>
+                <thead><tr>
+                    <th data-loc='bet'>Bet</th>
+                    <th data-loc='payout'>Payout</th>
+                    <th data-loc='win_condition'>Condition</th>
+                    <th data-loc='roll'>Roll</th>
+                    <th data-loc='profit'>Profit</th>
+                </tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
+<div class="modal fade" id='how-to-play-modal' role='dialog' data-loc-group='how_to_play_modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" data-loc='title'>How to play</h4>
+            </div>
+            <div class="modal-body" data-loc='body'>
+                <p>Before you start the game you can change roll determiner, payout and win chance.</p>
+                <p>Then you input a bet amount and tap on the "Roll dice" button.</p>
+                <p>When you click on "Roll dice" button it will generate a random number. And if this number is satisfies the condition you will get your bet multiply by payout.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class='button btn btn-default' data-dismiss="modal" data-loc='close'>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Скрипт игры -->
+<script src="../scripts/games/dice.js"></script>
+<script>
+    $(document).on('localizationloaded', function() {
+        Dice.init();
+    })
+</script>
+</body>
+</html>

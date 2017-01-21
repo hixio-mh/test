@@ -76,6 +76,7 @@ $(function () {
     
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === "192.168.1.205") {
         var reload_btn = document.createElement('button');
+        reload_btn.className = "btn btn-xs btn-warning"
         reload_btn.style = "z-index:99999; position:fixed; bottom:10px; right:10px;";
         reload_btn.appendChild(document.createTextNode("Refresh"));
         reload_btn.onclick = function() {

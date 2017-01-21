@@ -436,6 +436,69 @@ var Translation = {
                 }
             }
         },
+        dice: {
+            page_name: {
+                text: 'Кости',
+                en: 'Dice'
+            },
+            roll_dice: {
+                text: 'Кости',
+                en: 'Roll dice'
+            },
+            how_to_play: {
+                text: 'Как играть',
+                en: 'How to play'
+            },
+            how_to_play_modal: {
+                title: {
+                    text: 'Как играть',
+                    en: 'How to play'
+                },
+                body: {
+                    text: '<p>Перед стартом вы можете поменять условие выигрыша, множитель и шансы на победу.</p> \
+                        <p>Затем вы указываете размер вашей ставки и бросаете кость.</p> \
+                        <p>После броска генерируется случайное число и, если это число удовлетворяет условию, игрок забирает свою ставку умноженную на множитель.</p> \
+                        <p>Максимальная ставка - 50 000</p>',
+                    en: 'ee'
+                },
+                close: {
+                    text: 'Закрыть',
+                    en: 'Close'
+                }
+            },
+            game: {
+                to_win_roll: {
+                    text: 'Условие',
+                    en: 'To Win Roll'
+                },
+                payout: {
+                    text: 'Множитель',
+                    en: 'Payout'
+                },
+                win_chance: {
+                    text: 'Шансы',
+                    en: 'Win Chance'
+                },
+                bet: {
+                    text: 'Ставка',
+                    en: 'Bet'
+                },
+                roll_dice: {
+                    text: 'Бросить кость',
+                    en: 'Roll dice'
+                },
+                end_roll: {
+                    text: 'Выпало ${1}. Бросить еще раз?',
+                    en: 'Rolled ${1}. Roll again?'
+                }
+            },
+            history: {
+                history_title: {
+                    text: 'История',
+                    en: 'History'
+                }
+            }
+        },
         inventory: {
             page_name: {
                 text: 'Инвентарь',

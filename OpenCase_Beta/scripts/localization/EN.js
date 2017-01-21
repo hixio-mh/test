@@ -436,6 +436,47 @@ var Translation = {
                 }
             }
         },
+        dice: {
+            page_name: {
+                rus: 'Кости',
+                text: 'Dice'
+            },
+            roll_dice: {
+                rus: 'Кости',
+                text: 'Roll dice'
+            },
+            how_to_play: {
+                rus: 'Как играть',
+                text: 'How to play'
+            },
+            game: {
+                to_win_roll: {
+                    rus: 'Условие',
+                    text: 'To Win Roll'
+                },
+                payout: {
+                    rus: 'Множитель',
+                    text: 'Payout'
+                },
+                win_chance: {
+                    rus: 'Шансы',
+                    text: 'Win Chance'
+                },
+                bet: {
+                    rus: 'Ставка',
+                    text: 'Bet'
+                },
+                roll_dice: {
+                    rus: 'Бросить кость',
+                    text: 'Roll dice'
+                },
+                end_roll: {
+                    text: 'Выпало ${1}. Бросить еще раз?',
+                    en: 'Rolled ${1}. Roll again?'
+                }
+            },
+            
+        },
         inventory: {
             page_name: {
                 rus: 'Инвентарь',
