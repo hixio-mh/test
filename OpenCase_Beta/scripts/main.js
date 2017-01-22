@@ -262,6 +262,12 @@ function statisticPlusOne(cookieName) {
 }
 
 function saveStatistic(key, value, type, crypt) {
+    if (key == 'doubleBalance' && isNaN(value)) {
+        $(document).trigger('saveNaNBalance');
+        throw new Error
+        
+        return;
+    }
     crypt = crypt || false;
     if (typeof type != 'undefined') {
         switch (type) {
