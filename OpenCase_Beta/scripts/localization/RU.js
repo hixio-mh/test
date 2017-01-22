@@ -47,6 +47,10 @@ var Translation = {
                 crash: {
                     text: 'Краш',
                     en: 'Crash'
+                },
+                dice: {
+                    text: 'Кости',
+                    en: 'Dice'
                 }
             },
             inventory: {

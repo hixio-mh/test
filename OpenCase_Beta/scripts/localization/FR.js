@@ -47,6 +47,10 @@ var Translation = {
                 crash: {
                     en: 'Crash',
                     text: 'Crash'
+                },
+                dice: {
+                    en: 'Dice',
+                    text: 'Dice'
                 }
             },
             inventory: {
@@ -434,6 +438,11 @@ var Translation = {
                     en: 'Send',
                     text: 'Envoyer'
                 }
+            }
+        },
+        dice: {
+            page_name: {
+                text: 'Roll Dice'
             }
         },
         inventory: {

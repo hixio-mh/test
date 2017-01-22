@@ -439,7 +439,7 @@ var Translation = {
         dice: {
             page_name: {
                 rus: 'Кости',
-                text: 'Dice'
+                text: 'Roll Dice'
             },
             roll_dice: {
                 rus: 'Кости',

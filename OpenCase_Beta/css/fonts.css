@@ -136,6 +136,9 @@
 .icon-info:before {
   content: "\ea0c";
 }
+.icon-dice:before {
+  content: "\e915";
+}
 /*.icon-make-group:before {
   content: "\ea58";
 }*/
