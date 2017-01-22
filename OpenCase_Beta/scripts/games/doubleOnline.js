@@ -255,9 +255,10 @@ function countDown() {
     //countdownTimer -= 100;
     val = (countdownTimer * 100) / countdownTime;
     $('#progress-countdown').css('width', val + '%');
-    $('.big-progress span').text(Localization.getString('double.rolling_in', 'Rolling in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
+    if (Localization.isLoaded)
+        $('.double-progress span').text(Localization.getString('double.rolling_in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
 
-    if (val > 0) 
+    if (val > 0)
         intervalCountdown = setTimeout(countDown, 100);
 }
 
@@ -279,7 +280,7 @@ function startGame(win, duration) {
             start: function() {
                 $('.bet-to-color').prop('disabled', true);
                 clearTimeout(intervalCountdown);
-                $('.big-progress span').text(Localization.getString('double.rolling', 'Rolling'));
+                $('.double-progress span').text(Localization.getString('double.rolling', 'Rolling'));
             },
             complete: function() {
                 if (playerBet.length) {
@@ -339,7 +340,7 @@ function getNumberColor(num) {
     return colors[i] == 'r' ? 'red' : colors[i] == 'b' ? 'black' : 'green';;
 }
 
-$(document).on('click', '.add-to-bet', function() {
+$(document).on('click', 'button[data-bet]', function() {
     var plus = $(this).data('bet');
     var val = parseInt($('#bet').val());
     if (isNaN(val)) val = 0;

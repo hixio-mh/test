@@ -68,7 +68,7 @@ function newGame() {
     botMaxBet = Player.doubleBalance + 1000 > betLimit ? betLimit : Player.doubleBalance + 1000;
 
     countdownTimer = countdownTime;
-    $('.the-bet').fadeOut(300, function() {
+    $('.bet-tables table tbody tr').fadeOut(300, function() {
         $(this).remove();
     });
 
@@ -84,12 +84,12 @@ function countDown() {
     val = (countdownTimer * 100) / countdownTime;
     $('#progress-countdown').css('width', val + '%');
     if (Localization.isLoaded)
-        $('.big-progress span').text(Localization.getString('double.rolling_in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
+        $('.double-progress span').text(Localization.getString('double.rolling_in') + ' ' + (countdownTimer / 1000).toFixed(1) + '...');
 
     if (val > 0) {
         intervalCountdown = setTimeout(countDown, 100);
     } else {
-        $('.big-progress span').text(Localization.getString('double.rolling'));
+        $('.double-progress span').text(Localization.getString('double.rolling'));
         startGame();
     }
 }
@@ -181,7 +181,7 @@ function getLastGames(count) {
     return lastGames;
 }
 
-$(document).on('click', '.add-to-bet', function() {
+$(document).on('click', 'button[data-bet]', function() {
     var plus = $(this).data('bet');
     var val = parseInt($('#bet').val());
     if (isNaN(val)) val = 0;
@@ -308,7 +308,7 @@ function botAddBet() {
 
 function addBet(tableColor, player) {
     tableColor = tableColor || 'red';
-    $('.bets-' + tableColor + '-table').append('<tr class="the-bet"><td class="the-bet__player"><img src="../images/ava/' + player.img + '">' + player.name + '</td><td class="the-bet__bet">' + player.bet + '</td></tr>');
+    $('.bets-' + tableColor + '-table').append('<tr><td><img src="../images/ava/' + player.img + '">' + player.name + '</td><td>' + player.bet + '</td></tr>');
 }
 
 function fillCarusel(lastNumber) {

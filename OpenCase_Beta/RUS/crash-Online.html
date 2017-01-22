@@ -5,6 +5,7 @@
     <title>Crash Online</title>
     <meta charset="utf-8">
     <!-- Стили -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/fonts.css">
     <link rel="stylesheet" type="text/css" href="../css/loading.css">
@@ -20,6 +21,7 @@
     <script src="../scripts/profile.js"></script>
     <script src="../scripts/navigationMenu.js"></script>
     <script src="../scripts/odometer.min.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     
     <link rel="stylesheet" href="../css/navigationMenu.css">
     <script src="../scripts/localization.js"></script>
@@ -34,56 +36,96 @@
     <div id="container">
         <div class="navigationBar" data-menu-EN="Crash Online" data-menu-RU="Краш Онлайн"></div>
         <div class='onlineCount'></div>
-    
-        <div id="crash-container">
-            <div class="crash__next-round-timer" style='display:none'><span data-loc="next_round_in">Next round in</span> <span id='odometer_next_round'></span> <span data-loc="seconds"></span></div>
-            <div class="crash__multiply"><span id='odometer'>1.00</span>x</div>
-        </div>
         
-        <div><span id='balance-text' class='margin-left-body' data-loc="balance">Balance:</span> <span id='balance'>0</span></div>
-        <div class="bets"> <span class='add-to-bet' data-bet='clear'>0</span><span data-bet='1' class='add-to-bet'>+1</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span> </div>
-        <input type="text" id="bet" maxlength='6' pattern="^[0-9]+$" />
-        
-        <button id='place-bet' data-loc-group="bet"><span data-loc="place">Place bet</span></button>
-        
-        <div class="tabs" data-loc-group="tabs">
-            <input id="tab1" type="radio" name="tabs" checked>
-            <label for="tab1" title="Bets" data-loc="bets">Bets</label>
+        <div class="panel panel-default">
+            <div class="panel-heading">Crash</div>
+            <div class="panel-body">
+                <div id="crash-container" class='well'>
+                    <div class="crash__next-round-timer" style='display:none'><span data-loc="next_round_in">Next round in</span><span id='odometer_next_round'></span><span data-loc="seconds"></span></div>
+                    <div class="crash__multiply"><span id='odometer'>1.00</span>x</div>
+                </div>
 
-            <input id="tab2" type="radio" name="tabs">
-            <label for="tab2" title="History" data-loc="history">History</label>
+                <div class="game__body__bet">
+                    <div class="btn-group bets">
+                        <button type="button" class="btn" data-bet='clear'>0</button>
+                        <button type="button" class="btn" data-bet='10'>+10</button>
+                        <button type="button" class="btn" data-bet='100'>+100</button>
+                        <button type="button" class="btn" data-bet='1000'>+1000</button>
+                        <button type="button" class="btn" data-bet='1/2'>1/2</button>
+                        <button type="button" class="btn" data-bet='x2'>x2</button>
+                        <button type="button" class="btn" data-bet='max'>Max</button>
+                    </div>
+                    <div class="input-group mb-5">
+                        <input id="bet" type="text" class="form-control" name="bet" placeholder="Bet Amount" pattern="[0-9]*">
+                        <span class='input-group-addon'>/ <span id='balance'></span> <i class='double-icon'></i></span>
+                    </div>
+                </div>
 
-            <input id="tab3" type="radio" name="tabs">
-            <label for="tab3" title="Top" data-loc="top">Top</label>
-            
-            <section id='bets'>
-                <table class="bet-list" id='bet-list' data-loc-group="table">
-                    <tr><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
-                </table>
-            </section>
-            
-            <section id="history">
-                <ul class="history"></ul>
-            </section>
-            
-            <section id="top">
-                <table class="top" data-loc-group="table">
-                    <tr><th>#</th><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
-                </table>
-            </section>
-            
-        </div>
-        
-        <div class='chat closed' data-loc-group="chat">
-            <div class='chat__toggle'><span data-loc="top">Chat</span> (<span class='chat__toggle__new-messages'>0</span>)</div>
-            <ul class='chat__messages'>
-                <li class='chat__message__message info' data-loc="welcome">Welcome to chat!</li>
-            </ul>
-            <div class='chat__new-message'>
-                <div class="chat__new-message__textbox input-text light" contenteditable="true" placeholder="Send message" max="100"></div>
-                <button class="button_blue" id='chat-send-msg' data-loc="send">Send</button>
+                <button id='place-bet' data-loc-group="bet" class='btn btn-lg btn-block btn-success'><span data-loc="place">Connecting...</span></button>
             </div>
         </div>
+        
+        <div class='well'>
+            <ul class='nav nav-tabs' data-loc-group="tabs">
+                <li class='active'><a data-toggle='tab' href='#bets' data-loc='bets'>Bets</a></li>
+                <li><a data-toggle='tab' href='#history' data-loc='history'>History</a></li>
+                <li><a data-toggle='tab' href='#top' data-loc='top'>Top</a></li>
+            </ul>
+            
+            <div class='tab-content'>
+                <div id='bets' class='tab-pane fade in active'>
+                    <table class="table table-condensed table-striped" id='bet-list' data-loc-group="table">
+                        <thead>
+                            <tr><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div id='history' class='tab-pane fade'>
+                    <table class="table table-condensed" id='history-table'>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div id='top' class='tab-pane fade'>
+                    <table class="table table-condensed table-striped" id='top-table' data-loc-group="table">
+                        <thead>
+                            <tr><th>#</th><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- === Chat === -->
+        <div class='footer navbar-fixed-bottom' data-loc-group='chat'>
+            <div class='col-md-4 col-sm-5 col-lg-4'>
+                <div class='panel panel-primary chat-panel'>
+                    <div class='panel-heading' id='chat' role='tab' style='cursor: pointer;' data-toggle='collapse' data-parent='#accordion' href='#chatCollapse' aria-expanded='true' aria-controls='chatCollapse'>
+                        <span class='glyphicon glyphicon-comment'></span>
+                        <span data-loc='top'>Chat</span>
+                        <span class='chat_new_messages_count badge pull-right'>0</span>
+                    </div>
+                    <div class='panel-collapse collapse' id='chatCollapse' role="tabpanel" aria-labelledby="chat">
+                        <div class='panel-body'>
+                            <ul class='chat__messages'></ul>
+                        </div>
+                        <div class='panel-footer'>
+                            <div class='input-group input-group-sm'>
+                                <input type='text' class='form-control inputsm chat__new-message__textbox' placeholder="Enter your message" max='100'>
+                                <div class='input-group-btn'>
+                                    <button class="btn btn-primary" type='submit' id='chat-send-msg' ><i class='glyphicon glyphicon-send'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- === Chat End === -->
     </div>
 </body>
 

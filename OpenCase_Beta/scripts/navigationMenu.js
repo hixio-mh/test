@@ -35,7 +35,7 @@ $(function () {
             </div> \
             <div class="menu_rank__lvl"> \
                 <span class="lvl lvl-current">' + Level.myLvl() + '</span> \
-                <div class="progress"><div class="progress-bar" id="player-rank-progress" style="width: ' + Level.progress() + '%"></div></div> \
+                <div class="progress menu-progress"><div class="progress-bar" id="player-rank-progress" style="width: ' + Level.progress() + '%"></div></div> \
                 <span class="lvl lvl-next">'+Level.nextLvl()+'</span> \
             </div> \
             <div class="menu_rank__bottom"> \

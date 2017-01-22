@@ -4,6 +4,7 @@
 <title>Double</title>
     <meta charset="utf-8">
 <!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
@@ -23,6 +24,8 @@
 <script src="../scripts/jackpotBots.js"></script>
 <script src="../scripts/inventory.js"></script>
 <script src="../scripts/navigationMenu.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+    
 <link rel="stylesheet" href="../css/navigationMenu.css">
 <link rel="stylesheet" type="text/css" href="../css/double.css">
 
@@ -32,49 +35,74 @@
 
 <script src="../scripts/games/double.js"></script>
 <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
-<!-- <script src="../scripts/min/double.js"></script> -->
 </head>
 
 <body data-localization="double" data-inventory='no-load'>
 	<div class="site-overlay"></div>
 <div id="container">
-<div class="navigationBar" data-menu-EN="Double" data-menu-RU="Дабл"></div>
-<span id='last_games_text' class='margin-left-body' data-loc="previous_numbers">Previous numbers:</span>
-<div class='last-games'></div>
+    <div class="navigationBar" data-menu-EN="Double" data-menu-RU="Дабл"></div>
+    <div class='panel panel-default'>
+        <div class='panel-heading' data-loc="previous_numbers">Previous numbers:</div>
+        <div class='panel-body last-games'></div>
+    </div>
 
-<div class="scrollerContainer">
-	<div id="caruselOver"><div id="caruselLine"></div></div>
-	<div id="aCanvas">
-		<div class="casesCarusel">
-		</div>
-	</div>
-</div>
-<div class='progress big-progress'>
-	<span data-loc="rolling_in">Roling in</span>
-	<div class='progress-bar' id='progress-countdown'></div>
-</div>
-<span id='balance-text' class='margin-left-body' data-loc="balance">Balance:</span> <span id='balance'>0</span>
-<div class='button' id='fillBalance' data-loc="fill_up_balance">Fill up balance</div>
-<div class="bets">
-<span class='add-to-bet' data-bet='clear'>0</span><span data-bet='10' class='add-to-bet'>+10</span><span data-bet='100' class='add-to-bet'>+100</span><span data-bet='1000' class='add-to-bet'>+1000</span><span data-bet='1/2' class='add-to-bet'>1/2</span><span data-bet='x2' class='add-to-bet'>x2</span><span data-bet='max' class='add-to-bet'>Max</span>
-</div>
-<input type="text" id="bet" maxlength='7' pattern="^[0-9]+$"/>
+    <div style='width:100%;overflow:hidden'>
+        <div class="scrollerContainer">
+            <div id="caruselOver"><div id="caruselLine"></div></div>
+            <div id="aCanvas">
+                <div class="casesCarusel">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='progress double-progress'>
+        <div class='progress-bar' id='progress-countdown'>
+            <span data-loc="rolling_in">Roling in</span>
+        </div>
+    </div>
+    <div class="game__body__bet well">
+        <div class="btn-group bets">
+            <button type="button" class="btn" data-bet='clear'>0</button>
+            <button type="button" class="btn" data-bet='10'>+10</button>
+            <button type="button" class="btn" data-bet='100'>+100</button>
+            <button type="button" class="btn" data-bet='1000'>+1000</button>
+            <button type="button" class="btn" data-bet='1/2'>1/2</button>
+            <button type="button" class="btn" data-bet='x2'>x2</button>
+            <button type="button" class="btn" data-bet='max'>Max</button>
+        </div>
+        <div class="input-group mb-5">
+            <input id="bet" type="text" class="form-control" name="bet" placeholder="Bet Amount" pattern="[0-9]*" maxlength='7'>
+            <span class='input-group-addon'>/ <span id='balance'></span> <i class='double-icon'></i></span>
+        </div>
+        <button id='fillBalance' type='button' class='btn btn-success btn-xs btn-block' data-loc='fill_up_balance'>Fill up balance</button>
+    </div>
 
-<table class='bets-tables'>
-	<tr><td>
-	<table class='bets-tables__table bets-red-table'>
-		<tr><td colspan=2><button class='bet-to-color bet-red'>1 — 7</button></td></tr>
-	</table>
-	</td><td>
-	<table class='bets-tables__table bets-green-table'>
-		<tr><td colspan=2><button class='bet-to-color bet-green'>0</button></td></tr>
-	</table>
-	</td><td>
-	<table class='bets-tables__table bets-black-table'>
-		<tr><td colspan=2><button class='bet-to-color bet-black'>8 — 14</button></td></tr>
-	</table>
-	</td></tr>
-</table>
+<div class='bet-tables'>
+    <div class='col-md-4 col-sm-4 col-xs-4'>
+        <table class='table table-bordered table-striped bets-red-table'>
+            <thead>
+                <tr><td colspan=2><button class='bet-to-color bet-red'>1 — 7</button></td></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+	<div class='col-md-4 col-sm-4 col-xs-4'>
+        <table class='table table-bordered table-striped bets-green-table'>
+            <thead>
+                <tr><td colspan=2><button class='bet-to-color bet-green'>0</button></td></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+	<div class='col-md-4 col-sm-4 col-xs-4'>
+        <table class='table table-bordered table-striped bets-black-table'>
+            <thead>
+                <tr><td colspan=2><button class='bet-to-color bet-black'>8 — 14</button></td></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
 
 
 <!-- Инвентарь -->

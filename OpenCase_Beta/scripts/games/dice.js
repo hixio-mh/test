@@ -120,10 +120,10 @@ var Dice = {
                 }
                 
                 function checkChance(value) {
-                    return isNaN(value) ? 0.01 : value > 96.53 ? 96.53 : value < 0.01 ? 0.01 : value;
+                    return isNaN(value) ? 0.01 : value > 70 ? 70 : value < 0.01 ? 0.01 : value;
                 }
                 function checkPayout(value) {
-                    return isNaN(value) ? 1.01 : value > 9750 ? 9750 : value < 1.01 ? 1.01 : value;
+                    return isNaN(value) ? 1.4 : value > 9750 ? 9750 : value < 1.4 ? 1.4 : value;
                 }
             })
         })

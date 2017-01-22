@@ -1,3 +1,6 @@
+body {
+    background: #19212b !important;
+}
 #container {
     width: 100%;
     position: absolute;
@@ -5,27 +8,42 @@
     left: 0;
     overflow-x: hidden;
 	padding-top:50px;
-	color: #fff;
-	font-family: Lato;
+    padding-bottom: 35px;
 }
 
-@media (max-width:495px) {
-	.scrollerContainer {
-		margin: 10px 0;
-	}
+.double-progress {
+    height: 25px;
+    position: relative;
+    margin: 10px 0;
+    background-color: #fff;
 }
-.margin-left-body {
-	margin-left: 8px;
+.double-progress .progress-bar {
+	-webkit-transition: width 0.1s linear;
+		 -o-transition: width 0.1s linear;
+			transition: width 0.1s linear;
+}
+.double-progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: black;
+    line-height: 25px;
+}
+#progress-countdown {
+    width: 100%;
+}
+
+.scrollerContainer {
+    margin: 0 !important;
 }
 
 .last-games {
     text-align: center;
     overflow: hidden;
-    height: 46px;
-    background: #151515;
-    padding: 5px 0;
-    box-shadow: 0 0px 5px #000 inset;
-    line-height: 3em;
+    height: 76px;
+    line-height: 4em;
 }
 .inline {
     display: inline-block;
@@ -36,9 +54,10 @@
     height: 40px;
     border-radius: 50%;
     text-align: center;
-    line-height: 2em;
+    line-height: 40px;
     font-size: 1.3em;
     margin: 3px;
+    color:#fff;
 }
 .green-block, .black-block, .red-block {
     width: 96px;
@@ -46,9 +65,10 @@
     margin-top: 3px;
 	text-align: center;
 	font-size: 1.3em;
+    color:#fff;
 }
 .black-ball, .black-block {
-    background: #262626;
+    background: #141414;
 }
 .red-ball, .red-block {
     background: #A20000;
@@ -64,26 +84,6 @@
 #aCanvas {
     height: 104px;
 }
-.big-progress {
-    height: 30px;
-    text-align: center;
-    line-height: 1.9em;
-}
-.big-progress span {
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-	color: #000;
-}
-#progress-countdown {
-    width: 100%;
-}
-.progress-bar {
-	-webkit-transition: width 0.1s linear;
-		 -o-transition: width 0.1s linear;
-			transition: width 0.1s linear;
-}
 #fillBalance.button {
     display: inline-block;
     background: #009034;
@@ -94,44 +94,26 @@
 	cursor: pointer;
 }
 .bets {
-    height: 35px;
-    white-space: nowrap;
-    overflow-x: auto;
-    margin-right: 9px;
-    margin-left: 9px;
-    text-align: center;
-	margin-top: 6px;
-}
-.bets > span {
-    margin-left: 0px;
-    padding: 8px 10px;
-    background: #e7e7e7;
-    color: #3F3F3F;
-    display: inline-block;
-    border-right: 1px solid #303030;
-    border-top: 1px solid #303030;
-    font-size: 0.9em;
-	cursor: pointer;
+    display: -webkit-box;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
 }
 #bet {
-    width: calc(100% - 26px);
-    text-align: center;
-    height: 37px;
-    font-size: 1em;
-    margin: 5px 8px;
+    text-align: right;
 }
 
-
-.bets-tables {
-    width: 100%;
-	border-collapse: collapse;
-    margin-bottom: 20px;
+.bet-tables {
+    padding: 0 10px;
+}
+.bet-tables > div {
+    padding: 0;
 }
 table.bets-tables > tbody > tr > td {
     vertical-align: top;
 	width: 33.33%
 }
-.bets-tables__table {
+.bet-tables > div > table {
     width: 100%;
     float: left;
     border-collapse: collapse;
@@ -165,34 +147,35 @@ table.bets-tables > tbody > tr > td {
     background: url(../images/double/x2.png) right no-repeat, #262626;
     background: url(../images/double/x2.png) right no-repeat, linear-gradient(to top, #262626, #626161);
 }
-.the-bet__player {
+.bet-tables table tbody tr {
     padding: 7px 4px;
 }
-.the-bet__player img {
+.bet-tables table tbody tr img {
     width: 30px;
     vertical-align: middle;
     margin-right: 3px;
 }
-.the-bet td:nth-child(2) {
+.bet-tables table tbody tr td:nth-child(2) {
     text-align: right;
     padding-right: 4px;
 	border-left: none;
+    vertical-align: middle;
 }
-.the-bet td:nth-child(1) {
+.bet-tables table tbody tr td:nth-child(1) {
     border-right: none;
 }
 @media (max-width: 595px) {
-	.the-bet {
+	.bet-tables table tbody tr {
 		font-size: 0.7em;
 	}
 }
 @media (max-width: 450px) {
-	.the-bet__player img {
+	.bet-tables table tbody tr img {
 		display:none;
 	}
 }
 @media (max-width: 340px) {
-	.the-bet {
+	.bet-tables table tbody tr {
 		font-size:0.6em;
 	}
 }

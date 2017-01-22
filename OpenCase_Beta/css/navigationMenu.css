@@ -79,7 +79,7 @@
 .lvl.lvl-current {
     background: #D8534F;
 }
-.progress {
+.menu-progress {
     overflow: hidden;
     height: 8px;
     margin: 5px;
@@ -90,7 +90,7 @@
     width: 100%;
     flex-grow: 2;
 }
-.progress-bar {
+.menu-progress .progress-bar {
     float: left;
     width: 0%;
     height: 100%;

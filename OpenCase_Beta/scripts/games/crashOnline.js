@@ -139,7 +139,7 @@ $(function() {
     
     function newGame(message) {
         //Очистка таблицы ставок
-        $('.bet-list').find('tr:gt(0)').remove();
+        $('#bet-list tbody').children('tr').remove();
         
         $('#place-bet').prop('disabled', false);
         gameStartStatus = false;
@@ -193,9 +193,9 @@ $(function() {
             $('#place-bet').prop('disabled', true);
             playerInfo.bet = 0;
             gameStartStatus = false;
-            $('.bet-list').find('tr:gt(0)').each(function(){
-                if (!$(this).hasClass('cashOut')) {
-                    $(this).addClass('crashed');
+            $('#bet-list tbody').children('tr').each(function(){
+                if (!$(this).hasClass('success')) {
+                    $(this).addClass('danger');
                 }
             })
             if (history.length > 20) 
@@ -225,14 +225,13 @@ $(function() {
     }
     
     function newBet(message) {
-        if (message.status == 'crashed' || message.status == 'cashOut')
-            var status = message.status;
-        $('.bet-list').append('<tr data-playerID="'+message.id+'" class="'+status+'"><td class="bet__nickname">'+message.player+'</td><td class="bet__multiply">-</td><td class="bet__bet">'+roundK(message.bet)+'</td><td class="bet__profit">-</td></tr>')
+        var status = message.status == 'crashed' ? 'danger' : message.status == 'cashOut' ? 'success' : '';
+        $('#bet-list').append('<tr data-playerID="'+message.id+'" class="'+status+'"><td class="bet__nickname">'+message.player+'</td><td class="bet__multiply">-</td><td class="bet__bet">'+roundK(message.bet)+'</td><td class="bet__profit">-</td></tr>')
     }
     
     function cashOut(message) {
         var $tableRow = $('tr[data-playerID="'+message.id+'"]');
-        $($tableRow).addClass('cashOut');
+        $($tableRow).addClass('success');
         $($tableRow).find(".bet__multiply").text(message.multiply);
         $($tableRow).find(".bet__profit").text(roundK(message.profit));  
         
@@ -264,7 +263,7 @@ $(function() {
     }
     
     function updateTop() {
-        $('.top').find('tr:gt(0)').remove();
+        $('#top-table tbody').children('tr').remove();
         for (var i = 0; i < top.length; i++) {
             if (typeof top[i] == 'undefined') continue;
             var bet = parseInt(top[i].bet);
@@ -276,15 +275,15 @@ $(function() {
             if (playerNick.length > 11)
                 playerNick = playerNick.substr(0, 11)+'...';
             
-            $('.top').append('<tr'+ (i < 3 ? ' class="top_3"' : '')+' data-playerUID="'+top[i].uid+'"><td>'+(i+1)+'</td><td>'+playerNick+'</td><td>'+multiply+'</td><td>'+bet+'</td><td>'+profit+'</td></tr>');
+            $('#top-table').append('<tr'+ (i < 3 ? ' class="top_3"' : '')+' data-playerUID="'+top[i].uid+'"><td>'+(i+1)+'</td><td>'+playerNick+'</td><td>'+multiply+'</td><td>'+bet+'</td><td>'+profit+'</td></tr>');
         }
     }
     
     function updateHistory() {
-        $('.history').empty();
+        $('#history-table tbody').empty();
         for (var i = 0; i < history.length; i++) {
-            var color = history[i] >= 200 ? 'cashOut-color' : 'crashed-color';
-            $('.history').prepend('<li class="'+color+'">' + (history[i]/100) + 'x</i>');
+            var color = history[i] >= 200 ? 'text-success' : 'text-danger';
+            $('#history-table').prepend('<tr class="'+color+'"><td>' + (history[i]/100) + 'x</td></tr>');
         }
     }
     
@@ -327,8 +326,8 @@ $(function() {
     }
     
     function sortBetTable() {
-        var regular = $('.bet-list tr:not(.cashOut):gt(0)');
-        var cashOut = $('.bet-list tr.cashOut');
+        var regular = $('#bet-list tr:not(.success):gt(0)');
+        var cashOut = $('#bet-list tr.success');
         
         regular.sort(function(a, b){
             if (unRoundK(a.cells[2].innerText) > unRoundK(b.cells[2].innerText))
@@ -347,9 +346,9 @@ $(function() {
                 return 0
         })
         
-        $('.bet-list').find('tr:gt(0)').remove();
-        $('.bet-list').append(regular);
-        $('.bet-list').append(cashOut);
+        $('#bet-list tbody').children('tr').remove();
+        $('#bet-list tbody').append(regular);
+        $('#bet-list tbody').append(cashOut);
     }
     
     $('#bet').val('0');
@@ -357,7 +356,7 @@ $(function() {
     $('#menu_doubleBalance').text(Player.doubleBalance.toFixed(0));
     
     //Работа со ставкой игрока    
-    $(document).on('click', '.add-to-bet', function() {
+    $(document).on('click', 'button[data-bet]', function() {
         var plus = $(this).data('bet');
         var val = parseInt($('#bet').val());
         if (isNaN(val)) val = 0;

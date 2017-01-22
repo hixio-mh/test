@@ -496,6 +496,26 @@ var Translation = {
                 history_title: {
                     text: 'История',
                     en: 'History'
+                },
+                bet: {
+                    text: 'Ставка',
+                    en: 'Bet'
+                },
+                payout: {
+                    text: 'Множитель',
+                    en: 'Payout'
+                },
+                win_condition: {
+                    text: 'Условие',
+                    en: 'Condition'
+                },
+                roll: {
+                    text: 'Выпало',
+                    en: 'Roll'
+                },
+                profit: {
+                    text: 'Выгода',
+                    en: 'Profit'
                 }
             }
         },

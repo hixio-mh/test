@@ -4,12 +4,6 @@
 .btn-opened {
     padding: 5px;
 }
-.bets {
-    display: -webkit-box !important;
-    display: flex !important;
-    justify-content: center;
-    margin: 5px;
-}
 .add-to-bet {
     margin: 0;
     border: none;
@@ -35,6 +29,12 @@
 .game-buttons span {
   font-size: 17px;
 }
+.bets {
+    display: -webkit-box !important;
+    display: flex !important;
+    justify-content: center;
+    margin: 5px;
+}
 
 #bet {
     text-align: right;
@@ -45,7 +45,7 @@
     .game-buttons span {
       font-size: 13px;
     }
-    #my_history th {
+    #my_history {
         font-size: 12px;
     }
 }
