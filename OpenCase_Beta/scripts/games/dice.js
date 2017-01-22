@@ -144,7 +144,7 @@ var Dice = {
     startGame: function(counter) {
         counter = typeof counter == 'number' ? counter : 0;
         var bet = parseInt($('#bet').val());
-        if (isNaN(bet) || bet < 0 || bet > Player.doubleBalance) return false;
+        if (isNaN(bet) || bet < 0 || bet > Player.doubleBalance || bet > Dice.betLimit) return false;
         
         var number = Math.rand(0, 9999);
         
@@ -166,7 +166,7 @@ var Dice = {
         $('#start_roll').prop('disabled', true);
         
         setTimeout(function() {
-            $('#start_roll').html(Localization.getString('dice.game.end_roll').replace('${1}', number));
+            $('#start_roll').html(Localization.getString('dice.game.end_roll', 'Rolled ${1}. Roll again?').replace('${1}', number));
 
             var profit = 0;
             if (playerWin) {
