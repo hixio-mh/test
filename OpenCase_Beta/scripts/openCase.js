@@ -77,12 +77,12 @@ var openCase = {
                 LOG.log({
                     action: 'Sell opened item',
                     case: {
-                        name: openCase.caseInfo.name,
+                        name: cases[openCase.caseId].name,
                         id: openCase.caseId
                     },
                     item: {
                         item_id: openCase.win.item_id,
-                        type: openCase.caseType == 'weapons' ? openCase.win.type : '',
+                        type: !openCase.caseType || openCase.caseType == 'weapons' ? openCase.win.type : '',
                         name: openCase.win.name
                     },
                     profit: doublePoints,
