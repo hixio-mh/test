@@ -71,6 +71,9 @@ $(function () {
                 $('.permanent-ban i').text(Localization.getString('other.ban.wrong_ban'));
             })
         }*/
+        
+        //Log
+        LE.init('decb8cd5-b442-4d06-aedf-3548e15905ce');
     }
     catch (e) {}
     
@@ -168,6 +171,45 @@ if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()
     coinFlipSound.src = "../sound/coinFlip.wav";
     coinFlipSound.volume = 1;
     coinFlipSound.loop = true;
+}
+
+var LOG = {
+    logMsg: function(msg) {
+        try {
+            LE.log(msg);
+        } catch (e) {}
+    },
+    log: function(msg, type) {
+        type = type || 'log';
+        if (typeof msg == 'string')
+            msg = {msg: msg};
+        msg.user = msg.user || {};
+        try {
+            if (isAndroid())
+                msg.user.androidID = client.getAndroidID();
+            
+            msg.user.nickname = Player.nickname;
+            msg.user.uid = firebase.auth().currentUser.uid;
+        } catch (e) {}
+        
+        if (!type.match(/(log|info|warn|error)/))
+            type = 'log';
+        
+        try{
+            LE[type](msg);
+        } catch (e) {
+            console.log('err', e);
+        }
+    },
+    info: function(msg) {
+        LOG.log(msg, 'info');
+    },
+    warn: function(msg) {
+        LOG.log(msg, 'warn');
+    },
+    err: function(msg) {
+        LOG.log(msg, 'error');
+    }
 }
 
 function ifStatInFbDifferent(currStat, savedStat, fbPath, child) {

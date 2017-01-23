@@ -78,6 +78,7 @@ $(function () {
     $(document).on('click', '.delete-message', function() {
         var msgKey = $(this).closest('.chat__message').data('msgkey');
         var msgText = $(this).closest('.message__info').children('.message__text').text();
+        var msgAuthor = $(this).closest('.message__info').find('.message__from').text()
         Lobibox.confirm({
             iconSource : 'fontAwesome',
             title : Localization.getString('chat.moderator.delete_msg.title'),
@@ -88,6 +89,13 @@ $(function () {
                     if (isAndroid()) {
                         client.sendToAnalytics('Chat', 'Модератор', "Модератор удалил сообщение.", msgText+' | '+Player.nickname);
                     }
+                    LOG.log({
+                        action: 'Moderator delete message',
+                        msg: {
+                            author: msgAuthor,
+                            text: msgText
+                        }
+                    })
                 }
             }
         });
@@ -195,8 +203,6 @@ var fbChat = (function (module) {
     }
     module.sendMsg = function (userName, text, img, country) {
         country = country || null;
-        var time = new Date();
-        time = "" + time;
         var uid = firebase.auth().currentUser.uid;
         firebase.database().ref('users/'+uid+'/moder/group').once('value', function(snapshot) {
             var group = snapshot.val() ;
@@ -204,7 +210,6 @@ var fbChat = (function (module) {
                 username: userName
                 , uid: uid
                 , text: text
-                , time: time
                 , img: img
                 , group: group
                 , country: country
@@ -213,6 +218,11 @@ var fbChat = (function (module) {
         })
         if (isAndroid())
             client.sendToAnalytics('Chat', 'Send message', "User send msg", text);
+        LOG.log({
+            action: 'Send chat message',
+            msg: text,
+            room: fbChat.chatRef.path.o[1] ? fbChat.chatRef.path.o[1] : ''
+        })
     }
     module.deleteMsg = function (msgKey) {
         module.chatRef.child(msgKey).remove();

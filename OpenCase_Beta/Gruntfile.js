@@ -98,7 +98,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('babel-core');
     grunt.loadNpmTasks('babel-preset-es2015');
 
-    grunt.registerTask('default', ['concat', 'webpack']);
+    grunt.registerTask('default', ['concat']);
     // grunt.registerTask('default', ['concat', 'uglify']);
 
 };

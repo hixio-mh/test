@@ -121,6 +121,16 @@ $(function () {
                         $('#block-chat-reason').text($this.getValue());
                         $('#block-chat').data('action', 'unblock');
                         if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор заблокировал чат", Player.nickname + ' заблокировал чат ' + $(".profile__name").text());
+                        LOG.warn({
+                            action: 'Moderator blocked chat',
+                            ban: {
+                                reason: $this.getValue(),
+                                user: {
+                                    uid: uid,
+                                    name: $(".profile__name").text()
+                                }
+                            }
+                        })
                     }
                 }
             });
@@ -133,6 +143,15 @@ $(function () {
             $('#block-chat-reason').text("Chat doesn't banned");
             $('#block-chat').data('action', 'block');
             if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор разблокировал чат", Player.nickname + ' разблокировал чат ' + $(".profile__name").text());
+            LOG.warn({
+                action: 'Moderator unblocked trades',
+                ban: {
+                    user: {
+                        uid: uid,
+                        name: $(".profile__name").text()
+                    }
+                }
+            })
         }
     })
     $(document).on('click', "#block-trade", function () {
@@ -154,6 +173,17 @@ $(function () {
                             $('#block-trade-reason').text($this.getValue());
                             $('#block-trade').data('action', 'unblock');
                             if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор заблокировал трейды", Player.nickname + ' заблокировал трейды ' + $(".profile__name").text());
+                            
+                            LOG.warn({
+                                action: 'Moderator blocked trades',
+                                ban: {
+                                    reason: $this.getValue(),
+                                    user: {
+                                        uid: uid,
+                                        name: $(".profile__name").text()
+                                    }
+                                }
+                            })
                         }
                     }
                 });
@@ -166,6 +196,15 @@ $(function () {
                 $('#block-trade-reason').text("Trades doesn't block");
                 $('#block-trade').data('action', 'block');
                 if (isAndroid()) client.sendToAnalytics('Profile', 'Модератор', "Модератор разблокировал трейды", Player.nickname + ' разблокировал трейды ' + $(".profile__name").text());
+                LOG.warn({
+                    action: 'Moderator unblocked trades',
+                    ban: {
+                        user: {
+                            uid: uid,
+                            name: $(".profile__name").text()
+                        }
+                    }
+                })
             }
         })
         // == End Moder menu ===
@@ -184,6 +223,9 @@ $(function () {
             $(".my-trades .trade__weapons__summ").hide();
             $('.trade-back').hide();
             showMyTrades();
+            LOG.log({
+                action: 'Check my trades',
+            })
         }
         else {
             $('.my-trades').hide();
@@ -245,7 +287,7 @@ $(function () {
             var convertedWeapons = tradeWeapons.map(function (item) {
                 return item.tradeObject();
             });
-            fbProfile.newTrade(uid, convertedWeapons, accepted, function () {
+            fbProfile.newTrade(uid, convertedWeapons, accepted, function (tradeInfo) {
                 console.log('Trade sended');
                 for (var i = 0; i < ids.length; i++) deleteWeapon(ids[i]);
                 $('#close-trade-window').click();
@@ -262,6 +304,13 @@ $(function () {
                     , msg: Localization.getString('profile.exchange.notification.trade_send')
                 });
                 if (isAndroid()) client.sendToAnalytics('Profile', 'Trades', 'Send trade', "To: " + uid + " Weapons: " + convertedWeapons.length);
+                LOG.log({
+                    action: 'Send trade',
+                    trade: {
+                        tradeID: tradeInfo.tradeID,
+                        weapons: convertedWeapons.length
+                    }
+                })
             })
         })
     })
@@ -463,6 +512,11 @@ $(function () {
         else {
             $('#make-trade').prop('disabled', true);
         }
+        
+        LOG.log({
+            action: 'Ready to trade',
+            tradeID: tradeID
+        })
     })
     $(document).on('click', '.trade-back', function () {
         if ($('.my-trades__trades-with-user').is(':visible')) {
@@ -576,6 +630,10 @@ $(function () {
                     $('.trades-with-user__trade[data-tradeid="' + tradeInfo.tradeID + '"]').addClass('canceled');
                     $('.trade-back').click();
                     if (isAndroid()) client.sendToAnalytics('Profile', 'Trades', 'Trade complete', "Trade canceled! tradeID: " + tradeID);
+                    LOG.log({
+                        action: 'Cancel trade',
+                        tradeID: tradeID
+                    })
                 });
             }
         })
@@ -601,6 +659,10 @@ $(function () {
                 $('.trades-with-user__trade[data-tradeid="' + tradeInfo.tradeID + '"]').addClass('done');
                 $('.trade-back').click();
                 if (isAndroid()) client.sendToAnalytics('Profile', 'Trades', 'Trade complete', "Trade done! tradeID: " + tradeID);
+                LOG.log({
+                    action: 'Make trade',
+                    tradeID: tradeID
+                })
             }
             else if (tradeInfo.player.getWeapons && tradeInfo.otherPlayer.getWeapons && tradeInfo.status != 'done') {
                 fbProfile.setTradeStatus(tradeID, 'done');
@@ -663,6 +725,12 @@ $(function () {
     })
     $(document).on('click', '.post__control__delete', function () {
         var key = $($(this).closest('li')[0]).data('key');
+        LOG.log({
+            action: 'Delete post from wall',
+            post: {
+                text: $(this).parents('li').find('.post__text').text()
+            }
+        })
         fbProfile.deletePost(uid, key);
     })
     $(document).on('click', '.rep', function () {
@@ -730,5 +798,15 @@ $(function () {
             , date: date
             , text: text
         });
+        
+        LOG.log({
+            action: 'Send post to wall',
+            post: {
+                uidFrom: uidFrom,
+                author: author,
+                date: date,
+                text: text
+            }
+        })
     }
 })

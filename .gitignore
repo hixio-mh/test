@@ -45,6 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-OpenCase/scripts/Minimize JS - Open Case.exe
 OpenCase/node_modules/**
+OpenCase_Beta/node_modules/**
 OpenCase/tests/**

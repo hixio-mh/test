@@ -258,7 +258,7 @@ var fbProfile = (function (module) {
             tradeID: newTradeKey
             , watched: false
         });
-        if (typeof callback == 'function') callback();
+        if (typeof callback == 'function') callback({tradeID: newTradeKey});
     }
     module.myTradeCount = function (unwatched, callback) {
         unwatched = typeof unwatched == 'undefined' ? true : unwatched;
