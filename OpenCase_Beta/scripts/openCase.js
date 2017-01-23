@@ -73,6 +73,21 @@ var openCase = {
                 if (isAndroid()) {
                     client.sendToAnalytics("Open case", "Selling weapon", "Player has sold weapon for  double points", doublePoints + " double points");
                 }
+                
+                LOG.log({
+                    action: 'Sell opened item',
+                    case: {
+                        name: openCase.caseInfo.name,
+                        id: openCase.caseId
+                    },
+                    item: {
+                        item_id: openCase.win.item_id,
+                        type: openCase.caseType == 'weapons' ? openCase.win.type : '',
+                        name: openCase.win.name
+                    },
+                    profit: doublePoints,
+                    balance: Player.doubleBalance
+                })
             });
             
             $(document).on("click", ".openCase", function() {
@@ -296,6 +311,19 @@ var openCase = {
         $(".weapons").scrollTop(160);
         
         openCase.status = 'endScroll';
+        
+        LOG.log({
+            action: 'Open Case',
+            case: {
+                name: openCase.caseInfo.name,
+                id: openCase.caseId
+            },
+            item: {
+                item_id: openCase.win.item_id,
+                type: openCase.caseType == 'weapons' ? openCase.win.type : '',
+                name: openCase.win.name
+            }
+        })
 
         //Statistic
         Level.addEXP(1);
