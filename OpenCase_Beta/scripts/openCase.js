@@ -320,7 +320,7 @@ var openCase = {
             },
             item: {
                 item_id: openCase.win.item_id,
-                type: openCase.caseType == 'weapons' ? openCase.win.type : '',
+                type: !openCase.caseType || openCase.caseType == 'weapons' ? openCase.win.type : '',
                 name: openCase.win.name
             }
         })
