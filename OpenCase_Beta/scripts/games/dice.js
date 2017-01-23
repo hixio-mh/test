@@ -17,6 +17,8 @@ var Dice = {
                 }
                 if (parseInt(betText) > Player.doubleBalance)
                     $('#bet').val(Player.doubleBalance);
+                if (parseInt(betText) > Dice.betLimit)
+                    $('#bet').val(Dice.betLimit);
             })
 
             $(document).on('click', '#oddsOverUnder', function() {
@@ -145,6 +147,11 @@ var Dice = {
         counter = typeof counter == 'number' ? counter : 0;
         var bet = parseInt($('#bet').val());
         if (isNaN(bet) || bet < 0 || bet > Player.doubleBalance || bet > Dice.betLimit) return false;
+        
+        if ($('#oddsPayout .btn-success').is(':visible'))
+            $('#oddsPayout .btn-success').click();
+        if ($('#oddsWinChance .btn-success').is(':visible'))
+            $('#oddsWinChance .btn-success').click();
         
         var number = Math.rand(0, 9999);
         
