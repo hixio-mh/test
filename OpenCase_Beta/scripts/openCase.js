@@ -315,7 +315,7 @@ var openCase = {
         LOG.log({
             action: 'Open Case',
             case: {
-                name: openCase.caseInfo.name,
+                name: cases[openCase.caseId].name,
                 id: openCase.caseId
             },
             item: {
