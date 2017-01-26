@@ -2,6 +2,7 @@
 <html><head>
 <title>Список кейсов</title>
     <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
@@ -20,12 +21,22 @@
 
 <script src="../scripts/navigationMenu.js"></script>
 <link rel="stylesheet" href="../css/navigationMenu.css">
-
+<style>
+    body {
+        margin: 1px;
+    }
+    .news {
+        text-align: center;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: bolder;
+    }
+</style>
 </head>
 <body data-localization="cases" data-inventory="no-load">
 	<div class="site-overlay"></div>
-	<div id="container" class="sosulki" style="background-position: 0 39px;">
-<div class="navigationBar"></div>
+	<div id="container" style="background-position: 0 39px;">
+        <div class="navigationBar"></div>
 
 <div class="popup" id="special-popup" data-loc-group="special_popup">
 <span id='closePopup'></span>
@@ -38,14 +49,24 @@
 <span id='closePopup'></span>
 <span data-loc="low_level"></span><br><a href="faq.html#js-local-question-rank" class="inline-link"><span data-loc="lvl_up">Как поднять ранг?</span></a>
 </div>
-<div class="cases">
-<div id="Default" class="casesBlock opened"><h1 data-loc="cases">Кейсы</h1></div>
-<div id="eSports" class="casesBlock closed"><h1 data-loc="esports">eSports</h1></div>
-<div id="Collection" class="casesBlock closed"><h1 data-loc="collections">Коллекции</h1></div>
-<div id="Souvenir" class="casesBlock closed"><h1 data-loc="souvenir">Сувенирные коллекции</h1></div>
-<div id="Workshop" class="casesBlock closed"><h1 data-loc="workshop">Мастерская</h1></div>
-<div id="Special" class="casesBlock closed"><h1 data-loc="special">Особые</h1></div>
-</div>
+    <div class='news well well-sm'>
+        <span data-loc='news'>
+            Vote for the next mini game <a href='https://www.patreon.com/posts/next-game-7877075' target="_blank">HERE</a>
+        </span>
+    </div>
+    <div class="cases">
+        <div id="Default" class="casesBlock opened"><h1 data-loc="cases">Кейсы</h1></div>
+        <div id="eSports" class="casesBlock closed"><h1 data-loc="esports">eSports</h1></div>
+        <div id="Collection" class="casesBlock closed"><h1 data-loc="collections">Коллекции</h1></div>
+        <div id="Souvenir" class="casesBlock closed"><h1 data-loc="souvenir">Сувенирные коллекции</h1></div>
+        <div id="Workshop" class="casesBlock closed"><h1 data-loc="workshop">Мастерская</h1></div>
+        <div id="Special" class="casesBlock closed"><h1 data-loc="special">Особые</h1></div>
+    </div>
+    <!--
+    <div class="capsules">
+        <div id="Capsules_default" class="casesBlock"><h1>Капсулы</h1></div>
+    </div>
+    -->
 <script>
 
 $(function () {

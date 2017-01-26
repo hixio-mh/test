@@ -91,6 +91,9 @@ var Translation = {
             }
         },
         cases: {
+            news: {
+                text: 'Проголосуйте за следующую мини-игру <a href="https://www.patreon.com/posts/next-game-7877075" target="_blank">ЗДЕСЬ</a>'
+            },
             page_name: {
                 text: 'Открыть кейсы',
                 en: 'Open Cases'
