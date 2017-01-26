@@ -616,8 +616,8 @@ var Translation = {
                     en: 'Buy:'
                 },
                 not_for_sale: {
-                    text: 'Это оружие не продается',
-                    en: 'This weapon is not for sale'
+                    text: 'Это предмет не продается',
+                    en: 'This item is not for sale'
                 }
             },
         },

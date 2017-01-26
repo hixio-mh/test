@@ -5000,56 +5000,88 @@ var Items = {
         type: "★ Sport Gloves",
         skinName: "Pandora's Box",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1JmMR1osbaqPQJz7ODYfi9W9eOmgZKbm_LLPr7Vn35cppIp2uvA896kiQW1-hdvMT30I9fHIAA9MFqDrlntkLru1J67v5nBmHp9-n51oZE8XSM"
     }, {
         id: 767,
         type: "★ Driver Gloves",
         skinName: "Lunar Weave",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAX1R3LjtQurWzLhRfwP_BcjZ97tC3l4u0m_7zO6-fx2oCsMAk07-Z9tmh0VDg8hZramigcoOQIFU6N1DZ-FK8lO_m0JS66oOJlyXrKxYjaQ"
     }, {
         id: 768,
         type: "★ Hand Wraps",
         skinName: "Spruce DDPAT",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DfVlxgLQFFibKkJQN3wfLYYgJK7dKyg5KKh8j3MrbeqWxD7dxOh-zF_Jn4xlCyrktsZmvxINLBdw9vNA7T_Fbrx73vjJPptJucnHdqvCJwsSyImBypwUYblwFxuLY"
     }, {
         id: 769,
         type: "★ Hand Wraps",
         skinName: "Leather",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DfVlxgLQFFibKkJQN3wfLYYgJK7dKyg5KKh8j4NrrFnm5D8fp8j-3I4IG7jgSy8xZpa2HyINXEdgZtMg7Q-gW5kObs15G9vZXIzyRiu3Zx4X3Zywv3308JRzw8kw"
     }, {
         id: 770,
         type: "★ Specialist Gloves",
         skinName: "Forest DDPAT",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDL_VhmpF18Jjj-zPyo_0hVuLphY4OiyuOoTDdgFoMArYrAS7l7_rg5W-7pzOmnRq7yUnty7YyRSzhUpEZ7Ft1_2ACQLJ0i7bxGA"
     }, {
         id: 771,
         type: "★ Moto Gloves",
         skinName: "Cool Mint",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDK_Dn2pf78l0tevN4InKhVGwogYxfWj1II6cdFQ9YgqBqAO7wry51Je8tZSawHc3vChw7S7byhK20hxLOuBxxavJFO0HS7A"
     }, {
         id: 772,
         type: "★ Moto Gloves",
         skinName: "Eclipse",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DeXEl7NwdOtbagFABs3OXNYgJP48i5hoOSlPvxDLnQhWJS18d9i-rKyoTwiUKt5RI4NWimIdLBcAFraVyE_Ae8kOjv1MW7uZTBmCNkvygh5XbYzkO0gklSLrs49Bcipm8"
     }, {
         id: 773,
         type: "★ Specialist Gloves",
         skinName: "Foundation",
         rarity: "extraordinary",
-        buy: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1h3LAVbv6mxFABs3OXNYgJR_Nm1nYGHnuTgDLTDl2VW7fpmguDV8LP4jVC9vh5yYWqldoSXcFM5ZlrRqATtwersh57tvMzAmiY2vyF0t3rYyRy3hRxPavsv26Lj6N29Hg"
     }, {
         id: 774,
