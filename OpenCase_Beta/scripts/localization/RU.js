@@ -4,9 +4,9 @@ var Translation = {
             short: 'RU',
             full: 'Русский',
         },
-        for_version: 1,
+        version: 2,
         author: 'VLADOS776',
-        date: '11.12.16' /* Day.Month.Year */
+        date: '24.01.17', /* Day.Month.Year */
     },
     
     translation: {
@@ -245,12 +245,12 @@ var Translation = {
             },
             scores: {
                 you: {
-                    text: 'Вы <span>0</span>',
-                    en: 'You <span>0</span>'
+                    text: 'Вы',
+                    en: 'You'
                 },
                 comp: {
-                    text: 'Противник <span>0</span>',
-                    en: 'Opponent <span>0</span>'
+                    text: 'Противник',
+                    en: 'Opponent'
                 }
             },
             you_add: {
@@ -463,7 +463,9 @@ var Translation = {
                         <p>Затем вы указываете размер вашей ставки и бросаете кость.</p> \
                         <p>После броска генерируется случайное число и, если это число удовлетворяет условию, игрок забирает свою ставку умноженную на множитель.</p> \
                         <p>Максимальная ставка - 50 000</p>',
-                    en: 'ee'
+                    en: '<p>Before you start the game you can change roll determiner, payout and win chance.</p> \
+                        <p>Then you input a bet amount and tap on the "Roll dice" button.</p> \
+                        <p>When you click on "Roll dice" button it will generate a random number. And if this number is satisfies the condition you will get your bet multiply by payout.</p>'
                 },
                 close: {
                     text: 'Закрыть',
@@ -612,6 +614,10 @@ var Translation = {
                 buy: {
                     text: 'Купить:',
                     en: 'Buy:'
+                },
+                not_for_sale: {
+                    text: 'Это оружие не продается',
+                    en: 'This weapon is not for sale'
                 }
             },
         },
@@ -706,6 +712,20 @@ var Translation = {
             send_post: {
                 text: 'Отправить',
                 en: 'Send'
+            },
+            delete_trade_confirm: {
+                confirm_text: {
+                    text: 'Вы действительно хотите удалить всю историю обмена с этим игроком?',
+                    en: 'Do you really want to delete all trades with this user?'
+                },
+                yes: {
+                    text: 'Да',
+                    en: 'Yes'
+                },
+                no: {
+                    text: 'Нет',
+                    en: 'No'
+                }
             },
             exchange: {
                 title: {
