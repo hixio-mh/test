@@ -4,6 +4,7 @@
 <head>
     <title>Профиль</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/fonts.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/rarity.css">
@@ -17,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="../css/winter.css">
     
     <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/weapons.js"></script>
     <script src="../scripts/fb-inventory.js"></script>
@@ -105,7 +107,7 @@
                             </div>
                             <div id='my-trades__your-offer'></div>
                         </div>
-                        <div class='checkbox-trade-ready'><input type='checkbox' id='you-ready-to-trade'></input><label for='you-ready-to-trade' id='locale-ready-to-trade' data-loc-group="status"><span data-loc="checkbox">Check this box when ready to trade.</span></label></div>
+                        <div class='checkbox-trade-ready'><label for='you-ready-to-trade' id='locale-ready-to-trade' data-loc-group="status"><input type='checkbox' id='you-ready-to-trade'><span data-loc="checkbox">Check this box when ready to trade.</span></label></div>
                         <div class='trade__weapons__summ_your-offer'>
                             <div class='your-offer__header'>
                                 <span class='other-player-ready not-ready' data-loc-group="status"><span data-loc="not_ready">Not ready</span></span>
@@ -157,7 +159,7 @@
                             <ul class='port-inventory inv-no-select summ-inventory summ-your-offer' id='summ-your-offer'>
                             </ul>
                         </div>
-                        <div class='checkbox-trade-ready'><input type='checkbox' id='trade-its-gift'></input><label for='trade-its-gift' id='locale-gift' data-loc-group='status'><span data-loc="gift">It's a gift.</span></label></div>
+                        <div class='checkbox-trade-ready'><label for='trade-its-gift' id='locale-gift' data-loc-group='status'><input type='checkbox' id='trade-its-gift'><span data-loc="gift">It's a gift.</span></label></div>
                         <div class='trade__weapons__summ_your-offer'>
                             <div class='your-offer__header'>
                                 <span class='other-player-ready not-ready' data-loc-group="status"><span data-loc='not_ready'>Not ready</span></span>
@@ -177,6 +179,22 @@
                     <button class='trade__button button_blue empty' id='back-step' data-loc="back">Back</button>
                     <button class='trade__button button_blue empty' id='next-step' data-loc="next">Next</button>
                     <button class='trade__button button_blue' id='send-trade' data-loc="send_trade">Send trade</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete trade Modal -->
+        <div id='delete-trade-modal' class='modal fade' role='dialog' data-loc-group='delete_trade_confirm'>
+            <div class='modal-dialog modal-sm'>
+                <div class='modal-content'>
+                    
+                    <div class='modal-body' data-loc='confirm_text'>
+                        Do you really want to delete all trades with this user?
+                    </div>
+                    <div class='modal-footer'>
+                        <button class='btn btn-danger' type='button' id='deleteTrades' data-loc="yes">Yes</button>
+                        <button class='btn btn-default' type='button' data-dismiss='modal' data-loc='no'>No</button>
+                    </div>
                 </div>
             </div>
         </div>

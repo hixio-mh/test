@@ -12,13 +12,22 @@
     <script src="../scripts/skinNames.js"></script>
     <script src="../scripts/prices.js"></script>
     <script src="../scripts/weapons.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/animate.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/rarity.css">
     <link rel="stylesheet" type="text/css" href="../css/fonts.css">
     <link rel="stylesheet" type="text/css" href="../css/buttons.css">
     <link rel="stylesheet" href="../css/lobibox.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/winter.css"> </head>
+    <link rel="stylesheet" type="text/css" href="../css/winter.css"> 
+
+    <style>
+        body {
+            background: #19212b;
+        }
+    </style>
+    
+</head>
 
 <body data-localization="open_case" data-inventory="no-load">
     <div class="weapons">
@@ -38,9 +47,9 @@
                 <button class="button_glass" id="double_sell_button"></button>
             </div>
         </div>
-        <button class="openCase" data-loc="open_case">Open Case</button>
+        <button class="openCase btn btn-success" data-loc="open_case">Open Case</button>
         <div><span id="opened-text" data-loc="opened">Opened:</span> <span id="opened">0</span></div>
-        <button id='what-i-can-win-Button' data-loc="what_in_case">What's in the case?</button>
+        <button id='what-i-can-win-Button' class='btn btn-info btn-sm' data-loc="what_in_case">What's in the case?</button>
         <div id="youCanWin" style='display:none' data-loc="you_can_win">You can win one of those items from collection</div>
         <ul class="weaponsList" style='display:none'> </ul>
     </div>

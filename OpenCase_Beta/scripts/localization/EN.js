@@ -4,9 +4,9 @@ var Translation = {
             short: 'EN',
             full: 'English',
         },
-        for_version: 1,
+        version: 2,
         author: 'VLADOS776',
-        date: '12.12.16' /* Day.Month.Year */
+        date: '24.01.17' /* Day.Month.Year */
     },
     
     translation: {
@@ -241,12 +241,12 @@ var Translation = {
             },
             scores: {
                 you: {
-                    rus: 'Вы <span>0</span>',
-                    text: 'You <span>0</span>'
+                    rus: 'Вы',
+                    text: 'You'
                 },
                 comp: {
-                    rus: 'Противник <span>0</span>',
-                    text: 'Opponent <span>0</span>'
+                    rus: 'Противник',
+                    text: 'Opponent'
                 }
             },
             you_add: {

@@ -27,7 +27,7 @@ $(function() {
     $('.round-count').text(round + '/' + totalRounds);
 });
 
-$('.add-item').on('click', function() {
+$('#add-items').on('click', function() {
     newGame();
     
     $('.js-loading-inventory').remove();
@@ -45,6 +45,8 @@ $(".choseItems").on("click", function() {
     var ids = [];
     var itemsCost = 0;
     
+    $('.winItems').show();
+    
     $(".inventoryItemSelected").each(function() {
         ids.push(parseInt($(this).data('id')));
     })
@@ -55,14 +57,14 @@ $(".choseItems").on("click", function() {
             return summ + current.price;
         }, 0)
         
-        $(".add-item").css("display", 'none');
+        $("#button_items").css("display", 'none');
         $(".closeInventory").click();
 
-        $('.winItems').append('<li id="whoBet">' + Localization.getString('rps.you_add') + '</li>');
-
-        for (var i = 0; i < winItems.length; i++) {
-            $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<i class="currency dollar">' + winItems[i].price + '</i>)<b class=' + winItems[i].rarity + '></b>');
-        }
+        var html = "<ul>";
+        for (var i = 0; i < winItems.length; i++)
+            html += '<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<span class="currency dollar">' + winItems[i].price + '</span>)<b class=' + winItems[i].rarity + '></b>';
+        $('.your-bet .panel-body').empty().html(html+'</ul>');
+        
         $('.status').html('<li id="js-loading-inventory" data-from="1"><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></li>');
         
         for (var i = 0; i < ids.length; i++) {
@@ -141,9 +143,10 @@ function botAddWeapon(itemsCost) {
         }
     }
     winItems = winItems.concat(botWeapons);
-    $('.winItems').append('<li id="whoBet">' + Localization.getString('rps.comp_add') + '</li>');
+    var html = "<ul>";
     for (var i = wpLength; i < winItems.length; i++)
-        $('.winItems').append('<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<i class="currency dollar">' + winItems[i].price + '</i>)<b class=' + winItems[i].rarity + '></b>');
+        html += '<li>' + winItems[i].type + ' | ' + winItems[i].name + ' (<span class="currency dollar">' + winItems[i].price + '</span>)<b class=' + winItems[i].rarity + '></b>';
+    $('.other-bet .panel-body').empty().html(html+'</ul>');
 }
 
 $('.choice__hand').on('click', function() {
@@ -167,12 +170,12 @@ function listener(e) {
     if (whoWin == 'player') {
         yourScore++;
         round++;
-        $('.your-score span').text(yourScore);
+        $('.your-score strong').text(yourScore);
         $('.status').text(Localization.getString('rps.status.round_win'));
     } else if (whoWin == 'comp') {
         enemyScore++;
         round++;
-        $('.comp-score span').text(enemyScore);
+        $('.comp-score strong').text(enemyScore);
         $('.status').text(Localization.getString('rps.status.round_lost'));
     } else {
         $('.status').text(Localization.getString('rps.status.round_tie'));
@@ -194,27 +197,32 @@ function newGame() {
     round = 1;
     yourScore = 0;
     enemyScore = 0;
+    
+    $('.battle-field').removeClass('panel-success panel-danger');
+    $('.battle-field').addClass('panel-primary');
 
-    $('.your-score span').text(yourScore);
-    $('.comp-score span').text(enemyScore);
+    $('.your-score strong').text(yourScore);
+    $('.comp-score strong').text(enemyScore);
     $('.round-count').text(round + '/' + totalRounds);
-
-    $('.winItems').html('');
 
     $('#js-player-img').attr('src', '../images/rps/rock.png');
     $('#js-comp-img').attr('src', '../images/rps/rock.png');
 }
 
 function endGame(playerWin) {
+    $('.battle-field').removeClass('panel-primary');
     if (playerWin) {
         $('.status').text(Localization.getString('rps.status.win'));
         for (var i = 0; i < winItems.length; i++) {
             winItems[i]['new'] = true;
         }
+        
+        $('.battle-field').addClass('panel-success');
         saveWeapons(winItems);
         Level.addEXP(2);
         statisticPlusOne('rps-wins');
     } else {
+        $('.battle-field').addClass('panel-danger');
         $('.status').text(Localization.getString('rps.status.lost'));
         statisticPlusOne('rps-loose');
     }
@@ -226,7 +234,7 @@ function endGame(playerWin) {
     enemyScore = 0;
 
     $(".choice").css("display", 'none');
-    $(".add-item").css("display", 'block');
+    $("#button_items").css("display", 'block');
     checkInventoryForNotification();
 }
 

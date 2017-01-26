@@ -81,29 +81,12 @@ body {
 
 .buttons {
     text-align: center;
-}
-
-#addItems {
-    margin: 10px auto;
-    display: inline-block;
-    background: linear-gradient(to bottom, #00953b, #006910);
-    line-height: 35px;
-    color: #fff;
-    font-weight: bold;
-    border: 1px solid #02a543;
-    font-family: monospace;
+    margin: 10px 0;
 }
 
 #diffuculty {
     display: inline-block;
-    background: none;
-    color: #Fff;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    padding: 11px 5px;
-}
-
-#diffuculty option {
-    background: #19212B;
+    width: auto;
 }
 
 .items {
@@ -378,20 +361,6 @@ td i {
     background: #3C8698;
     padding: 4px;
     border-radius: 2px;
-}
-
-.choseItems {
-    background: linear-gradient(to bottom, #00953b, #006910);
-    display: block;
-    line-height: 35px;
-    color: #fff;
-    font-weight: bold;
-    border: 1px solid #02a543;
-    font-family: monospace;
-    margin: 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 .room-select-modal__title {

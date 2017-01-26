@@ -3,6 +3,7 @@
 
 <head>
     <meta charset = "utf-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/fonts.css">
     <link rel="stylesheet" type="text/css" href="../css/animate.css">
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="../css/winter.css">
     
     <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
     <script src="../scripts/winter.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="../scripts/navigationMenu.js"></script>
@@ -36,16 +38,22 @@
 
 <body data-localization="chat" data-inventory='no-load'>
     <div class="site-overlay"></div>
-    <div class='container' id="container">
+    <div id="container">
         <div class="navigationBar" data-menu-EN="Chat" data-menu-RU="Чат"></div>
         <div id="login" style='display: none;' data-loc-group="login">
-            <input type="text" class="input-text" placeholder="Email" id="email"></input>
-            <input type="password" class="input-text" placeholder="Password" id="password"></input>
+            <div class='input-group input-group-sm'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-user'></i></span>
+                <input type="text" class="form-control" placeholder="Email" id="email"></input>
+            </div>
+            <div class='input-group input-group-sm'>
+                <span class='input-group-addon'><i class='glyphicon glyphicon-lock'></i></span>
+                <input type="password" class="form-control" placeholder="Password" id="password"></input>
+            </div>
             <input type="text" placeholder="Nickname" id="nickname" class="input-text" style='display: none;'></input>
-            <span id="login-status"></span>
+            <span id="login-status" class='text-danger'></span>
             <div id="login__buttons">
-                <div id='login-buttons-container'><button class="button_blue" onclick="fbProfile.login();" id="loginButton" data-loc="sign_in">Sign in</button>
-                <button class="button_blue empty" id="registerButton" data-loc="register">Register</button>
+                <div id='login-buttons-container'><button class="btn btn-primary btn-sm" onclick="fbProfile.login();" id="loginButton" data-loc="sign_in">Sign in</button>
+                <button class="btn btn-primary btn-sm empty text-primary" id="registerButton" data-loc="register">Register</button>
                 </div>
                 <div>
                     <a href="#" id="forgot-pass" data-loc="forgot_pass">Forgot password?</a>
@@ -60,10 +68,15 @@
     
         <div id="chat">
             <ul class="chat__messages"> </ul>
-            <div class="chat__write">
-                <div class="input-text" contenteditable="true" id="chat__new-message" max="120"></div>
-                <!--<input name="file" type="file" class="cloudinary-fileupload"></input>-->
-                <input class="button_blue" type="button" id="chat__send-new-message" value="Send"/ data-loc="send_message">
+            <div class="chat__write panel-footer">
+                <div class='input-group input-group-sm'>
+                    <div type='text' class="form-control" contenteditable="true" id="chat__new-message" max="120" placeholder="Your message..."></div>
+                    <div class='input-group-btn'>
+                        <button class="btn btn-primary" type="button" id="chat__send-new-message">
+                            <i class='glyphicon glyphicon-send'></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 <title>Джекпот</title>
     <meta charset="utf-8">
 <!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/rarity.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
@@ -50,8 +51,8 @@
 <div class="win"></div>
 <div id="players"></div>
 <div class='buttons'>
-	<button id="addItems" data-loc="add_items">Add Items</button>
-	<select id="diffuculty" data-loc-group="difficulty">
+	<button id="addItems" class='btn btn-success' data-loc="add_items">Add Items</button>
+	<select class='form-control' id="diffuculty" data-loc-group="difficulty">
 		<option value="1" data-min="0.1" data-max="5" data-loc='1'>Easy peasy $0.1 - $5</option>
 		<option value="2" data-min="5" data-max="30" data-loc='2'>Easy $5 - $30</option>
 		<option value="3" data-min="30" data-max="80" data-loc='3'>Normal $30 - $80</option>
@@ -66,7 +67,7 @@
 <span id="intentory-Player"></span>
 <div class="closeInventory"></div>
 <ul class="inventory inv-price-counter"></ul>
-<button class="choseItems" data-loc="choose_items">Add selected</button>
+<button class="choseItems btn btn-success btn-block" data-loc="choose_items">Add selected</button>
 </div>
 
 </div>

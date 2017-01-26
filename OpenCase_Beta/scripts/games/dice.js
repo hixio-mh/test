@@ -8,8 +8,6 @@ var Dice = {
             
             $(document).on('click', '#start_roll', Dice.startGame);
             
-            //Dice.odometer = new Odometer({})
-            
             $('#bet').on('keyup', function() {
                 var betText = $('#bet').val();
                 if (betText.match(/\D+/)) {
@@ -64,8 +62,6 @@ var Dice = {
                     }, 1000);
                 }
             });
-            
-            //$(document).on('click', '#how-to-play', Dice.howToPlayModal());
 
             $(document).on('click', '#oddsPayout, #oddsWinChance', function() {
                 if ($(this).hasClass('opened')) return;
@@ -196,6 +192,15 @@ var Dice = {
                 condition: condition,
                 random: number,
                 profit: profit,
+            });
+            LOG.log({
+                action: 'Dice end game',
+                bet: bet,
+                payout: parseFloat($('#oddsPayout').text()),
+                condition: condition,
+                random: number,
+                profit: profit,
+                playerWin: playerWin
             })
         }, 2000);
     },

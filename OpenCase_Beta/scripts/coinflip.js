@@ -41,7 +41,7 @@ var CoinFlip = {
             });
 
             for (var i = 0; i < CoinFlip.Games.length; i++) {
-                list += "<tr><td class='table-name'><img src='../images/ava/" + CoinFlip.Games[i].bot.img + "'><span>" + CoinFlip.Games[i].bot.name + "</span></td><td>" + CoinFlip.Games[i].bot.weapons.length + " items</td><td>$" + CoinFlip.Games[i].bot.items_cost.toFixed(2) + "</td><td><span class='join " + CoinFlip.Games[i].color + "' data-game-id=" + i + ">" + Localization.getString('coinflip.table.join') + "</span></td></tr>";
+                list += "<tr><td class='table-name'><img src='../images/ava/" + CoinFlip.Games[i].bot.img + "'><span>" + CoinFlip.Games[i].bot.name + "</span></td><td>" + CoinFlip.Games[i].bot.weapons.length + "</td><td><span class='currency dollar'>" + CoinFlip.Games[i].bot.items_cost.toFixed(2) + "</span></td><td><span class='join " + CoinFlip.Games[i].color + " btn' data-game-id=" + i + ">" + Localization.getString('coinflip.table.join') + "</span></td></tr>";
             }
             $('.games').append(list);
             $('#js-table-loading-gif').remove();
@@ -59,7 +59,7 @@ var CoinFlip = {
                 $('#coin').removeClass();
             });
             
-            $(document).on('click', '.addWeapons', function() {
+            $(document).on('click', '#addWeapons', function() {
                 CoinFlip.PlayerInGame = $(this).data('game-id');
                 Sound("click", "play");
                 $('.js-loading-inventory').remove();
@@ -120,7 +120,7 @@ var CoinFlip = {
         })
     },
     showGame: function(game_id) {
-        $('.addWeapons').removeClass('hide');
+        $('#addWeapons').removeClass('hide');
         $('.game__bot__nick').text(CoinFlip.Games[game_id].bot.name);
         $('.game__bot__img').attr('src', '../images/ava/' + CoinFlip.Games[game_id].bot.img);
         $('.game__bot__price').text('$' + CoinFlip.Games[game_id].bot.items_cost.toFixed(2));
@@ -144,7 +144,7 @@ var CoinFlip = {
             $('.bot-inventory').append(weaponInfo);
         }
         if (CoinFlip.PlayerInGame === false && typeof CoinFlip.Games[game_id].winner == 'undefined') {
-            $('.player-inventory').append('<tr><td class="addWeapons" data-game-id="' + game_id + '">' + Localization.getString('coinflip.add_items') + '</td></tr>');
+            $('.player-inventory').append('<tr><td colspan="3"><button id="addWeapons" class="btn btn-sm btn-success btn-block" type="button" data-game-id="' + game_id + '">' + Localization.getString('coinflip.add_items') + '</button></td></tr>');
             $('.game__start').css('display', 'none');
 
         } else if (typeof CoinFlip.Games[game_id].winner == 'undefined' && CoinFlip.PlayerBet.weapons.length != 0) {
@@ -159,7 +159,7 @@ var CoinFlip = {
 
             if (CoinFlip.PlayerBet.weapons.length < CoinFlip.maxPlayerWeapons) {
                 maxItems = CoinFlip.maxPlayerWeapons - CoinFlip.PlayerBet.weapons.length;
-                $('.player-inventory').append('<tr><td colspan="3" class="addWeapons" data-game-id="' + game_id + '">' + Localization.getString('coinflip.add_items') + '</td></tr>');
+                $('.player-inventory').append('<tr><td colspan="3"><button id="addWeapons" class="btn btn-sm btn-success btn-block" type="button" data-game-id="' + game_id + '">' + Localization.getString('coinflip.add_items') + '</button></td></tr>');
             }
 
             var sum = CoinFlip.Games[game_id].bot.items_cost + CoinFlip.PlayerBet.items_cost;
@@ -198,7 +198,7 @@ var CoinFlip = {
         animation = win;
 
         $('.game__start').css('display', 'none');
-        $('.addWeapons').addClass('hide');
+        $('#addWeapons').addClass('hide');
 
         $('.coin-blur').removeClass('hide');
         $('#coin-flip-cont').removeClass('hide');

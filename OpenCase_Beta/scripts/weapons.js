@@ -1,14 +1,46 @@
-function Item() {
-    this.can = {
-        buy: true,
-        sell: true,
-        trade: true
+var item_proto = {
+    getImgUrl: function(big) {
+        var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/";
+        prefix = window.location.protocol == "http:" ? prefix.replace("https", "http") : prefix;
+        var postfix = "/124fx124f";
+        var postfixBig = "/383fx383f";
+        if (typeof this.img == 'undefined') return "../images/none.png";
+        if (this.img.indexOf("images/") != -1)
+            if (typeof big != "undefined") {
+                return this.img.replace(postfix, postfixBig);
+            }
+            else {
+                return this.img;
+            }
+        else if (this.img.indexOf(".png") != -1) return "../images/Weapons/" + this.img;
+        else if (this.img.indexOf("steamcommunity") == -1) {
+            if (typeof big != "undefined") return prefix + this.img + postfixBig;
+            else return prefix + this.img + postfix;
+        }
+        else
+        if (typeof big != "undefined") {
+            return this.img.replace(postfix, postfixBig);
+        }
+        else {
+            return this.img;
+        }
     }
 }
 
+function Item(config, type) {
+    if (!type && config.quality == 5)
+        return new Sticker(config);
+    type = type || 'Weapon';
+    if (type.match(/weapons?/i))
+        type = 'Weapon';
+    else if (type.match(/(sticker|capsule)s?/i))
+        type = 'Sticker'
+    if (!window[type])
+        return null;
+    return new window[type](config);
+}
+
 function Weapon(item_id, quality, stattrak, souvenir, isNew) {
-    //Получаем свойства от Item
-    Item.apply(this);
     if (typeof item_id == 'object') {
         quality = item_id.quality || 0;
         stattrak = item_id.stattrak || item_id.statTrak || false;
@@ -18,9 +50,13 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
     }
     if (item_id > Items.weapons.length)
         item_id = 0;
+    
+    // Const
+    this.itemType = 'weapon';
+    
     var qualityNotSet = false;
     if (typeof quality == 'undefined')
-        qualityNotSet = true;
+        qualityNotSet = true;    
     this.item_id = item_id || 0;
     this.quality = quality || 0;
     this.stattrak = stattrak || false;
@@ -46,12 +82,13 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
 
     //this.can.inCase - 
     //Для оружия, которое удалили из коллекции. Например Howl в Huntsman.
-
+    
+    this.can = {};
     this.rarity = this.old.rarity;
     this.old.can = this.old.can || {};
-    this.can.sell = typeof this.old.can.sell != 'undefined' ? this.old.can.sell : this.can.sell;
-    this.can.buy = typeof this.old.can.buy != 'undefined' ? this.old.can.buy : this.can.buy;
-    this.can.trade = typeof this.old.can.trade != 'undefined' ? this.old.can.trade : this.can.trade;
+    this.can.sell = typeof this.old.can.sell != 'undefined' ? this.old.can.sell : true;
+    this.can.buy = typeof this.old.can.buy != 'undefined' ? this.old.can.buy : true;
+    this.can.trade = typeof this.old.can.trade != 'undefined' ? this.old.can.trade : true;
     this.can.contract = typeof this.old.can.contract != 'undefined' ? this.old.can.contract : true;
     this.can.bot = typeof this.old.can.bot != 'undefined' ? this.old.can.bot : true;
     this.can.inCase = typeof this.old.can.inCase != 'undefined' ? this.old.can.inCase : true;
@@ -67,6 +104,8 @@ function Weapon(item_id, quality, stattrak, souvenir, isNew) {
 }
 
 // === Prototypes ===
+
+Weapon.prototype = Object.create(item_proto);
 
 Weapon.prototype.collection = function () {
     if (this.type.indexOf('★') == -1) {
@@ -190,32 +229,8 @@ Weapon.prototype.specialText = function () {
         return ''
 }
 
-Weapon.prototype.getImgUrl = function(big) {
-    var prefix = "https://steamcommunity-a.akamaihd.net/economy/image/";
-    prefix = window.location.protocol == "http:" ? prefix.replace("https", "http") : prefix;
-    var postfix = "/124fx124f";
-    var postfixBig = "/383fx383f";
-    if (typeof this.img == 'undefined') return "../images/none.png";
-    if (this.img.indexOf("images/") != -1)
-        if (typeof big != "undefined") {
-            return this.img.replace(postfix, postfixBig);
-        }
-        else {
-            return this.img;
-        }
-    else if (this.img.indexOf(".png") != -1) return "../images/Weapons/" + this.img;
-    else if (this.img.indexOf("steamcommunity") == -1) {
-        if (typeof big != "undefined") return prefix + this.img + postfixBig;
-        else return prefix + this.img + postfix;
-    }
-    else
-    if (typeof big != "undefined") {
-        return this.img.replace(postfix, postfixBig);
-    }
-    else {
-        return this.img;
-    }
-
+Weapon.prototype.titleText = function () {
+    return this.specialText() + this.type + " | " + this.name
 }
 
 // === Functions ===
@@ -302,8 +317,80 @@ function getQualityNum(quality) {
 }
 
 function Sticker(config) {
-    Item.apply(this);
+    this.itemType = 'sticker';
     
+    if (typeof config == 'number')
+        config = {item_id: config};
+    
+    this.item_id    = config.item_id || 0;
+    this.type       = config.type || 'Sticker';
+    this.new        = config.new || false;
+    this.price      = 0;
+    this.raw        = getStickerById(this.item_id);
+    if (this.raw == null) {
+        return
+    }
+    this.img        = this.raw.img;
+    this.name       = this.raw.name;
+    this.quality    = this.raw.quality || '';
+    this.rarity     = this.raw.rarity || 'high';
+    this.tournament = this.raw.tournament || null;
+}
+Sticker.prototype = Object.create(item_proto);
+
+Sticker.prototype.saveObject = function () {
+    return {
+        item_id: this.item_id,
+        quality: 5,
+        stattrak: null,
+        souvenir: null,
+        new: this.new
+    }
+}
+
+function getItemsByID(IDs, type) {
+    var result = [];
+    var func = "getWeaponById";
+    if (type && type.match(/stickers?/i)) {
+        func = "getStickerById";
+    }
+    for (var i = 0; i < IDs.length; i++) {
+        result.push(window[func](IDs[i]));
+    }
+    return result;
+}
+
+function getItemByID(id, type) {
+    type = type || 'weapons';
+    
+    if (!Items[type] || id > Items[type].length)
+        return null
+
+    var func = "getWeaponById";
+    if (type && type.match(/stickers?/i)) {
+        func = "getStickerById";
+    }
+    
+    return window[func](id);
+}
+
+function getStickerById(id) {
+    if (typeof id != 'number') return null;
+    if (id > Items.stickers.length) return null;
+    try {
+        if (Items.stickers[id].id == id) {
+            return Items.stickers[id]
+        } else {
+            for (var i = 0; i < Items.stickers.length; i++)
+                if (Items.stickers[i].id === id) {
+                    return Items.stickers[i];
+                    break;
+                }
+            return null;
+        }
+    }catch (e) {
+        return null;
+    }
 }
 
 // === Items ===
@@ -5263,5 +5350,21 @@ var Items = {
             specialCase: false
         },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1JmMR1osbaqPQJz7ODYfi9W9eO6nYeDg8j2P67UqWNU6dNoteXA54vwxlbi-0duYWulLIHDcVdtNF7S_VDrwb_vgpe-tJXNwXdmvChwtnjUnEGpwUYb1m-kts8"
+    }],
+    stickers: [{
+        id: 0,
+        name: "Skull Troop",
+        rarity: 'high',
+        img: '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXQ9QVcJY8gulRYQkrFeOesx9zGX1g7Ng9CurajPhNy3PzHYQJO7c6xkc7fwvagMr-DwTIB7Z0g3bjA9Nrz3ATj_RI6Y26hJI6RdQ82Zl2B_lC8366x0gyLUcSS'
+    }, {
+        id: 1,
+        name: 'Bombsquad',
+        rarity: 'high',
+        img: 'https://steamcommunity-a.akamaihd.net/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXQ9QVcJY8gulRYQkrFeOesx9zGX1g7IApRo4WnJApiwOLdcDl94N2kk4XFkfKmNr-Izz4C68B1ieyS9NuijFGyr0s-ZjymJNfBIFA2NV6B_FLqlfCv28HBhzn9xA/360fx360f'
+    }, {
+        id: 2,
+        name: 'Unicorn (Holo)',
+        rarity: 'remarkable',
+        img: '-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXQ9QVcJY8gulRYQkrFeOesx9zGX1g7MApetbW3JTho3P_HTjFD_tuz2oaNwK_3ZeqIwj0FusEn3OuX89-j0Q3lrkM-N2HzLYGVJgRqYwnRqwWggbC42qqHM58'
     }]
 }

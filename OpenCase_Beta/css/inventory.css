@@ -152,6 +152,13 @@
     background-position: 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), bottom, 20px 0, calc(100% - 20px) 100%, 0;
     background-size: 7px, 7px, 7px, 7px, 60px, 19px 7px, 19px 7px, 100%;
 }
+.fullWeaponInfo table {
+    background: #E9E9E9;
+    color: #535353;
+}
+.fullWeaponInfo table td {
+    padding: 0 2px;
+}
 .info-closed {
   max-height: 0;
 }

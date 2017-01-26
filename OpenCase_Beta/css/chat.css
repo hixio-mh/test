@@ -1,10 +1,10 @@
 body {
   background: #e6e6e6;
 }
-input, .input-text {
-  display: block;
-	margin: 3px;
+#container {
+    height: 100%;
 }
+
 #firechat-wrapper {
     padding-top: 10px;
 }
@@ -17,6 +17,11 @@ input, .input-text {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    height: 100%;
+    justify-content: center;
+}
+#login > * {
+    margin: 2px 0;
 }
 #login__buttons > button {
     margin: 0px 3px;
@@ -47,6 +52,13 @@ input, .input-text {
 }
 .button_blue {
     padding: 5px !important;
+}
+.chat__rooms-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 .chat__rooms {
     display: -webkit-box;
@@ -84,6 +96,7 @@ ul.chat__messages {
     list-style: none;
     background: #e6e6e6;
     margin-top: 0;
+    padding-bottom: 30px;
 }
 li.chat__message {
     margin: 15px 0;
@@ -200,26 +213,22 @@ li.chat__message a img[data-userid] {
 }
 
 .chat__write {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+    padding: 5px;
+    border-radius: 0;
 }
 #chat__new-message {
     flex-grow: 2;
-	  margin-bottom: 0;
-    height: auto;
+    margin-bottom: 0;
     word-break: break-all;
+    height: auto;
+    min-height: 30px;
 }
 #login-status {
-    color: #cf0000;
     font-size: 0.9em;
-    margin-bottom: 5px;
 }
 #forgot-pass {
     color: #858DA2;
@@ -234,12 +243,13 @@ li.chat__message a img[data-userid] {
 }
 
 .chat__rooms__info {
-    padding:5px;
+    padding: 5px;
     border-top: 1px solid rgba(0,0,0,0.2);
     text-align: center;
-    margin-top:320px;
+    align-self: flex-end;
+    margin-top: auto;
+    width: 100%;
 }
-
 /* === VIP === */
 .vip a:nth-child(1)::before {
     display: block;

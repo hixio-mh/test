@@ -271,8 +271,8 @@ var fbChat = (function (module) {
             for (key in messages) {
                 newMsg(key, messages[key]);
             }
-            $("html, body").animate({
-                    scrollTop: $(document).height()
+            $("#container").animate({
+                    scrollTop: $('#chat').height()
             }, 500);
         })
         
@@ -280,9 +280,9 @@ var fbChat = (function (module) {
             if (!newItems) return;
             if ($("li[data-msgkey='" + data.key + "']").length == 0) {
                 newMsg(data.key, data.val());
-                if ($(window).scrollTop() + $(window).height() > $(document).height() - 150)
-                    $("html, body").animate({
-                        scrollTop: $(document).height()
+                if ($('#container').scrollTop() + $('#container').height() > $('#chat').height() - 250)
+                    $("#container").animate({
+                        scrollTop: $('#chat').height()
                     }, 200);
             }
         });

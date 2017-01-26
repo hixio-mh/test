@@ -260,6 +260,12 @@ var fbProfile = (function (module) {
         });
         if (typeof callback == 'function') callback({tradeID: newTradeKey});
     }
+    module.deleteTradesWithUser = function(uid, callback) {
+        var tradesRef = firebase.database().ref('tradeList/'+firebase.auth().currentUser.uid+'/'+uid);
+        
+        tradesRef.remove();
+        callback(true);
+    }
     module.myTradeCount = function (unwatched, callback) {
         unwatched = typeof unwatched == 'undefined' ? true : unwatched;
         var tradeListRef = firebase.database().ref('tradeList/' + firebase.auth().currentUser.uid).once('value').then(function (snapshot) {

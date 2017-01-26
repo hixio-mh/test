@@ -3,6 +3,7 @@
 <head>
 <title>Монетка</title>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
@@ -14,11 +15,15 @@
 </head>
 <body data-localization='coinflip'>
 	<div class="site-overlay"></div>
-<div class='container' id="container">
+<div id="container">
 <div class="navigationBar" data-menu-EN="Coinflip" data-menu-RU="Монетка"></div>
-	<table class='games' data-loc-group="table">
-		<tr><th id='local-table-players' data-loc="players">Players</th><th id='local-table-items' data-loc="items">Items</th><th colspan=2 id='local-table-total' data-loc="worth">Worth</th></tr>
-		<tr id='js-table-loading-gif'><td colspan =4><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></td></tr>
+	<table class='games table table-striped' data-loc-group="table">
+        <thead>
+            <tr><th data-loc="players">Players</th><th data-loc="items">Items</th><th colspan=2 data-loc="worth">Worth</th></tr>
+        </thead>
+        <tbody>
+            <tr id='js-table-loading-gif'><td colspan =4><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></td></tr>
+        </tbody>
 	</table>
 
 	<!-- Инвентарь -->
@@ -26,7 +31,7 @@
 		<span id="intentory-Player"></span>
 		<div class="closeInventory"></div>
 		<ul class="inventory inv-price-counter"></ul>
-		<button class="choseItems" data-loc="choose_items">Внести</button>
+		<button class="choseItems btn btn-success btn-block" data-loc="choose_items">Внести</button>
 	</div>
 
 	<!-- Предметы в игре -->
@@ -49,7 +54,7 @@
 								<span class='game__player__chance'>0%</span>
 							</div></td>
 					</tr></table>
-				<div class='game__start' style='display: none'><span class='game__start__button' data-loc="start_game">Start</span></div>
+				<div class='game__start' style='display: none'><span class='game__start__button btn' data-loc="start_game">Start</span></div>
 				<table class="inventory-tables-holder">
 					<tr>
 						<td><table class='bot-inventory'></table></td>
@@ -67,6 +72,7 @@
 			</div>
 		</div>
 <script src="../scripts/build/libs.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
 <script src="../scripts/main.js"></script>
 <script src="../scripts/settings.js"></script>
 <script src="../scripts/weapons.js"></script>

@@ -15,8 +15,15 @@ $(function() {
         var newPrice = $("#weaponPrice").text();
         newPrice = isNaN(parseInt(newPrice[0])) ? newPrice.substr(1, newPrice.length - 1) : newPrice;
         newPrice = parseFloat(newPrice) * 100 * count;
-        $("#buy-double").html(newPrice.toFixed(0));
+        $("#buy-double span").html(newPrice.toFixed(0));
     });
+    
+    $("#search_text").on('keydown', function (event) {
+        if (event.keyCode == 13) {
+            $("#search_button").click();
+            event.preventDefault();
+        }
+    })
 });
 
 $(document).ready(function() {
@@ -26,9 +33,7 @@ $(document).ready(function() {
     for (var i = 0; i < Items.weapons.length; i++) {
         var tp = Items.weapons[i].type;
         var name = getSkinName(Items.weapons[i].skinName, Settings.language);
-        Items.weapons[i].can = Items.weapons[i].can || {};
-        var canBuy = typeof Items.weapons[i].can.buy == 'undefined' ? true : Items.weapons[i].buy;
-        if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1 && canBuy) autocompleteTags.push(tp + ' | ' + name);
+        if ($.inArray(tp + ' | ' + name, autocompleteTags) == -1) autocompleteTags.push(tp + ' | ' + name);
     }
 
     $("#search_text").autocomplete({
@@ -55,15 +60,17 @@ $(document).ready(function() {
         }
     } else {
         for (var i = 0; i < parseInt(getStatistic("market-sales-count")); i++) {
-            Sales.push(new Weapon(JSON.parse(getStatistic("market-sales-weapon-" + i))));
+            var raw = JSON.parse(getStatistic("market-sales-weapon-" + i));
+            Sales.push(new Weapon(raw));
+            Sales[i].soldOut = raw.soldOut;
         }
     }
 
     if (Sales.length) {
         var SalesHTML = "";
         for (var i = 0; i < Sales.length; i++) {
-            SalesHTML += "<div class='sales-weapon animated zoomIn " + (Sales[i].soldOut ? "sold-out" : "") + "' data-weapon-info-json='" + JSON.stringify(Sales[i].saveObject()) + "' data-sales-id='" + i + "' data-discount='" + discount + "'><span class='sales-discount'>" + discount + "%</span><img src=\"" + getImgUrl(Sales[i].img, 1) + "\"><span class='sales-weapon-name'>" + Sales[i].type + " | " + Sales[i].name + "</span><div class='prices'><span class='prices_old-price currency dollar'>" + (Sales[i].price * (100 + discount) / 100).toFixed(2) + "</span> <span class='prices_new-price currency dollar'>" + Sales[i].price + "</span></div></div>";
-            saveStatistic("market-sales-weapon-" + i, JSON.stringify(Sales[i].saveObject()));
+            SalesHTML += "<div class='sales-weapon animated zoomIn " + (Sales[i].soldOut ? "sold-out" : "") + "' data-weapon-info-json='" + JSON.stringify(Sales[i].saveObject()) + "' data-sales-id='" + i + "' data-discount='" + discount + "'><span class='sales-discount'>" + discount + "%</span><img src=\"" + getImgUrl(Sales[i].img, 1) + "\"><span class='sales-weapon-name'>" + Sales[i].type + " | " + Sales[i].name + "</span><div class='prices'><span class='prices_old-price currency dollar'>" + Sales[i].price + "</span> <span class='prices_new-price currency dollar'>" + (Sales[i].price * (100 - discount) / 100).toFixed(2) + "</span></div></div>";
+            //saveStatistic("market-sales-weapon-" + i, JSON.stringify(Sales[i].saveObject()));
         }
         saveStatistic("lastSalesUpdate", '' + today);
         saveStatistic("market-sales-count", '' + Sales.length);
@@ -72,6 +79,7 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.item, .sales-weapon', function() {
+    $("#buy-double").prop('disabled', false);
     if ($(this).hasClass('sold-out')) return false;
     var saleId = -1;
     if (typeof $(this).data('weapon-info-json') != 'undefined') var weapon = new Weapon($(this).data("weapon-info-json"));
@@ -80,6 +88,12 @@ $(document).on('click', '.item, .sales-weapon', function() {
 
     if (discount)
         weapon.price = parseFloat(weapon.price * (100 - discount) / 100).toFixed(2);
+    
+    if ($(this).hasClass('sales-weapon')) {
+        $('#buy-count-block').hide();
+    } else {
+        $('#buy-count-block').show();
+    }
     
     if (weapon.price == '0') {
         $(this).addClass('animated flipOutX');
@@ -110,12 +124,22 @@ $(document).on('click', '.item, .sales-weapon', function() {
     $("#weaponQuality").html(weapon.qualityText());
 
     $("#buy_count").val(1);
-    $('#buy-double').html((parseFloat(weapon.price) * 100).toFixed(0));
+    $('#buy-double span').html((parseFloat(weapon.price) * 100).toFixed(0));
+    
+    if (weapon.can.buy) {
+        $('#buy-double').show();
+        $('#buy-count-block').show();
+        $('.cant-buy').hide();
+    } else {
+        $('#buy-count-block').hide();
+        $('#buy-double').hide();
+        $('.cant-buy').show();
+    }
 });
 
 //var rowID = client.saveWeapon(weapon.type, weapon.skinName, weapon.img, weapon.quality, weapon.statTrak, weapon.rarity, weapon.price, weapon.new);
 
-$(document).on('click', ".countChange", function() {
+$(document).on('click', "#plus, #minus", function() {
     var count = parseInt($("#buy_count").val());
     switch (this.id) {
         case 'plus':
@@ -138,9 +162,10 @@ $(document).on('click', '#buy-double', function() {
         souvenir: $("#weaponInfoContainer").data('souvenir')
     }
     var weapon = new Weapon(wp);
+    if (!weapon.can.buy) return;
     weapon.new = true;
     
-    var price = parseInt($("#buy-double").text());
+    var price = parseInt($("#buy-double span").text());
     var count = parseInt($("#buy_count").val());
     
     if (Player.doubleBalance < price) {

@@ -334,12 +334,12 @@ body {
     /*transition: all 10s cubic-bezier(0.07, 0.49, 0.39, 1);*/
 }
 @media (max-width: 433px) {
-	.case {
+	.case, .capsule {
 		width: 80px;
 		height: 100px;
 		margin: 8px 6px;
 	}
-	.case img {
+	.case img, .capsule img {
 		width: 70px;
 		height: 55px;
 	}
@@ -369,28 +369,7 @@ body {
 
 /*CARUSEL_END*/
 .openCase, .add-item {
-    background: linear-gradient(to bottom, #00953b, #006910);
-    display: inline-block;
-    line-height: 35px;
-    color: #fff;
-    font-weight: bold;
-    border: 1px solid #02a543;
-    font-family: monospace;
-    padding: 0 20px;
     margin: 15px 0 15px;
-}
-.openCase:disabled {
-    opacity: 0.6;
-    background: linear-gradient(to bottom, #8a8a8a, #484848);
-    border: 1px solid #303030;
-}
-button#what-i-can-win-Button {
-    background: #9a6b6b;
-    background: linear-gradient(to top, #292929, #484848);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    padding: 7px 10px;
-	margin-top: 10px;
 }
 /*WEAPONS_END*/
 .win {
@@ -426,6 +405,9 @@ button#what-i-can-win-Button {
 #opened-text, #opened {
 	color:#fff;
 	font-family: LatoRegular;
+}
+.inventoryItemSelected, .new-weapon {
+    box-sizing: content-box;
 }
 .inventoryItemSelected {
     border: 2px solid #5db4ff;
@@ -535,12 +517,15 @@ i.double-icon {
     width: 15px;
     height: 15px;
     display: inline-block;
-    background: url(../images/double/coin-white.png);
+    background-image: url(../images/double/coin-white.png);
     background-size: cover;
     vertical-align: middle;
     margin: 2px;
     position: relative;
     top: -2px;
+}
+.double-icon-black {
+    background-image: url(../images/double/coin.png);
 }
 
 .input-text /*input[type="text"], input[type="password"]*/ {

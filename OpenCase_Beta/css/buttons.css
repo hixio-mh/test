@@ -145,3 +145,6 @@ button.double_icon:before {
     color: #00ACEF;
     box-shadow: none;
 }
+button.empty {
+    background: transparent;
+}

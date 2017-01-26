@@ -1,24 +1,3 @@
-var weapon_proto_FB = {
-    item_id: 0,
-    quality: 0,
-    souvenir: false,
-    stattrak: false
-}
-function Weapon_FB(item_id, quality, stattrak, souvenir) {
-    if (item_id) this.item_id = item_id;
-    if (quality) this.quality = quality;
-    if (stattrak) this.stattrak = stattrak;
-    if (souvenir) this.souvenir = souvenir;
-    
-    this.toLi = function() {
-        var weapon = fbInventory.reverseConvert(this);
-        var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>"+(this.stattrak == true ? "StatTrak™ " : "") + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
-        return wp;
-    }
-    
-    this.__proto__ = weapon_proto_FB;
-}
-
 Weapon.prototype.toLi = function() {
     var weapon = fbInventory.reverseConvert(this);
     var wp = "<img src=\"" + getImgUrl(weapon.img) + "\"><div class='weaponInfo " + weapon.rarity + "'><span class='type'>"+(this.stattrak == true ? "StatTrak™ " : "") + weapon.type + "<br>" + getSkinName(weapon.skinName, Settings.language) + "</span></div>";
@@ -28,34 +7,6 @@ Weapon.prototype.toLi = function() {
 var fbInventory = (function (module) {
     'use strict';
     module = module || {};
-    /*module.convertInventory = function (inventory) {
-        var convertedInventory = [];
-        for (var i = 0; i < inventory.length; i++) {
-            if (/^(?:deagle)$/i.test(inventory[i].type)) inventory[i].type = inventory[i].type.replace(/(deagle)/i, 'Desert Eagle')
-            convertedInventory[i] = {
-                item_id: module.getWeaponId(inventory[i].type.replace(/(souvenir |сувенир )/i, ''), getSkinName(inventory[i].skinName))
-                , custom_name: null
-                , stickers: null
-                , quality: getQualityNum(inventory[i].quality)
-                , stattrak: inventory[i].statTrak
-                , souvenir: /(souvenir|сувенир)/i.test(inventory[i].type)
-            }
-            if (typeof convertedInventory[i].item_id == 'undefined') convertedInventory[i].item_id = 0;
-            if (typeof convertedInventory[i].stattrak == 'undefined') convertedInventory[i].stattrak = false;
-            if (typeof convertedInventory[i].quality == 'undefined') convertedInventory[i].quality = 0;
-        }
-        return convertedInventory;
-    };*/
-    
-
-    /*function getQualityNum(quality) {
-        var num = 0;
-        if (/(factory|прямо)/i.test(quality)) num = 4;
-        else if (/(minimal|немного)/i.test(quality)) num = 3;
-        else if (/(field|после)/i.test(quality)) num = 2;
-        else if (/(Well|Поношенное)/.test(quality)) num = 1;
-        return num;
-    }*/
     module.setInventory = function (uid, inventory, callback) {
         callback = callback || false;
         try {
@@ -74,52 +25,11 @@ var fbInventory = (function (module) {
             });
         }
     };
-    module.pushToInventory = function (uid, inventory, callback) {
-        callback = callback || false;
-        if (typeof inventory == 'undefined' || inventory == null || inventory.length == 0) return false;
-        try {
-            var inventoryRef = firebase.database().ref('inventories/' + uid + '/weapons');
-            inventoryRef.limitToLast(1).once('value', function (lastItem) {
-                    var startID = parseInt(Object.keys(lastItem.val())[0]) + 1;
-                    if (isNaN(startID)) startID = 0;
-                    for (var i = 0; i < inventory.length; i++) {
-                        inventoryRef.child(startID).set(inventory[i]);
-                        startID++;
-                    }
-                    module.getInventoryCount(uid, function (count) {
-                        firebase.database().ref('inventories/' + uid).child('inventory_count').set(count + inventory.length);
-                    })
-                })
-                //var inventoryRef = firebase.database().ref('inventories/'+uid);
-                //inventoryRef.child('weapons').push(inventory);
-        }
-        catch (e) {
-            if (callback) callback({
-                success: false
-                , error: e
-            })
-        }
-    };
     module.getInventoryCount = function (uid, callback) {
         firebase.database().ref('inventories/' + uid + '/inventory_count').once('value', function (snapshot) {
             callback(snapshot.val());
         })
     }
-    module.getFullInventory = function (uid, callback) {
-        callback = callback || false;
-        try {
-            var inventory = [];
-            var inventoryRef = firebase.database().ref('inventories/' + uid).once('value', function (snapshot) {
-                callback(snapshot.val())
-            });
-        }
-        catch (e) {
-            callback({
-                success: false
-                , error: e
-            })
-        }
-    };
     module.getWeaponById = function (id) {
         var wp = $.extend({}, Items.weapons[id]);
         if (wp.id != id) {

@@ -39,16 +39,13 @@ $(function() {
                 clearInterval(reconnectTimer);
                 reconnectTimer = 0;
             }
-            //console.log('Connected to the server');
         }
 
         socket.onclose = function(event) {
-            //console.log("Connection lost...");
             if (!reconnectTimer) {
                 reconnectTimer = setInterval(function(){checkConnection()}, reconnectDelay);
             }
             
-            //$('.connection-status').html(Localization.double2.connectionLost[Settings.language]);
             onlineGames.chatMessage({from:'', message: 'Connection lost. Trying to reconnect...', specialType: 'warning'});
            
             if (playerInfo.bet) {
@@ -82,7 +79,6 @@ $(function() {
     var PING = {type:'ping'};
     
     function getMessage(message) {
-        //console.log(message);
         
         switch (message.type) {
             case 'newGame':

@@ -4,7 +4,7 @@ var Translation = {
             short: 'FR',
             full: 'Français',
         },
-        for_version: 1,
+        version: 1,
         author: 'Maxime Gdin',
         date: '11.12.16' /* Day.Month.Year */
     },
@@ -245,12 +245,12 @@ var Translation = {
             },
             scores: {
                 you: {
-                    en: 'You <span>0</span>',
-                    text: 'Vous <span>0</span>'
+                    en: 'You',
+                    text: 'Vous'
                 },
                 comp: {
-                    en: 'Opponent <span>0</span>',
-                    text: 'Adversaire <span>0</span>'
+                    en: 'Opponent',
+                    text: 'Adversaire'
                 }
             },
             you_add: {

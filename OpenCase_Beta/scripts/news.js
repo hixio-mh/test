@@ -468,15 +468,31 @@ var news = [{
     "month": 1,
     "year": 2017,
     "update": {
-        "RU": "- [Исправлено] Обновлены цены на предметы.",
-        "EN": "- [Fixed] The prices database was updated."
+        "RU": " - [Исправлено] Обновлены цены на предметы.",
+        "EN": " - [Fixed] The prices database was updated."
     }
 }, {
     "day": 19,
     "month": 1,
     "year": 2017,
     "update": {
-        "RU": "- [Исправлено] Некоторые ошибки с трейдами.",
-        "EN": "- [Fixed] Bugs in exchange."
+        "RU": " - [Исправлено] Некоторые ошибки с трейдами.",
+        "EN": " - [Fixed] Bugs in exchange."
+    }
+}, {
+    "day": 22,
+    "month": 1,
+    "year": 2017,
+    "update": {
+        "RU": " - [Добавлено] Мини-игра Кости.",
+        "EN": " - [New] Mini game Roll Dice."
+    }
+}, {
+    "day": 26,
+    "month": 1,
+    "year": 2017,
+    "update": {
+        "RU": " - [Интерфейс] Изменен дизайн чата<br> - [Инветфейс] Изменен дизайн КНБ<br> - [Интерфейс] Изменен дизайн магазина<br> - [Добавлено] Возможность удалять трейды",
+        "EN": " - [UI] Chat UI<br> - [UI] RPS UI<br> - [UI] Marketplace UI<br> - [New] You can delete your trades"
     }
 }, ];

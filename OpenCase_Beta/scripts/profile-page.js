@@ -341,6 +341,29 @@ $(function () {
             }
         })
     };
+    
+    $(document).on('click', '.delete-trade', function(e) {
+        e.stopPropagation();
+        var userID = $(this).parents('.my-trades-list__tradeWith').data('uid');
+        console.log('delete trade', userID);
+        $('#deleteTrades').data('userID', userID);
+        $('#delete-trade-modal').modal();
+        
+        $(document).one('click', '#deleteTrades', function() {
+            var userID = $('#deleteTrades').data('userID');
+            fbProfile.deleteTradesWithUser(userID, function() {
+                console.log('success');
+                $('#delete-trade-modal').modal('hide');
+                
+                var el = $('.my-trades-list li[data-uid="'+userID+'"]');
+                $(el).addClass('animated fadeOutLeft');
+                setTimeout(function(){
+                    $(el).remove();
+                }, 1000)
+            })
+        })
+    })
+    
     $(document).on('click', '.my-trades-list__tradeWith .tradeWith__img-container', function () {
         var uid = $(this).parent().data('uid');
         window.location = 'profile.html?uid=' + uid;
