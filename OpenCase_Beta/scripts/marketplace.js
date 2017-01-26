@@ -203,6 +203,18 @@ $(document).on('click', '#buy-double', function() {
             $("div[data-sales-id='" + saleId + "']").addClass("sold-out");
         }, 500);
     }
+    
+    LOG.log({
+        action: 'Buy item in Marketplace',
+        count: count,
+        item: {
+            item_id: weapon.item_id,
+            type: weapon.type,
+            name: weapon.nameOrig
+        },
+        price: price,
+        balance: Player.doubleBalance
+    })
 
     checkInventoryForNotification();
 });
@@ -218,7 +230,11 @@ function hideBuyCheck() {
 }
 
 $(document).on('click', '#search_button', function() {
-    if ($("#search_text").val().length);
+    if (!$("#search_text").val().length) return;
+    LOG.log({
+        action: 'Search in Marketplace',
+        search: $("#search_text").val()
+    })
     search($("#search_text").val());
 })
 
