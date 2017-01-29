@@ -3,7 +3,6 @@
 
 <head>
     <meta charset = "utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/fonts.css">
@@ -29,10 +28,10 @@
     <script src="../scripts/localization.js"></script>
     
     <!-- Upload images in chat -->
-    <script src="../scripts/cloudinary/jquery.ui.widget.js"></script>
-    <script src="../scripts/cloudinary/jquery.iframe-transport.js"></script>
-    <script src="../scripts/cloudinary/jquery.fileupload.js"></script>
-    <script src="../scripts/cloudinary/jquery.cloudinary.js"></script>
+    <script src="../scripts/chatImages/jquery.ui.widget.js"></script>
+    <script src="../scripts/chatImages/jquery.iframe-transport.js"></script>
+    <script src="../scripts/chatImages/jquery.fileupload.js"></script>
+    <script src="../scripts/chatImages/jquery.cloudinary.js"></script>
     
     <title>Chat</title>
 </head>
@@ -72,10 +71,6 @@
             <div class="chat__write panel-footer">
                 <div class='input-group input-group-sm'>
                     <div type='text' class="form-control" contenteditable="true" id="chat__new-message" max="120" placeholder="Your message..."></div>
-                    <div class='img-attach'>
-                        <input name='file' type='file' accept='image/jpeg,image/png,image/gif' id='attach_img' style='display: none;'>
-                        <label class='glyphicon glyphicon-camera' for='attach_img'></label>
-                    </div>
                     <div class='input-group-btn'>
                         <button class="btn btn-primary" type="button" id="chat__send-new-message">
                             <i class='glyphicon glyphicon-send'></i>
@@ -85,21 +80,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        $(function() {
-            $('#attach_img').unsigned_cloudinary_upload('chat_images', 
-                { cloud_name: 'dhf3u3m2h' }, 
-                { multiply: true })
-                .bind('cloudinarydone', function(e, data) {
-                    $('#chat__new-message').append(data.result.secure_url);
-                    $('#chat__send-new-message').click();
-                })
-                .bind('cloudinaryprogress', function(e, data) {
-                    console.log('load');
-            })
-        })
-    </script>
 </body>
 
 </html>
