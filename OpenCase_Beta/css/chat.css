@@ -250,6 +250,26 @@ li.chat__message a img[data-userid] {
     margin-top: auto;
     width: 100%;
 }
+
+.img-attach {
+    position: absolute;
+    right: 36px;
+    z-index: 4;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.img-attach input {
+    position: absolute;
+    opacity: .01;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.img-attach > i {
+    padding: 6px;
+}
+
 /* === VIP === */
 .vip a:nth-child(1)::before {
     display: block;

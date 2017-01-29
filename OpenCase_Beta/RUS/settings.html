@@ -2,6 +2,7 @@
 <head>
 <title>Настройки</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
 <link rel="stylesheet" type="text/css" href="../css/inventory.css">
 <link rel="stylesheet" type="text/css" href="../css/main.css">
 <link rel="stylesheet" type="text/css" href="../css/fonts.css">
@@ -296,17 +297,7 @@ $(function() {
 	iconSelect.refresh(icons);
 
 	$("#avatar").on("changed", function() {
-		saveStatistic("playerAvatar", iconSelect.getSelectedValue());
-        try {
-            if (firebase.auth().currentUser != "") {
-                firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/avatar')
-                    .set('../images/ava/'+iconSelect.getSelectedValue());
-                firebase.auth().currentUser.updateProfile({
-                    photoURL: '../images/ava/'+iconSelect.getSelectedValue()
-                })
-            }
-        }catch (e) {}
-		$('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
+		
 	})
 
 	$("#nickname").val(Player.nickname);
@@ -373,7 +364,20 @@ $("#submit").on("click", function() {
     
     try {
 	   firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').set( $('input[name="trades"]').prop('checked'));
+	   firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/betaTrade').set( $('input[name="trades"]').prop('checked'));
     } catch(e) {}
+    
+    saveStatistic("playerAvatar", iconSelect.getSelectedValue());
+    try {
+        if (firebase.auth().currentUser != "") {
+            firebase.database().ref('users/'+firebase.auth().currentUser.uid+'/public/avatar')
+                .set('../images/ava/'+iconSelect.getSelectedValue());
+            firebase.auth().currentUser.updateProfile({
+                photoURL: '../images/ava/'+iconSelect.getSelectedValue()
+            })
+        }
+    }catch (e) {}
+    $('.menu_ava').attr('src', '../images/ava/'+iconSelect.getSelectedValue());
 
 	Settings.language = lang;
 

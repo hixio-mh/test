@@ -28,9 +28,6 @@ $(function () {
         history.replaceState("chat-rooms", null, null);
     }
     
-    //Init upload images service
-    $.cloudinary.config({clound_name: 'dhf3u3m2h', api_key: '862241796243869'})
-    
     var rooms = "";
     for (var i = 0; i < fbChat.rooms.length; i++) {
         rooms += "<div class='chat__rooms__room" + (Settings.language == fbChat.rooms[i].code ? ' playerLang' : '') + "' data-room=\"" + fbChat.rooms[i].code + "\">";
@@ -322,8 +319,8 @@ function newMsg(key, message) {
     text = uid == "TrgkhCFTfVWdgOhZVUEAwxKyIo33" ? text : fbProfile.XSSreplace(text);
     
     //text = text.replace(vkRegExp, '<a href="$1" target="_blank">$2</a>');    
+    text = text.replace(imgRegExp, '<img src="$1" style="width: 400px; max-width:100%; display: block;">');
     if (/vip/.test(group)) {
-        text = text.replace(imgRegExp, '<img src="$1" style="max-width:100%">');
         text = text.replace(youtubeRegExp, '<iframe width="100%" height="auto" src="https://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
     }
     
@@ -331,17 +328,13 @@ function newMsg(key, message) {
     var toMe = text.indexOf('@'+Player.nickname) != -1 ? true : false;
     text = text.replace(/@(.*?),[ ]?/gi, '<b class="player-nickname">@$1</b>, ');
     
-    // === Winter Snow ===
-    
-    var winter_snow = "<div class='winter_snow' style='" + Winter.chatRandomSnow() + "'></div>";
-    
     var moderBlock = "";
     
     if (fbChat.isModerator || (fbChat.isVip && myMessage)) {
         moderBlock = "<div class='message__moderator'><i aria-hidden='true' class='fa fa-times delete-message'></i></div>";
     }
     
-    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + " " + group + "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'>" + winter_snow + "<div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + flag + (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + moderBlock + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
+    var msg = "<li class='animated bounceIn chat__message" + (myMessage ? " my_message" : "") + (toMe ? " msgToMe" : "") + " " + group + "' data-msgkey='" + key + "'>" + "<a href='profile.html?uid="+uid+"'><img src='" + img + "' data-userID='" + uid + "'></a>" + "<div class='message__info'><div class='message__info__from-time'>" + "<span class='message__from'>" + username + "</span>" + flag + (group != "" ? "<span class='group'>"+group+"</span>" : "") + "<span class='message__time'>" + time + "</span>" + moderBlock + "</div>" + "<span class='message__text'>" + text + "</span>" + "</div></li>";
     $(".chat__messages").append(msg);
 }
 
