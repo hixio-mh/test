@@ -1,0 +1,31 @@
+/* === ALL === */ 
+.menu_playerInfo {
+    background: url(../images/winter/snowfall.gif), #303030 !important;
+}
+.navigationBar {
+    background: url(../images/winter/snowfall.gif), linear-gradient(to right, #1A2B3B, #233444, #272B37, #192229) !important;
+}
+.sugrob {
+    background: url(../images/winter/sugrob/1.png), url(../images/winter/sugrob/2.png), url(../images/winter/sugrob/3.png);
+    background-repeat: repeat-x;
+    background-position: 0;
+}
+
+.sosulki {
+    background: url(../images/winter/sosulki/1.png), url(../images/winter/sosulki/2.png), url(../images/winter/sosulki/3.png);
+    background-repeat: repeat-x;
+}
+
+/* === Chat === */
+.winter_snow {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url(../images/winter/chat/snow_left1.png), url(../images/winter/chat/snow_mid1.png), url(../images/winter/chat/snow_right1.png);
+    width: calc(100% + 8px);
+    height: 25px;
+    background-repeat: no-repeat;
+    top: -6px;
+    background-position: 0, center, right;
+    left: -4px;
+}

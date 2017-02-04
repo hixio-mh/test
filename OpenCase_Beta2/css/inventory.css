@@ -1,0 +1,459 @@
+.sort > .dropdown {
+    margin: 5px 2px;
+    vertical-align: top;
+}
+.sort {
+    text-align: center;
+    padding-right: 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background: linear-gradient(to right, #1A2B3B, #233444, #272B37, #192229);
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    border-top: 1px solid RGBA(0, 0, 0, 0.2);
+}
+.closeInventory {
+    position: fixed;
+	top: 6px
+}
+.inventoryList {
+    padding: 30px 0 15px 0;
+}
+@media (max-width:492px) {
+	.inventoryList {
+		padding-top: 70px;
+	}
+}
+.statistic {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: linear-gradient(to right, #1A2B3B, #233444, #272B37, #192229);
+    box-shadow: 0 0 10px #000;
+    height: 25px;
+    font-family: LatoRegular;
+    font-size: 0.9em;
+    line-height: 24px;
+    left: 0;
+}
+.stat {
+    margin: 0 5px;
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 28px;
+  width: 150px;
+  background: #f2f2f2;
+  border: 1px solid;
+  border-color: white #f7f7f7 #f5f5f5;
+  border-radius: 3px;
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+.dropdown:before, .dropdown:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 4px dashed;
+  border-color: #888 transparent;
+  pointer-events: none;
+}
+.dropdown:before {
+  border-bottom-style: solid;
+  border-top: none;
+}
+.dropdown:after {
+  margin-top: 7px;
+  border-top-style: solid;
+  border-bottom: none;
+}
+
+.dropdown-select {
+  position: relative;
+  width: 130%;
+  margin: 0;
+  padding: 6px 8px 6px 10px;
+  height: 28px;
+  line-height: 14px;
+  font-size: 12px;
+  color: #62717a;
+  text-shadow: 0 1px white;
+  /* Fallback for IE 8 */
+  background: #f2f2f2;
+  /* "transparent" doesn't work with Opera */
+  background: rgba(0, 0, 0, 0) !important;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.dropdown-select:focus {
+  z-index: 3;
+  width: 100%;
+  color: #394349;
+  outline: 2px solid #49aff2;
+  outline: 2px solid -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.dropdown-select:disabled {
+    opacity: 0.5;
+}
+.dropdown-select > option {
+  margin: 3px;
+  padding: 6px 8px;
+  text-shadow: none;
+  background: #f2f2f2;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.inventory {
+    padding-left: 0;
+	  text-align: center;
+}
+#weaponInfoContainer {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 10;
+    background: RGBA(0, 0, 0, 0.46);
+}
+.fullWeaponInfo {
+    display: block;
+    background: #fff;
+    color: #535353;
+    width: 360px;
+    font-family: LatoRegular;
+    text-align: center;
+    box-shadow: 0px 0px 7px #000;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%) translateY(20px);
+    transform: translate(-50%, -50%) translateY(20px);
+    transition-duration: 1s;
+    border-radius: 7px;
+    overflow: auto;
+    max-height: 100%;
+    max-width: 100%;
+    padding-bottom: 5px;
+    background: url(../images/Weapons/dot.png) no-repeat, url(../images/Weapons/dot.png) no-repeat, url(../images/Weapons/dot.png) no-repeat, url(../images/Weapons/dot.png) no-repeat,url(../images/Weapons/bottom.png) no-repeat, url(../images/Weapons/squares.png) no-repeat, url(../images/Weapons/squares.png) no-repeat, linear-gradient(to bottom, #fff, #E6E6E6);
+    background-position: 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), bottom, 20px 0, calc(100% - 20px) 100%, 0;
+    background-size: 7px, 7px, 7px, 7px, 60px, 19px 7px, 19px 7px, 100%;
+}
+.fullWeaponInfo table {
+    background: #E9E9E9;
+    color: #535353;
+}
+.fullWeaponInfo table td {
+    padding: 0 2px;
+}
+.info-closed {
+  max-height: 0;
+}
+.fullWeaponInfo-close {
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    display: block;
+    position: absolute;
+    border-radius: 0 0 0 7px;
+    right: 0;
+    line-height: 1.7em;
+    font-weight: bolder;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 3px RGBA(0, 0, 0, 0.41);
+    box-shadow: 0 0 3px RGBA(0, 0, 0, 0.41);
+}
+#weaponImg, #weaponLoadingImg {
+    width: 100%;
+    background: #5c5c5c;
+    /*background: linear-gradient(45deg, #645981, #7074C9);
+    background: linear-gradient(45deg, #FFEBCE, #D49F35);*/
+    background: -webkit-radial-gradient(at top, #86AEF6, #284271);
+    background: radial-gradient(at top, #86AEF6, #284271);
+}
+#weaponLoadingImg {
+    color: #fff;
+    font-size: 2em;
+    padding: 150px 0;
+}
+#weaponName {
+    font-family: LatoBold;
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0, 0.15);
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+}
+#weaponInfoTable {
+    width: 100%;
+}
+#weaponInfoTable td {
+    text-align: left;
+}
+#weaponInfoTable td:nth-child(2n) {
+    text-align: right;
+}
+#statTrakImg {
+    width: 70px;
+    position: absolute;
+    right: 0;
+}
+@media (max-height:555px) {
+	.fullWeaponInfo {
+		width: 450px;
+		padding: 5px;
+		padding-top: 0;
+	}
+	#weaponImg {
+		width: 150px;
+		float: left;
+		margin: 8px 0 8px 8px;
+	}
+	#weaponInfoTable {
+		width: calc(100% - 160px);
+		margin-top: 5px;
+	}
+	#weaponInfoTable tr td:nth-child(2n) {
+		padding-left: 15px;
+	}
+	#statTrakImg {
+		width: 55px;
+		position: absolute;
+		right: 0;
+		left: 7px;
+		bottom: 7px;
+	}
+}
+
+@media (max-width: 450px) {
+	.weapon {
+		height: 113px;
+		width: 98px;
+        background-size: 105px;
+	}
+	.wp-statTrak::before {
+		margin-top: 65px;
+	}
+	.weapon img {
+		width: 86px;
+		height: 91px;
+	}
+	.type {
+		font-size: 9px;
+	}
+	.weapon i {
+		font-size: 7pt;
+		font-family: Lato;
+		font-weight: Lighter;
+	}
+}
+
+@media (max-width: 320px) and (max-height: 555px) {
+    .fullWeaponInfo {
+		max-width: calc(100% - 20px);
+		padding: 0;
+        max-height: calc(100% - 90px);
+        padding-bottom: 10px;
+        -webkit-transform: translate(-50%, -50%) translateY(0px);
+        transform: translate(-50%, -50%) translateY(0px);
+	}
+	#weaponImg {
+		width: 100%;
+		float: none;
+		margin: 0;
+	}
+	#weaponInfoTable {
+		width: 100%;
+		margin-top: 0;
+	}
+	#weaponInfoTable tr td:nth-child(2n) {
+		padding-left: 15px;
+	}
+	#statTrakImg {
+		width: 55px;
+		position: absolute;
+		right: 0;
+		left: 7px;
+		bottom: 7px;
+	}
+}
+
+.contractButtons {
+    position: fixed;
+    bottom: 25px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 0;
+}
+
+/* Buttons */
+.button_startContract {
+   border: 1px solid #000000;
+   background: #34688a;
+   background: -webkit-gradient(linear, left top, left bottom, from(#5286bd), to(#34688a));
+   background: -webkit-linear-gradient(top, #5286bd, #34688a);
+   background: -moz-linear-gradient(top, #5286bd, #34688a);
+   background: -ms-linear-gradient(top, #5286bd, #34688a);
+   background: -o-linear-gradient(top, #5286bd, #34688a);
+   background-image: -ms-linear-gradient(top, #5286bd 0%, #34688a 100%);
+   padding: 8.5px 17px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 1px 0;
+   text-shadow: #000000 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: helvetica, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button_startContract:hover {
+   border: 1px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: #3e779d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
+   background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
+   background: -moz-linear-gradient(top, #65a9d7, #3e779d);
+   background: -ms-linear-gradient(top, #65a9d7, #3e779d);
+   background: -o-linear-gradient(top, #65a9d7, #3e779d);
+   background-image: -ms-linear-gradient(top, #65a9d7 0%, #3e779d 100%);
+   color: #fff;
+   }
+.button_startContract:active {
+   text-shadow: #1e4158 0 1px 0;
+   border: 1px solid #0a3c59;
+   background: #5286bd;
+   background: -webkit-gradient(linear, left top, left bottom, from(#34688a), to(#3e779d));
+   background: -webkit-linear-gradient(top, #34688a, #5286bd);
+   background: -moz-linear-gradient(top, #34688a, #5286bd);
+   background: -ms-linear-gradient(top, #34688a, #5286bd);
+   background: -o-linear-gradient(top, #34688a, #5286bd);
+   background-image: -ms-linear-gradient(top, #34688a 0%, #5286bd 100%);
+   color: #fff;
+  }
+
+.button_resetContract {
+   border: 1px solid #0a3c59;
+   background: #1e597d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#316294), to(#1e597d));
+   background: -webkit-linear-gradient(top, #316294, #1e597d);
+   background: -moz-linear-gradient(top, #316294, #1e597d);
+   background: -ms-linear-gradient(top, #316294, #1e597d);
+   background: -o-linear-gradient(top, #316294, #1e597d);
+   background-image: -ms-linear-gradient(top, #316294 0%, #1e597d 100%);
+   padding: 8px 16px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   text-shadow: #000000 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: helvetica, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button_resetContract:hover {
+   border: 1px solid #0a3c59;
+   text-shadow: #1e4158 0 1px 0;
+   background: #1e597d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3c73ab), to(#1e597d));
+   background: -webkit-linear-gradient(top, #3c73ab, #1e597d);
+   background: -moz-linear-gradient(top, #3c73ab, #1e597d);
+   background: -ms-linear-gradient(top, #3c73ab, #1e597d);
+   background: -o-linear-gradient(top, #3c73ab, #1e597d);
+   background-image: -ms-linear-gradient(top, #3c73ab 0%, #1e597d 100%);
+   color: #fff;
+   }
+.button_resetContract:active {
+   text-shadow: #1e4158 0 1px 0;
+   border: 1px solid #0a3c59;
+   background: #316294;
+   background: -webkit-gradient(linear, left top, left bottom, from(#1e597d), to(#1e597d));
+   background: -webkit-linear-gradient(top, #1e597d, #316294);
+   background: -moz-linear-gradient(top, #1e597d, #316294);
+   background: -ms-linear-gradient(top, #1e597d, #316294);
+   background: -o-linear-gradient(top, #1e597d, #316294);
+   background-image: -ms-linear-gradient(top, #1e597d 0%, #316294 100%);
+   color: #fff;
+   }
+.button_contract {
+   border: 1px solid #0a3c59;
+   background: #367d1e;
+   background: -webkit-gradient(linear, left top, left bottom, from(#36a339), to(#367d1e));
+   background: -webkit-linear-gradient(top, #36a339, #367d1e);
+   background: -moz-linear-gradient(top, #36a339, #367d1e);
+   background: -ms-linear-gradient(top, #36a339, #367d1e);
+   background: -o-linear-gradient(top, #36a339, #367d1e);
+   background-image: -ms-linear-gradient(top, #36a339 0%, #367d1e 100%);
+   padding: 8px 16px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   -moz-box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   box-shadow: rgba(255,255,255,0.4) 0 0px 0, inset rgba(255,255,255,0.4) 0 0px 0;
+   text-shadow: #000000 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: helvetica, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button_contract:hover {
+   border: 1px solid #0a3c59;
+   text-shadow: #000000 0 1px 0;
+   background: #367d1e;
+   background: -webkit-gradient(linear, left top, left bottom, from(#58d65a), to(#367d1e));
+   background: -webkit-linear-gradient(top, #58d65a, #367d1e);
+   background: -moz-linear-gradient(top, #58d65a, #367d1e);
+   background: -ms-linear-gradient(top, #58d65a, #367d1e);
+   background: -o-linear-gradient(top, #58d65a, #367d1e);
+   background-image: -ms-linear-gradient(top, #58d65a 0%, #367d1e 100%);
+   color: #fff;
+   }
+.button_contract:active {
+   text-shadow: #000000 0 1px 0;
+   border: 1px solid #0a3c59;
+   background: #36a339;
+   background: -webkit-gradient(linear, left top, left bottom, from(#367d1e), to(#367d1e));
+   background: -webkit-linear-gradient(top, #367d1e, #36a339);
+   background: -moz-linear-gradient(top, #367d1e, #36a339);
+   background: -ms-linear-gradient(top, #367d1e, #36a339);
+   background: -o-linear-gradient(top, #367d1e, #36a339);
+   background-image: -ms-linear-gradient(top, #367d1e 0%, #36a339 100%);
+   color: #fff;
+   }
+.button_contract:disabled {
+    opacity: 0.5;
+}
+button.update_price {
+    border: none;
+    background: transparent;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: 0 0 6px #005DFF;
+    vertical-align: middle;
+}

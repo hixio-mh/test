@@ -1,0 +1,216 @@
+body {
+	padding-bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+.container {
+    padding-top: 50px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    height: calc(100% - 50px);
+    background-size: cover;
+}
+.battle-field {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 500px;
+    z-index: 1;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.battle-field .panel-footer {
+    padding: 0;
+}
+.round-count {
+    color: #fff;
+    font-family: LatoBold;
+    font-size: 2em;
+}
+.battle-field .hand {
+    width: 50%;
+    height: auto;
+    padding: 0 10px;
+}
+.rock {
+	background: url(../images/rps/rock.png);
+	background-size: cover;
+}
+.paper {
+	background: url(../images/rps/paper.png);
+    background-size: cover;
+}
+.scissors {
+	background: url(../images/rps/scissors.png);
+    background-size: cover;
+}
+.hand {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+	transform: translate3d(0, 0, 0);
+}
+.choice__hand .hand {
+	margin: 0 5px;
+}
+@media (max-width: 400px) {
+	.hand {
+		width: 70px;
+		height: 70px;
+	}
+}
+.left {
+	text-align: right;
+}
+.right {
+    text-align: left;
+}
+.right img {
+	-webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+.your-score {
+    border-right: 1px solid rgba(255,255,255, 0.3);
+}
+.your-score, .comp-score {
+    display: inline-block;
+    width: 50%;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    font-size: 11px;
+    padding: 5px;
+}
+.battle-field .panel-footer strong {
+    display: block;
+    font-size: 16px;
+}
+.status {
+    color: #fff;
+    text-align: center;
+}
+.count {
+    text-align: center;
+    white-space: nowrap;
+    margin-top: 176px;
+}
+.your-score, .comp-score {
+    display: inline-block;
+    width: 50%;
+    color: #fff;
+}
+.choice {
+    text-align: center;
+    max-width: 500px;
+    margin: 15px auto;
+}
+.choice span {
+	display: block;
+	color: #fff;
+	font-family: LatoRegular;
+	font-size: 1.1em;
+}
+.choice__hand {
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+	margin: 10px 1px;
+	border: none;
+}
+.choice__hand:disabled {
+    opacity: 0.3;
+}
+.choice .selected {
+    background: #00b727;
+}
+.add-item {
+	display: block;
+	margin: 15px auto;
+}
+#whoBet {
+    background: #e0e0e0;
+    color: #000;
+}
+.winItems ul {
+    list-style: none;
+    padding-left: 0;
+    color: #fff;
+}
+.winItems ul li {
+    border-bottom: 1px solid #000;
+    background: #2d2d2d;
+    padding: 6px 5px 6px 10px;
+}
+.winItems ul li b {
+    font-weight: normal;
+    display: block;
+    height: 5px;
+}
+.animation-shake-left {
+	-webkit-animation: shake-left 0.8s linear both 3;
+			animation: shake-left 0.8s linear both 3;
+}
+.animation-shake-right {
+	-webkit-animation: shake-right 0.8s linear both 3;
+			animation: shake-right 0.8s linear both 3;
+}
+@keyframes shake-left {
+  from {
+	transform: rotate(0);
+  }
+  50% {
+	transform: rotate(-45deg);
+  }
+  100% {
+	transform: rotate(0);
+  }
+}
+@-webkit-keyframes shake-left {
+  from {
+	-webkit-transform: rotate(0);
+  }
+  50% {
+	-webkit-transform: rotate(-45deg);
+  }
+  100% {
+	-webkit-transform: rotate(0);
+  }
+}
+@keyframes shake-right {
+  from {
+	transform: rotate(0);
+  }
+  50% {
+	transform: rotate(45deg);
+  }
+  100% {
+	transform: rotate(0);
+  }
+}
+@-webkit-keyframes shake-right {
+  from {
+	-webkit-transform: rotate(0);
+  }
+  50% {
+	-webkit-transform: rotate(45deg);
+  }
+  100% {
+	-webkit-transform: rotate(0);
+  }
+}
+/* @keyframes shake {
+  from {
+	transform: translate3d(0, 0, 0);
+  }
+  25% {
+	transform: translate3d(0, 40px, 0);
+  }
+  50% {
+	transform: translate3d(0, 0, 0);
+  }
+  75% {
+	transform: translate3d(0, -40px, 0);
+  }
+} */

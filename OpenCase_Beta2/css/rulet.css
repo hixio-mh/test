@@ -1,0 +1,407 @@
+#containter {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding-top: 5px;
+    overflow-x: hidden;
+    padding-bottom: 45px;
+    font-family: Lato;
+}
+
+#circle {
+    width: 250px;
+    height: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    -webkit-transform: translate3d(0, 0, 0);
+    position: relative;
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid #afafaf;
+}
+
+#circle hr {
+    border: 1px solid RGBA(255, 255, 255, 0.42);
+    border-radius: 4px;
+}
+
+#status {
+    text-align: center;
+    margin: 10px 0;
+    color: #fff;
+}
+
+.scrollerContainer {
+    margin-top: 10px !important;
+}
+
+div#countdown-timer {
+    text-align: center;
+    font-size: 3em;
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: #cacaca;
+    font-family: fantasy;
+    height: 100%;
+    line-height: 135px;
+}
+
+.winnerAnimation {
+    /*! -webkit-transition-duration: 2s; */
+    /*! transition-duration: 2s; */
+    -webkit-animation: winnerAnim 3s ease-in-out;
+    animation: winnerAnim 3s ease-in-out;
+}
+
+@keyframes winnerAnim {
+    0% {
+        transform: scale(1);
+    }
+    33% {
+        transform: scale(0.1) rotate(50deg);
+    }
+    66% {
+        transform: scale(1.4) rotate(-380deg);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes winnerAnim {
+    0% {
+        transform: scale(1);
+    }
+    33% {
+        transform: scale(0.1) rotate(50deg);
+    }
+    66% {
+        transform: scale(1.4) rotate(-380deg);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.buttons {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#diffuculty {
+    display: inline-block;
+    width: auto;
+}
+
+.items {
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.84);
+    max-width: 100%;
+    list-style: none;
+    padding: 0;
+}
+
+@media (min-width:595px) {
+    .items {
+        width: 545px;
+    }
+}
+
+
+/*.game-bet {
+    background: #232E3C;
+}*/
+
+.game-bet__info {
+    background: #232E3C;
+    display: table;
+    width: 100%;
+    position: relative;
+}
+
+.game-bet__player {
+    display: table-cell;
+}
+
+.game-bet__player img {
+    width: 50px;
+    vertical-align: middle;
+    margin: 4px 10px 4px 4px;
+}
+.game-bet__tickets {
+    white-space: nowrap;
+    width: 100px;
+    padding-right: 6px;
+    text-align: center;
+    width: 130px;
+    background: #B04444;
+    padding-left: 12px;
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+}
+
+.game-bet__tickets::before {
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 27px 0 28px 13px;
+    border-color: transparent transparent transparent #232E3C;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.game-bet__tickets__price {
+    display: block;
+    font-weight: bold;
+    font-size: 1.09em;
+}
+
+.bet-items {
+    text-align: center;
+    transition-duration: 1s;
+    overflow: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.bet-items__item {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.14);
+    margin: 4px;
+    box-shadow: 1px 1px 2px RGBA(0, 0, 0, 0.4);
+}
+
+.bet-items__item img {
+    width: 100px;
+    margin: 5px;
+}
+
+.bet-items__item__rarity {
+    height: 2px;
+}
+
+.bet-items__item__price {
+    display: block;
+    text-align: center;
+    background: RGBA(0, 0, 0, 0.3);
+    font-size: 0.9em;
+    padding: 3px;
+}
+.show-items {
+    max-height: 580px;
+}
+.hide-items {
+    max-height: 185px;
+    margin-bottom: 5px;
+    position: relative;
+}
+.hide-items::after {
+    content: '...';
+    display: block;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to top, #232E3C, RGBA(0, 0, 0, 0));
+    vertical-align: middle;
+    line-height: 1em;
+    font-size: 3em;
+    color: #fff;
+}
+td {
+    padding: 2px 4px 2px 6px;
+    position: relative;
+}
+
+td p {
+    text-align: center;
+    /*line-height: 7px;*/
+    margin: 5px 0;
+}
+
+.fromName, .quality {
+    font-size: 14px;
+}
+
+.weaponImg {
+    width: 90px;
+}
+
+#players img {
+    width: 55px;
+    margin: 2px 2px;
+    height: 55px;
+}
+
+#players {
+    text-align: center;
+}
+
+.playerAva {
+    display: inline-block;
+}
+
+.playerAva p {
+    margin: 46px -57px 0;
+    display: inline-block;
+    position: absolute;
+    background: rgba(45, 150, 174, 0.8);
+    width: 55px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+.casesCarusel img {
+    height: 138px;
+    width: 138px;
+    margin-left: 2px;
+    padding-bottom: 10px;
+}
+
+.win {
+    background: #B04444;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.84);
+    padding: 0;
+    max-width: 545px;
+    margin: 0 auto;
+    height: 100px;
+    position: relative;
+    margin: 10px auto;
+}
+
+.win__title {
+    background: RGBA(0, 0, 0, 0.51);
+    padding: 3px;
+}
+
+.win__nick {
+    color: #fff !important;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 2.5em;
+}
+
+.win__chance {
+    color: #fff !important;
+    position: absolute;
+    bottom: 2px;
+    left: 105px;
+}
+
+.win__ticket {
+    color: #fff !important;
+    position: absolute;
+    bottom: 2px;
+    right: 8px;
+}
+
+.win b {
+    font-size: 15pt;
+    coloR: #fff;
+}
+
+.win img {
+    width: 100px;
+    float: left;
+}
+
+.inventoryList {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 50;
+    color: #fff;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.inventory a:visited, .inventory a {
+    coloR: #fffec4;
+    font-weight: bold;
+}
+
+.inventory {
+    padding: 0 10px;
+    margin-bottom: 45px;
+}
+
+
+/*.inventoryItemSelected {
+	background: url("../images/Cases/itembgSelected.png") #111;
+}*/
+
+.progressbar-text {
+    text-align: center;
+}
+
+.progressbar-text s {
+    font-style: normal;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #00c03f;
+}
+
+td i {
+    font-style: normal;
+    font-size: 10pt;
+}
+
+#inventorySum {
+    position: fixed;
+    top: 3px;
+    left: 3px;
+    background: #3C8698;
+    padding: 4px;
+    border-radius: 2px;
+}
+
+.room-select-modal__title {
+    text-align: center;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+.room-select-modal {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(at top, rgb(107, 133, 193), #101423);
+    z-index: 3;
+}
+ul.room-select-modal__rooms {
+    list-style: none;
+    padding-left: 0;
+}
+li.jackpot-room {
+    display: flex;
+    padding: 10px;
+    background: radial-gradient(at top, #484848, #232323);
+    color: #efefef;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 10px auto;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.4);
+}

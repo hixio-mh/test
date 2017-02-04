@@ -1,0 +1,48 @@
+body {
+    background: #19212b !important;
+}
+.crash__multiply.crashed {
+    color: red;
+}
+.crash__multiply.crashed:before {
+    content: 'Crashed';
+    display: block;
+}
+#crash-container {
+    text-align: center;
+    color: lightcyan;
+    font-size: 3em;
+    height: 2.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.crash__next-round-timer {
+    color: lightgray;
+    font-size: 0.5em;
+    position: absolute;
+    width: 100%;
+    background: RGBA(0, 0, 0, 0.85);
+    z-index: 50;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#odometer_next_round {
+    margin: 0 5px;
+}
+.bets {
+    display: -webkit-box;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+#bet {
+    text-align: right;
+}

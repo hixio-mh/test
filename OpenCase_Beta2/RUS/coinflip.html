@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Монетка</title>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
+<!-- <link rel="stylesheet" type="text/css" href="../css/rulet.css"> -->
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/coinflip.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+<link rel="stylesheet" type="text/css" href="../css/winter.css">
+</head>
+<body data-localization='coinflip'>
+	<div class="site-overlay"></div>
+<div id="container">
+<div class="navigationBar" data-menu-EN="Coinflip" data-menu-RU="Монетка"></div>
+	<table class='games table table-striped' data-loc-group="table">
+        <thead>
+            <tr><th data-loc="players">Players</th><th data-loc="items">Items</th><th colspan=2 data-loc="worth">Worth</th></tr>
+        </thead>
+        <tbody>
+            <tr id='js-table-loading-gif'><td colspan =4><div class="cssload-container"><div class="cssload-speeding-wheel"></div></div></td></tr>
+        </tbody>
+	</table>
+
+	<!-- Инвентарь -->
+	<div class="inventoryList" style="display: none;">
+		<span id="intentory-Player"></span>
+		<div class="closeInventory"></div>
+		<ul class="inventory inv-price-counter"></ul>
+		<button class="choseItems btn btn-success btn-block" data-loc="choose_items">Внести</button>
+	</div>
+
+	<!-- Предметы в игре -->
+	<div class='blur' style='display:none'></div>
+	<div class='game' style='display:none'>
+		<div class='close-game'></div>
+		<table class='game__table'>
+			<tr><td class='game__table__td'>
+					<div class='game__bot'>
+						<span class='game__bot__nick'></span>
+						<img src='' class='game__bot__img'>
+							<span class='game__bot__price'></span>
+							<span class='game__bot__chance'>100%</span>
+						</div></td><td class='game__table__win'></td>
+					<td class='game__table__td'>
+						<div class='game__player'>
+							<span class='game__player__nick'>?</span>
+							<img src='../images/ava/0.jpg' class='game__player__img'>
+								<span class='game__player__price'>$0</span>
+								<span class='game__player__chance'>0%</span>
+							</div></td>
+					</tr></table>
+				<div class='game__start' style='display: none'><span class='game__start__button btn' data-loc="start_game">Start</span></div>
+				<table class="inventory-tables-holder">
+					<tr>
+						<td><table class='bot-inventory'></table></td>
+						<td><table class='player-inventory'></table></td>
+					</tr>
+				</table>
+			</div>
+
+			<div class='coin-blur hide'></div>
+			<div id="coin-flip-cont" class='hide'>
+				<div id="coin">
+					<div class="t"></div>
+					<div class="ct"></div>
+				</div>
+			</div>
+		</div>
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/weapons.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/inventory.js"></script>
+<script src="../scripts/jackpotBots.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+<script src="../scripts/coinflip.js"></script>
+
+<script src="../scripts/localization.js"></script>
+    <script>
+        $(document).on('localizationloaded', function() {
+            CoinFlip.init();
+        })
+    </script>
+</body>
+</html>

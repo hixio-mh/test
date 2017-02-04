@@ -1,0 +1,51 @@
+#container {
+    position: inherit;
+}
+.btn-opened {
+    padding: 5px;
+}
+.add-to-bet {
+    margin: 0;
+    border: none;
+    background: #fff;
+    border-right: 1px solid RGBA(0, 0, 0, 0.2);
+    padding: 3px 7px;
+    box-shadow: 2px 2px 3px RGBA(0, 0, 0, 0.4);
+    color: #333;
+}
+.add-to-bet:first-child {
+    border-radius: 4px 0 0 4px;
+}
+.add-to-bet:last-child {
+    border-radius: 0 4px 4px 0;
+    border-right: none;
+}
+.game-buttons {
+    text-align: center;
+    max-width: 812px;
+    min-width: 310px;
+    margin: 0 auto;
+}
+.game-buttons span {
+  font-size: 17px;
+}
+.bets {
+    display: -webkit-box !important;
+    display: flex !important;
+    justify-content: center;
+    margin: 5px;
+}
+
+#bet {
+    text-align: right;
+}
+
+.col-xs-4, .col-sm-3 {} 
+@media (max-width:370px) {
+    .game-buttons span {
+      font-size: 13px;
+    }
+    #my_history {
+        font-size: 12px;
+    }
+}

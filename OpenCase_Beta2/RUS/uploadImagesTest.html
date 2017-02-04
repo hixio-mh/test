@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Cloudinary</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+    
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/cloudinary/jquery.ui.widget.js"></script>
+<script src="../scripts/cloudinary/jquery.iframe-transport.js"></script>
+<script src="../scripts/cloudinary/jquery.fileupload.js"></script>
+<script src="../scripts/cloudinary/jquery.cloudinary.js"></script>
+
+<body>
+
+    <div class='container'>
+        <form class='upload'>
+            <input type='file' name='file' class='cloudinary-fileupload'>
+        </form>
+    </div>
+    
+    <div class='pictures'>
+    </div>
+    
+    <script>
+        $('.cloudinary-fileupload').unsigned_cloudinary_upload('chat_images', 
+            { cloud_name: 'dhf3u3m2h' }, 
+            { multiply: true })
+            .bind('cloudinarydone', function(e, data) {
+                $('.pictures').append('<img src="'+data.result.secure_url+'">');
+
+            })
+            .bind('cloudinaryprogress', function(e, data) {
+                console.log('load');
+        })
+    </script>
+</body>
+</html>

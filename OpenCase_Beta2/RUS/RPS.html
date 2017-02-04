@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+<title>Камень-ножницы-бумага</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/rulet.css">
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/rps.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
+<link rel="stylesheet" type="text/css" href="../css/winter.css">
+    
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/weapons.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/inventory.js"></script>
+
+<script src="../scripts/navigationMenu.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+
+<script src="../scripts/localization.js"></script>
+<script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+</head>
+<body data-localization='rps'>
+<div class="site-overlay"></div>
+<div id='container'>
+<div class="navigationBar" data-menu-EN="RPS Battle" data-menu-RU="Камень-ножницы-бумага"></div>
+	<div class='battle-field panel panel-primary'>
+		<div class='round-count panel-heading'></div>
+        <div class='panel-body'>
+            <div class='hand left' id='js-left-hand'><img src='../images/rps/rock.png' id='js-player-img'></div>
+            <div class='hand right' id='js-right-hand'><img src='../images/rps/rock.png' id='js-comp-img'></div>
+            <div class='status' data-loc-group="status"><span data-loc="start">Add weapons to start a game.</span></div>
+        </div>
+        <div class='panel-footer' data-loc-group='scores'>
+            <div class='your-score'><span data-loc='you'>You</span> <strong>0</strong></div>
+            <div class='comp-score'><span data-loc="comp">Opponent</span> <strong>0</strong></div>
+        </div>
+	</div>
+	<div class='choice well' style='display: none;'>
+        <span data-loc="choose_hand">Choose Rock, Paper or Scissors.</span>
+        <button class='choice__hand' data-choice='rock'><div class='hand rock'></div></button>
+        <button class='choice__hand' data-choice='scissors'><div class='hand scissors'></div></button>
+        <button class='choice__hand' data-choice='paper'><div class='hand paper'></div></button>
+	</div>
+    <div class='text-center' id='button_items' style='margin: 10px 0;'>
+	   <button class='btn btn-success' id='add-items' data-loc="add_items">Add items</button>
+    </div>
+
+	<div class='winItems' style='display: none;'>
+        <div class='col-sm-1 col-md-2'></div>
+        <div class='col-sm-5 col-md-4 col-lg-4'>
+            <div class='panel panel-default your-bet'>
+                <div class='panel-heading' data-loc='you_add'>Your Bet</div>
+                <div class='panel-body'></div>
+            </div>
+        </div>
+        <div class='col-sm-5 col-md-4 col-lg-4'>
+            <div class='panel panel-default other-bet'>
+                <div class='panel-heading' data-loc='comp_add'>Opponent Bet</div>
+                <div class='panel-body'></div>
+            </div>
+        </div>
+        <div class='col-sm-1 col-md-2'></div>
+    </div>
+
+	<!-- Инвентарь -->
+	<div class="inventoryList" style="display: none;">
+		<div class="closeInventory"></div>
+		<ul class="inventory"><li></li></ul>
+		<button class="choseItems btn btn-success btn-block" data-loc="choose_items">Add selected items</button>
+	</div>
+
+</div>
+<script src="../scripts/games/rps.js"></script>
+</body>
+</html>

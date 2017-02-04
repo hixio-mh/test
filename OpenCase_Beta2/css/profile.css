@@ -1,0 +1,646 @@
+body {
+    color: #fff;
+    background: #fff;
+}
+
+.left-side,
+.right-side {
+    position: absolute;
+    top: 45px;
+    font-size: 1.3em;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0 0 2px RGBA(0, 0, 0, 0.5);
+}
+
+.left-side {
+    left: 5px;
+}
+
+.right-side {
+    right: 5px;
+}
+
+.left-side,
+.right-side > * {
+    cursor: pointer;
+}
+
+.top {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    padding-top: 90px;
+}
+
+.top__pm > *,
+.top__trade > *,
+.top__profile > * {
+    margin: auto;
+}
+
+.top__pm,
+.top__trade {
+    width: 50px;
+    height: 50px;
+    background: #e64343;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    border-radius: 50%;
+    font-size: 22px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.top__trade {
+    background: #8E53B3;
+}
+
+.top__profile {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.profile__name {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.profile__name[contenteditable="true"] {
+    border: 1px solid rgba(255, 255, 255, 0.48);
+    border-radius: 5px;
+    padding: 0 10px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.profile__status {
+    font-weight: lighter;
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.profile__img {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.top_actions {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+.top__bg {
+    background: #5782da;
+    position: absolute;
+    top: 0;
+    height: 207px;
+    width: 100%;
+    z-index: -1;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.blured_img img {
+    width: 108%;
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+    background: #000;
+    -webkit-filter: blur(12px);
+    filter: blur(12px);
+    margin-left: -14px;
+}
+
+.stats {
+    color: #000;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 10px 0;
+    align-items: stretch;
+}
+
+.stats__rank__rank img {
+    width: 70px;
+}
+
+.stats__line {
+    border-left: 1px solid RGBA(0, 0, 0, 0.1);
+}
+
+.stats__block {
+    width: 100px;
+}
+
+.stat__num {
+    font-size: 1.8em;
+    color: #1B1B1B;
+}
+
+.rep-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rep {
+    color: #959595;
+    padding: 5px;
+    cursor: pointer;
+    background: ;
+}
+
+.rep-plus.active {
+    color: #0CB414;
+}
+
+.rep-minus.active {
+    color: #BF0000;
+}
+
+.bad-rep {
+    color: #d81919;
+}
+
+.posts {
+    color: #000;
+    padding: 10px;
+}
+
+.posts__new-post {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.new-post__text {
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 5px;
+    flex-grow: 2;
+}
+
+.posts__new-post .button_blue {
+    margin-left: 10px;
+}
+
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    cursor: text;
+    display: block;
+    /* For Firefox */
+    color: #9c9c9c;
+}
+
+ul.posts__user-posts {
+    padding: 0;
+    list-style: none;
+}
+
+.user-posts__post {
+    padding: 10px;
+    box-shadow: 0 0 2px RGBA(0, 0, 0, 0.1);
+    border-radius: 3px;
+    border: 1px solid RGBA(0, 0, 0, 0.19);
+    margin-bottom: 10px;
+}
+
+.post__header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.post__header__img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.post__header__meta {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: 0.95em;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.post__meta__author {
+    color: #cb6a6a;
+    font-weight: bold;
+}
+
+.post__meta__date {
+    font-size: 0.9em;
+    color: #8A8A8A;
+}
+
+.post__control {
+    margin-left: auto;
+}
+
+.post__control > * {
+    cursor: pointer;
+}
+
+.disabled > * {
+    opacity: 0.6;
+}
+
+.trade-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 500px;
+    max-height: 530px;
+    background: RGBA(0, 0, 0, 0.9);
+    width: calc(100% - 20px);
+    height: calc(100% - 60px);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+#close-trade-window {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+
+.trade__header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.trade__menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+}
+
+.trade__menu__item {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+    cursor: pointer;
+    flex-grow: 1;
+    margin: 0 1px;
+    text-align: center;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+}
+
+.trade__menu__item.active {
+    border-bottom: 2px solid #97AFFF;
+    color: #97AFFF;
+}
+
+.trade__weapons {
+    overflow: auto;
+    position: relative;
+    height: calc(100% - 120px);
+}
+
+.inventory, .port-inventory {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.trade__button-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2px;
+}
+
+.trade__button {
+    flex-grow: 1;
+    margin: 0 4px;
+}
+
+.your-offer__header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    position: relative;
+}
+
+.trade-user-img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+}
+
+.your-offer__header div {
+    text-align: left;
+    line-height: 1em;
+}
+
+.you-offer-text, .other-offer-text {
+    display: block;
+} 
+
+.you-offer-info, .other-offer-info {
+    color: #656565;
+    font-size: 0.75em;
+}
+.summ-inventory {
+    margin: 0;
+    background: rgba(255, 255, 255, 0.1);
+    height: 145px;
+    overflow: auto;
+}
+.summ-inventory li {
+    margin: 1px 4px;
+}
+.inventoryList {
+    text-align: left;
+}
+.checkbox-trade-ready {
+    background: #1a456f;
+    padding: 2px 5px;
+    display: block;
+    background: linear-gradient(to top, #003263, #498cce);
+    font-size: 0.9em;
+}
+.checkbox-trade-ready input {
+    vertical-align: middle;
+    margin: 0;
+    margin-right: 3px;
+}
+.other-player-ready {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 0.75em;
+    color: #a2a2a2;
+}
+
+/* === My Trades === */
+
+.trade-back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.send-trade-window {
+    height: 100%;
+}
+
+.my-trades-list, .my-trades__trades-with-user {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.my-trades {
+    height: calc(100% - 40px);
+    overflow: auto;
+}
+
+.trades-with-user__trade {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.trade__li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
+    justify-content: space-between;
+    background: RGBA(0, 0, 0, 0.6);
+}
+
+.trade__li img {
+    margin: 0;
+}
+
+.trade__li.trade__between > * {
+    margin: auto;
+    font-size: 1.6em;
+}
+
+.trade__li.trade__you {
+    flex-direction: row-reverse;
+}
+
+.trade__info__hidden {
+    display: none;
+}
+.trade__info__weapons {
+    margin: 0;
+    padding: 0;
+    height: 145px;
+}
+
+/* === Trade status === */
+.trades-with-user__trade.unwatched {
+    border: 1px solid #4ea8ff;
+}
+
+.trades-with-user__trade.canceled {
+    background: #740000;
+}
+
+.trades-with-user__trade.done {
+    background: #3dec2b;
+}
+
+.trades-with-user__trade.changed {
+    background: #389bfee6;
+}
+
+/* === End trade status === */
+
+.other-player-ready.ready {
+    color: #00c009;
+}
+
+#my-trades__your-offer, #my-trades__other-offer {
+    text-align: center;
+}
+
+.my-trades .trade__weapons__summ {
+    display: none;
+}
+
+.my-trades .trade__weapons__summ .trade__button-container {
+    margin-top: 7px;
+}
+
+.trade__button-container.column {
+    flex-direction: column;
+}
+
+.my-trades-list__tradeWith {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    background: #dbdada;
+    color: #000;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.tradeWith__img-container {
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin-right: 10px;
+}
+.tradeWith__img-container img, .tradeWith__img {
+    width: 65px;
+    margin: auto;
+    height: 100%;
+}
+.tradeWith__text-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+}
+.tradeWith__nickname {
+    font-weight: bold;
+    font-size: 0.8em;
+    max-width: 180px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.tradeWith__tradeCount {
+    color: #3E3E3E;
+    font-size: 0.9em;
+}
+.tradeWith__controls {
+    margin-left: auto;
+    margin-bottom: auto;
+    color: #838383;
+}
+.tradeWith__controls > * {
+    cursor: pointer;
+    padding: 5px;
+}
+.delete-trade:hover {
+    color: #cb1212;
+}
+
+.trade__weapons__chang-your-weapons {
+    height: 100%;
+}
+#change-your-weapons {
+    height: calc(100% - 38px);
+    overflow: auto;
+    margin-top: 0;
+    position: relative;
+}
+.disabled {
+    opacity: 0.5;
+}
+.moder-menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #eee;
+    padding: 5px;
+}
+
+.block-reason {
+    color: #000;
+    padding:5px;
+    background: #fff;
+    margin-top:10px;
+    border-radius: 5px;
+    position: relative;
+    width:100%;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+.block-container {
+    max-width: 190px;
+    text-align: center;
+}
+.lobibox-input {
+    color: #000 !important;
+}
+
+.user_uid {
+  color: #eaeaea;
+  font-size: 0.8em;
+  position: fixed;
+  bottom: 5px;
+  left: 5px;
+}
+.user_uid:before {
+  content: 'ID: ';
+}
+
+/* == VIP === */
+.vip .blured_img {
+    display: none;
+}
+.vip .profile__name {
+  text-shadow: 1px 1px 1px #000, 2px 2px 2px RGBA(0, 0, 0, 0.6), 3px 3px 3px RGBA(0, 0, 0, 0.4);
+}
+.vip .top__bg {
+  background: #333;
+  background: radial-gradient(circle at bottom, #5F5F5F, #000);
+  background: url(../images/chat/crown.png), radial-gradient(circle at bottom, #5F5F5F, #000);
+  background-position: center, top;
+  background-repeat: no-repeat;
+}

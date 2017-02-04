@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FAQ</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/winter.css">
+        
+		<script src="../scripts/jquery.min.js"></script>
+		<script src="../scripts/jquery.cookie.js"></script>
+		<script src="../scripts/main.js"></script>
+		<script src="../scripts/settings.js"></script>
+		<script src="../scripts/cases2.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+
+		<script src="../scripts/navigationMenu.js"></script>
+		<link rel="stylesheet" href="../css/navigationMenu.css" />
+
+		<script src="../scripts/localization.js"></script>
+
+	<style>
+		body {
+		color: #fff;
+		}
+		ul.faq-list {
+		padding: 0 10px;
+		list-style: none;
+		}
+		.faq-list li {
+		margin: 15px 0;
+		}
+		.question {
+		text-transform: uppercase;
+		background: #688798;
+		display: inline-block;
+		padding: 5px 8px;
+		border-radius: 5px 5px 0 0;
+		text-shadow: 0px 0px 2px RGBA(0, 0, 0, 0.27);
+		}
+		.answer {
+		background: #ededed;
+		display: block;
+		padding: 9px;
+		border-radius: 0 5px 5px 5px;
+		color: #000;
+		}
+		.answer li {
+			margin: 5px 0;
+		}
+	</style>
+	</head>
+	<body data-localization='faq'>
+		<div class="site-overlay"></div>
+		<div id='container'>
+		<div class="navigationBar" data-menu-EN="FAQ" data-menu-RU="FAQ"></div>
+			<ul class='faq-list'>
+				<li data-loc-group="how_to_play_jackpot">
+					<span class='question' id='js-local-question-1' data-loc="title">How to play Jackpot?</span>
+					<span class='answer' id='js-local-answer-1' data-loc="info">The max number of weapons that you can add: 15.<br>Maximum price is unlimited.<br>The game will begin after 50 weapons are collected.<br>If you add weapons and close the jackpot, weapons will disappear.</span>
+				</li>
+				<li data-loc-group="why_no_price">
+					<span class='question' id='js-local-question-2' data-loc="title">Why weapon price is $0?</span>
+					<span class='answer' id='js-local-answer-2' data-loc="info">Weapons prices are taken from the database. If there are no prices for current weapon, then price is taken from the Steam Market. If there is no price as well, it counts as $0. <br> When the weapon appears in market, open the weapon info in inventory, wait until the price is loaded, reopen inventory.</span>
+				</li>
+				<li data-loc-group="how_to_exchange">
+					<span class='question' id='js-local-question-trade' data-loc="title">Как обмениваться предметами?</span>
+					<span class='answer' id='js-local-answer-trade' data-loc="info">First of all, you need to enable "Exchange" in settings.<br><b>How to send the trade offer</b><br>
+                        <ol>
+                            <li>Open another player profile</li>
+                            <li>Press on the exchange icon (<i class="fa fa-exchange" aria-hidden="true"></i>)</li>
+                            <li>Select the weapons that you want to send and press on the "Next" button</li>
+                            <li><s>Select the weapons that you want to get from player</s> (WIP)</li>
+                            <li>If you want to send weapons as a gift then check "It\'s a gift" checkbox</li>
+                            <li>Press on the "Send trade" button</li>
+                        </ol>
+                        <b>How to get weapons</b>
+                        <ol>
+                            <li>Open your profile</li>
+                            <li>Press on the exchange icon (<i class="fa fa-exchange" aria-hidden="true"></i>)</li>
+                            <li>Select the player that send the offer to you</li>
+                            <li>Select the offer</li>
+                            <li>Change your offer if you want</li>
+                            <li>Check the "Check this box when ready to trade." checkbox</li>
+                            <li>Wait until another player check this checkbox too and press on the "Make trade" button. Or another player can press it</li>
+                        </ol>
+                        If another player pressed the "Make trade" button when you was offline then open this trade to get your weapons.'
+                    </span>
+				</li>
+				<li data-loc-group="how_to_level_up">
+					<span class='question' id='js-local-question-rank' data-loc="title">How to level up?</span>
+					<span class='answer' id='js-local-answer-rank' data-loc="info" data-loc-var='{"1":5,"2":1,"3":2}'>For increasing your level you need points. Points are given for the following steps:<ul>
+                        <li>Open the app - ${1} points (award is given once a day)</li>
+                        <li>Open one case - ${2} point</li>
+                        <li>Won in the mini-game - ${3} points</li>
+                    </li></ul></span>
+				</li>
+				<li data-loc-group="found_bug">
+					<span class='question' id='js-local-question-3' data-loc="title">I found a bug what should I do?</span>
+					<span class='answer' id='js-local-answer-3' data-loc="info">You can contact me via email: kurtukovvlad@gmail.com</span>
+				</li>
+			</ul>
+		</div>
+		<script>
+		</script>
+	</body>
+</html>

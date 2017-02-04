@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Открытие кейса</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+    <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/cases2.js"></script>
+    <script src="../scripts/quality.js"></script>
+    <script src="../scripts/skinNames.js"></script>
+    <script src="../scripts/prices.js"></script>
+    <script src="../scripts/weapons.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/rarity.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" href="../css/lobibox.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/winter.css"> 
+
+    <style>
+        body {
+            background: #19212b;
+        }
+    </style>
+    
+</head>
+
+<body data-localization="open_case" data-inventory="no-load">
+    <div class="weapons">
+        <div class="closeCase"></div>
+        <div class="scrollerContainer">
+            <div id="caruselOver">
+                <div id="caruselLine"></div>
+            </div>
+            <div id="aCanvas">
+                <div class="casesCarusel" id='casesCarusel'> </div>
+                <div class='js_sound_element' style='display:none;'></div>
+            </div>
+        </div>
+        <div class="win" style="display: none;"> <span id='win_youWon' data-loc="you_won">You won</span> <span class="win_name"></span> <span class="win_quality"></span> <span class="win_price currency dollar"></span> <img src="" class="win_img">
+            <div class="win_sell_div">
+                <h3 id="win_sell_text" class="lines"><span data-loc="sell">Sell</span></h3>
+                <button class="button_glass" id="double_sell_button"></button>
+            </div>
+        </div>
+        <button class="openCase btn btn-success" data-loc="open_case">Open Case</button>
+        <div><span id="opened-text" data-loc="opened">Opened:</span> <span id="opened">0</span></div>
+        <button id='what-i-can-win-Button' class='btn btn-info btn-sm' data-loc="what_in_case">What's in the case?</button>
+        <div id="youCanWin" style='display:none' data-loc="you_can_win">You can win one of those items from collection</div>
+        <ul class="weaponsList" style='display:none'> </ul>
+    </div>
+    <div id="caseID" style="display:none;"></div>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/localization.js"></script>
+    <script src="../scripts/openCase.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+    <script>
+        openCase.init();
+    </script>
+</body>
+
+</html>

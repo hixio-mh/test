@@ -1,0 +1,51 @@
+.onlineCount {
+    position: fixed;
+    top: 5px;
+    right: 15px;
+    z-index: 30;
+    padding: 5px;
+}
+.onlineCount:before {
+    content: '';
+    background: green;
+    border-radius: 50%;
+    position: inherit;
+    right: 5px;
+    top: 13px;
+    width: 10px;
+    height: 10px;
+}
+
+.chat-panel .panel-body {
+    padding: 3px 0 0 10px;
+}
+.chat__messages {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+    overflow: auto;
+    height: 100px;
+}
+.chat__messages li {
+    margin: 5px 0;
+    word-break: break-all;
+}
+.chat-bar {
+    z-index: 10;
+}
+.chat {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    height: 150px;
+    background: rgba(0,0,0,0.7);
+    font-size:0.93em;
+    display: flex;
+    flex-direction: column;
+    border-top:1px solid #fff;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+.chat-panel {
+    margin-bottom: 0;
+}

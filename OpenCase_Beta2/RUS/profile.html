@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Профиль</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/rarity.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
+    <link rel="stylesheet" type="text/css" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/lobibox.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/winter.css">
+    
+    <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/weapons.js"></script>
+    <script src="../scripts/fb-inventory.js"></script>
+    <script src="../scripts/skinNames.js"></script>
+    <script src="../scripts/prices.js"></script>
+    <script src="../scripts/quality.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/cases2.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/profile-page.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    <script src="../scripts/localization.js"></script>
+    <script src="../scripts/inventory.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+</head>
+
+<body data-localization='profile'>
+    <div class="site-overlay"></div>
+    <div id="container">
+        <div class="navigationBar" data-menu-EN="Profile" data-menu-RU="Профиль"></div>
+        <div class="top__bg"><div class="blured_img"><img src="" class="profile__img"></div></div>
+        <div class="left-side" style="display:none;"> <i class="edit-profile fa fa-pencil-square-o" aria-hidden="true"></i> <i class="save-profile fa fa-floppy-o" aria-hidden="true" style="display:none"></i> </div>
+        <div class="right-side" style="display:none;"><i class="sign-out fa fa-sign-out" aria-hidden="true"></i></div>
+        <div class="top">
+            <div class="top__profile">
+                <h1 class="profile__name">Loading...</h1>
+                <!--<h3 class="profile__status">Test status</h3> --></div>
+            <div class="top_actions">
+                <div class="top__pm disabled"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+                <img src="" class="profile__img">
+                <div class="top__trade disabled" disabled="true"><i class="fa fa-exchange" aria-hidden="true"></i></div>
+            </div>
+        </div>
+        <div class="stats" data-loc-group="stats">
+            <div class="stats__rank stats__block">
+                <div class="stats__rank__rank stat__num"></div>
+                <div data-loc="level">Level</div>
+            </div>
+            <div class="stats__line"></div>
+            <div class="stats__inventory stats__block">
+                <div class="stats__inventory__count stat__num">?</div>
+                <div data-loc="inventory">Inventory</div>
+            </div>
+            <div class="stats__line"></div>
+            <div class="stats__inventory stats__block">
+                <div class="rep-container">
+                    <div class="rep rep-plus"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
+                    <div class="stats__rate__count stat__num">0</div>
+                    <div class="rep rep-minus"><i class="fa fa-arrow-down" aria-hidden="true"></i></div>
+                </div>
+                <div data-loc="reputation">Reputation</div>
+            </div>
+        </div>
+        <div class="moder-menu" style="display: none" data-loc-group="moderator">
+            <div class='block-container'><button class="button_blue" id='block-chat' data-action="block" data-loc="chat_ban">Chat ban</button><div class='block-reason' id='block-chat-reason' data-loc="no_ban">Chat doesn't banned</div></div>
+            <div class='block-container'><button class="button_blue" id='block-trade' data-action="block" data-loc='trade_ban'>Trade ban</button><div class='block-reason' id='block-trade-reason' data-loc="no_ban">Trades doesn't banned</div></div>
+        </div>
+        <div class="posts">
+            <div class="posts__new-post">
+                <div class="new-post__text" contenteditable="true" placeholder="Sup?"></div>
+                <button class="button_blue" value="Send" id="send-new-post" data-loc="send_post">Send</button>
+            </div>
+            <ul class="posts__user-posts"> </ul>
+        </div>
+        
+        <span class="user_uid"></span>
+        
+        <div class='trade-window' style='display: none;' data-loc-group="exchange">
+            <div class='trade__header'>
+                <div class='trade-back' style="display: none"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                <span class='trade__header__title' data-loc="title">Trade</span>
+                <div class='closeCase' id='close-trade-window'></div>
+            </div>
+            <div class='my-trades'>
+                <ul class='my-trades-list'></ul>
+                <ul class='my-trades__trades-with-user'></ul>
+                <div class='trade__weapons__summ'>
+                    <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <img src='' class='trade-user-img user-profile-img'>
+                                <div data-loc-group="your_offer">
+                                    <span class='you-offer-text' data-loc="main">Your offerings</span>
+                                    <span class='you-offer-info' data-loc="info">These are the items you will lose in the trade.</span>
+                                </div>
+                            </div>
+                            <div id='my-trades__your-offer'></div>
+                        </div>
+                        <div class='checkbox-trade-ready'><label for='you-ready-to-trade' id='locale-ready-to-trade' data-loc-group="status"><input type='checkbox' id='you-ready-to-trade'><span data-loc="checkbox">Check this box when ready to trade.</span></label></div>
+                        <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <span class='other-player-ready not-ready' data-loc-group="status"><span data-loc="not_ready">Not ready</span></span>
+                                <img src='' class='trade-user-img other-user-profile-img'>
+                                <div data-loc-group="other_offer">
+                                    <span class='other-offer-text' data-loc="main">Other player offerings:</span>
+                                    <span class='other-offer-info' data-loc="info">These are the items you will receive in the trade.</span>
+                                </div>
+                            </div>
+                            <div id='my-trades__other-offer'></div>
+                        </div>
+                        <div class='trade__button-container column' data-loc-group="buttons">
+                            <button class='trade__button button_blue empty' id='change-weapons-trade' data-loc="change_offer">Change your offer</button>
+                            <div class='trade__button-container'>
+                                <button class='trade__button button_blue empty' id='cancel-trade' data-loc="cancel_trade">Cancel trade</button>
+                                <button class='trade__button button_blue' id='make-trade' data-loc="make_trade">Make trade</button>
+                            </div>
+                        </div> 
+                </div>
+            <div class='trade__weapons__chang-your-weapons' style='display: none'>
+                <ul class='inventory inv-price-counter inventoryList' id='change-your-weapons'>
+                </ul>
+                <div class='trade__button-container' data-loc-group="buttons">
+                    <button class='trade__button button_blue empty' onclick='$(".trade-back").click()' id='locale-back' data-loc="back">Back</button>
+                    <button class='trade__button button_blue' id='add-weapons' data-loc="add_items">Add items</button>
+                </div>
+            </div> 
+            </div>
+            <div class='send-trade-window'>
+                <div class='trade__menu'>
+                    <span class='trade__menu__item active' id='trade-menu-your-items' data-loc="your_inventory">Your inventory</span>
+                    <span class='trade__menu__item' id='trade-menu-player-items' data-loc="their_inventory">Their inventory</span>
+                    <span class='trade__menu__item' id='trade-menu-summ' data-loc="summary">Summary</span>
+                </div>
+                <div class='trade__weapons inventoryList'>
+                    <ul class='trade__weapons__player1 inventory inv-price-counter no_delete'></ul>
+                    <ul class='trade__weapons__player2'>
+                        <li data-loc="watch_inventory_wip">WIP. Send trade and wait for other player add something.</li>
+                    </ul>
+                    <div class='trade__weapons__summ'>
+                        <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <img src='' class='trade-user-img user-profile-img'>
+                                <div data-loc-group="your_offer">
+                                    <span class='you-offer-text' data-loc="main">Your offerings:</span>
+                                    <span class='you-offer-info' data-loc="info">These are the items you will lose in the trade.</span>
+                                </div>
+                            </div>
+                            <ul class='port-inventory inv-no-select summ-inventory summ-your-offer' id='summ-your-offer'>
+                            </ul>
+                        </div>
+                        <div class='checkbox-trade-ready'><label for='trade-its-gift' id='locale-gift' data-loc-group='status'><input type='checkbox' id='trade-its-gift'><span data-loc="gift">It's a gift.</span></label></div>
+                        <div class='trade__weapons__summ_your-offer'>
+                            <div class='your-offer__header'>
+                                <span class='other-player-ready not-ready' data-loc-group="status"><span data-loc='not_ready'>Not ready</span></span>
+                                <img src='' class='trade-user-img other-user-profile-img'>
+                                <div data-loc-group="other_offer">
+                                    <span class='other-offer-text' data-loc="main">Other player offerings:</span>
+                                    <span class='other-offer-info' data-loc="info">These are the items you will receive in the trade.</span>
+                                </div>
+                            </div>
+                            <ul class='port-inventory inv-no-select summ-inventory' id='summ-other-offer'>
+                                <li data-loc="watch_inventory_wip">Send trade and wait for other player add something.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='trade__button-container' data-loc-group="navigation">
+                    <button class='trade__button button_blue empty' id='back-step' data-loc="back">Back</button>
+                    <button class='trade__button button_blue empty' id='next-step' data-loc="next">Next</button>
+                    <button class='trade__button button_blue' id='send-trade' data-loc="send_trade">Send trade</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Moder ban modal -->
+        <div id='moder-ban-modal' class='modal fade' role='dialog' data-loc-group="moderator">
+            <div class='modal-dialog modal-sm' data-loc-group='ban_reason'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <span data-loc='title'>Ban reason</span>
+                        <button class='close' type='button' data-dismiss='modal'>&times;</button>
+                    </div>
+                    <div class='modal-body' data-loc-group='reasons'>
+                        <div class='checkbox'>
+                            <label><input type='checkbox'> Spam</label>
+                        </div>
+                        <div class='checkbox'>
+                            <label><input type='checkbox'> Cheats</label>
+                        </div>
+                        <div class='checkbox'>
+                            <label><input type='checkbox'> Insults</label>
+                        </div>
+                        <div class='checkbox'>
+                            <label><input type='checkbox'> Scam</label>
+                        </div>
+                        <div class='checkbox'>
+                            <label><input type='checkbox'> 18+ pictures</label>
+                        </div>
+                        <div class='checkbox'>
+                            <label><input type='checkbox'> Other</label>
+                            <input type='text' class='form-control input-sm' disabled>
+                        </div>
+                    </div>
+                    <div class='modal-footer'>
+                        <button class='btn btn-danger' type='button'>Ban user</button>
+                        <button class='btn btn-default' type='button' data-dismiss='modal'>Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete trade Modal -->
+        <div id='delete-trade-modal' class='modal fade' role='dialog' data-loc-group='delete_trade_confirm'>
+            <div class='modal-dialog modal-sm'>
+                <div class='modal-content'>
+                    
+                    <div class='modal-body' data-loc='confirm_text'>
+                        Do you really want to delete all trades with this user?
+                    </div>
+                    <div class='modal-footer'>
+                        <button class='btn btn-danger' type='button' id='deleteTrades' data-loc="yes">Yes</button>
+                        <button class='btn btn-default' type='button' data-dismiss='modal' data-loc='no'>No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

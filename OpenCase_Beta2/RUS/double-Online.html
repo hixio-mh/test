@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Double Online</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+<!-- Стили -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/rarity.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/fonts.css">
+<link rel="stylesheet" type="text/css" href="../css/inventory-portable.css">
+<link rel="stylesheet" type="text/css" href="../css/loading.css">
+<link rel="stylesheet" type="text/css" href="../css/buttons.css">
+<link rel="stylesheet" type="text/css" href="../css/online-games.css">
+<link rel="stylesheet" type="text/css" href="../css/winter.css">
+
+<!-- Скрипты -->
+<script src="../scripts/build/libs.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="../scripts/settings.js"></script>
+<script src="../scripts/cases2.js"></script>
+<script src="../scripts/weapons.js"></script>
+<script src="../scripts/skinNames.js"></script>
+<script src="../scripts/quality.js"></script>
+<script src="../scripts/prices.js"></script>
+<script src="../scripts/inventory.js"></script>
+<script src="../scripts/profile.js"></script>
+<script src="../scripts/navigationMenu.js"></script>
+<script src="../scripts/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/navigationMenu.css">
+<link rel="stylesheet" type="text/css" href="../css/double.css">
+
+<script src="../scripts/localization.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/animate.css">
+<script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+<script src="../scripts/games/doubleOnline.js"></script>
+<script src="../scripts/games/online-games.js"></script>
+</head>
+
+<body data-localization="double" data-inventory='no-load'>
+	<div class="site-overlay"></div>
+<div id="container">
+<div class="navigationBar" data-menu-EN="Double Online" data-menu-RU="Дабл онлайн"></div>
+<div class='onlineCount'></div>
+<div class='panel panel-default'>
+        <div class='panel-heading' data-loc="previous_numbers">Previous numbers:</div>
+        <div class='panel-body last-games'></div>
+    </div>
+
+    <div style='width:100%;overflow:hidden'>
+        <div class="scrollerContainer">
+            <div id="caruselOver"><div id="caruselLine"></div></div>
+            <div id="aCanvas">
+                <div class="casesCarusel">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='progress double-progress'>
+        <div class='progress-bar' id='progress-countdown'>
+            <span data-loc="rolling_in">Roling in</span>
+        </div>
+    </div>
+    <div class="game__body__bet well">
+        <div class="btn-group bets">
+            <button type="button" class="btn" data-bet='clear'>0</button>
+            <button type="button" class="btn" data-bet='10'>+10</button>
+            <button type="button" class="btn" data-bet='100'>+100</button>
+            <button type="button" class="btn" data-bet='1000'>+1000</button>
+            <button type="button" class="btn" data-bet='1/2'>1/2</button>
+            <button type="button" class="btn" data-bet='x2'>x2</button>
+            <button type="button" class="btn" data-bet='max'>Max</button>
+        </div>
+        <div class="input-group mb-5">
+            <input id="bet" type="text" class="form-control" name="bet" placeholder="Bet Amount" pattern="[0-9]*" maxlength='7'>
+            <span class='input-group-addon'>/ <span id='balance'></span> <i class='double-icon'></i></span>
+        </div>
+        <button id='fillBalance' type='button' class='btn btn-success btn-xs btn-block' data-loc='fill_up_balance'>Fill up balance</button>
+    </div>
+
+<div class='bet-tables'>
+    <div class='col-md-4 col-sm-4 col-xs-4'>
+        <table class='table table-bordered table-striped bets-red-table'>
+            <thead>
+                <tr><td colspan=2><button class='bet-to-color bet-red'>1 — 7</button></td></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+	<div class='col-md-4 col-sm-4 col-xs-4'>
+        <table class='table table-bordered table-striped bets-green-table'>
+            <thead>
+                <tr><td colspan=2><button class='bet-to-color bet-green'>0</button></td></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+	<div class='col-md-4 col-sm-4 col-xs-4'>
+        <table class='table table-bordered table-striped bets-black-table'>
+            <thead>
+                <tr><td colspan=2><button class='bet-to-color bet-black'>8 — 14</button></td></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+        <!-- === Chat === -->
+        <div class='footer navbar-fixed-bottom chat-bar' data-loc-group='chat'>
+            <div class='col-md-4 col-sm-5 col-lg-4'>
+                <div class='panel panel-primary chat-panel'>
+                    <div class='panel-heading' id='chat' role='tab' style='cursor: pointer;' data-toggle='collapse' data-parent='#accordion' href='#chatCollapse' aria-expanded='true' aria-controls='chatCollapse'>
+                        <span class='glyphicon glyphicon-comment'></span>
+                        <span data-loc='top'>Chat</span>
+                        <span class='chat_new_messages_count badge pull-right'>0</span>
+                    </div>
+                    <div class='panel-collapse collapse' id='chatCollapse' role="tabpanel" aria-labelledby="chat">
+                        <div class='panel-body'>
+                            <ul class='chat__messages'></ul>
+                        </div>
+                        <div class='panel-footer'>
+                            <div class='input-group input-group-sm'>
+                                <input type='text' class='form-control inputsm chat__new-message__textbox' placeholder="Enter your message" max='100'>
+                                <div class='input-group-btn'>
+                                    <button class="btn btn-primary" type='submit' id='chat-send-msg' ><i class='glyphicon glyphicon-send'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- === Chat End === -->
+
+<!-- Инвентарь -->
+<div class="inventoryList" style="display: none;">
+	<span id="intentory-Player"></span>
+	<div class="closeInventory"></div>
+	<ul class="inventory inv-price-counter"></ul>
+	<button class="choseItems btn btn-success btn-block">Обменять</button>
+</div>
+
+</div>
+
+</body>
+</html>

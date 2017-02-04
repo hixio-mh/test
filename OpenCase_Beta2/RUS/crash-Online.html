@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crash Online</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.9, maximum-scale=1.0, user-scalable=no">
+    <!-- Стили -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/loading.css">
+    <link rel="stylesheet" type="text/css" href="../css/buttons.css">
+    <link rel="stylesheet" type="text/css" href="../css/crash.css">
+    <link rel="stylesheet" type="text/css" href="../css/odometer-theme-default.css">
+    <link rel="stylesheet" type="text/css" href="../css/online-games.css">
+    <link rel="stylesheet" type="text/css" href="../css/winter.css">
+    <!-- Скрипты -->
+    <script src="../scripts/build/libs.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/profile.js"></script>
+    <script src="../scripts/navigationMenu.js"></script>
+    <script src="../scripts/odometer.min.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="../css/navigationMenu.css">
+    <script src="../scripts/localization.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    
+    <script src="../scripts/games/crashOnline.js"></script>
+    <script src="../scripts/games/online-games.js"></script>
+</head>
+
+<body data-localization="crash" data-inventory='no-load'>
+    <div class="site-overlay"></div>
+    <div id="container">
+        <div class="navigationBar" data-menu-EN="Crash Online" data-menu-RU="Краш Онлайн"></div>
+        <div class='onlineCount'></div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">Crash</div>
+            <div class="panel-body">
+                <div id="crash-container" class='well'>
+                    <div class="crash__next-round-timer" style='display:none'><span data-loc="next_round_in">Next round in</span><span id='odometer_next_round'></span><span data-loc="seconds"></span></div>
+                    <div class="crash__multiply"><span id='odometer'>1.00</span>x</div>
+                </div>
+
+                <div class="game__body__bet">
+                    <div class="btn-group bets">
+                        <button type="button" class="btn" data-bet='clear'>0</button>
+                        <button type="button" class="btn" data-bet='10'>+10</button>
+                        <button type="button" class="btn" data-bet='100'>+100</button>
+                        <button type="button" class="btn" data-bet='1000'>+1000</button>
+                        <button type="button" class="btn" data-bet='1/2'>1/2</button>
+                        <button type="button" class="btn" data-bet='x2'>x2</button>
+                        <button type="button" class="btn" data-bet='max'>Max</button>
+                    </div>
+                    <div class="input-group mb-5">
+                        <input id="bet" type="text" class="form-control" name="bet" placeholder="Bet Amount" pattern="[0-9]*">
+                        <span class='input-group-addon'>/ <span id='balance'></span> <i class='double-icon'></i></span>
+                    </div>
+                </div>
+
+                <button id='place-bet' data-loc-group="bet" class='btn btn-lg btn-block btn-success'><span data-loc="place">Connecting...</span></button>
+            </div>
+        </div>
+        
+        <div class='well'>
+            <ul class='nav nav-tabs' data-loc-group="tabs">
+                <li class='active'><a data-toggle='tab' href='#bets' data-loc='bets'>Bets</a></li>
+                <li><a data-toggle='tab' href='#history' data-loc='history'>History</a></li>
+                <li><a data-toggle='tab' href='#top' data-loc='top'>Top</a></li>
+            </ul>
+            
+            <div class='tab-content'>
+                <div id='bets' class='tab-pane fade in active'>
+                    <table class="table table-condensed table-striped" id='bet-list' data-loc-group="table">
+                        <thead>
+                            <tr><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div id='history' class='tab-pane fade'>
+                    <table class="table table-condensed" id='history-table'>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                
+                <div id='top' class='tab-pane fade'>
+                    <table class="table table-condensed table-striped" id='top-table' data-loc-group="table">
+                        <thead>
+                            <tr><th>#</th><th data-loc="nick">Nickname</th><th>@</th><th data-loc="bet">Bet</th><th data-loc="profit">Profit</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- === Chat === -->
+        <div class='footer navbar-fixed-bottom chat-bar' data-loc-group='chat'>
+            <div class='col-md-4 col-sm-5 col-lg-4'>
+                <div class='panel panel-primary chat-panel'>
+                    <div class='panel-heading' id='chat' role='tab' style='cursor: pointer;' data-toggle='collapse' data-parent='#accordion' href='#chatCollapse' aria-expanded='true' aria-controls='chatCollapse'>
+                        <span class='glyphicon glyphicon-comment'></span>
+                        <span data-loc='top'>Chat</span>
+                        <span class='chat_new_messages_count badge pull-right'>0</span>
+                    </div>
+                    <div class='panel-collapse collapse' id='chatCollapse' role="tabpanel" aria-labelledby="chat">
+                        <div class='panel-body'>
+                            <ul class='chat__messages'></ul>
+                        </div>
+                        <div class='panel-footer'>
+                            <div class='input-group input-group-sm'>
+                                <input type='text' class='form-control inputsm chat__new-message__textbox' placeholder="Enter your message" max='100'>
+                                <div class='input-group-btn'>
+                                    <button class="btn btn-primary" type='submit' id='chat-send-msg' ><i class='glyphicon glyphicon-send'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- === Chat End === -->
+    </div>
+</body>
+
+</html>

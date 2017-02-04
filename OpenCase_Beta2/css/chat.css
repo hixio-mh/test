@@ -1,0 +1,327 @@
+body {
+  background: #e6e6e6;
+}
+#container {
+    height: 100%;
+}
+
+#firechat-wrapper {
+    padding-top: 10px;
+}
+#login {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 100%;
+    justify-content: center;
+}
+#login > * {
+    margin: 2px 0;
+}
+#login__buttons > button {
+    margin: 0px 3px;
+}
+#login__buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+}
+#login-buttons-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    align-content: stretch;
+}
+#loginButton {
+    flex-grow: 2;
+    margin-right: 5px;
+}
+#registerButton {
+    flex-grow: 1;
+}
+.button_blue {
+    padding: 5px !important;
+}
+.chat__rooms-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.chat__rooms {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.chat__rooms__room {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px 10px 10px;
+    cursor: pointer;
+}
+.chat__rooms__room img {
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.chat__rooms__room span {
+    color: #7E7E7E;
+    font-size: 0.8em;
+}
+.playerLang span {
+    color: #454545;
+}
+ul.chat__messages {
+    padding: 10px;
+    list-style: none;
+    background: #e6e6e6;
+    margin-top: 0;
+    padding-bottom: 30px;
+}
+li.chat__message {
+    margin: 15px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+li.chat__message a img[data-userid] {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.message__info {
+    position: relative;
+    background: #fff;
+    padding: 10px 15px;
+    margin-left: 26px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0, 0.2);
+    box-shadow: 0 0 5px rgba(0,0,0, 0.2);
+    word-wrap: break-word;
+    max-width: calc(100% - 107px);
+    cursor: pointer;
+}
+.message__info::before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: -19px;
+    border-left: none;
+    border-top: 10px solid transparent;
+    border-right: 20px solid #fff;
+    border-bottom: 10px solid transparent;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.message__from {
+    color: #cb6a6a;
+    font-size: 14px;
+    font-weight: bold;
+}
+.player-nickname {
+    color: #cb6a6a;
+    font-weight: normal;
+}
+.flag {
+    margin: 0 3px;
+}
+.message__time {
+    color: #c5c5c5;
+    font-size: 14px;
+    float: right;
+    margin-left: 15px;
+}
+.message__text {
+    color: #656565;
+}
+.group {
+    font-size: 0.65em;
+    margin-left: 4px;
+    color: #1D46AA;
+}
+.group::before {
+    content: '[';
+    margin-right: 2px;
+}
+.group::after {
+    content: ']';
+    margin-left: 2px;
+}
+/* Если сообщение отправил текущий пользователь */
+.my_message {
+    flex-direction: row-reverse !important;
+}
+
+.my_message .message__info {
+    margin-left: 0;
+    margin-right: 26px;
+}
+
+.my_message .message__info::before {
+    right: -20px;
+    left: auto;
+    border-left: 20px solid #fff;
+    border-right: none;
+}
+
+.msgToMe .message__info {
+    box-shadow: 0px 0 5px rgba(255, 0, 216, 0.5);
+}
+
+.message__moderator {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    position: absolute;
+    right: -16px;
+    flex-direction: column;
+    top: 0;
+    background: #fff;
+    padding: 2px;
+    padding-left: 11px;
+    border-radius: 5px;
+    align-items: center;
+    align-content: center;
+    color: #B10909;
+}
+
+.chat__write {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    border-radius: 0;
+}
+#chat__new-message {
+    flex-grow: 2;
+    margin-bottom: 0;
+    word-break: break-all;
+    height: auto;
+    min-height: 30px;
+}
+#login-status {
+    font-size: 0.9em;
+}
+#forgot-pass {
+    color: #858DA2;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    font-size: 0.8em;
+    margin-top: 10px;
+    display: inline-block;
+}
+.chat__rooms__info a {
+    color:gray;
+}
+
+.chat__rooms__info {
+    padding: 5px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    text-align: center;
+    align-self: flex-end;
+    margin-top: auto;
+    width: 100%;
+}
+
+.img-attach {
+    position: absolute;
+    right: 36px;
+    z-index: 4;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.img-attach input {
+    position: absolute;
+    opacity: .01;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.img-attach > i {
+    padding: 6px;
+}
+
+/* === VIP === */
+.vip a:nth-child(1)::before {
+    display: block;
+    content: '';
+    background: url(../images/chat/crown.png);
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    position: absolute;
+    margin-top: -22px;
+    left: -10px;
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+.vip.my_message a:nth-child(1)::before {
+    right: -10px;
+    left: auto;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.vip .message__info::before {
+    border-right: 20px solid #202020;
+}
+.vip.my_message .message__info::before {
+    border-left: 20px solid #202020;
+    border-right: none;
+}
+.vip .message__info {
+    background: #202020;
+}
+.vip .message__info .message__info__from-time .message__from {
+    color: gold;
+}
+.vip .message__info .message__info__from-time .group {
+    color: #dbdbdb;
+}
+.vip .message__info .message__info__from-time .message__time {
+    color: #515151;
+}
+.vip .message__info .message__info__from-time .message__moderator {
+    background: #202020;
+    color: #fff;
+}
+.vip .message__info .message__text {
+    color: #dbdbdb;
+}
+
+.vip-blur .message__text, .vip-blur .message__from {
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+}
+.vip-blur {
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
