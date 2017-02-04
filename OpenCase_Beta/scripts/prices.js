@@ -39703,5 +39703,19 @@ var Prices = {
       "stattrak": {},
       "souvenir": {}
     }
+  },
+  "797": {
+    "item_id": 797,
+    "type": "AK-47",
+    "skinName": "Ganesha",
+    "prices": {
+      "default": {
+        "4": {
+          "market": 20000
+        },
+      },
+      "stattrak": {},
+      "souvenir": {}
+    }
   }
 }

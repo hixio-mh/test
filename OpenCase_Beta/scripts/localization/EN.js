@@ -471,8 +471,8 @@ var Translation = {
                     text: 'Roll dice'
                 },
                 end_roll: {
-                    text: 'Выпало ${1}. Бросить еще раз?',
-                    en: 'Rolled ${1}. Roll again?'
+                    rus: 'Выпало ${1}. Бросить еще раз?',
+                    text: 'Rolled ${1}. Roll again?'
                 }
             },
             

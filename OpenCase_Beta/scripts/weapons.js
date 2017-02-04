@@ -24,6 +24,12 @@ var item_proto = {
         else {
             return this.img;
         }
+    },
+    hashCompare: function(hash) {
+        hash = hash || this.hash || -1;
+        if (hash === -1) return false
+
+        return this.hash() === hash
     }
 }
 
@@ -233,6 +239,21 @@ Weapon.prototype.titleText = function () {
     return this.specialText() + this.type + " | " + this.name
 }
 
+Weapon.prototype.hash = function(id) {
+    id = id || this.id || -1;
+    if (id === -1) return ''
+    
+    var hash_obj = {
+        id: id,
+        item_id: this.item_id,
+        quality: this.quality,
+        stattrak: this.stattrak,
+        souvenir: this.souvenir
+    }
+    
+    return hex_md5(JSON.stringify(hash_obj))
+}
+
 // === Functions ===
 
 function getRandomWeapon(opt) {
@@ -346,6 +367,22 @@ Sticker.prototype.saveObject = function () {
         souvenir: null,
         new: this.new
     }
+}
+
+Sticker.prototype.hash = function(id) {
+    id = id || this.id || -1;
+    if (id === -1) return ''
+    
+    var hash_obj = {
+        id: id,
+        item_id: this.item_id
+    }
+    
+    return hex_md5(JSON.stringify(hash_obj))
+}
+
+Sticker.prototype.specialText = function() {
+    return '';
 }
 
 function getItemsByID(IDs, type) {
@@ -5382,6 +5419,19 @@ var Items = {
             specialCase: false
         },
         img: "-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DAQ1JmMR1osbaqPQJz7ODYfi9W9eO6nYeDg8j2P67UqWNU6dNoteXA54vwxlbi-0duYWulLIHDcVdtNF7S_VDrwb_vgpe-tJXNwXdmvChwtnjUnEGpwUYb1m-kts8"
+    }, {
+        id: 797,
+        type: "AK-47",
+        skinName: "Ganesha",
+        rarity: "covert",
+        buy: false,
+        bot: false,
+        can: {
+            buy: false,
+            bot: false,
+            specialCase: false
+        },
+        img: "Other/AK-47-Ganesha.png"
     }],
     stickers: [{
         id: 0,
