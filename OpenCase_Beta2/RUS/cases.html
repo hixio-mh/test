@@ -226,8 +226,12 @@ $(function () {
         getInventory().then(function(inventory) {
             for (var i = 0; i < inventory.weapons.length; i++) {
                 updateWeapon(inventory.weapons[i]);
-            }
-            saveStatistic('hash', 1)
+            } 
+            var balance = getStatistic('doubleBalance', 0, false);
+            var exp = getStatistic('playerPoints', 0, false);
+            saveStatistic('hash', 1);
+            saveStatistic('doubleBalance', balance, 'Number', true);
+            saveStatistic('playerPoints', exp, 'Number', true);
         })
     }
 });
