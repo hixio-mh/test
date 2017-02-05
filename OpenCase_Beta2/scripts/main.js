@@ -340,8 +340,11 @@ function getStatistic(key, defaultVal, crypt) {
     if (crypt) {
         try {
             var newValue = CryptoJS.AES.decrypt(value, key).toString(CryptoJS.enc.Utf8);
-            if (newValue != '' || key.match(/(playerPoints|doubleBalance)/i))
+            if (newValue != '')
                 value = newValue;
+            if (key.match(/(playerPoints|doubleBalance)/i)) {
+                value = value == '' ? 0 : value;
+            }
         } catch (e) {
             console.log('Get statistic Error', e);
             console.log(`Key: ${key}, defaultVal: ${defaultVal}, val: ${newValue}`);
