@@ -343,7 +343,7 @@ function getStatistic(key, defaultVal, crypt) {
             if (newValue != '')
                 value = newValue;
             if (key.match(/(playerPoints|doubleBalance)/i)) {
-                value = value == '' ? 0 : value;
+                value = newValue == '' ? 0 : newValue;
             }
         } catch (e) {
             console.log('Get statistic Error', e);
