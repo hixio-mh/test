@@ -138,6 +138,12 @@ window.onerror = function (msg, url, line, col, error) {
         setTimeout(function(){
             $('.error-log').remove();
         }, 5000);
+    try {
+        LOG.err({
+            action: action,
+            stack: stack
+        })
+    } catch (e) {}
 };
 
 if (!isAndroid() || (isAndroid() && parseFloat(client.getCurrentAppVersionName()) < 1.3)) {
