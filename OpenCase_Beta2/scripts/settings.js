@@ -20,7 +20,11 @@ Player.nickname = getStatistic("playerNickname", 'Player');
 Player.avatar = getStatistic("playerAvatar", '0.jpg');
 Player.points = parseInt(getStatistic('playerPoints', 0));
 Player.doubleBalance = parseInt(getStatistic('doubleBalance', 0));
+
+//isNaN check
 if (isNaN(Player.doubleBalance)) Player.doubleBalance = 10000;
+if (isNaN(Player.points)) Player.points = 1;
+
 
 Settings.language = getStatistic("settings_language", 'EN');
 Settings.sounds = getStatistic("settings_sounds", 'true') === 'true';
@@ -180,7 +184,7 @@ var Level = (function(module) {
     }
     
     module.calcLvl = function(exp) {
-        exp = exp || Player.points;
+        exp = exp || isNaN(Player.points) ? 5 : Player.points;
         var i = 1;
         while (true) {
             if (exp < module.lvlEXP(i))
