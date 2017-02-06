@@ -232,6 +232,14 @@ $(function () {
             saveStatistic('hash', 1);
             saveStatistic('doubleBalance', balance, 'Number', true);
             saveStatistic('playerPoints', exp, 'Number', true);
+            try {
+                LOG.log({
+                    action: 'Inventory updated',
+                    inventoryCount: inventory.count
+                })
+            } catch (e) {
+                console.log(e);
+            }
         })
     }
 });
