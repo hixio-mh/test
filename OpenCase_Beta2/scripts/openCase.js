@@ -241,7 +241,7 @@ var openCase = {
         
         for(var i = 0; i < caseItems.all.length; i++) {
             caseItems.all[i] = new Item(caseItems.all[i].id, openCase.caseType);
-            if (caseItems.all[i] == 'weapon')
+            if (caseItems.all[i].itemType == 'weapon')
                 if (!openCase.souvenir) {
                     caseItems.all[i].stattrakRandom();
                 } else {
