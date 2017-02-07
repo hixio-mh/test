@@ -92,7 +92,7 @@ var Translation = {
         },
         cases: {
             news: {
-                text: 'Проголосуйте за следующую мини-игру <a href="https://www.patreon.com/posts/next-game-7877075" target="_blank">ЗДЕСЬ</a>'
+                text: 'Джекпот онлайн <a href="https://www.patreon.com/posts/online-jackpot-8026652" target="_blank">демо видео</a>'
             },
             page_name: {
                 text: 'Открыть кейсы',
