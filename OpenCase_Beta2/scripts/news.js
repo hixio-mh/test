@@ -511,4 +511,12 @@ var news = [{
         "RU": " - [Исправлено] Улучшена защита от взломов.",
         "EN": "- [Fixed] Improved anti-hack protection."
     }
+}, {
+    "day": 7,
+    "month": 2,
+    "year": 2017,
+    "update": {
+        "RU": " - [Исправлено] Исправлена ошибка, когда при запуске не появлялись кейсы и ничего не нажималось. Кстати, если у вас была эта ошибка, кране рекомендую обновить Android.",
+        "EN": "- [Fixed] Bug when cases doesn't show up in main page and you can't click on anything."
+    }
 }, ];
