@@ -205,10 +205,11 @@ var Jackpot = {
     },
     showRooms: function() {
         var roomsHTML = "";
+        var defaultNames = ['Easy peasy $0.1 - $5', 'Easy $5 - $30', 'Normal $30 - $80', 'Hard $80 - $200', 'Legendary $200 - $∞'];
         for (var key in this.roomsPreview) {
             var room = this.roomsPreview[key];
             roomsHTML += "<li class='jackpot-room' data-roomid='"+key+"'> \
-                            <span class='diff'>"+Localization.getString('jackpot.difficulty.' + (room.diff+1))+"</span>\
+                            <span class='diff' data-loc='" + (room.diff+1) + "'>"+Localization.getString('jackpot.difficulty.' + (room.diff+1), defaultNames[room.diff])+"</span>\
                             <span class='online'>"+room.players+"</span> \
                             </li>"
         }
