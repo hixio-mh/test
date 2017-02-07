@@ -173,7 +173,9 @@ $(function() {
     
     function endGame(message) {
         currentMultiply = 0;
-        odometer.update(message.number/100);
+        try {
+            odometer.update(message.number/100);
+        } catch (e) {}
         if (message.cashOuts) {
             for (var key in message.cashOuts) {
                 cashOut({

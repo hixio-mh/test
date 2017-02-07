@@ -27,7 +27,7 @@ var Jackpot = {
     roomsPreview: null,
     countdownTimer: null,
     newGameTimer: null,
-    socket: io('http://192.168.1.205:8020'),
+    socket: io('http://kvmde40-10035.fornex.org:8020'),
     room: {
         players: {},
         gameStart: false,
@@ -40,20 +40,27 @@ var Jackpot = {
             perPlayer: 15
         },
         winner: {},
-        playerWin: false,
+        playerBet: 0,
         totalItems: 0,
         totalPrice: 0
     },
     reconnectDelay: 5000,
     init: function() {
-        $(function() {            
+        $(function() {
+            var param = parseURLParams(window.location.href);
+            if(typeof param != "undefined") {
+                if (param.room) {
+                    Jackpot.socket.emit('enterRoom', parseInt(param.room[0]));
+                }
+            }
+            
             $(window).on('popstate', function(e) {
                 var state = e.originalEvent.state;
                 if (state === null) {
                     Jackpot.showRooms();
                     Jackpot.socket.emit('leaveRoom', {room: 'all'})
                 } else if (typeof state.room != 'undefined') {
-                    Jackpot.selectRoom(state.room);
+                    Jackpot.socket.emit('enterRoom', parseInt(param.room[0]));
                 }
             })
             
@@ -81,10 +88,11 @@ var Jackpot = {
                 Jackpot.room.gameStart = info.gameStart;
                 Jackpot.room.gameStartIn = info.gameStartIn;
                 Jackpot.room.limits = info.limits;
-                maxItems = info.limits.perPlayer;
+                Jackpot.room.playerBet = info.playerBet || 0;
+                
+                maxItems = info.limits.perPlayer - info.playerBet;
                 
                 Jackpot.selectRoom(info.roomid);
-                history.pushState({room: Jackpot.roomID}, 'Jackpot online. Room #'+Jackpot.roomID, '?room='+Jackpot.roomID);
             })
             
             Jackpot.socket.on('bet', function(bet) {
@@ -106,6 +114,15 @@ var Jackpot = {
                 Jackpot.startGame();
             })
             
+            Jackpot.socket.on('you_win', function(win) {
+                var weapons = win.weapons;
+                for (var i = 0; i < weapons.length; i++) {
+                    weapons[i] = new Weapon(weapons[i]);
+                    weapons[i].new = true;
+                }
+                saveWeapons(weapons);
+            })
+            
             Jackpot.socket.on('new_game', function(timer) {
                 $('.items').empty();
                 $('#players').empty();
@@ -119,7 +136,8 @@ var Jackpot = {
                 Jackpot.bar.setText("0/" + Jackpot.room.limits.items + "<hr><s class='currency dollar'>0</s>");
                 Jackpot.room.totalItems = 0;
                 Jackpot.room.totalPrice = 0;
-
+                Jackpot.room.playerBet = 0;
+                maxItems = Jackpot.room.limits.perPlayer;
             })
             
             $('#change_room').on('click', function() {
@@ -127,6 +145,7 @@ var Jackpot = {
             });
             
             $(document).on('click', '.jackpot-room', function() {
+                history.pushState({room: Jackpot.roomID}, 'Jackpot online. Room #'+Jackpot.roomID, '?room='+Jackpot.roomID);
                 Jackpot.socket.emit('enterRoom', parseInt($(this).data('roomid')));
             })
             
@@ -149,12 +168,20 @@ var Jackpot = {
                             betWeapons.push(playerWeapons[i].tradeObject());
                         }
                         
+                        Jackpot.room.playerBet += betWeapons.length;
+                        maxItems -= betWeapons.length;
+                        if (maxItems < 0) maxItems = 0;
+                        
                         Jackpot.socket.emit('bet', {
                             room: Jackpot.roomID,
                             nick: Player.nickname,
                             avatar: Player.avatar,
                             weapons: betWeapons
                         })
+                        
+                        for (var i = 0; i < ids.length; i++) {
+                            deleteWeapon(ids[i]);
+                        }
                         
                         $(".closeInventory").click();
                     })
@@ -242,7 +269,7 @@ var Jackpot = {
         }
         this.room.totalPrice = parseFloat(this.room.totalPrice.toFixed(2));
         
-        this.bar.setText(this.room.totalItems + '/' + this.room.limits.items + '<hr><s class="currency dollar">' + this.room.totalPrice + '</s>');
+        this.bar.setText(this.room.totalItems + '/' + this.room.limits.items + '<hr><s class="currency dollar">' + this.room.totalPrice.toFixed(2) + '</s>');
         var step = this.room.totalItems * 100 / this.room.limits.items / 100;
         step = step > 1 ? 1 : step;
         this.bar.animate(step);
@@ -262,7 +289,7 @@ var Jackpot = {
     newBet: function(bet) {
         Jackpot.room.totalPrice += bet.itemsCost;
         Jackpot.room.totalItems += bet.weapons.length;
-        Jackpot.bar.setText(Jackpot.room.totalItems + '/' + Jackpot.room.limits.items + '<hr><s class="currency dollar">' + Jackpot.room.totalPrice + '</s>');
+        Jackpot.bar.setText(Jackpot.room.totalItems + '/' + Jackpot.room.limits.items + '<hr><s class="currency dollar">' + Jackpot.room.totalPrice.toFixed(2) + '</s>');
         
         var step = Jackpot.room.totalItems * 100 / Jackpot.room.limits.items / 100;
         step = step > 1 ? 1 : step;
@@ -339,27 +366,6 @@ var Jackpot = {
                 $(".closeInventory").click();
 
                 $(".win").html("<img src='../images/ava/" + Jackpot.room.winner.avatar + "'><span class='win__title'>" + Localization.getString('jackpot.winner') + "</span><span class='win__nick'>" + Jackpot.room.winner.nickname + "</span><span class='win__chance'>" + Jackpot.room.winner.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(Jackpot.room.winner.ticket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
-                
-                /*if (win.nick == Player.nickname) {
-                    saveWeapons(ItemsInGame);
-
-                    //Statistic
-                    statisticPlusOne('rulet-wins');
-                    Level.addEXP(2);
-
-                    var a = getStatistic('rulet-max-win');
-
-                    var winSum = parseFloat($('.progressbar-text s').text().substr(1));
-                    if (typeof a == "undefined")
-                        a = winSum;
-                    else
-                        a = winSum > parseFloat(a) ? winSum : parseFloat(a);
-                    saveStatistic('rulet-max-win', a);
-                } else {
-                    if (PlayerInGame) {
-                        statisticPlusOne('rulet-loose');
-                    }
-                }*/
             },
             progress: function(e, t) {
                 /*progress_animate = Math.round(100 * t),
@@ -376,211 +382,20 @@ var Jackpot = {
     }
 }
 
-/*var socket = null,
-    reconnectDelay = 5000;*/
-
 //DEBUG
 var DEBUG = false;
 
-$(function() {
-    
-})
-
-function newGame() {
-    clearTimeout(timerId);
-    ifCarusel = false;
-    $(".win").slideUp("slow");
-    bar.animate(0);
-    bar.setText("0/" + itemsLimit + "<hr><s class='currency dollar'>0</s>");
-    $("#addItems").prop("disabled", false);
-    itemsAccepted = 0;
-    totalMoney = 0;
-    lastTicket = 0;
-    PlayerInGame = false;
-
-    $(".items li").remove();
-
-    $("#players").html("");
-    $(".casesCarusel").html("");
-}
-
 $("#addItems").on("click", function() {
     Sound("additems", "play");
-    fillInventory();
-});
-
-$('#diffuculty').change(function() {
-    var minPrice = parseFloat($('#diffuculty option:selected').data('min'));
-    var maxPrice = parseFloat($('#diffuculty option:selected').data('max'));
-
-    priceRange.min = minPrice;
-    priceRange.max = maxPrice;
-    newGame();
-});
-
-function addItems(fromName, fromImg, itemCount, itemsCost) {
-    var okon = ["предмет", "предмета", "предмета", "предмета", "предметов"];
-    itemsAccepted += itemCount;
-    var step = itemsAccepted * 100 / itemsLimit / 100;
-    var value = itemCount - 1;
-    //step += bar.value();
-    if (step > 1) {
-        step = 1
-    }
-    totalMoney += +Math.round(parseFloat(itemsCost) * 100) / 100;
-    totalMoney = +Math.round(parseFloat(totalMoney) * 100) / 100;
-    bar.setText(itemsAccepted + '/' + itemsLimit + '<hr><s class="currency dollar">' + totalMoney + '</s>');
-    bar.animate(step);
-
-    if (itemCount > 5) value = 4;
-
-
-    if (Settings.language == "RU")
-        $("#status").html(fromName + " внес " + itemCount + " " + okon[value] + " (~" + parseFloat(itemsCost).toFixed(2) + "$)");
-    else if (Settings.language == "EN")
-        $("#status").html(fromName + " added " + itemCount + " " + ((itemCount == 1) ? "item" : "items") + " (~$" + parseFloat(itemsCost).toFixed(2) + ")");
-
-    var players = '';
-    for (var i = 0; i < PlayersInGame.length; i++) {
-        var chance = 0.0;
-        chance = parseFloat(Math.round((PlayersInGame[i].itemsCost * 100) / totalMoney * 100) / 100);
-        players += "<span class='playerAva'  data-nick='" + PlayersInGame[i].nick + "'><img src='../images/ava/" + PlayersInGame[i].avatar + "'><p>" + chance + "%</p></span>";
-        PlayersInGame[i].chance = chance;
-    }
-    $("#players").html(players);
-
-    clearTimeout(timerId);
-    if (itemsAccepted >= itemsLimit) {
-        startGame()
-    }
-
-    if (ifCarusel == false) {
-        timerId = setTimeout(function() {
-            botAddItems()
-        }, Math.rand(botMinDec, botMaxDec));
-    }
-}
-
-function startGame() {
-    $("#addItems").prop("disabled", true);
-    $('#diffuculty').prop('disabled', true);
-
-    winNumber = 35;
-
-    ifCarusel = true;
-
-    var arr = [];
-    for (var i = 0; i < PlayersInGame.length; i++) {
-        var count = parseInt(PlayersInGame[i].chance);
-        for (var z = 0; z < count; z++) {
-            arr.push(PlayersInGame[i]);
+    $('.inventory').empty();
+    fillInventory(".inventory", "", {
+        limits: {
+            min: Jackpot.room.limits.min,
+            max: Jackpot.room.limits.max
         }
-    }
-    arr = arr.shuffle().shuffle().shuffle();
-    if (arr.length > winNumber + 3)
-        arr.splice(winNumber + 3, arr.length - (winNumber + 3));
-    var el = '';
-
-    arr[winNumber] = getJackpotWiner();
-
-    arr.forEach(function(item, index) {
-        var img = '../images/ava/' + item.avatar;
-
-        el += '<span class="playerAva">' +
-            '<img src="' + img + '" />' +
-            '</span>'
-    })
-    win = arr[winNumber];
-    $(".casesCarusel").html(el);
-    $(".casesCarusel").css("margin-left", "0px");
-
-    var a = 141 * winNumber - 141;
-    var l = 141;
-    var d = 0,
-        s = 0;
-    $(".casesCarusel").animate({
-        marginLeft: -1 * Math.rand(a - 70, a + 15)
-    }, {
-        duration: 7000,
-        easing: 'easeInOutCubic',
-        start: function() {
-            //caseOpenAudio.play();
-            //caseOpening = true;
-            $(".closeInventory").click();
-
-            $(".win").html("<img src='../images/ava/" + win.avatar + "'><span class='win__title'>" + Localization.getString('jackpot.winner') + "</span><span class='win__nick'>" + win.nick + "</span><span class='win__chance'>" + win.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(winnerTicket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
-
-            if (win.nick == Player.nickname) {
-                saveWeapons(ItemsInGame);
-
-                //Statistic
-                statisticPlusOne('rulet-wins');
-                Level.addEXP(2);
-
-                var a = getStatistic('rulet-max-win');
-
-                var winSum = parseFloat($('.progressbar-text s').text().substr(1));
-                if (typeof a == "undefined")
-                    a = winSum;
-                else
-                    a = winSum > parseFloat(a) ? winSum : parseFloat(a);
-                saveStatistic('rulet-max-win', a);
-            } else {
-                if (PlayerInGame) {
-                    statisticPlusOne('rulet-loose');
-                }
-            }
-        },
-        progress: function(e, t) {
-            /*progress_animate = Math.round(100 * t),
-            s = parseInt(parseInt($(".casesCarusel").css("marginLeft").replace(/[^0-9.]/g, "") - l / 2) / l),
-            s > d && (caseScrollAudio.pause(),caseScrollAudio.currentTime = 0,
-            caseScrollAudio.play(),
-            d++)*/
-        },
-        complete: function() {
-            $(".win").show();
-            var timerId2 = 0;
-            $($('.casesCarusel').children('.playerAva')[winNumber]).addClass('winnerAnimation');
-        },
-    })
-}
-
-var getRandomItem = function(list, weight) {
-    var total_weight = weight.reduce(function (prev, cur, i, arr) {
-        return prev + cur;
     });
-     
-    var random_num = Math.rand(0, total_weight);
-    var weight_sum = 0;
-    //console.log(random_num)
-     
-    for (var i = 0; i < list.length; i++) {
-        weight_sum += weight[i];
-        weight_sum = +weight_sum.toFixed(2);
-         
-        if (random_num <= weight_sum) {
-            return list[i];
-        }
-    }
-     
-    // end of function
-};
+});
 
-function getJackpotWiner() {
-    
-    var weight = [];
-    for (var i = 0; i < PlayersInGame.length; i++) {
-        weight.push(PlayersInGame[i].itemsCost);
-    }
-    
-    var w = getRandomItem(PlayersInGame, weight);
-
-    var random = Math.rand(w.tickets.from, w.tickets.to);
-    winnerTicket = random;
-    
-    return w;
-}
 
 function itemsList(newBet/*fromName, fromImg, tickets, itemsCost, weaponsList*/) {
     if (typeof newBet.weapons == 'undefined' || newBet.weapons.length == 0) return false;
