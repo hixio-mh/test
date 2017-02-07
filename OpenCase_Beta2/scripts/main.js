@@ -763,11 +763,11 @@ function deleteAllInventory() {
 function getInventory(count_from, count_to, opt) {
     count_from = count_from || 1;
     count_to = count_to || 10000;
-    opt = opt || {
-        limits: {
-            min: 0,
-            max: 99999999
-        }
+    opt = opt || {};
+    
+    opt.limits = opt.limits || {
+        min: 0,
+        max: 99999999
     };
     
     if (INVENTORY.weapons.length >= count_to && opt.loadMore) {
