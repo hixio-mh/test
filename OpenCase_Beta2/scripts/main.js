@@ -353,7 +353,6 @@ function getStatistic(key, defaultVal, crypt) {
             }
         } catch (e) {
             console.log('Get statistic Error', e);
-            console.log(`Key: ${key}, defaultVal: ${defaultVal}, val: ${newValue}`);
             value = defaultVal || 0;
         }
     }
