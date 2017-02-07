@@ -27,7 +27,7 @@ var Jackpot = {
     roomsPreview: null,
     countdownTimer: null,
     newGameTimer: null,
-    socket: io('http://kvmde40-10035.fornex.org:8020'),
+    socket: io('https://kvmde40-10035.fornex.org/', {path: '/jackpot/socket.io'}),
     room: {
         players: {},
         gameStart: false,
