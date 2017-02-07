@@ -275,9 +275,13 @@ function Sound(soundGet, action, priority, repeat, speed) {
             break;
         }
         if (sound) {
-            sound.pause();
-            sound.currentTime = 0;
-            if (action == "play") sound.play();
+            try {
+                sound.pause();
+                sound.currentTime = 0;
+                if (action == "play") sound.play();
+            } catch (e) {
+                console.log('Sound error', e);
+            }
             /*switch (action) {
             case "play":
             	sound.pause();
