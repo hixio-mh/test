@@ -108,6 +108,13 @@ var Jackpot = {
                 Jackpot.newBet(bet);
             })
             
+            Jackpot.socket.on('items back', function(items) {
+                for (var i = 0; i < items.length; i++) {
+                    items[i] = new Item(items[i]);
+                }
+                saveWeapons(items);
+            })
+            
             Jackpot.socket.on('chances', function(chances) {
                 Jackpot.updateChances(chances);
             })
@@ -168,7 +175,7 @@ var Jackpot = {
             });
             
             $(document).on('click', '#backItems', function() {
-                Jackpot.socket.emit('items back');
+                Jackpot.socket.emit('items back', Jackpot.roomID);
             });
             
             $(document).on('send_chat_msg', function(event, message) {
@@ -294,6 +301,8 @@ var Jackpot = {
             console.log('err');
         }
         
+        $(".casesCarusel").stop();
+        
         $(".win").slideUp("slow");
         if (this.room.gameStart)
             $('#addItems').prop('disabled', true);
@@ -337,7 +346,7 @@ var Jackpot = {
         step = step > 1 ? 1 : step;
         Jackpot.bar.animate(step);
         
-        if (bet.playerid == Jackpot.socket.id && $('#players .playerAva').length == 1) {
+        if (bet.playerid == Jackpot.socket.id && Jackpot.room.playerBet > 0) {
             $('#backItems').show();
         } else {
             $('#backItems').hide();
@@ -351,6 +360,12 @@ var Jackpot = {
             var ava = chances[key].avatar;
             ava = ava.length > 7 ? ava : '../images/ava/' + ava;
             $('#players').append('<span class="playerAva"><img src="' + ava + '"><p>'+chances[key].chance+'%</p></span>');
+        }
+        
+        if (Object.keys(chances).length == 1 && Jackpot.room.playerBet > 0) {
+            $('#backItems').show();
+        } else {
+            $('#backItems').hide();
         }
     },
     countdown: function(timer) {
@@ -408,7 +423,7 @@ var Jackpot = {
         $(".casesCarusel").animate({
             marginLeft: -1 * Math.rand(a - 70, a + 15)
         }, {
-            duration: 7000,
+            duration: Jackpot.room.gameStartIn < 0 ? Jackpot.room.gameStartIn < -7000 ? 0 : 7000 + Jackpot.room.gameStartIn : 7000,
             easing: 'easeInOutCubic',
             start: function() {
                 $(".closeInventory").click();
