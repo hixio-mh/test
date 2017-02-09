@@ -21,7 +21,7 @@ var maxItems = 0;
 var ticketsRegExp = /(\d)(?=(\d\d\d)+([^\d]|$))/g;
 
 var Jackpot = {
-    roomID: 0,
+    roomID: -1,
     bar: null,
     winNumber: 35,
     roomsPreview: null,
@@ -59,6 +59,9 @@ var Jackpot = {
                 if (state === null) {
                     Jackpot.showRooms();
                     Jackpot.socket.emit('leaveRoom', {room: 'all'})
+                    Jackpot.roomID = -1;
+                    clearInterval(Jackpot.countdownTimer);
+                    Jackpot.countdownTimer = null;
                 } else if (typeof state.room != 'undefined') {
                     Jackpot.socket.emit('enterRoom', parseInt(param.room[0]));
                 }
@@ -66,6 +69,7 @@ var Jackpot = {
             
             Jackpot.socket.on('stats', function(stats) {
                 Jackpot.roomsPreview = stats;
+                Jackpot.roomID = -1;
                 Jackpot.updateStats();
             })
             
@@ -89,10 +93,15 @@ var Jackpot = {
                 Jackpot.room.gameStartIn = info.gameStartIn;
                 Jackpot.room.limits = info.limits;
                 Jackpot.room.playerBet = info.playerBet || 0;
+                if (info.winner)
+                    Jackpot.room.winner = info.winner;
+                
                 
                 maxItems = info.limits.perPlayer - info.playerBet;
                 
                 Jackpot.selectRoom(info.roomid);
+                if (info.winner)
+                    Jackpot.startGame();
             })
             
             Jackpot.socket.on('bet', function(bet) {
@@ -140,13 +149,40 @@ var Jackpot = {
                 maxItems = Jackpot.room.limits.perPlayer;
             })
             
+            Jackpot.socket.on('chat', function(chat) {
+                console.log(chat);
+                if (chat.room == Jackpot.roomID) {
+                    onlineGames.chatMessage(chat, {
+                        selector: '.chat__messages#current',
+                        increaseCounter: true
+                    });
+                }
+                onlineGames.chatMessage(chat, {
+                    selector: '.chat__messages#all',
+                    increaseCounter: false
+                });
+            })
+            
             $('#change_room').on('click', function() {
                 Jackpot.showRooms();
             });
             
+            $(document).on('click', '#backItems', function() {
+                Jackpot.socket.emit('items back');
+            });
+            
+            $(document).on('send_chat_msg', function(event, message) {
+                Jackpot.socket.emit('chat', {
+                    from: Player.nickname,
+                    message: message,
+                    room: Jackpot.roomID
+                })
+            })
+            
             $(document).on('click', '.jackpot-room', function() {
+                Jackpot.roomID = parseInt($(this).data('roomid'));
                 history.pushState({room: Jackpot.roomID}, 'Jackpot online. Room #'+Jackpot.roomID, '?room='+Jackpot.roomID);
-                Jackpot.socket.emit('enterRoom', parseInt($(this).data('roomid')));
+                Jackpot.socket.emit('enterRoom', Jackpot.roomID);
             })
             
             $(".choseItems").on("click", function() {
@@ -259,8 +295,13 @@ var Jackpot = {
         }
         
         $(".win").slideUp("slow");
+        if (this.room.gameStart)
+            $('#addItems').prop('disabled', true);
+        else
+            $('#addItems').prop('disabled', false);
         
         $('.items').empty();
+        $('.scrollerContainer .casesCarusel').empty();
         
         this.room.totalItems = 0;
         this.room.totalPrice = 0;
@@ -295,6 +336,12 @@ var Jackpot = {
         var step = Jackpot.room.totalItems * 100 / Jackpot.room.limits.items / 100;
         step = step > 1 ? 1 : step;
         Jackpot.bar.animate(step);
+        
+        if (bet.playerid == Jackpot.socket.id && $('#players .playerAva').length == 1) {
+            $('#backItems').show();
+        } else {
+            $('#backItems').hide();
+        }
         
         itemsList(bet);
     },
