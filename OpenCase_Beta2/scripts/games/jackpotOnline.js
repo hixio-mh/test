@@ -75,14 +75,22 @@ var Jackpot = {
             
             Jackpot.socket.on('connect', function(event) {
                 console.log('Успешно подключились к серверу');
+                $('.connection_status').hide();
             })
             
             Jackpot.socket.on('reconnect', function(event) {
                 console.log('Переподключились к серверу');
+                Jackpot.showRooms();
+                Jackpot.roomID = -1;
+                clearInterval(Jackpot.countdownTimer);
+                Jackpot.countdownTimer = null;
+                $('.connection_status').hide();
             })
             
-            Jackpot.socket.on('reconnection', function(event) {
-                console.log('Соедениние потеряно, переподключаемся...')
+            Jackpot.socket.on('reconnecting', function(number) {
+                console.log('Соедениние потеряно, переподключаемся... Попытка #'+number);
+                $('.connection_status').html('Trying to connect to the server... Попытка #'+number);
+                $('.connection_status').show();
             })
             
             Jackpot.socket.on('roomInfo', function(info) {
@@ -145,7 +153,7 @@ var Jackpot = {
                 $(".casesCarusel").empty();
                 $(".win").slideUp("slow");
                 $("#addItems").prop("disabled", false);
-                
+                $('#backItems').hide();                
                 
                 Jackpot.room.gameStart = false;
                 Jackpot.bar.animate(0);
@@ -346,12 +354,6 @@ var Jackpot = {
         step = step > 1 ? 1 : step;
         Jackpot.bar.animate(step);
         
-        if (bet.playerid == Jackpot.socket.id && Jackpot.room.playerBet > 0) {
-            $('#backItems').show();
-        } else {
-            $('#backItems').hide();
-        }
-        
         itemsList(bet);
     },
     updateChances: function(chances) {
@@ -362,7 +364,7 @@ var Jackpot = {
             $('#players').append('<span class="playerAva"><img src="' + ava + '"><p>'+chances[key].chance+'%</p></span>');
         }
         
-        if (Object.keys(chances).length == 1 && Jackpot.room.playerBet > 0) {
+        if (Object.keys(chances).length == 1 && typeof chances[Jackpot.socket.id] != 'undefined') {
             $('#backItems').show();
         } else {
             $('#backItems').hide();

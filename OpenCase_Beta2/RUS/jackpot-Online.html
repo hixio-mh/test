@@ -47,6 +47,13 @@
         justify-content: flex-end;
         padding-right: 3px;
     }
+    ul.room-select-modal__rooms:empty:before {
+        display: block;
+        content: 'Loading...';
+        text-align: center;
+        color: #fff;
+        font-size: 17px;
+    }
 </style>
 </head>
 <body data-localization="jackpot" data-inventory='no-load'>
@@ -56,6 +63,7 @@
     <div class="room-select-modal">
         <h2 class="room-select-modal__title" data-loc="select_room">Выберите комнату</h2>
         <ul class="room-select-modal__rooms" data-loc-group="difficulty"></ul>
+        <div class='connection_status'></div>
     </div>
     <div id="circle"></div>
     <div id="status"></div>
