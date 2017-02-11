@@ -896,10 +896,6 @@ function _getInventoryIndexedDB() {
                     var item = new Item(inv[i]);
                     item.id = inv[i].id;
                     
-                    if (i == inv.length - 5) {
-                        //debugger;
-                    }
-                    
                     if (hashStat == 1 && typeof inv[i].hash != 'undefined') {
                         if (item.hashCompare(inv[i].hash)) {
                             invWeapons.push(item);
@@ -1053,6 +1049,7 @@ function getImgUrl(img, big) {
 
 function XSSreplace (text) {
         var allowedTags = ["<br>", "<i>", "<b>", "<s>"];
+        if (typeof text !== 'string') return text;
         //allowed html tags
         text = text.replace(/&lt;/g, '<');
         text = text.replace(/&gt;/g, '>');
