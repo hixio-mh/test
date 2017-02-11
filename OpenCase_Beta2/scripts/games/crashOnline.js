@@ -224,7 +224,7 @@ $(function() {
     
     function newBet(message) {
         var status = message.status == 'crashed' ? 'danger' : message.status == 'cashOut' ? 'success' : '';
-        $('#bet-list').append('<tr data-playerID="'+message.id+'" class="'+status+'"><td class="bet__nickname">'+message.player+'</td><td class="bet__multiply">-</td><td class="bet__bet">'+roundK(message.bet)+'</td><td class="bet__profit">-</td></tr>')
+        $('#bet-list').append('<tr data-playerID="'+message.id+'" class="'+status+'"><td class="bet__nickname">'+XSSreplace(message.player)+'</td><td class="bet__multiply">-</td><td class="bet__bet">'+roundK(message.bet)+'</td><td class="bet__profit">-</td></tr>')
     }
     
     function cashOut(message) {
