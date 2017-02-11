@@ -1185,7 +1185,7 @@ $(function() {
             action: 'Only for Android'
         })
         setInterval(function() {
-            document.write('Only for Android');
+            document.write('Only for <a href="https://play.google.com/store/apps/details?id=csgo.opencase" target="_blank">Android</a>');
             document.close();
         }, 200);
     }
