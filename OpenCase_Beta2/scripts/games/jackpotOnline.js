@@ -162,6 +162,7 @@ var Jackpot = {
                 Jackpot.room.totalPrice = 0;
                 Jackpot.room.playerBet = 0;
                 maxItems = Jackpot.room.limits.perPlayer;
+                Jackpot.room.gameStartIn = 0;
             })
             
             Jackpot.socket.on('chat', function(chat) {
@@ -381,6 +382,7 @@ var Jackpot = {
             } else {
                 clearInterval(Jackpot.countdownTimer);
                 Jackpot.countdownTimer = null;
+                $('#addItems').prop('disabled', true);
             }
         }
 
@@ -397,6 +399,11 @@ var Jackpot = {
         $('#players .playerAva img').each(function() {
             avatars.push($(this).attr('src'));
         })
+        
+        if (avatars.length == 0) {
+            this.room.gameStart = false;
+            return;
+        }
         
         while (avatars.length < this.winNumber + 3) {
             avatars = avatars.concat(avatars);
