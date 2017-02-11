@@ -113,7 +113,8 @@ var Jackpot = {
             })
             
             Jackpot.socket.on('bet', function(bet) {
-                Jackpot.newBet(bet);
+                if (bet.room == Jackpot.roomID)
+                    Jackpot.newBet(bet);
             })
             
             Jackpot.socket.on('items back', function(items) {
@@ -437,7 +438,7 @@ var Jackpot = {
             start: function() {
                 $(".closeInventory").click();
 
-                $(".win").html("<img src='../images/ava/" + Jackpot.room.winner.avatar + "'><span class='win__title'>" + Localization.getString('jackpot.winner') + "</span><span class='win__nick'>" + Jackpot.room.winner.nickname + "</span><span class='win__chance'>" + Jackpot.room.winner.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(Jackpot.room.winner.ticket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
+                $(".win").html("<img src='../images/ava/" + XSSreplace(Jackpot.room.winner.avatar) + "'><span class='win__title'>" + Localization.getString('jackpot.winner') + "</span><span class='win__nick'>" + XSSreplace(Jackpot.room.winner.nickname) + "</span><span class='win__chance'>" + Jackpot.room.winner.chance + "%</span><span class='win__ticket'><i class='fa fa-ticket'></i> " + ('' + parseInt(Jackpot.room.winner.ticket)).replace(ticketsRegExp, '$1&#8198;') + "</span>");
             },
             progress: function(e, t) {
                 /*progress_animate = Math.round(100 * t),
@@ -471,7 +472,7 @@ $("#addItems").on("click", function() {
 
 function itemsList(newBet/*fromName, fromImg, tickets, itemsCost, weaponsList*/) {
     if (typeof newBet.weapons == 'undefined' || newBet.weapons.length == 0) return false;
-    var bet = "<li class='game-bet animated zoomIn'><div class='game-bet__info'><div class='game-bet__player'><img src='../images/ava/" + newBet.avatar + "'>" + newBet.nick + "</div><div class='game-bet__tickets'><span class='game-bet__tickets__price'>$" + newBet.itemsCost.toFixed(2) + "</span><i class='fa fa-ticket'></i> " + ('' + parseInt(newBet.tickets.from)).replace(ticketsRegExp, '$1&#8198;') + " - " + ('' + parseInt(newBet.tickets.to)).replace(ticketsRegExp, '$1&#8198;') + "</div></div></div>" +
+    var bet = "<li class='game-bet animated zoomIn'><div class='game-bet__info'><div class='game-bet__player'><img src='../images/ava/" + XSSreplace(newBet.avatar) + "'>" + XSSreplace(newBet.nick) + "</div><div class='game-bet__tickets'><span class='game-bet__tickets__price'>$" + newBet.itemsCost.toFixed(2) + "</span><i class='fa fa-ticket'></i> " + ('' + parseInt(newBet.tickets.from)).replace(ticketsRegExp, '$1&#8198;') + " - " + ('' + parseInt(newBet.tickets.to)).replace(ticketsRegExp, '$1&#8198;') + "</div></div></div>" +
         "<div class='bet-items " + (newBet.weapons.length > 4 ? "hide-items" : "") + "'><div colspan=2>";
     for (var i = 0; i < newBet.weapons.length; i++) {
         var weapon = new Weapon(newBet.weapons[i]);
