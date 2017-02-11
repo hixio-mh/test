@@ -25,7 +25,7 @@ $(function () {
         <div id="menu_playerInfo_info"> \
             <a href="' + link + '" data-profileLink="true"><img src="../images/ava/' + Player.avatar + '" class="menu_ava"></a> \
             <div id="menu_playerInfo_info_text"> \
-                <a href="' + link + '" data-profileLink="true"><span id="menu_playerInfo_name">' + Player.nickname + '</span></a> \
+                <a href="' + link + '" data-profileLink="true"><span id="menu_playerInfo_name"></span></a> \
                 <span id="menu_doubleBalance">' + Player.doubleBalance + '</span><i class="double-icon"></i> \
             </div> \
         </div> \
@@ -84,6 +84,10 @@ $(function () {
         else {
             $(".site-overlay").show();
         }
+    })
+    
+    $(function() {
+        $('#menu_playerInfo_name').text(Player.nickname)
     })
     
     $(document).on('expchanged', function() {
