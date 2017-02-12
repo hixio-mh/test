@@ -1179,18 +1179,6 @@ Math.rand = function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-$(function() {
-    if (!isAndroid()) {
-        LOG.log({
-            action: 'Only for Android'
-        })
-        setInterval(function() {
-            document.write('Only for <a href="https://play.google.com/store/apps/details?id=csgo.opencase" target="_blank">Android</a>');
-            document.close();
-        }, 200);
-    }
-})
-
     /*Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
